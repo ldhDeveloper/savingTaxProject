@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+#main {
+	position : absolute;
+	top: 20%;
+	left : 20%;
+	z-index: 1000;
+	width: 1200px;
+	height: 500px;
+	background: #10aaff;
+}
+
+#button {
+	floot:  right;
+}
+
+#page {
+	margin-top: 100px;
+	margin-left: 370px;
+	background: #10aaff;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>직원관리</title>
+<link rel="stylesheet" type="text/css" href="../css/functionExecute.css">
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script>$(function(){
+	$('button').click(function(){
+		var address = $(this).val();
+		location.href = "functionExecute" + address+ ".html";
+		});
+});
+
+</script>
+<style type="text/css">
+body{
+		background-image : url(../images/mainbg.jpg);
+	}
+
+#main {
+	position : absolute;
+	top: 20%;
+	left : 20%;
+	z-index: 1000;
+	width: 1500px;
+	height: 700px;
+	background: #10aaff;
+}
+
+#button {
+	floot: left;
+}
+
+#page {
+	margin-top: 100px;
+	margin-left: 370px;
+	background: #10aaff;
+}
+</style>
+
+</head>
+<body>
+
+
+	<div id="background">
+
+
+		<div id="main">
+			<div id="button"  style = "background:white;">
+				<button value="1">장부입력</button>
+				<button value="2">장부작성</button>
+				<button value="3">직원관리</button>
+				<button value="4">결산</button>
+				<button value="5">세금계산</button>
+				<button value="6">도움말</button>
+			</div>
+			장부결산
+			<div id="page"></div>
+		</div>
+	</div>
+
+</body>
+</html>
