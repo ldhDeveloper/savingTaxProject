@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="/css/common.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+   $(function(){
+	   $('#border1').mouseover(function(){
+	  		$(this).css("background", "yellow");
+	  	}).mouseout(function(){
+	  		$(this).css("background", "green");
+	  	})
+	  	
+	  	$('#border1').click(function(){
+	  		console.log("aaa");
+	  	})
+   });
+  	
+  </script>
  <style>
    body{
         background: #01212d;
