@@ -1,7 +1,107 @@
 @CHARSET "UTF-8";
 
-font-face{
+@font-face{
 	font-family:google; 
 	src: url(/font/NotoSansCJKkr-Light.otf);
-	
 }
+
+@font-face{
+	font-family:cleansky; 
+	src: url(/font/cleansky.ttf);
+}
+
+@font-face{
+	font-family:noscocks; 
+	src: url(/font/noscocks.ttf);
+}
+
+@font-face{
+	font-family:seodang; 
+	src: url(/font/seodang.ttf);
+}
+
+@font-face{
+	font-family:computer; 
+	src: url(/font/computer.ttf);
+}
+
+@font-face{
+	font-family:generalee; 
+	src: url(/font/generalee.ttf);
+}
+
+@font-face{
+	font-family:tenbyten; 
+	src: url(/font/tenbyten.ttf);
+}
+
+@font-face{
+	font-family:tenbyten; 
+	src: url(/font/tenbyten.ttf);
+}
+
+@font-face{
+	font-family:mobius; 
+	src: url(/font/mobius.ttf);
+}
+
+@font-face{
+	font-family:mobius; 
+	src: url(/font/NanumGothicExtraBold.ttf);
+}
+
+@font-face{
+	font-family:mobius; 
+	src: url(/font/NanumGothicExtraBold.ttf);
+}
+
+@font-face{
+	font-family:redmailbox; 
+	src: url(/font/redmailbox.ttf);
+}
+
+@font-face{
+	font-family:cartoonstory; 
+	src: url(/font/cartoonstory.ttf);
+}
+
+@font-face{
+	font-family:appcircle; 
+	src: url(/font/appcircle.ttf);
+}
+
+@font-face{
+	font-family:hoonpink; 
+	src: url(/font/HoonPinkpungcha.otf);
+}
+
+@font-face{
+	font-family:HoonJunglebook; 
+	src: url(/font/HoonJunglebook.otf);
+}
+
+@font-face{
+	font-family:sunflower; 
+	src: url(/font/sunflower.ttf);
+}
+
+@font-face{
+	font-family:mordengodic; 
+	src: url(/font/mordengodic.ttf);
+}
+
+@font-face{
+	font-family:Binggrae; 
+	src: url(/font/Binggrae.otf);
+}
+
+@font-face{
+	font-family:Haesol; 
+	src: url(/font/Haesol.ttf);
+}
+
+@font-face{
+	font-family:ssangmundong; 
+	src: url(/font/ssangmunDong.ttf);
+}
+
