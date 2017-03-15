@@ -105,3 +105,9 @@
 	src: url(/font/ssangmunDong.ttf);
 }
 
+@font-face{
+	font-family:google; 
+	src: url(/font/NotoSansCJKkr-Light.otf);
+	
+}
+
