@@ -15,13 +15,17 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background:rgba(0,0,0,0.7);
 }
 
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
+  max-width: 430px;
+  padding-top:0%;
+  padding: 3%;
   margin: 0 auto;
+  margin-top:0%;
+  background-color: #eee;
+  box-shadow:7px 10px 5px black;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -52,25 +56,41 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.form-control {
+	margin-top:10px;
+}
+#joinbtn {
+	margin-top:5px;
+}
+.button-success {
+	width:clas() / 2;
+}
+.btn-danger {
+	float:right;
+		
+}
+
 </style>
   </head>
+
 
   <body>
 
     <div class="container">
-
       <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
+      	<button class="btn btn-danger" onclick="location.href='/jsmi/views/main1/main1.html'">x 닫기</button><br>
+        <h2 class="form-signin-heading" align="center">로그인</h2><br>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="text" id="inputid" class="form-control" name="userid" placeholder="아이디를 입력하세요." required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+        <input type="password" id="inputpassword" name="userpwd" class="form-control" placeholder="비밀번호를 입력하세요." required>
+		<br>
+        <button class="btn btn-lg btn-info btn-block" type="submit">로그인</button>
+        <div>
+        	<button id="joinbtn" class="btn btn-lg btn-warning btn-block">회원가입</button><br>
+        	<button id="joinbtn" class="btn btn-md btn-success btn-block">아이디 찾기</button>
+        	<button id="joinbtn" class="btn btn-md btn-success btn-block">비밀번호 찾기</button><br>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
     </div> <!-- /container -->
