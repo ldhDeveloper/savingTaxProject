@@ -71,13 +71,26 @@ body {
 
 
 </style>
+
+<!-- <script type="text/javascript">
+	function checkValue(){
+		if($("input[name=userpwd]").val() == $("input[name=userpwd2]").val())
+			return true;
+		
+		else{
+			alert("암호와 암호 확인의 값이 일치 하지 않습니다.");
+			$("input[name=userpwd]").focus();
+			return false;
+		}
+	}
+</script> -->
   </head>
 
 
   <body>
 
     <div class="container">
-      <form class="form-signin">
+      <form action="/jsmi/signup" class="form-signin">
       	<button type="button" class="btn btn-danger" onclick="location.href='/jsmi/views/main1/main1.html'">x 닫기</button><br>
         <h2 class="form-signin-heading" align="center">회원가입</h2><br>
         <table style="cellspacing:5px">
