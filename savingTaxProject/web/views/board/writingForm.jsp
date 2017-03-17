@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import = "java.util.*, board.member.vo.Board, member.view.vo.Member" %> 
+	<%List<Board> blist = (List)request.getAttribute("blist"); %>
+	<%Member loginUser = (Member)session.getAttribute("loginUser"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +39,12 @@ p {
 table {
 	position: relative;
 	z-index: 1000;
-	top: 10%;
-	left: 80%;
+	width : 50%;
+	margin : auto;
+	height : 20%;
+	border : 1px solid black;
+	align : center;
+	
 }
 
 button {
@@ -152,25 +159,27 @@ button {
 	<br>
 	<br>
 	<br>
+	<form action ="/jsmi/insertBoard?post_id='<%=loginUser.getUserName() %>';" method = "post">
 	<table>
-	<tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>조회수</th><th>작성일자</th><tr>
-	<tr><td></td><td></td><td></td><td></td></tr>
+	<tr><td>글제목 :</td><td><input type = "text" name="post_title" size = "50"> </td></tr>
+	<tr><td>내용 :</td><td><input type = "text" name="post_content" size = "500"> </td></tr>
+	<tr><td><input type = "submit" value = "등록"></td></tr>
 	</table>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	</form>
 	
-	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
