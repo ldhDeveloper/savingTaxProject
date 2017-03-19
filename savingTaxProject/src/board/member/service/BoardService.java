@@ -26,4 +26,11 @@ public List<Board> selectTitle(String title){
 	return blist;
 	
 }
+
+public Board showContent(String title) {
+	Connection con = getConnection();
+	Board b = new BoardDao().showContent(con, title);
+	close(con);
+	return b;
+}
 }
