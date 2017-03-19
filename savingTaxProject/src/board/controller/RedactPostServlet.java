@@ -1,7 +1,6 @@
 package board.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +13,16 @@ import board.member.service.BoardService;
 import board.member.vo.Board;
 
 /**
- * Servlet implementation class BoardContentServlet
+ * Servlet implementation class RedactPostServlet
  */
-@WebServlet("/boardcontent")
-public class BoardContentServlet extends HttpServlet {
+@WebServlet("/redactpost")
+public class RedactPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardContentServlet() {
+    public RedactPostServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +33,19 @@ public class BoardContentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset = utf-8");
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
-	
-		Board b = new BoardService().showContent(postNo);
-
-		List<Board> blist = new BoardService().selectAll(); 
+		response.setContentType("text/html; charset=utf-8");
+		int post_no = Integer.parseInt(request.getParameter("postno"));
+		Board b = new BoardService().showContent(post_no);
 		RequestDispatcher view = null;
 		if(b !=null){
-			view = request.getRequestDispatcher("views/board/customerServiceBoard.jsp");
+			view = request.getRequestDispatcher("view/board/redactPost.jsp");
 			request.setAttribute("b", b);
-			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		}else{
-			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", "게시물 내용 조회 실패");
+			view = request.getRequestDispatcher("view/board/boardError.jsp");
+			request.setAttribute("message", "글수정페이지로 이동 실패");
 			view.forward(request, response);
 		}
-			
 		
 	}
 
