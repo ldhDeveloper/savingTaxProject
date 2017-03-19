@@ -158,7 +158,7 @@ button {
 	<br>
 	<br>
 	<br><table aligen ="center" border = "1px solid black"><tr><th>글 번호</th><th>글 제목</th><th>관리자 번호</th><th>조회수</th><th>글작성일</th> 
- <% if(blist !=null && blist.get(0).getBoard_no() == 1){ for(Board e : blist){ %>
+ <% if(blist !=null){ for(Board e : blist){ %>
  <tr><td><%= e.getPost_no()%></td>
  <td><a href = ><%=e.getPost_title() %></a></td>
  <td><%=e.getWriter_no() %></td>
