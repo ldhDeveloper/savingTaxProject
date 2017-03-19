@@ -42,7 +42,7 @@ table {
 
 button {
 	margin: 2px;
-	position:fixed;
+	
 	align:right;
 }
 
@@ -62,7 +62,7 @@ button {
 
 .navbar-header {
 	background: #001133;
-	position:fixed;
+	
 }
 
 .container-fluid {
@@ -138,10 +138,24 @@ button {
 			</div>
 		</nav>
 	</div>
+	
+	
 
-
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<table>
+	<tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>조회수</th><th>작성일자</th><tr>
+	<tr><td></td><td></td><td></td><td></td></tr>
+	</table>
 	<br>
 	<br>
 	<br>
@@ -155,17 +169,8 @@ button {
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+	
 	<br>
 	<br>
 	<br>

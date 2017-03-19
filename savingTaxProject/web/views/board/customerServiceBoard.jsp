@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import = "java.util.*, board.member.vo.Board" %> 
+	<%List<Board> blist = (List)request.getAttribute("blist"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +38,17 @@ p {
 table {
 	position: relative;
 	z-index: 1000;
-	top: 10%;
-	left: 80%;
+	width : 50%;
+	margin : auto;
+	height : 20%;
+	border : 1px solid black;
+	align : center;
+	
 }
 
 button {
 	margin: 2px;
-	position:fixed;
+	
 	align:right;
 }
 
@@ -62,7 +68,7 @@ button {
 
 .navbar-header {
 	background: #001133;
-	position:fixed;
+	
 }
 
 .container-fluid {
@@ -138,10 +144,37 @@ button {
 			</div>
 		</nav>
 	</div>
+	
+	
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br><table aligen ="center" border = "1px solid black"><tr><th>글 번호</th><th>글 제목</th><th>관리자 번호</th><th>조회수</th><th>글작성일</th> 
+ <% if(blist !=null){ for(Board e : blist){ %>
+ <tr><td><%= e.getPost_no()%></td>
+ <td><a href = ><%=e.getPost_title() %></a></td>
+ <td><%=e.getWriter_no() %></td>
+ <td></td>
+ <td><%=e.getPost_date() %></td>
+</tr>
+ <%}} %>
+</table>
 
 
+<div align = "center"><input style = "width : 50%" type = "search" name = "searchtitle" size = "50">
 
-
+<form action = "/jsmi/selecttitle" method ="post">
+&nbsp; <input type = "submit" value = "검색"> 
+</form>
+<button onclick ="location.href ='writingForm.jsp'">글 작성</button></div>
 	<br>
 	<br>
 	<br>
@@ -155,17 +188,8 @@ button {
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+	
 	<br>
 	<br>
 	<br>
