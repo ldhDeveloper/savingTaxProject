@@ -174,7 +174,7 @@ button {
 	<br><table aligen ="center" border = "1px solid black"><tr><th>글 번호</th><th>글 제목</th><th>관리자 번호</th><th>조회수</th><th>글작성일</th> 
  <% if(blist !=null){ for(Board e : blist){ %>
  <tr><td><%= e.getPost_no()%></td>
- <td><a href ="/jsmi/boardcontent?title='<%=e.getPost_title()%>'" ><%=e.getPost_title() %></a></td>
+ <td><a href ="/jsmi/boardcontent?title=<%=e.getPost_title()%>"><%=e.getPost_title() %></a></td>
  <td><%=e.getWriter_no() %></td>
  <td></td>
  <td><%=e.getPost_date() %></td>

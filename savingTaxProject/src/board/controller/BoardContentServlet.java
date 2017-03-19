@@ -46,7 +46,7 @@ public class BoardContentServlet extends HttpServlet {
 			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		}else{
-			view = request.getRequestDispatcher("views/board/boardErrer.jsp");
+			view = request.getRequestDispatcher("views/board/boardError.jsp");
 			request.setAttribute("message", "게시물 내용 조회 실패");
 			view.forward(request, response);
 		}

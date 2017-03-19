@@ -91,24 +91,25 @@ public Board showContent(Connection con, String title) {
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
 	String query = prop.getProperty("showContent");
+	System.out.println(title);
 	Board b = null;
 	try {
 		pstmt = con.prepareStatement(query);
+		pstmt.setString(1, title);
 		rset = pstmt.executeQuery();
-		System.out.println(rset);
 		if(rset.next()){
 		b = new Board();
 		b.setBoard_no(rset.getInt("board_no"));
 		b.setPost_no(rset.getInt("post_no"));
 		b.setPost_title(rset.getString("post_title"));
-		b.setPost_contents(rset.getString("post_content"));
+		b.setPost_contents(rset.getString("post_contents"));
 		b.setPost_date(rset.getDate("post_date"));
 		b.setUp_post_no(rset.getInt("up_post_no"));
 		b.setWriter_no(rset.getInt("writer_no"));
 		}
 		
 	} catch (Exception e) {
-		// TODO: handle exception
+		e.printStackTrace();
 	}finally{
 		close(rset);
 		close(pstmt);
