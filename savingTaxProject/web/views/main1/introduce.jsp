@@ -40,10 +40,11 @@ table {
 	left: 80%;
 }
 
-button {
-	margin: 2px;
-	position:fixed;
-	align:right;
+#logout {
+	
+	position: relative;
+	align: left;
+	margin-right: 10px;
 }
 
 #bar {
@@ -61,8 +62,8 @@ button {
 }
 
 .navbar-header {
-	background: #001133;
-	position:fixed;
+	background: #002255;
+	position: relative;
 }
 
 .container-fluid {
@@ -72,73 +73,114 @@ button {
 	margin-left: auto;
 }
 
- .navbar-inverse {
+.navbar-inverse {
 	background-color: white;
 	border-color: white;
-	position:fixed;
+	position: relative;
+	width:100%
 }
+
 #logo {
-	position:fixed;
+	position: fixed;
 }
 
 .nav-tabs.nav-justified>li>a {
-    border-bottom: 0px solid #ddd;
-    border-radius: 4px 4px 0 0;
-}
-.navbar-nav>li>a {
-    padding-top: 0px; 
-    padding-bottom: 0px;
+	border-bottom: 0px solid #ddd;
+	border-radius: 4px 4px 0 0;
 }
 
+.navbar-nav>li>a {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
 </style>
 <title>Insert title here</title>
 </head>
 <body class="">
-	<header>
-		<div class="container-fluid" id="bar"></div>
+	<div class="container-fluid" id="bar">
 		<div class="row">
-			<div class="col-xs-0 col-md-2"></div>
-			<div class="col-xs-6 col-md-4" style="background: white;">
-				<img src="/jsmi/images/logo4.png" class="img-responsive" id="logo">
-				<img src="/jsmi/images/menubar/logosize.png" class="img-responsive">
-			</div>
-			<div class="col-xs-3 col-md-3"></div>
-			<div class="col-xs-2 col-md-1">
-				<img>
-				<button class="btn btn-warning btn-sm"
-					onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
-			</div>
-			<div class="col-xs-0 col-md-2"></div>
+			<nav
+				class="navbar navbar-inverse hidden-md hidden-sm hidden-lg navbar-static-top">
+				<div class="container-fluid navbar-header">
+					<div class="col-xs-12 col-md-8" >
+						
+						<button type="button" class="navbar-toggle"
+							data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span><span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						
+						
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+
+								<li><a href="#"> <img
+										src="/jsmi/images/menubar/mb1.png" class="img-responsive"
+										style="width: 50%; height: 30%;"></a></li>
+								<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
+										class="img-responsive" style="width: 50%; height: 100%;"></a></li>
+								<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
+										class="img-responsive" style="width: 50%; height: 30%;"></a></li>
+								<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
+										class="img-responsive" style="width: 50%; height: 30%;"></a></li>
+								<li><a href="#"><img src="/jsmi/images/menubar/mb5.png"
+										class="img-responsive" style="width: 50%; height: 30%;"></a></li>
+							</ul>
+
+						</div>
+					</div>
+
+				</div>
+			</nav>
 		</div>
-	</header>
-	<div class="container-fluid" id="bar"></div>
-	<div class="row">
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid navbar-header">
+	</div>
+
+	<header>
+		<div class="container-fluid" id="bar">
+			<div class="row">
 				<div class="col-xs-0 col-md-2"></div>
-				<div class="col-xs-12 col-md-8">
-					<ul class="nav navbar-nav nav-tabs nav-justified hidden-xs">
-						<li><a href="#">
-						<img src="/jsmi/images/menubar/mb1.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb2.png" class="img-responsive" style="width:100%;height:100%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb3.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb4.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="/jsmi/listview"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-					</ul>
-					<ul class="nav navbar-nav nav-tabs nav-justified hidden-md visible-xs">
-						<li><a href="#">
-						<img src="/jsmi/images/menubar/mb1.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb2.png" class="img-responsive" style="width:100%;height:100%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb3.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb4.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-					</ul>
+				<div class="col-xs-6 col-md-4" style="background: white;">
+					<img src="/jsmi/images/logo4.png" class="img-responsive" id="logo">
+					<img src="/jsmi/images/menubar/logosize.png" class="img-responsive">
+				</div>
+				<div class="col-xs-4 col-md-3"></div>
+				<div class="col-xs-2 col-md-1">
+					<img>
+					<button class="btn btn-warning btn-sm "
+						onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
 				</div>
 				<div class="col-xs-0 col-md-2"></div>
 			</div>
-		</nav>
-	</div>
+		</div>
+	</header>
 
+
+	<div class="container-fluid" id="bar">
+		<div class="row">
+			<nav class="navbar navbar-inverse hidden-xs">
+				<div class="container-fluid navbar-header">
+					<div class="col-xs-0 col-md-2"></div>
+					<div class="col-xs-12 col-md-8">
+						<ul class="nav navbar-nav nav-tabs nav-justified">
+							<li><a href="#"> <img src="/jsmi/images/menubar/mb1.png"
+									class="img-responsive" style="width: 100%; height: 30%;"></a></li>
+							<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
+									class="img-responsive" style="width: 100%; height: 100%;"></a></li>
+							<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
+									class="img-responsive" style="width: 100%; height: 30%;"></a></li>
+							<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
+									class="img-responsive" style="width: 100%; height: 30%;"></a></li>
+							<li><a href="/jsmi/listview"><img
+									src="/jsmi/images/menubar/mb5.png" class="img-responsive"
+									style="width: 100%; height: 30%;"></a></li>
+						</ul>
+					</div>
+					<div class="col-xs-0 col-md-2"></div>
+				</div>
+			</nav>
+		</div>
+	</div>
 
 
 
