@@ -31,7 +31,7 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("오니?");
+		//System.out.println("오니?");
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -42,11 +42,11 @@ public class SignupServlet extends HttpServlet {
 		String upwd = request.getParameter("userpwd");
 		String uemail = request.getParameter("email");
 		
-		System.out.println(uid);
+		//System.out.println(uid);
 		
 		Member m = new Member(uname, uid, upwd, uemail);
 		
-		System.out.println(m);
+		//System.out.println(m);
 		
 		int result = new MemberService().signupMember(m);
 		
@@ -55,7 +55,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/memberError.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
 			request.setAttribute("message", "회원 가입에 실패했습니다.");
 			view.forward(request, response);
 		}
