@@ -158,14 +158,16 @@ button {
 	<br>
 	<br>
 	<%if(b !=null){ %>
+	<form>
 	<table class = "content">
 	<tr><td>글 번 호</td><td><%=b.getPost_no() %></td></tr>
-	<tr><td>작성 일자</td><td><%=b.getPost_date() %></td></tr>
-	<tr><td>작 성 자</td><td><%=b.getWriter_no() %></td></tr>
-	<tr><td>글 제 목</td><td><%=b.getPost_title()%> </td></tr>
-	<tr><td colspan = "2" height = "300"><%=b.getPost_contents() %> </td></tr>
-	
+	<tr><td>작성 일자</td><td colspan ="4"></td></tr>
+	<tr><td>작 성 자</td><td colspan ="4"></td></tr>
+	<tr><td>글 제 목</td><td colspan ="4"></td></tr>
+    <tr><td>글 내 용</td><td colspan ="4"></td></tr>
+	<tr><td colspan = "2" height = "300"><input type ="text" value= height = "300" name = "content"> </td></tr>
 	</table>
+	</form>
 	<br>	
 	<br>
 	<% } %>
