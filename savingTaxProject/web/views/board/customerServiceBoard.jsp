@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
@@ -37,9 +37,6 @@
  <td></td>
  <td><%=e.getPost_date() %></td>
 </tr>
-<tr><td colspan = "5">
-<button onclick = "location.href='/jsmi/deletepost?postno=<%=postNo%>'">글 삭제</button> &nbsp;
-<button onclick = "location.href='/jsmi/redactpost?postno=<%=postNo%>'">글 수정</button></td></tr>
  <%}} %>
 </table>
 
