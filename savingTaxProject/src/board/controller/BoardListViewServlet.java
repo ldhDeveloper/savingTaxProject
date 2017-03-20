@@ -29,7 +29,18 @@ public class BoardListViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("utf-8");
+		List<Board> blist = new BoardService().selectAll();
+		RequestDispatcher  view = null;
+		if(blist != null){
+			view = request.getRequestDispatcher("");
+			request.setAttribute("blist", blist);
+			view.forward(request, response);
+		}else{
+			view = request.getRequestDispatcher("");
+			request.setAttribute("message", "게시판 목록 조회 실패");
+			view.forward(request, response);
+		}
 
 	}
 

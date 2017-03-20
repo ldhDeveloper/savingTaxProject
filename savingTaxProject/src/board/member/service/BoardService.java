@@ -2,6 +2,8 @@ package board.member.service;
 import static common.JDBCTemplate.*;
 import java.io.*;
 import java.sql.*;
+
+import board.member.dao.BoardDao;
 import board.member.vo.*;
 import java.util.*;
 public class BoardService {
@@ -17,28 +19,16 @@ public class BoardService {
 	}
 	}
 	
-public List<Board> SelectAll(){
+public List<Board> selectAll(){
 	Connection con = getConnection();
-	Statement stmt = null;
-	ResultSet rset = null;
-	String query = prop.getProperty("selectAll");
-	List<Board> blist = null;
-	try {
-		stmt = con.createStatement();
-		rset = stmt.executeQuery(query);
-		 if(rset !=null){
-			 blist = new ArrayList<Board>();
-			 while(rset.next()){
-				 Board board = new Board();
-				 //Write the left!
-				 blist.add(board);
-			 }
-		 }
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+	List<Board> list = new BoardDao().selectAll(con);
 	return null;
+}
+
+public int insertBoard(Board b) {
+	Connection con = getConnection();
+	
+	return 0;
 }
 	
 }

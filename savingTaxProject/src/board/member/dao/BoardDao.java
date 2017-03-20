@@ -6,6 +6,11 @@ import java.util.*;
 public class BoardDao {
 public BoardDao(){}
 
+public List<Board> selectAll(Connection con) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 	
 	
 }
