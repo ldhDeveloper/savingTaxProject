@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Perfect Partners for Your Saving-Tax</title>
 <style type="text/css">
 
 
@@ -36,6 +36,34 @@
 	left:85%;
 	margin-top:80px;
 	z-index:1;
+}
+
+.xstd {
+	text-align:center;
+	background:#3f3f3f;
+	border:3px solid #222;
+	border-radius:1em;
+	width:50%
+}
+.xstd > a {
+	text-decoration:none;
+	color:white;
+	padding:1.2em;
+	display:block;
+	height:4em;
+}
+element.style {
+}
+    color: #ffffff;
+    text-decoration: none;
+}
+ul.dropdown-menu {
+	background:#8f8f8f;
+	margin-top:0px;
+}
+
+.xstd:hover {
+	background:orange;
 }
 </style>
 </head>
@@ -67,8 +95,12 @@
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10">
 						<ul class="nav navbar-nav nav-tabs nav-justified">
-							<li><a href="#"> <img src="/jsmi/images/menubar/mb1.png"
-									class="" style="width: 170px; height: 20px;"></a></li>
+							<li class="">
+								<a href="#"> 
+									<img src="/jsmi/images/menubar/mb1.png"
+									class="" style="width: 170px; height: 20px;">
+								</a>
+							</li>
 							<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
 									class="" style="width: 170px; height: 20px;"></a></li>
 							<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
@@ -201,22 +233,70 @@
 						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 							<ul class="nav navbar-nav navbar-static-top">
 
-								<li><a href="#"> <img
-										src="/jsmi/images/menubar/mb1.png" class="img-responsive"
-										style="width: 30%; height: 30%;"></a></li>
-								<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
-										class="img-responsive" style="width: 30%; height: 30%;"></a></li>
-								<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
-										class="img-responsive" style="width: 30%; height: 30%;"></a></li>
-								<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
-										class="img-responsive" style="width: 30%; height: 30%;"></a></li>
-								<li><a href="#"><img src="/jsmi/images/menubar/mb5.png"
-										class="img-responsive" style="width: 30%; height: 30%;"></a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+										<img src="/jsmi/images/menubar/mb1.png" class="img-responsive"
+										style="width: 30%; height: 30%;">
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr><td class="xstd"><a href="#">절세미인이란?</a></td><td class="xstd"><a href="#">시스템 소개</a></td></tr>
+												<tr><td class="xstd"><a href="#">회사 소개</a></td><td class="xstd"><a href="#">찾아오시는 길</a></td></tr>
+											</table>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<img src="/jsmi/images/menubar/mb2.png"
+										class="img-responsive" style="width: 30%; height: 30%;">
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr><td class="xstd"><a href="#">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
+											</table>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<img src="/jsmi/images/menubar/mb3.png"
+										class="img-responsive" style="width: 30%; height: 30%;">
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr><td class="xstd"><a href="#">진행중인 이벤트</a></td><td class="xstd"><a href="#">지난 이벤트</a></td></tr>
+											</table>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">
+										<img src="/jsmi/images/menubar/mb4.png"
+										class="img-responsive" style="width: 30%; height: 30%;">
+									</a>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<img src="/jsmi/images/menubar/mb5.png"
+										class="img-responsive" style="width: 30%; height: 30%;">
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
+												<tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
+												<tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
+											</table>
+										</li>
+									</ul>
+								</li>
 							</ul>
-
 						</div>
 					</div>
-
 				</div>
 			</nav>
 		</div>
