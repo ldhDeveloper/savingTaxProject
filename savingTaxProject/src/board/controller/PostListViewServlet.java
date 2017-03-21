@@ -44,10 +44,10 @@ public class PostListViewServlet extends HttpServlet {
 		BoardService bService = new BoardService();
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		int listCount = bService.getListCount(board_no);
-		List<Board> blist = bService.selectAll();
+		List<Board> blist = bService.selectAll(board_no, currentPage, limit);
 		RequestDispatcher view = null;
 		if(blist != null){
-			view = request.getRequestDispatcher("");
+			view = request.getRequestDispatcher("views/board/boardListView.jsp");
 			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		}else{

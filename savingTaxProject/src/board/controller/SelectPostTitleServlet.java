@@ -39,12 +39,12 @@ public class SelectPostTitleServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset = utf-8");
-
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		String title = request.getParameter("searchtitle");
-		List<Board> blist = new BoardService().selectTitle(title);
+		List<Board> blist = new BoardService().selectTitle(title, board_no);
 		RequestDispatcher view = null;
 		if (blist != null) {
-			view = request.getRequestDispatcher("views/board/customerServiceBoard.jsp");
+			view = request.getRequestDispatcher("views/board/boardListView.jsp");
 			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		} else {

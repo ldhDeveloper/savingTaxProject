@@ -24,15 +24,19 @@ public class BoardDao {
 
 	}
 
-	public List<Board> selectAll(Connection con) {
-		Connection conn = con;
-		Statement stmt = null;
+	public List<Board> selectAll(Connection con, int board_no, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Board> blist = null;
+		int startRow = (currentPage -1) * limit -1;
+		int endRow = startRow + limit -1;
 		String query = prop.getProperty("selectAll");
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, board_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
 			if (rset != null) {
 				blist = new ArrayList<Board>();
 				while (rset.next()) {
@@ -51,12 +55,12 @@ public class BoardDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		return blist;
 	}
 	
-	public List<Board> selectTitle(Connection con, String title) {
+	public List<Board> selectTitle(Connection con, String title, int board_no) {
 		Connection conn = con;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -64,7 +68,8 @@ public class BoardDao {
 		String query = prop.getProperty("selectTitle");
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, title);
+			pstmt.setInt(1, board_no);
+			pstmt.setString(2, "%"+title+"%");
 			rset = pstmt.executeQuery(query);
 			if (rset != null) {
 				blist = new ArrayList<Board>();
@@ -172,15 +177,17 @@ public class BoardDao {
 	public int getListCount(Connection con, int board_no) {
 		PreparedStatement pstmt = null;
 		int listCount = 0;
-		String query = prop.getProperty("selectBoard");
+		String query = prop.getProperty("listCount");
 		try {
-			
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, board_no);
+			listCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			close(pstmt);
 		}
 		
-		return 0;
+		return listCount;
 	}
 }

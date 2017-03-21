@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+	pageEncoding="UTF-8" import = "board.model.vo.Board, java.util.*"%>
+	<%List<Board> blist = (List<Board>)request.getAttribute("blist"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update form</title>
+<title>게시판 기본 골자</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -95,6 +95,7 @@ button {
 
 			<div class="col-xs-12 col-md-8">
 				<div class="table-responsive">
+				
 					<table class="table table-bordered">
 						<thead>
 							<tr class="warning">
@@ -107,23 +108,25 @@ button {
 							</tr>
 						</thead>
 						<tbody>
+						<%if(blist !=null){ for(Board e : blist){ %>
 							<tr class="success">
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
+								<td><%=e.getPost_no() %></td>
+								<td><a href = "#"><%=e.getPost_title() %></a></td>
+								<td><%=e.getWriter_no()%></td>
+								<td><%=e.getPost_date() %></td>
+								<td></td>
+								<td></td>
 							</tr>
+								<% }} %>
 						</tbody>
 					</table>
+				
 				</div>
 			</div>
 
 			<div class="col-xs-0 col-md-2"></div>
 		</div>
 	</div>
-
 	<br>
 	<br>
 	<br>
@@ -136,18 +139,21 @@ button {
 	<br>
 	<br>
 	<br>
-
+	<br>
+	<br>
+<form action = "/jsmi/selecttitle" method="post">
 	<div class="row">
 		<div class="col-xs-0 col-md-7"></div>
 
 		<div class="col-xs-12 col-md-2">
-			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
+			<input type="text" name="searchtitle" placeholder="검색할 제목을 입력하세요.">
+			<input type="hidden" value = 1 name = "board_no">
 		</div>
 		<div class="col-xs-0 col-md-3">
 			<input type="submit" class="btn btn-primary" value="검색">		
 		</div>
 	</div>
-	
+	</form>
 		<br>
 	
 		<div class="row">

@@ -15,17 +15,17 @@ public class BoardService {
 
 	}
 
-	public List<Board> selectAll() {
+	public List<Board> selectAll(int board_no, int currentPage, int limit) {
 		Connection con = getConnection();
-		List<Board> blist = new BoardDao().selectAll(con);
+		List<Board> blist = new BoardDao().selectAll(con, board_no, currentPage, limit);
 
 		close(con);
 		return blist;
 	}
 
-	public List<Board> selectTitle(String title) {
+	public List<Board> selectTitle(String title, int board_no) {
 		Connection con = getConnection();
-		List<Board> blist = new BoardDao().selectTitle(con, title);
+		List<Board> blist = new BoardDao().selectTitle(con, title, board_no);
 		close(con);
 		return blist;
 
