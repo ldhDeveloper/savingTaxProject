@@ -251,10 +251,10 @@ hr {
 				<div class="col-xs-2"></div>
 				<div class="col-xs-4" id="border1"
 					onclick="location.href='/jsmi/views/main1/introduce.jsp'">
-					<img src="../../images/info.png" class="img-responsive">
+					<img src="/jsmi/images/info.png" class="img-responsive">
 				</div>
 				<div class="col-xs-4" style="background: #105080;" id="border2">
-					<img src="../../images/1.png" class="img-responsive">
+					<img src="/jsmi/images/1.png" class="img-responsive">
 				</div>
 				<div class="col-xs-2"></div>
 			</div>
@@ -262,10 +262,10 @@ hr {
 			<div class="row">
 				<div class="col-xs-2"></div>
 				<div class="col-xs-4" style="background: #10aaff;" id="border3">
-					<img src="../../images/function.png" class="img-responsive">
+					<img src="/jsmi/images/function.png" class="img-responsive">
 				</div>
 				<div class="col-xs-4" style="background: #10aaff;" id="border4">
-					<img src="../../images/event.png" class="img-responsive">
+					<img src="/jsmi/images/event.png" class="img-responsive">
 				</div>
 				<div class="col-xs-2"></div>
 			</div>
@@ -384,16 +384,16 @@ hr {
 				<div class="col-sm-2 "></div>
 				<div class="col-sm-2" id="border1"
 					onclick="location.href='/jsmi/views/main1/introduce.jsp'">
-					<img src="../../images/info.png" class="img-responsive">
+					<img src="/jsmi/images/info.png" class="img-responsive">
 				</div>
 				<div class="col-sm-2" style="background: #105080;" id="border2">
-					<img src="../../images/1.png" class="img-responsive">
+					<img src="/jsmi/images/1.png" class="img-responsive">
 				</div>
 				<div class="col-sm-2" style="background: #10aaff;" id="border3">
-					<img src="../../images/function.png" class="img-responsive">
+					<img src="/jsmi/images/function.png" class="img-responsive">
 				</div>
 				<div class="col-sm-2" style="background: #10aaff;" id="border4">
-					<img src="../../images/event.png" class="img-responsive">
+					<img src="/jsmi/images/event.png" class="img-responsive">
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
@@ -507,16 +507,16 @@ hr {
 				<div class="col-md-2 "></div>
 				<div class="col-md-2" id="border1"
 					onclick="location.href='/jsmi/views/main1/introduce.jsp'">
-					<img src="../../images/info.png" class="img-responsive">
+					<img src="/jsmi/images/info.png" class="img-responsive">
 				</div>
 				<div class="col-md-2" style="background: #105080;" id="border2">
-					<img src="../../images/1.png" class="img-responsive">
+					<img src="/jsmi/images/1.png" class="img-responsive">
 				</div>
 				<div class="col-md-2" style="background: #10aaff;" id="border3">
-					<img src="../../images/function.png" class="img-responsive">
+					<img src="/jsmi/images/function.png" class="img-responsive">
 				</div>
 				<div class="col-md-2" style="background: #10aaff;" id="border4">
-					<img src="../../images/event.png" class="img-responsive">
+					<img src="/jsmi/images/event.png" class="img-responsive">
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -628,16 +628,16 @@ hr {
 				<div class="col-lg-2 "></div>
 				<div class="col-lg-2" id="border1"
 					onclick="location.href='/jsmi/views/main1/introduce.jsp'">
-					<img src="../../images/info.png" class="img-responsive">
+					<img src="/jsmi/images/info.png" class="img-responsive">
 				</div>
 				<div class="col-lg-2" style="background: #105080;" id="border2">
-					<img src="../../images/1.png" class="img-responsive">
+					<img src="/jsmi/images/1.png" class="img-responsive">
 				</div>
 				<div class="col-lg-2" style="background: #10aaff;" id="border3">
-					<img src="../../images/function.png" class="img-responsive">
+					<img src="/jsmi/images/function.png" class="img-responsive">
 				</div>
 				<div class="col-lg-2" style="background: #10aaff;" id="border4">
-					<img src="../../images/event.png" class="img-responsive">
+					<img src="/jsmi/images/event.png" class="img-responsive">
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
