@@ -13,16 +13,16 @@ import member.view.server.MemberService;
 import member.view.vo.Member;
 
 /**
- * Servlet implementation class SignupServlet
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/signup")
-public class SignupServlet extends HttpServlet {
+@WebServlet("/mdelete")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignupServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,33 +31,22 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("오니?");
-		
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("text/html; charset=utf-8");
 		
-		String uname = request.getParameter("username");
 		String uid = request.getParameter("userid");
-		String upwd = request.getParameter("userpwd");
-		String uemail = request.getParameter("email");
 		
-		//System.out.println(uid);
+		int result = new MemberService().deleteMember(uid);
 		
-		Member m = new Member(uname, uid, upwd, uemail);
+		RequestDispatcher view = null;
 		
-		//System.out.println(m);
-		
-		int result = new MemberService().signupMember(m);
-		
-		if(result > 0) {
-			response.sendRedirect("views/main1/loginForm.html");
+		if(result > 0){
+			response.sendRedirect("/jsmi/views/main1/member/memberLeaveForm.jsp");
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
-			request.setAttribute("message", "회원 가입에 실패했습니다.");
-			view.forward(request, response);
+			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 		}
 	}
 
@@ -65,6 +54,7 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
