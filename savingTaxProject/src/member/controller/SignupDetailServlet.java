@@ -13,16 +13,16 @@ import member.view.server.MemberService;
 import member.view.vo.Member;
 
 /**
- * Servlet implementation class SignupServlet
+ * Servlet implementation class SignupDetailServlet
  */
-@WebServlet("/signup")
-public class SignupServlet extends HttpServlet {
+@WebServlet("/sdetail")
+public class SignupDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignupServlet() {
+    public SignupDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,40 +31,41 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("오니?");
+		System.out.println("오니?");
 		
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("text/html; charset=utf-8");
 		
-		String uname = request.getParameter("username");
-		String uid = request.getParameter("userid");
-		String upwd = request.getParameter("userpwd");
-		String uemail = request.getParameter("email");
+		String uid =request.getParameter("userid"); //어떤객체에 session 어떤메소드
 		
-		//System.out.println(uid);
+		System.out.println(uid);
 		
-		Member m = new Member(uname, uid, upwd, uemail);
+		Member m = new MemberService().selectMember(uid);
 		
-		//System.out.println(m);
+		System.out.println("servlet : " + m + "uid : " + uid);
 		
-		int result = new MemberService().signupMember(m);
+		RequestDispatcher view = null ;
 		
-		if(result > 0) {
-			response.sendRedirect("views/main1/loginForm.html");
+		if(m != null){
+			view = request.getRequestDispatcher("views/main1/member/mypageForm.jsp");
+			request.setAttribute("member", m);
+			System.out.println("if문 : " + m);
+			view.forward(request, response);
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
-			request.setAttribute("message", "회원 가입에 실패했습니다.");
+			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+			request.setAttribute("message", "회원 정보 불러오기 실패");
 			view.forward(request, response);
-		}
+		}				
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

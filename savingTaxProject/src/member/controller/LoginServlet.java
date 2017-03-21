@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("오니?");
+		//System.out.println("오니?");
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -41,21 +41,22 @@ public class LoginServlet extends HttpServlet {
 		String uid = request.getParameter("userid");
 		String upwd = request.getParameter("userpwd");
 		
-		System.out.println(uid);
+		//System.out.println(uid);
 		
 		Member m = new MemberService().loginMember(uid, upwd);
 		
-		System.out.println(m);
+		//System.out.println(m);
 		
 		if(m != null) {
-			/*HttpSession session = request.getSession();
-			session.setAttribute("loginUser", m);*/
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", m);
 			
-			response.sendRedirect("/jsmi/views/main1/main1.html");
+			response.sendRedirect("/jsmi/views/main1/member/fakeIntroduce.jsp");
+			//response.sendRedirect("/jsmi/views/main1/introduce.jsp");
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/main1/memberError.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 			request.setAttribute("message", "아이디/비밀번호를 잘못 입력하였습니다.");
 			view.forward(request, response);
 		}

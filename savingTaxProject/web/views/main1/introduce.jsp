@@ -77,6 +77,7 @@ table {
 	border-color: white;
 	position: relative;
 	width: 100%
+
 }
 
 #logo {
@@ -108,8 +109,6 @@ table {
 							<span class="icon-bar"></span><span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-
-
 						<br>
 						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 							<ul class="nav navbar-nav">

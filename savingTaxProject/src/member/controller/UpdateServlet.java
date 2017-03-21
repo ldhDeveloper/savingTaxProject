@@ -13,16 +13,16 @@ import member.view.server.MemberService;
 import member.view.vo.Member;
 
 /**
- * Servlet implementation class SignupServlet
+ * Servlet implementation class UpdateServlet
  */
-@WebServlet("/signup")
-public class SignupServlet extends HttpServlet {
+@WebServlet("/mupdate")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignupServlet() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +31,6 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("오니?");
-		
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("text/html; charset=utf-8");
@@ -42,21 +40,24 @@ public class SignupServlet extends HttpServlet {
 		String upwd = request.getParameter("userpwd");
 		String uemail = request.getParameter("email");
 		
-		//System.out.println(uid);
+		Member m = new Member();
 		
-		Member m = new Member(uname, uid, upwd, uemail);
+		m.setUserName(uname);
+		m.setUserId(uid);
+		m.setUserPwd(upwd);
+		m.setUserEmail(uemail);
 		
-		//System.out.println(m);
+		int result = new MemberService().updateMember(m);
 		
-		int result = new MemberService().signupMember(m);
+		RequestDispatcher view = null;
 		
 		if(result > 0) {
-			response.sendRedirect("views/main1/loginForm.html");
+			response.sendRedirect("/jsmi/sdetail?userid=" + uid);
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
-			request.setAttribute("message", "회원 가입에 실패했습니다.");
+			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+			request.setAttribute("message", "회원 정보 수정 실패");
 			view.forward(request, response);
 		}
 	}
@@ -65,6 +66,7 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
