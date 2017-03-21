@@ -1,6 +1,7 @@
 package board.controller;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.member.service.BoardService;
-import board.member.vo.Board;
+import board.model.service.BoardService;
+import board.model.vo.Board;
 
 /**
- * Servlet implementation class BoardContentServlet
+ * Servlet implementation class PostDetailServlet
  */
-@WebServlet("/boardcontent")
-public class BoardContentServlet extends HttpServlet {
+@WebServlet("/postdetail")
+public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardContentServlet() {
+    public PostDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,16 +36,16 @@ public class BoardContentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset = utf-8");
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
-	
-		Board b = new BoardService().showContent(postNo);
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		int post_no = Integer.parseInt(request.getParameter("post_no"));
+		
+		Board b = new BoardService().selectPost(board_no, post_no);
 
 		List<Board> blist = new BoardService().selectAll(); 
 		RequestDispatcher view = null;
 		if(b !=null){
-			view = request.getRequestDispatcher("views/board/customerServiceBoard.jsp");
+			view = request.getRequestDispatcher("");
 			request.setAttribute("b", b);
-			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

@@ -2,6 +2,7 @@ package board.controller;
 
 import java.io.IOException;
 
+
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -11,20 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.member.service.BoardService;
-import board.member.vo.Board;
+import board.model.service.BoardService;
+import board.model.vo.Board;
 
 /**
- * Servlet implementation class BoardSelectServlet
+ * Servlet implementation class SelectPostTitleServlet
  */
 @WebServlet("/selecttitle")
-public class BoardSelectServlet extends HttpServlet {
+public class SelectPostTitleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BoardSelectServlet() {
+	public SelectPostTitleServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
