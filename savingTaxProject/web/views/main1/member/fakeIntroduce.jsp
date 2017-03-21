@@ -101,7 +101,7 @@ button {
 						<li><a href="#"><img src="/jsmi/images/menubar/mb2.png" class="img-responsive" style="width:100%;height:100%;"></a></li>
 						<li><a href="#"><img src="/jsmi/images/menubar/mb3.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
 						<li><a href="#"><img src="/jsmi/images/menubar/mb4.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="/jsmi/customerService"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
+						<li><a href="/jsmi/listview"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
 					</ul>
 					<ul class="nav navbar-nav nav-tabs nav-justified hidden-md visible-xs">
 						<li><a href="#">

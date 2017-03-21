@@ -14,7 +14,7 @@ public class MemberService {
 		
 		close(con);
 		
-		System.out.println("service 작동");
+		//System.out.println("service 작동");
 		return m;
 	}
 
@@ -29,7 +29,42 @@ public class MemberService {
 		
 		close(con);
 		
-		System.out.println("service 작동");
+		//System.out.println("service 작동");
+		return result;
+	}
+
+	public Member selectMember(String uid) {
+		Connection con = getConnection();
+		Member m = new MemberDao().selectMember(con, uid);
+		
+		close(con);
+		
+		System.out.println("service : " + m);
+		
+		return m;
+	}
+
+	public int updateMember(Member m) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao().updateMember(con, m);
+		
+		if(result > 0){
+			commit(con);
+		}
+		
+		else {
+			rollback(con);
+		}
+		return result;
+	}
+
+	public int deleteMember(String uid) {
+		Connection con = getConnection();
+		int result = new MemberDao().deleteMember(con, uid);
+		
+		close(con);
+		
 		return result;
 	}
 }

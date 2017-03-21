@@ -63,6 +63,12 @@ private int writer_no;
 		this.up_post_no = up_post_no;
 		this.writer_no = writer_no;
 	}
+	@Override
+	public String toString() {
+		return   post_no + ", " + post_title + ", " + post_contents + ", " + post_date + ", " + board_no
+				+ ", " + up_post_no + ", " + writer_no ;
+	}
+	
 	
 	
 }
