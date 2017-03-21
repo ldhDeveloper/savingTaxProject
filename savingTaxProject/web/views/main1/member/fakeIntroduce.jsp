@@ -109,7 +109,7 @@ button {
 						<li><a href="#"><img src="/jsmi/images/menubar/mb2.png" class="img-responsive" style="width:100%;height:100%;"></a></li>
 						<li><a href="#"><img src="/jsmi/images/menubar/mb3.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
 						<li><a href="#"><img src="/jsmi/images/menubar/mb4.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
-						<li><a href="#"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
+						<li><a href="/jsmi/nlist.no"><img src="/jsmi/images/menubar/mb5.png" class="img-responsive" style="width:100%;height:30%;"></a></li>
 					</ul>
 				</div>
 				<div class="col-xs-0 col-md-2"></div>
