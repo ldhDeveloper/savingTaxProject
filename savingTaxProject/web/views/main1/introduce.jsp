@@ -41,7 +41,6 @@ table {
 }
 
 #logout {
-	
 	position: relative;
 	align: left;
 	margin-right: 10px;
@@ -77,7 +76,8 @@ table {
 	background-color: white;
 	border-color: white;
 	position: relative;
-	width:100%
+	width: 100%
+
 }
 
 #logo {
@@ -102,15 +102,13 @@ table {
 			<nav
 				class="navbar navbar-inverse hidden-md hidden-sm hidden-lg navbar-static-top">
 				<div class="container-fluid navbar-header">
-					<div class="col-xs-12 col-md-8" >
-						
-						<button type="button" class="navbar-toggle"
-							data-toggle="collapse" data-target="#myNavbar">
+					<div class="col-xs-12 col-md-8">
+
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#myNavbar">
 							<span class="icon-bar"></span><span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						
-						
 						<br>
 						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 							<ul class="nav navbar-nav">

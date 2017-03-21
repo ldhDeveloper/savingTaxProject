@@ -1,0 +1,197 @@
+@CHARSET "UTF-8";
+
+/* 데스크탑 최적화 사이즈 */
+.col-lg-make-1 {
+	width: 97px;
+}
+
+.col-lg-2 {
+	width: 194px;
+}
+
+.col-lg-3 {
+	width: 291px;
+}
+
+.col-lg-4 {
+	width: 388px;
+}
+
+.col-lg-5 {
+	width: 485px;
+}
+
+.col-lg-6 {
+	width: 582px;
+}
+
+.col-lg-7 {
+	width: 679px;
+}
+
+.col-lg-8 {
+	width: 776px;
+}
+
+.col-lg-9 {
+	width: 873px;
+}
+
+.col-lg-10 {
+	width: 970px;
+}
+
+.col-lg-11 {
+	width: 1067px;
+}
+
+.col-lg-12 {
+	width: 1164px;
+}
+
+/* 노트북 최적화 사이즈 */
+.col-md-1 {
+	width: 81px;
+}
+
+.col-md-2 {
+	width: 162px;
+}
+
+.col-md-3 {
+	width: 243px;
+}
+
+.col-md-4 {
+	width: 324px;
+}
+
+.col-md-5 {
+	width: 405px;
+}
+
+.col-md-6 {
+	width: 486px;
+}
+
+.col-md-7 {
+	width: 567px;
+}
+
+.col-md-8 {
+	width: 648px;
+}
+
+.col-md-9 {
+	width: 729px;
+}
+
+.col-md-10 {
+	width: 810px;
+}
+
+.col-md-11 {
+	width: 891px;
+}
+
+.col-md-12 {
+	width: 972px;
+}
+
+/* 타블렛 최적화 사이즈 */
+.col-sm-1 {
+	width: 62px;
+}
+
+.col-sm-2 {
+	width: 124px;
+}
+
+.col-sm-3 {
+	width: 186px;
+}
+
+.col-sm-4 {
+	width: 248px;
+}
+
+.col-sm-5 {
+	width: 310px;
+}
+
+.col-sm-6 {
+	width: 372px;
+}
+
+.col-sm-7 {
+	width: 434px;
+}
+
+.col-sm-8 {
+	width: 496px;
+}
+
+.col-sm-9 {
+	width: 558px;
+}
+
+.col-sm-10 {
+	width: 620px;
+}
+
+.col-sm-11 {
+	width: 682px;
+}
+
+.col-sm-12 {
+	width: 744px;
+}
+
+/* 모바일 최적화 사이즈 */
+.col-xs-1 {
+	width: clac(1/12*100%);
+}
+
+.col-xs-2 {
+	width: clac(2/12*100%);
+}
+
+.col-xs-3 {
+	width: clac(3/12*100%);
+}
+
+.col-xs-4 {
+	width: clac(4/12*100%);
+}
+
+.col-xs-5 {
+	width: clac(5/12*100%);
+}
+
+.col-xs-6 {
+	width: clac(6/12*100%);
+}
+
+.col-xs-7 {
+	width: clac(7/12*100%);
+}
+
+.col-xs-8 {
+	width: clac(8/12*100%);
+}
+
+.col-xs-9 {
+	width: clac(9/12*100%);
+}
+
+.col-xs-10 {
+	width: clac(10/12*100%);
+}
+
+.col-xs-11 {
+	width: clac(11/12*100%);
+}
+
+.col-xs-12 {
+	width: clac(12/12*100%);
+}
