@@ -3,6 +3,7 @@ package notice.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +36,21 @@ public class NoticeListServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=utf-8");
 		
-		List<Notice> notice = new NoticeService().selectAll();
+		List<Notice> nlist = new NoticeService().selectAll();
+		
+		RequestDispatcher view = null;
+		
+		if(nlist != null) {
+			view = request.getRequestDispatcher("views/notice/noticeListView.jsp");
+			request.setAttribute("nlist", nlist);
+			view.forward(request, response);
+		}
+		
+		else {
+			view = request.getRequestDispatcher("views/notice/noticeError.jsp");
+			request.setAttribute("message", "공지사항 목록 조회 실패");
+			view.forward(request, response);
+		}
 		
 	}
 

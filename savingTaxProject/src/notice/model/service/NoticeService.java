@@ -8,6 +8,7 @@ import notice.model.dao.NoticeDao;
 import notice.model.vo.Notice;
 
 public class NoticeService {
+	public NoticeService(){}
 
 	public List<Notice> selectAll() {
 		Connection con = getConnection();

@@ -1,93 +1,80 @@
 package notice.model.vo;
 
-import java.sql.*;
+import java.sql.Date;
 
 public class Notice {
-	private int post_no;
-	private String post_title;
-	private String post_contents;
-	private Date post_date;
-	private int board_no;
-	private int up_post_no;
-	private int writer_no;
+	private int noticeNo;
+	private String noticeTitle;
+	private String noticeWriter;
+	private Date noticeDate;
+	private String noticeContent;
+	private String noticeFilepath;
+	
+	public Notice(){}
 
-	public Notice() {
-	}
-
-	public Notice(int post_no, String post_title, String post_contents, Date post_date, int board_no, int up_post_no,
-			int writer_no) {
+	public Notice(int noticeNo, String noticeTitle, String noticeWriter, Date noticeDate, String noticeContent,
+			String noticeFilepath) {
 		super();
-		this.post_no = post_no;
-		this.post_title = post_title;
-		this.post_contents = post_contents;
-		this.post_date = post_date;
-		this.board_no = board_no;
-		this.up_post_no = up_post_no;
-		this.writer_no = writer_no;
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeWriter = noticeWriter;
+		this.noticeDate = noticeDate;
+		this.noticeContent = noticeContent;
+		this.noticeFilepath = noticeFilepath;
 	}
 
-
-
-	public int getPost_no() {
-		return post_no;
+	public int getNoticeNo() {
+		return noticeNo;
 	}
 
-	public void setPost_no(int post_no) {
-		this.post_no = post_no;
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
 
-	public String getPost_title() {
-		return post_title;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
 
-	public void setPost_title(String post_title) {
-		this.post_title = post_title;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
 
-	public String getPost_contents() {
-		return post_contents;
+	public String getNoticeWriter() {
+		return noticeWriter;
 	}
 
-	public void setPost_contents(String post_contents) {
-		this.post_contents = post_contents;
+	public void setNoticeWriter(String noticeWriter) {
+		this.noticeWriter = noticeWriter;
 	}
 
-	public Date getPost_date() {
-		return post_date;
+	public Date getNoticeDate() {
+		return noticeDate;
 	}
 
-	public void setPost_date(Date post_date) {
-		this.post_date = post_date;
+	public void setNoticeDate(Date noticeDate) {
+		this.noticeDate = noticeDate;
 	}
 
-	public int getBoard_no() {
-		return board_no;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
 
-	public void setBoard_no(int board_no) {
-		this.board_no = board_no;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
 
-	public int getUp_post_no() {
-		return up_post_no;
+	public String getNoticeFilepath() {
+		return noticeFilepath;
 	}
 
-	public void setUp_post_no(int up_post_no) {
-		this.up_post_no = up_post_no;
-	}
-
-	public int getWriter_no() {
-		return writer_no;
-	}
-
-	public void setWriter_no(int writer_no) {
-		this.writer_no = writer_no;
+	public void setNoticeFilepath(String noticeFilepath) {
+		this.noticeFilepath = noticeFilepath;
 	}
 
 	@Override
 	public String toString() {
-		return "Notice [post_no=" + post_no + ", post_title=" + post_title + ", post_contents=" + post_contents
-				+ ", post_date=" + post_date + ", board_no=" + board_no + ", up_post_no=" + up_post_no + ", writer_no="
-				+ writer_no + "]";
+		return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeWriter=" + noticeWriter
+				+ ", noticeDate=" + noticeDate + ", noticeContent=" + noticeContent + ", noticeFilepath="
+				+ noticeFilepath + "]";
 	}
 }

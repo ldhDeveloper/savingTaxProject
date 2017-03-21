@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ page import="notice.model.vo.Notice, java.util.*" %>
+	
+<%
+	List<Notice> nlist = (List<Notice>)request.getAttribute("nlist");
+%>	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,15 +111,18 @@ button {
 								<th>첨부파일</th>
 							</tr>
 						</thead>
+						
+						<% for(Notice n : nlist) { %>
 						<tbody>
 							<tr>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
+								<td> <%= n.getNoticeNo() %> </td>
+								<td> <%= n.getNoticeTitle() %></td>
+								<td> <%= n.getNoticeWriter() %></td>
+								<td> <%= n.getNoticeDate() %></td>
+								<td> <%= n.getNoticeFilepath() %></td>
 							</tr>
 						</tbody>
+						<% } %>
 					</table>
 				</div>
 			</div>

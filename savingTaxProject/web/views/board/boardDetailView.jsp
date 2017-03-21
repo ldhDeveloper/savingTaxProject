@@ -32,7 +32,7 @@
 				
 			</div>
 			<div class="col-xs-0 col-md-5">
-				<h1>게시물 작성</h1>
+				<h1>상세보기</h1>
 			</div>
 			<div class="col-xs-0 col-md-4"></div>
 		</div>
