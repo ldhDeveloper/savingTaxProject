@@ -57,13 +57,29 @@ element.style {
     color: #ffffff;
     text-decoration: none;
 }
-ul.dropdown-menu {
+.mobile{
 	background:#8f8f8f;
 	margin-top:0px;
 }
 
 .xstd:hover {
 	background:orange;
+}
+
+.pc {
+	background:#222;
+	width:100%;
+}
+
+.pc li a {
+	color:white;
+	padding:0.8em;
+	padding-left:10%;
+}
+
+.pc li a:hover {
+	background:orange;
+	color:white;
 }
 </style>
 </head>
@@ -95,21 +111,54 @@ ul.dropdown-menu {
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10">
 						<ul class="nav navbar-nav nav-tabs nav-justified">
-							<li class="">
-								<a href="#"> 
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 									<img src="/jsmi/images/menubar/mb1.png"
 									class="" style="width: 170px; height: 20px;">
 								</a>
+								<ul class="pc dropdown-menu">
+									<li class="pcver"><a href="#">절세미인이란?</a></li>
+									<li class="pcver"><a href="#">시스템 소개</a></li>
+									<li class="pcver"><a href="#">회사 소개</a></li>
+									<li class="pcver"><a href="#">찾아오시는 길</a></li>
+								</ul>
 							</li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
-									class="" style="width: 170px; height: 20px;"></a></li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
-									class="" style="width: 170px; height: 20px;"></a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb2.png"
+									class="" style="width: 170px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">주요 기능 안내</a></li>
+									<li><a href="#">절세미인의 장점</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb3.png"
+									class="" style="width: 170px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">진행중인 이벤트</a></li>
+									<li><a href="#">지난 이벤트</a></li>
+								</ul>
+							</li>
 							<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
 									class="" style="width: 170px; height: 20px;"></a></li>
-							<li><a href="/jsmi/listview"><img
-									src="/jsmi/images/menubar/mb5.png" class=""
-									style="width: 170px; height: 20px;"></a></li>
+							<li class="dropdown">
+								<a href="#"class="dropdown-toggle" data-toggle="dropdown">
+								<img src="/jsmi/images/menubar/mb5.png" class=""
+									style="width: 170px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">공지사항</a></li>
+									<li><a href="#">세금 소식</a></li>
+									<li><a href="#">세무팁</a></li>
+									<li><a href="#">자주 묻는 질문</a></li>
+									<li><a href="#">궁금한 것이 있어요</a></li>
+									<li><a href="#">서식 자료실</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div class="col-lg-1"></div>
@@ -145,17 +194,54 @@ ul.dropdown-menu {
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<ul class="nav navbar-nav nav-tabs nav-justified">
-							<li><a href="#"> <img src="/jsmi/images/menubar/mb1.png"
-									class="" style="width: 120px; height: 25px;"></a></li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
-									class="" style="width: 120px; height: 25px;"></a></li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
-									class="" style="width: 120px; height: 25px;"></a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+									<img src="/jsmi/images/menubar/mb1.png"
+									class="" style="width: 120px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li class="pcver"><a href="#">절세미인이란?</a></li>
+									<li class="pcver"><a href="#">시스템 소개</a></li>
+									<li class="pcver"><a href="#">회사 소개</a></li>
+									<li class="pcver"><a href="#">찾아오시는 길</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb2.png"
+									class="" style="width: 120px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">주요 기능 안내</a></li>
+									<li><a href="#">절세미인의 장점</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb3.png"
+									class="" style="width: 120px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">진행중인 이벤트</a></li>
+									<li><a href="#">지난 이벤트</a></li>
+								</ul>
+							</li>
 							<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
-									class="" style="width: 120px; height: 25px;"></a></li>
-							<li><a href="/jsmi/listview"><img
-									src="/jsmi/images/menubar/mb5.png" class=""
-									style="width: 120px; height: 25px;"></a></li>
+									class="" style="width: 120px; height: 20px;"></a></li>
+							<li class="dropdown">
+								<a href="#"class="dropdown-toggle" data-toggle="dropdown">
+								<img src="/jsmi/images/menubar/mb5.png" class=""
+									style="width: 170px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">공지사항</a></li>
+									<li><a href="#">세금 소식</a></li>
+									<li><a href="#">세무팁</a></li>
+									<li><a href="#">자주 묻는 질문</a></li>
+									<li><a href="#">궁금한 것이 있어요</a></li>
+									<li><a href="#">서식 자료실</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div class="col-md-2"></div>
@@ -190,17 +276,54 @@ ul.dropdown-menu {
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8">
 						<ul class="nav navbar-nav nav-tabs nav-justified">
-							<li><a href="#"> <img src="/jsmi/images/menubar/mb1.png"
-									class="" style="width: 100px; height: 20px;"></a></li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb2.png"
-									class="" style="width: 100px; height: 20px;"></a></li>
-							<li><a href="#"><img src="/jsmi/images/menubar/mb3.png"
-									class="" style="width: 100px; height: 20px;"></a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+									<img src="/jsmi/images/menubar/mb1.png"
+									class="" style="width: 100px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li class="pcver"><a href="#">절세미인이란?</a></li>
+									<li class="pcver"><a href="#">시스템 소개</a></li>
+									<li class="pcver"><a href="#">회사 소개</a></li>
+									<li class="pcver"><a href="#">찾아오시는 길</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb2.png"
+									class="" style="width: 100px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">주요 기능 안내</a></li>
+									<li><a href="#">절세미인의 장점</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="/jsmi/images/menubar/mb3.png"
+									class="" style="width: 100px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">진행중인 이벤트</a></li>
+									<li><a href="#">지난 이벤트</a></li>
+								</ul>
+							</li>
 							<li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
 									class="" style="width: 100px; height: 20px;"></a></li>
-							<li><a href="/jsmi/listview"><img
-									src="/jsmi/images/menubar/mb5.png" class=""
-									style="width: 100px; height: 20px;"></a></li>
+							<li class="dropdown">
+								<a href="#"class="dropdown-toggle" data-toggle="dropdown">
+								<img src="/jsmi/images/menubar/mb5.png" class=""
+									style="width: 100px; height: 20px;">
+								</a>
+								<ul class="pc dropdown-menu">
+									<li><a href="#">공지사항</a></li>
+									<li><a href="#">세금 소식</a></li>
+									<li><a href="#">세무팁</a></li>
+									<li><a href="#">자주 묻는 질문</a></li>
+									<li><a href="#">궁금한 것이 있어요</a></li>
+									<li><a href="#">서식 자료실</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div class="col-md-2"></div>
@@ -238,7 +361,7 @@ ul.dropdown-menu {
 										<img src="/jsmi/images/menubar/mb1.png" class="img-responsive"
 										style="width: 30%; height: 30%;">
 									</a>
-									<ul class="dropdown-menu">
+									<ul class="mobile dropdown-menu">
 										<li>
 											<table width="100%">
 												<tr><td class="xstd"><a href="#">절세미인이란?</a></td><td class="xstd"><a href="#">시스템 소개</a></td></tr>
@@ -252,7 +375,7 @@ ul.dropdown-menu {
 										<img src="/jsmi/images/menubar/mb2.png"
 										class="img-responsive" style="width: 30%; height: 30%;">
 									</a>
-									<ul class="dropdown-menu">
+									<ul class="mobile dropdown-menu">
 										<li>
 											<table width="100%">
 												<tr><td class="xstd"><a href="#">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
@@ -265,7 +388,7 @@ ul.dropdown-menu {
 										<img src="/jsmi/images/menubar/mb3.png"
 										class="img-responsive" style="width: 30%; height: 30%;">
 									</a>
-									<ul class="dropdown-menu">
+									<ul class="mobile dropdown-menu">
 										<li>
 											<table width="100%">
 												<tr><td class="xstd"><a href="#">진행중인 이벤트</a></td><td class="xstd"><a href="#">지난 이벤트</a></td></tr>
@@ -284,7 +407,7 @@ ul.dropdown-menu {
 										<img src="/jsmi/images/menubar/mb5.png"
 										class="img-responsive" style="width: 30%; height: 30%;">
 									</a>
-									<ul class="dropdown-menu">
+									<ul class="mobile dropdown-menu">
 										<li>
 											<table width="100%">
 												<tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
