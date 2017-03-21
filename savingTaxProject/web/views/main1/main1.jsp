@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -162,7 +163,6 @@ hr {
 </script>
 </head>
 <body>
-
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<!-- //1-xs -->
 		<div class="row">
@@ -182,7 +182,8 @@ hr {
 		</div>
 	</div>
 
-	<div class="container-fluid hidden-sm hidden-md hidden-lg">
+	<div class="container-fluid hidden-sm hidden-md hidden-lg"
+	style="background: #0e113b">
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-8" id="slidesize">
@@ -291,6 +292,7 @@ hr {
 				<div class="col-xs-2"></div>
 			</div>
 		</div>
+		<br class="hidden-sm hidden-md hidden-lg">
 
 
 
@@ -314,7 +316,8 @@ hr {
 		</div>
 
 
-		<div class="container-fluid hidden-lg hidden-md hidden-xs">
+		<div class="container-fluid hidden-lg hidden-md hidden-xs"
+		style="background: #0e113b">
 			<div class="row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-8" id="slidesize2">
@@ -437,7 +440,8 @@ hr {
 		</div>
 
 
-		<div class="container-fluid hidden-lg hidden-sm hidden-xs">
+		<div class="container-fluid hidden-lg hidden-sm hidden-xs"
+		style="background: #0e113b">
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-8" id="slidesize3">
@@ -611,7 +615,7 @@ hr {
 			</div>
 			<div class="col-lg-2"></div>
 		</div>
-		<hr class="hidden-sm hidden-sm hidden-md">
+		<hr class="hidden-xs hidden-sm hidden-md">
 
 		<!-- 뷰온버튼 -->
 		<div id="viewOn" class="hidden-xs hidden-sm hidden-md gotoM1">
@@ -652,9 +656,11 @@ hr {
 				<div class="col-lg-2" style="background: #105080;" id="border8">
 					<img src="/jsmi/images/1.png" class="img-responsive">
 				</div>
-				<div class="col-lg-2"></div>
+				<div class="col-lg-2"></div>				
 			</div>
 		</div>
-  </body>
+		
+   	<hr class="hidden-xs">
+    <%@ include file="/views/common/footer.html"  %>
+</body>
 </html>
-
