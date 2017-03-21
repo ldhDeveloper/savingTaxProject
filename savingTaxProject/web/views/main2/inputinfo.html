@@ -11,6 +11,12 @@
 
 <!--Icons-->
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
+<script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
+<script>
+	function nextpage(){
+		location.href("/jsmi/views/main2/inputinfo2.html");
+	}
+</script>
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -99,7 +105,7 @@
 				<div class="navbar navbar-default">
 				  <div class="container-fluid">
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="/jsmi/views/main2/inputinfo.html">개인정보</a></li>
+				      <li class="active"><a href="/jsmi/views/main2/inputinfo.html">회원정보</a></li>
 				      <li><a href="/jsmi/views/main2/inputinfo2.html">사업장 정보</a></li>
 				      <li><a href="/jsmi/views/main2/inputinfo3.html">거래처 정보</a></li>
 				    </ul>
@@ -109,6 +115,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
+				<form action="" method="post">
 				<table class="table table-condensed">
 				    <tbody>
 				      <tr>
@@ -192,11 +199,13 @@
 				    </tbody>
 				  </table>
 				  <div class="row">
-				  <button class="btn btn-success" type="submit">등록</button>
+				  <button class="btn btn-primary" type="submit" onclick="nextpage();")>다음</button>
 				  <button class="btn btn-danger" type="reset">취소</button>
 				  </div>
+				  </form>
 			</div>
 		</div>
+		
 	</div>	<!--/.main-->
 		  
 
