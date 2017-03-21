@@ -1,11 +1,12 @@
-package board.member.dao;
+package board.model.dao;
 
 import static common.JDBCTemplate.*;
+
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
-import board.member.vo.*;
+import board.model.vo.*;
 import java.util.*;
 
 public class BoardDao {
@@ -54,7 +55,7 @@ public class BoardDao {
 		}
 		return blist;
 	}
-
+	
 	public List<Board> selectTitle(Connection con, String title) {
 		Connection conn = con;
 		PreparedStatement pstmt = null;
@@ -87,46 +88,78 @@ public class BoardDao {
 		}
 		return blist;
 	}
-
-	public Board showContent(Connection con, int postNo) {
-		Connection conn = con;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String query = prop.getProperty("showContent");
-		Board b = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, postNo);
-			rset = pstmt.executeQuery();
-			if (rset.next()) {
-				b = new Board();
-				b.setBoard_no(rset.getInt("board_no"));
-				b.setPost_no(rset.getInt("post_no"));
-				b.setPost_title(rset.getString("post_title"));
-				b.setPost_contents(rset.getString("post_contents"));
-				b.setPost_date(rset.getDate("post_date"));
-				b.setUp_post_no(rset.getInt("up_post_no"));
-				b.setWriter_no(rset.getInt("writer_no"));
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		System.out.println(b);
-		return b;
-	}
-
-	public int deletePost(Connection con, int post_no) {
+	
+	public int deletePost(Connection con, int board_no, int post_no) {
 		Connection conn = con;
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("delete");
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, post_no);
+			pstmt.setInt(1, board_no);
+			pstmt.setInt(2, post_no);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public Board selectPost(Connection con, int board_no, int post_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = prop.getProperty("selectPost");
+		Board b = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, board_no);
+			pstmt.setInt(2, post_no);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				b= new Board(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getDate(4), rset.getInt(5),
+						rset.getInt(6), rset.getInt(7));
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+	}
+	
+	public int updatePost(Connection con, Board b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updatePost");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, b.getPost_title());
+			pstmt.setString(2, b.getPost_contents());
+			pstmt.setInt(3, b.getBoard_no());
+			pstmt.setInt(4, b.getPost_no());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertPost(Connection con, Board b) {
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("insertPost");
+		int result = 0;
+		try {
+			pstmt= con.prepareStatement(query);
+			pstmt.setString(1, b.getPost_title());
+			pstmt.setString(2, b.getPost_contents());
+			pstmt.setInt(3, b.getBoard_no());
+			pstmt.setInt(4, b.getUp_post_no());
+			pstmt.setInt(5, b.getWriter_no());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,9 +169,18 @@ public class BoardDao {
 		return result;
 	}
 
-	public int redactPost(Connection con, int post_no) {
-		// TODO Auto-generated method stub
+	public int getListCount(Connection con, int board_no) {
+		PreparedStatement pstmt = null;
+		int listCount = 0;
+		String query = prop.getProperty("selectBoard");
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
 		return 0;
 	}
-
 }

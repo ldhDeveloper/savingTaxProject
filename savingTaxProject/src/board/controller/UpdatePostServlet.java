@@ -1,6 +1,7 @@
 package board.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.member.service.BoardService;
-import board.member.vo.Board;
+import board.model.service.BoardService;
+import board.model.vo.Board;
 
 /**
- * Servlet implementation class RedactPostServlet
+ * Servlet implementation class UpdatePostServlet
  */
-@WebServlet("/redactpost")
-public class RedactPostServlet extends HttpServlet {
+@WebServlet("/updatepost")
+public class UpdatePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RedactPostServlet() {
+    public UpdatePostServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +35,19 @@ public class RedactPostServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		int post_no = Integer.parseInt(request.getParameter("postno"));
-		Board b = new BoardService().showContent(post_no);
+			int post_no = Integer.parseInt(request.getParameter("post_no"));
+			String post_title = request.getParameter("post_title");
+			String post_contents = request.getParameter("post_contents");
+			int board_no = Integer.parseInt(request.getParameter("board_no"));
+			Board b = new Board();
+			b.setBoard_no(board_no);
+			b.setPost_contents(post_contents);
+			b.setPost_no(post_no);
+			b.setPost_title(post_title);
+			int result = new BoardService().updatePost(b);
 		RequestDispatcher view = null;
-		if(b !=null){
-			view = request.getRequestDispatcher("view/board/redactPost.jsp");
-			request.setAttribute("b", b);
-			view.forward(request, response);
+		if(result > 0){
+		response.sendRedirect("");	
 		}else{
 			view = request.getRequestDispatcher("view/board/boardError.jsp");
 			request.setAttribute("message", "글수정페이지로 이동 실패");

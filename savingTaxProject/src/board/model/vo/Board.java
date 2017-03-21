@@ -1,4 +1,4 @@
-package board.member.vo;
+package board.model.vo;
 
 import java.sql.*;
 public class Board {
