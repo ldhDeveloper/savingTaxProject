@@ -38,21 +38,30 @@ public class PostListViewServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		int currentPage = 1;
 		int limit = 10;
-		/*if(request.getParameter("page")!=null){
+		if(request.getParameter("page")!=null){
 			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
-		
-		int board_no = Integer.parseInt(request.getParameter("board_no"));*/
+		int startPage = ((int)((double)currentPage/ limit +0.9)-1)*limit +1;
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		BoardService bService = new BoardService();
-		 int board_no = 1;
 		int listCount = bService.getListCount(board_no);
-		List<Board> blist = bService.selectAll();
-		System.out.println(blist);
+		int maxPage = (int)((double)listCount/limit + 0.9);
+		int endPage = startPage + limit -1;
+		if(maxPage < endPage)
+			endPage= maxPage;
+		
+		List<Board> blist = bService.selectAll(currentPage, limit, board_no);
+	
 		RequestDispatcher view = null;
 		
 		if(blist != null){
 			view = request.getRequestDispatcher("views/board/boardListView.jsp");
 			request.setAttribute("blist", blist);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("maxPage", maxPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("listCount", listCount);
 			view.forward(request, response);
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

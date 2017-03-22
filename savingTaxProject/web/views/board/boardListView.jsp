@@ -10,7 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -66,7 +65,7 @@ button {
 }
 
 .table {
-	position: absolute;
+	position: relative;
 	left: 10px;
 }
 </style>
@@ -77,26 +76,11 @@ button {
 	<%@ include file="../common/menubar.jsp" %>
 	
 	<form action=""></form>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-0 col-md-5"></div>
-			<div class="col-xs-0 col-md-3">
-				<h1>게 시 판</h1>
-			</div>
-			<div class="col-xs-0 col-md-4"></div>
-		</div>
-	</div>
-	
+				<h1 align ="center">게 시 판</h1>
 	<br><br>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-0 col-md-2"></div>
-
-			<div class="col-xs-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered">
+	<div class="middle hidden-xs">
+					<table width="970" class="table table-bordered">
 						<thead>
 							<tr class="warning">
 								<th>번     호</th>
@@ -111,7 +95,7 @@ button {
 						<tbody>
 							<tr class="success">
 								<td><%=b.getPost_no() %></td>
-								<td><%=b.getPost_title() %></td>
+								<td><a href="/jsmi/postdetail?post_no=<%=b.getPost_no()%>&board_no=<%=b.getBoard_no()%>"><%=b.getPost_title() %></a></td>
 								<td><%=b.getWriter_no() %></td>
 								<td><%=b.getPost_date() %></td>
 								<td><%=b.getReadCount() %></td>
@@ -120,11 +104,8 @@ button {
 						</tbody>
 						<%}} %>
 					</table>
-				</div>
-			</div>
 
-			<div class="col-xs-0 col-md-2"></div>
-		</div>
+		
 	</div>
 
 	<br>
@@ -167,6 +148,6 @@ button {
 	</div>
 
 
-	<%@ include file="../common/footer.html" %>
+	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

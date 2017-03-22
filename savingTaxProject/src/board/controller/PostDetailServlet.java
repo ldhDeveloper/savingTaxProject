@@ -38,14 +38,11 @@ public class PostDetailServlet extends HttpServlet {
 		response.setContentType("text/html; charset = utf-8");
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		int post_no = Integer.parseInt(request.getParameter("post_no"));
-		
-		Board b = new BoardService().selectPost(board_no, post_no);
-
-		List<Board> blist = new BoardService().selectAll(); 
+		List<Board> bList =  new BoardService().selectPost(board_no, post_no);
 		RequestDispatcher view = null;
-		if(b !=null){
-			view = request.getRequestDispatcher("");
-			request.setAttribute("b", b);
+		if(bList !=null){
+			view = request.getRequestDispatcher("views/board/boardDetailView.jsp");
+			request.setAttribute("bList", bList);
 			view.forward(request, response);
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
