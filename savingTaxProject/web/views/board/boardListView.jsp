@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
+	<%@ page import = "java.util.*,board.model.vo.Board" %>
+	<%List<Board> bList = (List<Board>)request.getAttribute("blist");%>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update form</title>
+<title>기본 게시판 틀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -106,16 +107,18 @@ button {
 								<th>파일여부</th>
 							</tr>
 						</thead>
+						<% if(bList !=null){  for(Board b : bList){%>
 						<tbody>
 							<tr class="success">
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
-								<td>여기에 값 넣기</td>
+								<td><%=b.getPost_no() %></td>
+								<td><%=b.getPost_title() %></td>
+								<td><%=b.getWriter_no() %></td>
+								<td><%=b.getPost_date() %></td>
+								<td><%=b.getReadCount() %></td>
+								<td><%=b.getOriginalFileName()%></td>
 							</tr>
 						</tbody>
+						<%}} %>
 					</table>
 				</div>
 			</div>

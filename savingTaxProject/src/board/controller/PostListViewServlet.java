@@ -38,16 +38,20 @@ public class PostListViewServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		int currentPage = 1;
 		int limit = 10;
-		if(request.getParameter("page")!=null){
+		/*if(request.getParameter("page")!=null){
 			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
+		
+		int board_no = Integer.parseInt(request.getParameter("board_no"));*/
 		BoardService bService = new BoardService();
-		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		 int board_no = 1;
 		int listCount = bService.getListCount(board_no);
 		List<Board> blist = bService.selectAll();
+		System.out.println(blist);
 		RequestDispatcher view = null;
+		
 		if(blist != null){
-			view = request.getRequestDispatcher("");
+			view = request.getRequestDispatcher("views/board/boardListView.jsp");
 			request.setAttribute("blist", blist);
 			view.forward(request, response);
 		}else{

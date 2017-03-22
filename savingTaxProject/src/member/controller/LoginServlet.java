@@ -43,15 +43,15 @@ public class LoginServlet extends HttpServlet {
 		
 		//System.out.println(uid);
 		
-		Member m = new MemberService().loginMember(uid, upwd);
+		Member LoginUser = new MemberService().loginMember(uid, upwd);
 		
 		//System.out.println(m);
 		
-		if(m != null) {
+		if(LoginUser != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", m);
+			session.setAttribute("loginUser", LoginUser);
 			
-			response.sendRedirect("/jsmi/views/main1/member/fakeIntroduce.jsp");
+			response.sendRedirect("/jsmi/views/main1/main1.jsp");
 			//response.sendRedirect("/jsmi/views/main1/introduce.jsp");
 		}
 		
