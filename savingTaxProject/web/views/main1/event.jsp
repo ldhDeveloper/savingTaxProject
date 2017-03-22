@@ -1,17 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<style type="text/css">
-.middle {
-	background: white;
-	width: 970px;
-	margin-left: auto;
-	margin-right: auto;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,7 +11,9 @@
 <!-- pc 버전 -->
 	<div class="hidden-xs">
 		<div class="middle">
-			<img src="/jsmi/images/main1/intro.png">
+			<img src="/jsmi/images/main1/eventmn1.png">
+			<hr>
+			<img src="/jsmi/images/main1/eventmn2.png">
 		</div>
 		<hr>
 	</div>
@@ -31,6 +25,5 @@
 	</div>
 	
  <%@ include file="/views/common/footer.jsp"%>
-
 </body>
 </html>
