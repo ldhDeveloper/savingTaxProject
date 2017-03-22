@@ -13,6 +13,14 @@
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 <script src="/jsmi/js/main2/bootstrap.min.js"></script>
+<script>
+	$(function(){
+		$(".dropdown-menu > li > a").click(function(){
+			//$(this).parent(".dropdown").children("button").text() = $(this).text();
+			console.log($(this).parent(".dropdown").eq(0).text());
+		})
+	})
+</script>
 </head>
 
 <body>
@@ -20,7 +28,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">장부작성</h1>
+				<h2 class="page-header">장부작성</h2>
 			</div>
 		</div><!--/.row-->
 									
@@ -211,13 +219,13 @@
     						</div></td>
 				      <td>
 				      	<div class="dropdown">
-					    <button class="btn btn-default dropdown-toggle" type="button" name="bill_how" data-toggle="dropdown">결재방법
-					    <span class="caret"></span></button>
-					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">현금</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">카드</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">외상</a></li>
-					    </ul>
+						    <button class="btn btn-default dropdown-toggle" type="button" name="bill_how" data-toggle="dropdown">결재방법
+						    <span class="caret"></span></button>
+						    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">현금</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">카드</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">외상</a></li>
+						    </ul>
 					  	</div>
 				      </td>
 				      <td>
