@@ -12,7 +12,7 @@ import java.util.*;
 public class BoardDao {
 
 	private Properties prop;
-
+//
 	public BoardDao() {
 		prop = new Properties();
 		try {

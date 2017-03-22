@@ -20,7 +20,7 @@ import board.model.vo.Board;
 @WebServlet("/postdetail")
 public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+  //     
     /**
      * @see HttpServlet#HttpServlet()
      */

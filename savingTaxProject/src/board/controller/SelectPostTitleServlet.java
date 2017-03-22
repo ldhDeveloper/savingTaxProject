@@ -21,7 +21,7 @@ import board.model.vo.Board;
 @WebServlet("/selecttitle")
 public class SelectPostTitleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+//
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
