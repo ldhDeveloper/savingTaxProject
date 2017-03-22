@@ -24,7 +24,7 @@ private int writer_no;
 	}
 	public String getPost_contents() {
 		return post_contents;
-	}
+	}//
 	public void setPost_contents(String post_contents) {
 		this.post_contents = post_contents;
 	}

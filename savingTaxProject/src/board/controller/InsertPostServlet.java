@@ -16,7 +16,7 @@ import board.model.vo.Board;
 @WebServlet("/insertpost")
 public class InsertPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       //
     /**
      * @see HttpServlet#HttpServlet()
      */

@@ -20,7 +20,7 @@ import board.model.vo.Board;
 @WebServlet("/listview")
 public class PostListViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    //   
     /**
      * @see HttpServlet#HttpServlet()
      */
