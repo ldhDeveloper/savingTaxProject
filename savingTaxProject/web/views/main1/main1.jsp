@@ -283,8 +283,9 @@ hr {
 
 			<div class="row">
 				<div class="col-xs-2"></div>
-				<div class="col-xs-4" style="background: #10aaff;" id="border7">
-					<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
+				<div class="col-xs-4" style="background: #10aaff;" id="border7" 
+				onclick="location.href='/jsmi/listview?page=1&board_no=1'">
+				<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 				</div>
 				<div class="col-xs-4" style="background: #105080;" id="border8">
 					<img src="/jsmi/images/1.png" class="img-responsive">
@@ -406,7 +407,8 @@ hr {
 				<div class="col-sm-2" style="background: #10aaff;" id="border6">
 					<img src="/jsmi/images/cost.png" class="img-responsive">
 				</div>
-				<div class="col-sm-2" style="background: #10aaff;" id="border7">
+				<div class="col-sm-2" style="background: #10aaff;" id="border7"
+				onclick="location.href='/jsmi/listview?page=1&board_no=1'">
 					<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 				</div>
 				<div class="col-sm-2" style="background: #105080;" id="border8">
@@ -529,7 +531,8 @@ hr {
 				<div class="col-md-2" style="background: #10aaff;" id="border6">
 					<img src="/jsmi/images/cost.png" class="img-responsive">
 				</div>
-				<div class="col-md-2" style="background: #10aaff;" id="border7">
+				<div class="col-md-2" style="background: #10aaff;" id="border7"
+				onclick="location.href='/jsmi/listview?page=1&board_no=1'">
 					<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 				</div>
 				<div class="col-md-2" style="background: #105080;" id="border8">
@@ -650,7 +653,8 @@ hr {
 				<div class="col-lg-2" style="background: #10aaff;" id="border6">
 					<img src="/jsmi/images/cost.png" class="img-responsive">
 				</div>
-				<div class="col-lg-2" style="background: #10aaff;" id="border7">
+				<div class="col-lg-2" style="background: #10aaff;" id="border7"
+				onclick="location.href='/jsmi/listview?page=1&board_no=1'">
 					<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 				</div>
 				<div class="col-lg-2" style="background: #105080;" id="border8">

@@ -15,10 +15,9 @@ public class BoardService {
 
 	}
 
-	public List<Board> selectAll() {
+	public List<Board> selectAll(int currentPage, int limit, int board_no) {
 		Connection con = getConnection();
-		List<Board> blist = new BoardDao().selectAll(con);
-
+		List<Board> blist = new BoardDao().selectAll(con, limit, board_no, currentPage);
 		close(con);
 		return blist;
 	}
@@ -42,11 +41,11 @@ public class BoardService {
 		return result;
 	}
 
-	public Board selectPost(int board_no, int post_no) {
+	public List<Board> selectPost(int board_no, int post_no) {
 		Connection con = getConnection();
-		Board b = new BoardDao().selectPost(con, board_no, post_no);
+		List<Board> bList = new BoardDao().selectPost(con, board_no, post_no);
 		close(con);
-		return b;
+		return bList;
 	}
 
 	public int updatePost(Board b) {
