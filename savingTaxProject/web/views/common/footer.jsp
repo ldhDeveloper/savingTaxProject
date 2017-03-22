@@ -32,11 +32,23 @@
 </head>
 <body>
 <div class="footer-bar">
-	<div class="middle footer">
+	<div class="middle footer hidden-xs">
 		 법인명 : (주)미인들 | 대표자 : 김진호 | 주소 : 서울시 강남구 역삼동 823-24 남도빌딩 2층, 3층 | <br>
 		 TEL. 02.1234.5678 | FAX. 0303.1234.5678 | 통신판매등록 : 제2017-서울-00001호 | 사업자등록번호 : 111-81-12345 | <br> 
 		 <font color= "orange">COPYRIGHTS (c) (주)미인들 All RIGHT RESERVED.</font>
 	</div>
+	
+	 <div class="container-fluid hidden-sm hidden-md hidden-lg" id="bar">
+      <div class="row">
+         <div class="col-xs-12 footer">
+			 법인명 : (주)미인들 | 대표자 : 김진호 | 주소 : 서울시 강남구 역삼동 823-24 남도빌딩 2층, 3층 |
+		 	TEL. 02.1234.5678 | FAX. 0303.1234.5678 | 통신판매등록 : 제2017-서울-00001호 | 사업자등록번호 : 111-81-12345 |  
+		 	<br><font color= "orange">COPYRIGHTS (c) (주)미인들 All RIGHT RESERVED.</font>
+         </div>
+      </div>
+   </div>
 </div>
+
+
 </body>
 </html>
