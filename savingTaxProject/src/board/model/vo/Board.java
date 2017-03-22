@@ -9,6 +9,9 @@ private Date post_date;
 private int board_no;
 private int up_post_no;
 private int writer_no;
+private int readCount;
+private String originalFileName;
+private String renameFileName;
 	public Board(){}
 	public int getPost_no() {
 		return post_no;
@@ -52,8 +55,28 @@ private int writer_no;
 	public void setWriter_no(int writer_no) {
 		this.writer_no = writer_no;
 	}
+	
+	public int getReadCount() {
+		return readCount;
+	}
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+	
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+	public String getRenameFileName() {
+		return renameFileName;
+	}
+	public void setRenameFileName(String renameFileName) {
+		this.renameFileName = renameFileName;
+	}
 	public Board(int post_no, String post_title, String post_contents, Date post_date, int board_no, int up_post_no,
-			int writer_no) {
+			int writer_no, int readCount, String originalFileName, String renameFileName) {
 		super();
 		this.post_no = post_no;
 		this.post_title = post_title;
@@ -62,13 +85,15 @@ private int writer_no;
 		this.board_no = board_no;
 		this.up_post_no = up_post_no;
 		this.writer_no = writer_no;
+		this.readCount = readCount;
+		this.originalFileName = originalFileName;
+		this.renameFileName = renameFileName;
 	}
 	@Override
 	public String toString() {
-		return   post_no + ", " + post_title + ", " + post_contents + ", " + post_date + ", " + board_no
-				+ ", " + up_post_no + ", " + writer_no ;
+		return post_no + ", " + post_title + ", " + post_contents + ", " + post_date + ", " + board_no + ", "
+				+ up_post_no + ", " + writer_no + ", " + readCount + ", " + originalFileName + ", " + renameFileName;
 	}
-	
 	
 	
 }
