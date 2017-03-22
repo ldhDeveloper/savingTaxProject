@@ -32,7 +32,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">정보입력</h1>
+				<h2 class="page-header">직원관리</h2>
 			</div>
 		</div><!--/.row-->
 									
@@ -41,43 +41,139 @@
 				<div class="navbar navbar-default">
 				  <div class="container-fluid">
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="/jsmi/views/main2/inputinfo.html">회원정보</a></li>
-				      <li><a href="/jsmi/views/main2/inputinfo2.html">사업장 정보</a></li>
-				      <li><a href="/jsmi/views/main2/inputinfo3.html">거래처 정보</a></li>
+				      <li class="active"><a href="/jsmi/views/main2/empinfo.jsp">직원정보입력</a></li>
+				      <li><a href="/jsmi/views/main2/inputinfo2.html">직원급여관리</a></li>
 				    </ul>
 				  </div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
+		<div class="col-md-12">
+					<table class="table table-condensed">
+				    <tbody>
+				      <tr>
+				      <th>직원명</th>
+				      <th>직원구분</th>
+				      <th>직급</th>
+				      <th>입사년월일</th>
+				      <th>연락처</th>
+				      <th>직원 주소지</th>
+				      <th>이메일</th>
+			
+				      </tr>
+				      <tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				     
+				      </tr>
+				      <tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      
+				      </tr>
+				      <tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				     
+				      </tr>
+				      <tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				     
+				      </tr>
+				      <tr>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				      <td>&nbsp;</td>
+				     
+				      </tr>
+		
+				    </tbody>
+				  </table>
+				  <ul class="pagination" style="float: right; margin-bottom: 30px;">
+  					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+				  </ul>
+				</div>
+		</div>
+		<div class="row">
 			<div class="col-md-12 col-lg-12">
-				<form action="" method="post">
 				<table class="table table-condensed">
 				    <tbody>
 				      <tr>
-				        <td class="col-md-2"><h5>이름</h5></td>
+				        <td class="col-md-2"><h5>직원명</h5></td>
 				        <td class="col-md-4"><input type="text" class="form-control"></td>
+				        <td class="col-md-2"><h5>직원구분</h5></td>
+				        <td class="col-md-4">
+				        	<div class="row">
+				        		<div class="col-md-12">
+						        	<div class="radio col-md-4">
+		  								<label><input type="radio" name="optradio">정규직</label>
+									</div>
+									<div class="radio col-md-4" style="margin-top:10px">
+		  								<label><input type="radio" name="optradio">비정규직</label>
+									</div>
+									<div class="radio col-md-4" style="margin-top:10px">
+		  								<label><input type="radio" name="optradio">일용직</label>
+									</div>
+								</div>
+							</div>
+				        </td>
+				
+				      </tr>
+				      <tr>
 				        <td class="col-md-2"><h5>주민등록번호</h5></td>
-				        <td class="col-md-4"><div class="col-md-5"><input type="text" class="form-control"></div><div class="col-md-1"><h5>-</h5></div><div class="col-md-5"><input type="password" class="form-control"></div></td>	    
-				      </tr>
-				      <tr>
-				        <td class="col-md-2"><h5>아이디</h5></td>
+				        <td class="col-md-4">
+				        	<div class="col-md-5" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
+				        	<div class="col-md-2" style="text-align:center">-</div>
+				        	<div class="col-md-5" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div> 	
+				        </td>
+				        <td class="col-md-2"><h5>직급</h5></td>
 				        <td class="col-md-4"><input type="text" class="form-control"></td>
-				        <td class="col-md-6" colspan="2"></td>
 				      </tr>
 				      <tr>
-				        <td class="col-md-2"><h5>비밀번호</h5></td>
-				        <td class="col-md-4"><input type="password" class="form-control"></td>
-				        <td class="col-md-6" colspan="2"></td>
+				        <td class="col-md-2"><h5>입사년월일</h5></td>
+				        <td class="col-md-4"><input type="date" class="form-control"></td>
+				        <td class="col-md-2"><h5>연락처</h5></td>
+				        <td class="col-md-4">
+				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
+				        	<div class="col-md-1" style="text-align:center">-</div>
+				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
+				        	<div class="col-md-1" style="text-align:center">-</div>
+				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
+				        </td>
 				         
 				      </tr>
 				      <tr>
-				      	<td class="col-md-2"><h5>비밀번호 확인</h5></td>
-				        <td class="col-md-4"><input type="password" class="form-control"></td>	 
-				        <td class="col-md-6" colspan="2"></td>
-				      </tr>
-				      <tr>
-				      	<td class="col-md-2" rowspan="2"><h5>사업주 주소</h5></td>
+				      	<td class="col-md-2" rowspan="2"><h5>직원 주소지</h5></td>
 				        <td class="col-md-4"><div class="col-md-5" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
 				        					<div class="col-md-2" style="text-align:center"><h5>-</h5></div><div class="col-md-5" style="padding-left:0px; padding-right:0px;">
 				        					<input type="password" class="form-control"></div></td>	 
@@ -85,30 +181,6 @@
 				      </tr>
 				      <tr>
 				        <td class="col-md-10" colspan="3"><input type="text" class="form-control"></td>	
-				      </tr>
-				      <tr>
-				        <td class="col-md-2"><h5>전화번호</h5></td>
-				        <td class="col-md-6" colspan="2">
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1" style="text-align:center">-</div>
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1" style="text-align:center">-</div>
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1"></div> 	
-				        </td>
-				        <td class="col-md-4"></td>
-				      </tr>
-				      <tr>
-				        <td class="col-md-2"><h5>휴대폰번호</h5></td>
-				        <td class="col-md-6" colspan="2">
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1" style="text-align:center">-</div>
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1" style="text-align:center">-</div>
-				        	<div class="col-md-3" style="padding-left:0px; padding-right:0px;"><input type="text" class="form-control"></div>
-				        	<div class="col-md-1"></div> 	
-				        </td>
-				        <td class="col-md-4"></td>
 				      </tr>
 				      <tr>
 				        <td class="col-md-2"><h5>이메일</h5></td>
@@ -135,10 +207,9 @@
 				    </tbody>
 				  </table>
 				  <div class="row">
-				  <button class="btn btn-primary" type="submit" onclick="nextpage();")>다음</button>
+				  <button class="btn btn-success" type="submit">등록</button>
 				  <button class="btn btn-danger" type="reset">취소</button>
 				  </div>
-				  </form>
 			</div>
 		</div>
 		

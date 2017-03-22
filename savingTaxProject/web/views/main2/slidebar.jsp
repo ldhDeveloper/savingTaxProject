@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 </head>
 <body>
@@ -44,7 +45,7 @@
 			<li class="active"><a href="inputinfo.jsp"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> 정보입력</a></li>
 			<li><a href="diary.jsp"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> 장부작성</a></li>
 			<li class="parent ">
-				<a href="#">
+				<a href="empinfo.jsp">
 					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> 직원관리 
 				</a>
 				<ul class="children collapse" id="sub-item-1">
