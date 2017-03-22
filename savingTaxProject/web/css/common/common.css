@@ -2,12 +2,12 @@
 
 @font-face{
 	font-family:google; 
-	src: url(/font/NotoSansCJKkr-Light.otf);
+	src: url('/jsmi/font/NotoSansCJKkr-Light.otf');
 }
 
 @font-face{
 	font-family:cleansky; 
-	src: url(/font/cleansky.ttf);
+	src: url('/jsmi/font/cleansky.ttf');
 }
 
 @font-face{
@@ -42,7 +42,7 @@
 
 @font-face{
 	font-family:mobius; 
-	src: url(/font/mobius.ttf);
+	src: url('/jsmi/font/mobius.ttf');
 }
 
 @font-face{
@@ -57,7 +57,7 @@
 
 @font-face{
 	font-family:redmailbox; 
-	src: url(/font/redmailbox.ttf);
+	src: url('/jsmi//font/redmailbox.ttf');
 }
 
 @font-face{
@@ -72,7 +72,7 @@
 
 @font-face{
 	font-family:hoonpink; 
-	src: url(/font/HoonPinkpungcha.otf);
+	src: url('/jsmi/font/HoonPinkpungcha.otf');
 }
 
 @font-face{
@@ -82,7 +82,7 @@
 
 @font-face{
 	font-family:sunflower; 
-	src: url(/font/sunflower.ttf);
+	src: url('/jsmi/font/sunflower.ttf');
 }
 
 @font-face{
@@ -92,12 +92,12 @@
 
 @font-face{
 	font-family:Binggrae; 
-	src: url(/font/Binggrae.otf);
+	src: url('/jsmi/font/Binggrae.otf');
 }
 
 @font-face{
 	font-family:Haesol; 
-	src: url(/font/Haesol.ttf);
+	src: url('/jsmi/font/Haesol.ttf');
 }
 
 @font-face{
@@ -105,9 +105,5 @@
 	src: url(/font/ssangmunDong.ttf);
 }
 
-@font-face{
-	font-family:google; 
-	src: url(/font/NotoSansCJKkr-Light.otf);
-	
-}
+
 
