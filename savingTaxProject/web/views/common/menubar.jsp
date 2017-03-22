@@ -140,11 +140,11 @@ element.style {
       </table>
    </div>
    
-   <div class="full-bar">
+   <div class="full-bar hidden-xs">
       <div class="middle menu">
          
             <ul height="40" >
-            	<li><a href="/jsmi/views/main1/main1.jsp">메인으로</a></li>
+            	<li><a href="/jsmi/views/main1/main.jsp">메인으로</a></li>
                <li>
                      <a href="#">절세미인소개</a>
                      <ul class="sub-menu">
