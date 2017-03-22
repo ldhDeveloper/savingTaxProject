@@ -24,26 +24,27 @@ public class BoardDao {
 
 	}
 
-	public List<Board> selectAll(Connection con) {
+	public List<Board> selectAll(Connection con, int limit, int board_no, int currentPage) {
 		Connection conn = con;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Board> blist = null;
 		String query = prop.getProperty("selectAll");
+		int startRow =  (currentPage -1) * limit +1;
+		int endRow = startRow + limit -1;
+
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, board_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
 			if (rset != null) {
 				blist = new ArrayList<Board>();
 				while (rset.next()) {
-					Board b = new Board();
-					b.setPost_no(rset.getInt("post_no"));
-					b.setPost_title(rset.getString("post_title"));
-					b.setPost_contents(rset.getString("post_contents"));
-					b.setPost_date(rset.getDate("post_date"));
-					b.setBoard_no(rset.getInt("board_no"));
-					b.setUp_post_no(rset.getInt("up_post_no"));
-					b.setWriter_no(rset.getInt("writer_no"));
+					Board b = new Board(rset.getInt(2), rset.getString(3),
+							rset.getString(4), rset.getDate(5), rset.getInt(6),
+							rset.getInt(7), rset.getInt(8), rset.getInt(9), rset.getString(10), rset.getString(11));
 					blist.add(b);
 				}
 			}
@@ -51,7 +52,7 @@ public class BoardDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		return blist;
 	}
@@ -69,14 +70,9 @@ public class BoardDao {
 			if (rset != null) {
 				blist = new ArrayList<Board>();
 				while (rset.next()) {
-					Board b = new Board();
-					b.setPost_no(rset.getInt("post_no"));
-					b.setPost_title(rset.getString("post_title"));
-					b.setPost_contents(rset.getString("post_contents"));
-					b.setPost_date(rset.getDate("post_date"));
-					b.setBoard_no(rset.getInt("board_no"));
-					b.setUp_post_no(rset.getInt("up_post_no"));
-					b.setWriter_no(rset.getInt("writer_no"));
+					Board b = new Board(rset.getInt(2), rset.getString(3),
+							rset.getString(4), rset.getDate(5), rset.getInt(6),
+							rset.getInt(7), rset.getInt(8), rset.getInt(9), rset.getString(10), rset.getString(11));
 					blist.add(b);
 				}
 			}
@@ -107,27 +103,33 @@ public class BoardDao {
 		return result;
 	}
 	
-	public Board selectPost(Connection con, int board_no, int post_no) {
+	public List<Board> selectPost(Connection con, int board_no, int post_no) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = prop.getProperty("selectPost");
-		Board b = null;
+		List<Board> bList = null;
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, board_no);
 			pstmt.setInt(2, post_no);
 			rset = pstmt.executeQuery();
-			if(rset.next()){
-				b= new Board(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getDate(4), rset.getInt(5),
-						rset.getInt(6), rset.getInt(7));
-			}	
+			if(rset !=null){
+				bList = new ArrayList<Board>();
+				
+			while(rset.next()){
+			 Board	b = new Board(rset.getInt(1), rset.getString(2),
+						rset.getString(3), rset.getDate(4), rset.getInt(5),
+						rset.getInt(6), rset.getInt(7), rset.getInt(8), rset.getString(9), rset.getString(10));
+			bList.add(b);
+			}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			close(rset);
 			close(pstmt);
 		}
-		return b;
+		return bList;
 	}
 	
 	public int updatePost(Connection con, Board b) {
@@ -171,16 +173,24 @@ public class BoardDao {
 
 	public int getListCount(Connection con, int board_no) {
 		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		int listCount = 0;
-		String query = prop.getProperty("selectBoard");
+		String query = prop.getProperty("getListCount");
 		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, board_no);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				listCount = rset.getInt(1);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
+			close(rset);
 			close(pstmt);
 		}
 		
-		return 0;
+		return listCount;
 	}
 }
