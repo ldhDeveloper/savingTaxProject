@@ -50,10 +50,13 @@
 .menu-wrap1 {
 	padding-left: 70px;
 	padding-top: 50px;
+	
 }
 .menu-wrap2 {
 	padding-left: 70px;
 	padding-bottom: 80px;
+	position:relative;
+	top:7px;
 }
 
 #viewOn {
@@ -205,7 +208,8 @@
 		<div class="menu-btn" style="background: #10aaff;" id="border3">
 			<img src="/jsmi/images/function.png" class="">
 		</div>
-		<div class="menu-btn" style="background: #10aaff;" id="border4">
+		<div class="menu-btn" style="background: #10aaff;" id="border4"
+			onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
 			<img src="/jsmi/images/event.png" class="">
 		</div>
 	</div>
@@ -323,7 +327,8 @@
 			<div class="col-xs-4" style="background: #10aaff;" id="border3">
 				<img src="/jsmi/images/function.png" class="img-responsive">
 			</div>
-			<div class="col-xs-4" style="background: #10aaff;" id="border4">
+			<div class="col-xs-4" style="background: #10aaff;" id="border4"
+				onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
 				<img src="/jsmi/images/event.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>
@@ -357,7 +362,7 @@
 		<div id="viewOn" class="hidden-xs gotoM1">
 			<img src="/jsmi/images/main1/gotomain2.png">
 		</div>
-
+	<br><br><br>
 	<%@ include file="/views/common/footer.jsp"%>
 </body>
 </html>
