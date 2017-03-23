@@ -2,6 +2,7 @@ package board.controller;
 
 import java.io.IOException;
 
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.BoardService;
-import board.model.vo.Board;
+import board.model.service.PostService;
+import board.model.vo.Post;
 
 /**
  * Servlet implementation class PostListViewServlet
@@ -43,20 +44,20 @@ public class PostListViewServlet extends HttpServlet {
 		}
 		int startPage = ((int)((double)currentPage/ limit +0.9)-1)*limit +1;
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
-		BoardService bService = new BoardService();
-		int listCount = bService.getListCount(board_no);
+		PostService pService = new PostService();
+		int listCount = pService.getListCount(board_no);
 		int maxPage = (int)((double)listCount/limit + 0.9);
 		int endPage = startPage + limit -1;
 		if(maxPage < endPage)
 			endPage= maxPage;
 		
-		List<Board> blist = bService.selectAll(currentPage, limit, board_no);
+		List<Post> plist = pService.selectAll(currentPage, limit, board_no);
 	
 		RequestDispatcher view = null;
 		
-		if(blist != null){
+		if(plist != null){
 			view = request.getRequestDispatcher("views/board/boardListView.jsp");
-			request.setAttribute("blist", blist);
+			request.setAttribute("blist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
 			request.setAttribute("startPage", startPage);

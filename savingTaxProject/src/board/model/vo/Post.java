@@ -1,3 +1,4 @@
+
 package board.model.vo;
 
 import java.sql.Date;
@@ -120,6 +121,7 @@ public class Post {
 				+ post_contents + ", board_no=" + board_no + ", pNo=" + pNo + ", post_ref_no=" + post_ref_no
 				+ ", read_count=" + read_count + ", fName=" + fName + ", refName=" + refName + "]";
 	}
+
 
 
 

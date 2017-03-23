@@ -1,26 +1,28 @@
 package member.model.server;
 
-import member.model.dao.MemberDao;
+
+import member.model.dao.PartyDao;
 import member.model.vo.Member;
+import member.model.vo.Party;
+
 import static common.JDBCTemplate.*;
 import java.sql.*;
 
 public class PartyService {
 	public PartyService(){}
 
-	public Member loginMember(String uid, String upwd) {
+	public Party loginParty(String uid, String upwd) {
 		Connection con = getConnection();
-		Member m = new MemberDao().loginMember(con, uid, upwd);
-		
+		Party p  = new PartyDao().loginParty(con, uid, upwd);
 		close(con);
 		
 		//System.out.println("service 작동");
-		return m;
+		return p;
 	}
 
-	public int signupMember(Member m) {
+	public int signupParty(Party p) {
 		Connection con = getConnection();
-		int result = new MemberDao().signupMember(con, m);
+		int result = new PartyDao().signupParty(con, p);
 		
 		if(result > 0)
 			commit(con);
@@ -32,7 +34,7 @@ public class PartyService {
 		//System.out.println("service 작동");
 		return result;
 	}
-
+/*
 	public Member selectMember(String uid) {
 		Connection con = getConnection();
 		Member m = new MemberDao().selectMember(con, uid);
@@ -66,5 +68,5 @@ public class PartyService {
 		close(con);
 		
 		return result;
-	}
+	}*/
 }
