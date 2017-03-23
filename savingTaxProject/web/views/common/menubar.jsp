@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/jsmi/css/common/common.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -172,7 +172,7 @@ element.style {
                <li>
                		<a href="#">고객센터</a>
                		<ul class="sub-menu">
-                           <li><a href="#">공지사항</a></li>
+                           <li><a href="/jsmi/views/board/boardListView.jsp">공지사항</a></li>
                            <li><a href="#">세금 소식</a></li>
                            <li><a href="#">세무팁</a></li>
                            <li><a href="#">자주 묻는 질문</a></li>
