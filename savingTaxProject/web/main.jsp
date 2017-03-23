@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="/jsmi/css/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -119,7 +119,7 @@
 
 	$(function() {
 		$('.gotoM1').on("click", function() {
-			location.href = "/jsmi/views/main2/index.html";
+			location.href = "/jsmi/views/main2/main2.html";
 		}).mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
@@ -359,7 +359,7 @@
 	<br class="hidden-sm hidden-md hidden-lg">
 	
 	<!-- 뷰온버튼 -->
-		<div id="viewOn" class="hidden-xs gotoM1">
+		<div id="viewOn" class="hidden-xs gotoM1" onclick="location.href='/jsmi/views/main2/main2.html'">
 			<img src="/jsmi/images/main1/gotomain2.png">
 		</div>
 	<br><br><br>

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -166,7 +165,7 @@ element.style {
               		 <a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>이벤트</a>
               		 <ul class="sub-menu">
                            <li><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></li>
-                           <li><a href="#">지난 이벤트</a></li>
+                           <li><a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a></li>
                      </ul>
                </li>
                <li><a href="#">비용안내</a></li>
@@ -245,7 +244,14 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></td><td class="xstd"><a href="#">지난 이벤트</a></td></tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a>
+                                    	</td>
+                                    </tr>
                                  </table>
                               </li>
                            </ul>
@@ -264,7 +270,7 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="/jsmi/tnlist">세금소식</a></td></tr>
+                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
                                     <tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
                                     <tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
                                  </table>
@@ -297,5 +303,4 @@ element.style {
    </div>
 
 </body>
-
 </html>

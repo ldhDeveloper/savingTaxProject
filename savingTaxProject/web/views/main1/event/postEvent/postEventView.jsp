@@ -36,7 +36,7 @@ h3 {
 	<br>
 	<br>
 	<div class="middle hidden-xs">
-		<h3 align="center">진행중인 이벤트</h3><br><br>
+		<h3 align="center">종료된 이벤트</h3><br><br>
 	</div>
 	<div class="middle hidden-xs">
 		<div class="thumbnail" style="display:inline-block">
