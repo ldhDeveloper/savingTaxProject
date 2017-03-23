@@ -289,7 +289,7 @@ element.style {
          <div class="col-xs-2"></div>
          <div class="col-xs-1">
             <button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout"
-               onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
+               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
          </div>
          <div class="col-xs-1"></div>
       </div>
