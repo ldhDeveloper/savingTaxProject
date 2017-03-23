@@ -30,7 +30,7 @@
 }
 
 .slide-background {
-	background: #002;
+	background: #234;
 	height: 550px;
 	padding-top: 70px;
 }
@@ -57,12 +57,28 @@
 }
 
 #viewOn {
-	width: 50px;
-	height: 50px;
-	position: absolute;
+	width: 130px;
+	height: 130px;
+	position: fixed;
 	left: 85%;
 	top: 50%;
 	z-index: 1;
+	background:white;
+	border-radius:130px;
+	padding-top:auto;
+	padding-bottom:auto;
+	padding-left:auto;
+	padding-right:auto;
+}
+
+#viewOn:hover {
+	background:orange;
+}
+
+#viewOn img {
+	position:relative;
+	top:15px;
+	left:15px;
 }
 </style>
 <script type="text/javascript">
