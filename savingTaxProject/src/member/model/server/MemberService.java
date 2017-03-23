@@ -1,7 +1,7 @@
-package member.view.server;
+package member.model.server;
 
-import member.view.dao.MemberDao;
-import member.view.vo.Member;
+import member.model.dao.MemberDao;
+import member.model.vo.Member;
 import static common.JDBCTemplate.*;
 import java.sql.*;
 

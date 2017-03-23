@@ -1,7 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.view.server.MemberService;
-import member.view.vo.Member;
+import member.model.server.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class LoginServlet
