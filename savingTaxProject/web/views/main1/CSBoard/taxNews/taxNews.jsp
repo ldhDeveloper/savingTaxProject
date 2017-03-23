@@ -16,57 +16,29 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-	background: white;
-}
-
-#border1, #border2, #border3, #border4, #border5, #border6, #border7,
-	#border8 {
-	border: 1px solid white;
-}
-
-#border1, #border3, #border4, #border6, #border7 {
-	background: #10aaff;
-}
-
-p {
-	font-family: google;
-	font-size: 0.8em;
-}
-
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-	width: 100%;
-	margin: auto;
-}
-
-table {
 	position: relative;
-	z-index: 1000;
-	top: 10%;
-	left: 80%;
+	z-index: 100;
 }
 
-button {
-	float: right;
-	margin: 2px;
+form {
+	/* background-color: aliceblue; */
+	/* background-color: mistyrose; */
+	background-color: ghoastwhite;
+	/* background-color: lightcyan; */
+	/* background-color: azure; */
+	/* background-color: mintcream; */
 }
 
-#bar {
-	padding: 0px;
-	margin-top: 3px;
+h1 {
+	font-family: "/font/ssangmunDong.ttf", ssangmundong, serif;
 }
 
-#viewOn {
-	width: 50px;
-	height: 50px;
-	position: absolute;
-	left: 85%;
-	top: 50%;
-	z-index: 1;
+#th, td {
+	text-align: -webkit-center;
 }
 
-.table {
-	position: absolute;
-	left: 10px;
+#search {
+	width: 103%;
 }
 </style>
 
@@ -75,86 +47,81 @@ button {
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 	<%@ include file="../../../common/menubar.jsp"%>
-
-	<form action=""></form>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-0 col-md-5"></div>
-			<div class="col-xs-0 col-md-3">
-				<h1>세무 소식</h1>
-			</div>
-			<div class="col-xs-0 col-md-4"></div>
-		</div>
-	</div>
-
-	<br>
-	<br>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-0 col-md-2"></div>
-
-			<div class="col-xs-12 col-md-8">
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<tr class="info">
-							<th>번 호</th>
-							<th>제 목</th>
-							<th>작 성 일</th>
-						</tr>
-					</table>
-
-					<table>
-						<tr class="warning">
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="col-xs-0 col-md-2"></div>
-		</div>
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div class="row">
-		<div class="col-xs-0 col-md-7"></div>
-
-		<div class="col-xs-12 col-md-2">
-			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
-		</div>
-		<div class="col-xs-0 col-md-3">
-			<input type="submit" class="btn btn-primary" value="검색">
-		</div>
-	</div>
-
-	<br>
-
-	<div class="row">
-		<div class="col-xs-0 col-md-6"></div>
-
-		<div class="col-xs-12 col-md-3"></div>
-
-		<div class="col-xs-0 col-md-3">
-			<input type="submit" class="btn btn-primary" value="글쓰기">
-		</div>
-
-	</div>
 	
+	<div class="container-fluid hidden-sm hidden-md hidden-lg"></div>
+	
+	<form action="">
+		<br> <br> <br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-md-2"></div>
+				<div class="col-xs-4 col-md-8">
+					<h1>세무 소식</h1>
+				</div>
+				<div class="col-xs-4 col-md-2"></div>
+			</div>
+		</div>
+
+		<br> <br> <br>
+
+
+		<div class="row">
+			<div class="col-xs-4 col-md-3"></div>
+
+			<div class="col-xs-4 col-md-6">
+				<input type="text" id="search" name="search"
+					placeholder="검색할 제목을 입력하세요.">
+			</div>
+			<div class="col-xs-4 col-md-3">
+				<input type="submit" class="btn btn-primary" value="검색">
+			</div>
+		</div>
+
+		<br> <br> <br>
+
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-md-2"></div>
+
+				<div class="col-xs-4 col-md-9">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr class="info">
+								<th id="th">번 호</th>
+								<th id="th">제 목</th>
+								<th id="th">작 성 일</th>
+							</tr>
+
+							<tr class="active">
+								<td>여기에 값 입력</td>
+								<td>여기에 값 입력</td>
+								<td>여기에 값 입력</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-1"></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4 col-md-3"></div>
+
+			<div class="col-xs-4 col-md-6">
+			
+			</div>
+			<div class="col-xs-4 col-md-3">
+				<input type="submit" class="btn btn-primary" value="검색">
+			</div>
+		</div>
+
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br> <br> <br>
+	</form>
 	<%@ include file="../../../common/footer.jsp"%>
 </body>
 </html>
