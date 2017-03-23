@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 
 import member.model.vo.Member;
+import member.model.vo.Party;
 import member.model.server.MemberService;
+import member.model.server.PartyService;
 
 
 /**
@@ -44,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//System.out.println(uid);
 		
-		Member LoginUser = new MemberService().loginMember(uid, upwd);
+		Party LoginUser = new PartyService().loginParty(uid, upwd);
 		
 		//System.out.println(m);
 		

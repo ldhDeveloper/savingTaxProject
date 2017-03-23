@@ -2,6 +2,8 @@ package member.model.server;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import member.model.vo.Party;
+
 import static common.JDBCTemplate.*;
 import java.sql.*;
 
@@ -18,9 +20,9 @@ public class MemberService {
 		return m;
 	}
 
-	public int signupMember(Member m) {
+	public int signupMember(Party p) {
 		Connection con = getConnection();
-		int result = new MemberDao().signupMember(con, m);
+		int result = new MemberDao().signupMember(con, p);
 		
 		if(result > 0)
 			commit(con);

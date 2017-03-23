@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>	
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,79 +15,33 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-body {
-	background: white;
-}
+ div {
+ 	resize: none;
+ }
 
-#border1, #border2, #border3, #border4, #border5, #border6, #border7,
-	#border8 {
-	border: 1px solid white;
-}
-
-#border1, #border3, #border4, #border6, #border7 {
-	background: #10aaff;
-}
-
-p {
-	font-family: google;
-	font-size: 0.8em;
-}
-
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-	width: 100%;
-	margin: auto;
-}
-
-table {
-	position: relative;
-	z-index: 1000;
-	top: 10%;
-	left: 80%;
-}
-
-button {
-	float: right;
-	margin: 2px;
-}
-
-#bar {
-	padding: 0px;
-	margin-top: 3px;
-}
-
-#viewOn {
-	width: 50px;
-	height: 50px;
-	position: absolute;
-	left: 85%;
-	top: 50%;
-	z-index: 1;
-}
-
-.table {
-	position: absolute;
-	left: 10px;
-}
 </style>
 
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp" %>
 
-	<form action=""></form>
-
+<!-- http://127.0.0.1:7660/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp -->
+<%@ include file="../../../common/menubar.jsp" %>
+	
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-0 col-md-5"></div>
 			<div class="col-xs-0 col-md-3">
-				<h1>세무 Tip</h1>
+				
+			</div>
+			<div class="col-xs-0 col-md-5">
+				<h1>공지사항 작성</h1>
 			</div>
 			<div class="col-xs-0 col-md-4"></div>
 		</div>
 	</div>
-	
-	<br><br>
+
+	<br>
+	<br>
 
 	<div class="container">
 		<div class="row">
@@ -96,22 +50,24 @@ button {
 			<div class="col-xs-12 col-md-8">
 				<div class="table-responsive">
 					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>번 호</th>
-								<th>구 분</th>
-								<th>제 목</th>
-							</tr>
-						</thead>
-						
+					
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+							<tr class="success">
+								<td>제      목</td>
 								<td></td>
 							</tr>
+							
+							<tr class="danger">
+								<td>첨부파일</td>
+								<td></td>
+							</tr>
+							
+							<tr class="info">
+								<td>내       용</td>
+								<td>
+									<textarea class="form-control" rows="10" id="comment"></textarea>
+								</td>
+							</tr>														
 						</tbody>
 					</table>
 				</div>
@@ -121,47 +77,29 @@ button {
 		</div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<div class="row">
-		<div class="col-xs-0 col-md-7"></div>
+		<div class="col-xs-0 col-md-5"></div>
 
-		<div class="col-xs-12 col-md-2">
-			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
+		<div class="col-xs-12 col-md-3"></div>
+		
+		<div class="col-xs-0 col-md-4">
+			<input type="submit" class="btn btn-primary" value="등록">
+			<input type="submit" class="btn btn-primary" value="취소">			
 		</div>
-		<div class="col-xs-0 col-md-3">
-			<input type="submit" class="btn btn-primary" value="검색">		
-		</div>
-	</div>
-	
-		<br>
-	
-		<div class="row">
-		<div class="col-xs-0 col-md-6"></div>
-
-		<div class="col-xs-12 col-md-3">
-			
-		</div>
-
-		<div class="col-xs-0 col-md-3">
-			<input type="submit" class="btn btn-primary" value="글쓰기">		
-		</div>
-
 	</div>
 
 
 
-	<%@ include file="../common/footer.jsp" %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+<%@ include file="../../../common/footer.jsp" %>
 </body>
 </html>

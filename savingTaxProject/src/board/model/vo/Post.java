@@ -1,3 +1,4 @@
+
 package board.model.vo;
 
 import java.sql.Date;
@@ -96,6 +97,5 @@ public String toString() {
 	return post_no + ", " + post_name + ", " + post_date + ", " + post_contents + ", " + board_no + ", " + pNo + ", "
 			+ post_ref_no + ", " + read_count + ", " + fName + ", " + refName;
 } 
-
 
 }

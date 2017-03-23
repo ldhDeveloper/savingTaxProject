@@ -2,7 +2,7 @@ package member.model.vo;
 
 import java.sql.Date;
 
-public class Party {
+public class Party implements java.io.Serializable{
 
 	private int pno;
 	private String pname;
@@ -286,6 +286,7 @@ public class Party {
 	}
 
 
+
 	public int getgType() {
 		return gType;
 	}
@@ -328,5 +329,17 @@ public class Party {
 		this.to_no = to_no;
 		this.gType = gType;
 	}
+
+	@Override
+	public String toString() {
+		return "Party [pno=" + pno + ", pname=" + pname + ", category=" + category + ", id=" + id + ", pwd=" + pwd
+				+ ", phone=" + phone + ", email=" + email + ", id_no=" + id_no + ", cname=" + cname + ", cno=" + cno
+				+ ", paddress=" + paddress + ", caddress=" + caddress + ", ctype=" + ctype + ", cstatus=" + cstatus
+				+ ", position=" + position + ", oday=" + oday + ", wno=" + wno + ", taxtype=" + taxtype + ", notax_yn="
+				+ notax_yn + ", president=" + president + ", foreginer_yn=" + foreginer_yn + ", emp_type=" + emp_type
+				+ ", join_date=" + join_date + ", busi_type=" + busi_type + ", to_no=" + to_no + "]";
+	}
+	
+
 	
 }

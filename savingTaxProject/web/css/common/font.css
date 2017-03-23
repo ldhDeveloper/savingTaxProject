@@ -12,32 +12,32 @@
 
 @font-face{
 	font-family:noscocks; 
-	src: url(/font/noscocks.ttf);
+	src: url('/jsmi/font/noscocks.ttf');
 }
 
 @font-face{
 	font-family:seodang; 
-	src: url(/font/seodang.ttf);
+	src: url('/jsmi/font/seodang.ttf');
 }
 
 @font-face{
 	font-family:computer; 
-	src: url(/font/computer.ttf);
+	src: url('/jsmi/font/computer.ttf');
 }
 
 @font-face{
 	font-family:generalee; 
-	src: url(/font/generalee.ttf);
+	src: url('/jsmi/font/generalee.ttf');
 }
 
 @font-face{
 	font-family:tenbyten; 
-	src: url(/font/tenbyten.ttf);
+	src: url('/jsmi/font/tenbyten.ttf');
 }
 
 @font-face{
 	font-family:tenbyten; 
-	src: url(/font/tenbyten.ttf);
+	src: url('/jsmi/font/tenbyten.ttf/');
 }
 
 @font-face{
@@ -46,14 +46,10 @@
 }
 
 @font-face{
-	font-family:mobius; 
-	src: url(/font/NanumGothicExtraBold.ttf);
+	font-family:; 
+	src: url('/jsmi/font/NanumGothicExtraBold.ttf');
 }
 
-@font-face{
-	font-family:mobius; 
-	src: url(/font/NanumGothicExtraBold.ttf);
-}
 
 @font-face{
 	font-family:redmailbox; 
@@ -62,12 +58,12 @@
 
 @font-face{
 	font-family:cartoonstory; 
-	src: url(/font/cartoonstory.ttf);
+	src: url('/jsmi/font/cartoonstory.ttf');
 }
 
 @font-face{
 	font-family:appcircle; 
-	src: url(/font/appcircle.ttf);
+	src: url('/jsmi/font/appcircle.ttf');
 }
 
 @font-face{
@@ -77,7 +73,7 @@
 
 @font-face{
 	font-family:HoonJunglebook; 
-	src: url(/font/HoonJunglebook.otf);
+	src: url('/jsmi/font/HoonJunglebook.otf');
 }
 
 @font-face{
@@ -87,7 +83,7 @@
 
 @font-face{
 	font-family:mordengodic; 
-	src: url(/font/mordengodic.ttf);
+	src: url('/jsmi/font/mordengodic.ttf');
 }
 
 @font-face{
@@ -102,7 +98,9 @@
 
 @font-face{
 	font-family:ssangmundong; 
-	src: url(/font/ssangmunDong.ttf);
+
+	src: url('/font/ssangmunDong.ttf');
+
 }
 
 

@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.vo.Member;
+import member.model.vo.Party;
 import member.model.server.MemberService;
+import member.model.server.PartyService;
 
 
 /**
@@ -46,11 +48,15 @@ public class SignupServlet extends HttpServlet {
 		
 		//System.out.println(uid);
 		
-		Member m = new Member(uname, uid, upwd, uemail);
-		
+		//Member m = new Member(uname, uid, upwd, uemail);
+		Party p = new Party();
+		p.setPname(uname);
+		p.setId(uid);
+		p.setPwd(upwd);
+		p.setEmail(uemail);
 		//System.out.println(m);
 		
-		int result = new MemberService().signupMember(m);
+		int result = new PartyService().signupParty(p);
 		
 		if(result > 0) {
 			response.sendRedirect("views/main1/loginForm.html");

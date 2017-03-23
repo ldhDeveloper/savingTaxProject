@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -263,7 +264,7 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
+                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="/jsmi/tnlist">세금소식</a></td></tr>
                                     <tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
                                     <tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
                                  </table>
@@ -296,4 +297,5 @@ element.style {
    </div>
 
 </body>
+
 </html>
