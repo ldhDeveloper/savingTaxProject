@@ -9,7 +9,7 @@
 <body>
 	<%@ include file="/views/common/menubar.jsp"%>
 	<!-- PC -->
-	<div class="middle">
+	<div class="middle hidden-xs">
 		<img src="/jsmi/images/main1/intro2.png">
 	</div>
 	<hr>
