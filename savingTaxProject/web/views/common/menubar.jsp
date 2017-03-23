@@ -165,7 +165,7 @@ element.style {
               		 <a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>이벤트</a>
               		 <ul class="sub-menu">
                            <li><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></li>
-                           <li><a href="#">지난 이벤트</a></li>
+                           <li><a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a></li>
                      </ul>
                </li>
                <li><a href="#">비용안내</a></li>
@@ -244,7 +244,14 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></td><td class="xstd"><a href="#">지난 이벤트</a></td></tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a>
+                                    	</td>
+                                    </tr>
                                  </table>
                               </li>
                            </ul>
