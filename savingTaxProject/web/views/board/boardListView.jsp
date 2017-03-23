@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ page import = "java.util.*,board.model.vo.Board" %>
-	<%List<Board> bList = (List<Board>)request.getAttribute("blist");%>
+	<%List<Board> bList = (List<Board>)request.getAttribute("blist");
+	int listCount = ((Integer)request.getAttribute("listCount")).intValue();
+	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
+	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
+	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+	%>
+	
 <!DOCTYPE html> 
 <html>
 <head>
@@ -101,6 +108,9 @@ button {
 								<td><%=b.getReadCount() %></td>
 								<td><%=b.getOriginalFileName()%></td>
 							</tr>
+							<tr><td colspan ="6" >&nbsp; 
+							
+							</td></tr>
 						</tbody>
 						<%}} %>
 					</table>

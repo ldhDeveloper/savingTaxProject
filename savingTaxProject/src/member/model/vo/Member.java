@@ -1,4 +1,4 @@
-package member.view.vo;
+package member.model.vo;
 
 public class Member {
 	private String userName;
