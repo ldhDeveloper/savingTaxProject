@@ -1,6 +1,6 @@
 <!-- 회원가입form에 다시 작성하겠습니다. 이건 mypageForm을 보기 위한 것입니다. -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.view.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.Member"%>
     
 <%
 	Member m = (Member)session.getAttribute("loginUser");

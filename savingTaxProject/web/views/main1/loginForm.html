@@ -80,16 +80,18 @@ td {
    	 
     
       <form action="/jsmi/login" method="post" class="form-signin">
-      	<button type="button" class="btn close" onclick="location.href='/jsmi/main.jsp'">x 닫기</button><br>
+
+      	<input type="button" class="btn close"  value="X 닫기" onclick="location.href='/jsmi/views/main1/main1.jsp'"><br>
+
         <h2 class="form-signin-heading" align="center">로그인</h2><br>
         <input type="text" id="inputid" class="form-control" name="userid" placeholder="아이디를 입력하세요." required autofocus>
         <input type="password" id="inputpassword" name="userpwd" class="form-control" placeholder="비밀번호를 입력하세요." required>
 		<br>
-        <button class="btn btn-lg btn-info btn-block" type="submit">로그인</button>
+        <input class="btn btn-lg btn-info btn-block" type="submit" value="로그인">
         <div>
-        	<button id="joinbtn" type="button" class="btn btn-lg btn-warning btn-block" onclick="location.href='/jsmi/views/main1/agreeForm.html'">회원가입</button><br>
-        	<button id="findid" class="btn btn-md btn-success btn-block">아이디 찾기</button>
-        	<button id="findpwd" class="btn btn-md btn-success btn-block">비밀번호 찾기</button><br>
+        	<input id="joinbtn" type="button" class="btn btn-lg btn-warning btn-block" value="회원가입" onclick="location.href='/jsmi/views/main1/agreeForm.html'"><br>
+        	<input id="findid" class="btn btn-md btn-success btn-block" value="아이디 찾기">
+        	<input id="findpwd" class="btn btn-md btn-success btn-block" value="비밀번호 찾기"><br>
         </div>
       </form>
 

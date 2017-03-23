@@ -1,8 +1,10 @@
 package member.model.dao;
 
 import static common.JDBCTemplate.*;
+
 import java.sql.*;
 import java.util.*;
+
 import member.model.vo.Member;
 
 public class MemberDao {
