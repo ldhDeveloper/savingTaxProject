@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -149,8 +150,9 @@ element.style {
                      <a href='/jsmi/views/main1/introduce.jsp'>절세미인소개</a>
                      <ul class="sub-menu">
                            <li><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></li>
-                           <li><a href="/jsmi/views/main1/introduce2.jsp">회사 소개</a></li>
-                           <li><a href="/jsmi/views/main1/introduce3.jsp">찾아오시는 길</a></li>
+                           <li><a href="#">시스템 소개</a></li>
+                           <li><a href="#">회사 소개</a></li>
+                           <li><a href="#">찾아오시는 길</a></li>
                     </ul>   
                </li>
                <li>
@@ -174,7 +176,7 @@ element.style {
                            <li><a href="/jsmi/views/board/boardListView.jsp">공지사항</a></li>
                            <li><a href="#">세금 소식</a></li>
                            <li><a href="#">세무팁</a></li>
-                           <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
+                           <li><a href="#">자주 묻는 질문</a></li>
                            <li><a href="#">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
                     </ul>
@@ -262,7 +264,7 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
+                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="/jsmi/tnlist">세금소식</a></td></tr>
                                     <tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
                                     <tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
                                  </table>
@@ -288,11 +290,12 @@ element.style {
          <div class="col-xs-2"></div>
          <div class="col-xs-1">
             <button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout"
-               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
+               onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
          </div>
          <div class="col-xs-1"></div>
       </div>
    </div>
 
 </body>
+
 </html>

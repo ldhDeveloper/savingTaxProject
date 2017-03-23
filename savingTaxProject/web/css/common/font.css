@@ -98,7 +98,9 @@
 
 @font-face{
 	font-family:ssangmundong; 
-	src: url('/jsmi/font/ssangmunDong.ttf');
+
+	src: url('/font/ssangmunDong.ttf');
+
 }
 
 
