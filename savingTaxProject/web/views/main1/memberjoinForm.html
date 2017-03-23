@@ -84,6 +84,21 @@ body {
 		}
 	}
 </script> -->
+<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#pwd2').focusout(function(){
+			if($('#pwd1').val() == $('#pwd2').val()){
+				$('#nopwd').css("display","none");
+				$('#conpwd').css("display", "");
+			} else {
+				$('#nopwd').css("display","");
+				$('#conpwd').css("display", "none");
+			}
+		})
+	})
+
+</script>
   </head>
 
 
@@ -98,8 +113,10 @@ body {
         <table style="cellspacing:5px">
 			<tr><td width="5%"></td><td width="30%">이름</td><td width="60%"><input type="text" id="" class="form-control" name="username" placeholder="이름을 입력하세요." required autofocus></td><td width="5%"></td><td></td><td></td><td width="5%"></td></tr>
 			<tr><td></td><td >아이디</td><td><input type="text" id="" class="form-control" name="userid" placeholder="아이디를 입력하세요." required ></td><td></td><td></td><td><button class="btn btn-warning">중복확인</button></td><td></td></tr>   
-			<tr><td></td><td >비밀번호</td><td><input type="password" id="" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required></td><td></td><td></td><td></td><td></td></tr>   
-			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호</td><td><input type="password" id="pwd1" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="pwd2" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>   
+			<tr id="conpwd" style="display:none"><td></td><td ></td><td><span class="label label-success">비밀번호가 일치합니다</span></td><td></td><td></td><td></td><td></td></tr>
+			<tr id="nopwd" style="display:none"><td></td><td ></td><td><span class="label label-danger">비밀번호가 일치하지않습니다</span></td><td></td><td></td><td></td><td></td></tr>   
 			<tr><td></td><td >이메일주소</td><td><input type="text" id="" class="form-control" name="email" placeholder="이메일주소를 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>           
         </table>
         

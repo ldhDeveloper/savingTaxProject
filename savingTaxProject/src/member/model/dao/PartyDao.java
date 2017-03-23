@@ -4,6 +4,7 @@ import static common.JDBCTemplate.*;
 import java.sql.*;
 import java.util.*;
 import member.model.vo.Member;
+import member.model.vo.Party;
 
 public class PartyDao {
 	private Properties prop;
@@ -12,12 +13,13 @@ public class PartyDao {
 		prop = new Properties();
 	}
 
-	public Member loginMember(Connection con, String uid, String upwd) {	
+	public Party loginParty(Connection con, String uid, String upwd) {	
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Member m = null;
+		Party p = null;
 		
-		String query = "select * from signup where user_id = ? and user_pwd = ?";
+		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -28,12 +30,13 @@ public class PartyDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()){
-				m = new Member();
-				
-				m.setUserName(rset.getString("user_name"));
-				m.setUserId(uid);
-				m.setUserPwd(upwd);
-				m.setUserEmail(rset.getString("user_email"));
+				p = new Party();
+				p.setPno(rset.getInt("pno"));
+				p.setPname(rset.getString("pname"));
+				p.setCategory(rset.getInt("category"));
+				p.setId(rset.getString("id"));
+				p.setPwd(rset.getString("pwd"));
+				p.setEmail(rset.getString("email"));
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,23 +48,23 @@ public class PartyDao {
 		System.out.println("upwd : " + upwd);
 		System.out.println(m);
 		System.out.println("dao작동");*/
-		return m;
+		return p;
 	}
 
-	public int signupMember(Connection con, Member m) {
+	public int signupParty(Connection con, Party p) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		System.out.println(m);
+		System.out.println(p);
 		
-		String query = "insert into signup values (?, ?, ?, ?)";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 1, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getUserId());
-			pstmt.setString(3, m.getUserPwd());
-			pstmt.setString(4, m.getUserEmail());
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getId());
+			pstmt.setString(3, p.getPwd());
+			pstmt.setString(4, p.getEmail());
 			
 			result = pstmt.executeUpdate();
 			

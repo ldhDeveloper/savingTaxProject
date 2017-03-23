@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/jsmi/css/common/common.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
 <style>
 .middle {
    background:white;
