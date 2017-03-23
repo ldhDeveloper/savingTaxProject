@@ -665,6 +665,6 @@ hr {
 		</div>
 		
    	<hr class="hidden-xs">
-    <%@ include file="/views/common/footer.html"  %>
+    <%@ include file="/views/common/footer.jsp"  %>
 </body>
 </html>

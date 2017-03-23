@@ -1,10 +1,11 @@
-package member.view.dao;
+package member.model.dao;
 
 import static common.JDBCTemplate.*;
+
 import java.sql.*;
 import java.util.*;
 
-import member.view.vo.Member;
+import member.model.vo.Member;
 
 public class MemberDao {
 	private Properties prop;
