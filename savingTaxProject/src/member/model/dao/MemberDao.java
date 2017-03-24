@@ -1,10 +1,12 @@
-package member.view.dao;
+package member.model.dao;
 
 import static common.JDBCTemplate.*;
+
 import java.sql.*;
 import java.util.*;
 
-import member.view.vo.Member;
+import member.model.vo.Member;
+import member.model.vo.Party;
 
 public class MemberDao {
 	private Properties prop;
@@ -49,20 +51,20 @@ public class MemberDao {
 		return m;
 	}
 
-	public int signupMember(Connection con, Member m) {
+	public int signupMember(Connection con, Party p) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		System.out.println(m);
+		System.out.println(p);
 		
-		String query = "insert into signup values (?, ?, ?, ?)";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 1, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getUserId());
-			pstmt.setString(3, m.getUserPwd());
-			pstmt.setString(4, m.getUserEmail());
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getId());
+			pstmt.setString(3, p.getPwd());
+			pstmt.setString(4, p.getEmail());
 			
 			result = pstmt.executeUpdate();
 			

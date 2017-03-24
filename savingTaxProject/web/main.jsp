@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="/jsmi/css/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -50,10 +50,13 @@
 .menu-wrap1 {
 	padding-left: 70px;
 	padding-top: 50px;
+	
 }
 .menu-wrap2 {
 	padding-left: 70px;
 	padding-bottom: 80px;
+	position:relative;
+	top:7px;
 }
 
 #viewOn {
@@ -116,7 +119,7 @@
 
 	$(function() {
 		$('.gotoM1').on("click", function() {
-			location.href = "/jsmi/views/main2/index.html";
+			location.href = "/jsmi/views/main2/main2.html";
 		}).mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
@@ -205,7 +208,8 @@
 		<div class="menu-btn" style="background: #10aaff;" id="border3">
 			<img src="/jsmi/images/function.png" class="">
 		</div>
-		<div class="menu-btn" style="background: #10aaff;" id="border4">
+		<div class="menu-btn" style="background: #10aaff;" id="border4"
+			onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
 			<img src="/jsmi/images/event.png" class="">
 		</div>
 	</div>
@@ -323,7 +327,8 @@
 			<div class="col-xs-4" style="background: #10aaff;" id="border3">
 				<img src="/jsmi/images/function.png" class="img-responsive">
 			</div>
-			<div class="col-xs-4" style="background: #10aaff;" id="border4">
+			<div class="col-xs-4" style="background: #10aaff;" id="border4"
+				onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
 				<img src="/jsmi/images/event.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>
@@ -354,10 +359,10 @@
 	<br class="hidden-sm hidden-md hidden-lg">
 	
 	<!-- 뷰온버튼 -->
-		<div id="viewOn" class="hidden-xs gotoM1">
+		<div id="viewOn" class="hidden-xs gotoM1" onclick="location.href='/jsmi/views/main2/main2.html'">
 			<img src="/jsmi/images/main1/gotomain2.png">
 		</div>
-
+	<br><br><br>
 	<%@ include file="/views/common/footer.jsp"%>
 </body>
 </html>

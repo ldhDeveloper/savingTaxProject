@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.view.server.MemberService;
-import member.view.vo.Member;
+import member.model.server.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberDeleteServlet

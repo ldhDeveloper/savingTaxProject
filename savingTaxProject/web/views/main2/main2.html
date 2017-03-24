@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인2</title>
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js">
+	
+</script>
+<script type="text/javascript">
+	$(function() {
+		$('.have1').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10ccff");
+		})
+		
+		$('.have2').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10ccff");
+		})
+		
+		$('.have3').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10bbff");
+		})
+		
+		$('.have4').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10ddff");
+		})
+		
+		$('.have5').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10bbff");
+		})
+		
+		$('.have6').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10ddff");
+		})
+
+	})
+</script>
+<style type="text/css">
+@font-face {
+	font-family: 'Noto-light';
+	src: url('../../font/NotoSansCJKkr-Light.otf')
+}
+
+.label-color {
+	width:200px;
+	height:50px;
+	position:absolute;
+	background:rgba(0,200,255,1);
+	margin-left:80px;	
+}
+.text-ment {
+	width:700px !important;
+	text-align:right;
+	color:white;
+	display:inline-block !important;
+}
+
+body {
+	background: url("../../images/main2/nycs.jpg") no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: 50% 50%;
+	font-family: 'Open Sans', sans-serif;
+	outline: 0;
+	position: absolute;
+	background-image: url("../../images/main2/nycs.jpg");
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+}
+.middle {
+	width:1200px !important;
+	background:rgba(0, 0, 0, 0);
+	margin-top:25px;
+	
+}
+.menu {
+	width:200px;
+	height:200px;
+	display:inline-block !important;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	float:right;
+	
+}
+.first-menu {
+	margin-top:50px;
+}
+
+@media only screen and (max-width: 991px) and (min-width: 600px) {
+	.menu-item {
+		display: inline-block;
+		width: 32.8%;
+	}
+}
+
+.backColor {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 100%;
+	z-index: -5;
+}
+
+footer {
+	width:100%;
+	height:130px;
+	background:black;
+	color:white;
+	position:fixed;
+	text-align:center;
+	top:90%;
+	padding-top:10px;
+}
+
+.have:hover {
+	background:orange;
+}
+
+</style>
+<script src="../../js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="backColor"></div>
+	<div class="label-color"></div>
+	
+	<div class="middle first-menu">
+		<div class="text-ment">
+		<br>
+			<h3>절세미인 솔루션에 오신 것을 환영합니다.</h3>
+			<h4>Perfect Partner for Your Saving-Tax</h4>
+			<p>We always try to be best developers for your management<br>
+			We are called as 'Beauties for your Saving-Tax<br>
+			we can do your tax calculate more easier</p>
+		</div>
+		<div class="menu" style="background:#10aaff;"></div>
+		<div class="menu have1" style="background:#10ccff;"><img src="/jsmi/images/main2/input.png"></div>
+	</div>
+	<div class="middle">
+		<div class="menu have2" style="background:#10ccff;"><img src="/jsmi/images/main2/employee.png"></div>
+		<div class="menu" style="background:#10aaff;"></div>
+		<div class="menu have3" style="background:#10bbff;"><img src="/jsmi/images/main2/write.png"></div>
+		<div class="menu" style="background:#10ccff;"></div>
+		<div class="menu have4" style="background:#10ddff;"><img src="/jsmi/images/main2/calc.png"></div>
+		<div class="menu" style="background:#10eeff;"></div>
+	</div>	
+	<div class="middle">
+		<div class="menu" style="background:rgba(0,0,0,0);"></div>
+		<div class="menu have5" style="background:#10bbff;"><img src="/jsmi/images/main2/help.png"></div>
+		<div class="menu" style="background:#10ccff;"></div>
+		<div class="menu have6" style="background:#10ddff;"><img src="/jsmi/images/main2/sum.png"></div>
+		<div class="menu" style="background:rgba(0,0,0,0);"></div>
+		<div class="menu" style="background:rgba(0,0,0,0);"></div>
+	</div>
+	
+	<footer>
+
+		법인명 : (주)미인들 | 대표자 : 김진호 | 주소 : 서울시 강남구 역삼동 823-24 남도빌딩 2층, 3층 | <br>
+		 TEL. 02.1234.5678 | FAX. 0303.1234.5678 | 통신판매등록 : 제2017-서울-00001호 | 사업자등록번호 : 111-81-12345 | <br> 
+		 <font color= "orange">COPYRIGHTS (c) (주)미인들 All RIGHT RESERVED.</font>
+	</footer>
+		
+		
+
+</body>
+</html>

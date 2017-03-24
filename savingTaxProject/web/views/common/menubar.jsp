@@ -144,11 +144,11 @@ element.style {
       <div class="middle menu">
          
             <ul height="40" >
-            	<li><a href="/jsmi/views/main1/main.jsp">메인으로</a></li>
+            	<li><a href="/jsmi/main.jsp">메인으로</a></li>
                <li>
-                     <a href="#">절세미인소개</a>
+                     <a href='/jsmi/views/main1/introduce.jsp'>절세미인소개</a>
                      <ul class="sub-menu">
-                           <li><a href="#">절세미인이란?</a></li>
+                           <li><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></li>
                            <li><a href="#">시스템 소개</a></li>
                            <li><a href="#">회사 소개</a></li>
                            <li><a href="#">찾아오시는 길</a></li>
@@ -162,10 +162,10 @@ element.style {
                     </ul>
                </li>
                <li>
-              		 <a href="#">이벤트</a>
+              		 <a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>이벤트</a>
               		 <ul class="sub-menu">
-                           <li><a href="#">진행중인 이벤트</a></li>
-                           <li><a href="#">지난 이벤트</a></li>
+                           <li><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></li>
+                           <li><a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a></li>
                      </ul>
                </li>
                <li><a href="#">비용안내</a></li>
@@ -173,9 +173,9 @@ element.style {
                		<a href="#">고객센터</a>
                		<ul class="sub-menu">
                            <li><a href="/jsmi/views/board/boardListView.jsp">공지사항</a></li>
-                           <li><a href="#">세금 소식</a></li>
-                           <li><a href="#">세무팁</a></li>
-                           <li><a href="#">자주 묻는 질문</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
                            <li><a href="#">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
                     </ul>
@@ -187,71 +187,6 @@ element.style {
    </div>   
    
    
-   
-<!--    <br><br><br><br><br><br><br><br><br><br>
-   데스크탑 메뉴바 
-   <div class="container-fluid" id="bar">
-      <div class="row">
-         <nav class="navbar navbar-inverse hidden-xs" style="bgcolor:#888;">
-            <div class="container-fluid navbar-header">
-               <div class="col-lg-1"></div>
-               <div class="col-lg-10">
-                  <ul class="nav navbar-nav nav-tabs nav-justified">
-                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                           <img src="/jsmi/images/menubar/mb1.png"
-                           class="" style="width: 170px; height: 20px;">
-                        </a>
-                        <ul class="pc dropdown-menu">
-                           <li class="pcver"><a href="#">절세미인이란?</a></li>
-                           <li class="pcver"><a href="#">시스템 소개</a></li>
-                           <li class="pcver"><a href="#">회사 소개</a></li>
-                           <li class="pcver"><a href="#">찾아오시는 길</a></li>
-                        </ul>
-                     </li>
-                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                           <img src="/jsmi/images/menubar/mb2.png"
-                           class="" style="width: 170px; height: 20px;">
-                        </a>
-                        <ul class="pc dropdown-menu">
-                           <li><a href="#">주요 기능 안내</a></li>
-                           <li><a href="#">절세미인의 장점</a></li>
-                        </ul>
-                     </li>
-                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                           <img src="/jsmi/images/menubar/mb3.png"
-                           class="" style="width: 170px; height: 20px;">
-                        </a>
-                        <ul class="pc dropdown-menu">
-                           <li><a href="#">진행중인 이벤트</a></li>
-                           <li><a href="#">지난 이벤트</a></li>
-                        </ul>
-                     </li>
-                     <li><a href="#"><img src="/jsmi/images/menubar/mb4.png"
-                           class="" style="width: 170px; height: 20px;"></a></li>
-                     <li class="dropdown">
-                        <a href="#"class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="/jsmi/images/menubar/mb5.png" class=""
-                           style="width: 170px; height: 20px;">
-                        </a>
-                        <ul class="pc dropdown-menu">
-                           <li><a href="#">공지사항</a></li>
-                           <li><a href="#">세금 소식</a></li>
-                           <li><a href="#">세무팁</a></li>
-                           <li><a href="#">자주 묻는 질문</a></li>
-                           <li><a href="#">궁금한 것이 있어요</a></li>
-                           <li><a href="#">서식 자료실</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </div>
-               <div class="col-lg-1"></div>
-            </div>
-         </nav>
-      </div>
-   </div> -->
 
    <!-- 모바일(xs) 최적화 -->
    
@@ -282,7 +217,7 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">절세미인이란?</a></td><td class="xstd"><a href="#">시스템 소개</a></td></tr>
+                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></td><td class="xstd"><a href="#">시스템 소개</a></td></tr>
                                     <tr><td class="xstd"><a href="#">회사 소개</a></td><td class="xstd"><a href="#">찾아오시는 길</a></td></tr>
                                  </table>
                               </li>
@@ -309,7 +244,14 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">진행중인 이벤트</a></td><td class="xstd"><a href="#">지난 이벤트</a></td></tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a>
+                                    	</td>
+                                    </tr>
                                  </table>
                               </li>
                            </ul>
@@ -328,9 +270,30 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
-                                    <tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
-                                    <tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="#">공지사항</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금소식</a>
+                                    	</td>
+                                    </tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a>
+                                    </td>
+                                    <td class="xstd">
+                                    	<a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a>
+                                    	</td>
+                                    </tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="#">궁금한 것이 있어요</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href="#">서식 자료실</a>
+                                    	</td>
+                                    </tr>
                                  </table>
                               </li>
                            </ul>
