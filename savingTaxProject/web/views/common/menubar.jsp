@@ -173,9 +173,9 @@ element.style {
                		<a href="#">고객센터</a>
                		<ul class="sub-menu">
                            <li><a href="/jsmi/views/board/boardListView.jsp">공지사항</a></li>
-                           <li><a href="#">세금 소식</a></li>
-                           <li><a href="#">세무팁</a></li>
-                           <li><a href="#">자주 묻는 질문</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
                            <li><a href="#">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
                     </ul>
@@ -270,9 +270,30 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">공지사항</a></td><td class="xstd"><a href="#">세금소식</a></td></tr>
-                                    <tr><td class="xstd"><a href="#">세무팁</a></td><td class="xstd"><a href="#">자주 묻는 질문</a></td></tr>
-                                    <tr><td class="xstd"><a href="#">궁금한 것이 있어요</a></td><td class="xstd"><a href="#">서식 자료실</a></td></tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="#">공지사항</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금소식</a>
+                                    	</td>
+                                    </tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a>
+                                    </td>
+                                    <td class="xstd">
+                                    	<a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a>
+                                    	</td>
+                                    </tr>
+                                    <tr>
+                                    	<td class="xstd">
+                                    		<a href="#">궁금한 것이 있어요</a>
+                                    	</td>
+                                    	<td class="xstd">
+                                    		<a href="#">서식 자료실</a>
+                                    	</td>
+                                    </tr>
                                  </table>
                               </li>
                            </ul>

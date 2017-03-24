@@ -10,6 +10,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -48,23 +49,13 @@ h1 {
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 	<%@ include file="../../../common/menubar.jsp"%>
 	
+	<div class="middle">
+			<h1 align="center">세무 소식</h1>
+		</div>
+	
 	<div class="container-fluid hidden-sm hidden-md hidden-lg"></div>
 	
 	<form action="">
-		<br> <br> <br>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-4 col-md-2"></div>
-				<div class="col-xs-4 col-md-8">
-					<h1>세무 소식</h1>
-				</div>
-				<div class="col-xs-4 col-md-2"></div>
-			</div>
-		</div>
-
-		<br> <br> <br>
-
 
 		<div class="row">
 			<div class="col-xs-4 col-md-3"></div>
