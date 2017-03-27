@@ -33,6 +33,10 @@
     		} 		
     	})
     })
+    
+    $(function(){
+    	$("li:eq(2)").attr("class", "active");
+    });
 </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
