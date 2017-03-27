@@ -149,16 +149,15 @@ element.style {
                      <a href='/jsmi/views/main1/introduce.jsp'>절세미인소개</a>
                      <ul class="sub-menu">
                            <li><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></li>
-                           <li><a href="#">시스템 소개</a></li>
-                           <li><a href="#">회사 소개</a></li>
-                           <li><a href="#">찾아오시는 길</a></li>
+                           <li><a href="/jsmi/views/main1/introduce2.jsp">회사 소개</a></li>
+                           <li><a href="/jsmi/views/main1/introduce3.jsp">찾아오시는 길</a></li>
                     </ul>   
                </li>
                <li>
                		<a href="#">주요기능안내</a>
                		<ul class="sub-menu">
-                           <li><a href="#">주요 기능 안내</a></li>
-                           <li><a href="#">절세미인의 장점</a></li>
+                           <li><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></li>
+                           <li><a href="/jsmi/views/main1/function2.jsp">절세미인의 장점</a></li>
                     </ul>
                </li>
                <li>
@@ -200,8 +199,8 @@ element.style {
 
                   <button type="button" class="navbar-toggle" data-toggle="collapse"
                      data-target="#myNavbar">
-                     <span class="icon-bar"></span><span class="icon-bar"></span> <span
-                        class="icon-bar"></span>
+                     <span class="icon-bar"></span><span class="icon-bar"></span> <span>
+                        <class="icon-bar"></span>
                   </button>
 
 
@@ -217,8 +216,10 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></td><td class="xstd"><a href="#">시스템 소개</a></td></tr>
-                                    <tr><td class="xstd"><a href="#">회사 소개</a></td><td class="xstd"><a href="#">찾아오시는 길</a></td></tr>
+                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a>
+                                          </td><td class="xstd"><a href="/jsmi/views/main1/introduce2.jsp">회사 소개</a></td></tr>
+                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce3.jsp' >오시는길
+                                           </a></td></tr>
                                  </table>
                               </li>
                            </ul>
@@ -231,7 +232,7 @@ element.style {
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="#">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
+                                    <tr><td class="xstd"><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
                                  </table>
                               </li>
                            </ul>
@@ -291,7 +292,7 @@ element.style {
                                     		<a href="#">궁금한 것이 있어요</a>
                                     	</td>
                                     	<td class="xstd">
-                                    		<a href="#">서식 자료실</a>
+                                    		<a href="">서식 자료실</a>
                                     	</td>
                                     </tr>
                                  </table>

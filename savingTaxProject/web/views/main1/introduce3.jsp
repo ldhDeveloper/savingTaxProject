@@ -16,7 +16,7 @@
 	
 	<!-- Moblie -->
 	<div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-		<img src="/jsmi/images/main1/introxs.png">
+		<img src="/jsmi/images/main1/introxs3.png">
 		<hr>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>

@@ -40,42 +40,58 @@ h3 {
 	</div>
 	<div class="middle hidden-xs">
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="/jsmi/views/main1/eventDetail.jsp"><img src="/jsmi/images/main1/eventmn2.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn6.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn3.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn4.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn1.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn5.png">
+				<div class="caption">
+					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+				</div> 
+			</a>
+		</div>
+		
+		<div class="thumbnail" style="display:inline-block">
+			<a href="#"><img src="/jsmi/images/main1/eventmn7.png">
+				<div class="caption">
+					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+				</div> 
+			</a>
+		</div>
+		
+		<div class="thumbnail" style="display:inline-block">
+			<a href="#"><img src="/jsmi/images/main1/eventmn8.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
