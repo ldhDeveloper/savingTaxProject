@@ -17,6 +17,7 @@ public class PostService {
 		Connection con = getConnection();
 		List<Post> plist = new PostDao().selectList(con, limit, boardNo, currentPage);
 		close(con);
+		System.out.println("plist service : " + currentPage +", " + boardNo);
 		return plist;
 	}
 

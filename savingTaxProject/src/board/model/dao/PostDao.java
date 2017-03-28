@@ -43,7 +43,8 @@ public PostDao(){
 			p.setPostNo(rset.getInt(2));
 			p.setPostName(rset.getString(3));
 			p.setPostDate(rset.getDate(4));
-			p.setReadCount(rset.getInt(5));
+			p.setpNo(rset.getInt(5));
+			System.out.println("plist dao : " + p);
 			plist.add(p);	
 			}
 		}

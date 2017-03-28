@@ -58,10 +58,6 @@
 }
 
 /* *** 컴퓨터 style *** */
-.middle {
-	font-family: mobius !important;
-}
-
 .table {
 	table-layout: fixed;
 }

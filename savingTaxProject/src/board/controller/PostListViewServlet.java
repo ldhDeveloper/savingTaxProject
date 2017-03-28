@@ -17,56 +17,87 @@ import board.model.vo.Post;
 @WebServlet("/listview")
 public class PostListViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    //   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PostListViewServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	//
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PostListViewServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		int currentPage = 1;
 		int limit = 10;
-		if(request.getParameter("page")!=null){
+		if (request.getParameter("page") != null) {
 			currentPage = Integer.parseInt(request.getParameter("page"));
+			//System.out.println("postList : " + currentPage);
 		}
-		int startPage = ((int)((double)currentPage/ limit +0.9)-1)*limit +1;
+		int startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		PostService pService = new PostService();
 		int listCount = pService.getListCount(boardNo);
-		int maxPage = (int)((double)listCount/limit + 0.9);
-		int endPage = startPage + limit -1;
-		if(maxPage < endPage)
-			endPage= maxPage;
+		int maxPage = (int) ((double) listCount / limit + 0.9);
+		int endPage = startPage + limit - 1;
+		if (maxPage < endPage)
+			endPage = maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		RequestDispatcher view = null;
-		
-		if(plist != null){
-			view = request.getRequestDispatcher("views/board/boardListView.jsp");
+		System.out.println(plist);
+		if (plist != null) {
+
+			switch (boardNo) {
+			case 1:
+				view = request.getRequestDispatcher("views/main1/CSBoard/board/boardListView.jsp");
+				break;
+			case 2:
+				view = request.getRequestDispatcher("views/main1/CSBoard/taxNews/taxNews.jsp");
+				break;
+			case 3:
+				view = request.getRequestDispatcher("views/main1/CSBoard/taxTip/taxTip.jsp");
+				break;
+			case 4:
+				view = request.getRequestDispatcher("views/main1/CSBoard/QnA/QnA.jsp");
+				break;
+			case 5:
+				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				break;
+			case 6:
+				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				break;
+			}
+
+
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("listCount", listCount);
+			request.setAttribute("boardNo", boardNo);
 			view.forward(request, response);
-		}else{
+		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
 			request.setAttribute("message", "게시판 정보 조회 실패");
 			view.forward(request, response);
 		}
 	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -185,16 +185,17 @@ $(function(){
                		<a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">고객센터</a>
                		<ul class="sub-menu">
                            <li><a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">공지사항</a></li>
-                           <li><a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a></li>
-                           <li><a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a></li>
+                           <li>
+                           	<!-- <a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a> -->
+                           	<a href="/jsmi/listview?page=1&boardNo=2">세금 소식</a>
+                           </li>
+                           <li><a href="/jsmi/listview?page=1&boardNo=3">세무팁</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
-                           <li><a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp">궁금한 것이 있어요</a></li>
+                           <li><a href="/jsmi/listview?page=1&boardNo=4">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
-                    </ul>
-               
+                    </ul>             
                </li>
-            </ul>
-         
+            </ul>         
       </div>
    </div>   
    
