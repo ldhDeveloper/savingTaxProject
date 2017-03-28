@@ -7,6 +7,7 @@
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
 	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
 	%>
 	 
 <!DOCTYPE html> 
@@ -83,7 +84,6 @@ button {
 
 }
 .thead{
-
 	background: -webkit-linear-gradient( #ffffff, #b0e0e6);
 	background: -o-linear-gradient( #ffffff, #b0e0e6);
 	background: -moz-linear-gradient( #ffffff, #b0e0e6);
@@ -92,13 +92,16 @@ button {
 	height: 40px;
 	border-radius: 4px;
 	padding-top: 0.8%;
-	font-size: 12pt;
+	font-size: 15pt;
 	box-shadow: 3px 3px 6px #2a82a3;
-
 }
 tbody tr:hover {
 background : #bbbbbb;
-
+}
+th {
+text-align : center;}
+td {
+text-align : center;
 }
 </style>
 
@@ -118,16 +121,17 @@ background : #bbbbbb;
 					<table class="table table-strap">
 						<thead>
 							<tr class="thead">
-								<th>번     호</th>
-								<th colspan = "6">제     목</th>
-								<th>작 성 자</th>
-								<th>작 성 일</th>
-								<th>조 회 수</th>
+								<td>번     호</td>
+								<td colspan = "6">제     목</td>
+								<td>작 성 자</td>
+								<td>작 성 일</td>
+								<td>조 회 수</td>
 							</tr>
 						</thead>
 						<%if(plist != null) for(Post p : plist) {%>
 							<tr><td><%=p.getPostNo() %> </td>
-							<td colspan ="6" ><%=p.getPostName() %></td>
+							<td colspan ="6" > 
+							<a href="/jsmi/postdetail?boardNo=<%=boardNo%>&postNo=<%=p.getPostNo()%>"><%=p.getPostName()%></a></td>
 							<td><%=p.getpNo() %></td>
 							<td><%=p.getPostDate() %></td>
 							<td><%=p.getReadCount() %></td></tr>
@@ -138,6 +142,13 @@ background : #bbbbbb;
 			<input type="submit" class="btn btn-primary" value="검색">		
 			<a href = "/jsmi/views/board/boardDetailView.jsp" class = "btn btn-primary">글쓰기 </a>
 		</div>
+		<%if(currentPage <=1){ %>
+		[이전]
+		<% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+		 <%} for(int p = startPage; p <= endPage; p++){%>
+		 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+		 <%} %>
+		 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
 		</fieldset>
 	</div>
 

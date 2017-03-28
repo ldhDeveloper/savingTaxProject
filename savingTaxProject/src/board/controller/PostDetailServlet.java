@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
+import board.model.service.PostService;
 import board.model.vo.Board;
+import board.model.vo.Post;
 
 /**
  * Servlet implementation class PostDetailServlet
@@ -36,13 +38,13 @@ public class PostDetailServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset = utf-8");
-		int board_no = Integer.parseInt(request.getParameter("board_no"));
-		int post_no = Integer.parseInt(request.getParameter("post_no"));
-		List<Board> bList =  new BoardService().selectPost(board_no, post_no);
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		List<Post> plist =  new PostService().selectPost(boardNo, postNo);
 		RequestDispatcher view = null;
-		if(bList !=null){
-			view = request.getRequestDispatcher("views/board/boardDetailView.jsp");
-			request.setAttribute("bList", bList);
+		if(plist !=null){
+			view = request.getRequestDispatcher("views/board/postDetailView.jsp");
+			request.setAttribute("plist", plist);
 			view.forward(request, response);
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

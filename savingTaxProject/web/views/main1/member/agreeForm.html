@@ -10,6 +10,7 @@
     <title>Join us</title>
 
     <!-- Bootstrap core CSS -->
+    
     <link href="/jsmi/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 body {
@@ -80,6 +81,21 @@ textarea {
 	left:20px;
 }
 </style>
+<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function agreechk(){
+		var chk1 = $('#chk1').is(":checked");
+		var chk2 = $('#chk2').is(":checked");
+		
+		if(chk1 == true && chk2 == true){
+				location.href="/jsmi/views/main1/member/memberjoinForm.jsp";	
+		} else {
+				alert("약관에 동의해야합니다.");
+		}
+		
+		
+	}
+</script>
   </head>
 
 
@@ -354,7 +370,7 @@ textarea {
 이 조례는 공포한 날부터 시행한다
 				
 			</textarea>
-       <input type="checkbox"> 약관에 동의합니다.
+       <input type="checkbox" id="chk1"> 약관에 동의합니다.
         
 		<br><br>
 		
@@ -376,8 +392,8 @@ textarea {
 		
 		
 		</textarea>
-		<input type="checkbox"> 약관에 동의합니다.<br><br>
-        <button type="button" class="btn btn-lg btn-info btn-block" onclick="location.href='/jsmi/views/main1/member/memberjoinForm.jsp'">가입 계속</button>
+		<input type="checkbox" id="chk2"> 약관에 동의합니다.<br><br>
+        <button type="button" class="btn btn-lg btn-info btn-block" onclick="return agreechk();">가입 계속</button>
 
 
       </form>
