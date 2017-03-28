@@ -49,7 +49,27 @@ img {
 	font-size: 12pt;
 	box-shadow: 3px 3px 5px silver;
 }
+
+.fontfamily1{
+}
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('.panel-heading').hover(function(){
+			$(this).css('cursor', 'pointer');
+		})
+		$('.panel-heading').click(function(){
+			var cname = $(this).siblings("div:first").attr("class");
+			if(cname =="panel-collapse collapse"){
+				$(this).siblings().attr("class", "panel-collapse collapse in");
+			} else {
+				$(this).siblings().attr("class", "panel-collapse collapse");
+			}
+			
+		})
+	})
+	
+</script>
 </head>
 
 <body>
@@ -73,8 +93,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse1" class="fontfamily1">처음 방문하였습니다. 어떻게 이용할 수
+							<a
+								href="#collapse1" class="fontfamily1" style="text-decoration: none;">처음 방문하였습니다. 어떻게 이용할 수
 								있을까요?</a>
 						</h4>
 					</div>
@@ -87,8 +107,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse2" class="fontfamily1">세무/회계 지식이 거의 없는데 혼자
+							<a
+								href="#collapse2" class="fontfamily1" style="text-decoration: none;">세무/회계 지식이 거의 없는데 혼자
 								사용할수 있나요?</a>
 						</h4>
 					</div>
@@ -103,8 +123,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse3" class="fontfamily1">사업으로 인해 시간이 부족한데 작성할
+							<a
+								href="#collapse3" class="fontfamily1" style="text-decoration: none;">사업으로 인해 시간이 부족한데 작성할
 								시간이 부족하지 않을까요?</a>
 						</h4>
 					</div>
@@ -118,8 +138,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse4" class="fontfamily1">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
+							<a
+								href="#collapse4" class="fontfamily1" style="text-decoration: none;">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
 						</h4>
 					</div>
 					<div id="collapse4" class="panel-collapse collapse">
@@ -131,10 +151,10 @@ img {
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" data-parent="#accordion">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse5" class="fontfamily1">세무신고 하는게 어려울 것 같은데 하는
+							<a
+								href="#collapse5" class="fontfamily1" style="text-decoration: none;">세무신고 하는게 어려울 것 같은데 하는
 								방법 좀 설명해 주세요.</a>
 						</h4>
 					</div>
@@ -148,8 +168,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse6" class="fontfamily1">장부 작성 시 사용한 증빙들을 세무신고 시
+							<a
+								href="#collapse6" class="fontfamily1" style="text-decoration: none;">장부 작성 시 사용한 증빙들을 세무신고 시
 								세무서에 제출해야 하나요?</a>
 						</h4>
 					</div>
@@ -162,8 +182,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse7" class="fontfamily1">이용요금은 어떻게 되나요?</a>
+							<a
+								href="#collapse7" class="fontfamily1" style="text-decoration: none;">이용요금은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse7" class="panel-collapse collapse">
@@ -176,8 +196,8 @@ img {
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse8" class="fontfamily1">결제 방법은 어떻게 되나요?</a>
+							<a
+								href="#collapse8" class="fontfamily1" style="text-decoration: none;">결제 방법은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse8" class="panel-collapse collapse">

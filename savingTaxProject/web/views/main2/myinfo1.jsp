@@ -8,27 +8,31 @@
 <title>Insert title here</title>
 <style>
 .middle {
-	width: 1200px !important;
+	width: 1400px !important;
 	background: white;
-	max-height: 550px;
+	max-height: 600px;
 }
 
 .top {
-	width: 1200px !important;
-	margin-bottom: -20px;
+	width: 1400px !important;
+	margin-bottom: -25px;
 }
 
 .frame {
-	
+	width:1400px;
+	margin-left:auto;
+	margin-rignt:auto;
+	position:relative;
+	left:-100px;
 }
 
 .section {
-	width: 1000px;
-	min-height: 550px;
-	max-height:550px;
+	width: 1200px;
+	min-height: 600px;
+	max-height:600px;
 	background: white;
 	position: relative;
-	top: -550px;
+	top: -600px;
 	left: 200px;
 	overflow:scroll;
 	padding-left:20px;
@@ -37,6 +41,8 @@
 
 .side {
 	width: 200px;
+	position:
+	
 }
 .tabmenu {
 	text-align:center;
@@ -66,13 +72,13 @@
 			<%@ include file="/views/common/slidebar.jsp"%>
 		</div>
 		<div class="section">
-
+		<br>
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a class="tabmenu active" href="/jsmi/views/main2/inputinfo.jsp">회원정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo3.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu active" href="/jsmi/views/main2/myinfo1.jsp">회원정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo2.jsp">사업장 정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
 			</div>
@@ -223,5 +229,7 @@
 		</div>
 
 	</div>
+	<br>
+	<%@ include file="/views/common/main2footer.jsp" %>
 </body>
 </html>
