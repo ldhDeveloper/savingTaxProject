@@ -37,10 +37,22 @@ a:hover {
 	text-decoration:none;
 }
 
+
 img {
 	margin-bottom:7px;
+
+.selected {
+	background:#1080ff;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('.side > a').click(function(){
+			$('.side a').attr('class', 'block');
+			$(this).attr('class', 'block selected');
+		})
+	})
+</script>
 </head>
 
 <body>
