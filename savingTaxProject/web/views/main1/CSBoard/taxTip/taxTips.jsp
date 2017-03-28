@@ -59,6 +59,8 @@
 	font-size: 7pt;
 }
 
+
+
 #stext {
 	width: 70%;
 	height: 25px;
@@ -85,6 +87,7 @@
 	border-radius: 3px;
 }
 
+
 .thmd {
 	background: -webkit-linear-gradient(aliceblue, white);
 	background: -o-linear-gradient(aliceblue, white);
@@ -98,7 +101,7 @@
 }
 
 .tdmd {
-	padding: 8px;
+	padding: 50px;
 	text-align: center;
 	border-bottom: 1px solid #ddd;
 	color: dimgray;
@@ -175,12 +178,16 @@ label {
 #ttitle {
 	width: 43%;
 }
+
+.theadmd {
+	 border-bottom: 2px solid #2a82a3;;
+}
 </style>
 
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	<!-- http://127.0.0.1:7660/jsmi/views/main1/CSBoard/taxTip/taxTips.jsp -->
 
 	<%@ include file="../../../common/menubar.jsp"%>
 
@@ -202,32 +209,15 @@ label {
 
 		<br> <br> <br>
 
-		<div id="searchdiv" align="center">
-			<label id="searchLable">SEARCH</label>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
-				id="searchTitle" placeholder="검색할 제목을 입력하세요."> &nbsp;&nbsp;
-			<input type="submit" id="submitBtn" value="검색">
-		</div>
-
-		<br> <br> <br> <br>
-
-		<div id="tlist">
-			<label id="tno">&nbsp;&nbsp;&nbsp;번호&nbsp;&nbsp;&nbsp;&nbsp;|</label>
-			<label id="ttitle">&nbsp;&nbsp;&nbsp;제목&nbsp;&nbsp;&nbsp;</label> <label
-				id="tdate">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일&nbsp;&nbsp;</label>
-		</div>
 
 		<div class="tableStart">
 			<table class="tablemd">
-				<!-- <thead class="theadmd font-family-md-2">
+				<thead class="theadmd font-family-md-2">
 					<tr>
-						<th class="tno thmd thmdl">번호</th>
-						<th class="ttitle thmd thmdm">제목</th>
-						<th class="tdate thmd thmdr">작성일</th>
+						<th colspan="3"></th>
+
 					</tr>
-				</thead> -->
+				</thead>
 
 				<tbody class="tbodymd font-family-md-3">
 					<tr>
