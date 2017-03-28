@@ -77,16 +77,16 @@
 }
 
 #clist{
-	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
-	background: -o-linear-gradient(#ffffff, #b0e0e6);
-	background: -moz-linear-gradient(#ffffff, #b0e0e6);
-	background: linear-gradient(#ffffff, #b0e0e6);
+	background: -webkit-linear-gradient(left, #ffffff, #b0e0e6);
+	background: -o-linear-gradient(left, #ffffff, #b0e0e6);
+	background: -moz-linear-gradient(left, #ffffff, #b0e0e6);
+	background: linear-gradient(left, #ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
 	border-radius: 4px;
 	padding-top : 0.5%;
 	font-size: 14pt;
-	box-shadow : 3px 3px 5px silver;
+	box-shadow: 2px 2px 6px #2a82a3;
 }
 
 #ctitle {
@@ -124,7 +124,77 @@
 	align: center;
 }
 
+.Qtitle {
+	font-family: computer !important;
+	border-bottom : 1px solid #ddd;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
 
+.Qlist {			
+	border-bottom : 1px solid #ddd;
+	padding : 1.5%;	
+	text-align: center;
+} 
+
+.Qright {
+	border-right: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	text-align: center;
+	font-size: 10pt;
+}
+
+.Qlistt {
+	border-right: 1px solid #ddd;
+	font-family: computer !important;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
+.Qreply {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	border-top : 1px solid #ddd;
+	padding : 2.5%;
+	font-size: 12pt;
+	heigth: 10%;
+	color: #2a82a3;
+}
+
+.QreplyC {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 10pt;
+	color: black;
+}
+
+#submitBtn2 {
+	border: none;
+	border-radius: 3px;
+	border-color: #d58512;
+	color: white;
+	width: 5%;
+    height: 25px;
+	font-family: Binggrae !important;
+	background-color : #ec971f;
+}
+
+#submitBtn1 {
+	border: none;
+	border-radius: 3px;
+	border-color: #2a82a3;
+	color: white;
+	width: 5%;
+    height: 25px;
+	font-family: Binggrae !important;
+	background-color : #2a82a3;	
+}
+
+.Qcount{
+	font-family: NotoSansCJKkr-Ligth !important;
+	text-align: center;
+	font-size: 10pt;
+}
 
 </style>
 
@@ -133,29 +203,32 @@
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
 	<br>
 
 	<!-- 컴퓨터용 -->
+	
+	
+	
 	<div class="middle hidden-xs">
 
 
 		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/tip.png"><br><br>
-				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
+				<img src="/jsmi/images/QnA.png"><br><br>
+				절세미인에게 세무와 관련된<label id="h3title">무엇이든 질문하십시오.</label>
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
-				확인하실 수 있습니다.
+			<h4 style="color: #a9a9a9" align="center">성실하고 정확하게
+				답변해드릴게요.
 			</h4>
 		</div>
 
 		<br> <br> <br>
 
-		<div id="clist">
+		<!-- <div id="clist">
 			<label id="ctitle">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				제목
@@ -163,7 +236,7 @@
 			</label> 
 			<label id=ctitlec>&nbsp;&nbsp;
 				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div>
+		</div> -->
 		
 		<h3></h3>
 
@@ -171,42 +244,79 @@
 			<table class="tablemd">
 				<tbody class="tbodymd font-family-md-3">
 					<tr>
-						<td class="tdmd">
-							<label id=cdate>작성일
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</label>
-							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</label>
-							<h3></h3>
+						<td colspan="8" class="Qtitle">
+							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 여기에 제목을 입력하세요</label>
+						</td> 
+					</tr>
+				
+					<tr>
+						<td class="Qlist Qright Qlistt">
+							번호
+						</td>
+						
+						<td class="Qright">
+							여기에 번호 값 넣기
+						</td>
+						
+						<td class="Qlistt Qright">
+							작성일자
+						</td>
+						
+						<td class="Qright">
+							여기에 작성일자 값 넣기
+						</td>
+						
+						<td class="Qlistt Qright">
+							작성자
+						</td>
+						
+						<td class="Qright">
+							여기에 작성자 값 넣기
+						</td>
+						
+						<td class="Qlistt Qright">
+							조회수
+						</td>
+						
+						<td class="Qcount">
+							여기에 조회수 값 넣기
 						</td> 
 					</tr>
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
-						<td class="tdmd" id="ccontents">
+						<td colspan="8" class="tdmd" id="ccontents">
 							<h3></h3>
 							내용값이 들어가는 부분입니다. 삭제 후 사용!<br> <br>
 							<img src="/jsmi/images/수현찡.jpg">
 							<h3></h3>
 						</td>
 					</tr>
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
+					
+					<tr>
+						<td colspan="8" class="Qreply">
+							댓글 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 여기에 댓글 내용을 입력하세요</label>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 
+		<br>
+		<form action="">
+			<div align="right">
+				<input type="submit" id="submitBtn1" value="등록">&nbsp;&nbsp;
+				<input type="button" id="submitBtn2" value="취소">&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+		</form>
+		
+		<script type="text/javascript">
+
+		</script>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -280,6 +390,6 @@
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

@@ -47,7 +47,7 @@ h1 {
 
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 	
 	<div class="middle">
 			<h1 align="center">세무 소식</h1>
@@ -113,6 +113,6 @@ h1 {
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br> <br>
 	</form>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

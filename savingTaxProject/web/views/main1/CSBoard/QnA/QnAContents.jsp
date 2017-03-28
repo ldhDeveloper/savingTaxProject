@@ -105,6 +105,13 @@
 	font-family: computer !important;
 	color : #2a82a3;
 	font-size: 15px;
+	width: 15%;
+}
+
+#cwriter {
+	font-family: computer !important;
+	color : #2a82a3;
+	font-size: 15px;
 }
 
 #cdatec {
@@ -124,7 +131,55 @@
 	align: center;
 }
 
+.thmd {
+	border : 1px solid #ddd;
+	padding-top: 1.5%;
+	padding-left: 2%;
+	
+}
 
+#thmd {
+	border-collapse: collapse;
+	border : 1px solid #ddd;
+	text-align: center;
+}
+
+.tr {
+	
+}
+
+table {
+	width: 100%;
+}
+
+.tdmini1 {
+	border-top : 1px solid #2a82a3;
+	border-bottom : 1px solid #ddd;
+	padding-top : 1.5%;
+	padding-left : 2%;
+}
+
+.tablemini{
+	width: 100%;
+	font-family: computer !important;
+}
+
+.tdmini2 {
+	border-bottom : 1px solid #2a82a3;
+	padding-top : 1.5%;
+	padding-left : 2%;
+	
+	
+}
+
+#wwrite{
+	color : #2a82a3;
+}
+
+#tw {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size : 9pt;
+}
 
 </style>
 
@@ -133,7 +188,7 @@
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
@@ -168,22 +223,23 @@
 		<h3></h3>
 
 		<div class="tableStart">
-			<table class="tablemd">
-				<tbody class="tbodymd font-family-md-3">
-					<tr>
-						<td class="tdmd">
-							<label id=cdate>작성일
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</label>
-							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</label>
-							<h3></h3>
-						</td> 
+			<table>
+				<thead>
+					<tr class="thmd">
+						<th id="thmd">작성일</th>
+						<th id="thmd">2017-03-27</th>
+						<th id="thmd">작성자</th>
+						<th id="thmd">김진항</th>
+						<th id="thmd">조회수</th>
+						<th id="thmd">100</th>
 					</tr>
+				</thead>
+
+				<tbody class="tablemd tbodymd font-family-md-3">
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
-						<td class="tdmd" id="ccontents">
+						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
 							내용값이 들어가는 부분입니다. 삭제 후 사용!<br> <br>
 							<img src="/jsmi/images/수현찡.jpg">
@@ -192,6 +248,26 @@
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
+			</table>
+		</div>
+		
+		<br><br><br>
+		
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1">
+						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
+					<td>
+				</tr>
+				
+				<tr>
+					<td class="tdmini2">
+						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
+					<td>
+				</tr>
 			</table>
 		</div>
 
@@ -280,6 +356,6 @@
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

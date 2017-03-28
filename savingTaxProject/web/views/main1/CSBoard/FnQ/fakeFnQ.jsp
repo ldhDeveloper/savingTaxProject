@@ -36,7 +36,7 @@ img {
 </head>
 
 <body>
-	<%@ include file="/views/common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<br>
 	<br>
 	<br>
@@ -179,6 +179,6 @@ img {
 	<br>
 
 
-	<%@ include file="/views/common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

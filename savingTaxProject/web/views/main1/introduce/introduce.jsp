@@ -20,7 +20,7 @@
 </head>
 <body>
 
-	<%@ include file="/views/common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 	
 	<div class="middle hidden-xs">
 		<img src="/jsmi/images/main1/intro.png">
@@ -37,6 +37,6 @@
    </div>
 	<hr>
 
-	<%@ include file="/views/common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

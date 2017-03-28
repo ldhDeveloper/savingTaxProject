@@ -93,23 +93,23 @@
 </style>
 </head>
 <body style="padding-top:0px">
-	<%@ include file="/views/common/main2back.jsp"%>
+	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top" style="margin-top:50px">
-		<%@ include file="/views/common/fullbar.jsp"%>
+		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
 
 	<div class="middle frame">
 		<div class="side">
-			<%@ include file="/views/common/slidebar.jsp"%>
+			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<div class="section">
 		<br>
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a class="tabmenu lactive" href="/jsmi/views/main2/myinfo1.jsp">회원정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo3.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu lactive" href="/jsmi/views/main2/myinfo/myinfo1.jsp">회원정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
 			</div>
@@ -261,6 +261,6 @@
 
 	</div>
 	<br>
-	<%@ include file="/views/common/main2footer.jsp" %>
+	<%@ include file="/views/common/main2/main2footer.jsp" %>
 </body>
 </html>

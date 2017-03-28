@@ -113,7 +113,9 @@
 }
 
 .tdmd{
-	padding: 2%;
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-bottom: 0.7%;
 	border-bottom: 1px solid #ddd;
 	width: 100%;
 	color: dimgray;
@@ -122,6 +124,35 @@
 #ccontents {
 	text-align: center;
 	align: center;
+}
+
+.tdmini1 {
+	border-top : 1px solid #2a82a3;
+	border-bottom : 1px solid #ddd;
+	padding-top : 1.5%;
+	padding-left : 2%;
+}
+
+.tablemini{
+	width: 100%;
+	font-family: computer !important;
+}
+
+.tdmini2 {
+	border-bottom : 1px solid #2a82a3;
+	padding-top : 1.5%;
+	padding-left : 2%;
+	
+	
+}
+
+#wwrite{
+	color : #2a82a3;
+}
+
+#tw {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size : 9pt;
 }
 
 
@@ -133,7 +164,7 @@
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
@@ -164,8 +195,6 @@
 			<label id=ctitlec>&nbsp;&nbsp;
 				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
 		</div>
-		
-		<h3></h3>
 
 		<div class="tableStart">
 			<table class="tablemd">
@@ -177,7 +206,6 @@
 							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</label>
-							<h3></h3>
 						</td> 
 					</tr>
 					
@@ -193,6 +221,28 @@
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
+			</table>
+		</div>
+		
+				<br><br><br>
+
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1"><label id="wwrite">이전글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
+
+				<tr>
+					<td class="tdmini2"><label id="wwrite">다음글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
 			</table>
 		</div>
 
@@ -269,6 +319,6 @@
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

@@ -68,14 +68,14 @@
 
 </head>
 <body>
-	<%@ include file="/views/common/main2back.jsp"%>
+	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top">
-		<%@ include file="/views/common/fullbar.jsp"%>
+		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
 
 	<div class="middle frame">
 		<div class="side">
-			<%@ include file="/views/common/slidebar.jsp"%>
+			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<div class="section">
 			<br>
@@ -328,6 +328,6 @@
 		</div>
 		</div>
 		<br>
-		<%@ include file="/views/common/main2footer.jsp"%>
+		<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
 </html>

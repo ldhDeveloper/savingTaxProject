@@ -77,16 +77,16 @@
 }
 
 #clist{
-	background: -webkit-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -o-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -moz-linear-gradient(left, #ffffff, #b0e0e6);
-	background: linear-gradient(left, #ffffff, #b0e0e6);
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
 	border-radius: 4px;
 	padding-top : 0.5%;
 	font-size: 14pt;
-	box-shadow: 2px 2px 6px #2a82a3;
+	box-shadow : 3px 3px 5px silver;
 }
 
 #ctitle {
@@ -105,13 +105,6 @@
 	font-family: computer !important;
 	color : #2a82a3;
 	font-size: 15px;
-	width: 15%;
-}
-
-#cwriter {
-	font-family: computer !important;
-	color : #2a82a3;
-	font-size: 15px;
 }
 
 #cdatec {
@@ -120,7 +113,9 @@
 }
 
 .tdmd{
-	padding: 2%;
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-bottom: 0.7%;
 	border-bottom: 1px solid #ddd;
 	width: 100%;
 	color: dimgray;
@@ -131,25 +126,36 @@
 	align: center;
 }
 
-.thmd {
-	border : 1px solid #ddd;
-	heigth: 20px;
-	
+.tdmini1 {
+	border-top : 1px solid #2a82a3;
+	border-bottom : 1px solid #ddd;
+	padding-top : 1.5%;
+	padding-left : 2%;
 }
 
-#thmd {
-	border-collapse: collapse;
-	border : 1px solid #ddd;
-	text-align: center;
-}
-
-.tr {
-	
-}
-
-table {
+.tablemini{
 	width: 100%;
+	font-family: computer !important;
 }
+
+.tdmini2 {
+	border-bottom : 1px solid #2a82a3;
+	padding-top : 1.5%;
+	padding-left : 2%;
+	
+	
+}
+
+#wwrite{
+	color : #2a82a3;
+}
+
+#tw {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size : 9pt;
+}
+
+
 
 </style>
 
@@ -158,7 +164,7 @@ table {
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
@@ -170,7 +176,7 @@ table {
 
 		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/QnA.png"><br><br>
+				<img src="/jsmi/images/tip.png"><br><br>
 				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
@@ -189,27 +195,23 @@ table {
 			<label id=ctitlec>&nbsp;&nbsp;
 				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
 		</div>
-		
-		<h3></h3>
 
 		<div class="tableStart">
-			<table>
-				<thead>
-					<tr class="thmd">
-						<th id="thmd">작성일</th>
-						<th id="thmd">2017-03-27</th>
-						<th id="thmd">작성자</th>
-						<th id="thmd">김진항</th>
-						<th id="thmd">조회수</th>
-						<th id="thmd">100</th>
+			<table class="tablemd">
+				<tbody class="tbodymd font-family-md-3">
+					<tr>
+						<td class="tdmd">
+							<label id=cdate>작성일
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</label>
+							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</label>
+						</td> 
 					</tr>
-				</thead>
-
-				<tbody class="tablemd tbodymd font-family-md-3">
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
-						<td colspan="6" class="tdmd" id="ccontents">
+						<td class="tdmd" id="ccontents">
 							<h3></h3>
 							내용값이 들어가는 부분입니다. 삭제 후 사용!<br> <br>
 							<img src="/jsmi/images/수현찡.jpg">
@@ -218,6 +220,28 @@ table {
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
+			</table>
+		</div>
+		
+		<br><br><br>
+
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1"><label id="wwrite">이전글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
+
+				<tr>
+					<td class="tdmini2"><label id="wwrite">다음글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
 			</table>
 		</div>
 
@@ -306,6 +330,6 @@ table {
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

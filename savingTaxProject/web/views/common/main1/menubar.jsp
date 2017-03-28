@@ -148,7 +148,7 @@ $(function(){
       <table width="970px">
          <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
          <td width="70"><button id="logout" class="btn btn-warning btn-sm"
-               onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
+               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
          <td></tr>
       </table>
    </div>
@@ -159,18 +159,18 @@ $(function(){
             <ul class="menuList" height="40" >
             	<li><a href="/jsmi/main.jsp">메인으로</a></li>
                <li>
-                     <a href='/jsmi/views/main1/introduce.jsp'>절세미인소개</a>
+                     <a href='/jsmi/views/main1/introduce/introduce.jsp'>절세미인소개</a>
                      <ul class="sub-menu">
-                           <li><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a></li>
-                           <li><a href="/jsmi/views/main1/introduce2.jsp">회사 소개</a></li>
-                           <li><a href="/jsmi/views/main1/introduce3.jsp">찾아오시는 길</a></li>
+                           <li><a href='/jsmi/views/main1/introduce/introduce.jsp'>절세미인이란?</a></li>
+                           <li><a href="/jsmi/views/main1/introduce/introduce2.jsp">회사 소개</a></li>
+                           <li><a href="/jsmi/views/main1/introduce/introduce3.jsp">찾아오시는 길</a></li>
                     </ul>   
                </li>
                <li>
-               		<a href="#">주요기능안내</a>
+               		<a href="/jsmi/views/main1/function/function.jsp">주요기능안내</a>
                		<ul class="sub-menu">
-                           <li><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></li>
-                           <li><a href="/jsmi/views/main1/function2.jsp">절세미인의 장점</a></li>
+                           <li><a href="/jsmi/views/main1/function/function.jsp">주요 기능 안내</a></li>
+                           <li><a href="/jsmi/views/main1/function/function2.jsp">절세미인의 장점</a></li>
                     </ul>
                </li>
                <li>
@@ -182,13 +182,13 @@ $(function(){
                </li>
                <li><a href="#">비용안내</a></li>
                <li>
-               		<a href="#">고객센터</a>
+               		<a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">고객센터</a>
                		<ul class="sub-menu">
-                           <li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">공지사항</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
-                           <li><a href="#">궁금한 것이 있어요</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
                     </ul>
                
@@ -229,9 +229,9 @@ $(function(){
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce.jsp'>절세미인이란?</a>
-                                          </td><td class="xstd"><a href="/jsmi/views/main1/introduce2.jsp">회사 소개</a></td></tr>
-                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce3.jsp' >오시는길
+                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce/introduce.jsp'>절세미인이란?</a>
+                                          </td><td class="xstd"><a href="/jsmi/views/main1/introduce/introduce2.jsp">회사 소개</a></td></tr>
+                                    <tr><td class="xstd"><a href='/jsmi/views/main1/introduce/introduce3.jsp' >오시는길
                                            </a></td></tr>
                                  </table>
                               </li>
@@ -245,7 +245,8 @@ $(function(){
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
+                                    <tr><td class="xstd"><a href="/jsmi/views/main1/function/function.jsp">주요 기능 안내</a></td>
+                                    <td class="xstd"><a href="/jsmi/views/main1/function/function2.jsp">절세미인의 장점</a></td></tr>
                                  </table>
                               </li>
                            </ul>
@@ -286,7 +287,7 @@ $(function(){
                                  <table width="100%">
                                     <tr>
                                     	<td class="xstd">
-                                    		<a href="#">공지사항</a>
+                                    		<a href="/jsmi/views/main1/CSBoaard/board/boardListView.jsp">공지사항</a>
                                     	</td>
                                     	<td class="xstd">
                                     		<a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금소식</a>
@@ -302,7 +303,7 @@ $(function(){
                                     </tr>
                                     <tr>
                                     	<td class="xstd">
-                                    		<a href="#">궁금한 것이 있어요</a>
+                                    		<a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp">궁금한 것이 있어요</a>
                                     	</td>
                                     	<td class="xstd">
                                     		<a href="">서식 자료실</a>
@@ -331,7 +332,7 @@ $(function(){
          <div class="col-xs-2"></div>
          <div class="col-xs-1">
             <button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout"
-               onclick="location.href='/jsmi/index.jsp'">로그아웃</button>
+               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
          </div>
          <div class="col-xs-1"></div>
       </div>

@@ -7,7 +7,7 @@
 <title>주요기능안내</title>
 </head>
 <body>
-<%@ include  file="/views/common/menubar.jsp" %>
+<%@ include  file="/views/common/main1/menubar.jsp" %>
  <!-- PC -->
 	<div class="middle hidden-xs">
 		<img src="/jsmi/images/main1/majorfx.png">
@@ -19,7 +19,7 @@
 		<img src="/jsmi/images/main1/majorfx.png">
 		<hr>
 	</div>
-	<%@ include file="/views/common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 
 </body>
 </html>

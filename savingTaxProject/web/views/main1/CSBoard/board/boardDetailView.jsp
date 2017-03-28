@@ -41,7 +41,7 @@ opacity : 0.5;
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<br><br><br>
 	<div class="tbody">
 		<img src= "/jsmi/images/main1/notice.png">

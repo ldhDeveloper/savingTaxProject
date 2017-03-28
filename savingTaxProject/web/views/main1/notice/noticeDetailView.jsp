@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="/views/common//main1/menubar.jsp" %>
 	
 	<div class="container">
 		<div class="row">
@@ -98,6 +98,6 @@
 	<br>
 	<br>
 
-	<%@ include file="../common/footer.html" %>
+	<%@ include file="/views/common/main1/footer.jsp" %>
 </body>
 </html>

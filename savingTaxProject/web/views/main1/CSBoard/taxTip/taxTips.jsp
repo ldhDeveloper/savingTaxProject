@@ -189,7 +189,7 @@ label {
 <body>
 	<!-- http://127.0.0.1:7660/jsmi/views/main1/CSBoard/taxTip/taxTips.jsp -->
 
-	<%@ include file="../../../common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
@@ -321,6 +321,6 @@ label {
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

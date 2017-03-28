@@ -41,7 +41,7 @@
 
 .menu-btn {
 	width: 300px;
-	height:300px;
+	height: 300px;
 	padding-top: 95px;
 	padding-bottom: 95px;
 	display: inline;
@@ -50,13 +50,13 @@
 .menu-wrap1 {
 	padding-left: 70px;
 	padding-top: 50px;
-	
 }
+
 .menu-wrap2 {
 	padding-left: 70px;
 	padding-bottom: 80px;
-	position:relative;
-	top:7px;
+	position: relative;
+	top: 7px;
 }
 
 #viewOn {
@@ -66,26 +66,27 @@
 	left: 85%;
 	top: 50%;
 	z-index: 1;
-	background:white;
-	border-radius:130px;
-	padding-top:auto;
-	padding-bottom:auto;
-	padding-left:auto;
-	padding-right:auto;
+	background: white;
+	border-radius: 130px;
+	padding-top: auto;
+	padding-bottom: auto;
+	padding-left: auto;
+	padding-right: auto;
 }
 
 #viewOn:hover {
-	background:orange;
+	background: orange;
 }
 
 #viewOn img {
-	position:relative;
-	top:15px;
-	left:15px;
+	position: relative;
+	top: 15px;
+	left: 15px;
 }
+
 .menu-img {
-	margin-right:auto;
-	margin-left:auto;
+	margin-right: auto;
+	margin-left: auto;
 }
 </style>
 <script type="text/javascript">
@@ -123,7 +124,7 @@
 
 	$(function() {
 		$('.gotoM1').on("click", function() {
-			location.href = "/jsmi/views/main2/main2.html";
+			location.href = "/jsmi/views/main2/menu/main2.html";
 		}).mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
@@ -140,11 +141,11 @@
 				<td>
 				<td width="70">
 					<button class="btn btn-primary btn-sm"
-						onclick="location.href='/jsmi/views/main1/agreeForm.html'">회원가입</button>
+						onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
 				<td>
 				<td width="70">
 					<button class="btn btn-warning btn-sm"
-						onclick="location.href='/jsmi/views/main1/loginForm.html'">로그인</button>
+						onclick="location.href='/jsmi/views/main1/member/loginForm.html'">로그인</button>
 				<td>
 			</tr>
 		</table>
@@ -203,13 +204,14 @@
 
 	<div class="middle menu-wrap1 hidden-xs">
 		<div class="menu-btn" style="background: #10aaff;" id="border1"
-			onclick="location.href='/jsmi/views/main1/introduce.jsp'">
+			onclick="location.href='/jsmi/views/main1/introduce/introduce.jsp'">
 			<img src="/jsmi/images/info.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #105080;" id="border2">
 			<img src="/jsmi/images/1.png" class="menu-img">
 		</div>
-		<div class="menu-btn" style="background: #10aaff;" id="border3">
+		<div class="menu-btn" style="background: #10aaff;" id="border3"
+			onclick="location.href='/jsmi/views/main1/function/function.jsp'">
 			<img src="/jsmi/images/function.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border4"
@@ -224,7 +226,8 @@
 		<div class="menu-btn" style="background: #10aaff;" id="border6">
 			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
-		<div class="menu-btn" style="background: #10aaff;" id="border7">
+		<div class="menu-btn" style="background: #10aaff;" id="border7"
+			onclick="location.href='/jsmi/views/main1/CSBoard/board/boardListView.jsp'">
 			<img src="/jsmi/images/helpdesk1.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #105080;" id="border8">
@@ -245,9 +248,9 @@
 
 			<div class="col-xs-6">
 				<button class="btn btn-warning btn-xs"
-					onclick="location.href='/jsmi/views/main1/loginForm.html'">로그인</button>
+					onclick="location.href='/jsmi/views/main1/member/loginForm.jsp'">로그인</button>
 				<button class="btn btn-primary btn-xs"
-					onclick="location.href='/jsmi/views/main1/agreeForm.html'">회원가입</button>
+					onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
 			</div>
 			<div class="col-xs-0"></div>
 		</div>
@@ -309,15 +312,12 @@
 	</div>
 	<hr class="hidden-sm hidden-md hidden-lg">
 
-	<!-- 뷰온버튼xs -->
-	<!-- <div id="viewOn2" class="hidden-md hidden-lg hidden-sm gotoM1">
-		<img src="/jsmi/images/main1/gotomain.png">
-	</div> -->
+
 	<div class="container-fluid hidden-sm hidden-md hidden-lg mainMenu">
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-4" style="background: #10aaff;" id="border1"
-				onclick="location.href='/jsmi/views/main1/introduce.jsp'">
+				onclick="location.href='/jsmi/views/main1/introduce/introduce.jsp'">
 				<img src="/jsmi/images/info.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #105080;" id="border2">
@@ -328,7 +328,8 @@
 
 		<div class="row">
 			<div class="col-xs-2"></div>
-			<div class="col-xs-4" style="background: #10aaff;" id="border3">
+			<div class="col-xs-4" style="background: #10aaff;" id="border3"
+				onclick="location.href='/jsmi/views/main1/function/function.jsp'">
 				<img src="/jsmi/images/function.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #10aaff;" id="border4"
@@ -351,7 +352,8 @@
 
 		<div class="row">
 			<div class="col-xs-2"></div>
-			<div class="col-xs-4" style="background: #10aaff;" id="border7">
+			<div class="col-xs-4" style="background: #10aaff;" id="border7"
+				onclick="location.href='/jsmi/views/main1/CSBoard/board/boardListView.jsp'">
 				<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #105080;" id="border8">
@@ -361,12 +363,15 @@
 		</div>
 	</div>
 	<br class="hidden-sm hidden-md hidden-lg">
-	
+
 	<!-- 뷰온버튼 -->
-		<div id="viewOn" class="hidden-xs gotoM1" onclick="location.href='/jsmi/views/main2/main2.html'">
-			<img src="/jsmi/images/main1/gotomain2.png">
-		</div>
-	<br><br><br>
-	<%@ include file="/views/common/footer.jsp"%>
+	<div id="viewOn" class="hidden-xs gotoM1"
+		onclick="location.href='/jsmi/views/main2/menu/main2.html'">
+		<img src="/jsmi/images/main1/gotomain2.png">
+	</div>
+	<br>
+	<br>
+	<br>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

@@ -105,7 +105,7 @@ background : #bbbbbb;
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp" %><br><br><br>
+	<%@ include file="/views/common/main1/menubar.jsp" %><br><br><br>
 
 
 	<center><img src = "/jsmi/images/main1/notice.png"></center>
@@ -159,6 +159,6 @@ background : #bbbbbb;
 		
 
 
-	<%@ include file="../common/footer.jsp" %>
+	<%@ include file="/views/common/main1/footer.jsp" %>
 </body>
 </html>

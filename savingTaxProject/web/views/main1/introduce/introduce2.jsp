@@ -7,7 +7,7 @@
 <title>회사소개페이지</title>
 </head>
 <body>
-	<%@ include file="/views/common/menubar.jsp"%>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<!-- PC -->
 	<div class="middle hidden-xs">
 		<img src="/jsmi/images/main1/intro2.png">
@@ -19,6 +19,6 @@
 		<img src="/jsmi/images/main1/introxs2.png">
 		<hr>
 	</div>
-	<%@ include file="/views/common/footer.jsp"%>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>
