@@ -98,10 +98,12 @@
 
 @font-face{
 	font-family:ssangmundong; 
-
-
 	src: url('/font/ssangmunDong.ttf');
+}
 
+@font-face {
+	font-familt: kamizom;
+	src: url('/kamizom.ttf');
 }
 
 

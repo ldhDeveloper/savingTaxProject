@@ -323,6 +323,5 @@ element.style {
          <div class="col-xs-1"></div>
       </div>
    </div>
-
 </body>
 </html>

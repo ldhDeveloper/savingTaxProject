@@ -56,7 +56,7 @@
 							</tr>
 							
 							<tr class="danger">
-								<td>첨부파일</td>
+								<td>작 성 자</td>
 								<td></td>
 							</tr>
 							

@@ -20,10 +20,6 @@
 	font-family: mobius !important;
 }
 
-.fontfamily1 {
-	font-family: mobius !important;
-}
-
 .fontfamily2 {
 	font-family: google !important;
 }
@@ -35,19 +31,6 @@ img {
 
 .container {
     width: 100%;
-}
-
-.panel-heading {
-	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
-	background: -o-linear-gradient(#ffffff, #b0e0e6);
-	background: -moz-linear-gradient(#ffffff, #b0e0e6);
-	background: linear-gradient(#ffffff, #b0e0e6);
-	border: solid 1px #2a82a3;
-	height: 40px;
-	border-radius: 4px;
-	padding-top: 0.8%;
-	font-size: 12pt;
-	box-shadow: 3px 3px 5px silver;
 }
 </style>
 </head>
@@ -63,18 +46,18 @@ img {
 		<div class="middle fontfamily" align="center">
 			<img src="/jsmi/images/main1/FnQ.png">
 			<h3>절세미인을 처음 이용하시나요?</h3>
-			<h4 style="color: #a9a9a9">처음 오신 분들이 궁금해 하는 점을 모아놨습니다.</h4>
+			<h4>처음 오신 분들이 궁금해 하는 점을 모아놨습니다.</h4>
 		</div>
 
 		<br> <br>
 
-		<div class="middle container">
+		<div class="container">
 			<div class="panel-group" id="accordion">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse1" class="fontfamily1">처음 방문하였습니다. 어떻게 이용할 수
+								href="#collapse1" class="fontfamily">처음 방문하였습니다. 어떻게 이용할 수
 								있을까요?</a>
 						</h4>
 					</div>
@@ -88,7 +71,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse2" class="fontfamily1">세무/회계 지식이 거의 없는데 혼자
+								href="#collapse2" class="fontfamily">세무/회계 지식이 거의 없는데 혼자
 								사용할수 있나요?</a>
 						</h4>
 					</div>
@@ -104,7 +87,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse3" class="fontfamily1">사업으로 인해 시간이 부족한데 작성할
+								href="#collapse3" class="fontfamily">사업으로 인해 시간이 부족한데 작성할
 								시간이 부족하지 않을까요?</a>
 						</h4>
 					</div>
@@ -119,7 +102,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse4" class="fontfamily1">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
+								href="#collapse4" class="fontfamily">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
 						</h4>
 					</div>
 					<div id="collapse4" class="panel-collapse collapse">
@@ -134,7 +117,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse5" class="fontfamily1">세무신고 하는게 어려울 것 같은데 하는
+								href="#collapse5" class="fontfamily">세무신고 하는게 어려울 것 같은데 하는
 								방법 좀 설명해 주세요.</a>
 						</h4>
 					</div>
@@ -149,7 +132,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse6" class="fontfamily1">장부 작성 시 사용한 증빙들을 세무신고 시
+								href="#collapse6" class="fontfamily">장부 작성 시 사용한 증빙들을 세무신고 시
 								세무서에 제출해야 하나요?</a>
 						</h4>
 					</div>
@@ -163,7 +146,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse7" class="fontfamily1">이용요금은 어떻게 되나요?</a>
+								href="#collapse7" class="fontfamily">이용요금은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse7" class="panel-collapse collapse">
@@ -177,7 +160,7 @@ img {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse8" class="fontfamily1">결제 방법은 어떻게 되나요?</a>
+								href="#collapse8" class="fontfamily">결제 방법은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse8" class="panel-collapse collapse">
