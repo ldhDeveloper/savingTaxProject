@@ -18,7 +18,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>절세</span>미인</a>
+				<a class="navbar-brand" href="#"><span>절세미인</span></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -41,8 +41,8 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="index.jsp"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> 메인화면</a></li>
-			<li class="active"><a href="inputinfo.jsp"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> 정보입력</a></li>
+			<li><a href="/jsmi/views/main2/main2.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> 메인화면</a></li>
+			<li><a href="inputinfo.jsp"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> 정보입력</a></li>
 			<li><a href="diary.jsp"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> 장부작성</a></li>
 			<li class="parent ">
 				<a href="empinfo.jsp">
