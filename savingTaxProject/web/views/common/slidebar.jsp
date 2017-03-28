@@ -23,7 +23,7 @@
 a {
 	display:block;
 	text-decoration:none;
-	background:#101020;
+	//background:#101020;
 	width:200px;
 	height:50px;
 	align:center;
@@ -40,15 +40,22 @@ a:hover {
 
 img {
 	margin-bottom:7px;
+}
 
 .selected {
 	background:#1080ff;
 }
+
+
 </style>
 <script type="text/javascript">
 	$(function(){
 		$('.side > a').click(function(){
 			$('.side a').attr('class', 'block');
+			$(this).css({
+				"color" :"white",
+				"text-decoration" : "none"
+			})
 			$(this).attr('class', 'block selected');
 		})
 	})
@@ -59,8 +66,8 @@ img {
 	
 	<div class="side">
 			<a class="block" href="/jsmi/main.jsp"><img src="/jsmi/images/main2/main2icons/home.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 메인화면</a>
-			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/input.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 정보입력</a>
-			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/record.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 장부작성</a>
+			<a class="block" href="/jsmi/views/main2/myinfo1.jsp"><img src="/jsmi/images/main2/main2icons/input.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 정보입력</a>
+			<a class="block" href="/jsmi/views/main2/inputdaily.jsp"><img src="/jsmi/images/main2/main2icons/record.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 장부작성</a>
 			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/employee.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 직원관리 </a>
 			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/calc.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 세금계산</a>
 			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/show.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 결산</a>

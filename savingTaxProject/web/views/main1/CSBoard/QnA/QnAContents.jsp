@@ -133,7 +133,8 @@
 
 .thmd {
 	border : 1px solid #ddd;
-	heigth: 20px;
+	padding-top: 1.5%;
+	padding-left: 2%;
 	
 }
 
@@ -149,6 +150,35 @@
 
 table {
 	width: 100%;
+}
+
+.tdmini1 {
+	border-top : 1px solid #2a82a3;
+	border-bottom : 1px solid #ddd;
+	padding-top : 1.5%;
+	padding-left : 2%;
+}
+
+.tablemini{
+	width: 100%;
+	font-family: computer !important;
+}
+
+.tdmini2 {
+	border-bottom : 1px solid #2a82a3;
+	padding-top : 1.5%;
+	padding-left : 2%;
+	
+	
+}
+
+#wwrite{
+	color : #2a82a3;
+}
+
+#tw {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size : 9pt;
 }
 
 </style>
@@ -218,6 +248,26 @@ table {
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
+			</table>
+		</div>
+		
+		<br><br><br>
+		
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1">
+						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
+					<td>
+				</tr>
+				
+				<tr>
+					<td class="tdmini2">
+						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
+					<td>
+				</tr>
 			</table>
 		</div>
 

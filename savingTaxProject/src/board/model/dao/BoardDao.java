@@ -151,17 +151,29 @@ public class BoardDao {
 		return result;
 	}
 	
-	public int insertPost(Connection con, Board b) {
+	public int insertPost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("insertPost");
 		int result = 0;
+		String postNo = "";
+		switch(p.getBoardNo()){
+		case 1 : postNo = "seq_notice"; break;
+		case 2 : postNo = "seq_taxNew"; break;
+		case 3 : postNo = "seq_tip"; break;
+		case 4 : postNo = "seq_qna"; break;
+		case 5 : postNo = "seq_attachment"; break;
+		case 6 : postNo = "seq_event"; break;
+		}
+		
 		try {
 			pstmt= con.prepareStatement(query);
-			pstmt.setString(1, b.getPost_title());
-			pstmt.setString(2, b.getPost_contents());
-			pstmt.setInt(3, b.getBoard_no());
-			pstmt.setInt(4, b.getUp_post_no());
-			pstmt.setInt(5, b.getWriter_no());
+			pstmt.setString(1, postNo);
+			pstmt.setString(2, p.getPostName());
+			pstmt.setString(3, p.getPostContents());
+			pstmt.setInt(4, p.getBoardNo());
+			pstmt.setInt(5, p.getpNo());
+			
+			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
