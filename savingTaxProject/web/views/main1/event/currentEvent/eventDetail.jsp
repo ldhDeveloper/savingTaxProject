@@ -15,9 +15,14 @@
 	<hr>
 	
 	<!-- Moblie -->
-	<div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-		<img src="/jsmi/images/main1/eventdetail2.png">
-		<hr>
+	<div class="container-fluid hidden-sm hidden-md hidden-lg">
+	<br>
+	     <div class="row">
+	        <div class="col-xs-12">
+	           <img src="/jsmi/images/main1/eventdetailxs.png">
+	           <hr>
+	        </div>
+	     </div>
 	</div>
 	<%@ include file="/views/common/footer.jsp"%>
 </body>
