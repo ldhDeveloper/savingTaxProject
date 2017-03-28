@@ -27,6 +27,20 @@
 h3 {
 	font-family: ssangmundong !important;
 }
+
+p {
+	margin: 0px !important;
+}
+
+a.thumbnail {
+	width: 280px;
+	height: 180px;
+}
+
+.imgsize{
+    width: 250px;
+    height: 120px;
+}
 </style>
 </head>
 <body>
@@ -84,71 +98,72 @@ h3 {
 	<!-- Moblie  -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
-			<div class="col-xs-6">
-				<div class="thumbnail">
-				<a href="#">
-					<img src="/jsmi/images/main1/eventmn7.png"
-						class="img-responsive center-block">
+			<div class="col-xs-4">
+				<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp"
+					class="thumbnail"> <img src="/jsmi/images/main1/eventmn7.png"
+					class="img-responsive imgsize">
 					<div class="caption">
-						<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+						<p style="font-size: 12px; text-align: center;">이벤트기간 :
+							2017.03.01 ~ 2017~03.31</p>
 					</div></a>
-				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="thumbnail">
-				<a href="#">
-					<img src="/jsmi/images/main1/eventmn8.png"
-						class="img-responsive center-block">
-					<div class="caption">
-						<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-					</div></a>
-				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-xs-6">
-				<div class="thumbnail">
-				<a href="#">
-					<img src="/jsmi/images/main1/eventmn9.png"
-						class="img-responsive center-block">
-					<div class="caption">
-						<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-					</div></a>
-				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="thumbnail">
-					<a href="#"> <img src="/jsmi/images/main1/eventmn10.png"
-						class="img-responsive center-block">
+			<div class="col-xs-4">
+					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn8.png"
+						class="img-responsive imgsize">
 						<div class="caption">
-							<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+							<p style="font-size: 12px; text-align: center;">이벤트기간 :
+								2017.03.01 ~ 2017~03.31</p>
 						</div></a>
 				</div>
-			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-xs-6">
-				<div class="thumbnail">
-					<a href="#"> <img src="/jsmi/images/main1/eventmn11.png"
-						class="img-responsive center-block">
+			<div class="col-xs-4">
+					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn9.png"
+						class="img-responsive imgsize">
 						<div class="caption">
-							<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+							<p style="font-size: 12px; text-align: center;">이벤트기간 :
+								2017.03.01 ~ 2017~03.31</p>
 						</div></a>
 				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="thumbnail">
-					<a href="#"> <img src="/jsmi/images/main1/eventmn12.png"
-						class="img-responsive center-block">
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">
+					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn10.png"
+						class="img-responsive imgsize">
 						<div class="caption">
-							<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+							<p style="font-size: 12px; text-align: center;">이벤트기간 :
+								2017.03.01 ~ 2017~03.31</p>
 						</div></a>
 				</div>
-			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">
+					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn11.png"
+						class="img-responsive imgsize">
+						<div class="caption">
+							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+						</div></a>
+				</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4">
+					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn12.png"
+						class="img-responsive imgsize">
+						<div class="caption">
+							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+						</div></a>
+				</div>
 		</div>
 	</div>
+	
+	
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

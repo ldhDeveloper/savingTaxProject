@@ -94,7 +94,7 @@ a.thumbnail {
 		<div class="thumbnail" style="display: inline-block">
 			<a href="#"><img src="/jsmi/images/main1/eventmn7.png">
 				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+					<p >이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> </a>
 		</div>
 
@@ -172,7 +172,7 @@ a.thumbnail {
 					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn1.png"
 						class="img-responsive imgsize">
 						<div class="caption">
-							<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 						</div></a>
 				</div>
 		</div>
