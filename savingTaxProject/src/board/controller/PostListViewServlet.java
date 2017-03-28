@@ -41,21 +41,24 @@ public class PostListViewServlet extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		PostService pService = new PostService();
 		int listCount = pService.getListCount(boardNo);
-		int maxPage = (int)((double)listCount/limit + 0.9);
+		int maxPage = (int)((double)listCount/limit + 1);
+		
 		int endPage = startPage + limit -1;
+		
 		if(maxPage < endPage)
 			endPage= maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		RequestDispatcher view = null;
 		
 		if(plist != null){
-			view = request.getRequestDispatcher("views/board/boardListView.jsp");
+			view = request.getRequestDispatcher("views/main1/CSBoard/board/boardListView.jsp");
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("listCount", listCount);
+			request.setAttribute("boardNo", boardNo);
 			view.forward(request, response);
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

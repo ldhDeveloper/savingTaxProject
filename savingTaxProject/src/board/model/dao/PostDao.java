@@ -43,7 +43,8 @@ public PostDao(){
 			p.setPostNo(rset.getInt(2));
 			p.setPostName(rset.getString(3));
 			p.setPostDate(rset.getDate(4));
-			p.setReadCount(rset.getInt(5));
+			p.setpNo(rset.getInt(5));
+			p.setReadCount(rset.getInt(6));
 			plist.add(p);	
 			}
 		}
@@ -65,8 +66,20 @@ public PostDao(){
 		return 0;
 	}
 
-	public List<Post> selectPost(Connection con, int post_no, int post_no2) {
-		// TODO Auto-generated method stub
+	public List<Post> selectPost(Connection con, int boardNo, int postNo) {
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("");
+		List<Post> plist = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, postNo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
 		return null;
 	}
 
@@ -108,12 +121,18 @@ public PostDao(){
 		PreparedStatement pstmt = null;
 		int listCount = 0;
 		String query = prop.getProperty("getListCount");
+		ResultSet rset = null;
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, boardNo);
-			listCount = pstmt.executeUpdate();
+			rset = pstmt.executeQuery();
+			if(rset.next())
+			listCount = rset.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
 		}
 		return listCount;
 	}
@@ -129,6 +148,7 @@ public PostDao(){
 		} catch (Exception e) {
 			e.getMessage();
 		}finally{
+		
 			close(pstmt);
 		}
 		
