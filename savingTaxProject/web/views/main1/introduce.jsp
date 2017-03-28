@@ -31,7 +31,7 @@
       <div class="row">
          <div class="col-xs-12">
          <br><br><br>
-			 <img src="/jsmi/images/main1/intro.png" class="hidden-sm hidden-md hidden-lg img-responsive">
+			 <img src="/jsmi/images/main1/introxs.png" class="hidden-sm hidden-md hidden-lg img-responsive">
          </div>
       </div>
    </div>

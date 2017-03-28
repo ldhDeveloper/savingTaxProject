@@ -40,42 +40,42 @@ h3 {
 	</div>
 	<div class="middle hidden-xs">
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn7.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn8.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn9.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn10.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn11.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
 			</a>
 		</div>
 		<div class="thumbnail" style="display:inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn2.png">
+			<a href="#"><img src="/jsmi/images/main1/eventmn12.png">
 				<div class="caption">
 					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
 				</div> 
