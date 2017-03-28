@@ -153,5 +153,33 @@ public class PartyDao {
 		}
 		
 		return result;
+	}
+
+	public boolean userIdCheck(Connection con, String chkId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "select pno from party where id = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, chkId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				result = false;
+			} else {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);		
+		}
+
+		return result;
 	}	
 }

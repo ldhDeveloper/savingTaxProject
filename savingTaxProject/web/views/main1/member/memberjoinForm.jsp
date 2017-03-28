@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 
@@ -69,11 +70,7 @@ body {
 	float:right;
 		
 }
-.close {
-	position:relative;
-	top:-25px;
-	left:25px;
-}
+
 
 </style>
 
@@ -89,6 +86,62 @@ body {
 		}
 	}
 </script> -->
+<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	var idcheck = false;
+	var pwdcheck = false;
+	
+	$(function(){
+		$('#pwd2').focusout(function(){
+			if($('#pwd1').val() == $('#pwd2').val()){
+				$('#nopwd').css("display","none");
+				$('#conpwd').css("display", "");
+				pwdcheck = true;
+			} else {
+				$('#nopwd').css("display","");
+				$('#conpwd').css("display", "none");
+				pwdcheck = false;
+			}
+		})
+		
+		//$('#idchk').click(function(){
+		$('#userid').focusout(function(){
+			var chkId = "id=" + $('#userid').val();
+			console.log(chkId);
+	        $.ajax({
+	            url: '/jsmi/idchk',
+	            type: 'post',
+	            data: chkId,
+	            success:function(data){
+	            	console.log(data);
+	                if(data == "true"){
+	                	$('#noid').css("display","none");
+	    				$('#conid').css("display", "");
+	    				idcheck = true;
+	                } else {
+	                	$('#noid').css("display","");
+	    				$('#conid').css("display", "none");
+	    				idcheck = false;
+	                }
+	            }
+	        })
+		})
+	})
+	
+	function formchk(){
+		if(idcheck == false){
+			alert("아이디 체크를 하셔야 합니다.");
+			return false;
+		} else if(pwdcheck == false) {
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		} else if(idcheck == true && pwdcheck == true){
+			return true;
+		}
+	}
+	
+	
+</script>
   </head>
 
 
@@ -97,20 +150,24 @@ body {
     <div class="container">
       <form action="/jsmi/signup" class="form-signin">
 
-      	<input type="button" class="btn close" value="X닫기" onclick="location.href='/jsmi/main.jsp'"><br>
+      	<input type="button" class="btn close" value="x 닫기" onclick="location.href='/jsmi/views/main1/main1.jsp'"><br>
 
         <h2 class="form-signin-heading" align="center">회원가입</h2><br>
         <table style="cellspacing:5px">
 			<tr><td width="5%"></td><td width="30%">이름</td><td width="60%"><input type="text" id="" class="form-control" name="username" placeholder="이름을 입력하세요." required autofocus></td><td width="5%"></td><td></td><td></td><td width="5%"></td></tr>
-			<tr><td></td><td >아이디</td><td><input type="text" id="" class="form-control" name="userid" placeholder="아이디를 입력하세요." required ></td><td></td><td></td><td><button class="btn btn-warning">중복확인</button></td><td></td></tr>   
-			<tr><td></td><td >비밀번호</td><td><input type="password" id="" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required></td><td></td><td></td><td></td><td></td></tr>   
-			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >아이디</td><td><input type="text" id="userid" class="form-control" name="userid" placeholder="아이디를 입력하세요." required ></td><td></td><td></td><td><a class="btn btn-warning" id="idchk" style="display:none">중복확인</a></td><td></td></tr>   
+			<tr id="conid" style="display:none"><td></td><td ></td><td><span class="label label-success">아이디가 사용가능합니다</span></td><td></td><td></td><td></td><td></td></tr>
+			<tr id="noid" style="display:none"><td></td><td ></td><td><span class="label label-danger">이미 존재하는 아이디입니다</span></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호</td><td><input type="password" id="pwd1" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="pwd2" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>   
+			<tr id="conpwd" style="display:none"><td></td><td ></td><td><span class="label label-success">비밀번호가 일치합니다</span></td><td></td><td></td><td></td><td></td></tr>
+			<tr id="nopwd" style="display:none"><td></td><td ></td><td><span class="label label-danger">비밀번호가 일치하지않습니다</span></td><td></td><td></td><td></td><td></td></tr>   
 			<tr><td></td><td >이메일주소</td><td><input type="text" id="" class="form-control" name="email" placeholder="이메일주소를 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>           
         </table>
         
 		<br>
-        <input class="btn btn-lg btn-info btn-block" type="submit" value="가입 완료">
-        <input class="btn btn-lg btn-default btn-block" type="reset" value="작성 취소" onclick="location.href='/jsmi/main.jsp'">
+        <input class="btn btn-lg btn-info btn-block" type="submit" value="가입 완료" onclick="return formchk()">
+        <input class="btn btn-lg btn-default btn-block" type="reset" value="작성 취소" onclick="location.href='/jsmi/views/main1/main1.jsp'">
 
       </form>
 
