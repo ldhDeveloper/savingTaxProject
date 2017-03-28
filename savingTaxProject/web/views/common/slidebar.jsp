@@ -16,7 +16,7 @@
 <style>
 .side {
 	width:200px;
-	height:550px;
+	height:600px;
 	background:#101020;
 }
 
