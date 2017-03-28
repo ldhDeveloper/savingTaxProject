@@ -59,9 +59,9 @@ public class BoardService {
 		return result;
 	}
 
-	public int InsertPost(Board b) {
+	public int InsertPost(Post p) {
 		Connection con = getConnection();
-		int result = new BoardDao().insertPost(con, b);
+		int result = new BoardDao().insertPost(con, p);
 		if(result >0)
 			commit(con);
 		else

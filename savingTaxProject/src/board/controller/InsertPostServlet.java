@@ -1,6 +1,8 @@
 package board.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
 import board.model.vo.Board;
+import board.model.vo.Post;
 
 /**
  * Servlet implementation class InsertPostServlet
@@ -30,18 +33,25 @@ public class InsertPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String post_title = request.getParameter("post_title");
-		String post_contents = request.getParameter("post_contents");
-		int board_no = Integer.parseInt(request.getParameter("board_no"));
-		int up_post_no = Integer.parseInt(request.getParameter("up_post_no"));
-		int writer_no = Integer.parseInt(request.getParameter("writer_no"));
-		Board b = new Board();
-		b.setPost_title(post_title);
-		b.setPost_contents(post_contents);
-		b.setBoard_no(board_no);
-		b.setUp_post_no(up_post_no);
-		b.setWriter_no(writer_no);
-		int result = new BoardService().InsertPost(b);
+		String postName = request.getParameter("postName");
+		String postContents = request.getParameter("postContents");
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
+		Post p = new Post();
+		p.setPostName(postName);
+		p.setPostContents(postContents);
+		p.setBoardNo(boardNo);
+		p.setpNo(pNo);
+		
+		
+		int result = new BoardService().InsertPost(p);
+		if(result >0 ){
+			response.sendRedirect("/jsmi/views/board/boardListView.jsp?page=1&boardNo=1");
+		}else{
+			RequestDispatcher view = request.getRequestDispatcher("views/board/boardError.jsp");
+			request.setAttribute("message", "게시물 작성 실패");
+			view.forward(request, response);
+		}
 	}
 
 	/**
