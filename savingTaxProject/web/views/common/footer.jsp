@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
 <style>
 .middle {
+
    background:white;
    width:970px;
    margin-left:auto;
@@ -14,6 +15,7 @@
    
 }
 .footer-bar {
+	position : relative;
 	width:100%;
 	height:90px;
 	background:#234;

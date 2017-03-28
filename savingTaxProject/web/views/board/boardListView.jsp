@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import = "java.util.*,board.model.vo.Board" %>
-	<%List<Board> bList = (List<Board>)request.getAttribute("blist");
+	<%@ page import = "java.util.*,board.model.vo.Post" %>
+	<%List<Post> plist = (List<Post>)request.getAttribute("plist");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue();
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
 	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 	%>
-	
+	 
 <!DOCTYPE html> 
 <html>
 <head>
@@ -75,87 +75,88 @@ button {
 	position: relative;
 	left: 10px;
 }
+.tbody {
+  background:white;
+   width:800px;
+   margin-left:auto;
+   margin-right:auto;
+
+}
+.thead{
+
+	background: -webkit-linear-gradient( #ffffff, #b0e0e6);
+	background: -o-linear-gradient( #ffffff, #b0e0e6);
+	background: -moz-linear-gradient( #ffffff, #b0e0e6);
+	background: linear-gradient( #ffffff, #b0e0e6);
+	border: solid 1px #dcdcdc;
+	height: 40px;
+	border-radius: 4px;
+	padding-top: 0.8%;
+	font-size: 12pt;
+	box-shadow: 3px 3px 6px #2a82a3;
+
+}
+tbody tr:hover {
+background : #bbbbbb;
+
+}
 </style>
 
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp" %>
-	
-	<form action=""></form>
-				<h1 align ="center">게 시 판</h1>
+	<%@ include file="../common/menubar.jsp" %><br><br><br>
+
+
+	<center><img src = "/jsmi/images/main1/notice.png"></center>
 	<br><br>
 
-	<div class="middle hidden-xs">
-					<table width="970" class="table table-bordered">
+	<div class="tbody">
+	<fieldset>
+	<legend>&nbsp; &nbsp; 공지사항</legend>
+	 <h3 align = "left">&nbsp; &nbsp;절세미인의 모든 소식을 전해드립니다.</h3>
+					<table class="table table-strap">
 						<thead>
-							<tr class="warning">
+							<tr class="thead">
 								<th>번     호</th>
-								<th>제     목</th>
+								<th colspan = "6">제     목</th>
 								<th>작 성 자</th>
 								<th>작 성 일</th>
 								<th>조 회 수</th>
-								<th>파일여부</th>
 							</tr>
 						</thead>
-						<% if(bList !=null){  for(Board b : bList){%>
-						<tbody>
-							<tr class="success">
-								<td><%=b.getPost_no() %></td>
-								<td><a href="/jsmi/postdetail?post_no=<%=b.getPost_no()%>&board_no=<%=b.getBoard_no()%>"><%=b.getPost_title() %></a></td>
-								<td><%=b.getWriter_no() %></td>
-								<td><%=b.getPost_date() %></td>
-								<td><%=b.getReadCount() %></td>
-								<td><%=b.getOriginalFileName()%></td>
-							</tr>
-							<tr><td colspan ="6" >&nbsp; 
-							
-							</td></tr>
-						</tbody>
-						<%}} %>
+						<%if(plist != null) for(Post p : plist) {%>
+							<tr><td><%=p.getPostNo() %> </td>
+							<td colspan ="6" ><%=p.getPostName() %></td>
+							<td><%=p.getpNo() %></td>
+							<td><%=p.getPostDate() %></td>
+							<td><%=p.getReadCount() %></td></tr>
+							<%} %>
 					</table>
-
-		
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div class="row">
-		<div class="col-xs-0 col-md-7"></div>
-
-		<div class="col-xs-12 col-md-2">
+			<div style="float:right">
 			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
-		</div>
-		<div class="col-xs-0 col-md-3">
 			<input type="submit" class="btn btn-primary" value="검색">		
+			<a href = "/jsmi/views/board/boardDetailView.jsp" class = "btn btn-primary">글쓰기 </a>
 		</div>
+		</fieldset>
 	</div>
-	
-		<br>
-	
-		<div class="row">
-		<div class="col-xs-0 col-md-6"></div>
 
-		<div class="col-xs-12 col-md-3">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
 			
-		</div>
-
-		<div class="col-xs-0 col-md-3">
-			<input type="submit" class="btn btn-primary" value="글쓰기">		
-		</div>
-
-	</div>
+		
 
 
 	<%@ include file="../common/footer.jsp" %>
