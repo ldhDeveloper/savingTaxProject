@@ -25,6 +25,15 @@ align:center;
 	display:inline-block;
 	
 }
+
+p:hover{
+	text-decoration:none;
+}
+
+p{
+	text-decoration:none;
+}
+
 h3 {
 	font-family:ssangmundong !important;
 }
