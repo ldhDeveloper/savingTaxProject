@@ -13,7 +13,6 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
-<!--Icons-->
 <script>
 	function nextpage(){
 		location.href("/jsmi/views/main2/inputinfo2.html");

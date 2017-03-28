@@ -23,7 +23,7 @@
 a {
 	display:block;
 	text-decoration:none;
-	background:#101020;
+	//background:#101020;
 	width:200px;
 	height:50px;
 	align:center;
@@ -40,15 +40,22 @@ a:hover {
 
 img {
 	margin-bottom:7px;
+}
 
 .selected {
 	background:#1080ff;
 }
+
+
 </style>
 <script type="text/javascript">
 	$(function(){
 		$('.side > a').click(function(){
 			$('.side a').attr('class', 'block');
+			$(this).css({
+				"color" :"white",
+				"text-decoration" : "none"
+			})
 			$(this).attr('class', 'block selected');
 		})
 	})
