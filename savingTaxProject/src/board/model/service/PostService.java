@@ -40,9 +40,9 @@ public class PostService {
 		return result;
 	}
 
-	public List<Post> selectPost(int Post_no, int post_no) {
+	public List<Post> selectPost(int boardNo, int postNo) {
 		Connection con = getConnection();
-		List<Post> pList = new PostDao().selectPost(con, Post_no, post_no);
+		List<Post> pList = new PostDao().selectPost(con, boardNo, postNo);
 		close(con);
 		return pList;
 	}
