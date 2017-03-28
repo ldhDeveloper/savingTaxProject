@@ -17,6 +17,7 @@ public class PostService {
 		Connection con = getConnection();
 		List<Post> plist = new PostDao().selectList(con, limit, boardNo, currentPage);
 		close(con);
+		System.out.println("plist service : " + currentPage +", " + boardNo);
 		return plist;
 	}
 
@@ -40,9 +41,9 @@ public class PostService {
 		return result;
 	}
 
-	public List<Post> selectPost(int boardNo, int postNo) {
+	public List<Post> selectPost(int Post_no, int post_no) {
 		Connection con = getConnection();
-		List<Post> pList = new PostDao().selectPost(con, boardNo, postNo);
+		List<Post> pList = new PostDao().selectPost(con, Post_no, post_no);
 		close(con);
 		return pList;
 	}

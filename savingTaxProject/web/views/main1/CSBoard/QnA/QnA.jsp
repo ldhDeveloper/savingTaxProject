@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ page import = "java.util.*, board.model.vo.Post" %>
+
+<%
+	List<Post> plist = (List<Post>)request.getAttribute("plist");
+	
+	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
+	int listCount = ((Integer)request.getAttribute("listCount")).intValue();
+	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
+	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
+	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+%>	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,10 +79,6 @@
 }
 
 /* *** 컴퓨터 style *** */
-.middle {
-	font-family: mobius !important;
-}
-
 .table {
 	table-layout: fixed;
 }
@@ -264,22 +273,29 @@ label {
 						<th class="tdate thmd thmdr">작성일</th>
 					</tr>
 				</thead> -->
-
+				
+				
 				<tbody class="tbodymd font-family-md-3">
+				<% if(plist != null) for(Post p : plist) { %>
 					<tr>
-						<td class="tno tdmd">5</td>
-						<td class="ttitle tdmd"><a href="QnAContents.jsp">질문이 있어요~</a></td>
+						<td class="tno tdmd">
+							<%= p.getPostNo() %>
+						</td>
+						<td class="ttitle tdmd">
+							<a href="/jsmi/views/main1/CSBoard/QnA/QnAContents.jsp"><%= p.getPostName() %></a>
+							<%= p.getPostName() %>
+						</td>
 						<td class="twriter tdmd">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							김진호
+							<%= p.getpNo() %>
 						</td>
-						<td class="tdate tdmd">2017-03-25</td>
+						<td class="tdate tdmd"><%= p.getPostDate() %></td>
 					</tr>
-
+					<% } %>
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! -->
-					<tr>
+					<!-- <tr>
 						<td class="tno tdmd">4</td>
 						<td class="ttitle tdmd">질문이 있어요~</td>
 						<td class="twriter tdmd">
@@ -316,7 +332,7 @@ label {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;임성혁</td>
 						<td class="tdate tdmd">2017-03-25</td>
-					</tr>
+					</tr> -->
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
 			</table>
