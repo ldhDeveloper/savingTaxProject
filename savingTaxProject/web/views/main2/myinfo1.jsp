@@ -76,9 +76,9 @@
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a class="tabmenu active" href="/jsmi/views/main2/inputinfo.jsp">회원정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo3.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu active" href="/jsmi/views/main2/myinfo1.jsp">회원정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo2.jsp">사업장 정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
 			</div>
