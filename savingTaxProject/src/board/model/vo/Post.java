@@ -5,121 +5,113 @@ import java.sql.Date;
 
 public class Post {
 
-	private int post_no;
-	private String post_name;
-	private Date post_date;
-	private String post_contents;
-	private int board_no;
+	private int postNo;
+	private String postName;
+	private Date postDate;
+	private String postContents;
+	private int boardNo;
 	private int pNo;
-	private int post_ref_no;
-	private int read_count;
+	private int postRefNo;
+	private int postLev;
+	private int postSeq;
+	private int readCount;
 	private String fName;
 	private String refName;
-
-	public int getPost_no() {
-		return post_no;
+	public int getPostNo() {
+		return postNo;
 	}
-
-	public void setPost_no(int post_no) {
-		this.post_no = post_no;
+	public void setPostNo(int postNo) {
+		this.postNo = postNo;
 	}
-
-	public String getPost_name() {
-		return post_name;
+	public String getPostName() {
+		return postName;
 	}
-
-	public void setPost_name(String post_name) {
-		this.post_name = post_name;
+	public void setPostName(String postName) {
+		this.postName = postName;
 	}
-
-	public Date getPost_date() {
-		return post_date;
+	public Date getPostDate() {
+		return postDate;
 	}
-
-	public void setPost_date(Date post_date) {
-		this.post_date = post_date;
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
-
-	public String getPost_contents() {
-		return post_contents;
+	public String getPostContents() {
+		return postContents;
 	}
-
-	public void setPost_contents(String post_contents) {
-		this.post_contents = post_contents;
+	public void setPostContents(String postContents) {
+		this.postContents = postContents;
 	}
-
-	public int getBoard_no() {
-		return board_no;
+	public int getBoardNo() {
+		return boardNo;
 	}
-
-	public void setBoard_no(int board_no) {
-		this.board_no = board_no;
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
-
 	public int getpNo() {
 		return pNo;
 	}
-
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
 	}
-
-	public int getPost_ref_no() {
-		return post_ref_no;
+	public int getPostRefNo() {
+		return postRefNo;
 	}
-
-	public void setPost_ref_no(int post_ref_no) {
-		this.post_ref_no = post_ref_no;
+	public void setPostRefNo(int postRefNo) {
+		this.postRefNo = postRefNo;
 	}
-
-	public int getRead_count() {
-		return read_count;
+	public int getPostLev() {
+		return postLev;
 	}
-
-	public void setRead_count(int read_count) {
-		this.read_count = read_count;
+	public void setPostLev(int postLev) {
+		this.postLev = postLev;
 	}
-
+	public int getPostSeq() {
+		return postSeq;
+	}
+	public void setPostSeq(int postSeq) {
+		this.postSeq = postSeq;
+	}
+	public int getReadCount() {
+		return readCount;
+	}
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
 	public String getfName() {
 		return fName;
 	}
-
 	public void setfName(String fName) {
 		this.fName = fName;
 	}
-
 	public String getRefName() {
 		return refName;
 	}
-
 	public void setRefName(String refName) {
 		this.refName = refName;
 	}
-
 	public Post() {
 		super();
 	}
-
-	public Post(int post_no, String post_name, Date post_date, String post_contents, int board_no, int pNo,
-			int post_ref_no, int read_count, String fName, String refName) {
+	public Post(int postNo, String postName, Date postDate, String postContents, int boardNo, int pNo, int postRefNo,
+			int postLev, int postSeq, int readCount, String fName, String refName) {
 		super();
-		this.post_no = post_no;
-		this.post_name = post_name;
-		this.post_date = post_date;
-		this.post_contents = post_contents;
-		this.board_no = board_no;
+		this.postNo = postNo;
+		this.postName = postName;
+		this.postDate = postDate;
+		this.postContents = postContents;
+		this.boardNo = boardNo;
 		this.pNo = pNo;
-		this.post_ref_no = post_ref_no;
-		this.read_count = read_count;
+		this.postRefNo = postRefNo;
+		this.postLev = postLev;
+		this.postSeq = postSeq;
+		this.readCount = readCount;
 		this.fName = fName;
 		this.refName = refName;
 	}
-
 	@Override
 	public String toString() {
-		return "Post [post_no=" + post_no + ", post_name=" + post_name + ", post_date=" + post_date + ", post_contents="
-				+ post_contents + ", board_no=" + board_no + ", pNo=" + pNo + ", post_ref_no=" + post_ref_no
-				+ ", read_count=" + read_count + ", fName=" + fName + ", refName=" + refName + "]";
+		return postNo + ", " + postName + ", " + postDate + ", " + postContents + ", " + boardNo + ", " + pNo + ", "
+				+ postRefNo + ", " + postLev + ", " + postSeq + ", " + readCount + ", " + fName + ", " + refName;
 	}
 
 

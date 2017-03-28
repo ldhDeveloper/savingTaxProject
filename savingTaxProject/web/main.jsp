@@ -83,6 +83,10 @@
 	top:15px;
 	left:15px;
 }
+.menu-img {
+	margin-right:auto;
+	margin-left:auto;
+}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -200,31 +204,31 @@
 	<div class="middle menu-wrap1 hidden-xs">
 		<div class="menu-btn" style="background: #10aaff;" id="border1"
 			onclick="location.href='/jsmi/views/main1/introduce.jsp'">
-			<img src="/jsmi/images/info.png" class="">
+			<img src="/jsmi/images/info.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #105080;" id="border2">
-			<img src="/jsmi/images/1.png" class="">
+			<img src="/jsmi/images/1.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border3">
-			<img src="/jsmi/images/function.png" class="">
+			<img src="/jsmi/images/function.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border4"
 			onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
-			<img src="/jsmi/images/event.png" class="">
+			<img src="/jsmi/images/event.png" class="menu-img">
 		</div>
 	</div>
 	<div class="middle menu-wrap2 hidden-xs">
 		<div class="menu-btn" style="background: #105080;" id="border5">
-			<img src="/jsmi/images/1.png" class="">
+			<img src="/jsmi/images/1.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border6">
-			<img src="/jsmi/images/cost.png" class="">
+			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border7">
-			<img src="/jsmi/images/helpdesk1.png" class="">
+			<img src="/jsmi/images/helpdesk1.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #105080;" id="border8">
-			<img src="/jsmi/images/1.png" class="">
+			<img src="/jsmi/images/1.png" class="menu-img">
 		</div>
 	</div>
 

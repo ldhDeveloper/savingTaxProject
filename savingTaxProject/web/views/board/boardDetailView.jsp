@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@page import = "java.util.*, board.model.vo.Board"  %>
-	<%List<Board> bList = (List)request.getAttribute("bList"); %>
+<%@page import="java.util.*, board.model.vo.Board"%>
+<%-- 	<%List<Board> bList = (List)request.getAttribute("bList"); %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,79 +16,69 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
- div {
- 	resize: none;
- }
-
+textarea {
+resize : none;}
+.tbody {
+	position : absolute;	
+	width: 800px;
+	margin-left:25%;
+	z-index : 4;
+	opacity : 0.9;
+	
+}
+.textbg {
+	
+position: absolute;
+margin-left:25%;
+margin-right:25%;
+height:600px;
+	height : 600px;
+z-index : 0;
+opacity : 0.5;
+}
 </style>
 
 </head>
 
 <body>
-	<%@ include file="../common/menubar.jsp" %>
-<div class ="middle hidden-xs">
-				<h1 align = "center">상세보기</h1>
-		
-					<table class="table table-bordered">
-					
-						<tbody>
-							<tr class="success">
-								<td>제     목</td>
-								<td><%=bList.get(0).getPost_title() %></td>
-							</tr>
-							
-							<tr class="danger">
-								<td>작 성 자</td>
-								<td><%=bList.get(0).getWriter_no() %></td>
-							</tr>
-							
-							<tr class="info">
-								<td>파일여부</td>
-								<td><%if(bList.get(0).getOriginalFileName()!=null){ %>
-								bList.get(0).getOriginalFileName()<%}else{ %>
-								파일 없음<%} %></td>
-							</tr>
-							
-							<tr class="warning">
-								<td>내    용</td>
-								<td>
-									<textarea class="form-control" rows="10" id="comment">
-									<%=bList.get(0).getPost_contents() %></textarea>
-								</td>
-							</tr>
-							
-							<tr class="active">
-								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment"></textarea>
-								</td>
-							</tr>														
-						</tbody>
-					</table>
-	
+	<%@ include file="../common/menubar.jsp"%>
+	<br><br><br>
+	<div class="tbody">
+		<img src= "/jsmi/images/main1/notice.png">
+		<br><br><br>
+	<fieldset>
 
-	<div class="row">
-		<div class="col-xs-0 col-md-5"></div>
-
-		<div class="col-xs-12 col-md-3"></div>
-		
-		<div class="col-xs-0 col-md-4">
-			<input type="submit" class="btn btn-primary" value="등록">
-			<input type="submit" class="btn btn-primary" value="취소">			
+	<legend>제목</legend>
+		<table class="table table-strap">
+		<tr><th>글번호</th><th colspan = "5">작성자</th><th>작성일자</th><th>조회수</th> </tr>
+			<tbody>
+				<tr>
+				</tr>
+				<tr class="warning">
+					<td colspan = "10"><textarea class="form-control" rows="10" id="comment">
+								</textarea></td>
+				</tr>
+				<tr class="active">
+					<td>덧글작성</td>
+					<td colspan="6"><textarea style = "opacity:0.8" class="form-control" rows="3"
+							id="comment"></textarea></td>
+					<td style ="text-align:right"><input type="submit" class="btn btn-primary" value="등록">
+						<input type="submit" class="btn btn-primary" value="취소"></td>
+				</tr>
+				<tr>
+			</tbody>
+		</table>
+		</fieldset>
 		</div>
-	</div>
-</div>
+	
+	<img class= "textbg" width = "100%" height ="450px" src = "/jsmi/images/main1/legerpad.png">
 
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>
 
 
-	<%@ include file="../common/footer.jsp" %>
+	
 </body>
 </html>

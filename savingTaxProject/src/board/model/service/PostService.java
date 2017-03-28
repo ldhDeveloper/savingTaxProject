@@ -13,11 +13,11 @@ import board.model.vo.Post;
 
 public class PostService {
 
-	public List<Post> selectAll(int currentPage, int limit, int post_no) {
+	public List<Post> selectList(int currentPage, int limit, int boardNo) {
 		Connection con = getConnection();
-		List<Post> blist = new PostDao().selectList(con, limit, post_no, currentPage);
+		List<Post> plist = new PostDao().selectList(con, limit, boardNo, currentPage);
 		close(con);
-		return blist;
+		return plist;
 	}
 
 	public List<Post> selectTitle(String title) {
@@ -68,11 +68,22 @@ public class PostService {
 		return result;
 	}
 
-	public int getListCount(int Post_no) {
+	public int getListCount(int boardNo) {
 		Connection con = getConnection();
-		int listCount = new PostDao().getListCount(con, Post_no);
+		int listCount = new PostDao().getListCount(con, boardNo);
 		close(con);
 		return listCount;
+	}
+
+	public int insertComment(Post p) {
+		Connection con = getConnection();
+		int result = new PostDao().insertComment(con, p);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
 	}
 
 }

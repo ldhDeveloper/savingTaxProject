@@ -16,18 +16,18 @@
 <style>
 .side {
 	width:200px;
-	height:550px;
+	height:600px;
 	background:#101020;
 }
 
 a {
 	display:block;
 	text-decoration:none;
-	background:#101020;
+	//background:#101020;
 	width:200px;
 	height:50px;
 	align:center;
-	padding-left:50px;;
+	padding-left:30px;;
 	padding-top:15px;;
 	color:white;
 }
@@ -36,26 +36,44 @@ a:hover {
 	color:white;
 	text-decoration:none;
 }
-.gotologin {
-	margin-top:150px;
+
+
+img {
+	margin-bottom:7px;
 }
 
+.selected {
+	background:#1080ff;
+}
+
+
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('.side > a').click(function(){
+			$('.side a').attr('class', 'block');
+			$(this).css({
+				"color" :"white",
+				"text-decoration" : "none"
+			})
+			$(this).attr('class', 'block selected');
+		})
+	})
+</script>
 </head>
 
 <body>
 	
 	<div class="side">
-			<a class="block" href="#">메인화면</a>
-			<a class="block" href="#">정보입력</a>
-			<a class="block" href="#">장부작성</a>
-			<a class="block" href="#">직원관리 </a>
-			<a class="block" href="#">세금계산</a>
-			<a class="block" href="#">결산</a>
-			<a class="block" href="#">도움말</a>
+			<a class="block" href="/jsmi/main.jsp"><img src="/jsmi/images/main2/main2icons/home.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 메인화면</a>
+			<a class="block" href="/jsmi/views/main2/myinfo1.jsp"><img src="/jsmi/images/main2/main2icons/input.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 정보입력</a>
+			<a class="block" href="/jsmi/views/main2/inputdaily.jsp"><img src="/jsmi/images/main2/main2icons/record.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 장부작성</a>
+			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/employee.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 직원관리 </a>
+			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/calc.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 세금계산</a>
+			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/show.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 결산</a>
+			<a class="block" href="#"><img src="/jsmi/images/main2/main2icons/help.png" width="20px" height="20px"> &nbsp; &nbsp; &nbsp; 도움말</a>
 			
 
-			<a class="block gotologin" href="#">Login Page</a>
 	</div>
 </body>
 </html>

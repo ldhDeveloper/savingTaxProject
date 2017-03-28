@@ -109,20 +109,33 @@ element.style {
 }
 
 .menu ul li ul {
+    display:none;
 	position:relative;
 	left:-40px;
 }
 .menu ul li ul a {
-   opacity:0;
    background:#2a82a3;
    position:relative;
  
 }
 
-.menu ul li:hover ul a{
+/*  .menu ul li:hover ul a{
    opacity:3;
-}
+}  */
 </style>
+<script type="text/javascript">
+$(function(){
+		$('.menuList > li > a').mouseover(function(){
+			$(this).siblings('.sub-menu').css("display", "block");
+		})
+		$('.menuList li').mouseleave(function(){
+			$(this).children('.sub-menu').css("display", "none");
+		})
+	
+	})
+	
+
+</script>
 </head>
 
 <body width="100%">
@@ -143,7 +156,7 @@ element.style {
    <div class="full-bar hidden-xs">
       <div class="middle menu">
          
-            <ul height="40" >
+            <ul class="menuList" height="40" >
             	<li><a href="/jsmi/main.jsp">메인으로</a></li>
                <li>
                      <a href='/jsmi/views/main1/introduce.jsp'>절세미인소개</a>
@@ -171,14 +184,11 @@ element.style {
                <li>
                		<a href="#">고객센터</a>
                		<ul class="sub-menu">
-                           <li><a href="/jsmi/views/board/boardListView.jsp">공지사항</a></li>
-                           <li>
-                           	<!-- <a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a> -->
-                           	<a href="/jsmi/tnlist">세금 소식</a>
-                           </li>
+                           <li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
+                           <li><a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
-                           <li><a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp">궁금한 것이 있어요</a></li>
+                           <li><a href="#">궁금한 것이 있어요</a></li>
                            <li><a href="#">서식 자료실</a></li>
                     </ul>
                

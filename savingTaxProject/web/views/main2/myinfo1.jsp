@@ -4,31 +4,62 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
+<link href="/jsmi/css/main2/styles.css" rel="stylesheet">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript "src="/jsmi/js/main2/bootstrap.min.js"></script>
+<script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
+<script>
+	function nextpage(){
+		location.href("/jsmi/views/main2/myinfo2.jsp");
+	}
+</script>
+
+<script type="text/javascript">
+    $(function(){
+    	$('#edrop > li > a').click(function(){
+    		console.log("Addfda");
+    		$('#menu1').html($(this).text() + "<span class='caret'></span>");
+    		if($(this).text()=="직접입력"){
+    			$('#email2').val('');
+    		} else {
+    			$('#email2').val($(this).text());
+    		} 		
+    	})
+    })
+    
+</script>
 <title>Insert title here</title>
 <style>
 .middle {
-	width: 1200px !important;
+	width: 1400px !important;
 	background: white;
-	max-height: 550px;
+	max-height: 600px;
 }
 
 .top {
-	width: 1200px !important;
-	margin-bottom: -20px;
+	width: 1400px !important;
+	margin-bottom: -25px;
 }
 
 .frame {
-	
+	width:1400px;
+	margin-left:auto;
+	margin-rignt:auto;
+	position:relative;
+	left:-100px;
 }
 
 .section {
-	width: 1000px;
-	min-height: 550px;
-	max-height:550px;
+	width: 1200px;
+	min-height: 600px;
+	max-height:600px;
 	background: white;
 	position: relative;
-	top: -550px;
+	top: -600px;
 	left: 200px;
 	overflow:scroll;
 	padding-left:20px;
@@ -37,12 +68,16 @@
 
 .side {
 	width: 200px;
+	position:
+	
 }
 .tabmenu {
+	background: #101020;
+	color: white;
 	text-align:center;
 	font-weight:bold;
 }
-.active {
+.lactive {
 	background:white;
 	color:black;
 }
@@ -52,12 +87,14 @@
 	margin-top:-15px;
 	margin-right:10px;
 }
-.
+
+
+
 </style>
 </head>
-<body>
+<body style="padding-top:0px">
 	<%@ include file="/views/common/main2back.jsp"%>
-	<div class="middle top">
+	<div class="middle top" style="margin-top:50px">
 		<%@ include file="/views/common/fullbar.jsp"%>
 	</div>
 
@@ -66,13 +103,13 @@
 			<%@ include file="/views/common/slidebar.jsp"%>
 		</div>
 		<div class="section">
-
+		<br>
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a class="tabmenu active" href="/jsmi/views/main2/inputinfo.jsp">회원정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu" href="/jsmi/views/main2/inputinfo3.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu lactive" href="/jsmi/views/main2/myinfo1.jsp">회원정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo2.jsp">사업장 정보</a></li>
+						<li><a class="tabmenu" href="/jsmi/views/main2/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
 			</div>
@@ -213,7 +250,7 @@
 					</tbody>
 				</table>
 					<div class="btngroup">
-				  <button class="btn btn-primary" type="submit" onclick="nextpage();">다음</button>
+				  <button class="btn btn-primary" onclick="nextpage();">다음</button>
 				  <button class="btn btn-danger" type="reset">취소</button>
 				  </div>
 
@@ -223,5 +260,7 @@
 		</div>
 
 	</div>
+	<br>
+	<%@ include file="/views/common/main2footer.jsp" %>
 </body>
 </html>
