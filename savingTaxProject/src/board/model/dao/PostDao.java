@@ -117,5 +117,22 @@ public PostDao(){
 		}
 		return listCount;
 	}
+	public int insertComment(Connection con, Post p) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("insertComment");
+		try {
+			pstmt = con.prepareStatement(query);
+			//insert the left
+			 result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 }

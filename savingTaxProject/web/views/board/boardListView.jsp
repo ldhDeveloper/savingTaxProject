@@ -113,8 +113,8 @@ background : #bbbbbb;
 
 	<div class="tbody">
 	<fieldset>
-	<legend> 공지사항</legend>
-	 <h3 align = "left">절세미인의 모든 소식을 전해드립니다.</h3>
+	<legend>&nbsp; &nbsp; 공지사항</legend>
+	 <h3 align = "left">&nbsp; &nbsp;절세미인의 모든 소식을 전해드립니다.</h3>
 					<table class="table table-strap">
 						<thead>
 							<tr class="thead">
@@ -123,10 +123,8 @@ background : #bbbbbb;
 								<th>작 성 자</th>
 								<th>작 성 일</th>
 								<th>조 회 수</th>
-								
 							</tr>
 						</thead>
-					
 						<%if(plist != null) for(Post p : plist) {%>
 							<tr><td><%=p.getPostNo() %> </td>
 							<td colspan ="6" ><%=p.getPostName() %></td>
@@ -134,7 +132,6 @@ background : #bbbbbb;
 							<td><%=p.getPostDate() %></td>
 							<td><%=p.getReadCount() %></td></tr>
 							<%} %>
-					
 					</table>
 			<div style="float:right">
 			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">

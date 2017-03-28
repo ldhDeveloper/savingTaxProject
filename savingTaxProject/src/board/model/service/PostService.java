@@ -75,4 +75,15 @@ public class PostService {
 		return listCount;
 	}
 
+	public int insertComment(Post p) {
+		Connection con = getConnection();
+		int result = new PostDao().insertComment(con, p);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+
 }
