@@ -69,4 +69,13 @@ public class PartyService {
 		
 		return result;
 	}*/
+
+	public boolean userIdCheck(String chkId) {
+		Connection con = getConnection();
+		boolean result = new PartyDao().userIdCheck(con, chkId);
+		close(con);
+		
+		//System.out.println("service 작동");
+		return result;
+	}
 }
