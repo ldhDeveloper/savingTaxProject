@@ -121,7 +121,14 @@ element.style {
 
 /*  .menu ul li:hover ul a{
    opacity:3;
+}
+
+.navbar-fixed-top {
+    margin: 0px;
+}
+
 }  */
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -222,7 +229,7 @@ $(function(){
                      <ul class="nav navbar-nav navbar-static-top">
 
                         <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                           <a href="/jsmi/views/main1/introduce.jsp" class="dropdown-toggle" data-toggle="dropdown"> 
                               <img src="/jsmi/images/menubar/mb1.png" class="img-responsive"
                               style="width: 30%; height: 30%;">
                            </a>
@@ -245,7 +252,8 @@ $(function(){
                            <ul class="mobile dropdown-menu">
                               <li>
                                  <table width="100%">
-                                    <tr><td class="xstd"><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></td><td class="xstd"><a href="#">절세미인의 장점</a></td></tr>
+                                    <tr><td class="xstd"><a href="/jsmi/views/main1/function.jsp">주요 기능 안내</a></td>
+                                    <td class="xstd"><a href="/jsmi/views/main1/function2.jsp">절세미인의 장점</a></td></tr>
                                  </table>
                               </li>
                            </ul>
