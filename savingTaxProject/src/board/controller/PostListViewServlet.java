@@ -1,17 +1,13 @@
 package board.controller;
 
 import java.io.IOException;
-
-
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import board.model.service.PostService;
 import board.model.vo.Post;
 
@@ -29,7 +25,6 @@ public class PostListViewServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,21 +38,19 @@ public class PostListViewServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
 		int startPage = ((int)((double)currentPage/ limit +0.9)-1)*limit +1;
-		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		PostService pService = new PostService();
-		int listCount = pService.getListCount(board_no);
+		int listCount = pService.getListCount(boardNo);
 		int maxPage = (int)((double)listCount/limit + 0.9);
 		int endPage = startPage + limit -1;
 		if(maxPage < endPage)
 			endPage= maxPage;
-		
-		List<Post> plist = pService.selectAll(currentPage, limit, board_no);
-	
+		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		RequestDispatcher view = null;
 		
 		if(plist != null){
 			view = request.getRequestDispatcher("views/board/boardListView.jsp");
-			request.setAttribute("blist", plist);
+			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
 			request.setAttribute("startPage", startPage);
@@ -70,7 +63,6 @@ public class PostListViewServlet extends HttpServlet {
 			view.forward(request, response);
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -78,5 +70,4 @@ public class PostListViewServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
