@@ -30,19 +30,7 @@ public class TaxNewsListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
-		response.setContentType("text/html; charset=utf-8");
-		
-		List<Post> post = new BoardService().tnSelectAll();
-		
-		if(post != null) {
-			
-		}
-		
-		else {
-			
-		}
+		System.out.println("세무소식 오니?");
 	}
 
 	/**
