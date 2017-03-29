@@ -9,8 +9,11 @@ public class Party implements java.io.Serializable{
 	private int category;
 	private String id;
 	private String pwd;
+	private String tel;
 	private String phone;
 	private String email;
+	private String birth;
+	private String gender;
 	private String id_no;
 	private String cname;
 	private String cno;
@@ -35,6 +38,7 @@ public class Party implements java.io.Serializable{
 		super();
 	}
 
+	
 
 	public int getPno() {
 		return pno;
@@ -86,6 +90,17 @@ public class Party implements java.io.Serializable{
 	}
 
 
+	public String getTel() {
+		return tel;
+	}
+
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+
+
 	public String getPhone() {
 		return phone;
 	}
@@ -104,6 +119,31 @@ public class Party implements java.io.Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
+
+	public String getBirth() {
+		return birth;
+	}
+
+
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 
 
 	public String getId_no() {
