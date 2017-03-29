@@ -71,6 +71,7 @@ public class PartyService {
 		return result;
 	}*/
 
+
 	public boolean userIdCheck(String chkId) {
 		Connection con = getConnection();
 		boolean result = new PartyDao().userIdCheck(con, chkId);

@@ -71,10 +71,11 @@ td {
 	line-height:10px;
 }
 .close {
-	position:absoulte;
-	top:-40px;
-	left:40px;
+	position:relative;
+	top:-20px;
+	left:20px;
 }
+
 </style>
   </head>
 
@@ -94,8 +95,8 @@ td {
         <input class="btn btn-lg btn-info btn-block" type="submit" value="로그인">
         <div>
         	<input id="joinbtn" type="button" class="btn btn-lg btn-warning btn-block" value="회원가입" onclick="location.href='/jsmi/views/main1/member/agreeForm.html'"><br>
-        	<input id="findid" class="btn btn-md btn-success btn-block" value="아이디 찾기">
-        	<input id="findpwd" class="btn btn-md btn-success btn-block" value="비밀번호 찾기"><br>
+        	<input id="findid" class="btn btn-md btn-success btn-block" onclick="location.href='/jsmi/views/main1/member/findid.jsp'" value="아이디 찾기">
+        	<input id="findpwd" class="btn btn-md btn-success btn-block" onclick="location.href='/jsmi/views/main1/member/resetpwd.jsp'" value="비밀번호 찾기"><br>
         </div>
       </form>
 

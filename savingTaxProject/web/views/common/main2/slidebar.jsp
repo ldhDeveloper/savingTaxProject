@@ -24,8 +24,6 @@ a {
 	display:block;
 	text-decoration:none;
 	//background:#101020;
-	width:200px;
-	height:50px;
 	align:center;
 	padding-left:30px;;
 	padding-top:15px;;

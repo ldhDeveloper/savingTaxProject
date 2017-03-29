@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
+<link href="/jsmi/css/main2/styles.css" rel="stylesheet">
+<link href="/jsmi/css/main2/jquery-ui.css" rel="stylesheet">
+<script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
+<script src="/jsmi/js/main2/lumino.glyphs.js"></script>
+<script src="/jsmi/js/main2/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style>
 .middle {
@@ -65,9 +70,31 @@
 	height:35px;
 }
 </style>
-
+<script type="text/javascript">
+	$(function(){
+			$('#billtype > li > a').click(function(){
+				$('button[name=bill_type]').html($(this).text() + "<span class='caret'></span>");
+			});
+			
+			$('#actype').click(function(){
+				var btype = "btype=" + $('button[name=bill_type]').text();
+				console.log(btype);
+				$.getJSON(
+						"/jsmi/bType", btype , function(data){
+							//받은 문자열을 json 객체로 변환함
+							var jsonObj = JSON.stringify(data);
+							//변환된 제이슨 객체를 제이슨 배열로 변환
+							var jsonArr = JSON.parse(jsonObj);
+							
+							for(var i in jsonArr.list){
+								$(".list-group").html($(".list-group").html() +"<a href='#' class='list-group-item'>" + jsonArr.list[i].anm + "</a>");
+							}
+						});
+			})
+	});
+</script>
 </head>
-<body>
+<body style="padding-top:0px;">
 	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
@@ -248,22 +275,20 @@
 												name="bill_type" data-toggle="dropdown">
 												거래구분 <span class="caret"></span>
 											</button>
-											<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">매입</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">매출</a></li>
+											<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="billtype">
 												<li role="presentation"><a role="menuitem"
 													tabindex="-1" href="#">비용</a></li>
 												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">자산항목</a></li>
+													tabindex="-1" href="#">수익</a></li>
+												<li role="presentation"><a role="menuitem"
+													tabindex="-1" href="#">자산</a></li>
 											</ul>
 										</div>
 									</td>
 									<td><input type="date" name="indate" class="form-control"></td>
 									<td><input type="button" value="거래처선택"
 										class="form-control"></td>
-									<td><input type="button" value="항목선택" class="form-control"></td>
+									<td><input type="button" value="항목선택" class="form-control" id="actype" data-toggle="modal" data-target="#myModal"></td>
 									<td><input type="text" name="product" class="form-control"></td>
 									<td>
 										<div class="input-group">
@@ -310,6 +335,24 @@
 								</tr>
 							</tbody>
 						</table>
+						<div class="modal fade" id="myModal" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">계정항목</h4>
+						        </div>
+						        <div class="modal-body">
+						      		<div class="list-group">
+  										
+									</div>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 						<div class="row">
 							<div class="col-md-5"></div>
 							<div class="col-md-3">
