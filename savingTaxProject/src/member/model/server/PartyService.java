@@ -80,6 +80,7 @@ public class PartyService {
 		
 		return result;
 	}
+	*/
 
 	public boolean userIdCheck(String chkId) {
 		Connection con = getConnection();
@@ -88,5 +89,5 @@ public class PartyService {
 		
 		//System.out.println("service 작동");
 		return result;
-	}*/
+	}
 }
