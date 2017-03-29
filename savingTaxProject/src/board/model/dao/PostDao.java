@@ -74,19 +74,17 @@ public PostDao(){
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	//오전 임성혁작업
 	public int insertPost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("insertPost");
 		int result = 0;
-		String postNo = "";
-		
 		try {
 			pstmt= con.prepareStatement(query);
-			pstmt.setString(1, postNo);
-			pstmt.setString(2, p.getPostName());
-			pstmt.setString(3, p.getPostContents());
-			pstmt.setInt(4, p.getBoardNo());
-			pstmt.setInt(5, p.getpNo());
+			pstmt.setString(1, p.getPostName());
+			pstmt.setString(2, p.getPostContents());
+			pstmt.setInt(3, p.getBoardNo());
+			pstmt.setInt(4, p.getpNo());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
