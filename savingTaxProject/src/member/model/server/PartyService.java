@@ -20,7 +20,7 @@ public class PartyService {
 		return p;
 	}
 
-	/*public int signupParty(Party p) {
+	public int signupParty(Party p) {
 		Connection con = getConnection();
 		int result = new PartyDao().signupParty(con, p);
 		
@@ -34,17 +34,6 @@ public class PartyService {
 		//System.out.println("service 작동");
 		return result;
 	}
-
-	public Member selectMember(String uid) {
-		Connection con = getConnection();
-		Member m = new MemberDao().selectMember(con, uid);
-		
-		close(con);
-		
-		System.out.println("service : " + m);
-		
-		return m;
-	}*/
 
 	public int updatePartyMyinfo(Party p) {
 		Connection con = getConnection();
@@ -60,9 +49,9 @@ public class PartyService {
 		return result;
 	}
 	
-	public int updatePartyMyinfo2(Party p){
+	public int insertPartyMyinfo3(Party p){
 		Connection con = getConnection();
-		int result = new PartyDao().updateMyinfo3(con, p);
+		int result = new PartyDao().insertMyinfo3(con, p);
 		if(result > 0){
 			commit(con);
 		}
@@ -71,16 +60,17 @@ public class PartyService {
 		}
 		return result;
 	}
+	/*
 
-	/*public int deleteMember(String uid) {
+	public int deleteMember(String uid) {
 		Connection con = getConnection();
 		int result = new MemberDao().deleteMember(con, uid);
 		
 		close(con);
 		
 		return result;
-	}
-	*/
+	}*/
+
 
 	public boolean userIdCheck(String chkId) {
 		Connection con = getConnection();
