@@ -32,8 +32,6 @@ public class Party implements java.io.Serializable{
 	private Date join_date;
 	private int busi_type;
 	private int to_no;
-	private String gender;
-	private String birth;
 	
 	
 	
