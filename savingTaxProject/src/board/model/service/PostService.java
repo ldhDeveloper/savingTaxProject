@@ -76,6 +76,7 @@ public class PostService {
 		return listCount;
 	}
 
+	//오전 임성혁 작업
 	public int insertComment(Post p) {
 		Connection con = getConnection();
 		int result = new PostDao().insertComment(con, p);
@@ -86,5 +87,6 @@ public class PostService {
 		close(con);
 		return result;
 	}
+
 
 }

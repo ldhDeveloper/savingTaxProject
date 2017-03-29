@@ -33,17 +33,15 @@ public class InsertPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String postName = request.getParameter("postName");
-		String postContents = request.getParameter("postContents");
+		int pNo = Integer.parseInt(request.getParameter("pno"));
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		int pNo = Integer.parseInt(request.getParameter("pNo"));
+		String title = request.getParameter("title");
+		String postContents = request.getParameter("postContents");
 		Post p = new Post();
-		p.setPostName(postName);
-		p.setPostContents(postContents);
 		p.setBoardNo(boardNo);
 		p.setpNo(pNo);
-		
-		
+		p.setPostName(title);
+		p.setPostContents(postContents);
 		int result = new BoardService().InsertPost(p);
 		if(result >0 ){
 			response.sendRedirect("/jsmi/views/board/boardListView.jsp?page=1&boardNo=1");

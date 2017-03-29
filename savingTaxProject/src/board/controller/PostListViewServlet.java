@@ -52,9 +52,7 @@ public class PostListViewServlet extends HttpServlet {
 			endPage = maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		RequestDispatcher view = null;
-		System.out.println(plist);
 		if (plist != null) {
-
 			switch (boardNo) {
 			case 1:
 				view = request.getRequestDispatcher("views/main1/CSBoard/board/boardListView.jsp");
@@ -75,8 +73,6 @@ public class PostListViewServlet extends HttpServlet {
 				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
 				break;
 			}
-
-
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);

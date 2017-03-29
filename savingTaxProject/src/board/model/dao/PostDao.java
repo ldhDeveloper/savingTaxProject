@@ -22,7 +22,7 @@ public PostDao(){
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-}
+}//오전 임성혁 작업
 	public List<Post> selectList(Connection con, int limit, int boardNo, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -40,11 +40,11 @@ public PostDao(){
 			plist = new ArrayList<Post>();
 			while(rset.next()){
 			Post p = new Post();
+			p.setPostOrder(rset.getInt(1));
 			p.setPostNo(rset.getInt(2));
 			p.setPostName(rset.getString(3));
 			p.setPostDate(rset.getDate(4));
 			p.setpNo(rset.getInt(5));
-			System.out.println("plist dao : " + p);
 			plist.add(p);	
 			}
 		}
@@ -70,26 +70,16 @@ public PostDao(){
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	public int updatePost(Connection con, Post p) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 	public int insertPost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("insertPost");
 		int result = 0;
 		String postNo = "";
-		switch(p.getBoardNo()){
-		case 1 : postNo = "seq_notice"; break;
-		case 2 : postNo = "seq_taxNew"; break;
-		case 3 : postNo = "seq_tip"; break;
-		case 4 : postNo = "seq_qna"; break;
-		case 5 : postNo = "seq_attachment"; break;
-		case 6 : postNo = "seq_event"; break;
-		}
+		
 		try {
 			pstmt= con.prepareStatement(query);
 			pstmt.setString(1, postNo);
@@ -107,32 +97,37 @@ public PostDao(){
 	}
 	public int getListCount(Connection con, int boardNo) {
 		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		int listCount = 0;
 		String query = prop.getProperty("getListCount");
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, boardNo);
-			listCount = pstmt.executeUpdate();
+			rset = pstmt.executeQuery();
+			if(rset.next())
+				listCount = rset.getInt(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listCount;
 	}
+	//오전 임성혁 작업
 	public int insertComment(Connection con, Post p) {
 		PreparedStatement pstmt = null;
-		int result = 0;
 		String query = prop.getProperty("insertComment");
+		int result = 0;
 		try {
-			pstmt = con.prepareStatement(query);
-			//insert the left
-			 result = pstmt.executeUpdate();
-			
+		pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, 1);
+		pstmt.setString(2, p.getPostContents());
+		pstmt.setInt(3, p.getBoardNo());
+		pstmt.setInt(4, p.getPostRefNo());
+		result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.getMessage();
+			e.printStackTrace();
 		}finally{
 			close(pstmt);
 		}
-		
 		return result;
 	}
 
