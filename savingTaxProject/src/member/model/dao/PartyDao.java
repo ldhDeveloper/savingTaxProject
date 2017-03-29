@@ -15,11 +15,20 @@ public class PartyDao {
 
 	public Party loginParty(Connection con, String uid, String upwd) {	
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		ResultSet rset = null;
+		ResultSet rset2 = null;
 		Party p = null;
 		
 		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
 				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+		
+		String query2 = "select  ENCRYPTION_AES.DEC_AES(phone) as phone, "
+				+ "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel"
+				+ "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
+				+ "emp_type, join_date, busi_type, tel, birth, gender "
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+		
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -37,10 +46,39 @@ public class PartyDao {
 				p.setId(rset.getString("id"));
 				p.setPwd(rset.getString("pwd"));
 				p.setEmail(rset.getString("email"));
+				if(rset.getInt("category") == 1){
+					pstmt2 = con.prepareStatement(query2);
+					pstmt2.setString(1, uid);
+					pstmt2.setString(2, upwd);
+					rset2 = pstmt2.executeQuery();
+					
+					if(rset2.next()){
+						p.setPhone(rset2.getString("phone"));
+						p.setId_no(rset2.getString("id_no"));
+						p.setCname(rset2.getString("cname"));
+						p.setCno(rset2.getString("cno"));
+						p.setPaddress(rset2.getString("paddress"));
+						p.setCaddress(rset2.getString("caddress"));
+						p.setCstatus(rset2.getString("cstatus"));
+						p.setPosition(rset2.getString("position"));
+						p.setOday(rset2.getDate("oday"));
+						p.setWno(rset2.getInt("wno"));
+						p.setTaxtype(rset2.getInt("taxtype"));
+						p.setNotax_yn(rset2.getInt("notax_yn"));
+						p.setPresident(rset2.getString("president"));
+						p.setTel(rset2.getString("tel"));
+						p.setEmp_type(rset2.getInt("emp_type"));
+						p.setJoin_date(rset2.getDate("join_date"));
+						p.setBusi_type(rset2.getInt("busi_type"));
+						p.setBirth(rset2.getString("birth"));
+						p.setGender(rset2.getString("gender"));
+					}
+				} 
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			close(rset2);
 			close(rset);
 			close(pstmt);		
 		}
@@ -56,7 +94,7 @@ public class PartyDao {
 		int result = 0;
 		System.out.println(p);
 		
-		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 1, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 5, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
 		
 		try {
 			pstmt = con.prepareStatement(query);

@@ -7,7 +7,7 @@ public class JDBCTemplate {
 		Connection con = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "JSMI", "JSMI");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "jsmi", "jsmi");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
