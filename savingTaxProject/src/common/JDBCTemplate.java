@@ -8,6 +8,8 @@ public class JDBCTemplate {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "jsmi", "jsmi");
+			con.setAutoCommit(false);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

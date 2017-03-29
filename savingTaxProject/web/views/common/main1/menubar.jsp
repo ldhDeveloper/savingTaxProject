@@ -184,7 +184,7 @@ $(function(){
                <li>
                		<a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">고객센터</a>
                		<ul class="sub-menu">
-                           <li><a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">공지사항</a></li>
+                           <li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
                            <li>
                            	<!-- <a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금 소식</a> -->
                            	<a href="/jsmi/listview?page=1&boardNo=2">세금 소식</a>
@@ -288,7 +288,7 @@ $(function(){
                                  <table width="100%">
                                     <tr>
                                     	<td class="xstd">
-                                    		<a href="/jsmi/views/main1/CSBoaard/board/boardListView.jsp">공지사항</a>
+                                    		<a href="/jsmi/listview?page=1&boardNo=1">공지사항</a>
                                     	</td>
                                     	<td class="xstd">
                                     		<a href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금소식</a>
@@ -321,7 +321,6 @@ $(function(){
          </nav>
       </div>
    </div>
-
    <!--  로고 + 로그인버튼 -->
    <div class="container-fluid hidden-sm hidden-md hidden-lg" id="bar">
       <div class="row">

@@ -108,13 +108,11 @@ text-align : center;
 </head>
 
 <body>
-	<%@ include file="/views/common/main1/menubar.jsp" %><br><br><br>
-
-
+<%@ include file="/views/common/main1/menubar.jsp" %><br><br><br>
+	<div class="tbody hidden-xs">
+		
 	<center><img src = "/jsmi/images/main1/notice.png"></center>
 	<br><br>
-
-	<div class="tbody">
 	<fieldset>
 	<legend>&nbsp; &nbsp; 공지사항</legend>
 	 <h3 align = "left">&nbsp; &nbsp;절세미인의 모든 소식을 전해드립니다.</h3>
@@ -129,7 +127,7 @@ text-align : center;
 							</tr>
 						</thead>
 						<%if(plist != null) for(Post p : plist) {%>
-							<tr><td><%=p.getPostNo() %> </td>
+							<tr><td><%=p.getPostOrder() %> </td>
 							<td colspan ="6" > 
 							<a href="/jsmi/postdetail?boardNo=<%=boardNo%>&postNo=<%=p.getPostNo()%>"><%=p.getPostName()%></a></td>
 							<td><%=p.getpNo() %></td>
@@ -140,7 +138,7 @@ text-align : center;
 			<div style="float:right">
 			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
 			<input type="submit" class="btn btn-primary" value="검색">		
-			<a href = "/jsmi/views/board/boardDetailView.jsp" class = "btn btn-primary">글쓰기 </a>
+			<a href = "/jsmi/views/main1/CSBoard/board/boardWrite.jsp?boardNo=1&page=1" class = "btn btn-primary">글쓰기 </a>
 		</div>
 		<%if(currentPage <=1){ %>
 		[이전]
@@ -150,26 +148,22 @@ text-align : center;
 		 <%} %>
 		 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
 		</fieldset>
+		<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
-			
-		
-
-
-	<%@ include file="/views/common/main1/footer.jsp" %>
+	<%@ include file="/views/common/main1/footer.jsp"%>
+	
 </body>
 </html>
