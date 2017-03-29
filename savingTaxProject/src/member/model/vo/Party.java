@@ -12,6 +12,8 @@ public class Party implements java.io.Serializable{
 	private String tel;
 	private String phone;
 	private String email;
+	private String birth;
+	private String gender;
 	private String id_no;
 	private String cname;
 	private String cno;
@@ -53,6 +55,7 @@ public class Party implements java.io.Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
 	public int getPno() {
 		return pno;
 	}
@@ -83,6 +86,7 @@ public class Party implements java.io.Serializable{
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -95,6 +99,7 @@ public class Party implements java.io.Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getId_no() {
 		return id_no;
 	}

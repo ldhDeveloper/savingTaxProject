@@ -14,7 +14,7 @@
 
 <script>
 	function nextpage(){
-		location.href("/jsmi/views/main2/myinfo2.jsp");
+		location.href("/jsmi/views/main2/myinfo/myinfo2.jsp");
 	}
 </script>
 
@@ -114,49 +114,49 @@
 				</div>
 			</div>
 
-			<form action="" method="post">
+			<form action="/jsmi/mupdate2" method="post">
 				<table class="table table-condensed">
 					<tbody>
 						<tr>
 							<td class="col-md-2"><h5>이름</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"></td>
+							<td class="col-md-4"><input type="text" class="form-control" name="username"></td>
 							<td class="col-md-2"><h5>주민등록번호</h5></td>
 							<td class="col-md-4"><div class="col-md-5">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="idno">
 								</div>
 								<div class="col-md-1">
 									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
-									<input type="password" class="form-control">
+									<input type="password" class="form-control" name="idno2">
 								</div></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>아이디</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"></td>
+							<td class="col-md-4"><input type="text" class="form-control" name="idno3"></td>
 							<td class="col-md-6" colspan="2"></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>비밀번호</h5></td>
 							<td class="col-md-4"><input type="password"
-								class="form-control"></td>
+								class="form-control" name="userpwd"></td>
 							<td class="col-md-6" colspan="2"></td>
 
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>비밀번호 확인</h5></td>
 							<td class="col-md-4"><input type="password"
-								class="form-control"></td>
+								class="form-control" name="userpwd2"></td>
 							<td class="col-md-6" colspan="2"></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>사업주 주소</h5></td>
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" id="postnum">
+									<input type="text" class="form-control" id="postnum" name="address">
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
-								class="btn btn-primary" value="우편번호검색"
+								class="btn btn-primary" value="우편번호검색" name="address2"
 								onclick="sample4_execDaumPostcode();"></td>
 						</tr>
 						<tr>
@@ -164,46 +164,46 @@
 							<td class="col-md-4"><input type="text" class="form-control"
 								id="address1"></td>
 							<td class="col-md-6" colspan="2"><input type="text"
-								class="form-control" id="address2"></td>
+								class="form-control" id="address2" name="address3"></td>
 
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td class="col-md-2"><h5>전화번호</h5></td>
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="tel">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="tel2">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="tel3">
 								</div>
 								<div class="col-md-1"></div>
 							</td>
 							<td class="col-md-4"></td>
-						</tr>
+						</tr> -->
 						<tr>
 							<td class="col-md-2"><h5>휴대폰번호</h5></td>
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="phone">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="phone2">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="phone3">
 								</div>
 								<div class="col-md-1"></div>
 							</td>
@@ -214,12 +214,12 @@
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="email">
 								</div>
 								<div class="col-md-1" style="text-align: center">@</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" id="email2">
+									<input type="text" class="form-control" id="email2" name="email2">
 								</div>
 								<div class="col-md-1" style="display: block"></div>
 								<div class="col-md-3"
@@ -249,12 +249,11 @@
 						</tr>
 					</tbody>
 				</table>
+			</form>
 					<div class="btngroup">
-				  <button class="btn btn-primary" onclick="nextpage();">다음</button>
+				  <button class="btn btn-primary" type="submit" onclick="nextpage();">다음</button>
 				  <button class="btn btn-danger" type="reset">취소</button>
 				  </div>
-
-			</form>
 			
 
 		</div>
