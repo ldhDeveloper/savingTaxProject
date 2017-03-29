@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<% int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+	int currentPage = Integer.parseInt(request.getParameter("page"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -275,6 +278,8 @@
 		</div>
 		<br>
 			<div align="right">
+				<input type="hidden" name = "boardNo" value="<%=boardNo %>">
+				<input type="hidden" name = "page" value="<%=currentPage %>">
 				<input type="submit" id="submitBtn1" value="등록">&nbsp;&nbsp;
 				<input type="reset" id="submitBtn2" value="취소">&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;

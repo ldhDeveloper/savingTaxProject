@@ -138,7 +138,7 @@ text-align : center;
 			<div style="float:right">
 			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
 			<input type="submit" class="btn btn-primary" value="검색">		
-			<a href = "/jsmi/views/main1/CSBoard/board/boardWrite.jsp" class = "btn btn-primary">글쓰기 </a>
+			<a href = "/jsmi/views/main1/CSBoard/board/boardWrite.jsp?boardNo=1&page=1" class = "btn btn-primary">글쓰기 </a>
 		</div>
 		<%if(currentPage <=1){ %>
 		[이전]
