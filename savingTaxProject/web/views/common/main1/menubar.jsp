@@ -176,7 +176,7 @@ $(function(){
                <li>
               		 <a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>이벤트</a>
               		 <ul class="sub-menu">
-                           <li><a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인 이벤트</a></li>
+                           <li><a href='/jsmi/listview?boardNo=6&page=1'>진행중인 이벤트</a></li>
                            <li><a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a></li>
                      </ul>
                </li>

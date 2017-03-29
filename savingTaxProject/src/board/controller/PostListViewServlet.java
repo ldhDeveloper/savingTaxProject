@@ -35,7 +35,6 @@ public class PostListViewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		
 		response.setContentType("text/html; charset=utf-8");
 		
 		int currentPage = 1;
@@ -83,9 +82,9 @@ public class PostListViewServlet extends HttpServlet {
 				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
 				break;
 			case 6:
-				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");
 				break;
-			}
+			} 
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);

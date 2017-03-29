@@ -3,7 +3,7 @@ package board.model.vo;
 
 import java.sql.Date;
 
-public class Post {
+public class Post implements java.io.Serializable{
 	private int postOrder;
 	private int postNo;
 	private String postName;

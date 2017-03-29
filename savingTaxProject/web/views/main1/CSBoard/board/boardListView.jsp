@@ -95,6 +95,20 @@ button {
 	font-size: 15pt;
 	box-shadow: 3px 3px 6px #2a82a3;
 }
+
+.thead-xs{
+	background: -webkit-linear-gradient( #ffffff, #b0e0e6);
+	background: -o-linear-gradient( #ffffff, #b0e0e6);
+	background: -moz-linear-gradient( #ffffff, #b0e0e6);
+	background: linear-gradient( #ffffff, #b0e0e6);
+	border: solid 1px #dcdcdc;
+	height: 20px;
+	border-radius: 4px;
+	padding-top: 0.8%;
+	font-size: 10pt;
+	box-shadow: 3px 3px 6px #2a82a3;
+
+}
 tbody tr:hover {
 background : #bbbbbb;
 }
@@ -110,7 +124,6 @@ text-align : center;
 <body>
 <%@ include file="/views/common/main1/menubar.jsp" %><br><br><br>
 	<div class="tbody hidden-xs">
-		
 	<center><img src = "/jsmi/images/main1/notice.png"></center>
 	<br><br>
 	<fieldset>
@@ -160,10 +173,51 @@ text-align : center;
 	<br>
 	<br>
 	<br>
+	</div>
+	<script type="text/javascript">
+	function redact(){
+		$('input').attr("readonly", false);
+	
+	}
+	
+	</script>
+	<div class = "visible-xs hidden-md hidden-sm ">
+	<center><img src = "/jsmi/images/main1/notice.png"></center>
+	<br><br>
+	<fieldset>
+	<legend>&nbsp; &nbsp; 공지사항</legend>
+	
+					<table class="table table-strap">
+						<thead>
+							<tr class="thead-xs">
+								<td colspan="10"> 절세미인의 모든 소식을 전해드립니다.</td>
+							</tr>
+						</thead>
+						<%if(plist != null) for(Post p : plist) {%>
+							<tr><td><%=p.getPostOrder() %> </td>
+							<td colspan ="6" > 
+							<a href="/jsmi/postdetail?boardNo=<%=boardNo%>&postNo=<%=p.getPostNo()%>"><%=p.getPostName()%></a></td>
+							<td><%=p.getpNo() %></td>
+							<td><%=p.getPostDate() %></td>
+							<td><%=p.getReadCount() %></td></tr>
+							<%} %>
+					</table>
+			<div style="float:right">
+			<input type="text" name="search" placeholder="검색할 제목을 입력하세요.">
+			<input type="submit" class="btn btn-primary" value="검색">		
+			<a href = "/jsmi/views/main1/CSBoard/board/boardWrite.jsp?boardNo=1&page=1" class = "btn btn-primary">글쓰기 </a>
+		</div>
+		<%if(currentPage <=1){ %>
+		[이전]
+		<% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+		 <%} for(int p = startPage; p <= endPage; p++){%>
+		 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+		 <%} %>
+		 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
+		</fieldset>
 	
 	</div>
-
 	<%@ include file="/views/common/main1/footer.jsp"%>
-	
+
 </body>
 </html>
