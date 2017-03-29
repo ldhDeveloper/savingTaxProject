@@ -150,7 +150,7 @@ body {
     <div class="container">
       <form action="/jsmi/signup" class="form-signin">
 
-      	<input type="button" class="btn close" value="x 닫기" onclick="location.href='/jsmi/views/main1/main1.jsp'"><br>
+      	<input type="button" class="btn close" value="x 닫기" onclick="location.href='/jsmi/main.jsp'"><br>
 
         <h2 class="form-signin-heading" align="center">회원가입</h2><br>
         <table style="cellspacing:5px">
@@ -167,7 +167,7 @@ body {
         
 		<br>
         <input class="btn btn-lg btn-info btn-block" type="submit" value="가입 완료" onclick="return formchk()">
-        <input class="btn btn-lg btn-default btn-block" type="reset" value="작성 취소" onclick="location.href='/jsmi/views/main1/main1.jsp'">
+        <input class="btn btn-lg btn-default btn-block" type="reset" value="작성 취소" onclick="location.href='/jsmi/main.jsp'">
 
       </form>
 

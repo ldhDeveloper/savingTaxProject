@@ -159,20 +159,22 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set pname=?, id=ENCRYPTION_AES.ENC_AES(?), pwd=ENCRYPTION_AES.ENC_AES(?), phone=ENCRYPTION_AES.ENC_AES(?), email=ENCRYPTION_AES.ENC_AES(?), id_no =ENCRYPTION_AES.ENC_AES(?), paddress=?, tel=?,  gender=?, birth=? ";
+		String query = "update party set pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=6";
 
 		try {
+			System.out.println("p: "+p);
 			pstmt = con.prepareStatement(query);
             pstmt.setString(1, p.getPname());
-            pstmt.setString(2, p.getId_no());
-            pstmt.setString(3, p.getId());
-            pstmt.setString(4, p.getPwd());
-            pstmt.setString(5, p.getPaddress());
-            pstmt.setString(6, p.getTel());
+            pstmt.setString(2, p.getId());
+            pstmt.setString(3, p.getPwd());
+            pstmt.setString(4, p.getEmail());
+            pstmt.setString(5, p.getId_no());
+            pstmt.setString(6, p.getPaddress());
             pstmt.setString(7, p.getPhone());
-            pstmt.setString(8, p.getEmail());
+            pstmt.setString(8, p.getBirth());
             pstmt.setString(9, p.getGender());
-            pstmt.setString(10, p.getBirth());
+           
+           
             
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -184,13 +186,59 @@ public class PartyDao {
 	}
 	
 	public int updatePartyMyinfo2(Connection con, Party p) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result =0;
+		PreparedStatement pstmt = null;
+
+		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, wno=?, taxtype=?, notax_yn=?, president=? where pno=6"; 
+
+		try {
+			pstmt = con.prepareStatement(query);
+            pstmt.setString(1, p.getTel());
+            pstmt.setString(2, p.getCname());
+            pstmt.setString(3, p.getCno());
+            pstmt.setString(4, p.getCaddress());
+            pstmt.setString(5, p.getCstatus());
+            pstmt.setString(6, p.getCtype());
+            pstmt.setDate(7, p.getOday());
+            pstmt.setInt(8, p.getWno());
+            pstmt.setInt(9, p.getTaxtype());
+            pstmt.setInt(10, p.getNotax_yn());
+            pstmt.setString(11, p.getPresident());
+            
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		return result;
 	}
 	
-	public int updateMyinfo3(Connection con, Party p) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertMyinfo3(Connection con, Party p) {
+		int result =0;
+		PreparedStatement pstmt = null;
+
+		String query = "insert into party (tel, email, cname,  cno, caddress,  cstatus, ctype, president, busi_type) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			pstmt = con.prepareStatement(query);
+            pstmt.setString(1, p.getTel());
+            pstmt.setString(2, p.getEmail());
+            pstmt.setString(3, p.getCname());
+            pstmt.setString(4, p.getCno());
+            pstmt.setString(5, p.getCaddress());
+            pstmt.setString(6, p.getCstatus());
+            pstmt.setString(7, p.getCtype());
+            pstmt.setString(8, p.getPresident());
+            pstmt.setInt(9, p.getBusi_type());
+            
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		return result;
 	}
 
 	public int deleteMember(Connection con, String uid) {
