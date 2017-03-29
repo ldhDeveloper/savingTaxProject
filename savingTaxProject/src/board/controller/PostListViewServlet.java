@@ -64,9 +64,8 @@ public class PostListViewServlet extends HttpServlet {
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		
 		RequestDispatcher view = null;
-		
-		if (plist != null) {
 
+		if (plist != null) {
 			switch (boardNo) {
 			case 1:
 				view = request.getRequestDispatcher("views/main1/CSBoard/board/boardListView.jsp");

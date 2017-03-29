@@ -49,13 +49,14 @@ public class PostService {
 		return result;
 	}
 
-	public int InsertPost(Post p) {
+	public int insertPost(Post p) {
 		Connection con = getConnection();
 		int result = new PostDao().insertPost(con, p);
 		if(result >0)
 			commit(con);
 		else
 			rollback(con);
+		close(con);
 		return result;
 	}
 
@@ -66,6 +67,7 @@ public class PostService {
 		return listCount;
 	}
 
+	//오전 임성혁 작업
 	public int insertComment(Post p) {
 		Connection con = getConnection();
 		int result = new PostDao().insertComment(con, p);
@@ -85,5 +87,6 @@ public class PostService {
 		System.out.println("세금소식 service : " + boardNo + ", " + plist);
 		return plist;
 	}
+
 
 }

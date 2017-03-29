@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", LoginUser);
 			
 			//response.sendRedirect("/jsmi/views/main1/main1.jsp");
-			response.sendRedirect("/jsmi/views/main1/introduce.jsp");
+			response.sendRedirect("/jsmi/main.jsp");
 		}
 		
 		else {
