@@ -4,7 +4,7 @@ package board.model.vo;
 import java.sql.Date;
 
 public class Post {
-
+	private int postOrder;
 	private int postNo;
 	private String postName;
 	private Date postDate;
@@ -12,11 +12,17 @@ public class Post {
 	private int boardNo;
 	private int pNo;
 	private int postRefNo;
-	private int postLev;
-	private int postSeq;
 	private int readCount;
 	private String fName;
 	private String refName;
+	
+	
+	public int getPostOrder() {
+		return postOrder;
+	}
+	public void setPostOrder(int postOrder) {
+		this.postOrder = postOrder;
+	}
 	public int getPostNo() {
 		return postNo;
 	}
@@ -59,18 +65,6 @@ public class Post {
 	public void setPostRefNo(int postRefNo) {
 		this.postRefNo = postRefNo;
 	}
-	public int getPostLev() {
-		return postLev;
-	}
-	public void setPostLev(int postLev) {
-		this.postLev = postLev;
-	}
-	public int getPostSeq() {
-		return postSeq;
-	}
-	public void setPostSeq(int postSeq) {
-		this.postSeq = postSeq;
-	}
 	public int getReadCount() {
 		return readCount;
 	}
@@ -92,9 +86,10 @@ public class Post {
 	public Post() {
 		super();
 	}
-	public Post(int postNo, String postName, Date postDate, String postContents, int boardNo, int pNo, int postRefNo,
-			int postLev, int postSeq, int readCount, String fName, String refName) {
+	public Post(int postOrder, int postNo, String postName, Date postDate, String postContents, int boardNo, int pNo,
+			int postRefNo, int readCount, String fName, String refName) {
 		super();
+		this.postOrder = postOrder;
 		this.postNo = postNo;
 		this.postName = postName;
 		this.postDate = postDate;
@@ -102,18 +97,15 @@ public class Post {
 		this.boardNo = boardNo;
 		this.pNo = pNo;
 		this.postRefNo = postRefNo;
-		this.postLev = postLev;
-		this.postSeq = postSeq;
 		this.readCount = readCount;
 		this.fName = fName;
 		this.refName = refName;
 	}
 	@Override
 	public String toString() {
-		return postNo + ", " + postName + ", " + postDate + ", " + postContents + ", " + boardNo + ", " + pNo + ", "
-				+ postRefNo + ", " + postLev + ", " + postSeq + ", " + readCount + ", " + fName + ", " + refName;
+		return postOrder + ", " + postNo + ", " + postName + ", " + postDate + ", " + postContents + ", " + boardNo
+				+ ", " + pNo + ", " + postRefNo + ", " + readCount + ", " + fName + ", " + refName;
 	}
-
 
 
 

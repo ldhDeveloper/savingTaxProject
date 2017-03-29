@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
+import board.model.service.PostService;
 import board.model.vo.Board;
+import board.model.vo.Post;
 
 /**
  * Servlet implementation class UpdatePostServlet
@@ -35,16 +37,16 @@ public class UpdatePostServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-			int post_no = Integer.parseInt(request.getParameter("post_no"));
-			String post_title = request.getParameter("post_title");
-			String post_contents = request.getParameter("post_contents");
-			int board_no = Integer.parseInt(request.getParameter("board_no"));
-			Board b = new Board();
-			b.setBoard_no(board_no);
-			b.setPost_contents(post_contents);
-			b.setPost_no(post_no);
-			b.setPost_title(post_title);
-			int result = new BoardService().updatePost(b);
+			int postNo = Integer.parseInt(request.getParameter("postNo"));
+			String title = request.getParameter("title");
+			String postContents = request.getParameter("postContents");
+			int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+			Post p = new Post();
+			p.setPostNo(postNo);
+			p.setPostName(title);
+			p.setPostContents(postContents);
+			p.setBoardNo(boardNo);
+			int result = new PostService().insertPost(p);
 		RequestDispatcher view = null;
 		if(result > 0){
 		response.sendRedirect("");	
