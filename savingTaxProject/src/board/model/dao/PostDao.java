@@ -14,51 +14,47 @@ import static common.JDBCTemplate.*;
 import board.model.vo.Post;
 
 public class PostDao {
-private Properties prop = new Properties();
-	
-public PostDao(){
-	try {
-		prop.load(new InputStreamReader(this.getClass().getResourceAsStream("post.properties")));
-	} catch (IOException e) {
-		e.printStackTrace();
+	private Properties prop = new Properties();
+
+	public PostDao() {
+		try {
+			prop.load(new InputStreamReader(this.getClass().getResourceAsStream("post.properties")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-}
+
 	public List<Post> selectList(Connection con, int limit, int boardNo, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Post> plist = null;
-		int startRow =  (currentPage -1) * limit +1;
-		int endRow = startRow + limit -1;
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
 		String query = prop.getProperty("selectList");
 		try {
-		pstmt = con.prepareStatement(query);
-		pstmt.setInt(1, boardNo);
-		pstmt.setInt(2, startRow);
-		pstmt.setInt(3, endRow);
-		rset = pstmt.executeQuery();
-		if(rset != null){
-			plist = new ArrayList<Post>();
-			while(rset.next()){
-			Post p = new Post();
-			p.setPostNo(rset.getInt(2));
-			p.setPostName(rset.getString(3));
-			p.setPostDate(rset.getDate(4));
-			p.setpNo(rset.getInt(5));
-			System.out.println("plist dao : " + p);
-			plist.add(p);	
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			if (rset != null) {
+				plist = new ArrayList<Post>();
+				while (rset.next()) {
+					Post p = new Post();
+					p.setPostNo(rset.getInt(2));
+					p.setPostName(rset.getString(3));
+					p.setPostDate(rset.getDate(4));
+					p.setpNo(rset.getInt(5));
+					plist.add(p);
+				}
 			}
-		}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
 		return plist;
-	}
-	public List<Post> selectTitle(Connection con, String title) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public int deletePost(Connection con, int post_no, int post_no2) {
@@ -76,22 +72,33 @@ public PostDao(){
 		return 0;
 	}
 
-
 	public int insertPost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("insertPost");
 		int result = 0;
 		String postNo = "";
-		switch(p.getBoardNo()){
-		case 1 : postNo = "seq_notice"; break;
-		case 2 : postNo = "seq_taxNew"; break;
-		case 3 : postNo = "seq_tip"; break;
-		case 4 : postNo = "seq_qna"; break;
-		case 5 : postNo = "seq_attachment"; break;
-		case 6 : postNo = "seq_event"; break;
+		switch (p.getBoardNo()) {
+		case 1:
+			postNo = "seq_notice";
+			break;
+		case 2:
+			postNo = "seq_taxNew";
+			break;
+		case 3:
+			postNo = "seq_tip";
+			break;
+		case 4:
+			postNo = "seq_qna";
+			break;
+		case 5:
+			postNo = "seq_attachment";
+			break;
+		case 6:
+			postNo = "seq_event";
+			break;
 		}
 		try {
-			pstmt= con.prepareStatement(query);
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, postNo);
 			pstmt.setString(2, p.getPostName());
 			pstmt.setString(3, p.getPostContents());
@@ -100,11 +107,12 @@ public PostDao(){
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
+
 	public int getListCount(Connection con, int boardNo) {
 		PreparedStatement pstmt = null;
 		int listCount = 0;
@@ -118,24 +126,72 @@ public PostDao(){
 		}
 		return listCount;
 	}
+
 	public int insertComment(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("insertComment");
 		try {
 			pstmt = con.prepareStatement(query);
-			//insert the left
-			 result = pstmt.executeUpdate();
-			
+			// insert the left
+			result = pstmt.executeUpdate();
+
 		} catch (Exception e) {
 			e.getMessage();
-		}finally{
+		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
+	}
+	
+	// 게시판 검색
+	public List<Post> selectTitle(Connection con, int boardNo, String ptitle) {
+		List<Post> plist = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = prop.getProperty("selectTitle");
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, "%" + ptitle + "%");
+
+			rset = pstmt.executeQuery();
+			
+			System.out.println("세금소식 dao : " + rset);
+
+			if (rset != null) {
+				plist = new ArrayList<Post>();
+			}
+
+			while (rset.next()) {
+				Post p = new Post();
+
+				p.setPostNo(rset.getInt("post_no"));				
+				p.setPostName(rset.getString("post_name"));				
+				System.out.println("여기 안 떠?");
+				p.setPostDate(rset.getDate("post_date"));
+				p.setPostContents(rset.getString("post_contents"));
+				p.setBoardNo(rset.getInt("board_no"));
+				p.setpNo(rset.getInt("p_no"));
+				p.setPostRefNo(rset.getInt("post_ref_no"));
+				p.setPostLev(rset.getInt("post_lev"));
+				p.setPostSeq(rset.getInt("post_seq"));
+				p.setReadCount(rset.getInt("read_count"));
+
+				plist.add(p);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("세금소식 dao : " + boardNo + ", " + plist);
+		return plist;
 	}
 
 }
-
-

@@ -211,13 +211,18 @@ label {
 
 		<br> <br> <br>
 
+
 		<div id="searchdiv" align="center">
-			<label id="searchLable">SEARCH</label>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
-				id="searchTitle" placeholder="검색할 제목을 입력하세요."> &nbsp;&nbsp;
-			<input type="submit" id="submitBtn" value="검색">
+			<form action="/jsmi/psearch">
+				<label id="searchLable">SEARCH</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="text" id="searchTitle" name="searchTitle" placeholder="검색할 제목을 입력하세요."> &nbsp;&nbsp;
+				<input value="<%= boardNo %>" name="boardNo" type="hidden">
+				<input value="<%= currentPage %>" name="page" type="hidden">	
+				<input type="submit" id="submitBtn" value="검색">
+			</form>
 		</div>
 
 		<br> <br> <br> <br>
