@@ -24,14 +24,19 @@ public class PostDao {
 		}
 	}
 
-}//오전 임성혁 작업
+//	오후 임성혁 쿼리문 수정
 	public List<Post> selectList(Connection con, int limit, int boardNo, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Post> plist = null;
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
-		String query = prop.getProperty("selectList");
+		
+		String query =  "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname from " +
+						"(select  rownum rnum, p.post_no, post_name, " +
+						 "post_date, post_contents, board_no, pno, " +
+						 "post_ref_no, read_count, fname, refname  from post p, attachment a " +
+						 "where p.post_no = a.post_no(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc ) where rnum >= ? and rnum <= ?";
 		try {
 		pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, boardNo);
@@ -42,13 +47,17 @@ public class PostDao {
 			plist = new ArrayList<Post>();
 			while(rset.next()){
 			Post p = new Post();
-			p.setPostOrder(rset.getInt(1));
-			p.setPostNo(rset.getInt(2));
-			p.setPostName(rset.getString(3));
-			p.setPostDate(rset.getDate(4));
-			p.setpNo(rset.getInt(5));
+			p.setPostOrder(rset.getInt("rnum"));
+			p.setPostNo(rset.getInt("post_no"));
+			p.setPostContents(rset.getString("post_contents"));
+			p.setPostName(rset.getString("post_name"));
+			p.setPostDate(rset.getDate("post_date"));
+			p.setpNo(rset.getInt("pno"));
+			p.setfName(rset.getString("fname"));
+			p.setRefName(rset.getString("refname"));
+			System.out.println(p);
 			plist.add(p);	
-
+			}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +82,7 @@ public class PostDao {
 		return 0;
 	}
 
-	//오전 임성혁작업
+
 
 	public int insertPost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
@@ -112,9 +121,6 @@ public class PostDao {
 		}
 		return listCount;
 	}
-
-	//오전 임성혁 작업
-
 	public int insertComment(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("insertComment");
@@ -133,32 +139,22 @@ public class PostDao {
 		}
 		return result;
 	}
-	
-	// 게시판 검색
 	public List<Post> selectTitle(Connection con, int boardNo, String ptitle) {
 		List<Post> plist = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-
 		String query = prop.getProperty("selectTitle");
-
 		try {
 			pstmt = con.prepareStatement(query);
-
 			pstmt.setInt(1, boardNo);
 			pstmt.setString(2, "%" + ptitle + "%");
-
 			rset = pstmt.executeQuery();
-			
 			System.out.println("세금소식 dao : " + rset);
-
 			if (rset != null) {
 				plist = new ArrayList<Post>();
 			}
-
 			while (rset.next()) {
 				Post p = new Post();
-
 				p.setPostNo(rset.getInt("post_no"));				
 				p.setPostName(rset.getString("post_name"));				
 				System.out.println("여기 안 떠?");
@@ -167,10 +163,7 @@ public class PostDao {
 				p.setBoardNo(rset.getInt("board_no"));
 				p.setpNo(rset.getInt("p_no"));
 				p.setPostRefNo(rset.getInt("post_ref_no"));
-				p.setPostLev(rset.getInt("post_lev"));
-				p.setPostSeq(rset.getInt("post_seq"));
 				p.setReadCount(rset.getInt("read_count"));
-
 				plist.add(p);
 			}
 		} catch (Exception e) {

@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"  import = "board.model.vo.Post, java.util.*"%>
+	
+	<% List<Post> plist = (List<Post>)request.getAttribute("plist"); 
+	 int listCount = ((Integer)request.getAttribute("listCount")).intValue();
+	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
+	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
+	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue(); 
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,56 +62,16 @@ a.thumbnail {
 		<br> <br>
 	</div>
 	<div class="middle hidden-xs">
+		<%if(plist != null){ for(Post p : plist){ %>
 		<div class="thumbnail" style="display: inline-block">
-			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp"><img
-				src="/jsmi/images/main1/eventmn2.png">
+			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getRefName()%>"><img
+				src="/jsmi/images/main1/<%=p.getfName()%>">
 				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
+					<p>이벤트기간 : <%=p.getPostContents() %></p>
 				</div> </a>
 		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn6.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn3.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn4.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn1.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn5.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn7.png">
-				<div class="caption">
-					<p >이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn8.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
+		<% }} %>
+		
 		</div>
 	</div>
 	<br>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% String src = request.getParameter("src"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,9 @@
 <%@ include file="/views/common/main1/menubar.jsp"%>
 	<!-- PC -->
 	<div class="middle hidden-xs">
-		<img src="/jsmi/images/main1/eventdetail.png">
+		<img src="/jsmi/images/main1/<%=src%>.png">
+		
+		
 	</div>
 	<hr>
 	
@@ -19,7 +22,7 @@
 	<br>
 	     <div class="row">
 	        <div class="col-xs-12">
-	           <img src="/jsmi/images/main1/eventdetailxs.png">
+	           <img src="/jsmi/images/main1/<%=src%>xs.png">
 	           <hr>
 	        </div>
 	     </div>
