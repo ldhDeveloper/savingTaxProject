@@ -5,7 +5,6 @@
 
 <%	
 	List<Post> plist = (List<Post>)request.getAttribute("plist");
-	System.out.println("jsp " + plist);
 	
 	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue();
@@ -146,7 +145,7 @@
 	font-align: center;
 }
 
-#searchTitle {
+#searchTi {
 	width: 50%;
 	height: 23px;
 }
@@ -202,9 +201,8 @@ label {
 	<br>
 
 	<!-- 컴퓨터용 -->
+	
 	<div class="middle hidden-xs">
-
-
 		<div class="middle font-family-md-1">
 			<h3 align="center">
 				<img src="/jsmi/images/news.png"><br><br>
@@ -216,16 +214,21 @@ label {
 		</div>
 
 		<br> <br> <br>
-
-		<div id="searchdiv" align="center">
-			<label id="searchLable">SEARCH</label> 
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" id="searchTitle" placeholder="검색할 제목을 입력하세요."> &nbsp;&nbsp;
-			<input type="submit" id="submitBtn" value="검색">
-		</div>
-
+		
+			<div id="searchdiv" align="center">
+			<form action="/jsmi/psearch" method="post">
+				<label id="searchLable">SEARCH</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="text" id="searchTi" name="searchTitle" placeholder="검색할 제목을 입력하세요.">
+				&nbsp;&nbsp; 
+				<input value="<%= boardNo %>" name="boardNo" type="hidden">
+				<input value="<%= currentPage %>" name="page" type="hidden">  
+				<input type="submit" id="submitBtn" value="검색">
+				</form>				
+			</div>
+		
 		<br> <br> <br> <br>
 		
 		<div id="tlist" >
@@ -289,7 +292,7 @@ label {
 		</div>
 
 	</div>
-
+	
 
 
 
@@ -325,7 +328,7 @@ label {
 			<div class="col-xs-2"></div>
 
 			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
+				<input type="text" id="stext" name="searchtext"
 					placeholder="검색할 제목을 입력하세요.">
 				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
 				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
@@ -334,6 +337,8 @@ label {
 
 			<div class="col-xs-2"></div>
 		</div>
+		
+		
 
 		<br> <br>
 

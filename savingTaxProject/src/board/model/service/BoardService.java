@@ -75,9 +75,4 @@ public class BoardService {
 		close(con);
 		return listCount;
 	}
-
-	public List<Post> tnSelectAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

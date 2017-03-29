@@ -58,6 +58,10 @@
 }
 
 /* *** 컴퓨터 style *** */
+.middle {
+	font-family: mobius !important;
+}
+
 .table {
 	table-layout: fixed;
 }
@@ -73,13 +77,13 @@
 }
 
 #clist{
-	background: -webkit-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -o-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -moz-linear-gradient(left, #ffffff, #b0e0e6);
-	background: linear-gradient(left, #ffffff, #b0e0e6);
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
-	border-radius: 4px;
+	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
 	box-shadow: 2px 2px 6px #2a82a3;
@@ -93,7 +97,8 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	color : #2a82a3;
+	/* color : #2a82a3; */
+	color : #696969;
 	font-size: 13px;
 }
 
@@ -128,10 +133,13 @@
 }
 
 .thmd {
-	border : 1px solid #ddd;
-	padding-top: 1.5%;
-	padding-left: 2%;
-	
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border : 1px solid #2a82a3;
+	box-shadow: 2px 2px 6px #2a82a3;
+	height: 10%;
 }
 
 #thmd {
@@ -140,8 +148,37 @@
 	text-align: center;
 }
 
-.tr {
+#thth {
+	font-family: computer !important;
+	color : #2a82a3;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+}
+
+#thc {
+	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
+	text-align: center;
+	font-size:10pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
 	
+}
+
+#thcS {
+	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
+	text-align: center;
+	font-size:12pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #2a82a3;
 }
 
 table {
@@ -174,7 +211,8 @@ table {
 
 #tw {
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size : 9pt;
+	font-size : 9.5pt;
+	color : #696969;
 }
 
 </style>
@@ -222,12 +260,12 @@ table {
 			<table>
 				<thead>
 					<tr class="thmd">
-						<th id="thmd">작성일</th>
-						<th id="thmd">2017-03-27</th>
-						<th id="thmd">작성자</th>
-						<th id="thmd">김진항</th>
-						<th id="thmd">조회수</th>
-						<th id="thmd">100</th>
+						<th id="thth">작성일</th>
+						<th id="thc">2017-03-27</th>
+						<th id="thth">작성자</th>
+						<th id="thc">김진항</th>
+						<th id="thth">조회수</th>
+						<th id="thcS">100</th>
 					</tr>
 				</thead>
 

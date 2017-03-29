@@ -17,17 +17,7 @@ public class PostService {
 		Connection con = getConnection();
 		List<Post> plist = new PostDao().selectList(con, limit, boardNo, currentPage);
 		close(con);
-		System.out.println("plist service : " + currentPage +", " + boardNo);
 		return plist;
-	}
-
-	public List<Post> selectTitle(String title) {
-		Connection con = getConnection();
-		
-		List<Post> blist = new PostDao().selectTitle(con, title);
-		close(con);
-		return blist;
-
 	}
 
 	public int deletePost(int Post_no, int post_no) {
@@ -87,6 +77,15 @@ public class PostService {
 			rollback(con);
 		close(con);
 		return result;
+	}
+	
+	// 게시판 검색
+	public List<Post> selectTitle(int boardNo, String ptitle) {
+		Connection con = getConnection();
+		List<Post> plist = new PostDao().selectTitle(con, boardNo, ptitle);
+		close(con);
+		System.out.println("세금소식 service : " + boardNo + ", " + plist);
+		return plist;
 	}
 
 

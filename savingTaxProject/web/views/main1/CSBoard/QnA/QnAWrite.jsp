@@ -58,6 +58,10 @@
 }
 
 /* *** 컴퓨터 style *** */
+.middle {
+	font-family: mobius !important;
+}
+
 .table {
 	table-layout: fixed;
 }
@@ -122,8 +126,11 @@
 
 .Qtitle {
 	font-family: computer !important;
+	border-top : 1px solid #ddd;
 	border-bottom : 1px solid #ddd;
-	padding : 2.5%;
+	padding-top : 2.5%;
+	padding-left : 2.5%;
+	padding-bottom : 2%;
 	font-size: 12pt;
 	color: #2a82a3;
 }
@@ -215,7 +222,7 @@
 		<div class="middle font-family-md-1">
 			<h3 align="center">
 				<img src="/jsmi/images/QnA.png"><br><br>
-				절세미인에게 세무와 관련된<label id="h3title">무엇이든 질문하십시오.</label>
+				절세미인에게 세무와 관련된 <label id="h3title"> 무엇이든 질문하십시오.</label>
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">성실하고 정확하게
 				답변해드릴게요.
@@ -235,14 +242,18 @@
 		</div> -->
 		
 		<h3></h3>
-
+		
+		<form action="/jsmi/pinsert" method="post" enctype="multipart/form-data">
 		<div class="tableStart">
 			<table class="tablemd">
 				<tbody class="tbodymd font-family-md-3">
 					<tr>
 						<td colspan="8" class="Qtitle">
 							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 여기에 제목을 입력하세요</label>
+							<label class="QreplyC">
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" name="ptitle">
+							</label>
 						</td> 
 					</tr>
 				
@@ -301,13 +312,15 @@
 		</div>
 
 		<br>
-		<form action="">
+		
 			<div align="right">
-				<input type="submit" id="submitBtn1" value="등록">&nbsp;&nbsp;
-				<input type="button" id="submitBtn2" value="취소">&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-			</div>
+				<input type="submit" class="btn btn-primary" value="등록">
+				<a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp" class="btn btn-warning">이전</a>				
+			</div>		
 		</form>
+			
+
+		
 		
 		<script type="text/javascript">
 
