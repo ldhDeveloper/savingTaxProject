@@ -143,7 +143,7 @@ text-align : center;
 							<tr><td><%=p.getPostOrder() %> </td>
 							<td colspan ="6" > 
 							<a href="/jsmi/postdetail?boardNo=<%=boardNo%>&postNo=<%=p.getPostNo()%>"><%=p.getPostName()%></a></td>
-							<td><%=p.getpNo() %></td>
+							<td><%=p.getpId() %></td>
 							<td><%=p.getPostDate() %></td>
 							<td><%=p.getReadCount() %></td></tr>
 							<%} %>

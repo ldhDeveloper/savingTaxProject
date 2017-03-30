@@ -15,7 +15,7 @@ public class Post implements java.io.Serializable{
 	private int readCount;
 	private String fName;
 	private String refName;
-	
+	private String pId;
 	
 	public int getPostOrder() {
 		return postOrder;
@@ -83,29 +83,22 @@ public class Post implements java.io.Serializable{
 	public void setRefName(String refName) {
 		this.refName = refName;
 	}
+	
+	public String getpId() {
+		return pId;
+	}
+	public void setpId(String pId) {
+		this.pId = pId;
+	}
 	public Post() {
 		super();
-	}
-	public Post(int postOrder, int postNo, String postName, Date postDate, String postContents, int boardNo, int pNo,
-			int postRefNo, int readCount, String fName, String refName) {
-		super();
-		this.postOrder = postOrder;
-		this.postNo = postNo;
-		this.postName = postName;
-		this.postDate = postDate;
-		this.postContents = postContents;
-		this.boardNo = boardNo;
-		this.pNo = pNo;
-		this.postRefNo = postRefNo;
-		this.readCount = readCount;
-		this.fName = fName;
-		this.refName = refName;
 	}
 	@Override
 	public String toString() {
 		return postOrder + ", " + postNo + ", " + postName + ", " + postDate + ", " + postContents + ", " + boardNo
-				+ ", " + pNo + ", " + postRefNo + ", " + readCount + ", " + fName + ", " + refName;
+				+ ", " + pNo + ", " + postRefNo + ", " + readCount + ", " + fName + ", " + refName + ", " + pId;
 	}
+	
 
 
 

@@ -231,7 +231,7 @@
 			<img src="/jsmi/images/function.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border4"
-			onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
+			onclick="location.href='/jsmi/listview?page=1&boardNo=6'">
 			<img src="/jsmi/images/event.png" class="menu-img">
 		</div>
 	</div>
@@ -243,7 +243,7 @@
 			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border7"
-			onclick="location.href='/jsmi/views/main1/CSBoard/board/boardListView.jsp'">
+			onclick="location.href='/jsmi/listview?page=1&boardNo=1'">
 			<img src="/jsmi/images/helpdesk1.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #105080;" id="border8">
