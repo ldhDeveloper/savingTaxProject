@@ -39,32 +39,68 @@ public class PostInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)){
-			RequestDispatcher view = request.getRequestDispatcher("views/main1/CSBoard/board/boardError.jsp");
-			request.setAttribute("message", "enctype 오류");
-			view.forward(request, response);
-		}
+		
+		
 		int maxSize = 1024 * 1024 * 10;
 		
 		String root = request.getSession().getServletContext().getRealPath("/");
 		
 		String savePath  = root + "board_uploadFiles/";
 		
-		try{
+		
 		MultipartRequest mrequest = new MultipartRequest(request, savePath, maxSize, "utf-8", new DefaultFileRenamePolicy()); 
-		String postName = mrequest.getParameter("postName");
+		String renameFileName = "";
+		String fname = mrequest.getFilesystemName("fname");
+		if(fname !=null){
+		long current = System.currentTimeMillis();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		
+		renameFileName = sdf.format(new Date(current)) + "." +fname.substring(
+				fname.lastIndexOf(".") +1
+				);
+		File originalFile = new File(savePath + fname);
+		File renameFile = new File(savePath + renameFileName);
+		
+		if(!originalFile.renameTo(renameFile)){
+			FileInputStream originalRead = 
+					new FileInputStream(originalFile);
+			FileOutputStream renameCopy = 
+					new FileOutputStream(renameFile);
+			
+			byte[] readText = new byte[1024];
+			int readResult = 0;
+			
+			while((readResult = originalRead.read(readText, 0, readText.length)) != -1){
+				renameCopy.write(readText, 0, readResult);
+				renameCopy.flush();
+			}			
+			originalRead.close();
+			renameCopy.close();
+			originalFile.delete();
+		}
+		}
+		int page = Integer.parseInt(mrequest.getParameter("page"));
+		String postName = mrequest.getParameter("postname");
 		int pNo = Integer.parseInt(mrequest.getParameter("pno"));
-		String postContents = mrequest.getParameter("postContents");
+		String postContents = mrequest.getParameter("contents");
+		int boardNo = Integer.parseInt(mrequest.getParameter("boardNo"));
 		Post p = new Post();
 		p.setPostName(postName);
 		p.setpNo(pNo);
 		p.setPostContents(postContents);
-		
+		p.setBoardNo(boardNo);
+		if(fname != null){
+		p.setfName(fname);
+		p.setRefName(renameFileName);
+		}
+		System.out.println(p);
 		int result = new PostService().insertPost(p);
-		
 		if(result > 0){
-			response.sendRedirect("/jsmi/listview");
+			response.sendRedirect("/jsmi/listview?page="+page+"&boardNo=1"+p.getBoardNo());
 		}
 		
 		else {
@@ -72,12 +108,7 @@ public class PostInsertServlet extends HttpServlet {
 			request.setAttribute("message", "게시판 오류");
 			view.forward(request, response);
 		}
-		}catch(Exception e){
-			e.printStackTrace();}
-		
-		
-	
-		
+	  }	
 	}
 
 	/**

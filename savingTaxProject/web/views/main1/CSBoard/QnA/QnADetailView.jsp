@@ -276,7 +276,7 @@ border : none;
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thc">
-							<input name="writer" value = "<%=p.getpNo() %>" readonly>
+							<input name="writer" value = "<%=p.getpId() %>" readonly>
 						</th>
 						<th id="thth">조회수</th>
 						<th id="thcS">

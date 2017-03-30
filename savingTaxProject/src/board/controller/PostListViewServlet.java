@@ -59,7 +59,6 @@ public class PostListViewServlet extends HttpServlet {
 		
 		if (maxPage < endPage)
 			endPage = maxPage;
-		
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
 		
 		RequestDispatcher view = null;

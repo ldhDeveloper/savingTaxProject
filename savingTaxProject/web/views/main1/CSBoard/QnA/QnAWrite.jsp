@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
-<%-- <%int currentPage = ((Integer)request.getAttribute("page")).intValue();
-  int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
-%> --%>
+ <%int currentPage = Integer.parseInt(request.getParameter("page"));
+  int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+%> 
 
 <!DOCTYPE html>
 <html>
@@ -267,30 +267,34 @@ border : none;
 					<tr class="thmd">
 						<th id="thth">&nbsp;&nbsp;&nbsp;&nbsp;제목</th>
 						<th id="thc">
-							<input name="postName" >
+							<input name="postname" required >
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thcS">
-							<input name="writer" value="#"  readonly>
+							<input name="writer" value="<%=loginUser.getId() %>"  readonly >
+					
 						</th>
 					</tr>
 				</thead>
 				<tbody class="tablemd tbodymd font-family-md-3">
 					<tr>
-					<td colspan= "6" style="float:right">첨부 파일 : <input type ="file" name = "file"></td>
+					<td colspan= "6" style="float:right">첨부 파일 : <input type ="file" name = "fname"></td>
 					</tr>
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea rows = "30" class="redact" name="contents"></textarea><br> <br>
+							<textarea rows = "30" class="redact" name="contents" required></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
+					<input type = "hidden" name = "pno" value ="<%=loginUser.getPno()%>">
+					<input type = "hidden" name = "page" value ="<%=currentPage %>">
+					<input type = "hidden" name = "boardNo" value ="<%=boardNo%>">
 					  <input class="btn btn-warning" type = "submit" value = "작성완료">
-					     	<a href="/jsmi/listview?page=" class="btn btn-warning">이전</a>
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=boardNo%>" class="btn btn-warning">이전</a>
 					</td>
 					</tr>
 				</tbody>

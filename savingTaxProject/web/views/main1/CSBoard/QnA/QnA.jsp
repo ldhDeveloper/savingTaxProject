@@ -295,7 +295,7 @@ label {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<%= p.getpNo() %>
+							<%= p.getpId() %>
 						</td>
 						<td class="tdate tdmd"><%= p.getPostDate() %></td>
 						
@@ -365,8 +365,6 @@ label {
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
-		
-				
 	</div>
 
 
