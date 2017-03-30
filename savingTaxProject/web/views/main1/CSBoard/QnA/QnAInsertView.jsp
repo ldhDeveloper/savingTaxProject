@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
-<%@ page import="member.model.vo.Party" %>
+	pageEncoding="UTF-8"%>	
+<% int currentPage = Integer.parseInt(request.getParameter("page"));
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+%>
 
-<%
-	Party loginUser = (Party)session.getAttribute("loginUser");
-%>	
 
 <!DOCTYPE html>
 <html>
@@ -290,7 +288,8 @@
 						</td>
 						
 						<td class="Qright">
-							<%= loginUser.getPname() %>
+							<input value="<%= loginUser.getPname()%>" name = "pid" readonly>
+							
 							<input value="<%= loginUser.getPno() %>" name="pno" type="hidden">							
 						</td>
 						

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!-- 짝퉁입니다 지워주세요 -->
 <!DOCTYPE html>
 <html>
 <head>

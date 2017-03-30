@@ -41,9 +41,10 @@ public class PostDetailServlet extends HttpServlet {
 		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		int currentPage = Integer.parseInt(request.getParameter("page"));
+		Post post =  new PostService().selectPostNo(postNo);
 		
-		Post post =  new PostService().selectPostNO(boardNo, postNo);
-		
+		System.out.println(post);
 		RequestDispatcher view = null;
 		
 		if(post !=null){
@@ -69,6 +70,7 @@ public class PostDetailServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("post", post);
+			request.setAttribute("page", currentPage);
 			view.forward(request, response);
 			
 		}else{
