@@ -106,4 +106,50 @@ private Properties prop = new Properties();
 		}
 		return list;
 	}
+
+
+	public ArrayList<Diary> TermSearch(Connection con, String sdate, String edate) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Diary> list = null;
+		
+		String query = "select a.atype, d.ddate, p1.pname, a.anm, d.product, d.cost, d.billing, d.proof_type " +
+							"from diary d join party p1 on(d.acc_pno = p1.pno) " +
+											"  join accountlist a on (d.ano = a.ano) " +
+											"  join party p2 on(d.write_pno = p2.pno) " +
+							"where p2.pno = 6 and to_char(d.ddate,'yyyy-mm-dd') between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd')";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, sdate);
+			pstmt.setString(2, edate);
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset != null){
+				list = new ArrayList<Diary>();
+				System.out.println("list 생성");
+			}
+			
+			while(rset.next()){
+				Diary diary = new Diary();
+				diary.setAtype(rset.getString("atype"));
+				diary.setDdate(rset.getDate("ddate"));
+				diary.setPname(rset.getString("pname"));
+				diary.setAnm(rset.getString("anm"));
+				diary.setProduct(rset.getString("product"));
+				diary.setCost(rset.getInt("cost"));
+				diary.setBilling(rset.getString("billing"));
+				diary.setProof_type(rset.getString("proof_type"));
+				System.out.println(diary);
+				list.add(diary);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }

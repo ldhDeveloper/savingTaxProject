@@ -73,47 +73,103 @@
 <script type="text/javascript">
 	$(function(){
 			$('#billtype > li > a').click(function(){
-				$('button[name=bill_type]').html($(this).text() + "<span class='caret'></span>");
+				$('a[name=bill_type]').html($(this).text() + "<span class='caret'></span>");
 			});
 			
 			$('#actype').click(function(){
-				var btype = "btype=" + $('button[name=bill_type]').text();
-				console.log(btype);
-				$.getJSON(
-						"/jsmi/bType", btype , function(data){
-							//받은 문자열을 json 객체로 변환함
-							console.log("data!!!!! : " + data);
-							var jsonObj = JSON.stringify(data);
-							//변환된 제이슨 객체를 제이슨 배열로 변환
-							var jsonArr = JSON.parse(jsonObj);
-							
-							$(".list-group").html("");
-							for(var i in jsonArr.list){
-								$(".list-group").html($(".list-group").html() +"<a href='#' id='litem' name='listitem' class='list-group-item' onclick='itemclick(\"" + jsonArr.list[i].anm + "\");' data-dismiss='modal'>" + jsonArr.list[i].anm + "</a>");
-							}
-						});
+				var txt = $('a[name=bill_type]').text().trim();
+				if(txt == "거래구분"){
+					alert("거래구분을 지정해주시기바랍니다.");
+				} else {
+					jQuery.noConflict(); 
+
+					var btype = "btype=" + $('a[name=bill_type]').text();
+					console.log(btype);
+					$.getJSON(
+							"/jsmi/bType", btype , function(data){
+								//받은 문자열을 json 객체로 변환함
+								console.log("data!!!!! : " + data);
+								var jsonObj = JSON.stringify(data);
+								//변환된 제이슨 객체를 제이슨 배열로 변환
+								var jsonArr = JSON.parse(jsonObj);
+								
+								$("#itemtable").html("<thead><tr><th>계정과목명</th><th>구분</th></tr></thead>");
+								for(var i in jsonArr.list){
+									$("#itemtable").html($("#itemtable").html() +
+											//"<a href='#' id='litem' name='listitem' class='list-group-item' onclick='itemclick(\"" + jsonArr.list[i].anm + "\");' data-dismiss='modal'>" + jsonArr.list[i].anm + "</a>");
+											"<tr id='litem' style='cursor:pointer;' onclick='itemclick(\"" + jsonArr.list[i].anm + "\");'><td>" + jsonArr.list[i].anm + "</td><td>" +  jsonArr.list[i].atype + "</td></tr>");
+								}
+							});
+					$('#myModal').modal('show');
+				}
+				
 			});
 			
-			/* $('#litem').click(function(){
-				console.log("action");
-				$('#actype').val($(this).text());
-				$('#myModal').modal('hide');
-			}); */
-			
-			/* $('.ui-datepicker-calendar td').click(function(){
-				console.log($(this).attr("data-month"));
-				console.log($(this).attr("data-year"));
+			$('#termsearch').click(function(){
+				var sdate = $('input[name=startdate]').val();
+				var edate = $('input[name=enddate]').val();
+				$.ajax({
+					url: "/jsmi/dtsearch",
+					//data: {sdate :  $('input[name=startdate]').val(), edate :  $('input[name=enddate]').val()},
+					data: {sdate :  sdate, edate : edate},
+					type: "get",
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success: function(data){
+						console.log("json 성공");
+						console.log("data : " + data);
+						var jsonObj = JSON.stringify(data);
+						//변환된 제이슨 객체를 제이슨 배열로 변환
+						var jsonArr = JSON.parse(jsonObj);
+					
+						$("#itablebody").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
+						for(var i in jsonArr.list){
+							console.log(jsonArr.list[i].atype);
+							$("#itablebody").html($("#itablebody").html() +
+									"<tr><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+						}
+					},
+					error: function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				       }
+				}); 
 			})
 			
-			$('.ui-state-default').bind("click",function(){
-				console.log($('.ui-datepicker-month').text());
-				console.log($('.ui-datepicker-year').text());
-				console.log($(this).text());
-			}) */
+			$('#selectdealer').click(function(){
+				$.ajax({
+					url: "/jsmi/sdealer",
+					type: "get",
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success: function(data){
+						console.log("json 성공");
+						console.log("data : " + data);
+						var jsonObj = JSON.stringify(data);
+						//변환된 제이슨 객체를 제이슨 배열로 변환
+						var jsonArr = JSON.parse(jsonObj);
+					
+						$("#dealertable").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
+						for(var i in jsonArr.list){
+							console.log(jsonArr.list[i].atype);
+							$("#dealertable").html($("#itablebody").html() +
+									"<tr><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+						}
+					},
+					error: function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+			});
 	});
 	
 	function itemclick(data){
 		$('#actype').val(data);
+		$('#myModal').modal("hide");
 	}
 </script>
 </head>
@@ -144,25 +200,7 @@
 									var ndate = $.datepicker.formatDate('yy-mm-dd', date);
 									$('#dealdate').val(ndate);
 									var ddate = "ddate=" + ndate;
-									$.getJSON(
-											"/jsmi/ddsearch", ddate , function(data){
-												//받은 문자열을 json 객체로 변환함
-												console.log("data : " + data);
-												var jsonObj = JSON.stringify(data);
-												//변환된 제이슨 객체를 제이슨 배열로 변환
-												var jsonArr = JSON.parse(jsonObj);
-											
-												$("#itablebody").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
-														"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
-												for(var i in jsonArr.list){
-													console.log(jsonArr.list[i].atype);
-													$("#itablebody").html($("#itablebody").html() +
-															"<tr><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + jsonArr.list[i].pname + 
-															"</td><td>" + jsonArr.list[i].anm + "</td><td>" + jsonArr.list[i].product + "</td><td>" + jsonArr.list[i].cost +
-															"</td><td>" + jsonArr.list[i].billing + "</td><td>" + jsonArr.list[i].proof_type + "</td></tr>");
-												}
-											});
-									/* $.ajax({
+									$.ajax({
 										url: "/jsmi/ddsearch",
 										data: ddate,
 										type: "get",
@@ -188,7 +226,7 @@
 										error: function(request,status,error){
 									        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 									       }
-									}); */
+									}); 
 								}
 							});
 						</script>
@@ -204,10 +242,11 @@
 								</h5>
 							</div>
 							<div class="col-md-12">
-								<a type="button" class="form-control" style="text-align:center; background:#5bc0de; cursor:pointer; color:white;" >검색</a>
+								<a type="button" id="termsearch" class="form-control" style="text-align:center; background:#5bc0de; cursor:pointer; color:white;" >검색</a>
 							</div>
 							
 						</div>
+						
 					</div>
 					<div class="col-md-9">
 						<table class="table table-condensed">
@@ -309,10 +348,10 @@
 								<tr>
 									<td>
 										<div class="dropdown">
-											<button class="btn btn-default dropdown-toggle" type="button"
+											<a class="btn btn-default dropdown-toggle" type="button"
 												name="bill_type" data-toggle="dropdown">
 												거래구분 <span class="caret"></span>
-											</button>
+											</a>
 											<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="billtype">
 												<li role="presentation"><a role="menuitem"
 													tabindex="-1" href="#">비용</a></li>
@@ -324,9 +363,10 @@
 										</div>
 									</td>
 									<td><input type="date" id="dealdate" name="indate" class="form-control"></td>
-									<td><input type="button" value="거래처선택"
+									<td><input type="button" value="거래처선택" id="selectdealer"
 										class="form-control"></td>
-									<td><input type="button" value="항목선택" class="form-control" id="actype" data-toggle="modal" data-target="#myModal"></td>
+									<!-- <td><input type="button" value="항목선택" class="form-control" id="actype" data-toggle="modal" data-target="#myModal"></td> -->
+									<td><input type="button" value="항목선택" class="form-control" id="actype"></td> 
 									<td><input type="text" name="product" class="form-control"></td>
 									<td>
 										<div class="input-group">
@@ -381,9 +421,27 @@
 						          <h4 class="modal-title">계정항목</h4>
 						        </div>
 						        <div class="modal-body">
-						      		<div class="list-group">
-  										
-									</div>
+						      		<table class="table table-striped" id="itemtable">
+									    
+									  </table>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						  <div class="modal fade" id="myModal2" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">거래처목록</h4>
+						        </div>
+						        <div class="modal-body">
+						      		<table class="table table-striped" id="dealertable">
+									    
+									  </table>
 						        </div>
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
