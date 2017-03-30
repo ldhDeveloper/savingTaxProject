@@ -92,8 +92,7 @@ td {
 
         <h2 class="form-signin-heading" align="center">아이디찾기</h2><br>
         <table width="100%">
-        	<tr><td>이  름</td><td> <input type="text" id="inputid" class="form-control" name="username" placeholder="가입하신 이름을 입력하세요." required autofocus></td></tr>
-        	<tr><td>연락처</td><td> <input type="text" id="inputphone" name="phone" class="form-control" placeholder="가입하신 연락처를 입력하세요.(- 포함)" required></td></tr>
+        	<tr><td>이  름</td><td> <input type="text" id="inputid" class="form-control" name="username" placeholder="가입하신 이름을 입력하세요." required autofocus></td></tr>	
         	<tr><td>이메일</td><td><input type="text" id="inputemail" name="email" class="form-control" placeholder="가입하신 이메일주소를 입력하세요." required></td></tr>
         </table>
         
