@@ -165,18 +165,29 @@ public class PartyDao {
 			System.out.println("p: "+p);
 			pstmt = con.prepareStatement(query);
             pstmt.setString(1, p.getPname());
+            System.out.println("1: "+p.getPname());
             pstmt.setString(2, p.getId());
+            System.out.println("2: "+p.getId());
             pstmt.setString(3, p.getPwd());
+            System.out.println("3 : "+p.getPwd());
             pstmt.setString(4, p.getEmail());
+            System.out.println("4: "+p.getEmail());
             pstmt.setString(5, p.getId_no());
+            System.out.println("5:"+p.getId_no());
             pstmt.setString(6, p.getPaddress());
+            System.out.println("6: "+p.getPaddress());
             pstmt.setString(7, p.getPhone());
+            System.out.println("7: "+p.getPhone());
             pstmt.setString(8, p.getBirth());
+            System.out.println("8: "+p.getBirth());
             pstmt.setString(9, p.getGender());
-           
-           
+            System.out.println("9: "+p.getGender());
             
+            
+            System.out.println("pstmt: "+pstmt);
 			result = pstmt.executeUpdate();
+			System.out.println("con: "+con);
+			System.out.println("reslut: "+result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
@@ -206,6 +217,7 @@ public class PartyDao {
             pstmt.setString(11, p.getPresident());
             
 			result = pstmt.executeUpdate();
+			System.out.println("result2 :"+result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
