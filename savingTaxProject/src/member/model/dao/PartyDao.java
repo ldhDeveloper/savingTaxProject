@@ -354,4 +354,27 @@ public class PartyDao {
 		
 		return p;
 	}
+
+	public int updatePwd(Connection con, String userid, String pwd) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update party set pwd=? where id=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
 }

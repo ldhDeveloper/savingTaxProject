@@ -93,5 +93,18 @@ public class PartyService {
 		return p;
 	}
 
+	public int updatePwd(String userid, String pwd) {
+		Connection con = getConnection();
+		int result = new PartyDao().updatePwd(con, userid, pwd);
+		
+		if(result > 0){
+			commit(con);
+		}else{
+			rollback(con);
+		}
+		
+		return result;
+	}
+
 }
 

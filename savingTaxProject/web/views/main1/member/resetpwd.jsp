@@ -92,6 +92,7 @@ td {
    	 
     
       <form action="/jsmi/resetpwdck" method="get" class="form-signin">
+      	
 
       	<input type="button" class="btn close"  value="X닫기" onclick="location.href='/jsmi/main.jsp'"><br>
 
