@@ -26,6 +26,14 @@ public class DiaryService {
 		close(con);
 		return list;
 	}
+
+
+	public ArrayList<Diary> TermSearch(String sdate, String edate) {
+		Connection con = getConnection();
+		ArrayList<Diary> list = new DiaryDao().TermSearch(con, sdate, edate);
+		close(con);
+		return list;
+	}
 	
 	
 
