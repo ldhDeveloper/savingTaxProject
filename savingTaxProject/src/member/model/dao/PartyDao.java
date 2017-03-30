@@ -20,7 +20,7 @@ public class PartyDao {
 		ResultSet rset2 = null;
 		Party p = null;
 
-		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
+/*		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
 				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
 		
@@ -28,7 +28,11 @@ public class PartyDao {
 				+ "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel"
 				+ "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
 				+ "emp_type, join_date, busi_type, tel, birth, gender "
-				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";*/
+		
+		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+
+		String query2 = "select phone id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
 
 		try {
 			pstmt = con.prepareStatement(query);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8" import = "member.model.vo.Party"%>
+   <%Party loginUser = (Party)session.getAttribute("loginUser");  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,6 +148,7 @@ $(function(){
    <div class="middle hidden-xs" align="center">
       <table width="970px">
          <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
+         <td><%=loginUser.getPname() %> 님 환영합니다.</td>
          <td width="70"><button id="logout" class="btn btn-warning btn-sm"
                onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
          <td></tr>
