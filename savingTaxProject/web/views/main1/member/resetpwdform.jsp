@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% String userid = request.getParameter("userid"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,14 +86,14 @@ td {
 		<div class="container">
    	 
     
-      <form action="/jsmi/findid" method="post" class="form-signin">
+      <form action="/jsmi/resetpwd" method="get" class="form-signin">
 
       	<input type="button" class="btn close"  value="X닫기" onclick="location.href='/jsmi/main.jsp'"><br>
 
-        <h2 class="form-signin-heading" align="center">아이디찾기</h2><br>
+        <h2 class="form-signin-heading" align="center">비밀번호변경</h2><br>
         <table width="100%">
-        	<tr><td>이  름</td><td> <input type="text" id="inputid" class="form-control" name="username" placeholder="가입하신 이름을 입력하세요." required autofocus></td></tr>	
-        	<tr><td>이메일</td><td><input type="text" id="inputemail" name="email" class="form-control" placeholder="가입하신 이메일주소를 입력하세요." required></td></tr>
+        	<tr><td>변경할 비밀번호</td><td> <input type="text" id="inputid" class="form-control" name="pwd1" placeholder="변경할 비밀번호를 입력하세요." required autofocus></td></tr>	
+        	<tr><td>변경할 비밀번호 확인</td><td><input type="text" id="inputemail" name="pwd2" class="form-control" placeholder="한번더 변경할 비밀번호를 입력하세요." required></td></tr>
         </table>
         
 		<br>

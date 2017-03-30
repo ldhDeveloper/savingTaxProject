@@ -159,7 +159,7 @@
 				</td>
 				<td width="70">
 					<button class="btn btn-warning btn-sm"
-						onclick='/jsmi/logout'>로그아웃</button>
+						onclick='location.href="/jsmi/logout"'>로그아웃</button>
 				</td>		
 				
 				<% } %>

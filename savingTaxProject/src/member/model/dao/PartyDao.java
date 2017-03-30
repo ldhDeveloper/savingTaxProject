@@ -292,4 +292,66 @@ public class PartyDao {
 
 		return result;
 	}
+
+	public Party findId(Connection con, String pname, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p = null;
+		
+		String query = "select * from Party where pname=? and email=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pname);
+			pstmt.setString(2, email);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				p = new Party();
+				p.setId(rset.getString("id"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return p;
+	}
+
+	public Party resetPwdCheck(Connection con, String userid, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p = null;
+		
+		String query = "select * from party where id=? and email=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, email);
+			
+			rset = pstmt.executeQuery();
+
+			if(rset.next()){
+				p = new Party();
+				p.setId(rset.getString("id"));
+				System.out.println(p);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return p;
+	}
 }
