@@ -68,6 +68,13 @@
 	text-align: left;
 }
 
+.postTitle {
+	font-family: mobius !important;
+	font-size: 40px;
+	text-align: center;
+	color: #2a82a3;
+}
+
 .postthead {
 	border-bottom: 4px solid #2a82a3;
 	width: 100%;
@@ -76,10 +83,11 @@
 .postth {
 	font-size: 20px;
 	text-align: center;
+	font-family: ssangmunDong !important;
 }
 
 .plist {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
 	font-size: 12pt;
 	text-align: center;
@@ -111,7 +119,7 @@
 	text-align: left;
 	color: dimgrey;
 	padding-top: 1.5%;
-	padding-left: 15%;
+	padding-left: 14%;
 	padding-bottom: 1.5%;
 }
 
@@ -122,7 +130,7 @@
 	text-align: left;
 	color: dimgrey;
 	padding-top: 1.5%;
-	padding-left: 31%;
+	padding-left: 34%;
 	padding-bottom: 1.5%;
 }
 
@@ -135,7 +143,23 @@
 	color: #2a82a3;
 }
 
+.payBtn {
+	border: none;
+	background-color: red;
+	font-size: 13pt;
+	color: white;
+	width : 22%;
+	height : 30px;
+	border-radius: 3px;
+	align : center !important;
+	font-family: Binggrae;	
+}
 
+#agree{
+	font-size: 10pt;
+	font-family: computer !important;
+	color: #2a82a3;
+}
 
 /* .Qlist {			
 	border-bottom : 1px solid #ddd;
@@ -168,7 +192,7 @@
 	color: #2a82a3;
 }
  */
-#h3title {
+/* #h3title {
 	color: #2a82a3;
 }
 
@@ -234,9 +258,9 @@
 	font-family: NotoSansCJKkr-Ligth !important;
 	font-size: 10pt;
 	color: black;
-}
+} */
 
-#submitBtn2 {
+/* #submitBtn2 {
 	border: none;
 	border-radius: 3px;
 	border-color: #d58512;
@@ -256,29 +280,89 @@
 	height: 25px;
 	font-family: Binggrae !important;
 	background-color: #2a82a3;
-}
+} */
 </style>
 
 <script type="text/javascript">
 $(function() {
-	$('#pdateid').mouseover(function() {
-		$(this).css("background", "orange").css("cursor", "pointer");
+	$('#pdateid1').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
 	}).mouseout(function() {
 		$(this).css("background", "#fff");
 	});
 	
 	$('#pdateid2').mouseover(function() {
-		$(this).css("background", "orange").css("cursor", "pointer");
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
 	}).mouseout(function() {
 		$(this).css("background", "#fff");
 	});
+	
+	$('#pdateid3').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid4').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid5').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid6').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid7').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid8').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid9').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid10').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid11').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});
+	
+	$('#pdateid12').mouseover(function() {
+		$(this).css("background", "aliceblue").css("cursor", "pointer");
+	}).mouseout(function() {
+		$(this).css("background", "#fff");
+	});	
 });
 </script>
 
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	<!-- /jsmi/views/main1/costGuide/payView.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -287,14 +371,11 @@ $(function() {
 	<br>
 
 	<!-- 컴퓨터용 -->
-
-
-
 	<div class="middle hidden-xs">
 
 
 		<div class="middle font-family-md-1">
-			<h3 align="center">결제하기</h3>
+			<h3 align="center" class="postTitle">결제하기</h3>
 		</div>
 
 		<br> <br> <br>
@@ -311,8 +392,7 @@ $(function() {
 
 		<h3></h3>
 
-		<form action="/jsmi/pinsert" method="post"
-			enctype="multipart/form-data">
+		<form action="/jsmi/views/main1/costGuide/payInfoView.jsp" method="post" enctype="multipart/form-data">
 			<div class="tableStart">
 				<table class="tablemd">
 					<thead class="postthead">
@@ -329,8 +409,6 @@ $(function() {
 
 							<td class="plist">기간</td>
 
-							<td class="plist">할인율</td>
-
 							<td class="plist">금액</td>
 						</tr>
 
@@ -341,13 +419,11 @@ $(function() {
 
 							<td class="pcontent">3개월</td>
 
-							<td class="pcontent">0%</td>
-
 							<td class="pcontent">200,000,000원</td>
 						</tr>
 
 						<tr>
-							<td colspan="3" class="presult">합계</td>
+							<td colspan="2" class="presult">합계</td>
 							<td colspan="2" class="presult2">200,000,000원</td>
 						</tr>
 					</tbody>
@@ -367,49 +443,145 @@ $(function() {
 				<table class="tablemd">
 					<tbody class="tbodymd font-family-md-3">
 						<tr>
-							<td class="pdate" id="pdateid1">1개월</td>
+							<td class="pdate" id="pdateid1" value="1">1개월</td>
 
-							<td class="pdate" id="pdateid2">2개월</td>
+							<script type="text/javascript">
+								$(function(){
+									var x = 0;
+									var y = 200000000;
+									
+									
+									$("#pdateid1").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid2").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid3").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid4").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid5").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid6").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid7").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid8").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid9").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid10").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid11").click(function(){
+										x = 1;														
+									});
+									
+									$("#pdateid12").click(function(){
+										x = 1;														
+									});
+									
+									var result = x * y;
+									
+									$("#x").html(x);
+									
+									$("#result").html(result);
+								});
+							</script>
 
-							<td class="pdate" id="pdateid3">3개월</td>
+							<td class="pdate" id="pdateid2" value="2"> 2개월</td>
 
-							<td class="pdate" id="pdateid4">4개월</td>
+							<td class="pdate" id="pdateid3" value="3"> 3개월</td>
 
-							<td class="pdate" id="pdateid5">5개월</td>
+							<td class="pdate" id="pdateid4" value="4"> 4개월</td>
+
+							<td class="pdate" id="pdateid5" value="5"> 5개월</td>
 							
-							<td class="pdate" id="pdateid6">6개월</td>
+							<td class="pdate" id="pdateid6" value="6"> 6개월</td>
 							
-							<td class="pdate" id="pdateid7">7개월</td>
+							<td class="pdate" id="pdateid7" value="7"> 7개월</td>
 							
-							<td class="pdate" id="pdateid8">8개월</td>
+							<td class="pdate" id="pdateid8" value="8"> 8개월</td>
 							
-							<td class="pdate" id="pdateid9">9개월</td>
+							<td class="pdate" id="pdateid9" value="9"> 9개월</td>
 							
-							<td class="pdate" id="pdateid10">10개월</td>
+							<td class="pdate" id="pdateid10" value="10">10개월</td>
 							
-							<td class="pdate" id="pdateid11">11개월</td>
+							<td class="pdate" id="pdateid11" value="11">11개월</td>
 							
 							<td class="pdate" id="pdateid12">12개월</td>
 						</tr>
 					</tbody>
 				</table>
+				
+				<br><br><br>
+				
+				<table class="tablemd">
+					<thead class="postthead">
+						<tr>
+							<th colspan="5" class="postth">신청내역</th>
+						</tr>
+					</thead>
+
+					<tbody class="tbodymd font-family-md-3">
+						<tr>
+							<td class="plist pshow">내역</td>
+
+							<td class="plist">단가</td>
+
+							<td class="plist">기간</td>
+
+							<td class="plist">금액</td>
+						</tr>
+
+						<tr>
+							<td class="pcontent pshow">내역이 들어가야할 항목</td>
+
+							<td class="pcontent"><p>200,000,000원</p></td>
+
+							<td class="pcontent"><span id="x"></span><p>개월</p></td>
+
+							<td class="pcontent"><span id="result"></span><p>원</p></td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" class="presult" id="additional">부가세</td>
+							<td colspan="2" class="presult2" id="total">20,000,000원</td>
+						</tr>
+
+						<tr>
+							<td colspan="2" class="presult">합계</td>
+							<td colspan="2" class="presult2">220,000,000원</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
-			<br>
+			<br><br>
 
-			<div align="right">
-				<input type="submit" class="btn btn-primary" value="등록"> <a
-					href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp"
-					class="btn btn-warning">이전</a>
+			<div align="center">
+				<h5 id="agree">※위와 같은 정보로 결제를 신청하시겠습니까?</h5>
+				<input type="submit" class="payBtn" value="결제하기">
 			</div>
 		</form>
-
-
-
-
-		<script type="text/javascript">
-			
-		</script>
 	</div>
 
 
