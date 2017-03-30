@@ -80,6 +80,14 @@ public class PartyService {
 		return result;
 	}
 
+
+	public Party selectParty(String userid) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectParty(con, userid);
+		close(con);
+		return p;
+	}
+
 	public Party findId(String pname, String email) {
 		Connection con = getConnection();
 		Party p = new PartyDao().findId(con, pname, email);

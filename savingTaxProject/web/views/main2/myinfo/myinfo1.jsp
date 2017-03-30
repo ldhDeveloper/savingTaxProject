@@ -91,6 +91,11 @@
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
 
+    <%String[] idNo=loginUser.getId_no().split("-");  
+        String[] paddress=loginUser.getPaddress().split("-");
+        String[] phone=loginUser.getPhone().split("-");
+        String[] email=loginUser.getEmail().split("@");
+    %>
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
@@ -115,29 +120,29 @@
 					<tbody>
 						<tr>
 							<td class="col-md-2"><h5>이름</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="username"></td>
+							<td class="col-md-4"><input type="text" class="form-control" 
+								name="username" value="<%=loginUser.getPname() %>" readonly></td>
 							<td class="col-md-2"><h5>주민등록번호</h5></td>
 							<td class="col-md-4"><div class="col-md-5">
-									<input type="text" class="form-control" name="idno">
+									<input type="text" class="form-control" name="idno" vlaue="<%=idNo[0]%>" readonly>
 								</div>
 								<div class="col-md-1">
 									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
-									<input type="password" class="form-control" name="idno2">
+									<input type="password" class="form-control" name="idno2" value="<%=idNo[1]%>" readonly>
 								</div></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>아이디</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="userid"></td>
+								name="userid" value="<%=loginUser.getId()%>" readonly></td>
 							<td class="col-md-6" colspan="2"></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>비밀번호</h5></td>
 							<td class="col-md-4"><input type="password"
-								class="form-control" name="userpwd"></td>
+								class="form-control" name="userpwd" value="<%=loginUser.getPwd()%>" readonly></td>
 							<td class="col-md-6" colspan="2"></td>
 
 						</tr>
@@ -152,7 +157,7 @@
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="address">
+										name="address" >
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색" 
@@ -161,7 +166,7 @@
 						<tr>
 							<td class="col-md-2">&nbsp;</td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								id="address1" name="address2"></td>
+								id="address1" name="address2" ></td>
 							<td class="col-md-6" colspan="2"><input type="text"
 								class="form-control" id="address2" name="address3"></td>
 
@@ -177,7 +182,7 @@
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone2">
+									<input type="text" class="form-control" name="phone2" >
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
@@ -193,13 +198,13 @@
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="email">
+									<input type="text" class="form-control" name="email" value="<%=email[0]%>>" readonly>
 								</div>
 								<div class="col-md-1" style="text-align: center">@</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="email2"
-										name="email2">
+										name="email2" value="<%=email[1]%>" readonly>
 								</div>
 								<div class="col-md-1" style="display: block"></div>
 								<div class="col-md-3"
