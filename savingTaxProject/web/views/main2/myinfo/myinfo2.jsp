@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<% String userid =(String)request.getAttribute("userid");
+	     String userpwd =(String)request.getAttribute("userpwd");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,13 +99,13 @@
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/update.info2">
+			<form action="/jsmi/update.info2" method="post">
 				<table class="table table-condensed">
 					<tbody>
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cname"></td>
+								name="cname" ></td>
 							<td class="col-md-2"><h5>대표자명</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
 								name="president"></td>
@@ -224,7 +227,9 @@
 						</tr>
 					</tbody>
 				</table>
-
+				
+				<input type="hidden" name="userid" value="<%=userid%>">
+				<input type="hidden" name="userpwd" value="<%=userpwd%>">
 				<div class="btngroup">
 					<input type="submit" class="btn btn-primary" value="다음">
 					<button class="btn btn-danger" type="reset">취소</button>

@@ -110,7 +110,7 @@
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/insert.info3">
+			<form action="/jsmi/insert.info3" method="post">
 				<table class="table table-condensed">
 					<tbody>
 						<tr>
