@@ -92,8 +92,14 @@ public class PostService {
 		Connection con = getConnection();
 		Post p = new PostDao().selectPostNo(con, postNo);
 		close(con);
-		System.out.println(p);
 		return p;
+	}
+
+	public List<Post> selectCommentList(int postNo) {
+		Connection con = getConnection();
+		List<Post> commentList = new PostDao().selectCommentList(con, postNo);
+		
+		return commentList;
 	}
 
 

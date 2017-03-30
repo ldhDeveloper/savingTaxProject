@@ -1,0 +1,254 @@
+﻿table별로 insert 문 나눠놨으니 구분하고 쓰세요
+
+post insert query sample
+
+
+
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항1번게시물', SYSDATE, '1번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항2번게시물', SYSDATE, '2번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항3번게시물', SYSDATE, '3번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항4번게시물', SYSDATE, '4번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항5번게시물', SYSDATE, '5번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항6번게시물', SYSDATE, '6번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항7번게시물', SYSDATE, '7번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항8번게시물', SYSDATE, '8번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항9번게시물', SYSDATE, '9번내용물입니다.', 1, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항10번게시물', SYSDATE, '10번내용물입니다.', 1, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항11번게시물', SYSDATE, '11번내용물입니다.', 1, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항12번게시물', SYSDATE, '12번내용물입니다.', 1, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '공지사항13번게시물', SYSDATE, '13번내용물입니다.', 1, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식1번게시물', SYSDATE, '1번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식2번게시물', SYSDATE, '2번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식3번게시물', SYSDATE, '3번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식4번게시물', SYSDATE, '4번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식5번게시물', SYSDATE, '5번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식6번게시물', SYSDATE, '6번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식7번게시물', SYSDATE, '7번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식8번게시물', SYSDATE, '8번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식9번게시물', SYSDATE, '9번내용물입니다.', 2, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식10번게시물', SYSDATE, '10번내용물입니다.', 2, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식11번게시물', SYSDATE, '11번내용물입니다.', 2, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식12번게시물', SYSDATE, '12번내용물입니다.', 2, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세금소식13번게시물', SYSDATE, '13번내용물입니다.', 2, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP1번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP2번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP3번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP4번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP5번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP6번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP7번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP8번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP9번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP10번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP11번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP12번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP13번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '세무TIP14번게시물', SYSDATE, '1번내용물입니다.', 3, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna1번게시물', SYSDATE, '1번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna2번게시물', SYSDATE, '2번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna3번게시물', SYSDATE, '3번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna4번게시물', SYSDATE, '4번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna5번게시물', SYSDATE, '5번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna6번게시물', SYSDATE, '6번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna7번게시물', SYSDATE, '7번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna8번게시물', SYSDATE, '8번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna9번게시물', SYSDATE, '9번내용물입니다.', 4, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna10번게시물', SYSDATE, '10번내용물입니다.', 4, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna11번게시물', SYSDATE, '11번내용물입니다.', 4, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna12번게시물', SYSDATE, '12번내용물입니다.', 4, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, 'Qna13번게시물', SYSDATE, '13번내용물입니다.', 4, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실1번게시물', SYSDATE, '1번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실2번게시물', SYSDATE, '2번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실3번게시물', SYSDATE, '3번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실4번게시물', SYSDATE, '4번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실5번게시물', SYSDATE, '5번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실6번게시물', SYSDATE, '6번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실7번게시물', SYSDATE, '7번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실8번게시물', SYSDATE, '8번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실9번게시물', SYSDATE, '9번내용물입니다.', 5, 1, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실10번게시물', SYSDATE, '10번내용물입니다.', 5, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실11번게시물', SYSDATE, '11번내용물입니다.', 5, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실12번게시물', SYSDATE, '12번내용물입니다.', 5, 2, 0, 0);
+INSERT INTO POST
+VALUES (seq_post.nextval, '서식자료실13번게시물', SYSDATE, '13번내용물입니다.', 5, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트1번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트2번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트3번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트4번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트5번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트6번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트7번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+insert into post VALUES (seq_post.nextval, '이벤트8번게시물', SYSDATE, '2017. 03. 01 ~ 2017. 03. 27', 6, 2, 0, 0);
+
+accountlist insert query
+
+
+INSERT INTO ACCOUNTLIST VALUES ('1', '예금', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('2', '외상매출금', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('3', '미수금', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('4', '미수수익', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('5', '선급금', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('6', '선급비용', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('7', '상품', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('8', '제품', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('9', '원재료', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('10', '반제품', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('11', '투자부동산', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('12', '임차보증금', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('13', '토지', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('14', '건물', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('15', '구축물', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('16', '비품', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('17', '기계장치', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('18', '차량운반구', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('19', '영업권', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('20', '산업재산권', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('21', '개발비', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('22', '소프트웨어', '자산');
+INSERT INTO ACCOUNTLIST VALUES ('31', '미지급비용', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('32', '미지급세금', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('33', '예수금', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('34', '퇴직급여충당부채', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('35', '선수금', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('36', '선수수익', '부채');
+INSERT INTO ACCOUNTLIST VALUES ('41', '자본금', '자본');
+INSERT INTO ACCOUNTLIST VALUES ('42', '이익잉여금', '자본');
+INSERT INTO ACCOUNTLIST VALUES ('51', '매출', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('52', '이자수익', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('53', '수수료수익', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('54', '임대료', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('55', '유형자산처분이익', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('56', '투자자산처분이익', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('57', '잡이익', '수익');
+INSERT INTO ACCOUNTLIST VALUES ('61', '매출원가', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('62', '급여', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('63', '퇴직급여', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('64', '복리후생비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('65', '임차료', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('66', '접대비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('67', '보험료', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('68', '세금및공과금', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('69', '여비교통비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('70', '수도광열비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('71', '광고선전비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('72', '통신비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('73', '차량유지비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('74', '교육훈련비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('75', '도서인쇄비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('76', '연구비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('77', '수선비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('78', '운반비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('79', '감가상각비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('80', '대손상각비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('81', '사무용품비', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('82', '이자비용', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('83', '지급수수료', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('84', '유형자산처분손실', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('85', '투자자산처분손실', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('86', '기부금', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('87', '잡손실', '비용');
+INSERT INTO ACCOUNTLIST VALUES ('88', '재해손실', '비용');
+
+attachment insert query (file table 이름 attachment로 바꿔주세요 생성안됩니다.)
+
+
+insert into attachment values(seq_attachment.nextval, 'eventmn1.png', 'eventdatail.png', '이벤트게시판 게시물 번호 쓰세요);
+insert into attachment values(seq_attachment.nextval, 'eventmn2.png', 'eventdatail.png', 85);
+insert into attachment values(seq_attachment.nextval, 'eventmn3.png', 'eventdatail.png', 86);
+insert into attachment values(seq_attachment.nextval, 'eventmn4.png', 'eventdatail.png', 87);
+insert into attachment values(seq_attachment.nextval, 'eventmn5.png', 'eventdatail.png', 88);
+insert into attachment values(seq_attachment.nextval, 'eventmn6.png', 'eventdatail.png', 89);
+insert into attachment values(seq_attachment.nextval, 'eventmn7.png', 'eventdatail.png', 90);
+insert into attachment values(seq_attachment.nextval, 'eventmn8.png', 'eventdatail.png', 91);
+
+party insert query
+
+
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, PHONE, TEL, EMAIL, CNAME, CNO, CADDRESS, CTYPE, CSTATUS, PRESIDENT)
+VALUES (1, '무한상사', 4, '010-1234-5678', '02-1234-1234', 'moohan@naver.com', '무한상사', '132-81-00000', '서울시 강남구 역삼동 123-13', '전자제품판매', '서비스', '유재석');
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, PHONE, TEL, EMAIL, CNAME, CNO, CADDRESS, CTYPE, CSTATUS, PRESIDENT)
+VALUES (2, '애플', 4, '010-1234-1234', '02-1234-9999', 'kkk@gmail.com', '무한상사', '132-81-00022', '서울시 강남구 삼성동 12-13', '전자제품', '제조업', '김진호');
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, PHONE, TEL, EMAIL, CNAME, CNO, CADDRESS, CTYPE, CSTATUS, PRESIDENT)
+VALUES (3, '삼성', 4, '010-1234-4321', '02-1234-9876', 'hahaha@naver.com', '무한상사', '132-81-04330', '서울시 서초구 방배동 1231-13', '전자제품', '제조업', '김진호');
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, PHONE, TEL, EMAIL, CNAME, CNO, CADDRESS, CTYPE, CSTATUS, PRESIDENT)
+VALUES (4, '대한통운', 4, '010-1234-8765', '02-1234-1212', 'ggoggo@naver.com', '무한상사', '132-81-02300', '서울시 송파구 잠실본동 1-13', '운수업', '서비스', '김진호');
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, PHONE, TEL, EMAIL, CNAME, CNO, CADDRESS, CTYPE, CSTATUS, PRESIDENT)
+VALUES (5, '한국통신', 4, '010-1234-3535', '02-1234-1290', 'ppabi@naver.com', '무한상사', '132-81-00030', '서울시 강동구 천호동 123', '전자통신', '서비스', '김진호');
+
+INSERT INTO PARTY (PNO, PNAME, CATEGORY, ID, PWD, PHONE, EMAIL, ID_NO, BIRTH, GENDER, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, TO_NO)
+VALUES (6, '(주)미인들', 1, 'jsmi', 'jsmi', '010-9999-9999', 'jsmi@jsmi.com', '990505-123567', '99/05/05', 'M', '(주)미인들', '123-81-12345', '서울시 강남구 역삼동 111-11', '서울시 강남구 역삼동 133-33', '프로그래밍', '서비스', '17/03/29', '1', '1', '김진호', '01'); 
+
+party_rel insert query
+
+
+INSERT INTO PARTY_REL VALUES (6, 1, 1);
+INSERT INTO PARTY_REL VALUES (6, 2, 1);
+INSERT INTO PARTY_REL VALUES (6, 3, 1);
+INSERT INTO PARTY_REL VALUES (6, 4, 1);
+INSERT INTO PARTY_REL VALUES (6, 5, 1);
+

@@ -43,8 +43,7 @@ public class PostDetailServlet extends HttpServlet {
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		int currentPage = Integer.parseInt(request.getParameter("page"));
 		Post post =  new PostService().selectPostNo(postNo);
-		
-		System.out.println(post);
+		List<Post> commentList = new PostService().selectCommentList(postNo);
 		RequestDispatcher view = null;
 		
 		if(post !=null){
@@ -71,6 +70,7 @@ public class PostDetailServlet extends HttpServlet {
 			
 			request.setAttribute("post", post);
 			request.setAttribute("page", currentPage);
+			request.setAttribute("commentList", commentList);
 			view.forward(request, response);
 			
 		}else{

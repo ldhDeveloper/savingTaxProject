@@ -100,7 +100,7 @@ public class PostInsertServlet extends HttpServlet {
 		System.out.println(p);
 		int result = new PostService().insertPost(p);
 		if(result > 0){
-			response.sendRedirect("/jsmi/listview?page="+page+"&boardNo=1"+p.getBoardNo());
+			response.sendRedirect(("/jsmi/listview?page="+page+"&boardNo="+p.getBoardNo()));
 		}
 		
 		else {
