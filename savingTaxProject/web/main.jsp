@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ page import="member.model.vo.Party" %>	
+	
+<% Party loginUser = (Party)session.getAttribute("loginUser"); %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,15 +142,27 @@
 			<tr>
 				<td><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
 					width="830">
-				<td>
+				</td>
+				<% if(loginUser == null) { %>
 				<td width="70">
 					<button class="btn btn-primary btn-sm"
 						onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
-				<td>
+				</td>
 				<td width="70">
 					<button class="btn btn-warning btn-sm"
 						onclick="location.href='/jsmi/views/main1/member/loginForm.html'">로그인</button>
-				<td>
+				</td>
+				<% } else { %>
+				
+				<td width="70">
+					<label><%= loginUser.getPname() %> 님 환영합니다.</label>
+				</td>
+				<td width="70">
+					<button class="btn btn-warning btn-sm"
+						onclick='/jsmi/logout'>로그아웃</button>
+				</td>		
+				
+				<% } %>
 			</tr>
 		</table>
 	</div>
