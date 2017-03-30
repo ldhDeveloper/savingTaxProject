@@ -103,6 +103,8 @@
 				</div>
 			</div>
 			<form action="/jsmi/update.info2" method="post">
+			<input type="hidden" name="userid" value="<%= loginUser.getId() %>">
+			<input type="hidden" name="email" value="<%= loginUser.getEmail() %>">
 				<table class="table table-condensed">
 					<tbody>
 						<tr>

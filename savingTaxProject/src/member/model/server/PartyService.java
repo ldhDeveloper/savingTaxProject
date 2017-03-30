@@ -11,9 +11,9 @@ import java.sql.*;
 public class PartyService {
 	public PartyService(){}
 
-	public Party loginParty(String uid, String upwd) {
+	public Party loginParty(String uid, String email) {
 		Connection con = getConnection();
-		Party p  = new PartyDao().loginParty(con, uid, upwd);
+		Party p  = new PartyDao().loginParty(con, uid, email);
 		close(con);
 		
 		//System.out.println("service 작동");
