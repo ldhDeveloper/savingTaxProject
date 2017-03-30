@@ -4,25 +4,37 @@ import java.sql.Date;
 
 public class Diary {
 
-private int dno;
-private Date dDate;
+private String atype;
+private Date ddate;
+private String pname;
+private String anm;
 private String product;
 private int cost;
-private int bill_type;
-private int proof_type;
-private int write_pno;
-private int acc_pno;
-public int getDno() {
-	return dno;
+private String billing;
+private String proof_type;
+public String getAtype() {
+	return atype;
 }
-public void setDno(int dno) {
-	this.dno = dno;
+public void setAtype(String atype) {
+	this.atype = atype;
 }
-public Date getdDate() {
-	return dDate;
+public Date getDdate() {
+	return ddate;
 }
-public void setdDate(Date dDate) {
-	this.dDate = dDate;
+public void setDdate(Date ddate) {
+	this.ddate = ddate;
+}
+public String getPname() {
+	return pname;
+}
+public void setPname(String pname) {
+	this.pname = pname;
+}
+public String getAnm() {
+	return anm;
+}
+public void setAnm(String anm) {
+	this.anm = anm;
 }
 public String getProduct() {
 	return product;
@@ -36,43 +48,40 @@ public int getCost() {
 public void setCost(int cost) {
 	this.cost = cost;
 }
-public int getBill_type() {
-	return bill_type;
+public String getBilling() {
+	return billing;
 }
-public void setBill_type(int bill_type) {
-	this.bill_type = bill_type;
+public void setBilling(String billing) {
+	this.billing = billing;
 }
-public int getProof_type() {
+public String getProof_type() {
 	return proof_type;
 }
-public void setProof_type(int proof_type) {
+public void setProof_type(String proof_type) {
 	this.proof_type = proof_type;
 }
-public int getWrite_pno() {
-	return write_pno;
-}
-public void setWrite_pno(int write_pno) {
-	this.write_pno = write_pno;
-}
-public int getAcc_pno() {
-	return acc_pno;
-}
-public void setAcc_pno(int acc_pno) {
-	this.acc_pno = acc_pno;
-}
-public Diary() {
+
+public Diary(){}
+
+public Diary(String atype, Date ddate, String pname, String anm, String product, int cost, String billing,
+		String proof_type) {
 	super();
-}
-public Diary(int dno, Date dDate, String product, int cost, int bill_type, int proof_type, int write_pno, int acc_pno) {
-	super();
-	this.dno = dno;
-	this.dDate = dDate;
+	this.atype = atype;
+	this.ddate = ddate;
+	this.pname = pname;
+	this.anm = anm;
 	this.product = product;
 	this.cost = cost;
-	this.bill_type = bill_type;
+	this.billing = billing;
 	this.proof_type = proof_type;
-	this.write_pno = write_pno;
-	this.acc_pno = acc_pno;
 }
+@Override
+public String toString() {
+	return "Diary [atype=" + atype + ", ddate=" + ddate + ", pname=" + pname + ", anm=" + anm + ", product=" + product
+			+ ", cost=" + cost + ", billing=" + billing + ", proof_type=" + proof_type + "]";
+}
+
+
+
 
 }

@@ -24,8 +24,8 @@
 
 .errmsg {
 	position:relative;
-	top:-345px;
-	left:120px;
+	top:-355px;
+	left:110px;
 	z-index:10;
 }
 .btn {
@@ -44,9 +44,9 @@
 	<div class="errimg">
 		<img src="/jsmi/images/main1/error.png">
 	
-		<h4 class="errmsg"><%= errorMessage %></h4>
-		<button class="btn btn-success">이전으로</button>
-		<button class="btn btn-warning">메인으로</button>
+		<h4 class="errmsg"><font color="#2a82a3"><%= errorMessage %></font></h4>
+		<button class="btn btn-success" onclick="histrory.go(-1)">이전으로</button>
+		<button class="btn btn-warning" onclick="location.href='/jsmi/main.jsp'">메인으로</button>
 	</div>
 </body>
 </html>

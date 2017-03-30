@@ -20,23 +20,26 @@ public class PartyDao {
 		ResultSet rset2 = null;
 		Party p = null;
 
-		/*
-		 * String query =
-		 * "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
-		 * + "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
-		 * 
-		 * 
-		 * String query2 = "select  ENCRYPTION_AES.DEC_AES(콜) as phone, " +
-		 * "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel" +
-		 * "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
-		 * + "emp_type, join_date, busi_type, tel, birth, gender " +
-		 * "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
-		 */
 
+
+		/*String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
+
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+
+		
+		String query2 = "select  ENCRYPTION_AES.DEC_AES(phone) as phone, "
+				+ "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel"
+				+ "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
+				+ "emp_type, join_date, busi_type, tel, birth, gender "
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";*/
+		
 		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-		String query2 = "select phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
+		String query2 = "select phone id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
 
+
+
+		
 		try {
 			pstmt = con.prepareStatement(query);
 
@@ -172,6 +175,7 @@ public class PartyDao {
 		try {
 			System.out.println("p: " + p);
 			pstmt = con.prepareStatement(query);
+
 			pstmt.setString(1, p.getPname());
 			pstmt.setString(2, p.getId());
 			pstmt.setString(3, p.getPwd());
@@ -340,12 +344,87 @@ public class PartyDao {
 			}
 			
 		} catch (Exception e) {
+
+	public Party findId(Connection con, String pname, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p = null;
+		
+		String query = "select * from Party where pname=? and email=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pname);
+			pstmt.setString(2, email);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				p = new Party();
+				p.setId(rset.getString("id"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return p;
+	}
+
+	public Party resetPwdCheck(Connection con, String userid, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p = null;
+		
+		String query = "select * from party where id=? and email=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, email);
+			
+			rset = pstmt.executeQuery();
+
+			if(rset.next()){
+				p = new Party();
+				p.setId(rset.getString("id"));
+				System.out.println(p);
+			}
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
 			close(rset);
 			close(pstmt);
-		}
+		}	
 		return p;
+	}
+
+	public int updatePwd(Connection con, String userid, String pwd) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update party set pwd=? where id=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		
+		return result;
 	}
 
 }
