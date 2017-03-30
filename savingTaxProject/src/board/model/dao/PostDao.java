@@ -24,7 +24,7 @@ public class PostDao {
 		}
 	}
 
-//	오후 임성혁 쿼리문 수정
+
 	public List<Post> selectList(Connection con, int limit, int boardNo, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -81,28 +81,28 @@ public class PostDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
-
 	public int insertPost(Connection con, Post p) {
-		PreparedStatement pstmt = null;
-		String query = prop.getProperty("insertPost");
 		int result = 0;
-
+		PreparedStatement pstmt = null;
+		
+		// 여기 session 값 암호화 복호화로 들어가야함
+		String query = "insert into post values(seq_post.nextval, ?, sysdate, ?, ?, ?, 0, 0)";
+		
 		try {
-			pstmt= con.prepareStatement(query);
+			pstmt = con.prepareStatement(query);
+			
 			pstmt.setString(1, p.getPostName());
 			pstmt.setString(2, p.getPostContents());
 			pstmt.setInt(3, p.getBoardNo());
 			pstmt.setInt(4, p.getpNo());
-
-			result = pstmt.executeUpdate();
+			
+			result = pstmt.executeUpdate();			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally{
 			close(pstmt);
 		}
-		return result;
+		return result; 
 	}
 
 	public int getListCount(Connection con, int boardNo) {
@@ -139,31 +139,40 @@ public class PostDao {
 		}
 		return result;
 	}
+	
 	public List<Post> selectTitle(Connection con, int boardNo, String ptitle) {
 		List<Post> plist = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = prop.getProperty("selectTitle");
+
+		String query = "select * from post where board_no = ? and post_name like ?";
+
 		try {
 			pstmt = con.prepareStatement(query);
+
 			pstmt.setInt(1, boardNo);
 			pstmt.setString(2, "%" + ptitle + "%");
+
 			rset = pstmt.executeQuery();
+
 			System.out.println("세금소식 dao : " + rset);
+
 			if (rset != null) {
 				plist = new ArrayList<Post>();
 			}
+
 			while (rset.next()) {
 				Post p = new Post();
-				p.setPostNo(rset.getInt("post_no"));				
-				p.setPostName(rset.getString("post_name"));				
-				System.out.println("여기 안 떠?");
+
+				p.setPostNo(rset.getInt("post_no"));
+				p.setPostName(rset.getString("post_name"));
 				p.setPostDate(rset.getDate("post_date"));
 				p.setPostContents(rset.getString("post_contents"));
 				p.setBoardNo(rset.getInt("board_no"));
-				p.setpNo(rset.getInt("p_no"));
+				p.setpNo(rset.getInt("pno"));
 				p.setPostRefNo(rset.getInt("post_ref_no"));
 				p.setReadCount(rset.getInt("read_count"));
+
 				plist.add(p);
 			}
 		} catch (Exception e) {
@@ -172,8 +181,46 @@ public class PostDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("세금소식 dao : " + boardNo + ", " + plist);
 		return plist;
+	}
+	
+	public Post selectPostNo(Connection con, int boardNo, int postNo) {
+		Post p = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select p.post_no, "
+				+ "post_name, post_date, post_contents "
+				+ "board_no, pno, post_ref_no, read_count, fname, "
+				+ "refname from post p attachment a  where p.post_no = a.post_no(+) and board_no = ? and post_no = ?  ";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, postNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				p = new Post();
+				
+				p.setPostNo(rset.getInt("post_no"));
+				p.setPostName(rset.getString("post_name"));
+				p.setPostDate(rset.getDate("post_date"));
+				p.setPostContents(rset.getString("post_contents"));
+				p.setBoardNo(rset.getInt("board_no"));
+				p.setpNo(rset.getInt("pno"));
+				p.setPostRefNo(rset.getInt("post_ref_no"));
+				p.setReadCount(rset.getInt("read_count"));
+				p.setfName(rset.getString("fname"));
+				p.setRefName(rset.getString("refname"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return p;
 	}
 
 }

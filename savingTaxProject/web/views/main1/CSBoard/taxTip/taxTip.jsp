@@ -248,7 +248,10 @@ label {
 					<tr>
 						<td class="tno tdmd"><%= p.getPostNo() %></td>
 						<td class="ttitle tdmd">
-							<a href="/jsmi/views/main1/CSBoard/taxTip/taxTipsContents.jsp"><%= p.getPostName() %></a>						
+							<%-- <a href="/jsmi/views/main1/CSBoard/taxTip/taxTipDetailView.jsp"><%= p.getPostName() %></a> --%>						
+							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo() %>">
+								<%= p.getPostName() %>
+							</a>
 						</td>
 						<td class="tdate tdmd">
 							<%= p.getPostDate() %>

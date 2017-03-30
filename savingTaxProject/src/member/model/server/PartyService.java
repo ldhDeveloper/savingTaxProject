@@ -61,7 +61,6 @@ public class PartyService {
 		return result;
 	}
 	/*
-
 	public int deleteMember(String uid) {
 		Connection con = getConnection();
 		int result = new MemberDao().deleteMember(con, uid);
@@ -80,4 +79,6 @@ public class PartyService {
 		//System.out.println("service 작동");
 		return result;
 	}
+
 }
+
