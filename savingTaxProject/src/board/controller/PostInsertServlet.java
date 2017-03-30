@@ -2,6 +2,13 @@ package board.controller;
 
 import java.io.IOException;
 
+import java.io.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import org.apache.tomcat.util.http.fileupload.servlet.*;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,12 +40,22 @@ public class PostInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		response.setContentType("text/html; charset=utf-8");
+		if(ServletFileUpload.isMultipartContent(request)){
+			RequestDispatcher view = request.getRequestDispatcher("views/main1/CSBoard/board/boardError.jsp");
+			request.setAttribute("message", "enctype 오류");
+			view.forward(request, response);
+		}
+		int maxSize = 1024 * 1024 * 10;
 		
-		String postName = request.getParameter("postName");
-		int pNo = Integer.parseInt(request.getParameter("pno"));
-		String postContents = request.getParameter("postContents");
+		String root = request.getSession().getServletContext().getRealPath("/");
 		
+		String savePath  = root + "board_uploadFiles/";
+		
+		try{
+		MultipartRequest mrequest = new MultipartRequest(request, savePath, maxSize, "utf-8", new DefaultFileRenamePolicy()); 
+		String postName = mrequest.getParameter("postName");
+		int pNo = Integer.parseInt(mrequest.getParameter("pno"));
+		String postContents = mrequest.getParameter("postContents");
 		Post p = new Post();
 		p.setPostName(postName);
 		p.setpNo(pNo);
@@ -55,6 +72,11 @@ public class PostInsertServlet extends HttpServlet {
 			request.setAttribute("message", "게시판 오류");
 			view.forward(request, response);
 		}
+		}catch(Exception e){
+			e.printStackTrace();}
+		
+		
+	
 		
 	}
 

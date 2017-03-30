@@ -53,9 +53,9 @@ public class PostDao {
 			p.setPostName(rset.getString("post_name"));
 			p.setPostDate(rset.getDate("post_date"));
 			p.setpNo(rset.getInt("pno"));
+			p.setBoardNo(rset.getInt("board_no"));
 			p.setfName(rset.getString("fname"));
 			p.setRefName(rset.getString("refname"));
-			System.out.println(p);
 			plist.add(p);	
 			}
 			}
@@ -184,21 +184,19 @@ public class PostDao {
 		return plist;
 	}
 	
-	public Post selectPostNo(Connection con, int boardNo, int postNo) {
+	public Post selectPostNo(Connection con, int postNo) {
 		Post p = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String query = "select p.post_no, "
-				+ "post_name, post_date, post_contents "
+				+ "post_name, post_date, post_contents, "
 				+ "board_no, pno, post_ref_no, read_count, fname, "
-				+ "refname from post p attachment a  where p.post_no = a.post_no(+) and board_no = ? and post_no = ?  ";
+				+ "refname from post p, attachment a  where p.post_no = a.post_no(+) and p.post_no = ?";
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			
-			pstmt.setInt(1, boardNo);
-			pstmt.setInt(2, postNo);
+			pstmt.setInt(1, postNo);
 			
 			rset = pstmt.executeQuery();
 			

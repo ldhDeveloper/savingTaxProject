@@ -1,23 +1,28 @@
 package board.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.service.PostService;
+import board.model.vo.Post;
+
 /**
- * Servlet implementation class PostUpdateServlet
+ * Servlet implementation class PostUpdateViewServlet
  */
-@WebServlet("/pupdate")
-public class PostUpdateServlet extends HttpServlet {
+@WebServlet("/postupdateview")
+public class PostUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostUpdateServlet() {
+    public PostUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +31,20 @@ public class PostUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
+		int page = Integer.parseInt(request.getParameter("page"));
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		Post post = new PostService().selectPostNo(postNo); 
+		RequestDispatcher view = null;
+		if(post != null){
+		view = request.getRequestDispatcher("/views/main1/CSBoard/QnA/QnAUpdateForm.jsp");
+		request.setAttribute("post", post);
+		request.setAttribute("page", page);
+		view.forward(request, response);
+		}else{
+		view = request.getRequestDispatcher("/views/main1/CSBoard/board/boardError.jsp");
+		request.setAttribute("message", "삽입 실패");
+		view.forward(request, response);
+		}
 		
 		
 		
