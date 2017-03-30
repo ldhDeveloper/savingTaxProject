@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
 <%  Post p = (Post)request.getAttribute("post"); 
 	int currentPage = ((Integer)request.getAttribute("page")).intValue();
+    int boardNo = p.getBoardNo();
 %>
 
 <!DOCTYPE html>
@@ -263,7 +264,7 @@ border : none;
 		<br> <br> <br>
 		
 		<form action="/jsmi/pupdate" method = "post">
-			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="title">
+			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
 		<br><br>
 
 		<div class="tableStart">
@@ -280,18 +281,15 @@ border : none;
 						</th>
 						<th id="thth">조회수</th>
 						<th id="thcS">
-							<input name="readcount" value = <%=p.getReadCount()%> readonly>
+							<input name="readCount" value = <%=p.getReadCount()%> readonly>
 						</th>
 					</tr>
 				</thead>
 				<tbody class="tablemd tbodymd font-family-md-3">
 					<tr>
-					<td colspan= "6" style="float:right">첨부 파일 : <input type ="file" name = "file"></td>
-					</tr>
-					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea rows = "30" class="redact" name="contents"><%= p.getPostContents() %></textarea><br> <br>
+							<textarea rows = "30" class="redact" name="postContents"><%= p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
@@ -299,8 +297,10 @@ border : none;
 					<tr>
 					<td colspan = "10" style= "text-align:right">
 					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
+					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
+					<input type = "hidden" value = "<%=currentPage%>" name = "page">
 					  <input class="btn btn-warning" type = "submit" value = "수정">
-					     	<a href="/jsmi/listview?page=<%=currentPage %>&boardNo=<%=p.getPostNo() %>" class="btn btn-warning">이전</a>
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
 					</td>
 					</tr>
 				</tbody>

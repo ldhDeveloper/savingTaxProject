@@ -48,7 +48,6 @@ public class PostListViewServlet extends HttpServlet {
 		
 		int startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		
 		PostService pService = new PostService();
 		
 		int listCount = pService.getListCount(boardNo);
