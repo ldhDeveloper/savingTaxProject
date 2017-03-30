@@ -81,6 +81,7 @@ private Properties prop = new Properties();
 			
 			if(rset != null){
 				list = new ArrayList<Diary>();
+				System.out.println("list 생성");
 			}
 			
 			while(rset.next()){
