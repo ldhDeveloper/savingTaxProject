@@ -80,5 +80,12 @@ public class PartyService {
 		return result;
 	}
 
+	public Party selectParty(String userid) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectParty(con, userid);
+		close(con);
+		return p;
+	}
+
 }
 

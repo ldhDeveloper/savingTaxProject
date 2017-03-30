@@ -1,7 +1,10 @@
+<%@page import="javafx.scene.control.Alert"%>
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<% String userid =(String)request.getAttribute("userid");
-	     String userpwd =(String)request.getAttribute("userpwd");
+	<% 
+	     Party party =(Party)request.getAttribute("p");
+	
 	%>
 <!DOCTYPE html>
 <html>
@@ -228,8 +231,7 @@
 					</tbody>
 				</table>
 				
-				<input type="hidden" name="userid" value="<%=userid%>">
-				<input type="hidden" name="userpwd" value="<%=userpwd%>">
+				<input type="text" name="userid" value="<%=party%>">
 				<div class="btngroup">
 					<input type="submit" class="btn btn-primary" value="다음">
 					<button class="btn btn-danger" type="reset">취소</button>

@@ -65,7 +65,9 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String Tel = tel + "-" + tel2 + "-" + tel3;
 		String Caddress=caddress+" "+caddress2+" "+caddress3;
 		
+		System.out.println("userid"+userid+userpwd);
          Party party = new PartyService().loginParty(userid, userpwd);
+         System.out.println("party: "+party);
          party.setCname(cname);
          party.setPresident(president);
          party.setCno(Cno);

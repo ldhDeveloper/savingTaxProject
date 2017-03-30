@@ -7,289 +7,345 @@ import member.model.vo.Member;
 import member.model.vo.Party;
 
 public class PartyDao {
-   private Properties prop;
+	private Properties prop;
 
-   public PartyDao() {
-      prop = new Properties();
-   }
+	public PartyDao() {
+		prop = new Properties();
+	}
 
-   public Party loginParty(Connection con, String uid, String upwd) {
-      PreparedStatement pstmt = null;
-      PreparedStatement pstmt2 = null;
-      ResultSet rset = null;
-      ResultSet rset2 = null;
-      Party p = null;
+	public Party loginParty(Connection con, String uid, String upwd) {
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rset = null;
+		ResultSet rset2 = null;
+		Party p = null;
 
-/*      String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
-            + "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+		/*
+		 * String query =
+		 * "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
+		 * + "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+		 * 
+		 * 
+		 * String query2 = "select  ENCRYPTION_AES.DEC_AES(콜) as phone, " +
+		 * "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel" +
+		 * "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
+		 * + "emp_type, join_date, busi_type, tel, birth, gender " +
+		 * "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
+		 */
 
-      
-      String query2 = "select  ENCRYPTION_AES.DEC_AES(콜) as phone, "
-            + "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel"
-            + "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
-            + "emp_type, join_date, busi_type, tel, birth, gender "
-            + "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";*/
-      
-      String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-      String query2 = "select phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
+		String query2 = "select phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
 
-      try {
-         pstmt = con.prepareStatement(query);
+		try {
+			pstmt = con.prepareStatement(query);
 
-         pstmt.setString(1, uid);
-         pstmt.setString(2, upwd);
+			pstmt.setString(1, uid);
+			pstmt.setString(2, upwd);
 
-         rset = pstmt.executeQuery();
+			rset = pstmt.executeQuery();
 
-         if (rset.next()) {
-            p = new Party();
-            p.setPno(rset.getInt("pno"));
-            p.setPname(rset.getString("pname"));
-            p.setCategory(rset.getInt("category"));
-            p.setId(rset.getString("id"));
-            p.setPwd(rset.getString("pwd"));
-            p.setEmail(rset.getString("email"));
+			if (rset.next()) {
+				p = new Party();
+				p.setPno(rset.getInt("pno"));
+				p.setPname(rset.getString("pname"));
+				p.setCategory(rset.getInt("category"));
+				p.setId(rset.getString("id"));
+				p.setPwd(rset.getString("pwd"));
+				p.setEmail(rset.getString("email"));
 
-            if(rset.getInt("category") == 1){
-               pstmt2 = con.prepareStatement(query2);
-               pstmt2.setString(1, uid);
-               pstmt2.setString(2, upwd);
-               rset2 = pstmt2.executeQuery();
-               
-               if(rset2.next()){
-                  p.setPhone(rset2.getString("phone"));
-                  p.setId_no(rset2.getString("id_no"));
-                  p.setCname(rset2.getString("cname"));
-                  p.setCno(rset2.getString("cno"));
-                  p.setPaddress(rset2.getString("paddress"));
-                  p.setCaddress(rset2.getString("caddress"));
-                  p.setCstatus(rset2.getString("cstatus"));
-                  p.setPosition(rset2.getString("position"));
-                  p.setOday(rset2.getDate("oday"));
-                  p.setWno(rset2.getInt("wno"));
-                  p.setTaxtype(rset2.getInt("taxtype"));
-                  p.setNotax_yn(rset2.getInt("notax_yn"));
-                  p.setPresident(rset2.getString("president"));
-                  p.setTel(rset2.getString("tel"));
-                  p.setEmp_type(rset2.getInt("emp_type"));
-                  p.setJoin_date(rset2.getDate("join_date"));
-                  p.setBusi_type(rset2.getInt("busi_type"));
-                  p.setBirth(rset2.getString("birth"));
-                  p.setGender(rset2.getString("gender"));
-               }
-            } 
-         }   
+				if (rset.getInt("category") == 1) {
+					pstmt2 = con.prepareStatement(query2);
+					pstmt2.setString(1, uid);
+					pstmt2.setString(2, upwd);
+					rset2 = pstmt2.executeQuery();
 
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close(rset2);
-         close(rset);
-         close(pstmt);
-      }
-      /*
-       * System.out.println("uid : " + uid); System.out.println("upwd : " +
-       * upwd); System.out.println(m); System.out.println("dao작동");
-       */
-      return p;
-   }
+					if (rset2.next()) {
+						p.setPhone(rset2.getString("phone"));
+						p.setId_no(rset2.getString("id_no"));
+						p.setCname(rset2.getString("cname"));
+						p.setCno(rset2.getString("cno"));
+						p.setPaddress(rset2.getString("paddress"));
+						p.setCaddress(rset2.getString("caddress"));
+						p.setCstatus(rset2.getString("cstatus"));
+						p.setPosition(rset2.getString("position"));
+						p.setOday(rset2.getDate("oday"));
+						p.setWno(rset2.getInt("wno"));
+						p.setTaxtype(rset2.getInt("taxtype"));
+						p.setNotax_yn(rset2.getInt("notax_yn"));
+						p.setPresident(rset2.getString("president"));
+						p.setTel(rset2.getString("tel"));
+						p.setEmp_type(rset2.getInt("emp_type"));
+						p.setJoin_date(rset2.getDate("join_date"));
+						p.setBusi_type(rset2.getInt("busi_type"));
+						p.setBirth(rset2.getString("birth"));
+						p.setGender(rset2.getString("gender"));
+					}
+				}
+			}
 
-   public int signupParty(Connection con, Party p) {
-      PreparedStatement pstmt = null;
-      int result = 0;
-      System.out.println(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rset2 != null) {
+				close(rset2);
+			}
+			close(rset);
+			close(pstmt);
+		}
+		/*
+		 * System.out.println("uid : " + uid); System.out.println("upwd : " +
+		 * upwd); System.out.println(m); System.out.println("dao작동");
+		 */
+		return p;
+	}
 
-      
-      String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 5, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
+	public int signupParty(Connection con, Party p) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		System.out.println(p);
 
-      try {
-         pstmt = con.prepareStatement(query);
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 5, ?, ?, ENCRYPTION_AES.ENC_AES(?), ENCRYPTION_AES.ENC_AES(?))";
 
-         pstmt.setString(1, p.getPname());
-         pstmt.setString(2, p.getId());
-         pstmt.setString(3, p.getPwd());
-         pstmt.setString(4, p.getEmail());
+		try {
+			pstmt = con.prepareStatement(query);
 
-         result = pstmt.executeUpdate();
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getId());
+			pstmt.setString(3, p.getPwd());
+			pstmt.setString(4, p.getEmail());
 
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close(pstmt);
-      }
-      // System.out.println("user name: " + m.getUserName());
-      // System.out.println(result);
-      return result;
-   }
+			result = pstmt.executeUpdate();
 
-   public Member selectMember(Connection con, String uid) {
-      Member m = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		// System.out.println("user name: " + m.getUserName());
+		// System.out.println(result);
+		return result;
+	}
 
-      PreparedStatement pstmt = null;
-      ResultSet rset = null;
+	public Member selectMember(Connection con, String uid) {
+		Member m = null;
 
-      String query = "select * from signup where user_id = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 
-      try {
-         pstmt = con.prepareStatement(query);
+		String query = "select * from signup where user_id = ?";
 
-         pstmt.setString(1, uid);
+		try {
+			pstmt = con.prepareStatement(query);
 
-         rset = pstmt.executeQuery();
+			pstmt.setString(1, uid);
 
-         if (rset.next()) {
-            m = new Member();
+			rset = pstmt.executeQuery();
 
-            m.setUserName(rset.getString("user_name"));
-            m.setUserId(rset.getString("user_id"));
-            m.setUserPwd(rset.getString("user_pwd"));
-            m.setUserEmail(rset.getString("user_email"));
-         }
+			if (rset.next()) {
+				m = new Member();
 
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close(rset);
-         close(pstmt);
-      }
+				m.setUserName(rset.getString("user_name"));
+				m.setUserId(rset.getString("user_id"));
+				m.setUserPwd(rset.getString("user_pwd"));
+				m.setUserEmail(rset.getString("user_email"));
+			}
 
-      System.out.println("dao m: " + m + "dao userid" + uid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 
-      return m;
-   }
+		System.out.println("dao m: " + m + "dao userid" + uid);
 
-   public int updatePartyMyinfo1(Connection con, Party p) {
-      int result = 0;
-      PreparedStatement pstmt = null;
+		return m;
+	}
 
-      String query = "update party set pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=6";
+	public int updatePartyMyinfo1(Connection con, Party p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
 
-      try {
-         System.out.println("p: "+p);
-         pstmt = con.prepareStatement(query);
-            pstmt.setString(1, p.getPname());
-            pstmt.setString(2, p.getId());
-            pstmt.setString(3, p.getPwd());
-            pstmt.setString(4, p.getEmail());
-            pstmt.setString(5, p.getId_no());
-            pstmt.setString(6, p.getPaddress());
-            pstmt.setString(7, p.getPhone());
-            pstmt.setString(8, p.getBirth());
-            pstmt.setString(9, p.getGender());
-           
-           
-            
-         result = pstmt.executeUpdate();
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally{
-         close(pstmt);
-      }
-      return result;
-   }
-   
-   public int updatePartyMyinfo2(Connection con, Party p) {
-      int result =0;
-      PreparedStatement pstmt = null;
+		String query = "update party set pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=6";
 
-      String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, wno=?, taxtype=?, notax_yn=?, president=? where pno=6"; 
+		try {
+			System.out.println("p: " + p);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getId());
+			pstmt.setString(3, p.getPwd());
+			pstmt.setString(4, p.getEmail());
+			pstmt.setString(5, p.getId_no());
+			pstmt.setString(6, p.getPaddress());
+			pstmt.setString(7, p.getPhone());
+			pstmt.setString(8, p.getBirth());
+			pstmt.setString(9, p.getGender());
 
-      try {
-         pstmt = con.prepareStatement(query);
-            pstmt.setString(1, p.getTel());
-            pstmt.setString(2, p.getCname());
-            pstmt.setString(3, p.getCno());
-            pstmt.setString(4, p.getCaddress());
-            pstmt.setString(5, p.getCstatus());
-            pstmt.setString(6, p.getCtype());
-            pstmt.setDate(7, p.getOday());
-            pstmt.setInt(8, p.getWno());
-            pstmt.setInt(9, p.getTaxtype());
-            pstmt.setInt(10, p.getNotax_yn());
-            pstmt.setString(11, p.getPresident());
-            
-         result = pstmt.executeUpdate();
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally{
-         close(pstmt);
-      }
-      return result;
-   }
-   
-   public int insertMyinfo3(Connection con, Party p) {
-      int result =0;
-      PreparedStatement pstmt = null;
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
-      String query = "insert into party (pno ,tel, email, cname,  cno, caddress,  cstatus, ctype, president, busi_type) values (pno_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public int updatePartyMyinfo2(Connection con, Party p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
 
-      try {
-         pstmt = con.prepareStatement(query);
-            pstmt.setString(1, p.getTel());
-            pstmt.setString(2, p.getEmail());
-            pstmt.setString(3, p.getCname());
-            pstmt.setString(4, p.getCno());
-            pstmt.setString(5, p.getCaddress());
-            pstmt.setString(6, p.getCstatus());
-            pstmt.setString(7, p.getCtype());
-            pstmt.setString(8, p.getPresident());
-            pstmt.setInt(9, p.getBusi_type());
-            
-         result = pstmt.executeUpdate();
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally{
-         close(pstmt);
-      }
-      return result;
-   }
+		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, wno=?, taxtype=?, notax_yn=?, president=? where pno=6";
 
-   public int deleteMember(Connection con, String uid) {
-      Member m = null;
-      int result = 0;
-      PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getTel());
+			pstmt.setString(2, p.getCname());
+			pstmt.setString(3, p.getCno());
+			pstmt.setString(4, p.getCaddress());
+			pstmt.setString(5, p.getCstatus());
+			pstmt.setString(6, p.getCtype());
+			pstmt.setDate(7, p.getOday());
+			pstmt.setInt(8, p.getWno());
+			pstmt.setInt(9, p.getTaxtype());
+			pstmt.setInt(10, p.getNotax_yn());
+			pstmt.setString(11, p.getPresident());
 
-      String query = "delete from member where user_id = ?";
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
-      try {
-         pstmt = con.prepareStatement(query);
+	public int insertMyinfo3(Connection con, Party p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
 
-         pstmt.setString(1, uid);
+		String query = "insert into party (pno ,tel, email, cname,  cno, caddress,  cstatus, ctype, president, busi_type) values (pno_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-         result = pstmt.executeUpdate();
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getTel());
+			pstmt.setString(2, p.getEmail());
+			pstmt.setString(3, p.getCname());
+			pstmt.setString(4, p.getCno());
+			pstmt.setString(5, p.getCaddress());
+			pstmt.setString(6, p.getCstatus());
+			pstmt.setString(7, p.getCtype());
+			pstmt.setString(8, p.getPresident());
+			pstmt.setInt(9, p.getBusi_type());
 
-      return result;
-   }
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
-   public boolean userIdCheck(Connection con, String chkId) {
-      PreparedStatement pstmt = null;
-      ResultSet rset = null;
-      boolean result = false;
-      String query = "select pno from party where id = ?";
+	public int deleteMember(Connection con, String uid) {
+		Member m = null;
+		int result = 0;
+		PreparedStatement pstmt = null;
 
-      try {
-         pstmt = con.prepareStatement(query);
+		String query = "delete from member where user_id = ?";
 
-         pstmt.setString(1, chkId);
+		try {
+			pstmt = con.prepareStatement(query);
 
-         rset = pstmt.executeQuery();
+			pstmt.setString(1, uid);
 
-         if (rset.next()) {
-            result = false;
-         } else {
-            result = true;
-         }
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         close(rset);
-         close(pstmt);
-      }
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-      return result;
-   }
+		return result;
+	}
+
+	public boolean userIdCheck(Connection con, String chkId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		String query = "select pno from party where id = ?";
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, chkId);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = false;
+			} else {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public Party selectParty(Connection con, String userid) {
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+        Party p=null;
+        
+        String query = "select * from party where id=?";
+        
+        try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, userid);
+			
+			rset =pstmt.executeQuery();
+			if(rset.next()){
+				p = new Party();
+				p.setPno(rset.getInt("pno"));
+				p.setPname(rset.getString("pname"));
+				p.setCategory(rset.getInt("category"));
+				p.setId(rset.getString("id"));
+				p.setPwd(rset.getString("pwd"));
+				p.setTel(rset.getString("tel"));
+				p.setEmail(rset.getString("email"));
+				p.setId_no(rset.getString("id_no"));
+				p.setCname(rset.getString("cname"));
+				p.setCno(rset.getString("cno"));
+				p.setPaddress(rset.getString("paddress"));
+				p.setCaddress(rset.getString("caddress"));
+				p.setCtype(rset.getString("ctype"));
+				p.setCstatus(rset.getString("cstatus"));
+				p.setPosition(rset.getString("position"));
+				p.setOday(rset.getDate("oday"));
+				p.setWno(rset.getInt("wno"));
+				p.setTaxtype(rset.getInt("taxtype"));
+				p.setNotax_yn(rset.getInt("notax_yn"));
+				p.setPresident(rset.getString("president"));
+				p.setForeginer_yn(rset.getInt("foreginer_yn"));
+				p.setEmp_type(rset.getInt("emp_type"));
+				p.setJoin_date(rset.getDate("join_date"));
+				p.setBusi_type(rset.getInt("busi_type"));
+				p.setPhone(rset.getString("phone"));
+				p.setBirth(rset.getString("birth"));
+				p.setGender(rset.getString("gender"));
+				p.setTo_no(rset.getInt("to_no"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return p;
+	}
+
 }
