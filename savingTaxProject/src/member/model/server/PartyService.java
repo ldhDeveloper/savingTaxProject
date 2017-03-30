@@ -79,4 +79,6 @@ public class PartyService {
 		//System.out.println("service 작동");
 		return result;
 	}
+
 }
+

@@ -15,7 +15,7 @@ import member.model.vo.Party;
 /**
  * Servlet implementation class Main2UpdateServlet
  */
-@WebServlet("/mupdate2")
+@WebServlet("/update.info1")
 public class Main2UpdateServlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,6 +55,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  String email = request.getParameter("email");
 		  String email2 = request.getParameter("email2");
 		  // 암호, 핸드폰번호, 이메일,주민번호 암호화
+		  System.out.println("userid: "+userid);
 		  
 		  String IdNo= id_no+"-"+id_no2;
 		  String Address = paddress+" "+paddress2+" "+paddress3;
@@ -78,7 +79,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo2.jsp");
 		  }else{
 			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
-				request.setAttribute("message", "회원 정보 수정 실패");
+				request.setAttribute("message", "회원정보 수정 실패");
 				view.forward(request, response);
 		  }
 		  

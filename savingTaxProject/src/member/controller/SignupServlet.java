@@ -59,11 +59,11 @@ public class SignupServlet extends HttpServlet {
 		int result = new PartyService().signupParty(p);
 		
 		if(result > 0) {
-			response.sendRedirect("views/main1/loginForm.html");
+			response.sendRedirect("/jsmi/views/main1/member/loginForm.html");
 		}
 		
 		else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/jsmi/views/member/memberError.jsp");
 			request.setAttribute("message", "회원 가입에 실패했습니다.");
 			view.forward(request, response);
 		}

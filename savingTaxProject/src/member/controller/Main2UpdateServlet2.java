@@ -17,7 +17,7 @@ import member.model.vo.Party;
 /**
  * Servlet implementation class Main2UpdateServlet2
  */
-@WebServlet("/mupdate3")
+@WebServlet("/update.info2")
 public class Main2UpdateServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,8 +55,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
         String caddress3=request.getParameter("caddress3");
         int wno=Integer.parseInt(request.getParameter("wno"));
         //관할세무서 뺌
-		String TAXTYPE=request.getParameter("optradio2");//과세유형
-		String NOTAX_YN=request.getParameter("optradio3");//면세여부
+		int taxtype=Integer.parseInt(request.getParameter("optradio2"));//과세유형
+		int notax_yn=Integer.parseInt(request.getParameter("optradio3"));//면세여부
                
 		String Cno=cno+"-"+cno2+"-"+cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;
@@ -71,6 +71,9 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 p.setTel(Tel);
 		 p.setOday(Oday);
 		 p.setCaddress(Caddress);
+		 p.setWno(wno);
+		 p.setTaxtype(taxtype);
+		 p.setNotax_yn(notax_yn);
 		 
 		 int result = new PartyService().updatePartyMyinfo(p); 
 		 
@@ -78,7 +81,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo3.jsp");
 		  }else{
 			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
-				request.setAttribute("message", "회원 정보 수정 실패");
+				request.setAttribute("message", "사업장정보 수정 실패");
 				view.forward(request, response);
 		  }
 		 
