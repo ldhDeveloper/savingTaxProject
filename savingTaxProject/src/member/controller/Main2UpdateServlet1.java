@@ -83,10 +83,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  if(result >0){
 			 HttpSession session = request.getSession();
 			  session.setAttribute("loginUser", loginUser);
-			  //RequestDispatcher view = request.getRequestDispatcher("views/main2/myinfo/myinfo2.jsp");
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo2.jsp");
-			 // request.setAttribute("loginUser", loginUser);
-			  //view.forward(request, response);
 		  }else{
 			  RequestDispatcher error = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 				request.setAttribute("message", "회원정보 수정 실패");

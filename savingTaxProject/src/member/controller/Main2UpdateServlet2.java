@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.server.PartyService;
 import member.model.vo.Party;
@@ -38,8 +39,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("test/html; charset=utf-8");
 
-		String userid=request.getParameter("userid");
-		String userpwd=request.getParameter("userpwd");
+		String userid = request.getParameter("userid");
+		String email = request.getParameter("email");
 		
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
@@ -65,8 +66,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String Tel = tel + "-" + tel2 + "-" + tel3;
 		String Caddress=caddress+" "+caddress2+" "+caddress3;
 		
-		System.out.println("userid"+userid+userpwd);
-         Party party = new PartyService().loginParty(userid, userpwd);
+		System.out.println("userid"+userid+ ", " + email);
+         Party party = new PartyService().loginParty(userid, email);
          System.out.println("party: "+party);
          party.setCname(cname);
          party.setPresident(president);
@@ -84,7 +85,11 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 int result = new PartyService().updatePartyMyinfo(party); 
 		 System.out.println("result2:"+result);
 		 
+		 Party loginUser=new PartyService().selectParty(userid);
+		 
 		 if(result > 0){
+			 HttpSession session = request.getSession();
+			  session.setAttribute("loginUser", loginUser);
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo3.jsp");
 		  }else{
 			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");

@@ -13,7 +13,7 @@ public class PartyDao {
 		prop = new Properties();
 	}
 
-	public Party loginParty(Connection con, String uid, String upwd) {
+	public Party loginParty(Connection con, String uid, String email) {
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rset = null;
@@ -33,9 +33,9 @@ public class PartyDao {
 				+ "emp_type, join_date, busi_type, tel, birth, gender "
 				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";*/
 		
-		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+		String query = "select pno, pname, category, id, pwd, email from party where id = ? and email = ?";
 
-		String query2 = "select phone id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
+		String query2 = "select phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and email = ?";
 
 
 
@@ -44,7 +44,7 @@ public class PartyDao {
 			pstmt = con.prepareStatement(query);
 
 			pstmt.setString(1, uid);
-			pstmt.setString(2, upwd);
+			pstmt.setString(2, email);
 
 			rset = pstmt.executeQuery();
 
@@ -60,7 +60,8 @@ public class PartyDao {
 				if (rset.getInt("category") == 1) {
 					pstmt2 = con.prepareStatement(query2);
 					pstmt2.setString(1, uid);
-					pstmt2.setString(2, upwd);
+					pstmt2.setString(2, email);
+					
 					rset2 = pstmt2.executeQuery();
 
 					if (rset2.next()) {
@@ -344,7 +345,13 @@ public class PartyDao {
 			}
 			
 		} catch (Exception e) {
-
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+        return p;
+	}
 	public Party findId(Connection con, String pname, String email) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
