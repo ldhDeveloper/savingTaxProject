@@ -151,14 +151,13 @@
 						//변환된 제이슨 객체를 제이슨 배열로 변환
 						var jsonArr = JSON.parse(jsonObj);
 					
-						$("#dealertable").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
-								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
+						$("#dealertable").html("<tr><th>거래처명</th><th>업종</th><th>업태</th><th>전화번호</th><th>휴대폰번호</th><th>대표자</th>");
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
 							$("#dealertable").html($("#itablebody").html() +
-									"<tr><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
-									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
-									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+									"<tr><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + 
+									"</td><td>" + jsonArr.list[i].tel + "</td><td>" + jsonArr.list[i].phone + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) +
+									"</td><td>");
 						}
 					},
 					error: function(request,status,error){
