@@ -212,7 +212,6 @@ label {
 					새로운 소식을 보다 빠르고 정확하게 확인하실 수 있습니다.
 					</h4>
 		</div>
-
 		<br> <br> <br>
 		
 			<div id="searchdiv" align="center">
@@ -255,7 +254,11 @@ label {
 							<%= p.getPostNo() %>
 						</td>
 						<td class="ttitle tdmd">
-							<a href="/jsmi/views/main1/CSBoard/taxNews/taxNewsContents.jsp"><%= p.getPostName() %></a>
+							<%-- <a href="/jsmi/views/main1/CSBoard/taxNews/taxNewsDetailView.jsp"><%= p.getPostName() %></a> --%>
+							<!-- session해서 pNo 가져와야함 -->
+							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo() %>">
+								<%= p.getPostName() %>
+							</a>
 						</td>
 						<td class="tdate tdmd"><%= p.getPostDate() %></td>
 						

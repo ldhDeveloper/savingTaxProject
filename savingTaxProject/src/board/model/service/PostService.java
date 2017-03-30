@@ -67,7 +67,7 @@ public class PostService {
 		return listCount;
 	}
 
-	//오전 임성혁 작업
+
 	public int insertComment(Post p) {
 		Connection con = getConnection();
 		int result = new PostDao().insertComment(con, p);
@@ -86,6 +86,13 @@ public class PostService {
 		close(con);
 		System.out.println("세금소식 service : " + boardNo + ", " + plist);
 		return plist;
+	}
+
+	public Post selectPostNO(int boardNo, int postNo) {
+		Connection con = getConnection();
+		Post p = new PostDao().selectPostNo(con, boardNo, postNo);
+		close(con);
+		return p;
 	}
 
 

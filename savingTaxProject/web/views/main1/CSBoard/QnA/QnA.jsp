@@ -286,7 +286,10 @@ label {
 							<%= p.getPostNo() %>
 						</td>
 						<td class="ttitle tdmd">
-							<a href="/jsmi/views/main1/CSBoard/QnA/QnAContents.jsp"><%= p.getPostName() %></a>
+							<%-- <a href="/jsmi/views/main1/CSBoard/QnA/QnADetailView.jsp"><%= p.getPostName() %></a> --%>
+							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo() %>">
+								<%= p.getPostName() %>
+							</a>
 						</td>
 						<td class="twriter tdmd">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -342,7 +345,7 @@ label {
 		</div>
 		
 		<br>
-		<form action="/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp">
+		<form action="/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp">
 			<div align="right">
 				<input type="submit" id="submitBtn2" value="글쓰기">&nbsp;&nbsp;&nbsp;&nbsp;
 			</div>
