@@ -1,4 +1,4 @@
-package member.controller;
+package diary.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -54,6 +54,7 @@ public class billTypeServlet extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
+		System.out.println("json 파스내용 : " + json.toJSONString());
 		out.print(json.toJSONString());
 		out.flush();
 		out.close();
