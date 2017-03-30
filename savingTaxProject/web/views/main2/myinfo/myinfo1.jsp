@@ -131,7 +131,7 @@
 						<tr>
 							<td class="col-md-2"><h5>아이디</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="idno3"></td>
+								name="userid"></td>
 							<td class="col-md-6" colspan="2"></td>
 						</tr>
 						<tr>

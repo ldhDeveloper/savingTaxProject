@@ -243,7 +243,7 @@
 				</table>
 
 				<div class="btngroup">
-					<button class="btn btn-primary" type="submit" onclick="nextpage();">다음</button>
+					<input type="submit" class="btn btn-primary" value="다음">
 					<button class="btn btn-danger" type="reset">취소</button>
 				</div>
 			</form>

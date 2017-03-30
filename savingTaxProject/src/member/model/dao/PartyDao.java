@@ -1,3 +1,4 @@
+
 package member.model.dao;
 
 import static common.JDBCTemplate.*;
@@ -20,7 +21,7 @@ public class PartyDao {
 		ResultSet rset2 = null;
 		Party p = null;
 
-/*		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
+		String query = "select pno, pname, category, id, pwd, ENCRYPTION_AES.DEC_AES(email) as email "
 				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
 		
@@ -28,11 +29,7 @@ public class PartyDao {
 				+ "id_no, ENCRYPTION_AES.DEC_AES(tel) as tel"
 				+ "cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, "
 				+ "emp_type, join_date, busi_type, tel, birth, gender "
-				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";*/
-		
-		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
-
-		String query2 = "select phone id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
+				+ "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -169,18 +166,29 @@ public class PartyDao {
 			System.out.println("p: "+p);
 			pstmt = con.prepareStatement(query);
             pstmt.setString(1, p.getPname());
+            System.out.println("1: "+p.getPname());
             pstmt.setString(2, p.getId());
+            System.out.println("2: "+p.getId());
             pstmt.setString(3, p.getPwd());
+            System.out.println("3 : "+p.getPwd());
             pstmt.setString(4, p.getEmail());
+            System.out.println("4: "+p.getEmail());
             pstmt.setString(5, p.getId_no());
+            System.out.println("5:"+p.getId_no());
             pstmt.setString(6, p.getPaddress());
+            System.out.println("6: "+p.getPaddress());
             pstmt.setString(7, p.getPhone());
+            System.out.println("7: "+p.getPhone());
             pstmt.setString(8, p.getBirth());
+            System.out.println("8: "+p.getBirth());
             pstmt.setString(9, p.getGender());
-           
-           
+            System.out.println("9: "+p.getGender());
             
+            
+            System.out.println("pstmt: "+pstmt);
 			result = pstmt.executeUpdate();
+			System.out.println("con: "+con);
+			System.out.println("reslut: "+result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
@@ -210,6 +218,7 @@ public class PartyDao {
             pstmt.setString(11, p.getPresident());
             
 			result = pstmt.executeUpdate();
+			System.out.println("result2 :"+result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
