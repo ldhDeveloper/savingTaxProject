@@ -1,4 +1,4 @@
-package member.controller;
+package diary.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
