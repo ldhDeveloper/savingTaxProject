@@ -274,7 +274,7 @@ border : none;
 					<tr class="thmd">
 						<th id="thth">작성일</th>
 						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>";  readonly>
+							<input name="date" value ="<%=p.getPostDate()%>"  readonly>
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thc">
@@ -305,15 +305,16 @@ border : none;
 		<br>
 				
 		<div align="right">
-				<%if(loginUser.getPno() == p.getpNo()) {%>
+				<% if(loginUser !=null){ if(loginUser.getPno() == p.getpNo()) {%>
 			
 				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
-				<% } %>
+				
 				<script type="text/javascript">
 					function redact(){
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
 				</script>
+				<% }} %>
 				<a href="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
 			</div>
 		<br><br><br>

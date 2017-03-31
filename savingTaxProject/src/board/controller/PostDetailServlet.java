@@ -2,6 +2,7 @@ package board.controller;
 
 import java.io.IOException;
 
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.BoardService;
+
 import board.model.service.PostService;
-import board.model.vo.Board;
+
 import board.model.vo.Post;
 
 /**
@@ -45,7 +46,6 @@ public class PostDetailServlet extends HttpServlet {
 		Post post =  new PostService().selectPostNo(postNo);
 		List<Post> commentList = new PostService().selectCommentList(postNo);
 		RequestDispatcher view = null;
-		
 		if(post !=null){
 			switch (boardNo) {
 			case 1:
@@ -72,6 +72,7 @@ public class PostDetailServlet extends HttpServlet {
 			request.setAttribute("page", currentPage);
 			request.setAttribute("commentList", commentList);
 			view.forward(request, response);
+		
 			
 		}else{
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
