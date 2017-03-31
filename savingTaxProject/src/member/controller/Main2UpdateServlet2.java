@@ -40,7 +40,6 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		response.setContentType("test/html; charset=utf-8");
 
 		String userid = request.getParameter("userid");
-		String email = request.getParameter("email");
 		
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
@@ -66,9 +65,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String Tel = tel + "-" + tel2 + "-" + tel3;
 		String Caddress=caddress+" "+caddress2+" "+caddress3;
 		
-		System.out.println("userid"+userid+ ", " + email);
-         Party party = new PartyService().loginParty(userid, email);
-         System.out.println("party: "+party);
+
+         Party party = new PartyService().selectParty(userid);
          party.setCname(cname);
          party.setPresident(president);
          party.setCno(Cno);
@@ -80,10 +78,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 party.setWno(wno);
 		 party.setTaxtype(taxtype);
 		 party.setNotax_yn(notax_yn);
-		 System.out.println("party: "+party);
 		 
 		 int result = new PartyService().updatePartyMyinfo(party); 
-		 System.out.println("result2:"+result);
 		 
 		 Party loginUser=new PartyService().selectParty(userid);
 		 
