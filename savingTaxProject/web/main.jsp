@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<%-- <%@ page import="member.model.vo.Party" %>	
+<%@ page import="member.model.vo.Party" %>	
 	
-<% Party loginUser = (Party) session.getAttribute("loginUser"); %> --%>
+<% Party loginUser = (Party) session.getAttribute("loginUser"); %>
 	
 <!DOCTYPE html>
 <html>
@@ -144,7 +144,7 @@
 				<td><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
 					width="830">
 				</td>
-				<%-- <% if(loginUser == null) { %>
+				<% if(loginUser == null) { %>
 				<td width="70">
 					<button class="btn btn-primary btn-sm"
 						onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
@@ -163,16 +163,7 @@
 
 						onclick='location.href="/jsmi/logout"'>로그아웃</button>
 				</td>		
-
-				
-				<td width="70">
-					<button class="btn btn-primary btn-sm"
-						onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
-				</td>
-				<td width="70">
-					<button class="btn btn-warning btn-sm"
-						onclick="location.href='/jsmi/views/main1/member/loginForm.html'">로그인</button>
-				</td>
+				<% } %>
 			</tr>
 		</table>
 	</div>
