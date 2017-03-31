@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
-<title>myinfo3</title>
+<title>myinfo3 update</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -90,9 +90,8 @@
 	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
-		<% System.out.println(loginUser.getTel() + ", " + loginUser.getCname()); %>
 	</div>
-
+     
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
@@ -117,10 +116,10 @@
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cname"></td>
+								name="cname" value="<%=loginUser.getCname()%>"></td>
 							<td class="col-md-2"><h5>대표자명</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="president"></td>
+								name="president" value="<%=loginUser.getPresident()%>"></td>
 
 						</tr>
 						<tr>
@@ -158,10 +157,10 @@
 						<tr>
 							<td class="col-md-2"><h5>업태</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cstatus"></td>
+								name="cstatus" value="<%=loginUser.getCstatus()%>"></td>
 							<td class="col-md-2"><h5>종목</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="ctype"></td>
+								name="ctype" value="<%=loginUser.getCtype()%>"></td>
 
 						</tr>
 						<tr>
@@ -169,17 +168,17 @@
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel">
+									<input type="text" class="form-control" name="tel" value="<%= %>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel2">
+									<input type="text" class="form-control" name="tel2" value="<%= %>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel3">
+									<input type="text" class="form-control" name="tel3" value="<%= %>">
 								</div>
 							</td>
 						</tr>
@@ -188,7 +187,7 @@
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="caddress">
+										name="caddress" value="<%= %>">
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -197,21 +196,21 @@
 						<tr>
 							<td class="col-md-2">&nbsp;</td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								id="address1" name="caddress2"></td>
+								id="address1" name="caddress2" value="<%= %>"></td>
 							<td class="col-md-6" colspan="2"><input type="text"
-								class="form-control" id="address2" name="caddress3"></td>
+								class="form-control" id="address2" name="caddress3" value="<%= %>"></td>
 						<tr>
 							<td class="col-md-2"><h5>세금계산용 이메일</h5></td>
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="email">
+									<input type="text" class="form-control" name="email" value="<%= %>">
 								</div>
 								<div class="col-md-1" style="text-align: center">@</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="email2"
-										name="email2">
+										name="email2" value="<%= %>">
 								</div>
 								<div class="col-md-1" style="display: block"></div>
 								<div class="col-md-3"

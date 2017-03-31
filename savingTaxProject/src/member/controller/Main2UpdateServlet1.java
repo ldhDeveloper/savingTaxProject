@@ -59,7 +59,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  System.out.println("userid: "+userid);
 		  
 		  String IdNo= id_no+"-"+id_no2;
-		  String Address = paddress+" "+paddress2+" "+paddress3;
+		  String Address = paddress+"&"+paddress2+"&"+paddress3;
 		  String Phone =phone+"-"+phone2+"-"+phone3;
 		  String Email= email+"@"+email2;
 		  
@@ -79,6 +79,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  
 		Party loginUser=new PartyService().selectParty(userid);
 		  
+		
 		  
 		  if(result >0){
 			 HttpSession session = request.getSession();

@@ -63,7 +63,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
                
 		String Cno=cno+"-"+cno2+"-"+cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;
-		String Caddress=caddress+" "+caddress2+" "+caddress3;
+		String Caddress=caddress+"&"+caddress2+"&"+caddress3;
 		
 
          Party party = new PartyService().selectParty(userid);
@@ -86,7 +86,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 if(result > 0){
 			 HttpSession session = request.getSession();
 			  session.setAttribute("loginUser", loginUser);
-			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo3.jsp");
+			  response.sendRedirect("/jsmi/views/main2/menu/main2.html");
 		  }else{
 			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 				request.setAttribute("message", "사업장정보 수정 실패");
