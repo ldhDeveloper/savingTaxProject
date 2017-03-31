@@ -246,10 +246,10 @@ public class PostDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Post> commentList = null;
-		String query = "select rnum, post_contents, id from (select "
+		String query = "select rnum, post_contents, id, post_date from (select "
 				+ " rownum rnum, post_contents, id, post_date "
 				+ "	from (select post_contents, id, post_date from post p, Party m "
-				+ "where p.pno = m.pno and post_ref_no = ?) ";
+				+ "where p.pno = m.pno and post_ref_no = ?)) ";
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, postNo);
@@ -260,7 +260,7 @@ public class PostDao {
 				Post p = new Post();
 				p.setpId(rset.getString("id"));
 				p.setPostDate(rset.getDate("post_date"));
-				p.setPostContents(rset.getString("post_date"));
+				p.setPostContents(rset.getString("post_contents"));
 				commentList.add(p);
 				}
 			}
