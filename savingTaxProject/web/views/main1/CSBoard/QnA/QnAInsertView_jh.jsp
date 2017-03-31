@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<% int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-	int currentPage = Integer.parseInt(request.getParameter("page"));
+	pageEncoding="UTF-8"%>	
+<% int currentPage = Integer.parseInt(request.getParameter("page"));
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -60,10 +62,6 @@
 }
 
 /* *** 컴퓨터 style *** */
-.middle {
-	font-family: mobius !important;
-}
-
 .table {
 	table-layout: fixed;
 }
@@ -128,8 +126,11 @@
 
 .Qtitle {
 	font-family: computer !important;
+	border-top : 1px solid #ddd;
 	border-bottom : 1px solid #ddd;
-	padding : 2.5%;
+	padding-top : 2.5%;
+	padding-left : 2.5%;
+	padding-bottom : 2%;
 	font-size: 12pt;
 	color: #2a82a3;
 }
@@ -198,20 +199,15 @@
 	font-size: 10pt;
 }
 
-.tbody {
-  background:white;
-   width:800px;
-   margin-left:auto;
-   margin-right:auto;
-
+#ptitletext {
+	border: none;
+	width: 830px;
 }
 
-.titlebar{
-	background: -webkit-linear-gradient(bottom, #ffffff, #b0e0e6);
-	background: -o-linear-gradient(bottom, #ffffff, #b0e0e6);
-	background: -moz-linear-gradient(bottom, #ffffff, #b0e0e6);
-	background: linear-gradient(bottom, #ffffff, #b0e0e6);
+#textArea {
+	border: none;
 }
+
 </style>
 
 </head>
@@ -219,7 +215,7 @@
 <body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
-	<%@ include file="/views/common/main1/menubar.jsp" %>
+	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
 	<br>
@@ -229,19 +225,21 @@
 	
 	
 	
-	<div class="tbody">
+	<div class="middle hidden-xs">
 
 
-		<div class=" font-family-md-1">
+		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/main1/notice.png"><br><br>
-				절세미인 관련 <label id="h3title">공지사항</label> 작성
+				<img src="/jsmi/images/QnA.png"><br><br>
+				절세미인에게 세무와 관련된 <label id="h3title"> 무엇이든 질문하십시오.</label>
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">언제나 정확하게
-				
+			<h4 style="color: #a9a9a9" align="center">성실하고 정확하게
+				답변해드릴게요.
 			</h4>
 		</div>
+
 		<br> <br> <br>
+
 		<!-- <div id="clist">
 			<label id="ctitle">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -251,41 +249,50 @@
 			<label id=ctitlec>&nbsp;&nbsp;
 				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
 		</div> -->
+		
 		<h3></h3>
-		<form action ="/jsmi/insertpost" method = "post">
+		
+		<form action="/jsmi/pinsert" method="post" enctype="multipart/form-data">
 		<div class="tableStart">
 			<table class="tablemd">
 				<tbody class="tbodymd font-family-md-3">
-					
-					<tr class = "titlebar">
-						<td colspan = "2" class="Qlist Qright Qlistt">
-								제목 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<input type = "text" name = "title" style = "border:none;">
-						</td>
-						
-						<td class="Qlistt Qright">
-							작성자
-						</td>
-						<td>
-						<input class="Qright" readonly style= "border:none;" value = "" name = "pno">
-						</td>
-					</tr>
 					<tr>
-					<td colspan  = "8"><textarea rows= "40" name = "postContents" style="resize:none;width:100%"></textarea></td> 
+						<td colspan="8" class="Qtitle">
+							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" name="ptitle" id="ptitletext" autofocus>
+							</label>
+						</td> 
+					</tr>
+				
+					
+					
+					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
+					<tr>
+						<td colspan="8" class="tdmd" id="ccontents">
+							<h3></h3>
+							<textarea style="width:100%;height:200px;" id="textArea"></textarea>
+							<h3></h3>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+
 		<br>
+		
 			<div align="right">
-				<input type="hidden" name = "boardNo" value="<%=boardNo %>">
-				<input type="hidden" name = "page" value="<%=currentPage %>">
-				<input type="submit" id="submitBtn1" value="등록">&nbsp;&nbsp;
-				<input type="reset" id="submitBtn2" value="취소">&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
-			</div>
+				<input type="submit" class="btn btn-primary" value="등록">
+				<a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp" class="btn btn-warning">이전</a>				
+			</div>		
 		</form>
+			
+
+		
+		
 		<script type="text/javascript">
+
 		</script>
 	</div>
 
@@ -361,6 +368,6 @@
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
-<%@ include file="/views/common/main1/footer.jsp" %>
+	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

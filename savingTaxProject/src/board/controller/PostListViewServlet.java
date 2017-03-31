@@ -65,7 +65,7 @@ public class PostListViewServlet extends HttpServlet {
 		if (plist != null) {
 			switch (boardNo) {
 			case 1:
-				view = request.getRequestDispatcher("views/main1/CSBoard/board/boardListView.jsp");
+				view = request.getRequestDispatcher("views/main1/CSBoard/board/notice.jsp");
 				break;
 			case 2:
 				view = request.getRequestDispatcher("views/main1/CSBoard/taxNews/taxNews.jsp");
@@ -77,7 +77,7 @@ public class PostListViewServlet extends HttpServlet {
 				view = request.getRequestDispatcher("views/main1/CSBoard/QnA/QnA.jsp");
 				break;
 			case 5:
-				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				view = request.getRequestDispatcher("views/main1/CSBoard/formBoard/form.jsp");
 				break;
 			case 6:
 				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");

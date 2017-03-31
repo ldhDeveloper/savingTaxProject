@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
-<%  Post p = (Post)request.getAttribute("post"); 
-	int currentPage = ((Integer)request.getAttribute("page")).intValue();
-    int boardNo = p.getBoardNo();
-%>
+ <%int currentPage = Integer.parseInt(request.getParameter("page"));
+  int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+%> 
 
 <!DOCTYPE html>
 <html>
@@ -145,13 +144,11 @@
 #thmd {
 	border-collapse: collapse;
 	border : 1px solid #ddd;
-	text-align: center;
 }
 
 #thth {
 	font-family: computer !important;
 	color : #2a82a3;
-	text-align: center;
 	padding-top: 1%;
 	padding-left: 1%;
 	padding-bottom: 0.8%;
@@ -253,61 +250,58 @@ border : none;
 	<div class="middle hidden-xs">
 		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/QnA.png"><br><br>
-				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
-			</h3>
-			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
-				확인하실 수 있습니다.
-			</h4>
+				<img src="/jsmi/images/news.png"><br><br>
+				절세미인과 관련된 <label>빠르고 정확한 소식을 전해드립니다.</label>
+				</h3>
+				<h4 style="color: #a9a9a9" align="center">
+					새로운 소식을 보다 빠르고 정확하게 확인하실 수 있습니다.
+					</h4>
 		</div>
-
 		<br> <br> <br>
-		
-		<form action="/jsmi/pupdate" method = "post">
-			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
+		<form action="/jsmi/pinsert" method = "post" enctype = "multipart/form-data">
+			<input id ="thth" class="redact"  name="title">
 		<br><br>
-
 		<div class="tableStart">
 			<table>
 				<thead>
 					<tr class="thmd">
-						<th id="thth">작성일</th>
+						<th id="thth">&nbsp;&nbsp;&nbsp;&nbsp;제목</th>
 						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>";  readonly>
+							<input name="postname" required >
 						</th>
 						<th id="thth">작성자</th>
-						<th id="thc">
-							<input name="writer" value = "<%=p.getpId() %>" readonly>
-						</th>
-						<th id="thth">조회수</th>
 						<th id="thcS">
-							<input name="readCount" value = <%=p.getReadCount()%> readonly>
+							<input name="writer" value="<%=loginUser.getId() %>"  readonly >
+					
 						</th>
 					</tr>
 				</thead>
 				<tbody class="tablemd tbodymd font-family-md-3">
 					<tr>
+					<td colspan= "6" style="float:right">첨부 파일 : <input type ="file" name = "fname"></td>
+					</tr>
+					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea rows = "30" class="redact" name="postContents"><%= p.getPostContents() %></textarea><br> <br>
+							<textarea rows = "30" class="redact" name="contents" required></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
-					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
-					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
-					<input type = "hidden" value = "<%=currentPage%>" name = "page">
-					  <input class="btn btn-warning" type = "submit" value = "수정">
-					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
+					<input type = "hidden" name = "pno" value ="<%=loginUser.getPno()%>">
+					<input type = "hidden" name = "page" value ="<%=currentPage %>">
+					<input type = "hidden" name = "boardNo" value ="<%=boardNo%>">
+					  <input class="btn btn-warning" type = "submit" value = "작성완료">
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=boardNo%>" class="btn btn-warning">이전</a>
 					</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		</form>
-			
+			</div>
 
 
 

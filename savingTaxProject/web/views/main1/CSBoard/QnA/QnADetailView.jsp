@@ -84,6 +84,7 @@
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
+	width: 1007px;
 	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
@@ -182,6 +183,11 @@
 	border-right : 1px solid #2a82a3;
 }
 
+#ccontents {
+	text-align: center;
+	align: center;
+}
+
 table {
 	width: 100%;
 }
@@ -189,7 +195,7 @@ table {
 .tdmini1 {
 	border-top : 1px solid #2a82a3;
 	border-bottom : 1px solid #ddd;
-	padding-top : 7%;
+	padding-top : 1.5%;
 	padding-left : 2%;
 }
 
@@ -215,26 +221,41 @@ table {
 	font-size : 9.5pt;
 	color : #696969;
 }
-.redact {
-resize : none;
+
+.textAreaCon{
+	font-family: NotoSansCJKkr-Ligth !important;
+	border : none;
+	max-width: 970px;
+	min-width: 970px;
+	max-height: 400px;
+	min-height: 400px;
+	font-size : 15pt;
 }
-#phead {
-font-family: computer !important;
-	color : #2a82a3;
-		text-align: center;
-	padding-top: 1%;
-	padding-left: 1%;
-	padding-bottom: 0.8%;
-	border-right : 1px solid #ddd;
+
+.Qreply {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	border-top : 1px solid #ddd;
+	padding : 2.5%;
+	font-size: 12pt;
+	heigth: 10%;
+	color: #2a82a3;
 }
-input {
-border : none; height : 50px;
-background :rgba (0, 0, 0, 0.2);
-} 
-textarea {
-resize : none;
-width : 970px;
-border : none;
+
+.QreplyC {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 10pt;
+	color: black;
+}
+
+.textAreareply{
+	font-family: NotoSansCJKkr-Ligth !important;
+	border : none;
+	max-width: 970px;
+	min-width: 970px;
+	max-height: 200px;
+	min-height: 200px;
+	font-size : 15pt;
 }
 
 </style>
@@ -252,6 +273,8 @@ border : none;
 
 	<!-- 컴퓨터용 -->
 	<div class="middle hidden-xs">
+
+
 		<div class="middle font-family-md-1">
 			<h3 align="center">
 				<img src="/jsmi/images/QnA.png"><br><br>
@@ -264,26 +287,30 @@ border : none;
 
 		<br> <br> <br>
 		
-		<form action="">
-			<input id ="thth" class="redact" value="<%= p.getPostName() %>" name="title" readonly>
-		<br><br>
+		
+		<div id="clist">
+			<label id="ctitle">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				제목
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+			</label> 
+			<label id=ctitlec>&nbsp;&nbsp;
+				<%= p.getPostName() %></label>
+		</div>
+		
+		
+		<h3></h3>
 
 		<div class="tableStart">
 			<table>
-				<thead>
+				<thead class="theadmd">
 					<tr class="thmd">
 						<th id="thth">작성일</th>
-						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>"  readonly>
-						</th>
+						<th id="thc"><%=p.getPostDate()%></th>
 						<th id="thth">작성자</th>
-						<th id="thc">
-							<input name="writer" value = "<%=p.getpId() %>" readonly>
-						</th>
+						<th id="thc"><%=p.getpId() %></th>
 						<th id="thth">조회수</th>
-						<th id="thcS">
-							<input name="readcount" value = <%=p.getReadCount()%> readonly>
-						</th>
+						<th id="thcS"><%=p.getReadCount()%></th>
 					</tr>
 				</thead>
 
@@ -293,71 +320,137 @@ border : none;
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea  rows = "30" class="redact" name="contents" readonly> <%=p.getPostContents() %></textarea><br> <br>
+							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
+							<img src="/jsmi/images/수현찡.jpg">
 							<h3></h3>
 						</td>
 					</tr>
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
+					
+					
 				</tbody>
 			</table>
 		</div>
-		</form>
-		<br>
-				
-		<div align="right">
-				<% if(loginUser !=null){ if(loginUser.getPno() == p.getpNo()) {%>
-			
-				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
-				
-				<script type="text/javascript">
-					function redact(){
-						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-					}
-				</script>
-				<% }} %>
-				<a href="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
-			</div>
-		<br><br><br>
 		
-		<div class="tableStart2">
+		<div>
 			<form action = "/jsmi/insertcomment" method = "post">
-			<table class="tablemini">
-		
-			<tr class = "active"><td>덧글작성</td>
-					<td colspan="6"><textarea style = "opacity:0.8" class="form-control" rows="3"
-							id="comment" name = "postContents"></textarea></td>
-					<td style ="text-align:right"><input type="submit" class="btn btn-primary" value="등록">
-					<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
-					<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-					<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
-					<input type = "hidden" name = "page" value="<%=currentPage%>">
-						<input type="submit" class="btn btn-primary" value="취소"></td>
-						</tr>
+			<table>
+				
+					<tr>
+						<td colspan="2" class="Qreply">
+							댓글 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" value="" name="contents"></textarea></label>
+							<p class = "comments"> &nbsp;<br><br>
+							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"></span>
+							<br><br>
+						 	<span style="color :gray" > </span> </p>
+						 	
+						 	<input type="submit" class="btn btn-primary" value="등록">
+							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+							<%if(loginUser != null) {%>
+							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+							<% } %>
+							<input type = "hidden" name = "page" value="<%=currentPage%>">	
+							<input type="submit" class="btn btn-primary" value="취소">
+						</td>
+					</tr>
+					
+					<tr style = "height :50px;"></tr>	
 						<%if(commentList !=null){ for(Post c : commentList){ %>
 						<tr>
 						<td colspan="7">
-						<p><%=c.getpId() %>
-							<%=c.getPostContents() %>
-							<%=c.getPostDate() %> </p> </td>
+						<p class = "comments"> &nbsp;<%=c.getpId() %><br><br>
+							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"> <%=c.getPostContents() %></span>
+							<br><br>
+						 	<span style="color :gray" > <%=c.getPostDate() %> </span> </p> </td>
+						</tr>
+						<%}} %>
+			</table>
+			</form>
+		</div>
+		
+		<div>
+			<table>
+				
+					<tr>
+						<td colspan="8" class="Qreply">
+							댓글 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" value="" name="contents"></textarea></label>
+							<p class = "comments"> &nbsp;<br><br>
+							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"></span>
+							<br><br>
+						 	<span style="color :gray" > </span> </p>
+						</td>
+					</tr>
+			</table>
+		</div>
+		
+		<br><br><br>
+				
+		
+		
+		<%-- <div>
+			<table>
+				<tr class = "active"><td style = "text-align:center">덧글작성</td>
+					<td colspan="6"><textarea  class="form-control" rows="3"
+							id="comment" name = "postContents"></textarea></td>
+					<td><input type="submit" class="btn btn-primary" value="등록">
+					<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+					<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+					<%if(loginUser != null) {%>
+					<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+					<% } %>
+					<input type = "hidden" name = "page" value="<%=currentPage%>">
+		
+						<input type="submit" class="btn btn-primary" value="취소"></td>
+						</tr>
+						<tr style = "height :50px;"></tr>	
+						<%if(commentList !=null){ for(Post c : commentList){ %>
+						<tr>
+						<td colspan="7">
+						<p class = "comments"> &nbsp;<%=c.getpId() %><br><br>
+							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"> <%=c.getPostContents() %></span>
+							<br><br>
+						 	<span style="color :gray" > <%=c.getPostDate() %> </span> </p> </td>
 						</tr>
 						<%}} %>
 						<tr></tr>
+			</table>
+		</div> --%>
+		
+		<div class="tableStart2">
+			<table class="tablemini">
 				<tr>
-					<td class="tdmini1" colspan = "10" >
+					<td class="tdmini1">
 						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
 						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
 					<td>
 				</tr>
 				
 				<tr>
-					<td class="tdmini2" colspan = "10">
+					<td class="tdmini2">
 						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
 						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
 					<td>
 				</tr>
 			</table>
-			</form>
 		</div>
+		
+		<br><br>
+		
+		<div align="right">
+		<% if(loginUser !=null){ if(loginUser.getPno() == p.getpNo()) {%>
+				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
+				
+				<script type="text/javascript">
+				function redact(){
+					location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+				}
+				</script>
+				<% }} %>
+				<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
+			</div>
+		
 		
 		
 
