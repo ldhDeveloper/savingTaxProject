@@ -146,7 +146,7 @@ $(function(){
       <table width="970px">
       	<tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
          <td width="70"><button id="logout" class="btn btn-warning btn-sm"
-               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
+               onclick="location.href='/jsmi/logout'">로그아웃</button>
          <td></tr>
          
          <%-- <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
