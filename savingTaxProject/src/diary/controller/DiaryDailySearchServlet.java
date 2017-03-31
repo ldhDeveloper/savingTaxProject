@@ -41,9 +41,11 @@ public class DiaryDailySearchServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ddate = request.getParameter("ddate");
+		String pno = request.getParameter("pno");
 		System.out.println("ddate : " + ddate);
+		System.out.println("pno : " + pno);
 		
-		ArrayList<Diary> list = new DiaryService().DailySearch(ddate);
+		ArrayList<Diary> list = new DiaryService().DailySearch(ddate, pno);
 		System.out.println("list :" + list);
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();

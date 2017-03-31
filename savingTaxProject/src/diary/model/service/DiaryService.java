@@ -20,17 +20,17 @@ public class DiaryService {
 	}
 
 
-	public ArrayList<Diary> DailySearch(String ddate) {
+	public ArrayList<Diary> DailySearch(String ddate, String pno) {
 		Connection con = getConnection();
-		ArrayList<Diary> list = new DiaryDao().DailySearch(con, ddate);
+		ArrayList<Diary> list = new DiaryDao().DailySearch(con, ddate, pno);
 		close(con);
 		return list;
 	}
 
 
-	public ArrayList<Diary> TermSearch(String sdate, String edate) {
+	public ArrayList<Diary> TermSearch(String sdate, String edate, String pno) {
 		Connection con = getConnection();
-		ArrayList<Diary> list = new DiaryDao().TermSearch(con, sdate, edate);
+		ArrayList<Diary> list = new DiaryDao().TermSearch(con, sdate, edate, pno);
 		close(con);
 		return list;
 	}
@@ -39,6 +39,23 @@ public class DiaryService {
 	public ArrayList<Party> selectDealer() {
 		Connection con = getConnection();
 		ArrayList<Party> list = new DiaryDao().selectDealer(con);
+		close(con);
+		return list;
+	}
+
+
+	public ArrayList<Diary> InsertDiary(Diary diary, String indate, String pno) {
+		Connection con = getConnection(); 
+		ArrayList<Diary> list = null;
+		int result= new DiaryDao().InsertDiary(con, diary, indate, pno);
+		
+		if(result > 0){
+			commit(con);
+			System.out.println("insert 성공");
+			list = new DiaryDao().DailySearch(con, indate, pno);
+		} else {
+			rollback(con);
+		}
 		close(con);
 		return list;
 	}
