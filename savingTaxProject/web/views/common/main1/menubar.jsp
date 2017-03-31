@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
    pageEncoding="UTF-8" import = "member.model.vo.Party"%>
    <% 
    Party loginUser = (Party)session.getAttribute("loginUser");  %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +17,7 @@
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Perfect Partners for Your Saving-Tax</title>
-<style type="text/css">
-
-
-	
+<style type="text/css">	
 
 #xs-logout {
    position:fixed;
@@ -100,10 +99,7 @@ element.style {
    text-align:center;
    color:white;
    height:40px;
-   line-height:40px;
-	
-   
-   
+   line-height:40px;   
 }
 
 .menu ul li a:hover {
@@ -148,11 +144,16 @@ $(function(){
 
    <div class="middle hidden-xs" align="center">
       <table width="970px">
-         <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
-         <td><%=loginUser.getPname() %> 님 환영합니다.</td>
+      	<tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
          <td width="70"><button id="logout" class="btn btn-warning btn-sm"
                onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
          <td></tr>
+         
+         <%-- <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
+         <td><%=loginUser.getPname() %> 님 환영합니다.</td>
+         <td width="70"><button id="logout" class="btn btn-warning btn-sm"
+               onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
+         <td></tr> --%>
       </table>
    </div>
    
