@@ -287,7 +287,7 @@ label {
 						</td>
 						<td class="ttitle tdmd">
 							<%-- <a href="/jsmi/views/main1/CSBoard/QnA/QnADetailView.jsp"><%= p.getPostName() %></a> --%>
-							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo() %>">
+							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
 								<%= p.getPostName() %>
 							</a>
 						</td>
@@ -295,11 +295,25 @@ label {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<%= p.getpNo() %>
+							<%= p.getpId() %>
 						</td>
 						<td class="tdate tdmd"><%= p.getPostDate() %></td>
+						
 					</tr>
-					<% } %>
+						<% } %>
+					<tr>
+					<br><br>
+					<td colspan = "3" align="center">
+					<%if(currentPage <=1){ %>
+					[이전]
+					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+					 <%} for(int p = startPage; p <= endPage; p++){%>
+					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+					 <%} %>
+					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
+						</td>
+					</tr>
+				
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! -->
 					<!-- <tr>
 						<td class="tno tdmd">4</td>
@@ -345,12 +359,12 @@ label {
 		</div>
 		
 		<br>
-		<form action="/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp">
+		
 			<div align="right">
-				<input type="submit" id="submitBtn2" value="글쓰기">&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="submitBtn2"
+				 onclick 
+				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
-		</form>
-				
 	</div>
 
 

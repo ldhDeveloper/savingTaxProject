@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import  = "board.model.vo.Post, java.util.List"%>
-<% Post p = (Post)request.getAttribute("post"); 
+	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
+<%  Post p = (Post)request.getAttribute("post"); 
 	int currentPage = ((Integer)request.getAttribute("page")).intValue();
-	
-	List<Post> commentList = (List)request.getAttribute("commentList");
+    int boardNo = p.getBoardNo();
 %>
 
 <!DOCTYPE html>
@@ -189,7 +188,7 @@ table {
 .tdmini1 {
 	border-top : 1px solid #2a82a3;
 	border-bottom : 1px solid #ddd;
-	padding-top : 7%;
+	padding-top : 1.5%;
 	padding-left : 2%;
 }
 
@@ -264,8 +263,8 @@ border : none;
 
 		<br> <br> <br>
 		
-		<form action="">
-			<input id ="thth" class="redact" value="<%= p.getPostName() %>" name="title" readonly>
+		<form action="/jsmi/pupdate" method = "post">
+			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
 		<br><br>
 
 		<div class="tableStart">
@@ -282,86 +281,33 @@ border : none;
 						</th>
 						<th id="thth">조회수</th>
 						<th id="thcS">
-							<input name="readcount" value = <%=p.getReadCount()%> readonly>
+							<input name="readCount" value = <%=p.getReadCount()%> readonly>
 						</th>
 					</tr>
 				</thead>
-
 				<tbody class="tablemd tbodymd font-family-md-3">
-					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea  rows = "30" class="redact" name="contents" readonly> <%=p.getPostContents() %></textarea><br> <br>
+							<textarea rows = "30" class="redact" name="postContents"><%= p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
+					<tr>
+					<td colspan = "10" style= "text-align:right">
+					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
+					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
+					<input type = "hidden" value = "<%=currentPage%>" name = "page">
+					  <input class="btn btn-warning" type = "submit" value = "수정">
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
+					</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 		</form>
-		<br>
-				
-		<div align="right">
-				<%if(loginUser.getPno() == p.getpNo()) {%>
 			
-				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
-				<% } %>
-				<script type="text/javascript">
-					function redact(){
-						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-					}
-				</script>
-				<a href="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
-			</div>
-		<br><br><br>
-		
-		<div class="tableStart2">
-			<form action = "/jsmi/insertcomment" method = "post">
-			<table class="tablemini">
-		
-			<tr class = "active"><td>덧글작성</td>
-					<td colspan="6"><textarea style = "opacity:0.8" class="form-control" rows="3"
-							id="comment" name = "postContents"></textarea></td>
-					<td style ="text-align:right"><input type="submit" class="btn btn-primary" value="등록">
-					<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
-					<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-					<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
-					<input type = "hidden" name = "page" value="<%=currentPage%>">
-						<input type="submit" class="btn btn-primary" value="취소"></td>
-						</tr>
-						<%if(commentList !=null){ for(Post c : commentList){ %>
-						<tr>
-						<td colspan="7">
-						<p><%=c.getpId() %>
-							<%=c.getPostContents() %>
-							<%=c.getPostDate() %> </p> </td>
-						</tr>
-						<%}} %>
-						<tr></tr>
-				<tr>
-					<td class="tdmini1" colspan = "10" >
-						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
-					<td>
-				</tr>
-				
-				<tr>
-					<td class="tdmini2" colspan = "10">
-						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
-					<td>
-				</tr>
-			</table>
-			</form>
-		</div>
-		
-		
-
-	</div>
-
 
 
 
@@ -390,25 +336,6 @@ border : none;
 		</div>
 
 		<br>
-
-		<form action=""></form>
-
-		<div class="row">
-			<div class="col-xs-2"></div>
-
-			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
-					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
-				<button class="btn btn-primary btn-xs">검색</button>
-			</div>
-
-			<div class="col-xs-2"></div>
-		</div>
-
-		<br> <br>
-
 
 	<div class="container">
 		<div class="row">

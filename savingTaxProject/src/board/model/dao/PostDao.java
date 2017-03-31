@@ -32,11 +32,11 @@ public class PostDao {
 		int startRow = (currentPage - 1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
-		String query =  "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname from " +
-						"(select  rownum rnum, p.post_no, post_name, " +
-						 "post_date, post_contents, board_no, pno, " +
-						 "post_ref_no, read_count, fname, refname  from post p, attachment a " +
-						 "where p.post_no = a.post_no(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc ) where rnum >= ? and rnum <= ?";
+		String query = "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname, id from " +
+				"(select  rownum rnum, p.post_no post_no, post_name, " +
+				 "post_date, post_contents, board_no, p.pno pno, " +
+				 "post_ref_no, read_count, fname, refname, id from post p, attachment a, party m "+
+				 "where p.post_no = a.post_no(+) and p.pno = m.pno(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc ) where rnum >= ? and rnum <= ?";
 		try {
 		pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, boardNo);
@@ -53,10 +53,11 @@ public class PostDao {
 			p.setPostName(rset.getString("post_name"));
 			p.setPostDate(rset.getDate("post_date"));
 			p.setpNo(rset.getInt("pno"));
+			p.setBoardNo(rset.getInt("board_no"));
 			p.setfName(rset.getString("fname"));
 			p.setRefName(rset.getString("refname"));
-			System.out.println(p);
-			plist.add(p);	
+			p.setpId(rset.getString("id"));
+			plist.add(p);
 			}
 			}
 		} catch (Exception e) {
@@ -78,25 +79,42 @@ public class PostDao {
 		return null;
 	}
 	public int updatePost(Connection con, Post p) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update post set post_name = ?, post_contents = ? where post_no = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getPostName());
+			pstmt.setString(2, p.getPostContents());
+			pstmt.setInt(3, p.getPostNo());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	public int insertPost(Connection con, Post p) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		
-		// 여기 session 값 암호화 복호화로 들어가야함
 		String query = "insert into post values(seq_post.nextval, ?, sysdate, ?, ?, ?, 0, 0)";
-		
+		String uploadQuery = "insert into attachment values(seq_attachment.nextval, ?, ?, ?)";
 		try {
 			pstmt = con.prepareStatement(query);
-			
 			pstmt.setString(1, p.getPostName());
 			pstmt.setString(2, p.getPostContents());
 			pstmt.setInt(3, p.getBoardNo());
 			pstmt.setInt(4, p.getpNo());
-			
-			result = pstmt.executeUpdate();			
+			result = pstmt.executeUpdate();	
+			if(p.getfName() != null){
+			pstmt = con.prepareStatement(uploadQuery);
+			pstmt.setString(1, p.getfName());
+			pstmt.setString(2, p.getRefName());
+			pstmt.setInt(3, p.getPostNo());
+			result = pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -123,13 +141,13 @@ public class PostDao {
 	}
 	public int insertComment(Connection con, Post p) {
 		PreparedStatement pstmt = null;
-		String query = prop.getProperty("insertComment");
+		String query = "insert into post values (seq_post.nextval, null, sysdate, ?, ?, ?, ?, 0)";
 		int result = 0;
 		try {
 		pstmt = con.prepareStatement(query);
-		pstmt.setInt(1, 1);
-		pstmt.setString(2, p.getPostContents());
-		pstmt.setInt(3, p.getBoardNo());
+		pstmt.setString(1, p.getPostContents());
+		pstmt.setInt(2, p.getBoardNo());
+		pstmt.setInt(3, p.getpNo());
 		pstmt.setInt(4, p.getPostRefNo());
 		result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -184,21 +202,20 @@ public class PostDao {
 		return plist;
 	}
 	
-	public Post selectPostNo(Connection con, int boardNo, int postNo) {
+	public Post selectPostNo(Connection con, int postNo) {
 		Post p = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String query = "select p.post_no, "
-				+ "post_name, post_date, post_contents "
-				+ "board_no, pno, post_ref_no, read_count, fname, "
-				+ "refname from post p attachment a  where p.post_no = a.post_no(+) and board_no = ? and post_no = ?  ";
+				+ "post_name, post_date, post_contents, "
+				+ "board_no, p.pno, post_ref_no, read_count, fname, id, "
+				+ "refname from post p, attachment a, party m  where p.post_no = a.post_no(+) and "
+				+ " p.pno = m.pno(+) and p.post_no = ?";
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			
-			pstmt.setInt(1, boardNo);
-			pstmt.setInt(2, postNo);
+			pstmt.setInt(1, postNo);
 			
 			rset = pstmt.executeQuery();
 			
@@ -215,12 +232,47 @@ public class PostDao {
 				p.setReadCount(rset.getInt("read_count"));
 				p.setfName(rset.getString("fname"));
 				p.setRefName(rset.getString("refname"));
+				p.setpId(rset.getString("id"));
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
 		return p;
+	}
+
+
+	public List<Post> selectCommentList(Connection con, int postNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Post> commentList = null;
+		String query = "select rnum, post_contents, id from (select "
+				+ " rownum rnum, post_contents, id, post_date "
+				+ "	from (select post_contents, id, post_date from post p, Party m "
+				+ "where p.pno = m.pno and post_ref_no = ?) ";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			rset = pstmt.executeQuery();
+			if(rset != null){
+				commentList = new ArrayList<Post>();
+				while(rset.next()){
+				Post p = new Post();
+				p.setpId(rset.getString("id"));
+				p.setPostDate(rset.getDate("post_date"));
+				p.setPostContents(rset.getString("post_date"));
+				commentList.add(p);
+				}
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return commentList;
 	}
 
 }

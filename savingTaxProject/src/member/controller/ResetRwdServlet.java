@@ -1,4 +1,4 @@
-package board.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.PostService;
-import board.model.vo.Post;
+import member.model.server.PartyService;
 
 /**
- * Servlet implementation class PostUpdateServlet
+ * Servlet implementation class ResetRwdServlet
  */
-@WebServlet("/pupdate")
-public class PostUpdateServlet extends HttpServlet {
+@WebServlet("/resetpwd")
+public class ResetRwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostUpdateServlet() {
+    public ResetRwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,30 +31,23 @@ public class PostUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		int page = Integer.parseInt(request.getParameter("page"));
-		String postName = request.getParameter("postName");
-		String postContents = request.getParameter("postContents");
-	
-		Post p = new Post();
-		p.setBoardNo(boardNo);
-		p.setPostNo(postNo);
-		p.setPostContents(postContents);
-		p.setPostName(postName);
-		int result = new PostService().updatePost(p);
+		response.setContentType("text/html; charset=utf-8");
 		
+		String userid = request.getParameter("userid");
+		String pwd = request.getParameter("pwd1");
 		
+		int result = new PartyService().updatePwd(userid, pwd);
+		
+		RequestDispatcher view = null;
 		if(result > 0){
-			response.sendRedirect("/jsmi/listview?page="+page+"&boardNo="+boardNo);
-			
+			view = request.getRequestDispatcher("views/main1/member/successResetPwd.jsp");
+			request.setAttribute("message", "비밀번호 변경에 성공하였습니다.");
+			view.forward(request, response);
 		}else{
-			RequestDispatcher view = request.getRequestDispatcher("/listview?page="+page+"&boardNo="+boardNo);
-			request.setAttribute("message", "update error");
+			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+			request.setAttribute("message", "비밀번호 변경에 실패하였습니다.");
 			view.forward(request, response);
 		}
-		
-		
 	}
 
 	/**

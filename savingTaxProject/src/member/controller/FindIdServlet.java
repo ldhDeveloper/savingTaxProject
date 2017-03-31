@@ -1,4 +1,4 @@
-package board.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.PostService;
-import board.model.vo.Post;
+import member.model.server.PartyService;
+import member.model.vo.Party;
 
 /**
- * Servlet implementation class PostUpdateServlet
+ * Servlet implementation class FindIdServlet
  */
-@WebServlet("/pupdate")
-public class PostUpdateServlet extends HttpServlet {
+@WebServlet("/findid")
+public class FindIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostUpdateServlet() {
+    public FindIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,26 +32,24 @@ public class PostUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		int page = Integer.parseInt(request.getParameter("page"));
-		String postName = request.getParameter("postName");
-		String postContents = request.getParameter("postContents");
-	
-		Post p = new Post();
-		p.setBoardNo(boardNo);
-		p.setPostNo(postNo);
-		p.setPostContents(postContents);
-		p.setPostName(postName);
-		int result = new PostService().updatePost(p);
+		response.setContentType("text/html; charset=utf-8");
+		
+		String pname = request.getParameter("username");
+		String email = request.getParameter("email");
+		
+		Party p = new PartyService().findId(pname, email);
 		
 		
-		if(result > 0){
-			response.sendRedirect("/jsmi/listview?page="+page+"&boardNo="+boardNo);
-			
-		}else{
-			RequestDispatcher view = request.getRequestDispatcher("/listview?page="+page+"&boardNo="+boardNo);
-			request.setAttribute("message", "update error");
+		
+		RequestDispatcher view = null;	
+		if(p != null){
+			String userid = p.getId();
+			view = request.getRequestDispatcher("views/main1/member/returnid.jsp");
+			request.setAttribute("userid", userid);
+			view.forward(request, response);
+		}else {
+			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+			request.setAttribute("message", "가입하신 정보와 일치하는 회원 정보가 없습니다.");
 			view.forward(request, response);
 		}
 		

@@ -74,7 +74,7 @@
 				    <tbody>
 				      <tr>
 				        <td class="col-md-2"><h5>이름</h5></td>
-				        <td class="col-md-4"><input type="text" class="form-control"></td>
+				        <td class="col-md-4"><input type="text" class="form-control" value="<%=  %>"></td>
 				        <td class="col-md-2"><h5>주민등록번호</h5></td>
 				        <td class="col-md-4"><div class="col-md-5"><input type="text" class="form-control"></div><div class="col-md-1"><h5>-</h5></div><div class="col-md-5"><input type="password" class="form-control"></div></td>	    
 				      </tr>

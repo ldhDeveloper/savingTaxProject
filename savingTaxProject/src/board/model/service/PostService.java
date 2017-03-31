@@ -88,11 +88,18 @@ public class PostService {
 		return plist;
 	}
 
-	public Post selectPostNO(int boardNo, int postNo) {
+	public Post selectPostNo(int postNo) {
 		Connection con = getConnection();
-		Post p = new PostDao().selectPostNo(con, boardNo, postNo);
+		Post p = new PostDao().selectPostNo(con, postNo);
 		close(con);
 		return p;
+	}
+
+	public List<Post> selectCommentList(int postNo) {
+		Connection con = getConnection();
+		List<Post> commentList = new PostDao().selectCommentList(con, postNo);
+		
+		return commentList;
 	}
 
 

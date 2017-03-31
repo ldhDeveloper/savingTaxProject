@@ -11,9 +11,9 @@ import java.sql.*;
 public class PartyService {
 	public PartyService(){}
 
-	public Party loginParty(String uid, String upwd) {
+	public Party loginParty(String uid, String email) {
 		Connection con = getConnection();
-		Party p  = new PartyDao().loginParty(con, uid, upwd);
+		Party p  = new PartyDao().loginParty(con, uid, email);
 		close(con);
 		
 		//System.out.println("service 작동");
@@ -77,6 +77,40 @@ public class PartyService {
 		close(con);
 		
 		//System.out.println("service 작동");
+		return result;
+	}
+
+
+	public Party selectParty(String userid) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectParty(con, userid);
+		close(con);
+		return p;
+	}
+
+	public Party findId(String pname, String email) {
+		Connection con = getConnection();
+		Party p = new PartyDao().findId(con, pname, email);
+		return p;
+	}
+
+	public Party resetPwdCheck(String userid, String email) {
+		Connection con = getConnection();
+		Party p = new PartyDao().resetPwdCheck(con, userid, email);
+		//System.out.println(p);
+		return p;
+	}
+
+	public int updatePwd(String userid, String pwd) {
+		Connection con = getConnection();
+		int result = new PartyDao().updatePwd(con, userid, pwd);
+		
+		if(result > 0){
+			commit(con);
+		}else{
+			rollback(con);
+		}
+		
 		return result;
 	}
 

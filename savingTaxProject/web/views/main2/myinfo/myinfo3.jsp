@@ -90,6 +90,7 @@
 	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
+		<% System.out.println(loginUser.getTel() + ", " + loginUser.getCname()); %>
 	</div>
 
 	<div class="middle frame">
@@ -110,7 +111,7 @@
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/insert.info3">
+			<form action="/jsmi/insert.info3" method="post">
 				<table class="table table-condensed">
 					<tbody>
 						<tr>

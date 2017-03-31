@@ -13,16 +13,16 @@ import board.model.service.PostService;
 import board.model.vo.Post;
 
 /**
- * Servlet implementation class PostUpdateServlet
+ * Servlet implementation class PostUpdateViewServlet
  */
-@WebServlet("/pupdate")
-public class PostUpdateServlet extends HttpServlet {
+@WebServlet("/postupdateview")
+public class PostUpdateViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostUpdateServlet() {
+    public PostUpdateViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +31,21 @@ public class PostUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		int page = Integer.parseInt(request.getParameter("page"));
-		String postName = request.getParameter("postName");
-		String postContents = request.getParameter("postContents");
-	
-		Post p = new Post();
-		p.setBoardNo(boardNo);
-		p.setPostNo(postNo);
-		p.setPostContents(postContents);
-		p.setPostName(postName);
-		int result = new PostService().updatePost(p);
-		
-		
-		if(result > 0){
-			response.sendRedirect("/jsmi/listview?page="+page+"&boardNo="+boardNo);
-			
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		Post post = new PostService().selectPostNo(postNo); 
+		RequestDispatcher view = null;
+		if(post != null){
+		view = request.getRequestDispatcher("/views/main1/CSBoard/QnA/QnAUpdateForm.jsp");
+		request.setAttribute("post", post);
+		request.setAttribute("page", page);
+		view.forward(request, response);
 		}else{
-			RequestDispatcher view = request.getRequestDispatcher("/listview?page="+page+"&boardNo="+boardNo);
-			request.setAttribute("message", "update error");
-			view.forward(request, response);
+		view = request.getRequestDispatcher("/views/main1/CSBoard/board/boardError.jsp");
+		request.setAttribute("message", "삽입 실패");
+		view.forward(request, response);
 		}
+		
 		
 		
 	}

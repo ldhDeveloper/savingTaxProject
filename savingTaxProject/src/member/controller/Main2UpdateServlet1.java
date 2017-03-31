@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.server.PartyService;
 import member.model.vo.Party;
@@ -62,25 +63,31 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  String Phone =phone+"-"+phone2+"-"+phone3;
 		  String Email= email+"@"+email2;
 		  
-		  Party p = new Party();
-		  p.setPname(userName);
-		  p.setId_no(IdNo);
-		  p.setBirth(birth);
-		  p.setGender(gender);
-		  p.setId(userid);
-		  p.setPwd(userpwd);
-		  p.setPaddress(Address);
-		  p.setPhone(Phone);
-		  p.setEmail(Email);
+		  Party party = new Party();
+		  party.setPname(userName);
+		  party.setId_no(IdNo);
+		  party.setBirth(birth);
+		  party.setGender(gender);
+		  party.setId(userid);
+		  party.setPwd(userpwd);
+		  party.setPaddress(Address);
+		  party.setPhone(Phone);
+		  party.setEmail(Email);
 		  
-		  int result = new PartyService().updatePartyMyinfo(p);
+		  int result = new PartyService().updatePartyMyinfo(party);
+		  System.out.println("result: "+result);
 		  
-		  if(result > 0){
+		Party loginUser=new PartyService().selectParty(userid);
+		  
+		  
+		  if(result >0){
+			 HttpSession session = request.getSession();
+			  session.setAttribute("loginUser", loginUser);
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo2.jsp");
 		  }else{
-			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+			  RequestDispatcher error = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 				request.setAttribute("message", "회원정보 수정 실패");
-				view.forward(request, response);
+				error.forward(request, response);
 		  }
 		  
 	}

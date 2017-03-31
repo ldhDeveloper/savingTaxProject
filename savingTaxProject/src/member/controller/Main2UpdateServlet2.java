@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.server.PartyService;
 import member.model.vo.Party;
@@ -38,6 +39,9 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("test/html; charset=utf-8");
 
+		String userid = request.getParameter("userid");
+		String email = request.getParameter("email");
+		
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
@@ -62,22 +66,30 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String Tel = tel + "-" + tel2 + "-" + tel3;
 		String Caddress=caddress+" "+caddress2+" "+caddress3;
 		
-         Party p = new Party();
-         p.setCname(cname);
-         p.setPresident(president);
-         p.setCno(Cno);
-         p.setCstatus(cstatus);
-         p.setCtype(ctype);
-		 p.setTel(Tel);
-		 p.setOday(Oday);
-		 p.setCaddress(Caddress);
-		 p.setWno(wno);
-		 p.setTaxtype(taxtype);
-		 p.setNotax_yn(notax_yn);
+		System.out.println("userid"+userid+ ", " + email);
+         Party party = new PartyService().loginParty(userid, email);
+         System.out.println("party: "+party);
+         party.setCname(cname);
+         party.setPresident(president);
+         party.setCno(Cno);
+         party.setCstatus(cstatus);
+         party.setCtype(ctype);
+		 party.setTel(Tel);
+		 party.setOday(Oday);
+		 party.setCaddress(Caddress);
+		 party.setWno(wno);
+		 party.setTaxtype(taxtype);
+		 party.setNotax_yn(notax_yn);
+		 System.out.println("party: "+party);
 		 
-		 int result = new PartyService().updatePartyMyinfo(p); 
+		 int result = new PartyService().updatePartyMyinfo(party); 
+		 System.out.println("result2:"+result);
+		 
+		 Party loginUser=new PartyService().selectParty(userid);
 		 
 		 if(result > 0){
+			 HttpSession session = request.getSession();
+			  session.setAttribute("loginUser", loginUser);
 			  response.sendRedirect("/jsmi/views/main2/myinfo/myinfo3.jsp");
 		  }else{
 			  RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
