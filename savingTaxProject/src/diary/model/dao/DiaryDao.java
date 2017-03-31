@@ -152,4 +152,42 @@ private Properties prop = new Properties();
 		}
 		return list;
 	}
+
+
+	public ArrayList<Party> selectDealer(Connection con) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Party> list = null;
+		
+		String query= "select p.pno, pname, tel, phone, ctype, cstatus, president " +  
+							"from party p join party_rel pr on(p.pno = pr.rel_pno) " +
+							"where pr.busi_pno = ? and pr.rel_type = 1";	
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, 6);
+			rset = pstmt.executeQuery();
+			
+			if(rset != null){
+				list = new ArrayList<Party>();
+			}
+			
+			while(rset.next()){
+				Party p = new Party();
+				p.setPno(rset.getInt("pno"));
+				p.setPname(rset.getString("pname"));
+				p.setTel(rset.getString("tel"));
+				p.setPhone(rset.getString("phone"));
+				p.setCtype(rset.getString("ctype"));
+				p.setCstatus(rset.getString("cstatus"));
+				p.setPresident(rset.getString("president"));
+				list.add(p);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

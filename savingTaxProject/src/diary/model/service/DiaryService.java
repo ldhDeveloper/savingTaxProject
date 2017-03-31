@@ -34,6 +34,14 @@ public class DiaryService {
 		close(con);
 		return list;
 	}
+
+
+	public ArrayList<Party> selectDealer() {
+		Connection con = getConnection();
+		ArrayList<Party> list = new DiaryDao().selectDealer(con);
+		close(con);
+		return list;
+	}
 	
 	
 
