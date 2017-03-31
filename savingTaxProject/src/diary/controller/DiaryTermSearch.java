@@ -37,10 +37,12 @@ public class DiaryTermSearch extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sdate = request.getParameter("sdate");
 		String edate = request.getParameter("edate");
+		String pno = request.getParameter("pno");
 		System.out.println("sdate : " + sdate);
 		System.out.println("edate : " + edate);
+		System.out.println("pno : " + pno);
 		
-		ArrayList<Diary> list = new DiaryService().TermSearch(sdate, edate);
+		ArrayList<Diary> list = new DiaryService().TermSearch(sdate, edate, pno);
 		System.out.println("list :" + list);
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();

@@ -62,7 +62,7 @@ private Properties prop = new Properties();
 	}
 
 
-	public ArrayList<Diary> DailySearch(Connection con, String ddate) {
+	public ArrayList<Diary> DailySearch(Connection con, String ddate, String pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Diary> list = null;
@@ -71,11 +71,12 @@ private Properties prop = new Properties();
 							"from diary d join party p1 on(d.acc_pno = p1.pno) " +
 											"  join accountlist a on (d.ano = a.ano) " +
 											"  join party p2 on(d.write_pno = p2.pno) " +
-							"where p2.pno = 6 and to_char(d.ddate,'yyyy-mm-dd') = to_date(?,'yyyy-mm-dd')";
+							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') = to_date(?,'yyyy-mm-dd')";
 		try {
 			pstmt = con.prepareStatement(query);
 			System.out.println("dao btype : " + ddate);
-			pstmt.setString(1, ddate);
+			pstmt.setInt(1, Integer.parseInt(pno));
+			pstmt.setString(2, ddate);
 			rset = pstmt.executeQuery();
 			
 			
@@ -108,7 +109,7 @@ private Properties prop = new Properties();
 	}
 
 
-	public ArrayList<Diary> TermSearch(Connection con, String sdate, String edate) {
+	public ArrayList<Diary> TermSearch(Connection con, String sdate, String edate, String pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Diary> list = null;
@@ -117,11 +118,12 @@ private Properties prop = new Properties();
 							"from diary d join party p1 on(d.acc_pno = p1.pno) " +
 											"  join accountlist a on (d.ano = a.ano) " +
 											"  join party p2 on(d.write_pno = p2.pno) " +
-							"where p2.pno = 6 and to_char(d.ddate,'yyyy-mm-dd') between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd')";
+							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd')";
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, sdate);
-			pstmt.setString(2, edate);
+			pstmt.setInt(1, Integer.parseInt(pno));
+			pstmt.setString(2, sdate);
+			pstmt.setString(3, edate);
 			rset = pstmt.executeQuery();
 			
 			
@@ -189,5 +191,39 @@ private Properties prop = new Properties();
 		}
 		
 		return list;
+	}
+
+
+	public int InsertDiary(Connection con, Diary diary, String indate, String pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "insert into diary(dno, ddate, product, cost, billing, proof_type, write_pno, acc_pno, ano) " +
+							 "values(seq_dy.nextval, to_date(?,'yyyy-mm-dd') " +
+							 ", ?, ?, ?, ?, ?, " +
+							 "(select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " +
+							 "where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), " +
+							 "(select ano from accountlist where anm = ?))";
+
+		try {
+			int no = Integer.parseInt(pno);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, indate);
+			pstmt.setString(2, diary.getProduct());
+			pstmt.setInt(3, diary.getCost());
+			pstmt.setString(4, diary.getBilling());
+			pstmt.setString(5, diary.getProof_type());
+			pstmt.setInt(6, no);
+			pstmt.setInt(7, no);
+			pstmt.setString(8, diary.getPname());
+			pstmt.setString(9, diary.getAtype());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }
