@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
-<%  Post p = (Post)request.getAttribute("post"); 
-	int currentPage = ((Integer)request.getAttribute("page")).intValue();
-    int boardNo = p.getBoardNo();
-%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -83,10 +79,10 @@
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
-	/* border-radius: 4px; */
+	border-radius: 4px;
 	padding-top : 0.5%;
 	font-size: 14pt;
-	box-shadow: 2px 2px 6px #2a82a3;
+	box-shadow : 3px 3px 5px silver;
 }
 
 #ctitle {
@@ -97,19 +93,11 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* color : #2a82a3; */
-	color : #696969;
+	color : #2a82a3;
 	font-size: 13px;
 }
 
 #cdate {
-	font-family: computer !important;
-	color : #2a82a3;
-	font-size: 15px;
-	width: 15%;
-}
-
-#cwriter {
 	font-family: computer !important;
 	color : #2a82a3;
 	font-size: 15px;
@@ -121,7 +109,9 @@
 }
 
 .tdmd{
-	padding: 2%;
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-bottom: 0.7%;
 	border-bottom: 1px solid #ddd;
 	width: 100%;
 	color: dimgray;
@@ -130,59 +120,6 @@
 #ccontents {
 	text-align: center;
 	align: center;
-}
-
-.thmd {
-	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
-	background: -o-linear-gradient(#ffffff, #b0e0e6);
-	background: -moz-linear-gradient(#ffffff, #b0e0e6);
-	background: linear-gradient(#ffffff, #b0e0e6);
-	border : 1px solid #2a82a3;
-	box-shadow: 2px 2px 6px #2a82a3;
-	height: 10%;
-}
-
-#thmd {
-	border-collapse: collapse;
-	border : 1px solid #ddd;
-	text-align: center;
-}
-
-#thth {
-	font-family: computer !important;
-	color : #2a82a3;
-	text-align: center;
-	padding-top: 1%;
-	padding-left: 1%;
-	padding-bottom: 0.8%;
-	border-right : 1px solid #ddd;
-}
-
-#thc {
-	font-family: NotoSansCJKkr-Ligth !important;
-	color : #696969;
-	text-align: center;
-	font-size:10pt;
-	padding-top: 1%;
-	padding-left: 1%;
-	padding-bottom: 0.8%;
-	border-right : 1px solid #ddd;
-	
-}
-
-#thcS {
-	font-family: NotoSansCJKkr-Ligth !important;
-	color : #696969;
-	text-align: center;
-	font-size:12pt;
-	padding-top: 1%;
-	padding-left: 1%;
-	padding-bottom: 0.8%;
-	border-right : 1px solid #2a82a3;
-}
-
-table {
-	width: 100%;
 }
 
 .tdmini1 {
@@ -211,30 +148,10 @@ table {
 
 #tw {
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size : 9.5pt;
-	color : #696969;
+	font-size : 9pt;
 }
-.redact {
-resize : none;
-}
-#phead {
-font-family: computer !important;
-	color : #2a82a3;
-		text-align: center;
-	padding-top: 1%;
-	padding-left: 1%;
-	padding-bottom: 0.8%;
-	border-right : 1px solid #ddd;
-}
-input {
-border : none; height : 50px;
-background :rgba (0, 0, 0, 0.2);
-} 
-textarea {
-resize : none;
-width : 970px;
-border : none;
-}
+
+
 
 </style>
 
@@ -251,9 +168,11 @@ border : none;
 
 	<!-- 컴퓨터용 -->
 	<div class="middle hidden-xs">
+
+
 		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/QnA.png"><br><br>
+				<img src="/jsmi/images/tip.png"><br><br>
 				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
@@ -262,52 +181,68 @@ border : none;
 		</div>
 
 		<br> <br> <br>
-		
-		<form action="/jsmi/pupdate" method = "post">
-			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
-		<br><br>
+
+		<div id="clist">
+			<label id="ctitle">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				제목
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+			</label> 
+			<label id=ctitlec>&nbsp;&nbsp;
+				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
+		</div>
 
 		<div class="tableStart">
-			<table>
-				<thead>
-					<tr class="thmd">
-						<th id="thth">작성일</th>
-						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>";  readonly>
-						</th>
-						<th id="thth">작성자</th>
-						<th id="thc">
-							<input name="writer" value = "<%=p.getpId() %>" readonly>
-						</th>
-						<th id="thth">조회수</th>
-						<th id="thcS">
-							<input name="readCount" value = <%=p.getReadCount()%> readonly>
-						</th>
-					</tr>
-				</thead>
-				<tbody class="tablemd tbodymd font-family-md-3">
+			<table class="tablemd">
+				<tbody class="tbodymd font-family-md-3">
 					<tr>
-						<td colspan="6" class="tdmd" id="ccontents">
+						<td class="tdmd">
+							<label id=cdate>작성일
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</label>
+							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</label>
+						</td> 
+					</tr>
+					
+					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
+					<tr>
+						<td class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea rows = "30" class="redact" name="postContents"><%= p.getPostContents() %></textarea><br> <br>
+							내용값이 들어가는 부분입니다. 삭제 후 사용!<br> <br>
+							<img src="/jsmi/images/수현찡.jpg">
 							<h3></h3>
 						</td>
 					</tr>
 					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
-					<tr>
-					<td colspan = "10" style= "text-align:right">
-					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
-					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
-					<input type = "hidden" value = "<%=currentPage%>" name = "page">
-					  <input class="btn btn-warning" type = "submit" value = "수정">
-					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
-					</td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
-		</form>
-			
+		
+		<br><br><br>
+
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1"><label id="wwrite">이전글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
+
+				<tr>
+					<td class="tdmini2"><label id="wwrite">다음글
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
+							<!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.
+					</label>
+					<td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
 
 
 
@@ -336,6 +271,25 @@ border : none;
 		</div>
 
 		<br>
+
+		<form action=""></form>
+
+		<div class="row">
+			<div class="col-xs-2"></div>
+
+			<div class="col-xs-8">
+				<input type="text" id="stext" name="search"
+					placeholder="검색할 제목을 입력하세요.">
+				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
+				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
+				<button class="btn btn-primary btn-xs">검색</button>
+			</div>
+
+			<div class="col-xs-2"></div>
+		</div>
+
+		<br> <br>
+
 
 	<div class="container">
 		<div class="row">

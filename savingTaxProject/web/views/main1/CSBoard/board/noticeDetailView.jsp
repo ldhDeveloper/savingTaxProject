@@ -241,6 +241,7 @@ background-color : rgba(230, 230 ,230, 0.9);
 
 margin-left : 18%;
 }
+
 </style>
 
 </head>
@@ -257,17 +258,13 @@ margin-left : 18%;
 	<!-- 컴퓨터용 -->
 	<div class="middle hidden-xs">
 		<div class="middle font-family-md-1">
-			<h3 align="center">
-				<img src="/jsmi/images/news.png"><br><br>
-				절세미인과 관련된 <label>빠르고 정확한 소식을 전해드립니다.</label>
-				</h3>
-				<h4 style="color: #a9a9a9" align="center">
-					새로운 소식을 보다 빠르고 정확하게 확인하실 수 있습니다.
-					</h4>
+				<h3 align="center">
+				<img src="/jsmi/images/notice.png"><br>
+				<br> 절세미인의 <label>공지사항</label>입니다.
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
 		</div>
-
-		
-		<br>
+<br>
 		<br><br>
 		<div id="clist">
 			<label id="ctitle">
@@ -278,8 +275,6 @@ margin-left : 18%;
 			<label id=ctitlec>&nbsp;&nbsp;
 			<%= p.getPostName() %>	</label>
 		</div>	
-	
-
 		<div class="tableStart">
 			<table>
 				<thead>
@@ -333,7 +328,7 @@ margin-left : 18%;
 		
 		<div class="tableStart2">
 			<form action = "/jsmi/insertcomment" method = "post">
-		<table class="tablemini">
+			<table class="tablemini">
 		
 			<tr class = "active"><td style = "text-align:center">덧글작성</td>
 					<td colspan="6"><textarea  class="form-control" rows="3"
@@ -348,7 +343,7 @@ margin-left : 18%;
 		
 						<input type="submit" class="btn btn-primary" value="취소"></td>
 						</tr>
-						<tr style = "height :50px;"></tr>		
+						<tr style = "height :50px;"></tr>	
 						<%if(commentList !=null){ for(Post c : commentList){ %>
 						<tr>
 						<td colspan="7">

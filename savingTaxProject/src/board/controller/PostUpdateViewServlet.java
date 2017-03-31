@@ -36,7 +36,30 @@ public class PostUpdateViewServlet extends HttpServlet {
 		Post post = new PostService().selectPostNo(postNo); 
 		RequestDispatcher view = null;
 		if(post != null){
-		view = request.getRequestDispatcher("/views/main1/CSBoard/QnA/QnAUpdateForm.jsp");
+		
+			switch (post.getBoardNo()) {
+			case 1:
+				view = request.getRequestDispatcher("views/main1/CSBoard/board/noticeUpdateView.jsp");
+				break;
+			case 2:
+				view = request.getRequestDispatcher("views/main1/CSBoard/taxNews/taxNewsUpdateView.jsp");
+				break;
+			case 3:
+				view = request.getRequestDispatcher("views/main1/CSBoard/taxTip/taxTipUpdateView.jsp");
+				break;
+			case 4:
+				view = request.getRequestDispatcher("views/main1/CSBoard/QnA/QnAUpdateView.jsp");
+				break;
+		    case 5:
+				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				break;
+			case 6:
+				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");
+				break;
+			} 
+			
+			
+		
 		request.setAttribute("post", post);
 		request.setAttribute("page", page);
 		view.forward(request, response);

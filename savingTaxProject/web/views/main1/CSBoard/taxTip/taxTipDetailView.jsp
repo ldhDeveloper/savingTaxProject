@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import  = "board.model.vo.Post, java.util.List"%>
+<% Post p = (Post)request.getAttribute("post"); 
+	int currentPage = ((Integer)request.getAttribute("page")).intValue();
+	
+	List<Post> commentList = (List)request.getAttribute("commentList");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -79,10 +84,10 @@
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
-	border-radius: 4px;
+	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
-	box-shadow : 3px 3px 5px silver;
+	box-shadow: 2px 2px 6px #2a82a3;
 }
 
 #ctitle {
@@ -93,11 +98,19 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	color : #2a82a3;
+	/* color : #2a82a3; */
+	color : #696969;
 	font-size: 13px;
 }
 
 #cdate {
+	font-family: computer !important;
+	color : #2a82a3;
+	font-size: 15px;
+	width: 15%;
+}
+
+#cwriter {
 	font-family: computer !important;
 	color : #2a82a3;
 	font-size: 15px;
@@ -109,9 +122,7 @@
 }
 
 .tdmd{
-	padding-top: 2%;
-	padding-left: 2%;
-	padding-bottom: 0.7%;
+	padding: 2%;
 	border-bottom: 1px solid #ddd;
 	width: 100%;
 	color: dimgray;
@@ -122,10 +133,63 @@
 	align: center;
 }
 
+.thmd {
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border : 1px solid #2a82a3;
+	box-shadow: 2px 2px 6px #2a82a3;
+	height: 10%;
+}
+
+#thmd {
+	border-collapse: collapse;
+	border : 1px solid #ddd;
+	text-align: center;
+}
+
+#thth {
+	font-family: computer !important;
+	color : #2a82a3;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+}
+
+#thc {
+	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
+	text-align: center;
+	font-size:10pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+	
+}
+
+#thcS {
+	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
+	text-align: center;
+	font-size:12pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #2a82a3;
+}
+
+table {
+	width: 100%;
+}
+
 .tdmini1 {
 	border-top : 1px solid #2a82a3;
 	border-bottom : 1px solid #ddd;
-	padding-top : 1.5%;
+	padding-top : 7%;
 	padding-left : 2%;
 }
 
@@ -148,10 +212,35 @@
 
 #tw {
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size : 9pt;
+	font-size : 9.5pt;
+	color : #696969;
 }
+.redact {
+resize : none;
+}
+#phead {
+font-family: computer !important;
+	color : #2a82a3;
+		text-align: center;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+}
+input {
+border : none; height : 50px;
+background :rgba (0, 0, 0, 0.2);
+} 
+textarea {
+resize : none;
+width : 970px;
+border : none;
+}
+.comments {
+background-color : rgba(230, 230 ,230, 0.9);
 
-
+margin-left : 18%;
+}
 
 </style>
 
@@ -168,8 +257,6 @@
 
 	<!-- 컴퓨터용 -->
 	<div class="middle hidden-xs">
-
-
 		<div class="middle font-family-md-1">
 			<h3 align="center">
 				<img src="/jsmi/images/tip.png"><br><br>
@@ -181,36 +268,49 @@
 		</div>
 
 		<br> <br> <br>
+		
+				</div>
 
+		<br>
+		<br><br>
 		<div id="clist">
 			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 				제목
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 			</label> 
 			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div>
+			<%= p.getPostName() %>	</label>
+		</div>	
+	
 
 		<div class="tableStart">
-			<table class="tablemd">
-				<tbody class="tbodymd font-family-md-3">
-					<tr>
-						<td class="tdmd">
-							<label id=cdate>작성일
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</label>
-							<label id=cdatec>&nbsp;&nbsp;작성일이 들어갈 곳입니다.
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</label>
-						</td> 
+			<table>
+				<thead>
+					<tr class="thmd">
+						<th id="thth">작성일</th>
+						<th id="thc">
+							<%=p.getPostDate()%>
+						</th>
+						<th id="thth">작성자</th>
+						<th id="thc">
+							<%=p.getpId() %>
+						</th>
+						<th id="thth">조회수</th>
+						<th id="thcS">
+							<%=p.getReadCount()%> 
+						</th>
+						
 					</tr>
+				</thead>
+
+				<tbody class="tablemd tbodymd font-family-md-3">
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
-						<td class="tdmd" id="ccontents">
+						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							내용값이 들어가는 부분입니다. 삭제 후 사용!<br> <br>
-							<img src="/jsmi/images/수현찡.jpg">
+							<textarea  rows = "30" class="redact" name="contents" readonly> <%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
@@ -218,28 +318,70 @@
 				</tbody>
 			</table>
 		</div>
-		
+		</form>
+		<br>
+				
+		<div align="right">
+				<% if(loginUser !=null){ if(loginUser.getPno() == p.getpNo()) {%>
+			
+				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
+				
+				<script type="text/javascript">
+					function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+				</script>
+				<% }} %>
+				<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
+			</div>
 		<br><br><br>
-
+		
 		<div class="tableStart2">
+			<form action = "/jsmi/insertcomment" method = "post">
 			<table class="tablemini">
+		
+			<tr class = "active"><td style = "text-align:center">덧글작성</td>
+					<td colspan="6"><textarea  class="form-control" rows="3"
+							id="comment" name = "postContents"></textarea></td>
+					<td><input type="submit" class="btn btn-primary" value="등록">
+					<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+					<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+					<%if(loginUser != null) {%>
+					<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+					<% } %>
+					<input type = "hidden" name = "page" value="<%=currentPage%>">
+		
+						<input type="submit" class="btn btn-primary" value="취소"></td>
+						</tr>
+						<tr style = "height :50px;"></tr>		
+						<%if(commentList !=null){ for(Post c : commentList){ %>
+						<tr>
+						<td colspan="7">
+						<p class = "comments"> &nbsp;<%=c.getpId() %><br><br>
+							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"> <%=c.getPostContents() %></span>
+							<br><br>
+						 	<span style="color :gray" > <%=c.getPostDate() %> </span> </p> </td>
+						</tr>
+						<%}} %>
+						<tr></tr>
 				<tr>
-					<td class="tdmini1"><label id="wwrite">이전글
-							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
-							<!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.
-					</label>
+					<td class="tdmini1" colspan = "10" >
+						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
 					<td>
 				</tr>
-
+				
 				<tr>
-					<td class="tdmini2"><label id="wwrite">다음글
-							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label> <label id="tw">
-							<!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.
-					</label>
+					<td class="tdmini2" colspan = "10">
+						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
 					<td>
 				</tr>
 			</table>
+			</form>
 		</div>
+		
+		
 
 	</div>
 

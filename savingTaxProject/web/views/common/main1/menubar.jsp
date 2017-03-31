@@ -178,7 +178,7 @@ $(function(){
                     </ul>
                </li>
                <li>
-              		 <a href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>이벤트</a>
+              		 <a href='/jsmi/listview?boardNo=6&page=1'>이벤트</a>
               		 <ul class="sub-menu">
                            <li><a href='/jsmi/listview?boardNo=6&page=1'>진행중인 이벤트</a></li>
                            <li><a href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난 이벤트</a></li>
@@ -186,7 +186,7 @@ $(function(){
                </li>
                <li><a href="#">비용안내</a></li>
                <li>
-               		<a href="/jsmi/views/main1/CSBoard/board/boardListView.jsp">고객센터</a>
+               		<a href="/jsmi/listview?page=1&boardNo=1">고객센터</a>
                		<ul class="sub-menu">
                            <li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
                            <li>
@@ -196,7 +196,7 @@ $(function(){
                            <li><a href="/jsmi/listview?page=1&boardNo=3">세무팁</a></li>
                            <li><a href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a></li>
                            <li><a href="/jsmi/listview?page=1&boardNo=4">궁금한 것이 있어요</a></li>
-                           <li><a href="#">서식 자료실</a></li>
+                           <li><a href="/jsmi/listview?page=1&boardNo=5">서식 자료실</a></li>
                     </ul>             
                </li>
             </ul>         
