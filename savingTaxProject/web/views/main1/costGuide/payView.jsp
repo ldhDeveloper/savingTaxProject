@@ -17,143 +17,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-	$(function() {
-		$("#pdateid1").click(function() {
-			x = 1;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid2").click(function() {
-			x = 2;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid3").click(function() {
-			x = 3;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid4").click(function() {
-			x = 4;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid5").click(function() {
-			x = 5;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid6").click(function() {
-			x = 6;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid7").click(function() {
-			x = 7;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid8").click(function() {
-			x = 8;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid9").click(function() {
-			x = 9;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid10").click(function() {
-			x = 10;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid11").click(function() {
-			x = 11;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-		$("#pdateid12").click(function() {
-			x = 12;
-			var y = 200000000;
-
-			var result = x * y;
-
-			$("#x").html(x + "원");
-
-			$("#result").html(result + "원");
-		});
-
-	});
-</script>
-
 <style type="text/css">
 .font-family-xs-1 {
 	font-family: mobius !important;
@@ -298,127 +161,6 @@
 	font-family: computer !important;
 	color: #2a82a3;
 }
-
-/* .Qlist {			
-	border-bottom : 1px solid #ddd;
-	padding : 1.5%;	
-	text-align: center;
-} 
-
-.Qright {
-	border-right: 1px solid #ddd;
-	font-family: NotoSansCJKkr-Ligth !important;
-	text-align: center;
-	font-size: 10pt;
-}
-
-.Qlistt {
-	border-right: 1px solid #ddd;
-	font-family: computer !important;
-	font-size: 12pt;
-	color: #2a82a3;
-}
-
-.Qtitle {
-	font-family: computer !important;
-	border-top : 1px solid #ddd;
-	border-bottom : 1px solid #ddd;
-	padding-top : 2.5%;
-	padding-left : 2.5%;
-	padding-bottom : 2%;
-	font-size: 12pt;
-	color: #2a82a3;
-}
- */
-/* #h3title {
-	color: #2a82a3;
-}
-
-#clist {
-	background: -webkit-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -o-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -moz-linear-gradient(left, #ffffff, #b0e0e6);
-	background: linear-gradient(left, #ffffff, #b0e0e6);
-	border: solid 1px #2a82a3;
-	height: 40px;
-	border-radius: 4px;
-	padding-top: 0.5%;
-	font-size: 14pt;
-	box-shadow: 2px 2px 6px #2a82a3;
-}
-
-#ctitle {
-	font-family: computer !important;
-	color: #2a82a3;
-	font-size: 15px;
-}
-
-#ctitlec {
-	font-family: NotoSansCJKkr-Ligth !important;
-	color: #2a82a3;
-	font-size: 13px;
-}
-
-#cdate {
-	font-family: computer !important;
-	color: #2a82a3;
-	font-size: 15px;
-}
-
-#cdatec {
-	font-family: NotoSansCJKkr-Ligth !important;
-	font-size: 13px;
-}
-
-.tdmd {
-	padding: 2%;
-	border-bottom: 1px solid #ddd;
-	width: 100%;
-	color: dimgray;
-}
-
-#ccontents {
-	text-align: center;
-	align: center;
-}
-
-.Qreply {
-	border-bottom: 1px solid #ddd;
-	font-family: computer !important;
-	border-top: 1px solid #ddd;
-	padding: 2.5%;
-	font-size: 12pt;
-	heigth: 10%;
-	color: #2a82a3;
-}
-
-.QreplyC {
-	font-family: NotoSansCJKkr-Ligth !important;
-	font-size: 10pt;
-	color: black;
-} */
-
-/* #submitBtn2 {
-	border: none;
-	border-radius: 3px;
-	border-color: #d58512;
-	color: white;
-	width: 5%;
-	height: 25px;
-	font-family: Binggrae !important;
-	background-color: #ec971f;
-}
-
-#submitBtn1 {
-	border: none;
-	border-radius: 3px;
-	border-color: #2a82a3;
-	color: white;
-	width: 5%;
-	height: 25px;
-	font-family: Binggrae !important;
-	background-color: #2a82a3;
-} */
 </style>
 
 <script type="text/javascript">
@@ -497,6 +239,538 @@ $(function() {
 });
 </script>
 
+<script type="text/javascript">
+	$(function() {
+		$("#pdateid1").click(function() {
+			x = 1;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");	
+			
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}						
+		});
+
+		$("#pdateid2").click(function() {
+			x = 2;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid3").click(function() {
+			x = 3;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid4").click(function() {
+			x = 4;
+			var y = 200000000;
+			
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid5").click(function() {
+			x = 5;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid6").click(function() {
+			x = 6;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid7").click(function() {
+			x = 7;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid8").click(function() {
+			x = 8;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid9").click(function() {
+			x = 9;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid10").click(function() {
+			x = 10;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid11").click(function() {
+			x = 11;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}
+		});
+
+		$("#pdateid12").click(function() {
+			x = 12;
+			var y = 200000000;
+
+			var result = x * y;
+			
+			var buga = result * 0.1;
+			
+			var total = result + buga;
+
+			$("#x").html(x + "개월");
+			
+			MoneySwap1(result);
+			MoneySwap2(buga);
+			MoneySwap3(total);
+			
+			// 원금
+			function MoneySwap1(result){
+				var temp_str = String(result);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#result").html(retValue + "원");
+			}
+				
+			// 부가세
+			function MoneySwap2(buga){
+				var temp_str = String(buga);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#buga").html(retValue + "원");
+			}
+									
+			// 합계
+			function MoneySwap3(total){
+				var temp_str = String(total);
+				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+				}
+			  return $("#total").html(retValue + "원");
+			}		
+		});
+	});
+</script>
+
 </head>
 
 <body>
@@ -551,13 +825,13 @@ $(function() {
 						</tr>
 
 						<tr>
-							<td class="pcontent pshow">내역이 들어가야할 항목</td>
+							<td class="pcontent pshow"><!-- 내역이 들어가는 곳 -->내역이 들어가야할 항목</td>
 
-							<td class="pcontent">200,000,000원</td>
+							<td class="pcontent"><!-- 돈 들어가는 곳 -->200,000,000원</td>
 
-							<td class="pcontent">3개월</td>
+							<td class="pcontent"><!-- 개월이 들어가는 곳 -->3개월</td>
 
-							<td class="pcontent">200,000,000원</td>
+							<td class="pcontent"><!-- 돈 들어가는 곳 -->200,000,000원</td>
 						</tr>
 
 						<tr>
@@ -583,27 +857,27 @@ $(function() {
 						<tr>
 							<td class="pdate" id="pdateid1" value="1">1개월</td>
 
-							<td class="pdate" id="pdateid2" value="2"> 2개월</td>
+							<td class="pdate" id="pdateid2" value="2">2개월</td>
 
-							<td class="pdate" id="pdateid3" value="3"> 3개월</td>
+							<td class="pdate" id="pdateid3" value="3">3개월</td>
 
-							<td class="pdate" id="pdateid4" value="4"> 4개월</td>
+							<td class="pdate" id="pdateid4" value="4">4개월</td>
 
-							<td class="pdate" id="pdateid5" value="5"> 5개월</td>
+							<td class="pdate" id="pdateid5" value="5">5개월</td>
 							
-							<td class="pdate" id="pdateid6" value="6"> 6개월</td>
+							<td class="pdate" id="pdateid6" value="6">6개월</td>
 							
-							<td class="pdate" id="pdateid7" value="7"> 7개월</td>
+							<td class="pdate" id="pdateid7" value="7">7개월</td>
 							
-							<td class="pdate" id="pdateid8" value="8"> 8개월</td>
+							<td class="pdate" id="pdateid8" value="8">8개월</td>
 							
-							<td class="pdate" id="pdateid9" value="9"> 9개월</td>
+							<td class="pdate" id="pdateid9" value="9">9개월</td>
 							
 							<td class="pdate" id="pdateid10" value="10">10개월</td>
 							
 							<td class="pdate" id="pdateid11" value="11">11개월</td>
 							
-							<td class="pdate" id="pdateid12">12개월</td>
+							<td class="pdate" id="pdateid12" value="12">12개월</td>
 						</tr>
 					</tbody>
 				</table>
@@ -640,12 +914,12 @@ $(function() {
 						
 						<tr>
 							<td colspan="2" class="presult" id="additional">부가세</td>
-							<td colspan="2" class="presult2" id="total"></td>
+							<td colspan="2" class="presult2"><span id="buga"></span></td>
 						</tr>
 
 						<tr>
 							<td colspan="2" class="presult">합계</td>
-							<td colspan="2" class="presult2"></td>
+							<td colspan="2" class="presult2"><span id="total"></span></td>
 						</tr>
 					</tbody>
 				</table>

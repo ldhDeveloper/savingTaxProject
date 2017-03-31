@@ -246,12 +246,27 @@
 		<div class="menu-btn" style="background: #105080;" id="border5">
 			<img src="/jsmi/images/1.png" class="menu-img">
 		</div>
-		
-		<div class="menu-btn" style="background: #10aaff;" id="border6">
-		<!-- <div class="menu-btn" style="background: #10aaff;" id="border6"
-		onclick="location.href='/jsmi/views/main1/costGuide/payView.jsp'"> -->
+
+		<% if(loginUser != null) { %>		
+		<div class="menu-btn" style="background: #10aaff;" id="border6"
+		onclick="location.href='/jsmi/views/main1/costGuide/payView.jsp'">
 			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
+		<% } else { %>
+		<div class="menu-btn" style="background: #10aaff;" id="border6" onclick="noLogin();">
+			<img src="/jsmi/images/cost.png" class="menu-img">
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				$("#border6").click(function(){
+					alert("로그인 후 가능합니다!")
+				});
+			});
+		</script>
+		<% } %>
+				
+		
 		<div class="menu-btn" style="background: #10aaff;" id="border7"
 			onclick="location.href='/jsmi/listview?page=1&boardNo=1'">
 			<img src="/jsmi/images/helpdesk1.png" class="menu-img">
