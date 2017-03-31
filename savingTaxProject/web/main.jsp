@@ -389,12 +389,13 @@
 		</div>
 	</div>
 	<br class="hidden-sm hidden-md hidden-lg">
-
+	<% if(loginUser != null){ %>
 	<!-- 뷰온버튼 -->
 	<div id="viewOn" class="hidden-xs gotoM1"
 		onclick="location.href='/jsmi/views/main2/menu/main2.html'">
 		<img src="/jsmi/images/main1/gotomain2.png">
 	</div>
+	<% } %>
 	<br>
 	<br>
 	<br>

@@ -107,13 +107,14 @@
 						<div class="navbar navbar-default">
 							<div class="container-fluid">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="/jsmi/views/main2/empinfo.jsp">직원정보입력</a></li>
-									<li><a href="/jsmi/views/main2/inputinfo2.html">직원급여관리</a></li>
+									<li class="active"><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
+									<li><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여관리</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
+				<h3 align="center">직원 목록 조회</h3>
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
@@ -190,6 +191,7 @@
 						</ul>
 					</div>
 				</div>
+				<h3 align="center">직원 정보 입력/수정</h3>
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<table class="table table-condensed">

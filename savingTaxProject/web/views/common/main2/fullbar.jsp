@@ -67,7 +67,7 @@
 <body>
 	<div class="fullbar">
 		<img src="/jsmi/images/menubar/logo.png" height="35" class="logo">
-		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/main.jsp" class="logout">Log-out</a>
+		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/logout" class="logout">Log-out</a>
 	</div>
 
 </body>
