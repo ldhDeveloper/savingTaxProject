@@ -154,21 +154,29 @@
 						$("#dealertable").html("<tr><th>거래처명</th><th>업종</th><th>업태</th><th>전화번호</th><th>휴대폰번호</th><th>대표자</th>");
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
-							$("#dealertable").html($("#itablebody").html() +
-									"<tr><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + 
+							$("#dealertable").html($("#dealertable").html() +
+									"<tr><td>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + 
 									"</td><td>" + jsonArr.list[i].tel + "</td><td>" + jsonArr.list[i].phone + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) +
 									"</td><td>");
 						}
+						jQuery.noConflict(); 
+						$('#myModal2').modal("show");
 					},
 					error: function(request,status,error){
 				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				    }
 			});
+		});
 	});
 	
 	function itemclick(data){
 		$('#actype').val(data);
 		$('#myModal').modal("hide");
+	}
+	
+	function dealerclick(data){
+		$('#dealer').val(data);
+		$('#myModal2').modal("hide");
 	}
 </script>
 </head>
@@ -362,7 +370,7 @@
 										</div>
 									</td>
 									<td><input type="date" id="dealdate" name="indate" class="form-control"></td>
-									<td><input type="button" value="거래처선택" id="selectdealer"
+									<td><input type="button" id="dealer" value="거래처선택" id="selectdealer"
 										class="form-control"></td>
 									<!-- <td><input type="button" value="항목선택" class="form-control" id="actype" data-toggle="modal" data-target="#myModal"></td> -->
 									<td><input type="button" value="항목선택" class="form-control" id="actype"></td> 
