@@ -16,6 +16,144 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$("#pdateid1").click(function() {
+			x = 1;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid2").click(function() {
+			x = 2;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid3").click(function() {
+			x = 3;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid4").click(function() {
+			x = 4;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid5").click(function() {
+			x = 5;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid6").click(function() {
+			x = 6;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid7").click(function() {
+			x = 7;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid8").click(function() {
+			x = 8;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid9").click(function() {
+			x = 9;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid10").click(function() {
+			x = 10;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid11").click(function() {
+			x = 11;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+		$("#pdateid12").click(function() {
+			x = 12;
+			var y = 200000000;
+
+			var result = x * y;
+
+			$("#x").html(x + "원");
+
+			$("#result").html(result + "원");
+		});
+
+	});
+</script>
+
 <style type="text/css">
 .font-family-xs-1 {
 	font-family: mobius !important;
@@ -445,68 +583,6 @@ $(function() {
 						<tr>
 							<td class="pdate" id="pdateid1" value="1">1개월</td>
 
-							<script type="text/javascript">
-								$(function(){
-									var x = 0;
-									var y = 200000000;
-									
-									
-									$("#pdateid1").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid2").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid3").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid4").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid5").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid6").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid7").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid8").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid9").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid10").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid11").click(function(){
-										x = 1;														
-									});
-									
-									$("#pdateid12").click(function(){
-										x = 1;														
-									});
-									
-									var result = x * y;
-									
-									$("#x").html(x);
-									
-									$("#result").html(result);
-								});
-							</script>
-
 							<td class="pdate" id="pdateid2" value="2"> 2개월</td>
 
 							<td class="pdate" id="pdateid3" value="3"> 3개월</td>
@@ -557,19 +633,19 @@ $(function() {
 
 							<td class="pcontent"><p>200,000,000원</p></td>
 
-							<td class="pcontent"><span id="x"></span><p>개월</p></td>
+							<td class="pcontent"><span id="x"></span></td>
 
-							<td class="pcontent"><span id="result"></span><p>원</p></td>
+							<td class="pcontent"><span id="result"></span></td>
 						</tr>
 						
 						<tr>
 							<td colspan="2" class="presult" id="additional">부가세</td>
-							<td colspan="2" class="presult2" id="total">20,000,000원</td>
+							<td colspan="2" class="presult2" id="total"></td>
 						</tr>
 
 						<tr>
 							<td colspan="2" class="presult">합계</td>
-							<td colspan="2" class="presult2">220,000,000원</td>
+							<td colspan="2" class="presult2"></td>
 						</tr>
 					</tbody>
 				</table>
