@@ -53,7 +53,7 @@ public class Main2InsertServlet extends HttpServlet {
 	        
 	        String Cno=cno+"-"+cno2+"-"+cno3;
 			String Tel = tel + "-" + tel2 + "-" + tel3;
-			String Caddress=caddress+" "+caddress2+" "+caddress3;
+			String Caddress=caddress+"&"+caddress2+"&"+caddress3;
 			String Email=email+"@"+email2;
 			
 			Party p = new Party();
