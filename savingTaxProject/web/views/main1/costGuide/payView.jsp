@@ -241,6 +241,11 @@ $(function() {
 
 <script type="text/javascript">
 	$(function() {
+		$("#calculate").click(function(){
+			var total = $("#total").html();
+			$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total);
+		});
+		
 		$("#pdateid1").click(function() {
 			x = 1;
 			var y = 200000000;
@@ -803,8 +808,6 @@ $(function() {
 		</div> -->
 
 		<h3></h3>
-
-		<form action="/jsmi/views/main1/costGuide/payInfoView.jsp" method="post" enctype="multipart/form-data">
 			<div class="tableStart">
 				<table class="tablemd">
 					<thead class="postthead">
@@ -919,8 +922,8 @@ $(function() {
 
 						<tr>
 							<td colspan="2" class="presult">합계</td>
-							<td colspan="2" class="presult2"><span id="total"></span></td>
-						</tr>
+							<td colspan="2" class="presult2"><span id="total" name="hap"></span></td>
+					</tr>
 					</tbody>
 				</table>
 			</div>
@@ -929,9 +932,8 @@ $(function() {
 
 			<div align="center">
 				<h5 id="agree">※위와 같은 정보로 결제를 신청하시겠습니까?</h5>
-				<input type="submit" class="payBtn" value="결제하기">
+				<input type="submit" class="payBtn" value="결제하기" id="calculate">
 			</div>
-		</form>
 	</div>
 
 

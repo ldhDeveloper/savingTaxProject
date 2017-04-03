@@ -224,7 +224,7 @@ label {
 
 		<div class="middle font-family-md-1">
 			<h3 align="center">
-				<img src="/jsmi/images/notice.png"><br>
+				<img src="/jsmi/images/main1/notice.png"><br>
 				<br> 절세미인의 <label>공지사항</label>입니다.
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
@@ -302,7 +302,7 @@ label {
 					</tr>
 						<% } %>
 					<tr>
-					<br><br>
+
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]
@@ -363,7 +363,7 @@ label {
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
-				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+				 ="location.href='/jsmi/views/main1/CSBoard/board/noticeInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
 

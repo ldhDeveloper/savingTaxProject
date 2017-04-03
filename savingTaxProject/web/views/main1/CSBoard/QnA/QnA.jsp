@@ -302,7 +302,7 @@ label {
 					</tr>
 						<% } %>
 					<tr>
-					<br><br>
+					
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]
@@ -363,7 +363,7 @@ label {
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
-				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
 
