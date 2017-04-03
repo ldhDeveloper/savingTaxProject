@@ -58,6 +58,7 @@ public class PartyService {
 
 		if(result>0){
 		   pno= new PartyDao().selectPno(con, p);
+		   System.out.println("result pno: "+pno);
 		   if(pno>0){
 			    result2 = new PartyDao().insertParty_Rel(con, owner, pno);
 		   }
@@ -171,6 +172,4 @@ public class PartyService {
 	}
 
 }
-
-
 
