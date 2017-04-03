@@ -106,8 +106,7 @@ font-size : 2em;
 						<li><a class="tabmenu lactive"
 							href="#">종합소득세 </a></li>
 						<li><a class="tabmenu"
-							href="/jsmi/views/main2/taxcalculation/vatCalculation.jsp">부가가치세</a></li>
-							
+							href="/jsmi/views/main2/tax/vatDetail.jsp">부가가치세</a></li>
 					</ul>
 				</div>
 			</div>
@@ -117,12 +116,13 @@ font-size : 2em;
 		<tr style = "height : 20px;"> </tr>
 		<tr><td>매출 세액</td><td></td><td><span class = "money" id = "output"></span>원</td></tr>
 		<tr><td>매입 세액</td><td></td><td><span class = "money" id = "input"></span>원</td></tr>
-		<tr><td>공제 세액</td><td></td><td></td></tr>
-		<tr><td>- 세금 계산서 수취분</td><td><input name = "receipt"></td><td></td></tr>
-		<tr><td>- 신용카드 매출전표 발행분</td><td><input name = "card"> </td><td></td></tr>
-		<tr><td></td><td></td><td><span class = "money" id = "deduct"></span></td></tr>
-		<tr><td>가산 세액</td><td></td><td><span class = "money" id = "charge"></span>원</td></tr>
-		<tr><td>납부할 총 부가가치세액</td><td></td><td><span class = "money" id = "vat"></span>원</td></tr>
+		<tr><td>공제 세액</td><td><span style= "color:#cccccc;">공제세액은 적합증빙자료가 필요합니다. </span></td><td></td></tr>
+			
+		<tr><td>- 세금 계산서 수취분</td><td><input name = "receipt" readonly></td><td>공제되는 세액 : <span class = "money" id = "deduct1"></span>원  </td></tr>
+		<tr><td>- 신용카드 매출전표 발행분</td><td><input name = "card" readonly> </td><td>공제되는 세액 : <span class = "money" id = "deduct2"></span>원</td></tr>
+		<tr><td>총 공제 세액 </td><td></td><td><span class = "money" id = "deduct"></span>원</td></tr>
+		<tr><td>가산 세액</td><td></td><td><input class = "money" type="number" id = "charge" style="border:none;">원</td></tr>
+		<tr><td>납부할 총 부가가치세액</td><td></td><td><span class = "money"  id = "vat"></span>원</td></tr>
 		<tr style = "height : 20px;"></tr>
 		<tr><td colspan = "6" style = "float : right;"><button onclick="calVat();">계산</button><input type = "submit" value = "저장"> </td></tr>
 		</table>
@@ -133,7 +133,10 @@ font-size : 2em;
 			var input = $("#input").val();
 			var receipt = $("#receipt").val();
 			var card = $("#card").val();
-			var deduct = $("#deduct").val();
+			var deduct1 = $("#deduct1").val();
+			var deduct2 = $("#deduct2").val();
+			var deduct = deduct1 + deduct2;
+			$("#deduct").val(deduct);
 			var charge = $("#charge").val();
 			$("#vat").val(output - (input + receipt + card + deduct) + charge); 
 		}
