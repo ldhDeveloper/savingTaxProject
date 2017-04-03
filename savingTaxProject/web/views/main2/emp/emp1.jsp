@@ -10,12 +10,14 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
 <script>
 	function nextpage() {
 		location.href("/jsmi/views/main2/myinfo2.jsp");
 	}
+	//document.getElementById('now_date').valueAsDate = new Date();
 </script>
 
 <script type="text/javascript">
@@ -89,6 +91,7 @@
 	margin-right: 10px;
 }
 </style>
+
 </head>
 <body style="padding-top: 0px">
 	<%@ include file="/views/common/main2/main2back.jsp"%>
@@ -101,97 +104,103 @@
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<div class="section">
-			<form>
-				<div class="row">
-					<div class="col-md-8">
-						<div class="navbar navbar-default">
-							<div class="container-fluid">
-								<ul class="nav navbar-nav">
-									<li class="active"><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
-									<li><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여관리</a></li>
-								</ul>
-							</div>
+
+			<div class="row">
+				<div class="col-md-8">
+					<div class="navbar navbar-default">
+						<div class="container-fluid">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여관리</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<h3 align="center">직원 목록 조회</h3>
-				<div class="row">
-					<div class="col-md-12">
-						<table class="table table-condensed">
-							<tbody>
-								<tr>
-									<th>직원명</th>
-									<th>직원구분</th>
-									<th>직급</th>
-									<th>입사년월일</th>
-									<th>연락처</th>
-									<th>직원 주소지</th>
-									<th>이메일</th>
+			</div>
 
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
+			
 
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
 
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
+			<h3 align="center">직원 목록 조회</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-condensed">
+						<tbody id="emptable">
+							<tr>
+								<th>직원명</th>
+								<th>직원구분</th>
+								<th>직급</th>
+								<th>입사년월일</th>
+								<th>연락처</th>
+								<th>직원 주소지</th>
+								<th>이메일</th>
 
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 
-								</tr>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 
-							</tbody>
-						</table>
-						<ul class="pagination" style="float: right; margin-bottom: 30px;">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-						</ul>
-					</div>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+					<ul class="pagination" style="float: right; margin-bottom: 30px;">
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+					</ul>
 				</div>
-				<h3 align="center">직원 정보 입력/수정</h3>
+			</div>
+			<h3 align="center">직원 정보 입력/수정</h3>
+			<form action="/jsmi/empinput" method="post">
+				<input type="hidden" value="<%= loginUser.getPno() %>" name="owner">
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<table class="table table-condensed">
@@ -199,19 +208,22 @@
 								<tr>
 									<td class="col-md-2"><h5>직원명</h5></td>
 									<td class="col-md-4"><input type="text"
-										class="form-control"></td>
+										class="form-control" name="empname"></td>
 									<td class="col-md-2"><h5>직원구분</h5></td>
 									<td class="col-md-4">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="radio col-md-4">
-													<label><input type="radio" name="optradio">정규직</label>
+													<label><input type="radio" name="optradio"
+														value="정규직">정규직</label>
 												</div>
 												<div class="radio col-md-4" style="margin-top: 10px">
-													<label><input type="radio" name="optradio">비정규직</label>
+													<label><input type="radio" name="optradio"
+														value="비정규직">비정규직</label>
 												</div>
 												<div class="radio col-md-4" style="margin-top: 10px">
-													<label><input type="radio" name="optradio">일용직</label>
+													<label><input type="radio" name="optradio"
+														value="일용직">일용직</label>
 												</div>
 											</div>
 										</div>
@@ -223,72 +235,72 @@
 									<td class="col-md-4">
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="empno1">
 										</div>
 										<div class="col-md-2" style="text-align: center">-</div>
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="password" class="form-control" name="empno2">
 										</div>
 									</td>
 									<td class="col-md-2"><h5>직급</h5></td>
 									<td class="col-md-4"><input type="text"
-										class="form-control"></td>
+										class="form-control" name="position"></td>
 								</tr>
 								<tr>
 									<td class="col-md-2"><h5>입사년월일</h5></td>
 									<td class="col-md-4"><input type="date"
-										class="form-control"></td>
+										class="form-control" id="now_date" name="hiredate"></td>
 									<td class="col-md-2"><h5>연락처</h5></td>
 									<td class="col-md-4">
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="phone1">
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="phone2">
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="phone3">
 										</div>
 									</td>
 
 								</tr>
 								<tr>
 									<td class="col-md-2" rowspan="2"><h5>직원 주소지</h5></td>
-									<td class="col-md-4"><div class="col-md-5"
+									<td class="col-md-4">
+										<div class="col-md-12"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="postnum"
+												name="add1">
 										</div>
-										<div class="col-md-2" style="text-align: center">
-											<h5>-</h5>
-										</div>
-										<div class="col-md-5"
-											style="padding-left: 0px; padding-right: 0px;">
-											<input type="password" class="form-control">
-										</div></td>
+									</td>
 									<td class="col-md-6" colspan="2"><input type=button
-										class="btn btn-primary" value="우편번호검색"></td>
+										class="btn btn-primary" value="우편번호검색"
+										onclick="sample4_execDaumPostcode();"></td>
 								</tr>
 								<tr>
-									<td class="col-md-10" colspan="3"><input type="text"
-										class="form-control"></td>
+									<td class="col-md-4"><input type="text"
+										class="form-control" id="address1" name="add2"></td>
+									<td class="col-md-6" colspan="2"><input type="text"
+										class="form-control" id="address2" name="add3"></td>
+
 								</tr>
 								<tr>
 									<td class="col-md-2"><h5>이메일</h5></td>
 									<td class="col-md-6" colspan="2">
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="email1">
 										</div>
 										<div class="col-md-1" style="text-align: center">@</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="email2">
 										</div>
 										<div class="col-md-1" style="display: block"></div>
 										<div class="col-md-3"
@@ -317,7 +329,7 @@
 							</tbody>
 						</table>
 						<div class="row">
-							<button class="btn btn-success" type="submit">등록</button>
+							<button class="btn btn-success" type="submit" id="insert">등록</button>
 							<button class="btn btn-danger" type="reset">취소</button>
 						</div>
 					</div>
@@ -325,43 +337,39 @@
 
 			</form>
 
-			<script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
-			<script src="/jsmi/js/main2/bootstrap.min.js"></script>
-			<script src="/jsmi/js/main2/chart.min.js"></script>
-			<script src="/jsmi/js/main2/chart-data.js"></script>
-			<script src="/jsmi/js/main2/easypiechart.js"></script>
-			<script src="/jsmi/js/main2/easypiechart-data.js"></script>
-			<script src="/jsmi/js/main2/bootstrap-datepicker.js"></script>
-			<script>
-				$('#calendar').datepicker({});
-
-				!function($) {
-					$(document).on(
-							"click",
-							"ul.nav li.parent > a > span.icon",
-							function() {
-								$(this).find('em:first').toggleClass(
-										"glyphicon-minus");
-							});
-					$(".sidebar span.icon").find('em:first').addClass(
-							"glyphicon-plus");
-				}(window.jQuery);
-
-				$(window).on('resize', function() {
-					if ($(window).width() > 768)
-						$('#sidebar-collapse').collapse('show')
-				})
-				$(window).on('resize', function() {
-					if ($(window).width() <= 767)
-						$('#sidebar-collapse').collapse('hide')
-				})
-			</script>
-
 
 		</div>
 
 	</div>
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
+	
+	<script>
+				$(function(){
+					
+					var pno = <%= loginUser.getPno() %>
+					$.ajax({
+						url:"/jsmi/emplist",
+						data: {pno: pno},
+						type:"get",
+						dataType:"JSON",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						success:function(data){
+							console.log("json 성공");
+							var jsonObj = JSON.stringify(data);
+							var jsonArr = JSON.parse(jsonObj);
+							
+							$("#emptable").html("<tr><th>직원명</th><th>직원구분</th><th>직급</th><th>입사년월일</th><th>연락처</th><th>직원 주소지</th><th>이메일</th></tr>");
+							for(var i in jsonArr.emplist){
+								
+								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td></tr>");
+							}
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					       }
+					});
+				});
+			</script>
 </body>
 </html>

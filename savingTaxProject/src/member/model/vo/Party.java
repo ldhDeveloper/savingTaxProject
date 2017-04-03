@@ -28,7 +28,7 @@ public class Party implements java.io.Serializable{
 	private int notax_yn;
 	private String president;
 	private int foreginer_yn;
-	private int emp_type;
+	private String emp_type;
 	private Date join_date;
 	private int busi_type;
 	private int to_no;
@@ -182,10 +182,10 @@ public class Party implements java.io.Serializable{
 	public void setForeginer_yn(int foreginer_yn) {
 		this.foreginer_yn = foreginer_yn;
 	}
-	public int getEmp_type() {
+	public String getEmp_type() {
 		return emp_type;
 	}
-	public void setEmp_type(int emp_type) {
+	public void setEmp_type(String emp_type) {
 		this.emp_type = emp_type;
 	}
 	public Date getJoin_date() {
@@ -211,7 +211,7 @@ public class Party implements java.io.Serializable{
 	public Party(int pno, String pname, int category, String id, String pwd, String tel, String phone, String email,
 			String id_no, String cname, String cno, String paddress, String caddress, String ctype, String cstatus,
 			String position, Date oday, int wno, int taxtype, int notax_yn, String president, int foreginer_yn,
-			int emp_type, Date join_date, int busi_type, int to_no, String gender, String birth) {
+			String emp_type, Date join_date, int busi_type, int to_no, String gender, String birth) {
 		super();
 		this.pno = pno;
 		this.pname = pname;
