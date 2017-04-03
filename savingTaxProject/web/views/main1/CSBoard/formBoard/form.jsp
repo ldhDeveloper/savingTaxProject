@@ -22,8 +22,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -197,21 +198,18 @@ label {
 	border-radius: 3px;
 	border-color: #d58512;
 	color: white;
-	width: 15%;
-    height: 30px;
+	width: 8%;
+    height: 25px;
 	font-family: Binggrae !important;
 	background-color : #ec971f;
 }
 
 
-tr:hover {
-background : rgba(233, 233, 233, 0.7);
-}
 </style>
 
 </head>
 
-<body >
+<body>
 	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
@@ -221,7 +219,7 @@ background : rgba(233, 233, 233, 0.7);
 	<br>
 
 	<!-- 컴퓨터용 -->
-	<div class="middle hidden-xs" >
+	<div class="middle hidden-xs">
 
 
 		<div class="middle font-family-md-1">
@@ -269,8 +267,9 @@ background : rgba(233, 233, 233, 0.7);
 				작성일&nbsp;&nbsp;
 			</label>
 		</div>
-
 		
+		<br>
+
 		<div class="tableStart">
 			<table class="tablemd">
 				<!-- <thead class="theadmd font-family-md-2">
@@ -280,11 +279,11 @@ background : rgba(233, 233, 233, 0.7);
 						<th class="tdate thmd thmdr">작성일</th>
 					</tr>
 				</thead> -->
-				<tr style = "height:20px;"></tr>
 				
-				<tbody class="tbodymd font-family-md-2">
+				
+				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
-					<tr style = "height:55px;">
+					<tr>
 						<td class="tno tdmd">
 							<%= p.getPostNo() %>
 						</td>
@@ -295,7 +294,7 @@ background : rgba(233, 233, 233, 0.7);
 							</a>
 						</td>
 						<td class="twriter tdmd">
-							&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<%= p.getpId() %>
@@ -304,14 +303,14 @@ background : rgba(233, 233, 233, 0.7);
 						
 					</tr>
 						<% } %>
-							<tr style="height:20px;"></tr>
 					<tr>
 
 					<td colspan = "3" align="center">
-					<%if(currentPage <=1){ %>					[이전]
+					<%if(currentPage <=1){ %>
+					[이전]
 					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
 					 <%} for(int p = startPage; p <= endPage; p++){%>
-					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>">[<%=p%>]</a>
+					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
 					 <%} %>
 					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
 						</td>
@@ -362,13 +361,12 @@ background : rgba(233, 233, 233, 0.7);
 		</div>
 		
 		<br>
-		<%if(loginUser !=null){ %>
+		
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/formBoard/formInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
-			<%} %>
 	</div>
 
 
