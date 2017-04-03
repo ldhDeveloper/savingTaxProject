@@ -36,6 +36,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  response.setContentType("test/html; charset=utf-8");
 		  
 		  String userName = request.getParameter("username");
+		  int pno=Integer.parseInt(request.getParameter("pno"));
 		  String id_no= request.getParameter("idno");
 		  String id_no2=request.getParameter("idno2");
 		  String birth= request.getParameter("idno");
@@ -64,6 +65,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  String Email= email+"@"+email2;
 		  
 		  Party party = new Party();
+		  party.setPno(pno);
 		  party.setPname(userName);
 		  party.setId_no(IdNo);
 		  party.setBirth(birth);
@@ -75,7 +77,8 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  party.setEmail(Email);
 		  
 		  int result = new PartyService().updatePartyMyinfo(party);
-		  System.out.println("result: "+result);
+		  System.out.println("party1: "+party);
+		  System.out.println("result1: "+result);
 		  
 		Party loginUser=new PartyService().selectParty(userid);
 		  
