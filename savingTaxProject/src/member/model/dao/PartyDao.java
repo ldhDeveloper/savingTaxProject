@@ -527,7 +527,7 @@ public class PartyDao {
 		return result;
 	}
 
-	public int selectPno(Connection con, Party p) {
+	public int selectPno2(Connection con, Party p) {
 		int pno = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

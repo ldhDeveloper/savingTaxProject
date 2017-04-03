@@ -35,7 +35,7 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		int owner = Integer.parseInt(request.getParameter("owner"));
+		int owner = Integer.parseInt(request.getParameter("pno"));
 		String empname = request.getParameter("empname");
 		String emptype = request.getParameter("optradio");
 		String empno = request.getParameter("empno1") + "-" + request.getParameter("empno2");
@@ -60,7 +60,9 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 		int result = new PartyService().insertEmp(p, owner);
 		
 		if(result > 0){
-			response.sendRedirect("/jsmi/views/main2/emp/emp1.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("emplist");
+			request.setAttribute("pno", owner);
+			view.forward(request, response);
 			System.out.println("직원등록 성공");
 		}else{
 			RequestDispatcher view = request.getRequestDispatcher("views/main2/main2Error.jsp");
