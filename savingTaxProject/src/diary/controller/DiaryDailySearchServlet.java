@@ -53,6 +53,7 @@ public class DiaryDailySearchServlet extends HttpServlet {
 		for(Diary dlist : list){
 			System.out.println("dlist : " + dlist);
 			JSONObject jsob = new JSONObject();
+			jsob.put("dno", Integer.toString(dlist.getDno()));
 			jsob.put("atype", dlist.getAtype());
 			jsob.put("ddate", dlist.getDdate().toString());
 			jsob.put("pname", dlist.getPname());

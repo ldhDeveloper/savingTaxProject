@@ -66,11 +66,12 @@ private Properties prop = new Properties();
 		ResultSet rset = null;
 		ArrayList<Diary> list = null;
 		
-		String query = "select a.atype, d.ddate, p1.pname, a.anm, d.product, d.cost, d.billing, d.proof_type " +
+		String query = "select d.dno, a.atype, d.ddate, p1.pname, a.anm, d.product, d.cost, d.billing, d.proof_type " +
 							"from diary d join party p1 on(d.acc_pno = p1.pno) " +
 											"  join accountlist a on (d.ano = a.ano) " +
 											"  join party p2 on(d.write_pno = p2.pno) " +
-							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') = to_date(?,'yyyy-mm-dd')";
+							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') = to_date(?,'yyyy-mm-dd') " + 
+							"order by d.ddate desc";
 		try {
 			pstmt = con.prepareStatement(query);
 			System.out.println("dao btype : " + ddate);
@@ -86,6 +87,7 @@ private Properties prop = new Properties();
 			
 			while(rset.next()){
 				Diary diary = new Diary();
+				diary.setDno(rset.getInt("dno"));
 				diary.setAtype(rset.getString("atype"));
 				diary.setDdate(rset.getDate("ddate"));
 				diary.setPname(rset.getString("pname"));
@@ -113,11 +115,12 @@ private Properties prop = new Properties();
 		ResultSet rset = null;
 		ArrayList<Diary> list = null;
 		
-		String query = "select a.atype, d.ddate, p1.pname, a.anm, d.product, d.cost, d.billing, d.proof_type " +
+		String query = "select d.dno, a.atype, d.ddate, p1.pname, a.anm, d.product, d.cost, d.billing, d.proof_type " +
 							"from diary d join party p1 on(d.acc_pno = p1.pno) " +
 											"  join accountlist a on (d.ano = a.ano) " +
 											"  join party p2 on(d.write_pno = p2.pno) " +
-							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd')";
+							"where p2.pno = ? and to_char(d.ddate,'yyyy-mm-dd') between to_date(?,'yyyy-mm-dd') and to_date(?,'yyyy-mm-dd') " + 
+							"order by d.ddate desc" ; 				
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(pno));
@@ -133,6 +136,7 @@ private Properties prop = new Properties();
 			
 			while(rset.next()){
 				Diary diary = new Diary();
+				diary.setDno(rset.getInt("dno"));
 				diary.setAtype(rset.getString("atype"));
 				diary.setDdate(rset.getDate("ddate"));
 				diary.setPname(rset.getString("pname"));
@@ -204,6 +208,38 @@ private Properties prop = new Properties();
 							 "where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), " +
 							 "(select ano from accountlist where anm = ?))";
 
+		try {
+			int no = Integer.parseInt(pno);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, indate);
+			pstmt.setString(2, diary.getProduct());
+			pstmt.setInt(3, diary.getCost());
+			pstmt.setString(4, diary.getBilling());
+			pstmt.setString(5, diary.getProof_type());
+			pstmt.setInt(6, no);
+			pstmt.setInt(7, no);
+			pstmt.setString(8, diary.getPname());
+			pstmt.setString(9, diary.getAtype());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	public int UpdateDiary(Connection con, Diary diary, String indate, String pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update diary set ddate =to_date(?,'yyyy-mm-dd'), product = ?, cost = ?, billing = ?, proof_type =?, "
+						+ "write_pno = (select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " 
+											+ "where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), "
+						+ "acc_pno = (select ano from accountlist where anm = ?)) "
+						+ "where dno = ?";					
 		try {
 			int no = Integer.parseInt(pno);
 			pstmt = con.prepareStatement(query);
