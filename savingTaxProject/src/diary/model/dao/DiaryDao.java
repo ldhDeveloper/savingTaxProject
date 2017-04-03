@@ -235,11 +235,12 @@ private Properties prop = new Properties();
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update diary set ddate =to_date(?,'yyyy-mm-dd'), product = ?, cost = ?, billing = ?, proof_type =?, "
-						+ "write_pno = (select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " 
-											+ "where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), "
-						+ "acc_pno = (select ano from accountlist where anm = ?)) "
-						+ "where dno = ?";					
+		String query = "update diary set ddate =to_date(?, 'yyyy-mm-dd'), product = ?, cost = ?, billing =?, proof_type =?, " +  
+							   "acc_pno = (select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " +
+							   						"where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), " +
+							   	"ano = (select ano from accountlist where anm = ?) " +  
+							   	"where dno = ?";
+				
 		try {
 			int no = Integer.parseInt(pno);
 			pstmt = con.prepareStatement(query);
@@ -249,9 +250,9 @@ private Properties prop = new Properties();
 			pstmt.setString(4, diary.getBilling());
 			pstmt.setString(5, diary.getProof_type());
 			pstmt.setInt(6, no);
-			pstmt.setInt(7, no);
-			pstmt.setString(8, diary.getPname());
-			pstmt.setString(9, diary.getAtype());
+			pstmt.setString(7, diary.getPname());
+			pstmt.setString(8, diary.getAtype());
+			pstmt.setInt(9, diary.getDno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -259,6 +260,22 @@ private Properties prop = new Properties();
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+
+
+	public int deleteDiary(Connection con, String dno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from diary where dno = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(dno));
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 }
