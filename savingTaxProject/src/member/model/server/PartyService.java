@@ -128,6 +128,7 @@ public class PartyService {
 		return result;
 	}
 
+
 	// myinfo3 list 불러옴
 	public ArrayList<Party> selectList(int owner, int pno) {
 		Connection con = getConnection();
@@ -135,5 +136,41 @@ public class PartyService {
 		close(con);
 		return list;
 	}
+
+	public int insertEmp(Party p, int owner) {
+		Connection con = getConnection();
+		int result = 0;
+		int pno = 0;
+		int result2 = 0;
+		
+		int result1 = new PartyDao().insertEmp(con, p);
+		
+		if(result1 > 0){
+			pno = new PartyDao().selectPno(con, p);
+			if(pno != 0){
+				result2 = new PartyDao().insertEmpRel(con, owner, pno);
+			}
+		}
+		
+		if(result1 > 0 && result2 > 0){
+			commit(con);
+			result = 1;
+		}
+		else {
+			rollback(con);
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Party> selectEmpList(int pno) {
+		Connection con = getConnection();
+		ArrayList<Party> emplist = new PartyDao().selectEmpList(con, pno);
+		return emplist;
+	}
+
+}
+
 
 }

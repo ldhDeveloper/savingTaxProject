@@ -77,7 +77,7 @@ public class PartyDao {
 						p.setNotax_yn(rset2.getInt("notax_yn"));
 						p.setPresident(rset2.getString("president"));
 						p.setTel(rset2.getString("tel"));
-						p.setEmp_type(rset2.getInt("emp_type"));
+						p.setEmp_type(rset2.getString("emp_type"));
 						p.setJoin_date(rset2.getDate("join_date"));
 						p.setBusi_type(rset2.getInt("busi_type"));
 						p.setBirth(rset2.getString("birth"));
@@ -374,7 +374,7 @@ public class PartyDao {
 				p.setNotax_yn(rset.getInt("notax_yn"));
 				p.setPresident(rset.getString("president"));
 				p.setForeginer_yn(rset.getInt("foreginer_yn"));
-				p.setEmp_type(rset.getInt("emp_type"));
+				p.setEmp_type(rset.getString("emp_type"));
 				p.setJoin_date(rset.getDate("join_date"));
 				p.setBusi_type(rset.getInt("busi_type"));
 				p.setPhone(rset.getString("phone"));
@@ -472,6 +472,7 @@ public class PartyDao {
 		return result;
 	}
 
+
 	// myinfo3 List (insert dao 수정 후 작업)
 	public ArrayList<Party> selectList(Connection con, String cno) {
 		PreparedStatement pstmt = null;
@@ -496,5 +497,130 @@ public class PartyDao {
 	}
 
 	
+
+	public int insertEmp(Connection con, Party p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "insert into party(pno, category, pname, emp_type, id_no, position, join_date, phone, paddress, email) values (pno_seq.nextval, 2, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getEmp_type());
+			pstmt.setString(3, p.getId_no());
+			pstmt.setString(4, p.getPosition());
+			pstmt.setDate(5, p.getJoin_date());
+			pstmt.setString(6, p.getPhone());
+			pstmt.setString(7, p.getPaddress());
+			pstmt.setString(8, p.getEmail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectPno(Connection con, Party p) {
+		int pno = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select pno from party where id_no=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getId_no());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				pno = rset.getInt("pno");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return pno;
+	}
+
+	
+	public int insertEmpRel(Connection con, int owner, int pno) {
+		int result = 0;
+		PreparedStatement pstmt = null;		
+		
+		String query = "insert into party_rel values (?, ?, ?)";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, owner);
+			pstmt.setInt(2, pno);
+			pstmt.setString(3, "직원");
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Party> selectEmpList(Connection con, int pno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Party> emplist = null;
+		
+		String query = "select pname, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset != null){
+				emplist = new ArrayList<Party>();
+			}
+			while(rset.next()){
+				Party p = new Party();
+				
+				p.setPname(rset.getString("pname"));
+				p.setEmp_type(rset.getString("emp_type"));
+				p.setPosition(rset.getString("position"));
+				p.setJoin_date(rset.getDate("join_date"));
+				p.setPhone(rset.getString("phone"));
+				p.setPaddress(rset.getString("paddress"));
+				p.setEmail(rset.getString("email"));
+				emplist.add(p);
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		
+		return emplist;
+	}
 
 }
