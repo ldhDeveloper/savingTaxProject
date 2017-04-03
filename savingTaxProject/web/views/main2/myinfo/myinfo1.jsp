@@ -112,9 +112,10 @@
 
 			<form action="/jsmi/update.info1" method="post">
 			<input type="hidden" value="<%=loginUser.getPno()%>" name="pno">
+			<% System.out.println("pno: "+loginUser.getPno());%>
 				<table class="table table-condensed">
 					<%
-						if (loginUser.getId_no() != null && loginUser.getPaddress() != null && loginUser.getPhone() != null) {
+						if (loginUser.getId_no() != null) {
 					%>
 					<%
 						    String[] idNo = loginUser.getId_no().split("-");

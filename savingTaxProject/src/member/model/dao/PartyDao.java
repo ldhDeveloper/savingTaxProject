@@ -34,56 +34,49 @@ public class PartyDao {
 		 * "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 		 */
 
-		String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-		String query2 = "select phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
+		String query2 = "select pno, pname, category, id, pwd, email, phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
 
 		try {
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(query2);
 
 			pstmt.setString(1, uid);
+			System.out.println("uid: "+uid);
 			pstmt.setString(2, pwd);
+			System.out.println("pwd:"+pwd);
 
 			rset = pstmt.executeQuery();
 
 			if (rset.next()) {
-				p = new Party();
+				p=new Party();
 				p.setPno(rset.getInt("pno"));
 				p.setPname(rset.getString("pname"));
 				p.setCategory(rset.getInt("category"));
 				p.setId(rset.getString("id"));
 				p.setPwd(rset.getString("pwd"));
 				p.setEmail(rset.getString("email"));
+				p.setPhone(rset.getString("phone"));
+				p.setId_no(rset.getString("id_no"));
+				p.setCname(rset.getString("cname"));
+				p.setCno(rset.getString("cno"));
+				p.setPaddress(rset.getString("paddress"));
+				p.setCaddress(rset.getString("caddress"));
+				p.setCstatus(rset.getString("cstatus"));
+				p.setPosition(rset.getString("position"));
+				p.setOday(rset.getDate("oday"));
+				p.setWno(rset.getInt("wno"));
+				p.setTaxtype(rset.getInt("taxtype"));
+				p.setNotax_yn(rset.getInt("notax_yn"));
+				p.setPresident(rset.getString("president"));
+				p.setTel(rset.getString("tel"));
+				p.setEmp_type(rset.getString("emp_type"));
+				p.setJoin_date(rset.getDate("join_date"));
+				p.setBusi_type(rset.getInt("busi_type"));
+				p.setBirth(rset.getString("birth"));
+				p.setGender(rset.getString("gender"));
 
-				if (rset.getInt("category") == 1) {
-					pstmt2 = con.prepareStatement(query2);
-					pstmt2.setString(1, uid);
-					pstmt2.setString(2, pwd);
-
-					rset2 = pstmt2.executeQuery();
-
-					if (rset2.next()) {
-						p.setPhone(rset2.getString("phone"));
-						p.setId_no(rset2.getString("id_no"));
-						p.setCname(rset2.getString("cname"));
-						p.setCno(rset2.getString("cno"));
-						p.setPaddress(rset2.getString("paddress"));
-						p.setCaddress(rset2.getString("caddress"));
-						p.setCstatus(rset2.getString("cstatus"));
-						p.setPosition(rset2.getString("position"));
-						p.setOday(rset2.getDate("oday"));
-						p.setWno(rset2.getInt("wno"));
-						p.setTaxtype(rset2.getInt("taxtype"));
-						p.setNotax_yn(rset2.getInt("notax_yn"));
-						p.setPresident(rset2.getString("president"));
-						p.setTel(rset2.getString("tel"));
-						p.setEmp_type(rset2.getString("emp_type"));
-						p.setJoin_date(rset2.getDate("join_date"));
-						p.setBusi_type(rset2.getInt("busi_type"));
-						p.setBirth(rset2.getString("birth"));
-						p.setGender(rset2.getString("gender"));
-					}
-				}
+		
 			}
 
 		} catch (Exception e) {
@@ -169,22 +162,23 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=?";
+		String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=?";
 
 		try {
 			System.out.println("p: " + p);
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, p.getPname());
-			pstmt.setString(2, p.getId());
-			pstmt.setString(3, p.getPwd());
-			pstmt.setString(4, p.getEmail());
-			pstmt.setString(5, p.getId_no());
-			pstmt.setString(6, p.getPaddress());
-			pstmt.setString(7, p.getPhone());
-			pstmt.setString(8, p.getBirth());
-			pstmt.setString(9, p.getGender());
-			pstmt.setInt(10, p.getPno());
+			pstmt.setInt(1, p.getPno());
+			pstmt.setString(2, p.getPname());
+			pstmt.setString(3, p.getId());
+			pstmt.setString(4, p.getPwd());
+			pstmt.setString(5, p.getEmail());
+			pstmt.setString(6, p.getId_no());
+			pstmt.setString(7, p.getPaddress());
+			pstmt.setString(8, p.getPhone());
+			pstmt.setString(9, p.getBirth());
+			pstmt.setString(10, p.getGender());
+			pstmt.setInt(11, p.getPno());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -257,13 +251,14 @@ public class PartyDao {
 		ResultSet rset = null;
 		int pno = 0;
 
-		String query = "select pno from party where id_no=?";
+		String query = "select pno from party where email=?";
 		try {
 			pstmt=con.prepareStatement(query);
-			pstmt.setString(1, p.getId_no());
+			pstmt.setString(1, p.getEmail());
 			rset=pstmt.executeQuery();
 		    if(rset.next()){
-		    	pno = rset.getInt(pno);
+		    	pno = rset.getInt("pno");
+		    	System.out.println("rset pno:  "+pno);
 		    }
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -284,6 +279,7 @@ public class PartyDao {
 			pstmt.setInt(1, owner);
 			pstmt.setInt(2, pno);
 			
+			System.out.println("party_rel: "+owner+", "+pno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -492,7 +488,10 @@ public class PartyDao {
 
 	/////올라가서 바로 작업
 	public ArrayList<Party> selectList(Connection con, int owner, int pno) {
-		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		 
+		String query = "select * from party";
 		return null;
 	}
 
@@ -527,7 +526,7 @@ public class PartyDao {
 		return result;
 	}
 
-	public int selectPno(Connection con, Party p) {
+	public int selectPno2(Connection con, Party p) {
 		int pno = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

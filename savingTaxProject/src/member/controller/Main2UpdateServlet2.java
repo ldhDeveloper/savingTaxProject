@@ -44,7 +44,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
-		String cno2 = request.getParameter("con2");
+		String cno2 = request.getParameter("cno2");
 		String cno3 = request.getParameter("cno3");
 		String cstatus = request.getParameter("cstatus");
 		String ctype = request.getParameter("ctype");
