@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,7 @@
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 <script src="/jsmi/js/main2/bootstrap.min.js"></script>
-<title>장부작성</title>
+<title>장부수정</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -159,11 +158,11 @@
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
 							$("#itablebody").html($("#itablebody").html() +
-									"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
-									"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk'>" +
-									"<td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
-									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
-									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+									"<tr id='listdiary" + i + "' name='selrow'><td><div class='radio' style='margin: 0 auto;'> " + 
+									"<input type='radio' name='diaryradio' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' onclick='radioclick(" + i + ", " + jsonArr.list[i].dno +");'>" +
+									"<td name='selatype'>" + jsonArr.list[i].atype + "</td><td name='selddate'>" + jsonArr.list[i].ddate + "</td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + 
+									"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
+									"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 						}
 					},
 					error: function(request,status,error){
@@ -202,7 +201,9 @@
 				});
 			});
 			
-			$('#indiary').click(function(){
+			$('#updiary').click(function(){
+				var dno = $('input[name=seldno]').val();
+				console.log("dno : " + dno)
 				var billtype = $('button[name=bill_type]').text().trim();
 				console.log("billtype : " + billtype);
 				var indate = $('#dealdate').val();
@@ -220,8 +221,8 @@
 				var proof = $('#proof').text().trim();
 				console.log("proof : " + proof);
 				$.ajax({
-					url: "/jsmi/dinsert",
-					data: {billtype : billtype, indate : indate, seldealer : seldealer, product : product, actype : actype, cost : cost, bill_how : bill_how, proof : proof, pno : pno }, 
+					url: "/jsmi/dupdate",
+					data: {dno : dno, billtype : billtype, indate : indate, seldealer : seldealer, product : product, actype : actype, cost : cost, bill_how : bill_how, proof : proof, pno : pno }, 
 					type: "post",
 					dataType: "json",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -271,13 +272,31 @@
 				$('#selectdealer').css("border", "2px solid #5bc0de");
 				$('#myModal2').modal("hide");
 			}
+			
+
+			function radioclick(data1, data2){
+					console.log("라디오 클릭");
+					var listname = "#listdiary" + data1;
+					$('input[name=seldno]').val(data2);
+					$('button[name=bill_type]').html($(listname).children('td[name=selatype]').text() + "<span class='caret'></span>");
+					$('input[name=indate]').val($(listname).children('td[name=selddate]').text());
+					$('input[name=seldealer]').val($(listname).children('td[name=selpname]').text());
+					$('input[name=actype]').val($(listname).children('td[name=selanm]').text());
+					$('input[name=product]').val($(listname).children('td[name=selproduct]').text());
+					$('input[name=cost]').val($(listname).children('td[name=selcost]').text());
+					$('button[name=bill_how]').html($(listname).children('td[name=selbilling]').text());
+					$('button[name=proof]').html($(listname).children('td[name=selproof_type]').text() + "<span class='caret'></span>");
+					
+			}
+			
+			
 		</script>
 		<div class="section">
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
 			    <ul class="nav navbar-nav" id="dselector">
-			      <li class="active" id="dinput"><a href="#">장부입력</a></li>
-			      <li id="dmodify"><a href="#">장부수정</a></li>
+			      <li id="dinput"><a href="#">장부입력</a></li>
+			      <li class="active" id="dmodify"><a href="#">장부수정</a></li>
 			      <li id="ddelete"><a href="#">장부삭제</a></li>
 			    </ul>
 			  </div>
@@ -320,11 +339,11 @@
 									for(var i in jsonArr.list){
 										console.log(jsonArr.list[i].atype);
 										$("#itablebody").html($("#itablebody").html() +
-												"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
-												"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk'>" +
-												"</div></td><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
-												"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
-												"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+												"<tr id='listdiary" + i + "' name='selrow'><td><div class='radio' style='margin: 0 auto;'> " + 
+												"<input type='radio' name='diaryradio' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' onclick='radioclick(" + i + ", " + jsonArr.list[i].dno +");'>" +
+												"<td name='selatype'>" + jsonArr.list[i].atype + "</td><td name='selddate'>" + jsonArr.list[i].ddate + "</td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + 
+												"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
+												"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 									}
 								},
 								error: function(request,status,error){
@@ -355,6 +374,7 @@
 						<table class="table table-condensed">
 							<tbody id=itablebody>
 								<tr>
+									<th>선택</th>
 									<th>거래구분</th>
 									<th>날짜</th>
 									<th>거래처</th>
@@ -364,7 +384,7 @@
 									<th>결재방법</th>
 									<th>증빙자료</th>
 								</tr>
-								<tr>
+								<tr name='selrow'>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -435,8 +455,7 @@
 							<li><a class="pagi" href="#">5</a></li>
 						</ul>
 					</div>
-					<!-- 추가 폼 -->
-					<form action="/jsmi/" method="post" id="dinputform">
+					<form action="/jsmi/" method="post" id="dmodifyform">
 						<table class="table table-condensed">
 							<tbody>
 								<tr>
@@ -450,6 +469,9 @@
 									<th>증빙자료</th>
 								</tr>
 								<tr>
+									<td style="display:none">
+										<input type ="hidden" name="seldno" value="">
+									</td>
 									<td>
 										<div class="dropdown">
 											<button class="btn btn-default dropdown-toggle" type="button"
@@ -558,11 +580,12 @@
 						<div class="row">
 							<div class="col-md-5"></div>
 							<div class="col-md-3">
-								<input type="button" id="indiary" class="btn btn-success" value="추가">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="button" id="updiary" class="btn btn-primary" value="수정">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" id="cancel" class="btn btn-danger" value="취소">
 							</div>
 							<div class="col-md-4"></div>
 						</div>
+
 					</form>
 				</div>
 

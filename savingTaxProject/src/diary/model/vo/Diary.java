@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Diary {
 
+private int dno;
 private String atype;
 private Date ddate;
 private String pname;
@@ -12,6 +13,15 @@ private String product;
 private int cost;
 private String billing;
 private String proof_type;
+
+
+
+public int getDno() {
+	return dno;
+}
+public void setDno(int dno) {
+	this.dno = dno;
+}
 public String getAtype() {
 	return atype;
 }
@@ -62,10 +72,10 @@ public void setProof_type(String proof_type) {
 }
 
 public Diary(){}
-
-public Diary(String atype, Date ddate, String pname, String anm, String product, int cost, String billing,
+public Diary(int dno, String atype, Date ddate, String pname, String anm, String product, int cost, String billing,
 		String proof_type) {
 	super();
+	this.dno = dno;
 	this.atype = atype;
 	this.ddate = ddate;
 	this.pname = pname;
@@ -77,9 +87,11 @@ public Diary(String atype, Date ddate, String pname, String anm, String product,
 }
 @Override
 public String toString() {
-	return "Diary [atype=" + atype + ", ddate=" + ddate + ", pname=" + pname + ", anm=" + anm + ", product=" + product
-			+ ", cost=" + cost + ", billing=" + billing + ", proof_type=" + proof_type + "]";
+	return "Diary [dno=" + dno + ", atype=" + atype + ", ddate=" + ddate + ", pname=" + pname + ", anm=" + anm
+			+ ", product=" + product + ", cost=" + cost + ", billing=" + billing + ", proof_type=" + proof_type + "]";
 }
+
+
 
 
 

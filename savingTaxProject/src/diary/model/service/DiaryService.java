@@ -59,6 +59,23 @@ public class DiaryService {
 		close(con);
 		return list;
 	}
+
+
+	public ArrayList<Diary> updateDiary(Diary diary, String indate, String pno) {
+		Connection con = getConnection(); 
+		ArrayList<Diary> list = null;
+		int result= new DiaryDao().UpdateDiary(con, diary, indate, pno);
+		
+		if(result > 0){
+			commit(con);
+			System.out.println("update 성공");
+			list = new DiaryDao().DailySearch(con, indate, pno);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return list;
+	}
 	
 	
 
