@@ -146,7 +146,7 @@ public class PartyService {
 		int result1 = new PartyDao().insertEmp(con, p);
 		
 		if(result1 > 0){
-			pno = new PartyDao().selectPno(con, p);
+			pno = new PartyDao().selectPno2(con, p);
 			if(pno != 0){
 				result2 = new PartyDao().insertEmpRel(con, owner, pno);
 			}
@@ -173,4 +173,4 @@ public class PartyService {
 }
 
 
-}
+

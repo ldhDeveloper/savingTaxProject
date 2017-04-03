@@ -199,8 +199,8 @@
 				</div>
 			</div>
 			<h3 align="center">직원 정보 입력/수정</h3>
-			<form action="/jsmi/empinput" method="post">
-				<input type="hidden" value="<%= loginUser.getPno() %>" name="owner">
+
+				
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<table class="table table-condensed">
@@ -335,7 +335,6 @@
 					</div>
 				</div>
 
-			</form>
 
 
 		</div>
@@ -345,13 +344,12 @@
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 	
 	<script>
-				$(function(){
-					
-					var pno = <%= loginUser.getPno() %>
+				 $(function(){
+					var pno = <%= loginUser.getPno() %>;
 					$.ajax({
 						url:"/jsmi/emplist",
 						data: {pno: pno},
-						type:"get",
+						type:"post",
 						dataType:"JSON",
 						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 						success:function(data){
@@ -368,6 +366,47 @@
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					       }
+					});
+				}); 
+				
+				$("#insert").click(function(){
+					var pno = <%= loginUser.getPno() %>;
+					var empname = $("input[name=empname]").val();
+					var optradio = $("input[name=optradio]").val();
+					var empno1 = $("input[name=empno1]").val();
+					var empno2 = $("input[name=empno2]").val();
+					var position = $("input[name=position]").val();
+					var hiredate = $("input[name=hiredate]").val();
+					var phone1 = $("input[name=phone1]").val();
+					var phone2 = $("input[name=phone2]").val();
+					var phone3 = $("input[name=phone3]").val();
+					var add1 = $("input[name=add1]").val();
+					var add2 = $("input[name=add2]").val();
+					var add3 = $("input[name=add3]").val();
+					var email1 = $("input[name=email1]").val();
+					var email2 = $("input[name=email2]").val();
+					$.ajax({
+						url:"/jsmi/empinput",
+						data: {pno:pno, empname:empname, optradio:optradio, empno1:empno1, empno2:empno2, position:position, 
+							hiredate:hiredate, phone1:phone1, phone2:phone2, phone3:phone3, add1:add1, add2:add2, add3:add3, email1:email1, email2:email2},
+						type:"post",
+						dataType:"JSON",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						success:function(data){
+							console.log("json 성공");
+							var jsonObj = JSON.stringify(data);
+							var jsonArr = JSON.parse(jsonObj);
+							
+							$("#emptable").html("<tr><th>직원명</th><th>직원구분</th><th>직급</th><th>입사년월일</th><th>연락처</th><th>직원 주소지</th><th>이메일</th></tr>");
+							for(var i in jsonArr.emplist){
+								
+								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td></tr>");
+							}
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					       }
+						
 					});
 				});
 			</script>

@@ -37,6 +37,7 @@ public class EmployeeSelectListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pno = Integer.parseInt(request.getParameter("pno"));
+		System.out.println(pno);
 		ArrayList<Party> emplist = new PartyService().selectEmpList(pno);
 		
 		JSONObject json = new JSONObject();
