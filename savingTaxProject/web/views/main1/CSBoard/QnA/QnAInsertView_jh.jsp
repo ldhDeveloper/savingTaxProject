@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>	
-<% int currentPage = Integer.parseInt(request.getParameter("page"));
-	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-%>
+	pageEncoding="UTF-8"%>
+	
+<%@ page import="member.model.vo.Party" %>
 
+<%
+	Party loginUser = (Party)session.getAttribute("loginUser");
+%>	
 
 <!DOCTYPE html>
 <html>
@@ -266,7 +268,40 @@
 						</td> 
 					</tr>
 				
-					
+					<tr>
+						<td class="Qlist Qright Qlistt">
+							번호
+						</td>
+						
+						<td class="Qright">
+							여기에 번호 값 넣기
+						</td>
+						
+						<td class="Qlistt Qright">
+							작성일자
+						</td>
+						
+						<td class="Qright">
+							여기에 작성일자 값 넣기
+						</td>
+						
+						<td class="Qlistt Qright">
+							작성자
+						</td>
+						
+						<td class="Qright">
+							<%= loginUser.getPname() %>
+							<input value="<%= loginUser.getPno() %>" name="pno" type="hidden">							
+						</td>
+						
+						<td class="Qlistt Qright">
+							조회수
+						</td>
+						
+						<td class="Qcount">
+							여기에 조회수 값 넣기
+						</td> 
+					</tr>
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>

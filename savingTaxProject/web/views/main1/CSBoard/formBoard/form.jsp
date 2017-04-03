@@ -306,10 +306,9 @@ background : rgba(233, 233, 233, 0.7);
 						<% } %>
 							<tr style="height:20px;"></tr>
 					<tr>
-				
+
 					<td colspan = "3" align="center">
-					<%if(currentPage <=1){ %>
-					[이전]
+					<%if(currentPage <=1){ %>					[이전]
 					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
 					 <%} for(int p = startPage; p <= endPage; p++){%>
 					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>">[<%=p%>]</a>
@@ -367,7 +366,7 @@ background : rgba(233, 233, 233, 0.7);
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
-				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+				 ="location.href='/jsmi/views/main1/CSBoard/formBoard/formInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 			<%} %>
 	</div>

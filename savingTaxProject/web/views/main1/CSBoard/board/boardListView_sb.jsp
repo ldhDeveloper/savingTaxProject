@@ -270,16 +270,7 @@ label {
 
 		<div class="tableStart">
 			<table class="tablemd">
-				<!-- <thead class="theadmd font-family-md-2">
-					<tr>
-						<th class="tno thmd thmdl">번호</th>
-						<th class="ttitle thmd thmdm">제목</th>
-						<th class="tdate thmd thmdr">작성일</th>
-					</tr>
-				</thead> -->
-				
-				
-				<tbody class="tbodymd font-family-md-3">
+			<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
 					<tr>
 						<td class="tno tdmd">
@@ -302,7 +293,7 @@ label {
 					</tr>
 						<% } %>
 					<tr>
-					<br><br>
+
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]

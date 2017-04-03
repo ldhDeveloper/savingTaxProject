@@ -31,7 +31,6 @@ public class InsertComentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		int currentPage =Integer.parseInt(request.getParameter("page"));
 		int pNo = Integer.parseInt(request.getParameter("pNo"));

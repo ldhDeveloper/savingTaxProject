@@ -303,8 +303,7 @@ background : rgba(233, 233, 233, 0.7);
 					</tr>
 						<% } %>
 					<tr>
-						<tr style="height:20px;"></tr>
-						<tr>
+
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]
@@ -365,8 +364,10 @@ background : rgba(233, 233, 233, 0.7);
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
-				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
-			</div> <%} %>
+
+				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+			</div>
+
 	</div>
 
 

@@ -235,10 +235,8 @@ table {
 .Qreply {
 	border-bottom : 1px solid #ddd;
 	font-family: computer !important;
-	border-top : 1px solid #ddd;
 	padding : 2.5%;
 	font-size: 12pt;
-	heigth: 10%;
 	color: #2a82a3;
 }
 
@@ -250,13 +248,75 @@ table {
 
 .textAreareply{
 	font-family: NotoSansCJKkr-Ligth !important;
-	border : none;
-	max-width: 970px;
-	min-width: 970px;
-	max-height: 200px;
-	min-height: 200px;
+	/* border : none; */
+	max-width: 850px;
+	min-width: 850px;
+	max-height: 100px;
+	min-height: 100px;
 	font-size : 15pt;
 }
+
+.submitBtns {
+	border: none;
+	border-radius: 3px;
+	background-color: #2a82a3;
+	color: white;
+	font-family: Binggrae !important;
+		
+}
+
+.cancleBtns {
+	border: none;
+	border-radius: 3px;
+	background-color: darkorange;
+	color: white;
+	font-family: Binggrae !important;
+}
+
+.OreplyBtn {
+	border-bottom : 1px solid #ddd;
+}
+
+.QreplyComent {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	padding-top: 1%;
+	padding-left : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+	height: 200px;
+}
+
+.lastBtns {
+	border: none;
+	border-radius: 3px;
+	background-color: darkorange;
+	color: white;
+	font-family: Binggrae !important;
+}
+
+.Qreplying {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
+.Qreplying2 {
+	border-bottom : 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	padding : 2.5%;
+	font-size: 12pt;
+}
+
+.QreplyContent {
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
 
 </style>
 
@@ -321,7 +381,6 @@ table {
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
 							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
-							<img src="/jsmi/images/수현찡.jpg">
 							<h3></h3>
 						</td>
 					</tr>
@@ -333,90 +392,99 @@ table {
 		
 		<div>
 			<form action = "/jsmi/insertcomment" method = "post">
-			<table>
-				
+			<table class="replyTable">				
 					<tr>
-						<td colspan="2" class="Qreply">
-							댓글 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" value="" name="contents"></textarea></label>
-							<p class = "comments"> &nbsp;<br><br>
-							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"></span>
-							<br><br>
-						 	<span style="color :gray" > </span> </p>
-						 	
-						 	<input type="submit" class="btn btn-primary" value="등록">
+						<td class="Qreply">
+							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+						</td>
+						
+						<td class="OreplyBtn">
+							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
 							<%if(loginUser != null) {%>
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
-							<input type = "hidden" name = "page" value="<%=currentPage%>">	
-							<input type="submit" class="btn btn-primary" value="취소">
+							<input type = "hidden" name = "page" value="<%=currentPage%>">
+							<input type="submit" class="submitBtns" value="등록">
+						</td>
+						
+						<td class="OreplyBtn">															
+							<input type="submit" class="cancleBtns" value="취소">
 						</td>
 					</tr>
-					
-					<tr style = "height :50px;"></tr>	
-						<%if(commentList !=null){ for(Post c : commentList){ %>
-						<tr>
-						<td colspan="7">
-						<p class = "comments"> &nbsp;<%=c.getpId() %><br><br>
-							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"> <%=c.getPostContents() %></span>
-							<br><br>
-						 	<span style="color :gray" > <%=c.getPostDate() %> </span> </p> </td>
-						</tr>
-						<%}} %>
 			</table>
 			</form>
 		</div>
 		
-		<div>
-			<table>
-				
+		<div>					
+			<table class="replyTable">				
 					<tr>
-						<td colspan="8" class="Qreply">
-							댓글 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" value="" name="contents"></textarea></label>
-							<p class = "comments"> &nbsp;<br><br>
-							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"></span>
-							<br><br>
-						 	<span style="color :gray" > </span> </p>
+						<td colspan="4" class="QreplyContent">
+							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
 						</td>
+					</tr>
+					
+					<tr>						
+						<% if(commentList != null) { for(Post c : commentList) { %>
+						<td class="Qreplying">
+							작성자						
+						</td>
+						
+						<td class="Qreplying2">
+							<%=c.getpId() %>
+						</td>
+						
+						<td class="Qreplying">
+							작성일							
+						</td>
+						
+						<td class="Qreplying2">
+							<%=c.getPostDate() %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" class="Qreplying">
+							작성내용						
+						</td>
+						
+						<td colspan="2" class="Qreplying2">
+							<%=c.getPostContents() %>
+						</td>
+						<% }} %>
 					</tr>
 			</table>
 		</div>
 		
-		<br><br><br>
-				
+		<br>
 		
-		
-		<%-- <div>
+		<div>
 			<table>
-				<tr class = "active"><td style = "text-align:center">덧글작성</td>
-					<td colspan="6"><textarea  class="form-control" rows="3"
-							id="comment" name = "postContents"></textarea></td>
-					<td><input type="submit" class="btn btn-primary" value="등록">
-					<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
-					<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-					<%if(loginUser != null) {%>
-					<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
-					<% } %>
-					<input type = "hidden" name = "page" value="<%=currentPage%>">
+				<tr>
+				<td align="right">
+					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 		
-						<input type="submit" class="btn btn-primary" value="취소"></td>
-						</tr>
-						<tr style = "height :50px;"></tr>	
-						<%if(commentList !=null){ for(Post c : commentList){ %>
-						<tr>
-						<td colspan="7">
-						<p class = "comments"> &nbsp;<%=c.getpId() %><br><br>
-							&nbsp;&nbsp;&nbsp;<span style="font-size:16px;"> <%=c.getPostContents() %></span>
-							<br><br>
-						 	<span style="color :gray" > <%=c.getPostDate() %> </span> </p> </td>
-						</tr>
-						<%}} %>
-						<tr></tr>
-			</table>
-		</div> --%>
+					<button class="updateBtn" onclick="redact();">수정하기</button>
+				
+					<script type="text/javascript">
+						function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+					</script>
+			
+					<% }} %>
+				</td>
+
+				<td align="right" >
+					<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="lastBtns">이전</a>	
+				</td>
+				</tr>
+			</table>					
+		</div>
+		
+		<br><br>
 		
 		<div class="tableStart2">
 			<table class="tablemini">
@@ -436,38 +504,9 @@ table {
 			</table>
 		</div>
 		
-		<br><br>
-		
-		<div align="right">
-		<% if(loginUser !=null){ if(loginUser.getPno() == p.getpNo()) {%>
-				<button class="btn btn-primary redact" onclick="redact();">수정하기</button>
-				
-				<script type="text/javascript">
-				function redact(){
-					location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-				}
-				</script>
-				<% }} %>
-				<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="btn btn-warning">이전</a>				
-			</div>
-		
-		
-		
+		<br><br>		
 
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<!-- 모바일용 -->
 	<br>
