@@ -1,4 +1,4 @@
-package diary.controller;
+package member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import diary.model.service.DiaryService;
-import diary.model.vo.Diary;
+import member.model.server.PartyService;
+import member.model.vo.Party;
 
 /**
- * Servlet implementation class DiaryTermSearch
+ * Servlet implementation class Myinfo3List
  */
-@WebServlet("/dtsearch")
-public class DiaryTermSearch extends HttpServlet {
+@WebServlet("/m3list")
+public class Myinfo3List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DiaryTermSearch() {
+    public Myinfo3List() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,35 +35,29 @@ public class DiaryTermSearch extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sdate = request.getParameter("sdate");
-		String edate = request.getParameter("edate");
-		String pno = request.getParameter("pno");
-		System.out.println("sdate : " + sdate);
-		System.out.println("edate : " + edate);
-		System.out.println("pno : " + pno);
 		
-		ArrayList<Diary> list = new DiaryService().TermSearch(sdate, edate, pno);
-		System.out.println("list :" + list);
+		int pno =Integer.parseInt(request.getParameter("pno")); 
+		int owner= Integer.parseInt(request.getParameter("owner"));
+		ArrayList<Party> list = new PartyService().selectList(owner ,pno);
+		
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();
 		
-		for(Diary dlist : list){
-			System.out.println("dlist : " + dlist);
+		for(Party plist : list){
 			JSONObject jsob = new JSONObject();
-			jsob.put("dno", Integer.toString(dlist.getDno()));
-			jsob.put("atype", dlist.getAtype());
-			jsob.put("ddate", dlist.getDdate().toString());
-			jsob.put("pname", dlist.getPname());
-			jsob.put("anm", dlist.getAnm());
-			jsob.put("product", dlist.getProduct());
-			jsob.put("cost", Integer.toString(dlist.getCost()));
-			jsob.put("billing", dlist.getBilling());
-			jsob.put("proof_type", dlist.getProof_type());
+			jsob.put("pno", plist.getPno());
+			jsob.put("cname", plist.getCname());
+			jsob.put("president", plist.getPresident());
+			jsob.put("cno", plist.getCno());
+			jsob.put("cstatus", plist.getCstatus());
+			jsob.put("ctype", plist.getCtype());
+			jsob.put("tel", plist.getTel());
+			jsob.put("caddress", plist.getCaddress());
+			jsob.put("email", plist.getEmail());
 			jarr.add(jsob);
 		}
 		
 		json.put("list", jarr);
-		System.out.println(json);
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		

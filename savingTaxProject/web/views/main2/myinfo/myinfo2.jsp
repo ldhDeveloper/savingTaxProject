@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -103,6 +103,7 @@
 			</div>
 			<form action="/jsmi/update.info2" method="post">
 				<input type="hidden" name="userid" value="<%=loginUser.getId()%>">
+				<input type="hidden" name="pno" value="<%=loginUser.getPno()%>">
 				<table class="table table-condensed">
 					<tbody>
 						<%

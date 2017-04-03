@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -82,8 +82,8 @@
 			} else {
 				$('#email2').val($(this).text());
 			}
-		})
-	})
+		});
+	});
 </script>
 </head>
 <body style="padding-top: 0px">
@@ -97,6 +97,49 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
+		<input type="hidden" value="<%=loginUser.getPno() %>" name="pno">
+		<script>
+		<%if(loginUser != null) {%>
+		var pno = <%= loginUser.getPno() %>;
+		console.log("pno : " + pno);
+		<%} %>
+		$(function(){
+			$('#detail').click(function(){
+				var owner = <%= loginUser.getPno() %>
+				 $.ajax({
+					 url: "/jsmi/m3list" ,
+					 data:{owner:owner},
+					 type: "get",
+					 datatype: "json",
+					 success: function(data){
+							console.log("json 성공");
+							console.log("data : " + data);
+							var jsonObj = JSON.stringify(data);
+							//변환된 제이슨 객체를 제이슨 배열로 변환
+							var jsonArr = JSON.parse(jsonObj);
+						
+							$("#detaillist").html("<tr><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th>");
+							for(var i in jsonArr.list){
+								console.log(jsonArr.list[i].atype);
+								$("#detaillist").html($("#detaillist").html() +
+										"<tr style='cursor:pointer' onclick='detailview(\"" + decodeURIComponent(jsonArr.list[i].cname) + "\");'><td>" + decodeURIComponent(jsonArr.list[i].president) + "</td><td>" + jsonArr.list[i].cno + 
+										"</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) + "</td><td>" + jsonArr.list[i].tel + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress) + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) +
+										"</td><td>");
+							}
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+				 })
+			});
+		});
+
+		function detailview(data){
+			
+		}
+		
+		</script>
+		
 		<div class="section">
 			<br>
 			<div class="navbar navbar-default">
@@ -111,16 +154,17 @@
 					</ul>
 				</div>
 			</div>
+			
 			<form action="/jsmi/insert.info3" method="post">
-				<table class="table table-condensed">
+				<table class="table table-condensed" id="detaillist">
 					<tbody>
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cname"></td>
+								name="cname" id="cname"></td>
 							<td class="col-md-2"><h5>대표자명</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="president"></td>
+								name="president" id="president"></td>
 
 						</tr>
 						<tr>
@@ -128,17 +172,17 @@
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno">
+									<input type="text" class="form-control" name="cno" id="cno">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno2">
+									<input type="text" class="form-control" name="cno2" id="cno2">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno3">
+									<input type="text" class="form-control" name="cno3" id="cno3">
 								</div>
 							</td>
 							<td class="col-md-2"><h5>개인/법인사업자 여부</h5></td>
@@ -146,10 +190,10 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio" value="1">개인</label>
+											<label><input type="radio" name="optradio" value="1" id="individual">개인</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio" value="2">법인</label>
+											<label><input type="radio" name="optradio" value="2" id="corporate">법인</label>
 										</div>
 									</div>
 								</div>
@@ -158,10 +202,10 @@
 						<tr>
 							<td class="col-md-2"><h5>업태</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cstatus"></td>
+								name="cstatus" id="cstatus"></td>
 							<td class="col-md-2"><h5>종목</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="ctype"></td>
+								name="ctype" id="ctype"></td>
 
 						</tr>
 						<tr>
@@ -169,17 +213,17 @@
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel">
+									<input type="text" class="form-control" name="tel" id="tel">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel2">
+									<input type="text" class="form-control" name="tel2" id="tel2">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel3">
+									<input type="text" class="form-control" name="tel3" id="tel3">
 								</div>
 							</td>
 						</tr>
@@ -188,11 +232,11 @@
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="caddress">
+										name="caddress" >
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
-								"onclick="sample4_execDaumPostcode();"></td>
+								onclick="sample4_execDaumPostcode();"></td>
 						</tr>
 						<tr>
 							<td class="col-md-2">&nbsp;</td>
@@ -205,7 +249,7 @@
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="email">
+									<input type="text" class="form-control" name="email" id="email">
 								</div>
 								<div class="col-md-1" style="text-align: center">@</div>
 								<div class="col-md-3"
@@ -244,9 +288,9 @@
 				</table>
 
 				<div class="btngroup">
-					<input type="submit" class="btn btn-primary" value="다음">
-					<input type="button" class="btn btn-warning" value="수정하기" onclick="location.href='views/main2/myinfo/myinfo3update.jsp'">
+					<input type="submit" class="btn btn-primary" value="입력">
 					<button class="btn btn-danger" type="reset">취소</button>
+					<input type="button" class="btn btn-warning" value="목록" id="detail">
 				</div>
 			</form>
 

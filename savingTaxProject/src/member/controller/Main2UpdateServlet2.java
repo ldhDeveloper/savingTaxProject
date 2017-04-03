@@ -39,8 +39,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("test/html; charset=utf-8");
 
+		int pno =Integer.parseInt(request.getParameter("pno")); 
 		String userid = request.getParameter("userid");
-		
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
@@ -67,6 +67,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		
 
          Party party = new PartyService().selectParty(userid);
+         party.setPno(pno);
          party.setCname(cname);
          party.setPresident(president);
          party.setCno(Cno);
@@ -80,6 +81,8 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 party.setNotax_yn(notax_yn);
 		 
 		 int result = new PartyService().updatePartyMyinfo(party); 
+		 System.out.println("result2 :"+result);
+		 System.out.println("party2: "+party);
 		 
 		 Party loginUser=new PartyService().selectParty(userid);
 		 
