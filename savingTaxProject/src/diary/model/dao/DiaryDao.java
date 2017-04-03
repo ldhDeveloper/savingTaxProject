@@ -19,7 +19,6 @@ private Properties prop = new Properties();
 		try {
 			prop.load(new InputStreamReader(this.getClass().getResourceAsStream("diary.properties")));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
