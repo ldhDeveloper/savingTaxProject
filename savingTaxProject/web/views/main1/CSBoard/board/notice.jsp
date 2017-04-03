@@ -22,9 +22,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -198,10 +197,13 @@ label {
 	border-radius: 3px;
 	border-color: #d58512;
 	color: white;
-	width: 8%;
-    height: 25px;
+	width: 15%;
+    height: 30px;
 	font-family: Binggrae !important;
 	background-color : #ec971f;
+}
+tr:hover {
+background : rgba(233, 233, 233, 0.7);
 }
 
 
@@ -227,7 +229,7 @@ label {
 				<img src="/jsmi/images/main1/notice.png"><br>
 				<br> 절세미인의 <label>공지사항</label>입니다.
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
+			<h4 style="color: #a9a9a9" align="center">우리 직원도 남의 집 귀한 자식</h4>
 		</div>
 
 		<br> <br> <br>
@@ -277,11 +279,11 @@ label {
 						<th class="tdate thmd thmdr">작성일</th>
 					</tr>
 				</thead> -->
+				<tr style = "height:20px;"></tr>
 				
-				
-				<tbody class="tbodymd font-family-md-3">
+				<tbody class="tbodymd font-family-md-2">
 				<% if(plist != null) for(Post p : plist) { %>
-					<tr>
+					<tr style = "height:55px;">
 						<td class="tno tdmd">
 							<%= p.getPostNo() %>
 						</td>
@@ -292,7 +294,7 @@ label {
 							</a>
 						</td>
 						<td class="twriter tdmd">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<%= p.getpId() %>
@@ -301,16 +303,17 @@ label {
 						
 					</tr>
 						<% } %>
+						<tr style="height:20px;"></tr>
 					<tr>
-					<br><br>
+					
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]
-					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전] </a>
 					 <%} for(int p = startPage; p <= endPage; p++){%>
-					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"> [<%=p%>]</a>
 					 <%} %>
-					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
+					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>"> [마지막]</a>
 						</td>
 					</tr>
 				
@@ -359,12 +362,13 @@ label {
 		</div>
 		
 		<br>
-		
-			<div align="right">
+		<%if(loginUser !=null){ %>
+			<div align="right" >
 				<button id="submitBtn2"
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAWrite.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
+			<%} %>
 	</div>
 
 
