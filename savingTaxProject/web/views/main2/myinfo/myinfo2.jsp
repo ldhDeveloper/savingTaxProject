@@ -104,6 +104,7 @@
 			<form action="/jsmi/update.info2" method="post">
 				<input type="hidden" name="userid" value="<%=loginUser.getId()%>">
 				<input type="hidden" name="pno" value="<%=loginUser.getPno()%>">
+				  <% System.out.println("userid,userpno myinfo2: "+loginUser.getId()+loginUser.getPno()); %>
 				<table class="table table-condensed">
 					<tbody>
 						<%

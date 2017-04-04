@@ -37,6 +37,7 @@ public class Main2InsertServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 
 		int pno = Integer.parseInt(request.getParameter("pno"));
+		System.out.println("pno.sevlet:"+pno);
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
@@ -72,6 +73,8 @@ public class Main2InsertServlet extends HttpServlet {
 		p.setEmail(Email);
 
 		int result = new PartyService().insertPartyMyinfo3(p, pno);
+		System.out.println("P: "+p);
+		System.out.println("Pno info3: "+pno);
 
 		if (result > 0) {
 			response.sendRedirect("/jsmi/views/main2/menu/main2.html");

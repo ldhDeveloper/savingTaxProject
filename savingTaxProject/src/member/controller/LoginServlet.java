@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		//System.out.println(uid);
 		
 		Party LoginUser = new PartyService().loginParty(uid, upwd);
-		
+		System.out.println("loginUser: "+LoginUser);
 		//System.out.println(m);
 		
 		if(LoginUser != null) {

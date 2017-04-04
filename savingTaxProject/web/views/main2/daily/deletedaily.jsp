@@ -158,11 +158,11 @@
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
 							$("#itablebody").html($("#itablebody").html() +
-									"<tr id='listdiary" + i + "' name='selrow'><td><div class='radio' style='margin: 0 auto;'> " + 
-									"<input type='radio' name='diaryradio' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' onclick='radioclick(" + i + ", " + jsonArr.list[i].dno +");'>" +
-									"<td name='selatype'>" + jsonArr.list[i].atype + "</td><td name='selddate'>" + jsonArr.list[i].ddate + "</td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + 
-									"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
-									"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+									"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
+									"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' name='delselect'>" +
+									"<td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 						}
 					},
 					error: function(request,status,error){
@@ -201,55 +201,6 @@
 				});
 			});
 			
-			$('#updiary').click(function(){
-				var dno = $('input[name=seldno]').val();
-				console.log("dno : " + dno)
-				var billtype = $('button[name=bill_type]').text().trim();
-				console.log("billtype : " + billtype);
-				var indate = $('#dealdate').val();
-				console.log("indate : " + indate);
-				var seldealer  = $('#selectdealer').val();
-				console.log("seldealer : " + seldealer);
-				var product = $('#product').val();
-				console.log("product : " + product);
-				var actype  = $('#actype').val();
-				console.log("actype : " + actype);
-				var cost = $('#pcost').val();
-				console.log("pcost : " + cost);		
-				var bill_how = $('#bill_how').text().trim();
-				console.log("bill_how :" + bill_how);
-				var proof = $('#proof').text().trim();
-				console.log("proof : " + proof);
-				$.ajax({
-					url: "/jsmi/dupdate",
-					data: {dno : dno, billtype : billtype, indate : indate, seldealer : seldealer, product : product, actype : actype, cost : cost, bill_how : bill_how, proof : proof, pno : pno }, 
-					type: "post",
-					dataType: "json",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					success: function(data){
-						console.log("json 성공");
-						console.log("data : " + data);
-						var jsonObj = JSON.stringify(data);
-						//변환된 제이슨 객체를 제이슨 배열로 변환
-						var jsonArr = JSON.parse(jsonObj);
-					
-						$("#itablebody").html("<tr><th>선택</th><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
-								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
-						for(var i in jsonArr.list){
-							console.log(jsonArr.list[i].atype);
-							$("#itablebody").html($("#itablebody").html() +
-									"<tr id='listdiary" + i + "' name='selrow'><td><div class='radio' style='margin: 0 auto;'> " + 
-									"<input type='radio' name='diaryradio' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' onclick='radioclick(" + i + ", " + jsonArr.list[i].dno +");'>" +
-									"<td name='selatype'>" + jsonArr.list[i].atype + "</td><td name='selddate'>" + jsonArr.list[i].ddate + "</td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + 
-									"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
-									"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
-						}
-					},
-					error: function(request,status,error){
-				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				    }
-				}); 
-			});
 			
 			$('#dselector > li').click(function(){
 				console.log($(this).attr("id"));
@@ -293,13 +244,14 @@
 			
 			
 		</script>
+		<form action="/jsmi/ddelete" method="post" id="ddeleteform">
 		<div class="section">
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
 			    <ul class="nav navbar-nav" id="dselector">
 			      <li id="dinput"><a href="#">장부입력</a></li>
-			      <li class="active" id="dmodify"><a href="#">장부수정</a></li>
-			      <li id="ddelete"><a href="#">장부삭제</a></li>
+			      <li id="dmodify"><a href="#">장부수정</a></li>
+			      <li class="active" id="ddelete"><a href="#">장부삭제</a></li>
 			    </ul>
 			  </div>
 			</nav>
@@ -341,11 +293,11 @@
 									for(var i in jsonArr.list){
 										console.log(jsonArr.list[i].atype);
 										$("#itablebody").html($("#itablebody").html() +
-												"<tr id='listdiary" + i + "' name='selrow'><td><div class='radio' style='margin: 0 auto;'> " + 
-												"<input type='radio' name='diaryradio' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' onclick='radioclick(" + i + ", " + jsonArr.list[i].dno +");'>" +
-												"<td name='selatype'>" + jsonArr.list[i].atype + "</td><td name='selddate'>" + jsonArr.list[i].ddate + "</td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + 
-												"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
-												"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+												"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
+												"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' name='delselect'>" +
+												"<td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
+												"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
+												"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 									}
 								},
 								error: function(request,status,error){
@@ -457,132 +409,12 @@
 							<li><a class="pagi" href="#">5</a></li>
 						</ul>
 					</div>
-					<form action="/jsmi/" method="post" id="dmodifyform">
-						<table class="table table-condensed">
-							<tbody>
-								<tr>
-									<th>거래구분</th>
-									<th>날짜</th>
-									<th>거래처</th>
-									<th>계정항목</th>
-									<th>품목</th>
-									<th>금액</th>
-									<th>결재방법</th>
-									<th>증빙자료</th>
-								</tr>
-								<tr>
-									<td style="display:none">
-										<input type ="hidden" name="seldno" value="">
-									</td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-default dropdown-toggle" type="button"
-												name="bill_type" data-toggle="dropdown">
-												거래구분 <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="billtype">
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">비용</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">수익</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">자산</a></li>
-											</ul>
-										</div>
-									</td>
-									<td><input type="date" id="dealdate" name="indate" class="form-control"></td>
-									<td><input type="button" value="거래처선택" id="selectdealer" name=seldealer
-										class="form-control"></td>
-									<!-- <td><input type="button" value="항목선택" class="form-control" id="actype" data-toggle="modal" data-target="#myModal"></td> -->
-									<td><input type="button" value="항목선택" class="form-control" id="actype" name="actype"></td> 
-									<td><input type="text" name="product" class="form-control" id="product"></td>
-									<td>
-										<div class="input-group">
-											<span class="input-group-addon">￦</span> <input type="number"
-												value="1000" min="0" step="1" data-number-to-fixed="2"
-												data-number-stepfactor="100" class="form-control currency"
-												name="cost" id="pcost" />
-										</div>
-									</td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-default dropdown-toggle" type="button"
-												id="bill_how" name="bill_how" data-toggle="dropdown">
-												결재방법 <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu"  id="bill_select" role="menu" aria-labelledby="menu1">
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">현금</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">카드</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">외상</a></li>
-											</ul>
-										</div>
-									</td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-default dropdown-toggle" type="button"
-												name="proof" id="proof" data-toggle="dropdown">
-												증빙자료선택 <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu"  id="proof_select" role="menu" aria-labelledby="menu1">
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">카드매출전표</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">현금영수증</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">세금계산서(수기)</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">세금계산서(전자)</a></li>
-												<li role="presentation"><a role="menuitem"
-													tabindex="-1" href="#">미증빙</a></li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="modal fade" id="myModal" role="dialog">
-						    <div class="modal-dialog modal-lg">
-						      <div class="modal-content">
-						        <div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">계정항목</h4>
-						        </div>
-						        <div class="modal-body">
-						      		<table class="table table-striped" id="itemtable">
-									    
-									  </table>
-						        </div>
-						        <div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="modal fade" id="myModal2" role="dialog">
-						    <div class="modal-dialog modal-lg">
-						      <div class="modal-content">
-						        <div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">거래처목록</h4>
-						        </div>
-						        <div class="modal-body">
-						      		<table class="table table-striped" id="dealertable">
-									    
-									  </table>
-						        </div>
-						        <div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
+					
+
 						<div class="row">
 							<div class="col-md-5"></div>
 							<div class="col-md-3">
-								<input type="button" id="updiary" class="btn btn-primary" value="수정">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="submit" id="deldiary" class="btn btn-warning" value="삭제">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" id="cancel" class="btn btn-danger" value="취소">
 							</div>
 							<div class="col-md-4"></div>

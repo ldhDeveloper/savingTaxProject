@@ -76,6 +76,26 @@ public class DiaryService {
 		close(con);
 		return list;
 	}
+
+
+	public int deleteDiary(String[] dnos) {
+		Connection con = getConnection(); 
+		int result = 0;
+		
+		for(String dno : dnos){
+			result += new DiaryDao().deleteDiary(con, dno);
+		}
+		
+		
+		if(result > 0){
+			commit(con);
+			System.out.println("delete 성공");
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return result;
+	}
 	
 	
 

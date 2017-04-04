@@ -88,9 +88,9 @@
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li><a class="tabmenu lactive"
-							href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">종합소득세 </a></li>
+							href="#">종합소득세 </a></li>
 						<li><a class="tabmenu"
-							href="/jsmi/views/main2/taxcalculation/vatCalculation.jsp">부가가치세</a></li>
+							href="/jsmi/views/main2/tax/vatDetail.jsp">부가가치세</a></li>
 							
 					</ul>
 				</div>
@@ -99,11 +99,14 @@
 		<table class = "table table-condensed">
 		<tr><td></td><td> &nbsp; &nbsp;&nbsp;"<%=loginUser.getPname() %>"  님의 부가가치세 정보 창입니다. </td></tr>
 		<tr><td>년도 현재까지의 부가가치세 입니다.</td><td></td></tr>
-		<tr><td>매출 세액</td><td> 원</td></tr>
-		<%if(loginUser.getTaxtype() == 1){ %>
-		<tr><td>매입 세액</td><td> 원</td></tr>
+		<tr><td>매출 세액</td><td><span></span> 원</td></tr>
+		<%if(loginUser.getTaxtype() == 1){ %
+		<tr><td>매입 세액</td><td><span></span> 원</td></tr>
+		<tr><td>-공제받지 못할 매입세액</td><td>원</td></tr>
 		<%}%>
 		<tr><td>공제 세액</td><td>원</td></tr>
+		<tr><td>-세금계산서등 수취세액 공제</td><td>원</td></tr>
+		<tr><td>-</td><td>원</td></tr>
 		<tr><td>가산 세액</td><td>원</td></tr>
 		<tr><td>납부할 총 부가가치세액</td><td>원</td></tr>
 		</table>
@@ -116,4 +119,5 @@
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
+
 </html>

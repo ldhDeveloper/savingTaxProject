@@ -98,6 +98,7 @@
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<input type="hidden" value="<%=loginUser.getPno() %>" name="pno">
+		<% System.out.println("pno: "+loginUser.getPno());%>
 		<script>
 		<%if(loginUser != null) {%>
 		var pno = <%= loginUser.getPno() %>;
@@ -156,6 +157,7 @@
 			</div>
 			
 			<form action="/jsmi/insert.info3" method="post">
+			<input type="hidden" name="pno" value="<%=loginUser.getPno() %>">
 				<table class="table table-condensed" id="detaillist">
 					<tbody>
 						<tr>
