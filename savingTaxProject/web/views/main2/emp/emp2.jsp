@@ -116,6 +116,10 @@ td {
 	text-align: center;
 }
 
+th {
+	text-align: center;
+}
+
 .emp-choice {
 	background: #1080aa;
 	height: 60px;
@@ -206,11 +210,11 @@ td {
 							//변환된 제이슨 객체를 제이슨 배열로 변환
 							var jsonArr = JSON.parse(jsonObj);
 					
-							$("#selemptable").html("<tr><th>직원명</th><th>주민등록번호</th><th>직급</th><th>휴대폰</th><th>이메일</th><th>고용형태</th>");
+							$("#selemptable").html("<tr style='margin-bottom:10px'><th style='text-align:center'>직원명</th><th style='text-align:center'>주민등록번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>휴대폰</th><th style='text-align:center'>이메일</th><th style='text-align:center'>고용형태</th>");
 							for(var i in jsonArr.list){
-								$("#dealertable").html($("#selemptable").html() +
-										"<tr style='cursor:pointer' onclick='empclick(\"" + jsonArr.list[i].pno + "\");'><td>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td>" + decodeURIComponent(jsonArr.list[i].position) + 
-										"</td><td>" + jsonArr.list[i].phone + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td>" + decodeURIComponent(jsonArr.list[i].emp_type) +
+								$("#selemptable").html($("#selemptable").html() +
+										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
+										"</td><td name='selphone'>" + jsonArr.list[i].phone + "</td><td name='selemail'>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td name='selemp_type'>" + decodeURIComponent(jsonArr.list[i].emp_type) +
 										"</td><td>");
 							}
 							jQuery.noConflict(); 
@@ -220,8 +224,17 @@ td {
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					    }
 				});
+	
 			});
-			});
+		});
+			
+			
+			function empclick(data1, data2){
+				$('#selpname').val($('#emplist' + data1).children('td[name=selpname]').text());
+				$('#selid_no').val($('#emplist' + data1).children('td[name=selid_no]').text());
+				$('#selposition').val($('#emplist' + data1).children('td[name=selposition]').text());
+				$('#myEmp').modal('hide');
+			}
 		</script>
 		<div class="section">
 			<div class="row">
@@ -397,10 +410,10 @@ td {
 
 								</tr>
 								<tr>
-									<td><input type="text" value="직원명" class="form-control"></td>
-									<td><input type="text" value="주민등록번호" class="form-control"></td>
-									<td><input type="text" value="부서명" class="form-control"></td>
-									<td><input type="text" value="직급" class="form-control"></td>
+									<td><input type="text" value="직원명"  id="selpname"class="form-control"></td>
+									<td><input type="text" value="주민등록번호" id="selid_no" class="form-control"></td>
+									<td><input type="text" value="부서명" id="" class="form-control"></td>
+									<td><input type="text" value="직급" id="selposition" class="form-control"></td>
 								</tr>
 							</tbody>
 						</table>
