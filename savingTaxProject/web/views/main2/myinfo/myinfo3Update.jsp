@@ -96,65 +96,7 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
-		<% System.out.println("pno: "+loginUser.getPno());%>
-		<script>
-		$(function(){
-			$('#detail').click(function(){
-				var owner = <%= loginUser.getPno()%>
-				 $.ajax({
-					 url: "/jsmi/m3list" ,
-					 data:{owner:owner},
-					 type: "get",
-					 datatype: "json",
-					 success: function(data){
-							console.log("json 성공");
-							console.log("data : " + data);
-							var jsonObj = JSON.stringify(data);
-							var jsonArr = JSON.parse(jsonObj);
-						    var no = 1;
-							$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th></tr>");
-							
-							for(var i in jsonArr.list){
-								console.log(jsonArr.list[i].atype);
-								$("#detaillist").html( $("#detaillist").html() 
-										+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
-										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&') + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
-										+ "</td></tr>" );
-							}
-						},
-						error: function(request,status,error){
-					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					    }
-				 })
-			});
-			
-			$(function(){
-				$('tr').click(function(){
-					$.ajax({
-						url: "/jsmi/detailupdate",
-						data: {pno:$(this).filter(':first-child').val()},
-						type: "get",
-						datatype: "json",
-						success: function(data){
-							var jsonObj = JSON.stringify(data);
-							
-							$('#cname').text(data.cname);
-							$('#president').text(data.president);
-						},
-						error: function(request,status,error){
-					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					    }
-						
-					})
-					
-				});
-			}); 
-			
-		});
-
 		
-		</script>
 		<div class="section">
 			<br>
 			<div class="navbar navbar-default">
@@ -170,7 +112,238 @@
 				</div>
 			</div>
 			
+			<h3 align="center">거래처 목록 조회</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-condensed">
+						<tbody id="detaillist">
+							<tr>
+								<th>상호</th>
+								<th>대표자명</th>
+								<th>사업자 등록번호</th>
+								<th>업태</th>
+								<th>종목</th>
+								<th>거래처 전화번호</th>
+								<th>거래처주소</th>
+								<th>이메일</th>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+					<ul class="pagination" style="float: right; margin-bottom: 30px;">
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+					</ul>
+				</div>
+			</div>
+			<h3 align="center">거래처 정보 수정</h3>
 			
+		
+			<table class="table table-condensed" id="detaillist">
+					<tbody>
+						<tr>
+							<td class="col-md-2"><h5>상호</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="cname" id="cname"></td>
+							<td class="col-md-2"><h5>대표자명</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="president" id="president"></td>
+
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>사업자 등록번호</h5></td>
+							<td class="col-md-4">
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="cno" id="cno">
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="cno2" id="cno2">
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="cno3" id="cno3">
+								</div>
+							</td>
+							<td class="col-md-2"><h5>개인/법인사업자 여부</h5></td>
+							<td class="col-md-4">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="radio col-md-6">
+											<label><input type="radio" name="optradio" value="1" id="individual">개인</label>
+										</div>
+										<div class="radio col-md-6" style="margin-top: 10px">
+											<label><input type="radio" name="optradio" value="2" id="corporate">법인</label>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>업태</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="cstatus" id="cstatus"></td>
+							<td class="col-md-2"><h5>종목</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="ctype" id="ctype"></td>
+
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>거래처 전화번호</h5></td>
+							<td class="col-md-4">
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="tel" id="tel">
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="tel2" id="tel2">
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="tel3" id="tel3">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>거래처 주소</h5></td>
+							<td class="col-md-2"><div
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" id="postnum"
+										name="caddress" >
+								</div></td>
+							<td class="col-md-8" colspan="2"><input type=button
+								class="btn btn-primary" value="우편번호검색"
+								onclick="sample4_execDaumPostcode();"></td>
+						</tr>
+						<tr>
+							<td class="col-md-2">&nbsp;</td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								id="address1" name="caddress2"></td>
+							<td class="col-md-6" colspan="2"><input type="text"
+								class="form-control" id="address2" name="caddress3"></td>
+						<tr>
+							<td class="col-md-2"><h5>세금계산용 이메일</h5></td>
+							<td class="col-md-6" colspan="2">
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="email" id="email">
+								</div>
+								<div class="col-md-1" style="text-align: center">@</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" id="email2"
+										name="email2">
+								</div>
+								<div class="col-md-1" style="display: block"></div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle" type="button"
+											id="menu1" data-toggle="dropdown">
+											직접입력 <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
+											id="edrop">
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												href="#">직접입력</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												href="#">naver.com</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												href="#">google.com</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												href="#">hanmail.net</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												href="#">yahoo.co.kr</a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td class="col-md-4"></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+				<div class="btngroup">
+					<button class="btn btn-danger" type="submit" id="update">수정</button>
+					<button class="btn btn-danger" type="reset">취소</button>
+				</div>
 			
 
 		</div>
@@ -180,7 +353,86 @@
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 	
 	<script>
-	
-	</script>
+		$(function(){
+				var owner = <%= loginUser.getPno()%>
+				 $.ajax({
+					 url: "/jsmi/m3list" ,
+					 data:{owner:owner},
+					 type: "get",
+					 datatype: "json",
+					 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					 success: function(data){
+							console.log("json 성공");
+							console.log("data : " + data);
+							var jsonObj = JSON.stringify(data);
+							var jsonArr = JSON.parse(jsonObj);
+						    var no = 1;
+							
+						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
+							for(var i in jsonArr.list){
+								console.log(jsonArr.list[i].atype);
+								$("#detaillist").html( $("#detaillist").html() 
+										+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "</td></tr><hr>" );
+							}
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+				 })
+			});
+			
+			$('#update').click(function(){
+				var pno=<%=loginUser.getPno()%>;
+				var cname=$('#cname').val();
+				var president=$('#president').val();
+				var cno=$('#cno').val();
+				var cno2=$('#cno2').val();
+				var cno3=$('#cno3').val();
+				var busitype=$("input[name=optradio]").val();
+				var cstatus=$('#cstatus').val();
+				var ctype=$('ctype').val();
+				var tel=$('tel').val();
+				var tel2=$('tel2').val();
+				var tel3=$('tel3').val();
+				var caddress=$('postnum').val();
+				var caddress2=$('address1').val();
+				var caddress3=$('address2').val();
+				var email=$('email').val();
+				var email2=$('email2').val();
+			    $.ajax({
+			    	url:"/jsmi/insert.info3",
+					data: {pno:pno, cname:cname, president:president, cno:cno, cno2:cno2, cno3:cno3, busitype:busitype, cstatus:cstatus,
+						ctype:ctype, tel:tel, tel2:tel2, tel3:tel3, caddress:caddress, caddress2:caddress2, caddress3:caddress3, email:email, email2:email2},	
+					type:"post",
+					dataType:"JSON",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success:function(data){
+						console.log("json 성공");
+						var jsonObj = JSON.stringify(data);
+						var jsonArr = JSON.parse(jsonObj);
+						
+						$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
+						for(var i in jsonArr.list){
+							console.log(jsonArr.list[i].atype);
+							$("#detaillist").html( $("#detaillist").html() 
+									+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+									+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+									+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+									+ "</td></tr><hr>" );
+						}
+					},
+					error: function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				       }
+			    })
+			
+			});
+			
+
+		
+		</script>
 </body>
 </html>

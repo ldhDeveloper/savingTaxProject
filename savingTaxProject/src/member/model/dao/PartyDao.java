@@ -79,8 +79,6 @@ public class PartyDao {
 				p.setBusi_type(rset.getInt("busi_type"));
 				p.setBirth(rset.getString("birth"));
 				p.setGender(rset.getString("gender"));
-
-		
 			}
 
 		} catch (Exception e) {
