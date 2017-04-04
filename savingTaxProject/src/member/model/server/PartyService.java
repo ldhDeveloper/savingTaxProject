@@ -176,6 +176,25 @@ public class PartyService {
 		return emplist;
 	}
 
+	public Party selectEmp(int pno) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectEmp(con, pno);
+		
+		return p;
+	}
+
+	public int updateEmp(Party p, int owner) {
+		Connection con = getConnection();
+		
+		int result = new PartyDao().updateEmp(con, p, owner);
+		
+		if(result > 0){
+			commit(con);
+		}
+		else {
+			rollback(con);
+		}
+		
 
 	//myinfo3에서 정보 가져오기
 	public Party selectParty(int pno) {
