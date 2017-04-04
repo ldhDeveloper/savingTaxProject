@@ -38,6 +38,7 @@ public class Main2InsertServlet extends HttpServlet {
 
 		int pno = Integer.parseInt(request.getParameter("pno"));
 		System.out.println("pno.sevlet:"+pno);
+		String pname = request.getParameter("cname");
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
@@ -62,6 +63,7 @@ public class Main2InsertServlet extends HttpServlet {
 
 		Party p = new Party();
 
+		p.setPname(pname);
 		p.setCname(cname);
 		p.setPresident(president);
 		p.setCno(Cno);

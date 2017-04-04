@@ -108,10 +108,16 @@
 				<table class="table table-condensed">
 					<tbody>
 						<%
+							System.out.println("myinfo2 session : " + loginUser);
+						System.out.println(loginUser.getCname() + ", " + loginUser.getPresident() + ", " +  loginUser.getCno() + ", " + 
+								loginUser.getCstatus()  + ", " +  loginUser.getCtype()  + ", " +  loginUser.getTel()  + ", " + 
+								loginUser.getOday()  + ", " +  loginUser.getCaddress() + ", " + loginUser.getTaxtype()  + ", " + 
+								loginUser.getNotax_yn());
 							if (loginUser.getCname() != null && loginUser.getPresident() != null && loginUser.getCno() != null
 									&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
 									&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxtype() != 0
 									&& loginUser.getNotax_yn() != 0) {
+								System.out.println("실행됨");
 						%>
 
 						<tr>
@@ -125,9 +131,18 @@
 						</tr>
 						<tr>
 							<%
-								String[] cno = loginUser.getCno().split("-");
+									String[] cno = loginUser.getCno().split("-");
+							for(String t : cno){
+								System.out.println("cno : " + t);
+							}
 									String[] tel = loginUser.getTel().split("-");
+									for(String t : tel){
+										System.out.println("tel : " + t);
+									}
 									String[] caddress = loginUser.getCaddress().split("&");
+									for(String t : caddress){
+										System.out.println("caddress : " + t);
+									}
 							%>
 							<td class="col-md-2"><h5>사업자 등록번호</h5></td>
 							<td class="col-md-4">
@@ -301,6 +316,7 @@
 						</tr>
 						<%
 							} else {
+								System.out.println("실행ㄴㄴ");
 						%>
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
