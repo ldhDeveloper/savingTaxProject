@@ -40,8 +40,9 @@ public class PartyDao {
 
 		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-		String query2 = "select pno, pname, category, id, pwd, email, phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";
-
+		/*String query2 = "select pno, pname, category, id, pwd, email, phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender from party where id = ? and pwd = ?";*/
+		
+		String query2 = "select p.pno, pname, category, id, pwd, email, phone, id_no, tel, cname, cno, paddress, caddress, ctype, cstatus, position, oday, wno, taxtype, notax_yn, president, emp_type, join_date, busi_type, tel, birth, gender, gtype from party p, grade g where p.pno = g.pno(+) and id = ? and pwd = ?";
 		try {
 			pstmt = con.prepareStatement(query2);
 
@@ -79,8 +80,7 @@ public class PartyDao {
 				p.setBusi_type(rset.getInt("busi_type"));
 				p.setBirth(rset.getString("birth"));
 				p.setGender(rset.getString("gender"));
-
-		
+				p.setGtype(rset.getString("gtype"));		
 			}
 
 		} catch (Exception e) {

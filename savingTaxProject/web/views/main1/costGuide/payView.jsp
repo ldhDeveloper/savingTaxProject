@@ -164,7 +164,7 @@
 </style>
 
 <script type="text/javascript">
-$(function() {
+$(function() {	
 	$('#pdateid1').mouseover(function() {
 		$(this).css("background", "aliceblue").css("cursor", "pointer");
 	}).mouseout(function() {
