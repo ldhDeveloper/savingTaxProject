@@ -1,6 +1,7 @@
 package tax.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import diary.model.vo.Diary;
 import tax.model.service.VatService;
 import tax.model.vo.Vat;
 
@@ -34,12 +36,13 @@ public class VatViewServlet extends HttpServlet {
 	int write_pno =Integer.parseInt(request.getParameter("pno"));
 		response.setContentType("text/html; charset = utf-8");
 	
-	Vat v = new VatService().selectVat(write_pno);
+	List<Diary> dlist = new VatService().selectVat(write_pno);
+	
 	RequestDispatcher view = null;
-	if(v != null){
+	if( dlist != null){
 	view = request.getRequestDispatcher("views/main2/tax/vatDetail.jsp");
-	request.setAttribute("v", v);
-	view.forward(request, response);	
+	request.setAttribute("dlist", dlist);
+	view.forward(request, response);
 	}else{
 		view = request.getRequestDispatcher("views/main2/tax/taxError.jsp");
 		request.setAttribute("message", "부가세 출력 실패");
@@ -57,5 +60,6 @@ public class VatViewServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 
 }
