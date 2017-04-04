@@ -38,6 +38,7 @@ public class Main2InsertServlet extends HttpServlet {
 
 		int pno = Integer.parseInt(request.getParameter("pno"));
 		System.out.println("pno.sevlet:"+pno);
+		String pname = request.getParameter("cname");
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
@@ -62,6 +63,7 @@ public class Main2InsertServlet extends HttpServlet {
 
 		Party p = new Party();
 
+		p.setPname(pname);
 		p.setCname(cname);
 		p.setPresident(president);
 		p.setCno(Cno);
@@ -78,7 +80,10 @@ public class Main2InsertServlet extends HttpServlet {
 		System.out.println("result 33 :"+result);
 
 		if (result > 0) {
-			response.sendRedirect("/jsmi/views/main2/menu/main2.html");
+			RequestDispatcher view = request.getRequestDispatcher("m3list");
+			request.setAttribute("pno", pno);
+			view.forward(request, response);
+			System.out.println("거래처 등록 성공");
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 			request.setAttribute("message", "거래처등록 실패");

@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-
-   pageEncoding="UTF-8" import = "member.model.vo.Party"%>
-   <% 
-   Party loginUser = (Party)session.getAttribute("loginUser");  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+   
+<%@ page import="member.model.vo.Party" %>	
+	
+<% Party loginUser = (Party) session.getAttribute("loginUser"); %>
 
 <!DOCTYPE html>
 <html>
@@ -144,10 +144,30 @@ $(function(){
 
    <div class="middle hidden-xs" align="center">
       <table width="970px">
-      	<tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
-         <td width="70"><button id="logout" class="btn btn-warning btn-sm"
-               onclick="location.href='/jsmi/logout'">로그아웃</button>
-         <td></tr>
+      	<tr>
+      		<td>
+      			<img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%">
+      		<td>
+         	
+         	<% if(loginUser.getGtype() == null) { %>
+         		<td width="70">
+					<label><%= loginUser.getPname() %> 님 환영합니다.</label>
+				</td>
+				
+         		<td width="70">
+         			<button id="logout" class="btn btn-warning btn-sm" onclick="location.href='/jsmi/logout'">로그아웃</button>
+         		<td>
+         		
+         	<% } else { %>
+         		<td width="70">
+						<label><%= loginUser.getGtype() + loginUser.getPname() %> 님 환영합니다.</label>
+				</td>
+				
+				<td width="70">
+         			<button id="logout" class="btn btn-warning btn-sm" onclick="location.href='/jsmi/logout'">로그아웃</button>
+         		<td>
+         	<% } %>
+         </tr>
          
          <%-- <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
          <td><%=loginUser.getPname() %> 님 환영합니다.</td>

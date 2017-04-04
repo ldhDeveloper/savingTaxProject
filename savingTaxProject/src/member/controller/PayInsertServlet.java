@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.server.PartyService;
 import member.model.vo.Grade;
+import member.model.vo.Party;
 
 /**
  * Servlet implementation class PayInsertServlet
@@ -39,9 +41,7 @@ public class PayInsertServlet extends HttpServlet {
 		String sdate = request.getParameter("sdate");
 		String edate = request.getParameter("edate");
 		int month = Integer.parseInt(request.getParameter("month"));
-		String hap = request.getParameter("hap");
-		/*int total = hap.split("원"));*/
-		
+		String hap = request.getParameter("hap");		
 		
 		System.out.println("grade servlet1 : " + hap);
 		
@@ -62,6 +62,9 @@ public class PayInsertServlet extends HttpServlet {
 			view = request.getRequestDispatcher("views/main1/costGuide/payResultView.jsp");
 			request.setAttribute("hap", hap);
 			request.setAttribute("month", month);
+			HttpSession session = request.getSession();
+			Party p = new PartyService().selectParty2(pno);
+			session.setAttribute("loginUser", p);
 			view.forward(request, response);
 		}
 		

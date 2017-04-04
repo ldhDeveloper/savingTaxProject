@@ -37,11 +37,11 @@ public class Myinfo3List extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*int pno =Integer.parseInt(request.getParameter("pno")); 
-		System.out.println("list 3 pno: "+pno);*/
-		int owner= Integer.parseInt(request.getParameter("owner"));
-		System.out.println("list 3 owner: "+owner);
-		ArrayList<Party> list = new PartyService().selectcustomerList(owner);
+		int pno =Integer.parseInt(request.getParameter("pno")); 
+		System.out.println("list 3 pno: "+pno);
+		/*int owner= Integer.parseInt(request.getParameter("owner"));*/
+		//System.out.println("list 3 owner: "+owner);
+		ArrayList<Party> list = new PartyService().selectcustomerList(pno);
 		System.out.println("list: "+list);
 		
 		JSONObject json = new JSONObject();

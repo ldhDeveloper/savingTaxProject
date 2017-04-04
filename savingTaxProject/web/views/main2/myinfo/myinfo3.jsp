@@ -96,68 +96,6 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
-		<% System.out.println("pno: "+loginUser.getPno());%>
-		<script>
-		$(function(){
-			$('#detail').click(function(){
-				var owner = <%= loginUser.getPno()%>
-				 $.ajax({
-					 url: "/jsmi/m3list" ,
-					 data:{owner:owner},
-					 type: "get",
-					 datatype: "json",
-					 success: function(data){
-							console.log("json 성공");
-							console.log("data : " + data);
-							var jsonObj = JSON.stringify(data);
-							var jsonArr = JSON.parse(jsonObj);
-						    var no = 1;
-							$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th></tr>");
-							
-							for(var i in jsonArr.list){
-								console.log(jsonArr.list[i].atype);
-								$("#detaillist").html( $("#detaillist").html() 
-										+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
-										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&') + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
-										+ "</td></tr>" );
-							}
-						},
-						error: function(request,status,error){
-					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					    }
-				 })
-			});
-			
-			$(function(){
-				$('tr').click(function(){
-					$.ajax({
-						url: "/jsmi/detailupdate",
-						data: {pno:$(this).filter(':first-child').val()},
-						type: "get",
-						datatype: "json",
-						success: function(data){
-							var jsonObj = JSON.stringify(data);
-							
-							$('#cname').text(data.cname);
-							$('#president').text(data.president);
-						},
-						error: function(request,status,error){
-					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					    }
-						
-					})
-					
-				});
-			}); 
-			
-		});
-
-		
-			
-		
-		
-		</script>
 		
 		<div class="section">
 			<br>
@@ -311,7 +249,7 @@
 				<div class="btngroup">
 					<input type="submit" class="btn btn-primary" value="입력">
 					<button class="btn btn-danger" type="reset">취소</button>
-					<input type="button" class="btn btn-warning" value="목록" id="detail">
+					<input type="button" class="btn btn-warning" value="목록보기 및 수정"  onclick="location.href='/jsmi/views/main2/myinfo/myinfo3Update.jsp'" >
 				</div>
 			</form>
 

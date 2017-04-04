@@ -167,8 +167,8 @@
 
 
 		<div class="middle font-family-md-1">
-			<h3 align="center" class="postTitle">결제완료</h3>
-			<h4 style="color: #a9a9a9" align="center">결제가 완료 되었습니다.</h4>
+			<h3 align="center" class="postTitle">무통장 입금을 신청하셨습니다.</h3>
+			<h4 style="color: orangered" align="center">입금을 완료하셔야 이용하실 수 있습니다.</h4>
 		</div>
 
 		<br>
@@ -190,8 +190,8 @@
 						</tr>
 						
 						<tr class="tabletr">
-							<td class="tabletd1">회원 등급</td>
-							<td class="tabletd2">V.I.P</td>
+							<td class="tabletd1">계좌번호</td>
+							<td class="tabletd2">(주)미인들 123-456-789</td>
 						</tr>
 					</tbody>
 				</table>
@@ -201,7 +201,14 @@
 			<br><br>
 
 			<div align="center">
-				<input type="submit" class="payBtn" value="확인" id="check">
+				<input type="button" class="payBtn" value="확인" id="check">
+				<script type="text/javascript">
+					$(function(){
+						$("#check").click(function(){
+							$(location).attr("href", "/jsmi/views/main1/introduce/introduce.jsp");
+						});
+					});
+				</script>
 			</div>
 	</div>
 
