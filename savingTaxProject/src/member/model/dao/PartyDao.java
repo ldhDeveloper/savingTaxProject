@@ -606,7 +606,9 @@ public class PartyDao {
 		ResultSet rset = null;
 		ArrayList<Party> emplist = null;
 		
-		String query = "select pno, pname, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
+
+		String query = "select pno, pname, id_no, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
+
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -619,8 +621,9 @@ public class PartyDao {
 			}
 			while(rset.next()){
 				Party p = new Party();
-				
+
 				p.setPno(rset.getInt("pno"));
+				p.setId_no(rset.getString("id_no"));
 				p.setPname(rset.getString("pname"));
 				p.setEmp_type(rset.getString("emp_type"));
 				p.setPosition(rset.getString("position"));

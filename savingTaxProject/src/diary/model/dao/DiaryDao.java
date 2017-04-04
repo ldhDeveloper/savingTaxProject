@@ -6,7 +6,6 @@ import static common.JDBCTemplate.*;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.sql.*;
@@ -278,4 +277,6 @@ private Properties prop = new Properties();
 		}
 		return result;
 	}
+
+
 }
