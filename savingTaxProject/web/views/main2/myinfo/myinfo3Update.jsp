@@ -96,6 +96,65 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
+		<% System.out.println("pno: "+loginUser.getPno());%>
+		<script>
+		$(function(){
+			$('#detail').click(function(){
+				var owner = <%= loginUser.getPno()%>
+				 $.ajax({
+					 url: "/jsmi/m3list" ,
+					 data:{owner:owner},
+					 type: "get",
+					 datatype: "json",
+					 success: function(data){
+							console.log("json 성공");
+							console.log("data : " + data);
+							var jsonObj = JSON.stringify(data);
+							var jsonArr = JSON.parse(jsonObj);
+						    var no = 1;
+							$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th></tr>");
+							
+							for(var i in jsonArr.list){
+								console.log(jsonArr.list[i].atype);
+								$("#detaillist").html( $("#detaillist").html() 
+										+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&') + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "</td></tr>" );
+							}
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+				 })
+			});
+			
+			$(function(){
+				$('tr').click(function(){
+					$.ajax({
+						url: "/jsmi/detailupdate",
+						data: {pno:$(this).filter(':first-child').val()},
+						type: "get",
+						datatype: "json",
+						success: function(data){
+							var jsonObj = JSON.stringify(data);
+							
+							$('#cname').text(data.cname);
+							$('#president').text(data.president);
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+						
+					})
+					
+				});
+			}); 
+			
+		});
+
+		
+		</script>
 		<div class="section">
 			<br>
 			<div class="navbar navbar-default">
@@ -110,149 +169,18 @@
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/insert.info3" method="post">
-				<table class="table table-condensed">
-					<tbody>
-						<tr>
-							<td class="col-md-2"><h5>상호</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="cname" value="<%=loginUser.getCname()%>"></td>
-							<td class="col-md-2"><h5>대표자명</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="president" value="<%=loginUser.getPresident()%>"></td>
-
-						</tr>
-						<tr>
-							<td class="col-md-2"><h5>사업자 등록번호</h5></td>
-							<td class="col-md-4">
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno">
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno2">
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno3">
-								</div>
-							</td>
-							<td class="col-md-2"><h5>개인/법인사업자 여부</h5></td>
-							<td class="col-md-4">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio" value="1">개인</label>
-										</div>
-										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio" value="2">법인</label>
-										</div>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td class="col-md-2"><h5>업태</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="cstatus" value="<%=loginUser.getCstatus()%>"></td>
-							<td class="col-md-2"><h5>종목</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="ctype" value="<%=loginUser.getCtype()%>"></td>
-
-						</tr>
-						<tr>
-							<td class="col-md-2"><h5>거래처 전화번호</h5></td>
-							<td class="col-md-4">
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel" value="<%= %>">
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel2" value="<%= %>">
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel3" value="<%= %>">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td class="col-md-2"><h5>거래처 주소</h5></td>
-							<td class="col-md-2"><div
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" id="postnum"
-										name="caddress" value="<%= %>">
-								</div></td>
-							<td class="col-md-8" colspan="2"><input type=button
-								class="btn btn-primary" value="우편번호검색"
-								"onclick="sample4_execDaumPostcode();"></td>
-						</tr>
-						<tr>
-							<td class="col-md-2">&nbsp;</td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								id="address1" name="caddress2" value="<%= %>"></td>
-							<td class="col-md-6" colspan="2"><input type="text"
-								class="form-control" id="address2" name="caddress3" value="<%= %>"></td>
-						<tr>
-							<td class="col-md-2"><h5>세금계산용 이메일</h5></td>
-							<td class="col-md-6" colspan="2">
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="email" value="<%= %>">
-								</div>
-								<div class="col-md-1" style="text-align: center">@</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" id="email2"
-										name="email2" value="<%= %>">
-								</div>
-								<div class="col-md-1" style="display: block"></div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<div class="dropdown">
-										<button class="btn btn-primary dropdown-toggle" type="button"
-											id="menu1" data-toggle="dropdown">
-											직접입력 <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
-											id="edrop">
-											<li role="presentation"><a role="menuitem" tabindex="-1"
-												href="#">직접입력</a></li>
-											<li role="presentation"><a role="menuitem" tabindex="-1"
-												href="#">naver.com</a></li>
-											<li role="presentation"><a role="menuitem" tabindex="-1"
-												href="#">google.com</a></li>
-											<li role="presentation"><a role="menuitem" tabindex="-1"
-												href="#">hanmail.net</a></li>
-											<li role="presentation"><a role="menuitem" tabindex="-1"
-												href="#">yahoo.co.kr</a></li>
-										</ul>
-									</div>
-								</div>
-							</td>
-							<td class="col-md-4"></td>
-						</tr>
-
-					</tbody>
-				</table>
-
-				<div class="btngroup">
-					<input type="submit" class="btn btn-primary" value="다음">
-					<input type="button" class="btn btn-warning" value="수정하기" onclick="location.href='views/main2/myinfo/myinfo3update.jsp'">
-					<button class="btn btn-danger" type="reset">취소</button>
-				</div>
-			</form>
+			
+			
+			
 
 		</div>
 
 	</div>
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
+	
+	<script>
+	
+	</script>
 </body>
 </html>

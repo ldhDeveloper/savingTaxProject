@@ -90,23 +90,17 @@
 	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
-		<% System.out.println(loginUser.getTel() + ", " + loginUser.getCname()); %>
 	</div>
 
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
-		<input type="hidden" value="<%=loginUser.getPno() %>" name="pno">
 		<% System.out.println("pno: "+loginUser.getPno());%>
 		<script>
-		<%if(loginUser != null) {%>
-		var pno = <%= loginUser.getPno() %>;
-		console.log("pno : " + pno);
-		<%} %>
 		$(function(){
 			$('#detail').click(function(){
-				var owner = <%= loginUser.getPno() %>
+				var owner = <%= loginUser.getPno()%>
 				 $.ajax({
 					 url: "/jsmi/m3list" ,
 					 data:{owner:owner},
@@ -116,16 +110,17 @@
 							console.log("json 성공");
 							console.log("data : " + data);
 							var jsonObj = JSON.stringify(data);
-							//변환된 제이슨 객체를 제이슨 배열로 변환
 							var jsonArr = JSON.parse(jsonObj);
-						
-							$("#detaillist").html("<tr><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th>");
+						    var no = 1;
+							$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자등록번호</th><th>업태</th><th>종목</th><th>전화번호</th><th>주소</th><th>이메일</th></tr>");
+							
 							for(var i in jsonArr.list){
 								console.log(jsonArr.list[i].atype);
-								$("#detaillist").html($("#detaillist").html() +
-										"<tr style='cursor:pointer' onclick='detailview(\"" + decodeURIComponent(jsonArr.list[i].cname) + "\");'><td>" + decodeURIComponent(jsonArr.list[i].president) + "</td><td>" + jsonArr.list[i].cno + 
-										"</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) + "</td><td>" + jsonArr.list[i].tel + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress) + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) +
-										"</td><td>");
+								$("#detaillist").html( $("#detaillist").html() 
+										+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&') + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "</td></tr>" );
 							}
 						},
 						error: function(request,status,error){
@@ -133,11 +128,34 @@
 					    }
 				 })
 			});
+			
+			$(function(){
+				$('tr').click(function(){
+					$.ajax({
+						url: "/jsmi/detailupdate",
+						data: {pno:$(this).filter(':first-child').val()},
+						type: "get",
+						datatype: "json",
+						success: function(data){
+							var jsonObj = JSON.stringify(data);
+							
+							$('#cname').text(data.cname);
+							$('#president').text(data.president);
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+						
+					})
+					
+				});
+			}); 
+			
 		});
 
-		function detailview(data){
+		
 			
-		}
+		
 		
 		</script>
 		
@@ -156,8 +174,9 @@
 				</div>
 			</div>
 			
+
 			<form action="/jsmi/insert.info3" method="post">
-			<input type="hidden" name="pno" value="<%=loginUser.getPno() %>">
+			<input type="hidden" value="<%=loginUser.getPno() %>" name="pno">
 				<table class="table table-condensed" id="detaillist">
 					<tbody>
 						<tr>

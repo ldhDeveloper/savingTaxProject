@@ -3,7 +3,6 @@ package member.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,23 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import member.model.server.PartyService;
 import member.model.vo.Party;
 
 /**
- * Servlet implementation class EmployeeSelectListServlet
+ * Servlet implementation class EmployeeSelectServlet
  */
-@WebServlet("/emplist")
-public class EmployeeSelectListServlet extends HttpServlet {
+@WebServlet("/selectemp")
+public class EmployeeSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeSelectListServlet() {
+    public EmployeeSelectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,38 +35,36 @@ public class EmployeeSelectListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		ArrayList<Party> emplist = new PartyService().selectEmpList(pno);
 		
-		JSONObject json = new JSONObject();
-		JSONArray jarr = new JSONArray();
+		Party p = new PartyService().selectEmp(pno);
 		
-		
-		
-		for(Party p : emplist){
-			JSONObject job = new JSONObject();
-			job.put("emppno", p.getPno());
-			job.put("empname", URLEncoder.encode(p.getPname(), "utf-8"));
-			job.put("emptype", URLEncoder.encode(p.getEmp_type(), "utf-8"));
-			job.put("position", URLEncoder.encode(p.getPosition(), "utf-8"));
-			job.put("hiredate", p.getJoin_date().toString());
-			job.put("phone", p.getPhone());
-			String[] add1 = p.getPaddress().split("/");
+		JSONObject job = job = new JSONObject();
+		job.put("pno", p.getPno());
+		job.put("pname", URLEncoder.encode(p.getPname(), "utf-8"));
+		job.put("emptype", URLEncoder.encode(p.getEmp_type(), "utf-8"));
+		String empnoArr[] = p.getId_no().split("-");
+		job.put("empno1", empnoArr[0]);
+		job.put("empno2", empnoArr[1]);
+		job.put("position", URLEncoder.encode(p.getPosition(), "utf-8"));
+		job.put("hiredate", p.getJoin_date().toString());
+		String phoneArr[] = p.getPhone().split("-");
+		job.put("phone1", phoneArr[0]);
+		job.put("phone2", phoneArr[1]);
+		job.put("phone3", phoneArr[2]);
+		String addArr[] = p.getPaddress().split("/");
+		job.put("add1", URLEncoder.encode(addArr[0], "utf-8"));
+		job.put("add2", URLEncoder.encode(addArr[1], "utf-8"));
+		job.put("add3", URLEncoder.encode(addArr[2], "utf-8"));
+		String emailArr[] = p.getEmail().split("@");
+		job.put("email1", emailArr[0]);
+		job.put("email2", emailArr[1]);
 
-			String[] add2 = add1[1].split(" ");
-			String address = add2[0] + " " + add2[1];
-			job.put("empadd", URLEncoder.encode(address, "utf-8"));
-			job.put("email", p.getEmail());
-			
-			jarr.add(job);
-		}
-		json.put("emplist", jarr);
-		response.setContentType("application/json;charset=utf-8");
+		response.setContentType("application/json:charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(json.toJSONString());
+		out.print(job.toJSONString());
 		out.flush();
 		out.close();
-		
-		
+
 	}
 
 	/**

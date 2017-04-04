@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>	
 	
 <!DOCTYPE html>
 <html>
@@ -18,50 +18,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="https://service.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	$(function() {
-		var hap = $("#hap").text();
-		var total = 0;
-		
-		ComaRemove(hap);
-		
-		function ComaRemove(hap){			
-			var tt = hap.split(',').join("");
-			total = tt.split('원').join("");
-			return total;
-		}
-		
-		$("#check").click(function() {
-			IMP.init('imp55262355');
-
-			IMP.request_pay({
-			    pg : 'html5_inicis',
-			    pay_method : 'card',
-			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : '주문명:결제테스트',
-			    amount : total,
-			    buyer_email : 'iamport@siot.do',
-			    buyer_name : '구매자이름',
-			    buyer_tel : '010-1234-5678',
-			    buyer_addr : '서울특별시 강남구 삼성동',
-			    buyer_postcode : '123-456'
-			}, function(rsp) {
-			    if ( rsp.success ) {
-			        var msg = '결제가 완료되었습니다.';
-			        msg += '고유ID : ' + rsp.imp_uid;
-			        msg += '상점 거래ID : ' + rsp.merchant_uid;
-			        msg += '결제 금액 : ' + rsp.paid_amount;
-			        msg += '카드 승인번호 : ' + rsp.apply_num;
-			    } else {
-			        var msg = '결제에 실패하였습니다.';
-			        msg += '에러내용 : ' + rsp.error_msg;
-			    }			    
-			    alert(msg);
-			});
-		});
-	});
-</script>
 
 <style type="text/css">
 .font-family-xs-1 {
@@ -225,6 +181,69 @@
 	<!-- /jsmi/views/main1/costGuide/payView.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
+	
+	<script type="text/javascript">
+	$(function() {
+		var hap = $("#hap").text();
+		console.log(hap);
+		var month = <%= request.getParameter("month") %>;
+		
+		var sdate = new Date(); // 현재일자
+		var gYear = sdate.getFullYear();
+		var gMon = sdate.getMonth();
+		var gMon2 = sdate.getMonth() + month;
+		var gDay = sdate.getDate();
+		var gDate = gYear + "-" + gMon + "-" + gDay;
+		var nDate = gYear + "-" + gMon2 + "-" + gDay;
+		
+		var edate = new Date(sdate.getFullYear() + "-" + (sdate.getMonth() + month - 1) + "-" + sdate.getDay() - 1);
+		console.log(month);
+		console.log(gDate);
+		console.log(nDate);
+		
+		var total = 0;
+		
+		ComaRemove(hap);
+		
+		function ComaRemove(hap){			
+			var tt = hap.split(',').join("");
+			total = tt.split('원').join("");
+			return total;
+		}
+		
+		$("#check").click(function() {
+			IMP.init('imp55262355');
+
+			IMP.request_pay({
+			    pg : 'html5_inicis',
+			    pay_method : 'card',
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : '주문명:결제테스트',
+			    amount : total,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '구매자이름',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울특별시 강남구 삼성동',
+			    buyer_postcode : '123-456'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+
+			        $(location).attr("href", "/jsmi/payinsert?pno=" + <%= loginUser.getPno() %> + "&sdate=" + gDate + "&edate=" + nDate + "&month=" + month + "&hap=" + hap);
+			        
+			    } else {
+			        var msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			    }
+			});
+		});
+	});
+</script>
 
 	<br>
 	<br>
@@ -279,13 +298,15 @@
 						<tr>
 							<td class="pcontent pshow">결제금액(부가세포함)</td>
 
-							<td colspan="2" class="pcontent" id="hap"> <%= request.getParameter("hap") %> </td>
+							<td colspan="2" class="pcontent" id="hap"> <%= request.getParameter("hap") %></td>
 						</tr>
 					</tbody>
 				</table>
 				
 				<br><br><br>
 			</div>
+			
+			<%-- <input id="month" type="hidden" value="<%= request.getParameter("month") %>"> --%>
 
 			<br><br>
 
