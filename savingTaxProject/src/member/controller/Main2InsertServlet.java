@@ -78,7 +78,10 @@ public class Main2InsertServlet extends HttpServlet {
 		System.out.println("result 33 :"+result);
 
 		if (result > 0) {
-			response.sendRedirect("/jsmi/views/main2/menu/main2.html");
+			RequestDispatcher view = request.getRequestDispatcher("m3list");
+			request.setAttribute("pno", pno);
+			view.forward(request, response);
+			System.out.println("거래처 등록 성공");
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
 			request.setAttribute("message", "거래처등록 실패");
