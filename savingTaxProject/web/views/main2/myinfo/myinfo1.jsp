@@ -119,9 +119,21 @@
 					%>
 					<%
 						    String[] idNo = loginUser.getId_no().split("-");
+					for(String t : idNo){
+						System.out.println("idNo : " + t);
+					}
 							String[] email = loginUser.getEmail().split("@");
+							for(String t : email){
+								System.out.println("email : " + t);
+							}
 							String[] paddress = loginUser.getPaddress().split("&");
+							for(String t : paddress){
+								System.out.println("paddress : " + t);
+							}
 							String[] phone = loginUser.getPhone().split("-");
+							for(String t : phone){
+								System.out.println("phone : " + t);
+							}
 					%>
 					<tbody>
 						<tr>

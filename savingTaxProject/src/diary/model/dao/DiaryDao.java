@@ -165,7 +165,7 @@ private Properties prop = new Properties();
 		
 		String query= "select p.pno, pname, tel, phone, ctype, cstatus, president " +  
 							"from party p join party_rel pr on(p.pno = pr.rel_pno) " +
-							"where pr.busi_pno = ? and pr.rel_type = 1";	
+							"where pr.busi_pno = ? and pr.rel_type = '거래처'";	
 		
 		try {
 			pstmt = con.prepareStatement(query);
