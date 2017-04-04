@@ -14,16 +14,16 @@ import member.model.server.PartyService;
 import member.model.vo.Party;
 
 /**
- * Servlet implementation class EmployeeInformationInsertServlet
+ * Servlet implementation class EmployeeUpdateServlet
  */
-@WebServlet("/empinput")
-public class EmployeeInformationInsertServlet extends HttpServlet {
+@WebServlet("/empupdate")
+public class EmployeeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeInformationInsertServlet() {
+    public EmployeeUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,6 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
 		int owner = Integer.parseInt(request.getParameter("pno"));
 		String empname = request.getParameter("empname");
 		String emptype = request.getParameter("optradio");
@@ -57,16 +56,16 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 		p.setEmail(email);
 		p.setCategory(category);
 		
-		int result = new PartyService().insertEmp(p, owner);
+		int result = new PartyService().updateEmp(p, owner);
 		
 		if(result > 0){
 			RequestDispatcher view = request.getRequestDispatcher("emplist");
-			request.setAttribute("pno", owner);
+			request.setAttribute("owner", owner);
 			view.forward(request, response);
-			System.out.println("직원등록 성공");
+			System.out.println("직원정보 수정 성공");
 		}else{
 			RequestDispatcher view = request.getRequestDispatcher("views/main2/main2Error.jsp");
-			request.setAttribute("message", "직원 등록 실패!!");
+			request.setAttribute("message", "직원 정보 수정 실패!!");
 			view.forward(request, response);
 		}
 	}

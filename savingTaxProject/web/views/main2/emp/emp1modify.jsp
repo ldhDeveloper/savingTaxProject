@@ -110,8 +110,8 @@
 					<div class="navbar navbar-default">
 						<div class="container-fluid">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
-								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp">직원정보수정</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
+								<li class="active"><a href="/jsmi/views/main2/emp/emp1modify.jsp">직원정보수정</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여관리</a></li>
 							</ul>
 						</div>
@@ -215,15 +215,15 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="radio col-md-4">
-													<label><input type="radio" name="optradio"
+													<label><input type="radio" name="optradio" id="value1"
 														value="정규직">정규직</label>
 												</div>
 												<div class="radio col-md-4" style="margin-top: 10px">
-													<label><input type="radio" name="optradio"
+													<label><input type="radio" name="optradio" id="value2"
 														value="비정규직">비정규직</label>
 												</div>
 												<div class="radio col-md-4" style="margin-top: 10px">
-													<label><input type="radio" name="optradio"
+													<label><input type="radio" name="optradio" id="value3"
 														value="일용직">일용직</label>
 												</div>
 											</div>
@@ -330,7 +330,7 @@
 							</tbody>
 						</table>
 						<div class="row btngr">
-							<button class="btn btn-success" type="submit" id="insert">등록</button>
+							<button class="btn btn-success" type="submit" id="modify">수정</button>
 							<button class="btn btn-danger" type="reset">취소</button>
 						</div>
 					</div>
@@ -358,10 +358,10 @@
 							var jsonObj = JSON.stringify(data);
 							var jsonArr = JSON.parse(jsonObj);
 							
-							$("#emptable").html("<tr><th>직원명</th><th>직원구분</th><th>직급</th><th>입사년월일</th><th>연락처</th><th>직원 주소지</th><th>이메일</th></tr>");
+							$("#emptable").html("<tr class='line'><th>직원명</th><th>직원구분</th><th>직급</th><th>입사년월일</th><th>연락처</th><th>직원 주소지</th><th>이메일</th></tr>");
 							for(var i in jsonArr.emplist){
 								
-								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
+								$("#emptable").html($("#emptable").html() + "<tr style='cursor:pointer' class='line' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.emplist[i].emppno + ")'><td id='empname'>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td id='emptype'>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td></tr>");
 							}
 						},
 						error: function(request,status,error){
@@ -370,7 +370,7 @@
 					});
 				}); 
 				
-				$("#insert").click(function(){
+				$("#modify").click(function(){
 					var pno = <%= loginUser.getPno() %>;
 					var empname = $("input[name=empname]").val();
 					var optradio = $("input[name=optradio]").val();
@@ -387,21 +387,19 @@
 					var email1 = $("input[name=email1]").val();
 					var email2 = $("input[name=email2]").val();
 					$.ajax({
-						url:"/jsmi/empinput",
+						url:"/jsmi/empupdate",
 						data: {pno:pno, empname:empname, optradio:optradio, empno1:empno1, empno2:empno2, position:position, 
 							hiredate:hiredate, phone1:phone1, phone2:phone2, phone3:phone3, add1:add1, add2:add2, add3:add3, email1:email1, email2:email2},
 						type:"post",
 						dataType:"JSON",
 						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 						success:function(data){
-							console.log("json 성공");
 							var jsonObj = JSON.stringify(data);
 							var jsonArr = JSON.parse(jsonObj);
 							
 							$("#emptable").html("<tr><th>직원명</th><th>직원구분</th><th>직급</th><th>입사년월일</th><th>연락처</th><th>직원 주소지</th><th>이메일</th></tr>");
 							for(var i in jsonArr.emplist){
-								
-								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
+								$("#emptable").html($("#emptable").html() + "<tr style='cursor:pointer' class='line' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.emplist[i].emppno + ")'><td id='empname'>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td id='emptype'>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td></tr>");
 							}
 						},
 						error: function(request,status,error){
@@ -411,7 +409,46 @@
 					});
 				});
 				
+				function linecheck(index, emppno){
+					var lineno = "#line" + index;
+					$.ajax({
+						url:"/jsmi/selectemp",
+						data:{pno:emppno},
+						type:"post",
+						dataType:"json",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						success:function(data){
+							var jsonObj = JSON.stringify(data);
+							var jsonArr = JSON.parse(jsonObj);
+							
+							$("input[name=empname]").val(decodeURIComponent(jsonArr.pname).split("+").join(" "));
+							if(jsonArr.emptype = '정규직'){
+								$("#value1").attr("checked", "checked");
+							}else if(jsonArr.emptype = '비정규직') {
+								$("#value2").attr("checked", "checked");
+							}else {
+								$("#value3").attr("checked", "checked");
+							}
+							$("input[name=empno1]").val(jsonArr.empno1);
+							$("input[name=empno2]").val(jsonArr.empno2);
+							$("input[name=position]").val(decodeURIComponent(jsonArr.position).split("+").join(" "));
+							$("input[name=hiredate]").val(jsonArr.hiredate);
+							$("input[name=phone1]").val(jsonArr.phone1);
+							$("input[name=phone2]").val(jsonArr.phone2);
+							$("input[name=phone3]").val(jsonArr.phone3);
+							$("input[name=add1]").val(decodeURIComponent(jsonArr.add1).split("+").join(" "));
+							$("input[name=add2]").val(decodeURIComponent(jsonArr.add2).split("+").join(" "));
+							$("input[name=add3]").val(decodeURIComponent(jsonArr.add3).split("+").join(" "));
+							$("input[name=email1]").val(jsonArr.email1);
+							$("input[name=email2]").val(jsonArr.email2);
+							
+						}
+					});
+					
+				}
 				
+				
+
 			</script>
 </body>
 </html>

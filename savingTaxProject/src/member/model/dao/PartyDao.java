@@ -585,7 +585,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		ArrayList<Party> emplist = null;
 		
-		String query = "select pname, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
+		String query = "select pno, pname, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -599,6 +599,7 @@ public class PartyDao {
 			while(rset.next()){
 				Party p = new Party();
 				
+				p.setPno(rset.getInt("pno"));
 				p.setPname(rset.getString("pname"));
 				p.setEmp_type(rset.getString("emp_type"));
 				p.setPosition(rset.getString("position"));
@@ -620,6 +621,74 @@ public class PartyDao {
 		
 		
 		return emplist;
+	}
+
+	public Party selectEmp(Connection con, int pno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p = null;
+		
+		String query = "select pname, emp_type, id_no, position, join_date, phone, paddress, email from party where pno=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				p = new Party();
+				
+				p.setPno(pno);
+				p.setPname(rset.getString("pname"));
+				p.setEmp_type(rset.getString("emp_type"));
+				p.setId_no(rset.getString("id_no"));
+				p.setPosition(rset.getString("position"));
+				p.setJoin_date(rset.getDate("join_Date"));
+				p.setPhone(rset.getString("phone"));
+				p.setPaddress(rset.getString("paddress"));
+				p.setEmail(rset.getString("email"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return p;
+	}
+
+	public int updateEmp(Connection con, Party p, int owner) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update party set pname=?, emp_type=?, position=?, join_date=?, phone=?, paddress=?, email=? where id_no=?";
+		
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getEmp_type());
+			pstmt.setString(3, p.getPosition());
+			pstmt.setDate(4, p.getJoin_date());
+			pstmt.setString(5, p.getPhone());
+			pstmt.setString(6, p.getPaddress());
+			pstmt.setString(7, p.getEmail());
+			pstmt.setString(8, p.getId_no());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
 }
