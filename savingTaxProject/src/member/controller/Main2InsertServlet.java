@@ -41,7 +41,7 @@ public class Main2InsertServlet extends HttpServlet {
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
 		String cno = request.getParameter("cno");
-		String cno2 = request.getParameter("con2");
+		String cno2 = request.getParameter("cno2");
 		String cno3 = request.getParameter("cno3");
 		int busiType = Integer.parseInt(request.getParameter("optradio"));
 		String cstatus = request.getParameter("cstatus");
@@ -75,6 +75,7 @@ public class Main2InsertServlet extends HttpServlet {
 		int result = new PartyService().insertPartyMyinfo3(p, pno);
 		System.out.println("P: "+p);
 		System.out.println("Pno info3: "+pno);
+		System.out.println("result 33 :"+result);
 
 		if (result > 0) {
 			response.sendRedirect("/jsmi/views/main2/menu/main2.html");

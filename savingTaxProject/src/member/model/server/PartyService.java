@@ -54,18 +54,21 @@ public class PartyService {
 		Connection con = getConnection();
 		int pno=0;
 		int result2=0;
+		int result=0;
 		
-		int result = new PartyDao().insertMyinfo3(con, p);
+		int result1 = new PartyDao().insertMyinfo3(con, p);
+		System.out.println("result 1: "+result1);
 
-		if(result>0){
+		if(result1>0){
 		   pno= new PartyDao().selectPno(con, p);
 		   System.out.println("result pno: "+pno);
 		   if(pno>0){
 			    result2 = new PartyDao().insertParty_Rel(con, owner, pno);
+			    System.out.println("result2: "+result2);
 		   }
 		}
 		
-		if (result > 0 && result2 >0) {
+		if (result1 > 0 && result2 >0) {
 			commit(con);
 			result = 1;
 		} else {
@@ -90,6 +93,7 @@ public class PartyService {
 		close(con);
 		return p;
 	}
+	
 
 	public Party findId(String pname, String email) {
 		Connection con = getConnection();
@@ -132,9 +136,9 @@ public class PartyService {
 
 
 	// myinfo3 list 불러옴
-	public ArrayList<Party> selectList(int owner, int pno) {
+	public ArrayList<Party> selectcustomerList(int pno) {
 		Connection con = getConnection();
-		ArrayList<Party> list = new PartyDao().selectList(con, owner, pno);
+		ArrayList<Party> list = new PartyDao().selectcustomerList(con, pno);
 		close(con);
 		return list;
 	}
@@ -171,6 +175,15 @@ public class PartyService {
 		ArrayList<Party> emplist = new PartyDao().selectEmpList(con, pno);
 		return emplist;
 	}
+
+
+	//myinfo3에서 정보 가져오기
+	public Party selectParty(int pno) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectParty(con, pno);
+		close(con);
+		return p;
+  }
 
 	// 등급 변경 service
 	public int insertGrade(Grade g) {

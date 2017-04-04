@@ -1,6 +1,8 @@
 package member.model.dao;
 
 import static common.JDBCTemplate.*;
+
+import java.net.URLEncoder;
 import java.sql.*;
 import java.util.*;
 
@@ -281,6 +283,7 @@ public class PartyDao {
 			pstmt.setInt(1, owner);
 			pstmt.setInt(2, pno);
 			
+			result = pstmt.executeUpdate();
 			System.out.println("party_rel: "+owner+", "+pno);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -470,31 +473,47 @@ public class PartyDao {
 		return result;
 	}
 
-
-	// myinfo3 List (insert dao 수정 후 작업)
-	public ArrayList<Party> selectList(Connection con, String cno) {
+	/////올라가서 바로 작업
+	public ArrayList<Party> selectcustomerList(Connection con, int pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-
-		String query = "select * from party where pno=? and cno != ?";
-
+		ArrayList<Party> list=null; 
+		
+		String query = "select pno, cname, president, cno, cstatus, ctype, tel, caddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='거래처')";
+		
 		try {
-			pstmt = con.prepareStatement(query);
-			
-			rset = pstmt.executeQuery();
+		   pstmt = con.prepareStatement(query);
+		   pstmt.setInt(1, pno);
+		   System.out.println("dao pno: "+pno);
+		   
+		   rset = pstmt.executeQuery();
+		  
+		   if(rset != null){
+			   list = new ArrayList<Party>();
+		   }
+		   while(rset.next()){
+			   Party p = new Party();
+			   p.setPno(rset.getInt("pno"));
+			   p.setCname(rset.getString("cname"));
+			   p.setPresident(rset.getString("president"));
+			   p.setCno(rset.getString("cno"));
+			   p.setCstatus(rset.getString("cstatus"));
+			   p.setCtype(rset.getString("ctype"));
+			   p.setTel(rset.getString("tel"));
+			   p.setCaddress(rset.getString("caddress"));
+			   p.setEmail(rset.getString("email"));
+			   list.add(p);
+			   
+			   System.out.println("list: "+list);
+		   }
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
 		}
-		return null;
-	}
-
-	/////올라가서 바로 작업
-	public ArrayList<Party> selectList(Connection con, int owner, int pno) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		 
-		String query = "select * from party";
-		return null;
+		
+		return list;
 	}
 
 	
@@ -628,8 +647,7 @@ public class PartyDao {
 	public int insertGrade(Connection con, Grade g) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-
-		String query = "insert into grade values (seq_grade.nextval , to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, 'VIP')";
+    String query = "insert into grade values (seq_grade.nextval , to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, 'VIP')";
 		
 		
 		
@@ -652,4 +670,40 @@ public class PartyDao {
 		System.out.println("grade dao : " + g);
 		return result;
 	}
+  
+
+	//myinfo3 리스트누르면 값 조회
+	public Party selectParty(Connection con, int pno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Party p=null;
+		String query = "select * from party where pno=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			
+			rset=pstmt.executeQuery();
+			if(rset.next()){
+				p = new Party();
+				p.setPno(pno);
+				p.setCname(rset.getString("cname"));
+				p.setPresident(rset.getString("president"));
+				p.setCno(rset.getString("cno"));
+				p.setCstatus(rset.getString("cstatus"));
+				p.setCtype(rset.getString("ctype"));
+				p.setTel(rset.getString("tel"));
+				p.setCaddress(rset.getString("caddress"));
+				p.setEmail(rset.getString("email"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		return p;
+	}
+
 }
