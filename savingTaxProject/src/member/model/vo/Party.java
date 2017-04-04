@@ -32,10 +32,24 @@ public class Party implements java.io.Serializable{
 	private Date join_date;
 	private int busi_type;
 	private int to_no;
+	private Date rdate;
+	private double irate;
 	private String gtype;
 	
 	
 	
+	public Date getRdate() {
+		return rdate;
+	}
+	public void setRdate(Date rdate) {
+		this.rdate = rdate;
+	}
+	public double getIrate() {
+		return irate;
+	}
+	public void setIrate(double irate) {
+		this.irate = irate;
+	}
 	public String getGtype() {
 		return gtype;
 	}
@@ -218,8 +232,8 @@ public class Party implements java.io.Serializable{
 	public Party(int pno, String pname, int category, String id, String pwd, String tel, String phone, String email,
 			String birth, String gender, String id_no, String cname, String cno, String paddress, String caddress,
 			String ctype, String cstatus, String position, Date oday, int wno, int taxtype, int notax_yn,
-			String president, int foreginer_yn, String emp_type, Date join_date, int busi_type, int to_no,
-			String gtype) {
+			String president, int foreginer_yn, String emp_type, Date join_date, int busi_type, int to_no, Date rdate,
+			double irate, String gtype) {
 		super();
 		this.pno = pno;
 		this.pname = pname;
@@ -249,6 +263,8 @@ public class Party implements java.io.Serializable{
 		this.join_date = join_date;
 		this.busi_type = busi_type;
 		this.to_no = to_no;
+		this.rdate = rdate;
+		this.irate = irate;
 		this.gtype = gtype;
 	}
 	@Override
@@ -259,11 +275,9 @@ public class Party implements java.io.Serializable{
 				+ caddress + ", ctype=" + ctype + ", cstatus=" + cstatus + ", position=" + position + ", oday=" + oday
 				+ ", wno=" + wno + ", taxtype=" + taxtype + ", notax_yn=" + notax_yn + ", president=" + president
 				+ ", foreginer_yn=" + foreginer_yn + ", emp_type=" + emp_type + ", join_date=" + join_date
-				+ ", busi_type=" + busi_type + ", to_no=" + to_no + ", gtype=" + gtype + "]";
+				+ ", busi_type=" + busi_type + ", to_no=" + to_no + ", rdate=" + rdate + ", irate=" + irate + ", gtype="
+				+ gtype + "]";
 	}
-	
-	
-	
 	
 	
 }
