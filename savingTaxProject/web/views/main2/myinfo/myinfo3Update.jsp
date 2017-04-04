@@ -354,10 +354,10 @@
 	
 	<script>
 		$(function(){
-				var owner = <%= loginUser.getPno()%>
+				var pno = <%= loginUser.getPno()%>
 				 $.ajax({
 					 url: "/jsmi/m3list" ,
-					 data:{owner:owner},
+					 data:{pno:pno},
 					 type: "get",
 					 datatype: "json",
 					 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
