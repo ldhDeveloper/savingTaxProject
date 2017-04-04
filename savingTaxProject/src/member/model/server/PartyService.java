@@ -1,6 +1,7 @@
 package member.model.server;
 
 import member.model.dao.PartyDao;
+import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
 
@@ -175,12 +176,29 @@ public class PartyService {
 		return emplist;
 	}
 
+
 	//myinfo3에서 정보 가져오기
 	public Party selectParty(int pno) {
 		Connection con = getConnection();
 		Party p = new PartyDao().selectParty(con, pno);
 		close(con);
 		return p;
+  }
+
+	// 등급 변경 service
+	public int insertGrade(Grade g) {
+		Connection con = getConnection();
+		int result = new PartyDao().insertGrade(con, g);
+		
+		if(result > 0) {
+			commit(con);
+		}
+		
+		else {
+			rollback(con);
+		}
+		System.out.println("grade service : " + g);
+		return result;
 	}
 
 }
