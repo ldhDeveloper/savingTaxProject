@@ -241,15 +241,17 @@ $(function() {
 
 <script type="text/javascript">
 	$(function() {
+		var x = 0;
+		var y = 100;
+		
 		$("#calculate").click(function(){
 			var total = $("#total").html();
-			$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total);
+			$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total +"&month=" + x);
 		});
 		
 		$("#pdateid1").click(function() {
 			x = 1;
-			var y = 200000000;
-
+			
 			var result = x * y;
 			
 			var buga = result * 0.1;
@@ -292,8 +294,7 @@ $(function() {
 
 		$("#pdateid2").click(function() {
 			x = 2;
-			var y = 200000000;
-
+			
 			var result = x * y;
 			
 			var buga = result * 0.1;
@@ -336,8 +337,7 @@ $(function() {
 
 		$("#pdateid3").click(function() {
 			x = 3;
-			var y = 200000000;
-
+			
 			var result = x * y;
 			
 			var buga = result * 0.1;
@@ -380,7 +380,6 @@ $(function() {
 
 		$("#pdateid4").click(function() {
 			x = 4;
-			var y = 200000000;
 			
 			var result = x * y;
 			
@@ -424,7 +423,6 @@ $(function() {
 
 		$("#pdateid5").click(function() {
 			x = 5;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -468,7 +466,6 @@ $(function() {
 
 		$("#pdateid6").click(function() {
 			x = 6;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -512,7 +509,6 @@ $(function() {
 
 		$("#pdateid7").click(function() {
 			x = 7;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -556,7 +552,6 @@ $(function() {
 
 		$("#pdateid8").click(function() {
 			x = 8;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -600,7 +595,6 @@ $(function() {
 
 		$("#pdateid9").click(function() {
 			x = 9;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -644,7 +638,6 @@ $(function() {
 
 		$("#pdateid10").click(function() {
 			x = 10;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -688,7 +681,6 @@ $(function() {
 
 		$("#pdateid11").click(function() {
 			x = 11;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -732,7 +724,6 @@ $(function() {
 
 		$("#pdateid12").click(function() {
 			x = 12;
-			var y = 200000000;
 
 			var result = x * y;
 			
@@ -772,7 +763,8 @@ $(function() {
 				}
 			  return $("#total").html(retValue + "원");
 			}		
-		});
+		});		
+		/* $(location).attr("href", "/jsmi/views/main1/costGuide/payResultView.jsp?month=" + x + "&total=" + total); */
 	});
 </script>
 
@@ -830,11 +822,11 @@ $(function() {
 						<tr>
 							<td class="pcontent pshow"><!-- 내역이 들어가는 곳 -->내역이 들어가야할 항목</td>
 
-							<td class="pcontent"><!-- 돈 들어가는 곳 -->200,000,000원</td>
+							<td class="pcontent"><!-- 돈 들어가는 곳 -->20,000원</td>
 
 							<td class="pcontent"><!-- 개월이 들어가는 곳 -->3개월</td>
 
-							<td class="pcontent"><!-- 돈 들어가는 곳 -->200,000,000원</td>
+							<td class="pcontent"><!-- 돈 들어가는 곳 -->20,000원</td>
 						</tr>
 
 						<tr>
@@ -908,7 +900,7 @@ $(function() {
 						<tr>
 							<td class="pcontent pshow">내역이 들어가야할 항목</td>
 
-							<td class="pcontent"><p>200,000,000원</p></td>
+							<td class="pcontent"><p>100원</p></td>
 
 							<td class="pcontent"><span id="x"></span></td>
 

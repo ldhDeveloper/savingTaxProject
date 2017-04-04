@@ -2,6 +2,7 @@ package member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -36,9 +37,12 @@ public class Myinfo3List extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int pno =Integer.parseInt(request.getParameter("pno")); 
+		/*int pno =Integer.parseInt(request.getParameter("pno")); 
+		System.out.println("list 3 pno: "+pno);*/
 		int owner= Integer.parseInt(request.getParameter("owner"));
-		ArrayList<Party> list = new PartyService().selectList(owner ,pno);
+		System.out.println("list 3 owner: "+owner);
+		ArrayList<Party> list = new PartyService().selectcustomerList(owner);
+		System.out.println("list: "+list);
 		
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();
@@ -46,18 +50,19 @@ public class Myinfo3List extends HttpServlet {
 		for(Party plist : list){
 			JSONObject jsob = new JSONObject();
 			jsob.put("pno", plist.getPno());
-			jsob.put("cname", plist.getCname());
-			jsob.put("president", plist.getPresident());
-			jsob.put("cno", plist.getCno());
-			jsob.put("cstatus", plist.getCstatus());
-			jsob.put("ctype", plist.getCtype());
-			jsob.put("tel", plist.getTel());
-			jsob.put("caddress", plist.getCaddress());
-			jsob.put("email", plist.getEmail());
+			jsob.put("cname", URLEncoder.encode(plist.getCname(), "utf-8"));
+			jsob.put("president", URLEncoder.encode(plist.getPresident(), "utf-8"));
+			jsob.put("cno", URLEncoder.encode(plist.getCno(), "utf-8"));
+			jsob.put("cstatus", URLEncoder.encode(plist.getCstatus(), "utf-8"));
+			jsob.put("ctype", URLEncoder.encode(plist.getCtype(), "utf-8"));
+			jsob.put("tel", URLEncoder.encode(plist.getTel(), "utf-8"));
+			jsob.put("caddress", URLEncoder.encode(plist.getCaddress(), "utf-8"));
+			jsob.put("email", URLEncoder.encode(plist.getEmail(), "utf-8"));
 			jarr.add(jsob);
 		}
 		
 		json.put("list", jarr);
+		System.out.println(json.toJSONString());
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
