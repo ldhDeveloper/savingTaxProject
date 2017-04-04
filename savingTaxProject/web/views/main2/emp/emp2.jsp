@@ -173,6 +173,8 @@ th {
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<script type="text/javascript">
+			
+		
 			$(function(){
 				var d = new Date();
 				var dyear = d.getFullYear();
@@ -280,6 +282,58 @@ th {
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
 				<script>
 					$("#ex12c").slider({ id: "slider12c", min: 1, max: 12, range: true, value: [3, 7] });
+				</script>
+				<script>
+				$(function(){
+					$("input[id^=salary]").keyup(function(){
+						var total = Number(0);
+						var temptotal = Number(0);
+						
+						for(var i = 1; i <= 9; i++){
+							var idindex = "#salary" + i;
+							var temp = $(idindex).val();
+							total += Number(temp);
+						}
+						$("#totalsalary").val(total);
+						
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#salary" + i;
+							var temp = $(idindex).val();
+							temptotal += Number(temp);
+						}
+						$("#gong1").val(Math.floor((temptotal * 0.045) / 10) * 10);
+						$("#gong2").val(Math.floor((temptotal * 0.0306) / 10) * 10);
+						$("#gong3").val(Math.floor(($("#gong2").val() * 0.0655 / 2) /10) * 10);
+						$("#gong4").val(Math.floor((temptotal * 0.0065) / 10) * 10);
+						$("#gong5").val(Math.floor((temptotal * 0.033) / 10) * 10);
+						
+						var gongtotal = Number(0);
+						
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#gong" + i;
+							var temp = $(idindex).val();
+							gongtotal += Number(temp);
+						}
+						
+						$("#gongtotal").val(total - gongtotal);
+						
+						$("#insu1").val(Math.floor((temptotal * 0.045) / 10) * 10);
+						$("#insu2").val(Math.floor((temptotal * 0.0306) / 10) * 10);
+						$("#insu3").val(Math.floor(($("#insu2").val() * 0.0655 / 2) /10) * 10);
+						$("#insu4").val(Math.floor((temptotal * 0.009) / 10) * 10);
+						$("#insu5").val(Math.floor(0));
+						
+						var insutotal = Number(0);
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#insu" + i;
+							var temp = $(idindex).val();
+							insutotal += Number(temp);
+						}
+						$("#insutotal").val(insutotal);
+						
+					});
+				});
+					
 				</script>
 			</div>
 			<div class="month-list" style="width:1070px; margin-top:10px">
@@ -425,6 +479,7 @@ th {
 			<br>
 			<br>
 			<h3 align="center">급여 상세</h3>
+			<form>
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
@@ -432,13 +487,13 @@ th {
 							<tbody>
 								<tr>
 									<td>근무시작일</td>
-									<td><input type="date" class="form-control"></td>
+									<td><input type="date" class="form-control" id="startdate"></td>
 									<td>근무종료일</td>
-									<td><input type="date" class="form-control"></td>
+									<td><input type="date" class="form-control" id="endtate"></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>급여지급일</td>
-									<td><input type="date" class="form-control"></td>
+									<td><input type="date" class="form-control" id="saldate"></td>
 								</tr>
 							</tbody>
 
@@ -466,16 +521,16 @@ th {
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><input type="text" value="기본급" class="form-control"></td>
-									<td><input type="text" value="시간외수당" class="form-control"></td>
-									<td><input type="text" value="휴일근무수당" class="form-control"></td>
-									<td><input type="text" value="상여금" class="form-control"></td>
-									<td><input type="text" value="성과금" class="form-control"></td>
-									<td><input type="text" value="식대" class="form-control"></td>
-									<td><input type="text" value="자차운전보조" class="form-control"></td>
-									<td><input type="text" value="육아수당" class="form-control"></td>
-									<td><input type="text" value="지급경비" class="form-control"></td>
-									<td><input type="text" value="총급여" class="form-control"></td>
+									<td><input type="text" placeholder="기본급" class="form-control" id="salary1"></td>
+									<td><input type="text" placeholder="시간외수당" class="form-control" id="salary2"></td>
+									<td><input type="text" placeholder="휴일근무수당" class="form-control" id="salary3"></td>
+									<td><input type="text" placeholder="상여금" class="form-control" id="salary4"></td>
+									<td><input type="text" placeholder="성과금" class="form-control" id="salary5"></td>
+									<td><input type="text" placeholder="식대" class="form-control" id="salary6"></td>
+									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7"></td>
+									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8"></td>
+									<td><input type="text" placeholder="지급경비" class="form-control" id="salary9"></td>
+									<td><input type="text" placeholder="총급여" class="form-control" id="totalsalary"></td>
 
 								</tr>
 							</tbody>
@@ -498,12 +553,12 @@ th {
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><input type="text" value="국민연금" class="form-control"></td>
-									<td><input type="text" value="건강보험" class="form-control"></td>
-									<td><input type="text" value="장기요양보험" class="form-control"></td>
-									<td><input type="text" value="고용보험" class="form-control"></td>
-									<td><input type="text" value="원천징수" class="form-control"></td>
-									<td><input type="text" value="차인지급액" class="form-control"></td>
+									<td><input type="text" placeholder="국민연금" class="form-control" id="gong1"></td>
+									<td><input type="text" placeholder="건강보험" class="form-control" id="gong2"></td>
+									<td><input type="text" placeholder="장기요양보험" class="form-control" id="gong3"></td>
+									<td><input type="text" placeholder="고용보험" class="form-control" id="gong4"></td>
+									<td><input type="text" placeholder="원천징수" class="form-control" id="gong5"></td>
+									<td><input type="text" placeholder="차인지급액" class="form-control" id="gongtotal"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -527,12 +582,12 @@ th {
 												<td>&nbsp;</td>
 											</tr>
 											<tr>
-												<td><input type="text" value="국민연금" class="form-control"></td>
-												<td><input type="text" value="건강보험" class="form-control"></td>
-												<td><input type="text" value="장기요양" class="form-control"></td>
-												<td><input type="text" value="고용보험" class="form-control"></td>
-												<td><input type="text" value="산재보험" class="form-control"></td>
-												<td><input type="text" value="총금액" class="form-control"></td>
+												<td><input type="text" placeholder="국민연금" class="form-control" id="insu1"></td>
+												<td><input type="text" placeholder="건강보험" class="form-control" id="insu2"></td>
+												<td><input type="text" placeholder="장기요양" class="form-control" id="insu3"></td>
+												<td><input type="text" placeholder="고용보험" class="form-control" id="insu4"></td>
+												<td><input type="text" placeholder="산재보험" class="form-control" id="insu5"></td>
+												<td><input type="text" placeholder="총금액" class="form-control" id="insutotal"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -545,12 +600,13 @@ th {
 						<br>
 						<br>
 						<div class="emp-table btn-group-custom">
-							<input type="button" class="btn btn-warning" value="작성취소">
+							<input type="reset" class="btn btn-warning" value="작성취소">
 							<input type="button" class="btn btn-success" value="적용하기">
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
 			<div class="modal fade" id="myEmp" role="dialog">
 						    <div class="modal-dialog modal-lg">
 						      <div class="modal-content">

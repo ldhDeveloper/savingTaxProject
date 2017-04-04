@@ -198,7 +198,7 @@ public class PartyService {
 		}
 		return result;
 	}
-		
+
 
 	//myinfo3에서 정보 가져오기
 	public Party selectParty(int pno) {
