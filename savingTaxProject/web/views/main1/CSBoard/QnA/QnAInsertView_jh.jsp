@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import  = "board.model.vo.Post, java.util.List"%>
+<% Post p = (Post)request.getAttribute("post"); 
+	int currentPage = ((Integer)request.getAttribute("page")).intValue();
 	
-<%@ page import="member.model.vo.Party" %>
-
-<%
-	Party loginUser = (Party)session.getAttribute("loginUser");
-%>	
+	List<Post> commentList = (List)request.getAttribute("commentList");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -79,13 +78,14 @@
 }
 
 #clist{
-	background: -webkit-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -o-linear-gradient(left, #ffffff, #b0e0e6);
-	background: -moz-linear-gradient(left, #ffffff, #b0e0e6);
-	background: linear-gradient(left, #ffffff, #b0e0e6);
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
-	border-radius: 4px;
+	width: 1007px;
+	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
 	box-shadow: 2px 2px 6px #2a82a3;
@@ -99,11 +99,19 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	color : #2a82a3;
+	/* color : #2a82a3; */
+	color : #696969;
 	font-size: 13px;
 }
 
 #cdate {
+	font-family: computer !important;
+	color : #2a82a3;
+	font-size: 15px;
+	width: 15%;
+}
+
+#cwriter {
 	font-family: computer !important;
 	color : #2a82a3;
 	font-size: 15px;
@@ -126,44 +134,109 @@
 	align: center;
 }
 
-.Qtitle {
-	font-family: computer !important;
-	border-top : 1px solid #ddd;
-	border-bottom : 1px solid #ddd;
-	padding-top : 2.5%;
-	padding-left : 2.5%;
-	padding-bottom : 2%;
-	font-size: 12pt;
-	color: #2a82a3;
+.thmd {
+	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border : 1px solid #2a82a3;
+	box-shadow: 2px 2px 6px #2a82a3;
+	height: 10%;
 }
 
-.Qlist {			
-	border-bottom : 1px solid #ddd;
-	padding : 1.5%;	
+#thmd {
+	border-collapse: collapse;
+	border : 1px solid #ddd;
 	text-align: center;
-} 
+}
 
-.Qright {
-	border-right: 1px solid #ddd;
+#thth {
+	font-family: computer !important;
+	color : #2a82a3;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+}
+
+#thc {
 	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
 	text-align: center;
-	font-size: 10pt;
+	font-size:10pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #ddd;
+	
 }
 
-.Qlistt {
-	border-right: 1px solid #ddd;
+#thcS {
+	font-family: NotoSansCJKkr-Ligth !important;
+	color : #696969;
+	text-align: center;
+	font-size:12pt;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-bottom: 0.8%;
+	border-right : 1px solid #2a82a3;
+}
+
+#ccontents {
+	text-align: center;
+	align: center;
+}
+
+table {
+	width: 100%;
+}
+
+.tdmini1 {
+	border-top : 1px solid #2a82a3;
+	border-bottom : 1px solid #ddd;
+	padding-top : 1.5%;
+	padding-left : 2%;
+}
+
+.tablemini{
+	width: 100%;
 	font-family: computer !important;
-	font-size: 12pt;
-	color: #2a82a3;
+}
+
+.tdmini2 {
+	border-bottom : 1px solid #2a82a3;
+	padding-top : 1.5%;
+	padding-left : 2%;
+	
+	
+}
+
+#wwrite{
+	color : #2a82a3;
+}
+
+#tw {
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size : 9.5pt;
+	color : #696969;
+}
+
+.textAreaCon{
+	font-family: NotoSansCJKkr-Ligth !important;
+	border : none;
+	max-width: 970px;
+	min-width: 970px;
+	max-height: 400px;
+	min-height: 400px;
+	font-size : 15pt;
 }
 
 .Qreply {
 	border-bottom : 1px solid #ddd;
 	font-family: computer !important;
-	border-top : 1px solid #ddd;
 	padding : 2.5%;
 	font-size: 12pt;
-	heigth: 10%;
 	color: #2a82a3;
 }
 
@@ -173,42 +246,77 @@
 	color: black;
 }
 
-#submitBtn2 {
-	border: none;
-	border-radius: 3px;
-	border-color: #d58512;
-	color: white;
-	width: 5%;
-    height: 25px;
-	font-family: Binggrae !important;
-	background-color : #ec971f;
-}
-
-#submitBtn1 {
-	border: none;
-	border-radius: 3px;
-	border-color: #2a82a3;
-	color: white;
-	width: 5%;
-    height: 25px;
-	font-family: Binggrae !important;
-	background-color : #2a82a3;	
-}
-
-.Qcount{
+.textAreareply{
 	font-family: NotoSansCJKkr-Ligth !important;
-	text-align: center;
-	font-size: 10pt;
+	/* border : none; */
+	max-width: 850px;
+	min-width: 850px;
+	max-height: 100px;
+	min-height: 100px;
+	font-size : 15pt;
 }
 
-#ptitletext {
+.submitBtns {
 	border: none;
-	width: 830px;
+	border-radius: 3px;
+	background-color: #2a82a3;
+	color: white;
+	font-family: Binggrae !important;
+		
 }
 
-#textArea {
+.cancleBtns {
 	border: none;
+	border-radius: 3px;
+	background-color: darkorange;
+	color: white;
+	font-family: Binggrae !important;
 }
+
+.OreplyBtn {
+	border-bottom : 1px solid #ddd;
+}
+
+.QreplyComent {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	padding-top: 1%;
+	padding-left : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+	height: 200px;
+}
+
+.lastBtns {
+	border: none;
+	border-radius: 3px;
+	background-color: darkorange;
+	color: white;
+	font-family: Binggrae !important;
+}
+
+.Qreplying {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
+.Qreplying2 {
+	border-bottom : 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	padding : 2.5%;
+	font-size: 12pt;
+}
+
+.QreplyContent {
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
 
 </style>
 
@@ -224,114 +332,181 @@
 	<br>
 
 	<!-- 컴퓨터용 -->
-	
-	
-	
 	<div class="middle hidden-xs">
 
 
 		<div class="middle font-family-md-1">
 			<h3 align="center">
 				<img src="/jsmi/images/QnA.png"><br><br>
-				절세미인에게 세무와 관련된 <label id="h3title"> 무엇이든 질문하십시오.</label>
+				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">성실하고 정확하게
-				답변해드릴게요.
+			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
+				확인하실 수 있습니다.
 			</h4>
 		</div>
 
 		<br> <br> <br>
-
-		<!-- <div id="clist">
+		
+		
+		<div id="clist">
 			<label id="ctitle">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				제목
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 			</label> 
 			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
+				<%= p.getPostName() %></label>
+		</div>
+		
 		
 		<h3></h3>
-		
-		<form action="/jsmi/pinsert" method="post" enctype="multipart/form-data">
+
 		<div class="tableStart">
-			<table class="tablemd">
-				<tbody class="tbodymd font-family-md-3">
-					<tr>
-						<td colspan="8" class="Qtitle">
-							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="ptitle" id="ptitletext" autofocus>
-							</label>
-						</td> 
+			<table>
+				<thead class="theadmd">
+					<tr class="thmd">
+						<th id="thth">작성일</th>
+						<th id="thc"><%=p.getPostDate()%></th>
+						<th id="thth">작성자</th>
+						<th id="thc"><%=p.getpId() %></th>
+						<th id="thth">조회수</th>
+						<th id="thcS"><%=p.getReadCount()%></th>
 					</tr>
-				
-					<tr>
-						<td class="Qlist Qright Qlistt">
-							번호
-						</td>
-						
-						<td class="Qright">
-							여기에 번호 값 넣기
-						</td>
-						
-						<td class="Qlistt Qright">
-							작성일자
-						</td>
-						
-						<td class="Qright">
-							여기에 작성일자 값 넣기
-						</td>
-						
-						<td class="Qlistt Qright">
-							작성자
-						</td>
-						
-						<td class="Qright">
-							<%= loginUser.getPname() %>
-							<input value="<%= loginUser.getPno() %>" name="pno" type="hidden">							
-						</td>
-						
-						<td class="Qlistt Qright">
-							조회수
-						</td>
-						
-						<td class="Qcount">
-							여기에 조회수 값 넣기
-						</td> 
-					</tr>
+				</thead>
+
+				<tbody class="tablemd tbodymd font-family-md-3">
 					
 					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
-						<td colspan="8" class="tdmd" id="ccontents">
+						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea style="width:100%;height:200px;" id="textArea"></textarea>
+							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
+					
+					
 				</tbody>
 			</table>
 		</div>
-
+		
+		<div>
+			<form action = "/jsmi/insertcomment" method = "post">
+			<table class="replyTable">				
+					<tr>
+						<td class="Qreply">
+							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+						</td>
+						
+						<td class="OreplyBtn">
+							
+							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+							<%if(loginUser != null) {%>
+							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+							<% } %>
+							<input type = "hidden" name = "page" value="<%=currentPage%>">
+							<input type="submit" class="submitBtns" value="등록">
+						</td>
+						
+						<td class="OreplyBtn">															
+							<input type="submit" class="cancleBtns" value="취소">
+						</td>
+					</tr>
+			</table>
+			</form>
+		</div>
+		
+		<div>					
+			<table class="replyTable">				
+					<tr>
+						<td colspan="4" class="QreplyContent">
+							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
+						</td>
+					</tr>
+					
+					<tr>						
+						<% if(commentList != null) { for(Post c : commentList) { %>
+						<td class="Qreplying">
+							작성자						
+						</td>
+						
+						<td class="Qreplying2">
+							<%=c.getpId() %>
+						</td>
+						
+						<td class="Qreplying">
+							작성일							
+						</td>
+						
+						<td class="Qreplying2">
+							<%=c.getPostDate() %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" class="Qreplying">
+							작성내용						
+						</td>
+						
+						<td colspan="2" class="Qreplying2">
+							<%=c.getPostContents() %>
+						</td>
+						<% }} %>
+					</tr>
+			</table>
+		</div>
+		
 		<br>
 		
-			<div align="right">
-				<input type="submit" class="btn btn-primary" value="등록">
-				<a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp" class="btn btn-warning">이전</a>				
-			</div>		
-		</form>
+		<div>
+			<table>
+				<tr>
+				<td align="right">
+					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+		
+					<button class="updateBtn" onclick="redact();">수정하기</button>
+				
+					<script type="text/javascript">
+						function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+					</script>
 			
+					<% }} %>
+				</td>
 
+				<td align="right" >
+					<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="lastBtns">이전</a>	
+				</td>
+				</tr>
+			</table>					
+		</div>
 		
+		<br><br>
 		
-		<script type="text/javascript">
+		<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1">
+						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
+					<td>
+				</tr>
+				
+				<tr>
+					<td class="tdmini2">
+						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
+					<td>
+				</tr>
+			</table>
+		</div>
+		
+		<br><br>		
 
-		</script>
 	</div>
-
-
 
 	<!-- 모바일용 -->
 	<br>

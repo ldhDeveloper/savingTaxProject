@@ -100,7 +100,7 @@
 		<tr><td></td><td> &nbsp; &nbsp;&nbsp;"<%=loginUser.getPname() %>"  님의 부가가치세 정보 창입니다. </td></tr>
 		<tr><td>년도 현재까지의 부가가치세 입니다.</td><td></td></tr>
 		<tr><td>매출 세액</td><td><span></span> 원</td></tr>
-		<%if(loginUser.getTaxtype() == 1){ %>
+		<%if(loginUser.getTaxtype() == 1){ %
 		<tr><td>매입 세액</td><td><span></span> 원</td></tr>
 		<tr><td>-공제받지 못할 매입세액</td><td>원</td></tr>
 		<%}%>
@@ -119,4 +119,5 @@
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
+
 </html>

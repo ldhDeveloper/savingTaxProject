@@ -336,9 +336,7 @@ table {
 
 
 		<div class="middle font-family-md-1">
-
 			<h3 align="center">
-
 				<img src="/jsmi/images/main1/notice.png"><br>
 				<br> 절세미인의 <label>공지사항</label>입니다.
 			</h3>
