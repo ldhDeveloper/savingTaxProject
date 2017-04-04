@@ -39,9 +39,7 @@ public class PayInsertServlet extends HttpServlet {
 		String sdate = request.getParameter("sdate");
 		String edate = request.getParameter("edate");
 		int month = Integer.parseInt(request.getParameter("month"));
-		String hap = request.getParameter("hap");
-		/*int total = hap.split("원"));*/
-		
+		String hap = request.getParameter("hap");		
 		
 		System.out.println("grade servlet1 : " + hap);
 		

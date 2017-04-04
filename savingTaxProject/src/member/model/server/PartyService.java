@@ -194,6 +194,8 @@ public class PartyService {
 		else {
 			rollback(con);
 		}
+		return result;
+	}
 		
 
 	//myinfo3에서 정보 가져오기
