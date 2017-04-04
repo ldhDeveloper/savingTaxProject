@@ -41,7 +41,9 @@ public class PartyService {
 		Connection con = getConnection();
 		PartyDao pdao = new PartyDao();
 		int result = pdao.updatePartyMyinfo1(con, p);
+		System.out.println("result-1 : " + result);
 		int result2 = pdao.updatePartyMyinfo2(con, p);
+		System.out.println("result-2 : " + result2);
 		if (result > 0 && result2 > 0) {
 			commit(con);
 		} else {
@@ -220,6 +222,13 @@ public class PartyService {
 		}
 		System.out.println("grade service : " + g);
 		return result;
+	}
+
+	public Party selectParty2(int pno) {
+		Connection con = getConnection();
+		Party p = new PartyDao().selectParty2(con, pno);
+		close(con);
+		return p;
 	}
 
 }
