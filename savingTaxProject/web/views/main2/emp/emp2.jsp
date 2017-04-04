@@ -7,6 +7,7 @@
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <link href="/jsmi/css/main2/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 <script src="/jsmi/js/main2/bootstrap.min.js"></script>
@@ -69,7 +70,13 @@
 }
 
 .month {
-	width: 90px;
+	width: 9.09%;
+	height: 10px;
+	text-align: center;
+}
+
+.newmonth {
+	width: 89px;
 	height: 10px;
 	text-align: center;
 }
@@ -84,7 +91,7 @@
 .mon-border {
 	border-left: 1px solid #1080aa;
 	border-right: 1px solid #1080aa;
-	height: 20px;
+	height: 32px;
 }
 
 .month-select {
@@ -122,7 +129,34 @@ td {
 	left: 800px;
 	margin-left: 20px;
 }
+
+#yearlabel img {
+	display: inline-block;
+	height: 26px;
+	cursor: pointer;
+}
+
+#yearlabel h3 {
+	display: inline-block;
+}
+
+#slider12c .slider-track-high {
+	background: #e7e7e7;
+}
+
+#slider12c .slider-track-low {
+	background: #e7e7e7;
+}
+
+#slider12c .slider-selection {
+	background: #ed6615;
+}
+
+.slider-track { 
+	width: 980px;
+}
 </style>
+
 </head>
 <body style="padding-top: 0px;">
 	<%@ include file="/views/common/main2/main2back.jsp"%>
@@ -134,7 +168,61 @@ td {
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
-
+		<script type="text/javascript">
+			$(function(){
+				var d = new Date();
+				var dyear = d.getFullYear();
+				var dmonth = d.getMonth() + 1;
+				$('#selyear').text(dyear + "년");
+			
+				$('#beforeyear').click(function(){
+					dyear = dyear - 1;
+					$('#selyear').text(dyear + "년");
+				});
+				
+				$('#nextyear').click(function(){
+					dyear = dyear + 1;
+					$('#selyear').text(dyear + "년");
+				});
+				
+				$('.slider-horizontal').css("width", "980px");
+				$('.tooltip-inner').hide();
+				$('.tooltip-arrow').hide();
+				$('.tooltip').hide();
+				//$('.tooltip tooltip-main top in').hide();
+				
+				$('#selectemp').click(function(){
+					var pno = <%= loginUser.getPno() %>;
+					$.ajax({
+						url: "/jsmi/semp",
+						type: "get",
+						data: {pno : pno},
+						dataType: "json",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						success: function(data){
+							console.log("json 성공");
+							console.log("data : " + data);
+							var jsonObj = JSON.stringify(data);
+							//변환된 제이슨 객체를 제이슨 배열로 변환
+							var jsonArr = JSON.parse(jsonObj);
+					
+							$("#selemptable").html("<tr><th>직원명</th><th>주민등록번호</th><th>직급</th><th>휴대폰</th><th>이메일</th><th>고용형태</th>");
+							for(var i in jsonArr.list){
+								$("#dealertable").html($("#selemptable").html() +
+										"<tr style='cursor:pointer' onclick='empclick(\"" + jsonArr.list[i].pno + "\");'><td>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td>" + decodeURIComponent(jsonArr.list[i].position) + 
+										"</td><td>" + jsonArr.list[i].phone + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td>" + decodeURIComponent(jsonArr.list[i].emp_type) +
+										"</td><td>");
+							}
+							jQuery.noConflict(); 
+							$('#myEmp').modal('show');
+						},
+						error: function(request,status,error){
+					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }
+				});
+			});
+			});
+		</script>
 		<div class="section">
 			<div class="row">
 				<div class="col-md-8">
@@ -149,7 +237,12 @@ td {
 				</div>
 			</div>
 			<!-- 달력  -->
-			<h3 align="center">근무 기간 선택</h3>
+			<div id="yearlabel" align="center">
+			<img id="beforeyear" src="/jsmi/images/main2/arrow2.png">&nbsp;&nbsp;&nbsp;&nbsp;
+			<h3 align="center" id="selyear"></h3>&nbsp;&nbsp;&nbsp;&nbsp;
+			<img id="nextyear" src="/jsmi/images/main2/arrow.png">
+			</div>
+			
 			<div class="mon-space">
 				<table>
 					<tr>
@@ -168,43 +261,33 @@ td {
 					</tr>
 				</table>
 			</div>
-			<div class="calendar">
+			<div style="width:980px; margin-left: auto; margin-right: auto">
+				<input id="ex12c" type="text"/><br/>
+				
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
+				<script>
+					$("#ex12c").slider({ id: "slider12c", min: 1, max: 12, range: true, value: [3, 7] });
+				</script>
+			</div>
+			<div class="month-list" style="width:1070px; margin-top:10px">
 				<table>
 					<tr>
-						<td class="month month1 "></td>
-						<td class="month month2 "></td>
-						<td class="month month3 "></td>
-						<td class="month month "></td>
-						<td class="month month5  month-select"></td>
-						<td class="month month6 "></td>
-						<td class="month month7 "></td>
-						<td class="month month8 "></td>
-						<td class="month month9 "></td>
-						<td class="month month10 "></td>
-						<td class="month month11 "></td>
-						<td class="month month12 "></td>
+						<td class="newmonth">1월</td>
+						<td class="newmonth">2월</td>
+						<td class="newmonth">3월</td>
+						<td class="newmonth">4월</td>
+						<td class="newmonth">5월</td>
+						<td class="newmonth">6월</td>
+						<td class="newmonth">7월</td>
+						<td class="newmonth">8월</td>
+						<td class="newmonth">9월</td>
+						<td class="newmonth">10월</td>
+						<td class="newmonth">11월</td>
+						<td class="newmonth">12월</td>
 					</tr>
 				</table>
 			</div>
-
-			<div class="month-list">
-				<table>
-					<tr>
-						<td class="month">1월</td>
-						<td class="month">2월</td>
-						<td class="month">3월</td>
-						<td class="month">4월</td>
-						<td class="month">5월</td>
-						<td class="month">6월</td>
-						<td class="month">7월</td>
-						<td class="month">8월</td>
-						<td class="month">9월</td>
-						<td class="month">10월</td>
-						<td class="month">11월</td>
-						<td class="month">12월</td>
-					</tr>
-				</table>
-			</div>
+			
 			<br>
 			<br>
 			<h3 align="center">급여 현황</h3>
@@ -305,7 +388,7 @@ td {
 						<table class="table table-condensed">
 							<tbody>
 								<tr>
-									<td rowspan="2"><input type="button" value="직원선택"
+									<td rowspan="2"><input type="button" value="직원선택" id="selectemp"
 										class="emp-choice"></td>
 									<td>직원명</td>
 									<td>주민등록번호</td>
@@ -455,7 +538,24 @@ td {
 					</div>
 				</div>
 			</div>
-
+			<div class="modal fade" id="myEmp" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">직원선택</h4>
+						        </div>
+						        <div class="modal-body">
+						      		<table class="table table-striped" id="selemptable">
+									    
+									  </table>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 
 
 

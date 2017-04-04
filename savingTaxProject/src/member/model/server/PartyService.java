@@ -170,5 +170,5 @@ public class PartyService {
 		ArrayList<Party> emplist = new PartyDao().selectEmpList(con, pno);
 		return emplist;
 	}
-
+	
 }

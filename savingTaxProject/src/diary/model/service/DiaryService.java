@@ -1,5 +1,6 @@
 package diary.model.service;
 import diary.model.vo.*;
+import member.model.dao.PartyDao;
 import member.model.vo.Party;
 import diary.model.dao.*;
 import static common.JDBCTemplate.*;
