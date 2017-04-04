@@ -1,6 +1,7 @@
 package member.model.server;
 
 import member.model.dao.PartyDao;
+import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
 
@@ -169,6 +170,22 @@ public class PartyService {
 		Connection con = getConnection();
 		ArrayList<Party> emplist = new PartyDao().selectEmpList(con, pno);
 		return emplist;
+	}
+
+	// 등급 변경 service
+	public int insertGrade(Grade g) {
+		Connection con = getConnection();
+		int result = new PartyDao().insertGrade(con, g);
+		
+		if(result > 0) {
+			commit(con);
+		}
+		
+		else {
+			rollback(con);
+		}
+		System.out.println("grade service : " + g);
+		return result;
 	}
 
 }

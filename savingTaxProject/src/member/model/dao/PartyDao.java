@@ -3,6 +3,8 @@ package member.model.dao;
 import static common.JDBCTemplate.*;
 import java.sql.*;
 import java.util.*;
+
+import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
 
@@ -621,5 +623,33 @@ public class PartyDao {
 		
 		return emplist;
 	}
+	
+	// 등급 변경 Dao
+	public int insertGrade(Connection con, Grade g) {
+		int result = 0;
+		PreparedStatement pstmt = null;
 
+		String query = "insert into grade values (seq_grade.nextval , to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, 'VIP')";
+		
+		
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, g.getSdate());
+			pstmt.setString(2, g.getEdate());
+			pstmt.setInt(3, g.getPno());
+			
+			System.out.println(g.getSdate());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("grade dao : " + g);
+		return result;
+	}
 }
