@@ -296,12 +296,12 @@
 									<td class="col-md-6" colspan="2">
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="email1">
+											<input type="text" class="form-control" name="email1" id="email1">
 										</div>
 										<div class="col-md-1" style="text-align: center">@</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="email2">
+											<input type="text" class="form-control" name="email2" id="email2">
 										</div>
 										<div class="col-md-1" style="display: block"></div>
 										<div class="col-md-3"
@@ -312,7 +312,7 @@
 													직접입력 <span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu"
-													aria-labelledby="menu1">
+													aria-labelledby="menu1" id="edrop">
 													<li role="presentation"><a role="menuitem"
 														tabindex="-1" href="#">naver.com</a></li>
 													<li role="presentation"><a role="menuitem"
@@ -373,7 +373,7 @@
 				$("#insert").click(function(){
 					var pno = <%= loginUser.getPno() %>;
 					var empname = $("input[name=empname]").val();
-					var optradio = $("input[name=optradio]").val();
+					var optradio = $("input[name=optradio]:checked").val();
 					var empno1 = $("input[name=empno1]").val();
 					var empno2 = $("input[name=empno2]").val();
 					var position = $("input[name=position]").val();

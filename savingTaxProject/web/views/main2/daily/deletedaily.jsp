@@ -401,6 +401,7 @@
 								
 							</tbody>
 						</table>
+						<!-- 
 						<ul class="pagination" style="float: right; margin-bottom: 30px;">
 							<li><a class="pagi" href="#">1</a></li>
 							<li><a class="pagi" href="#">2</a></li>
@@ -408,6 +409,7 @@
 							<li><a class="pagi" href="#">4</a></li>
 							<li><a class="pagi" href="#">5</a></li>
 						</ul>
+						 -->
 					</div>
 					
 

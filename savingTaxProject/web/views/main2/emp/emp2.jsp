@@ -232,6 +232,7 @@ th {
 			
 			
 			function empclick(data1, data2){
+				
 				$('#selpname').val($('#emplist' + data1).children('td[name=selpname]').text());
 				$('#selid_no').val($('#emplist' + data1).children('td[name=selid_no]').text());
 				$('#selposition').val($('#emplist' + data1).children('td[name=selposition]').text());
