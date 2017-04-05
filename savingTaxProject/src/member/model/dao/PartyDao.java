@@ -72,13 +72,13 @@ public class PartyDao {
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
 				p.setWno(rset.getInt("wno"));
-				p.setTaxtype(rset.getInt("taxtype"));
-				p.setNotax_yn(rset.getInt("notax_yn"));
+				p.setTaxType(rset.getString("taxtype"));
+				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
-				p.setForeginer_yn(rset.getInt("foreginer_yn"));
+				p.setForeginer_yn(rset.getString("foreginer_yn"));
 				p.setEmp_type(rset.getString("emp_type"));
 				p.setJoin_date(rset.getDate("join_date"));
-				p.setBusi_type(rset.getInt("busi_type"));
+				p.setBusi_type(rset.getString("busi_type"));
 				p.setPhone(rset.getString("phone"));
 				p.setBirth(rset.getString("birth"));
 				p.setGender(rset.getString("gender"));
@@ -215,8 +215,8 @@ public class PartyDao {
 			pstmt.setString(6, p.getCtype());
 			pstmt.setDate(7, p.getOday());
 			pstmt.setInt(8, p.getWno());
-			pstmt.setInt(9, p.getTaxtype());
-			pstmt.setInt(10, p.getNotax_yn());
+			pstmt.setString(9, p.getTaxType());
+			pstmt.setString(10, p.getNotax_yn());
 			pstmt.setString(11, p.getPresident());
 			pstmt.setDouble(12, p.getIrate());
 			pstmt.setInt(13, p.getPno());
@@ -247,7 +247,7 @@ public class PartyDao {
 			pstmt.setString(7, p.getCstatus());
 			pstmt.setString(8, p.getCtype());
 			pstmt.setString(9, p.getPresident());
-			pstmt.setInt(10, p.getBusi_type());
+			pstmt.setString(10, p.getBusi_type());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -380,13 +380,13 @@ public class PartyDao {
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
 				p.setWno(rset.getInt("wno"));
-				p.setTaxtype(rset.getInt("taxtype"));
-				p.setNotax_yn(rset.getInt("notax_yn"));
+				p.setTaxType(rset.getString("taxtype"));
+				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
-				p.setForeginer_yn(rset.getInt("foreginer_yn"));
+				p.setForeginer_yn(rset.getString("foreginer_yn"));
 				p.setEmp_type(rset.getString("emp_type"));
 				p.setJoin_date(rset.getDate("join_date"));
-				p.setBusi_type(rset.getInt("busi_type"));
+				p.setBusi_type(rset.getString("busi_type"));
 				p.setPhone(rset.getString("phone"));
 				p.setBirth(rset.getString("birth"));
 				p.setGender(rset.getString("gender"));
@@ -437,13 +437,13 @@ public class PartyDao {
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
 				p.setWno(rset.getInt("wno"));
-				p.setTaxtype(rset.getInt("taxtype"));
-				p.setNotax_yn(rset.getInt("notax_yn"));
+				p.setTaxType(rset.getString("taxtype"));
+				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
-				p.setForeginer_yn(rset.getInt("foreginer_yn"));
+				p.setForeginer_yn(rset.getString("foreginer_yn"));
 				p.setEmp_type(rset.getString("emp_type"));
 				p.setJoin_date(rset.getDate("join_date"));
-				p.setBusi_type(rset.getInt("busi_type"));
+				p.setBusi_type(rset.getString("busi_type"));
 				p.setPhone(rset.getString("phone"));
 				p.setBirth(rset.getString("birth"));
 				p.setGender(rset.getString("gender"));
@@ -863,7 +863,7 @@ public class PartyDao {
 			pstmt.setString(2, p.getCname());
 			pstmt.setString(3, p.getPresident());
 			pstmt.setString(4, p.getCno());
-			pstmt.setInt(5, p.getBusi_type());
+			pstmt.setString(5, p.getBusi_type());
 			pstmt.setString(6, p.getCstatus());
 			pstmt.setString(7, p.getCtype());
 			pstmt.setString(8, p.getTel());

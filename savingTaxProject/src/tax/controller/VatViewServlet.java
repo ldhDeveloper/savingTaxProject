@@ -1,6 +1,8 @@
 package tax.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import diary.model.vo.Diary;
 import tax.model.service.VatService;
@@ -37,21 +42,27 @@ public class VatViewServlet extends HttpServlet {
 		response.setContentType("text/html; charset = utf-8");
 		int write_pno =Integer.parseInt(request.getParameter("pno"));
 		int month = Integer.parseInt(request.getParameter("month"));
-	List<Diary> dlist = new VatService().selectVat(write_pno, month);
+		String taxType = request.getParameter("taxType");	 
+	List<Diary> vlist = new VatService().selectVlist(write_pno, month, taxType);
+	JSONObject json = new JSONObject();
+	JSONArray jarr = new JSONArray();
 	
-	RequestDispatcher view = null;
-	if( dlist != null){
-		System.out.println("일단멈추고");
-	
-		
-		
-	}else{
-		view = request.getRequestDispatcher("views/main2/tax/taxError.jsp");
-		request.setAttribute("message", "부가세 출력 실패");
-		view.forward(request, response);
+	for(Diary tax : vlist){
+		JSONObject jsob = new JSONObject();
+		jsob.put("proof_type", URLEncoder.encode(tax.getProof_type(), "utf-8"));
+		jsob.put("cost", Integer.toString(tax.getCost()));
+		jsob.put("anm", URLEncoder.encode(tax.getAnm(), "utf-8"));
+		jarr.add(jsob);
 	}
+	json.put("tax", jarr);
+	//if(taxType.equals("일반")){}
+			
+	response.setContentType("application/json; charset=utf-8");
+	PrintWriter out = response.getWriter();
 	
-	
+	out.print(json.toJSONString());
+	out.flush();
+	out.close();
 	
 	}
 

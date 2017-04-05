@@ -13,10 +13,11 @@ import diary.model.vo.Diary;
 public class VatService {
 
 	
-	public List<Diary> selectVat(int write_pno, int month) {
+	public List<Diary> selectVlist(int write_pno, int month, String taxType) {
 		Connection con = getConnection();
-		List<Diary> vlist = new VatDao().selectVat(con, write_pno, month);
+		List<Diary> vlist = new VatDao().selectVlist(con, write_pno, month, taxType);
 		return vlist;
 	}
+
 
 }
