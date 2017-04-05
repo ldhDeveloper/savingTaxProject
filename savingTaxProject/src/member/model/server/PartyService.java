@@ -1,6 +1,7 @@
 package member.model.server;
 
 import member.model.dao.PartyDao;
+import member.model.vo.Emp;
 import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
@@ -240,4 +241,11 @@ public class PartyService {
 		return result;
 	}
 
+	public ArrayList<Emp> empSearch(int pno, String startmonth, String endmonth) {
+		Connection con = getConnection();
+		ArrayList<Emp> list = new PartyDao().empSearch(con, pno, startmonth, endmonth);
+		close(con);
+		return list;
+	}
+	
 }
