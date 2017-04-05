@@ -13,9 +13,9 @@ import diary.model.vo.Diary;
 public class VatService {
 
 	
-	public List<Diary> selectVat(int write_pno) {
+	public List<Diary> selectVat(int write_pno, int month) {
 		Connection con = getConnection();
-		List<Diary> vlist = new VatDao().selectVat(con, write_pno);
+		List<Diary> vlist = new VatDao().selectVat(con, write_pno, month);
 		return vlist;
 	}
 

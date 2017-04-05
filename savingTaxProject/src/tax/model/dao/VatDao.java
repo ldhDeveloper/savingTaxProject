@@ -1,7 +1,9 @@
 package tax.model.dao;
 
 import java.sql.*;
+import java.util.*;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import diary.model.vo.Diary;
@@ -11,13 +13,17 @@ public class VatDao {
 
 	public VatDao(){}
 
-	public List<Diary> selectVat(Connection con, int write_pno) {
+	public List<Diary> selectVat(Connection con, int write_pno, int month) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Diary> dlist = null;
-		String query = "select * from diary d, party p where d.pno = p.write_pno(+) and write_pno = ?"
-				+ " and ano in (51, 61, 66, 69, 73) ";
+		GregorianCalendar day = new GregorianCalendar();
+		java.util.Date date = day.getTime();
+		int year = date.getYear();
+		String present = year +"-" + month + "-01";
 		
+		 
+		String query = "select ddate, cost, proff_type, ano from diary where write_pno = ?";
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, write_pno);
@@ -29,10 +35,7 @@ public class VatDao {
 				d.setBilling(rset.getString("billing"));
 				d.setDdate(rset.getDate("ddate"));
 				d.setCost(rset.getInt("cost"));
-				d.setProduct(rset.getString("product"));
 				d.setProof_type(rset.getString("proof_type"));
-				
-				
 				dlist.add(d);
 				}
 			}
@@ -42,13 +45,6 @@ public class VatDao {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
 		return dlist;
-	}
-
-
-
-	
-	
+	}	
 }

@@ -33,24 +33,26 @@ public class VatViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	int write_pno =Integer.parseInt(request.getParameter("pno"));
-		response.setContentType("text/html; charset = utf-8");
 	
-	List<Diary> dlist = new VatService().selectVat(write_pno);
+		response.setContentType("text/html; charset = utf-8");
+		int write_pno =Integer.parseInt(request.getParameter("pno"));
+		int month = Integer.parseInt(request.getParameter("month"));
+	List<Diary> dlist = new VatService().selectVat(write_pno, month);
 	
 	RequestDispatcher view = null;
 	if( dlist != null){
-	view = request.getRequestDispatcher("views/main2/tax/vatDetail.jsp");
-	request.setAttribute("dlist", dlist);
-	view.forward(request, response);
+		System.out.println("일단멈추고");
+	
+		
+		
 	}else{
 		view = request.getRequestDispatcher("views/main2/tax/taxError.jsp");
 		request.setAttribute("message", "부가세 출력 실패");
-		view.forward(request, response);	
+		view.forward(request, response);
 	}
 	
 	
-		
+	
 	}
 
 	/**
