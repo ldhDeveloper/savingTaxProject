@@ -224,17 +224,17 @@
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno" id="cno">
+									<input type="text" class="form-control" name="cno" id="cno" readonly>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno2" id="cno2">
+									<input type="text" class="form-control" name="cno2" id="cno2" readonly>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno3" id="cno3">
+									<input type="text" class="form-control" name="cno3" id="cno3" readonly>
 								</div>
 							</td>
 							<td class="col-md-2"><h5>개인/법인사업자 여부</h5></td>
@@ -242,10 +242,10 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio" value="1" id="individual">개인</label>
+											<label><input type="radio" name="optradio"  id="individual">개인</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio" value="2" id="corporate">법인</label>
+											<label><input type="radio" name="optradio"  id="corporate">법인</label>
 										</div>
 									</div>
 								</div>
@@ -373,7 +373,7 @@
 								$("#detaillist").html( $("#detaillist").html() 
 										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
 										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('+').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
 										+ "</td></tr><hr>" );
 							}
 						},
@@ -394,15 +394,15 @@
 			var cno3=$('#cno3').val();
 			var busitype=$("input[name=optradio]").val();
 			var cstatus=$('#cstatus').val();
-			var ctype=$('ctype').val();
-			var tel=$('tel').val();
-			var tel2=$('tel2').val();
-			var tel3=$('tel3').val();
-			var caddress=$('postnum').val();
-			var caddress2=$('address1').val();
-			var caddress3=$('address2').val();
-			var email=$('email').val();
-			var email2=$('email2').val();
+			var ctype=$('#ctype').val();
+			var tel=$('#tel').val();
+			var tel2=$('#tel2').val();
+			var tel3=$('#tel3').val();
+			var caddress=$('#postnum').val();
+			var caddress2=$('#address1').val();
+			var caddress3=$('#address2').val();
+			var email=$('#email').val();
+			var email2=$('#email2').val();
 		    $.ajax({
 		    	url:"/jsmi/update.info3",
 				data: {pno:pno, cname:cname, president:president, cno:cno, cno2:cno2, cno3:cno3, busitype:busitype, cstatus:cstatus,
@@ -411,7 +411,7 @@
 				dataType:"JSON",
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(data){
-					console.log("json 성공");
+					console.log("data:"+data);
 					var jsonObj = JSON.stringify(data);
 					var jsonArr = JSON.parse(jsonObj);
 					
@@ -446,7 +446,7 @@
        			  var jsonArr=JSON.parse(jsonObj);
        			  
        			  $("input[name=optradio]").val();
-       			  if(jsonArr.busiType == 1){
+       			  if(jsonArr.busiType == "개인"){
        				  $('#individual').attr("checked","checked");
        			  }else{
        				  $('#corporate').attr("checked", "checked");

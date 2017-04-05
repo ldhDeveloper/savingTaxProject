@@ -111,12 +111,12 @@
 							System.out.println("myinfo2 session : " + loginUser);
 						System.out.println(loginUser.getCname() + ", " + loginUser.getPresident() + ", " +  loginUser.getCno() + ", " + 
 								loginUser.getCstatus()  + ", " +  loginUser.getCtype()  + ", " +  loginUser.getTel()  + ", " + 
-								loginUser.getOday()  + ", " +  loginUser.getCaddress() + ", " + loginUser.getTaxtype()  + ", " + 
+								loginUser.getOday()  + ", " +  loginUser.getCaddress() + ", " + loginUser.getTaxType()  + ", " + 
 								loginUser.getNotax_yn());
 							if (loginUser.getCname() != null && loginUser.getPresident() != null && loginUser.getCno() != null
 									&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
-									&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxtype() != 0
-									&& loginUser.getNotax_yn() != 0) {
+									&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxType() != null
+									&& loginUser.getNotax_yn() != null) {
 								System.out.println("실행됨");
 						%>
 
@@ -139,7 +139,7 @@
 									for(String t : tel){
 										System.out.println("tel : " + t);
 									}
-									String[] caddress = loginUser.getCaddress().split("&");
+									String[] caddress = loginUser.getCaddress().split("/");
 									for(String t : caddress){
 										System.out.println("caddress : " + t);
 									}
@@ -239,23 +239,23 @@
 								<div class="row">
 									<div class="col-md-12">
 										<%
-											if (loginUser.getTaxtype() == 1) {
+											if (loginUser.getTaxType() == "일반과세자") {
 										%>
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio2" value=1
+											<label><input type="radio" name="optradio2" 
 												checked>일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" value=2>간이과세자</label>
+											<label><input type="radio" name="optradio2" >간이과세자</label>
 										</div>
 										<%
 											} else {
 										%>
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio2" value=1>일반과세자</label>
+											<label><input type="radio" name="optradio2" >일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" value=2
+											<label><input type="radio" name="optradio2" 
 												checked>간이과세자</label>
 										</div>
 										<%
@@ -269,42 +269,42 @@
 								<div class="row">
 									<div class="col-md-12">
 										<%
-											if (loginUser.getNotax_yn() == 1) {
+											if (loginUser.getNotax_yn() == "과세") {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3" value=1
+											<label><input type="radio" name="optradio3" 
 												checked>과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=2>면세</label>
+											<label><input type="radio" name="optradio3" >면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=3>과세+면세</label>
+											<label><input type="radio" name="optradio3" >과세+면세</label>
 										</div>
 										<%
-											} else if (loginUser.getNotax_yn() == 2) {
+											} else if (loginUser.getNotax_yn() == "면세") {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3" value=1>과세</label>
+											<label><input type="radio" name="optradio3" >과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=2
+											<label><input type="radio" name="optradio3" 
 												checked>면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=3>과세+면세</label>
+											<label><input type="radio" name="optradio3" >과세+면세</label>
 										</div>
 										<%
 											} else {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3" value=1>과세</label>
+											<label><input type="radio" name="optradio3" >과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=2>면세</label>
+											<label><input type="radio" name="optradio3" >면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=3
+											<label><input type="radio" name="optradio3" 
 												checked>과세+면세</label>
 										</div>
 										<%
@@ -313,6 +313,13 @@
 									</div>
 								</div>
 							</td>
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>산재보험요율</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="irate" value="<%=loginUser.getIrate()%>"></td>
+							<td class="col-md-2"></td>
+							<td class="col-md-4"></td>
 						</tr>
 						<%
 							} else {
@@ -416,10 +423,10 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio2" value="1">일반과세자</label>
+											<label><input type="radio" name="optradio" value="일반과세자">일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" value="2">간이과세자</label>
+											<label><input type="radio" name="optradio" value="간이과세자">간이과세자</label>
 										</div>
 									</div>
 								</div>
@@ -429,17 +436,24 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3" value=1>과세</label>
+											<label><input type="radio" name="optradio2" value="과세">과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=2>면세</label>
+											<label><input type="radio" name="optradio2" value="면세">면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" value=3>과세+면세</label>
+											<label><input type="radio" name="optradio2" value="과면세">과세+면세</label>
 										</div>
 									</div>
 								</div>
 							</td>
+						</tr>
+						<tr>
+							<td class="col-md-2"><h5>산재보험요율</h5></td>
+							<td class="col-md-4"><input type="text" class="form-control"
+								name="irate" ></td>
+							<td class="col-md-2"></td>
+							<td class="col-md-4"></td>
 						</tr>
 						<%
 							}
@@ -451,8 +465,8 @@
 					<%
 						if (loginUser.getCname() != null && loginUser.getPresident() != null && loginUser.getCno() != null
 								&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
-								&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxtype() != 0
-								&& loginUser.getNotax_yn() != 0) {
+								&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxType() != null
+								&& loginUser.getNotax_yn() != null) {
 					%>
 					<input type="submit" class="btn btn-warning" value="수정완료"
 						onclick="location.href='/jsmi/views/main2/menu/main2.html'">

@@ -752,9 +752,8 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Party p=null;
-		String query = "select  PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO "
-								+ " from party where pno=?";
-		
+		String query = "select cname, president, cno, cstatus, ctype, tel, caddress, email from party where pno=?";
+		System.out.println("daopnooo: "+pno);
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pno);
@@ -762,6 +761,7 @@ public class PartyDao {
 			rset=pstmt.executeQuery();
 			if(rset.next()){
 				p = new Party();
+				System.out.println("pno222"+pno);
 				p.setPno(pno);
 				p.setCname(rset.getString("cname"));
 				p.setPresident(rset.getString("president"));
@@ -851,28 +851,39 @@ public class PartyDao {
 	}
 
 	//info3 수정
-	public int updateMyinfo3(Connection con, Party p, int pno) {
+	public int updateMyinfo3(Connection con, Party p, int owner) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update party set pname=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where id_no=?";
+		String query = "update party set pname=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where cno=?";
 		
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, p.getPname());
+			System.out.println(p.getPname());
 			pstmt.setString(2, p.getCname());
+			System.out.println(p.getCname());
 			pstmt.setString(3, p.getPresident());
-			pstmt.setString(4, p.getCno());
+			System.out.println(p.getPresident());
+			pstmt.setString(4, p.getCno()); 
+			System.out.println(p.getCno());
 			pstmt.setString(5, p.getBusi_type());
+			System.out.println(p.getBusi_type()); //
 			pstmt.setString(6, p.getCstatus());
-			pstmt.setString(7, p.getCtype());
-			pstmt.setString(8, p.getTel());
-			pstmt.setString(9, p.getCaddress());
-			pstmt.setString(10, p.getEmail());
-			pstmt.setString(11, p.getId_no());
+			System.out.println(p.getCstatus());
+			pstmt.setString(7, p.getCtype()); //
+			System.out.println(p.getCtype());
+			pstmt.setString(8, p.getTel());//
+			System.out.println(p.getTel());
+			pstmt.setString(9, p.getCaddress());//
+			System.out.println(p.getCaddress());
+			pstmt.setString(10, p.getEmail()); //
+			System.out.println(p.getEmail());
+			pstmt.setString(11, p.getCno());
 			
 			result = pstmt.executeUpdate();
+			System.out.println("dao result:"+result);
 			
 			
 		} catch (SQLException e) {
@@ -880,8 +891,6 @@ public class PartyDao {
 		} finally{
 			close(pstmt);
 		}
-		
-		
 		return result;
 	}
 

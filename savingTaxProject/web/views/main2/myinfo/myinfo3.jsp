@@ -149,10 +149,10 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio" value="1" id="individual">개인</label>
+											<label><input type="radio" name="optradio" value="개인" >개인</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio" value="2" id="corporate">법인</label>
+											<label><input type="radio" name="optradio" value="법인">법인</label>
 										</div>
 									</div>
 								</div>

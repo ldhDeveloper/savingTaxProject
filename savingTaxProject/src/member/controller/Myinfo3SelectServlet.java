@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import member.model.server.PartyService;
@@ -38,7 +39,10 @@ public class Myinfo3SelectServlet extends HttpServlet {
 		 int pno = Integer.parseInt(request.getParameter("pno"));
 		  
 		  Party p = new PartyService().selectParty(pno);
+		  System.out.println("selectpno: "+p);
 		  JSONObject job = new JSONObject();
+		
+		  
 		  job.put("pno", p.getPno());
 		  job.put("cname", URLEncoder.encode(p.getCname(), "utf-8"));
 		  job.put("president", URLEncoder.encode(p.getPresident(), "utf-8"));
@@ -52,14 +56,13 @@ public class Myinfo3SelectServlet extends HttpServlet {
 		  job.put("tel", telArr[0]);
 		  job.put("tel2", telArr[1]);
 		  job.put("tel3", telArr[2]);
-		  String caddressArr[] =p.getCaddress().split("&");
+		  String caddressArr[] =p.getCaddress().split("/");
 		  job.put("caddress", URLEncoder.encode(caddressArr[0],"utf-8"));
 		  job.put("caddress2",  URLEncoder.encode(caddressArr[1],"utf-8"));
 		  job.put("caddress3",  URLEncoder.encode(caddressArr[2],"utf-8"));
 		  String emailArr[]=p.getEmail().split("@");
 		  job.put("email", emailArr[0]);
 		  job.put("email2", emailArr[1]);
-		  
 		  
 		  response.setContentType("application/json: charset=utf-8");
 		  PrintWriter out = response.getWriter();
