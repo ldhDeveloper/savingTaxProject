@@ -14,21 +14,6 @@
 </style>
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
-function pagePrint(Obj) { 
-    var W = Obj.offsetWidth;        //screen.availWidth; 
-    var H = Obj.offsetHeight;       //screen.availHeight;
-
-    var features = "menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes,width=" + W + ",height=" + H + ",left=0,top=0"; 
-    var PrintPage = window.open("about:blank",Obj.id,features); 
-
-    PrintPage.document.open(); 
-    PrintPage.document.write("<html><head><title></title><style type='text/css'>body, tr, td, input, textarea { font-family:Tahoma; font-size:9pt; }</style>\n</head>\n<body>" + Obj.innerHTML + "\n</body></html>"); 
-    PrintPage.document.close(); 
-
-    PrintPage.document.title = document.domain; 
-    PrintPage.print(PrintPage.location.reload()); 
-}
-
 $(function(){
 	$( document ).on( "mousemove", function( event ) {
 		  console.log( "pageX: " + event.pageX + ", pageY: " + event.pageY );
