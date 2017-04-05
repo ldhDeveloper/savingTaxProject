@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.sql.*;
 import java.util.*;
 
+import member.model.vo.Emp;
 import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
@@ -751,9 +752,8 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Party p=null;
-		String query = "select  PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO "
-								+ " from party where pno=?";
-		
+		String query = "select cname, president, cno, cstatus, ctype, tel, caddress, email from party where pno=?";
+		System.out.println("daopnooo: "+pno);
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pno);
@@ -761,6 +761,7 @@ public class PartyDao {
 			rset=pstmt.executeQuery();
 			if(rset.next()){
 				p = new Party();
+				System.out.println("pno222"+pno);
 				p.setPno(pno);
 				p.setCname(rset.getString("cname"));
 				p.setPresident(rset.getString("president"));
@@ -850,28 +851,39 @@ public class PartyDao {
 	}
 
 	//info3 수정
-	public int updateMyinfo3(Connection con, Party p, int pno) {
+	public int updateMyinfo3(Connection con, Party p, int owner) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update party set pname=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where id_no=?";
+		String query = "update party set pname=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where cno=?";
 		
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, p.getPname());
+			System.out.println(p.getPname());
 			pstmt.setString(2, p.getCname());
+			System.out.println(p.getCname());
 			pstmt.setString(3, p.getPresident());
-			pstmt.setString(4, p.getCno());
+			System.out.println(p.getPresident());
+			pstmt.setString(4, p.getCno()); 
+			System.out.println(p.getCno());
 			pstmt.setString(5, p.getBusi_type());
+			System.out.println(p.getBusi_type()); //
 			pstmt.setString(6, p.getCstatus());
-			pstmt.setString(7, p.getCtype());
-			pstmt.setString(8, p.getTel());
-			pstmt.setString(9, p.getCaddress());
-			pstmt.setString(10, p.getEmail());
-			pstmt.setString(11, p.getId_no());
+			System.out.println(p.getCstatus());
+			pstmt.setString(7, p.getCtype()); //
+			System.out.println(p.getCtype());
+			pstmt.setString(8, p.getTel());//
+			System.out.println(p.getTel());
+			pstmt.setString(9, p.getCaddress());//
+			System.out.println(p.getCaddress());
+			pstmt.setString(10, p.getEmail()); //
+			System.out.println(p.getEmail());
+			pstmt.setString(11, p.getCno());
 			
 			result = pstmt.executeUpdate();
+			System.out.println("dao result:"+result);
 			
 			
 		} catch (SQLException e) {
@@ -879,9 +891,60 @@ public class PartyDao {
 		} finally{
 			close(pstmt);
 		}
-		
-		
 		return result;
+	}
+
+	public ArrayList<Emp> empSearch(Connection con, int pno, String startmonth, String endmonth) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Emp> list=null; 
+		
+		String query = "select p.pno, p.pname, p.id_no, p.position, s.wsdate, s.wedate, s.saldate, " + 
+							   "s.init_pay, s.bonus, s.incentive, s.over_pay, s.meals, s.child_pay, s.car_pay, s.exp, s.rest_pay " +
+							   "from party_rel pr left join party p on (pr.rel_pno = p.pno) " +
+							   							"left join salary s on (p.pno = s.pno) " +
+							   "where pr.busi_pno = ? and s.saldate >=  to_date(?,'yyyy-mm-dd') and s.saldate <= last_day(to_date(?, 'yyyy-mm'))";
+		
+		try {
+		   pstmt = con.prepareStatement(query);
+		   pstmt.setInt(1, pno);
+		   pstmt.setString(2, startmonth);
+		   pstmt.setString(3, endmonth);
+		   
+		   rset = pstmt.executeQuery();
+		  
+		   if(rset != null){
+			   list = new ArrayList<Emp>();
+		   }
+		   while(rset.next()){
+			   Emp e = new Emp();
+			   e.setPno(rset.getInt("pno"));
+			   e.setPname(rset.getString("pname"));
+			   e.setId_no(rset.getString("id_no"));
+			   e.setPosition(rset.getString("position"));
+			   e.setWsdate(rset.getDate("wsdate"));
+			   e.setWedate(rset.getDate("wedate"));
+			   e.setSaldate(rset.getDate("saldate"));
+			   e.setInit_pay(rset.getInt("init_pay"));
+			   e.setBonus(rset.getInt("bonus"));
+			   e.setIncentive(rset.getInt("incentive"));
+			   e.setOver_pay(rset.getInt("over_pay"));
+			   e.setMeals(rset.getInt("meals"));
+			   e.setChild_pay(rset.getInt("child_pay"));
+			   e.setCar_pay(rset.getInt("car_pay"));
+			   e.setExp(rset.getInt("exp"));
+			   e.setRest_pay(rset.getInt("rest_pay"));
+			   list.add(e);
+			   
+		   }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 }

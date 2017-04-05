@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.json.simple.JSONObject;
 
@@ -37,6 +38,7 @@ public class EmployeeSelectServlet extends HttpServlet {
 		int pno = Integer.parseInt(request.getParameter("pno"));
 		
 		Party p = new PartyService().selectEmp(pno);
+		System.out.println("empselectP:"+p);
 		
 		JSONObject job = job = new JSONObject();
 		job.put("pno", p.getPno());

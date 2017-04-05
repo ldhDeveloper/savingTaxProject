@@ -58,13 +58,14 @@ public class Main2UpdateServlet2 extends HttpServlet {
         String caddress3=request.getParameter("caddress3");
         int wno=Integer.parseInt(request.getParameter("wno"));
         //관할세무서 뺌
-		int taxtype=Integer.parseInt(request.getParameter("optradio2"));//과세유형
-		int notax_yn=Integer.parseInt(request.getParameter("optradio3"));//면세여부
+		String taxtype=request.getParameter("optradio");//과세유형
+		String notax_yn=request.getParameter("optradio2");//면세여부
+		double irate=Double.parseDouble(request.getParameter("irate"));
 		
                
 		String Cno=cno+"-"+cno2+"-"+cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;
-		String Caddress=caddress+"&"+caddress2+"&"+caddress3;
+		String Caddress=caddress+"/"+caddress2+"/"+caddress3;
 		
 
          Party party = new PartyService().selectParty(userid);
@@ -78,12 +79,11 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 party.setOday(Oday);
 		 party.setCaddress(Caddress);
 		 party.setWno(wno);
-		 party.setTaxtype(taxtype);
+		 party.setTaxType(taxtype);
 		 party.setNotax_yn(notax_yn);
+		 party.setIrate(irate);
 		 
 		 int result = new PartyService().updatePartyMyinfo(party); 
-		 System.out.println("result2 :"+result);
-		 System.out.println("party2: "+party);
 		 
 		 Party loginUser=new PartyService().selectParty(userid);
 		 

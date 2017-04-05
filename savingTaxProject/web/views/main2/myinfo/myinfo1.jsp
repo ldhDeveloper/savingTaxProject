@@ -126,7 +126,7 @@
 							for(String t : email){
 								System.out.println("email : " + t);
 							}
-							String[] paddress = loginUser.getPaddress().split("&");
+							String[] paddress = loginUser.getPaddress().split("/");
 							for(String t : paddress){
 								System.out.println("paddress : " + t);
 							}

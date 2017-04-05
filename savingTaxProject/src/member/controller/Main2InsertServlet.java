@@ -44,7 +44,7 @@ public class Main2InsertServlet extends HttpServlet {
 		String cno = request.getParameter("cno");
 		String cno2 = request.getParameter("cno2");
 		String cno3 = request.getParameter("cno3");
-		int busiType = Integer.parseInt(request.getParameter("optradio"));
+		String busiType = request.getParameter("optradio");
 		String cstatus = request.getParameter("cstatus");
 		String ctype = request.getParameter("ctype");
 		String tel = request.getParameter("tel");
@@ -58,7 +58,7 @@ public class Main2InsertServlet extends HttpServlet {
 
 		String Cno = cno + "-" + cno2 + "-" + cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;
-		String Caddress = caddress + "&" + caddress2 + "&" + caddress3;
+		String Caddress = caddress + "/" + caddress2 + "/" + caddress3;
 		String Email = email + "@" + email2;
 
 		Party p = new Party();
@@ -75,9 +75,6 @@ public class Main2InsertServlet extends HttpServlet {
 		p.setEmail(Email);
 
 		int result = new PartyService().insertPartyMyinfo3(p, pno);
-		System.out.println("P: "+p);
-		System.out.println("Pno info3: "+pno);
-		System.out.println("result 33 :"+result);
 		
 		if (result > 0) {
 			RequestDispatcher view = request.getRequestDispatcher("views/main2/myinfo/myinfo3.jsp");
