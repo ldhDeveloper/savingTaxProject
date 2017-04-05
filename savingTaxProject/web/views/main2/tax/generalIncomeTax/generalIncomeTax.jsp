@@ -79,17 +79,19 @@
 .gitTableth {
 	border-bottom: 3px solid #2a82a3;
 	font-family: ssangmunDong !important;
-	text-align: center;
+	padding-left: 38%;
 	font-size: 20pt;
 }
 
 .imcome {
 	padding-top : 2%;
+	padding-left: 15%;
+	padding-right: 13%;
 	border-right: 1px solid #2a82a3;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
-	font-size: 14pt;
-	text-align: center;
+	font-size: 15pt;
+	/* text-align: center; */
 }
 
 .imcomeModify {
@@ -102,12 +104,140 @@
 
 .imcomeCon {
 	padding-top : 2%;
-	padding-bottom: 2%;
+	padding-bottom: 5%;
 	border-bottom: 1px solid #ddd;
 	font-family: NotoSansCJKkr-Ligth !important;
 	font-size: 13pt;
 	text-align: center;
 	
+}
+
+.imcomeWork {
+	padding-top : 2%;
+	padding-left: 15%;
+    padding-right: 9%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifyWork {
+	padding-left: 15%;
+	padding-top : 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeConMon {
+	padding-top : 2%;
+	padding-bottom: 4%;
+	padding-left: 13.5%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+.imcomeConMonin {
+	padding-top : 2%;
+	padding-bottom: 4%;
+	padding-left: 16%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+.imcomepen {
+	padding-top : 2%;
+	padding-left: 15%;
+    padding-right: 22%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifypen {
+	padding-left: 15%;
+	padding-top : 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeatc {
+	padding-top : 2%;
+	padding-left: 15%;
+    padding-right: 15%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifyatc {
+	padding-left: 15%;
+	padding-top : 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeRe {
+	padding-top : 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	font-family: computer !important;
+	font-size: 15pt;
+	text-align: center;
+}
+
+.imcomeConBank {
+	padding-top : 2%;
+	padding-bottom: 5%;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+	text-align: center;
+}
+
+.imcometitle {
+	padding-left: 3%;
+	padding-top: 2%;
+	padding-right: 10%;
+	border-top: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	border-right: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	text-align: center;	
+}
+
+.imcometitle2 {
+	padding-top: 2%;
+	border-top: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	text-align: center;	
+}
+
+.imcomeConBank2 {
+	padding-top : 2%;
+	padding-bottom: 5%;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
 }
 
 /* .gittd1{
@@ -161,15 +291,81 @@
 				</div>
 			</div>
 			
+			<div class="navbar navbar-default">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li>
+							<a class="tabmenu lactive" href="#">
+								총소득세
+							</a>
+						</li>
+						
+						<li>
+							<a class="tabmenu" href="#">
+								소득세계산
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<br><br>
+			
 			<div>
 				<table class="gitTable">
 					<thead class="gitTablethead">
 						<tr class="gitTablethtr">
-							<th colspan="8" class="gitTableth">총 수입 금액 계산</th>
+							<th colspan="8" class="gitTableth">총 소득 계산</th>
 						</tr>
 					</thead>
 					
-					<tbody>
+					<tbody>						
+						<tr>
+							<td colspan="4" class="imcome">금융소득</td>
+							<td colspan="4" class="imcomeModify">2천만원 이상 종합소득, 금융소득금액 = 이자소득 - 배당소득</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeConBank">이자소득</td>
+							<td class="imcomeConBank"><input type="text"> 원</td>
+							<td class="imcomeConBank"> + </td>
+							<td class="imcomeConBank">배당소득</td>
+							<td class="imcomeConBank"><input type="text"> 원</td>
+							<td class="imcomeConBank"> = </td>
+							<td class="imcomeConBank">금융소득금액</td>
+							<td class="imcomeConBank"><input type="text"> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<div>
+				<table class="gitTable">					
+					<tbody>												
+						<tr>
+							<td class="imcometitle">2천만원 이하 종합소득 해당 없음</td>
+							<td class="imcometitle2">금융소득 = (이자소득 + 배당소득) * (이자소득세(14%) + 지방세(1.4%))</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeConBank2">금융소득금액</td>
+							<td class="imcomeConBank2"><input type="text"> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="8" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
 						<tr>
 							<td colspan="4" class="imcome">사업소득</td>
 							<td colspan="4" class="imcomeModify">사업 소득 금액 = 종합소득 - 필요경비</td>
@@ -177,95 +373,138 @@
 						
 						<tr>
 							<td class="imcomeCon">종합소득</td>
-							<td class="imcomeCon"><input type="text"></td>
-							<td class="imcomeCon">-</td>
+							<td class="imcomeCon"><input type="text"> 원</td>
+							<td class="imcomeCon"> - </td>
 							<td class="imcomeCon">필요경비</td>
-							<td class="imcomeCon"><input type="text"></td>
-							<td class="imcomeCon">=</td>
-							<td class="imcomeCon">소득금액</td>
-							<td class="imcomeCon"><input type="text"></td>
+							<td class="imcomeCon"><input type="text"> 원</td>
+							<td class="imcomeCon"> = </td>
+							<td class="imcomeCon">사업소득금액</td>
+							<td class="imcomeCon"><input type="text"> 원</td>
 						</tr>
-					</tbody>
-				
-					
-				<!--<tr class="gittr">
-						<td class="gittd1">과세표준</td>
-						<td class="gittd">종합소득금액 - 소득공제</td>
-						<td class="gittd">과세표준 계산 식이 들어가는 곳</td>
-					<tr>
-					
-					<tr class="gittr">
-						<td class="gittd1">산출세액</td>
-						<td class="gittd1">과세표준 * 세율 - 누진공제액</td>
-						<td class="gittd">산출세액 계산식이 들어가는 곳</td>
-					<tr>
-					
-					<tr class="gittr">
-						<td class="gittd1">세액감면</td>
-						<td class="gittd1">산출세액 * 감면 대상 사업 소득 금액 / 종합소득금액 * 감면율</td>
-						<td class="gittd">산출세액이 나와야할곳</td>
-					<tr>
-					
-					<tr class="gittr">
-						<td class="gittd1">세액공제 / 세액감면</td>
-						<td class="gittd">세액공제 / 세액감면이 나와야할곳</td>
-					<tr>
-					
-					<tr class="gittr">
-						<td class="gittd1">가산세</td>
-						<td class="gittd">가산세가 나와야할곳</td>
-					<tr>
-					
-					<tr class="gittr">
-						<td class="gittd1">기납부세액</td>
-						<td class="gittd">기납부세액이 나와야할곳</td>
-					<tr> -->
+					</tbody>				
 				</table>
 			</div>
-
-			<%-- <table class="table table-condensed">
-				<tr>
-					<td></td>
-					<td>&nbsp; &nbsp;&nbsp;"<%=loginUser.getPname()%>" 님의 종합소득세 정보창입니다.
-					</td>
-				</tr>
-				<tr>
-					<td>년도 현재까지의 부가가치세 입니다.</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>매출 세액</td>
-					<td>원</td>
-				</tr>
-				<%
-					if (loginUser.getTaxtype() == 1) {
-				%>
-				<tr>
-					<td>매입 세액</td>
-					<td>원</td>
-				</tr>
-				<%
-					}
-				%>
-				<tr>
-					<td>공제 세액</td>
-					<td>원</td>
-				</tr>
-				<tr>
-					<td>가산 세액</td>
-					<td>원</td>
-				</tr>
-				<tr>
-					<td>납부할 총 부가가치세액</td>
-					<td>원</td>
-				</tr>
-			</table>
 			
-			<div style="height: 100px;"></div>
+			<br><br><br><br>
 			
-			<button style="float: right;" onclick="location.href='/jsmi/views/main2/tax/insertVat.jsp'">
-				부가가치세계산
-			</button> --%>
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="imcomeWork">근로소득</td>
+							<td class="imcomeModifyWork">근로 소득 금액 : 무조건 과세</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeConMon">근로소득금액</td>
+							<td class="imcomeConMonin"><input type="text"> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="imcomepen">연금소득</td>
+							<td class="imcomeModifypen">공적연금 종합과세, 사적 연금 1200만원 이상 종합과세</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeConMon">연금소득금액</td>
+							<td class="imcomeConMonin"><input type="text"> 원</td>
+							<!-- 1200만원 이상이므로 자동 과세됩니다. 내용뜨게 -->
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="imcomeatc">기타소득</td>
+							<td class="imcomeModifyatc">기타 소득금액 300만원 이상시 종합과세</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeConMon">기타소득금액</td>
+							<td class="imcomeConMonin"><input type="text"> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="5" class="gitTableth">총 소득 결과</th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="imcomeRe">금융소득</td>
+							<td class="imcomeRe">사업소득</td>
+							<td class="imcomeRe">근로소득</td>
+							<td class="imcomeRe">연금소득</td>
+							<td class="imcomeRe">기타소득</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon"><input type="text" readonly value="금융소득"></td>
+							<td class="imcomeCon"><input type="text" readonly value="사업소득"></td>
+							<td class="imcomeCon"><input type="text" readonly value="근로소득"></td>
+							<td class="imcomeCon"><input type="text" readonly value="연금소득"></td>
+							<td class="imcomeCon"><input type="text" readonly value="기타소득"></td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class=""></th>
+						</tr>
+					</thead>
+					
+					<tbody>												
+						<tr>
+							<td class="imcomeConMon">총 소득 금액</td>
+							<td class="imcomeConMonin"><input type="text"> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
 		</div>
 	</div>
 	<br>
