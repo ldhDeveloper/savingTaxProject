@@ -173,11 +173,11 @@ th {
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<script type="text/javascript">
-		
+			pno = <%= loginUser.getPno() %>;
+			d = new Date();
+			dyear = d.getFullYear();
+			dmonth = d.getMonth() + 1;
 			$(function(){
-				var d = new Date();
-				var dyear = d.getFullYear();
-				var dmonth = d.getMonth() + 1;
 				$('#selyear').text(dyear + "년");
 			
 				$('#beforeyear').click(function(){
@@ -197,7 +197,7 @@ th {
 				//$('.tooltip tooltip-main top in').hide();
 				
 				$('#selectemp').click(function(){
-					var pno = <%= loginUser.getPno() %>;
+					
 					$.ajax({
 						url: "/jsmi/semp",
 						type: "get",
@@ -212,7 +212,7 @@ th {
 							$("#selemptable").html("<tr style='margin-bottom:10px'><th style='text-align:center'>직원명</th><th style='text-align:center'>주민등록번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>휴대폰</th><th style='text-align:center'>이메일</th><th style='text-align:center'>고용형태</th>");
 							for(var i in jsonArr.list){
 								$("#selemptable").html($("#selemptable").html() +
-										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
+										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
 										"</td><td name='selphone'>" + jsonArr.list[i].phone + "</td><td name='selemail'>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td name='selemp_type'>" + decodeURIComponent(jsonArr.list[i].emp_type) +
 										"</td><td>");
 							}
@@ -224,6 +224,57 @@ th {
 					    }
 				});
 	
+			});
+				
+			$('#salarysearch').click(function(){
+				console.log($('.min-slider-handle').attr('aria-valuenow'));
+				console.log($('.max-slider-handle').attr('aria-valuenow'));
+				var min = $('.min-slider-handle').attr('aria-valuenow');
+				var max = $('.max-slider-handle').attr('aria-valuenow');
+				var selyear = dyear;
+				
+				$.ajax({
+					url: "/jsmi/salsearch",
+					type: "get",
+					data: {pno : pno, min : min, max : max, selyear : selyear},
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success: function(data){
+						var jsonObj = JSON.stringify(data);
+						//변환된 제이슨 객체를 제이슨 배열로 변환
+						var jsonArr = JSON.parse(jsonObj);
+						var taxsal = 0;
+						var totalsal = 0;
+						var v1 =0;
+						var v2 =0;
+						var v3 =0;
+						var v4 =0;
+						var v5 =0;
+						var resultsal = 0;
+						$("#searchtable").html("<tr><th style='text-align:center'>직원명</th><th style='text-align:center'>주민번호</th><th style='text-align:center'>부서명</th><th style='text-align:center'>직급</th><th style='text-align:center'>근무시작일</th><th style='text-align:center'>근무종료일</th>"
+								+ "<th  style='text-align:center'>급여지급일</th><th style='text-align:center'>총급여금액</th><th  style='text-align:center'>차인지급액</th></tr>");
+						for(var i in jsonArr.list){
+							taxsal = Number(jsonArr.list[i].init_pay) + Number(jsonArr.list[i].bonus) + Number(jsonArr.list[i].incentive) + Number(jsonArr.list[i].over_pay) + Number(jsonArr.list[i].rest_pay);
+							totalsal =  taxsal + Number(jsonArr.list[i].car_pay) + Number(jsonArr.list[i].meals) + Number(jsonArr.list[i].child_pay) + Number(jsonArr.list[i].rest_pay); 
+							v1 = Math.floor((taxsal * 0.045) / 10) * 10;
+							v2 = Math.floor((taxsal * 0.0306) / 10) * 10;
+							v3 = Math.floor((v2 * 0.0655 / 2) /10) * 10;
+							v4 = Math.floor((taxsal * 0.0065) / 10) * 10;
+							v5 = Math.floor((taxsal * 0.033) / 10) * 10
+							resultsal = totalsal - v1 - v2 - v3 - v4 - v5;
+							
+							
+							
+							$("#searchtable").html($("#searchtable").html() +
+									"<tr id='salarylist" + i +"' style='cursor:pointer' onclick='salclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td>" + 
+									"<td name='seldepart'></td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + "</td><td name='selwsdate'>" + jsonArr.list[i].wsdate +
+									"</td><td name='selwedate'>" + jsonArr.list[i].wedate + "</td><td name='selsaldate'>" + jsonArr.list[i].saldate + "</td><td name='selsumsal'>" + totalsal + "</td><td name='selresultsal'>" + resultsal + "</td>");
+						}
+					},
+					error: function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+			});
 			});
 		});
 			
@@ -338,11 +389,11 @@ th {
 							var temp = $(idindex).val();
 							temptotal += Number(temp);
 						}
-						$("#gong1").val(Math.floor((temptotal * 0.045) / 10) * 10);
-						$("#gong2").val(Math.floor((temptotal * 0.0306) / 10) * 10);
-						$("#gong3").val(Math.floor(($("#gong2").val() * 0.0655 / 2) /10) * 10);
-						$("#gong4").val(Math.floor((temptotal * 0.0065) / 10) * 10);
-						$("#gong5").val(Math.floor((temptotal * 0.033) / 10) * 10);
+						$("#gong1").val(Math.floor((temptotal * 0.045) / 10) * 10); //국민연금
+						$("#gong2").val(Math.floor((temptotal * 0.0306) / 10) * 10); //건강보험
+						$("#gong3").val(Math.floor(($("#gong2").val() * 0.0655 / 2) /10) * 10); //장기요양보험
+						$("#gong4").val(Math.floor((temptotal * 0.0065) / 10) * 10); //고용보험
+						$("#gong5").val(Math.floor((temptotal * 0.033) / 10) * 10); //원천징수행
 						
 						var gongtotal = Number(0);
 						
@@ -394,12 +445,17 @@ th {
 			
 			<br>
 			<br>
+			<center>
+				<input style="right:0px; position:relative;" type="button" class="btn btn-primary" id="salarysearch" value="조회하기">
+			</center>
+			<br>
+			<br>
 			<h3 align="center">급여 현황</h3>
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
-							<tbody>
+							<tbody id="searchtable">
 								<tr>
 									<th>직원명</th>
 									<th>주민번호</th>

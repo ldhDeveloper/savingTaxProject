@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.sql.*;
 import java.util.*;
 
+import member.model.vo.Emp;
 import member.model.vo.Grade;
 import member.model.vo.Member;
 import member.model.vo.Party;
@@ -891,6 +892,59 @@ public class PartyDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public ArrayList<Emp> empSearch(Connection con, int pno, String startmonth, String endmonth) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Emp> list=null; 
+		
+		String query = "select p.pno, p.pname, p.id_no, p.position, s.wsdate, s.wedate, s.saldate, " + 
+							   "s.init_pay, s.bonus, s.incentive, s.over_pay, s.meals, s.child_pay, s.car_pay, s.exp, s.rest_pay " +
+							   "from party_rel pr left join party p on (pr.rel_pno = p.pno) " +
+							   							"left join salary s on (p.pno = s.pno) " +
+							   "where pr.busi_pno = ? and s.saldate >=  to_date(?,'yyyy-mm-dd') and s.saldate <= last_day(to_date(?, 'yyyy-mm'))";
+		
+		try {
+		   pstmt = con.prepareStatement(query);
+		   pstmt.setInt(1, pno);
+		   pstmt.setString(2, startmonth);
+		   pstmt.setString(3, endmonth);
+		   
+		   rset = pstmt.executeQuery();
+		  
+		   if(rset != null){
+			   list = new ArrayList<Emp>();
+		   }
+		   while(rset.next()){
+			   Emp e = new Emp();
+			   e.setPno(rset.getInt("pno"));
+			   e.setPname(rset.getString("pname"));
+			   e.setId_no(rset.getString("id_no"));
+			   e.setPosition(rset.getString("position"));
+			   e.setWsdate(rset.getDate("wsdate"));
+			   e.setWedate(rset.getDate("wedate"));
+			   e.setSaldate(rset.getDate("saldate"));
+			   e.setInit_pay(rset.getInt("init_pay"));
+			   e.setBonus(rset.getInt("bonus"));
+			   e.setIncentive(rset.getInt("incentive"));
+			   e.setOver_pay(rset.getInt("over_pay"));
+			   e.setMeals(rset.getInt("meals"));
+			   e.setChild_pay(rset.getInt("child_pay"));
+			   e.setCar_pay(rset.getInt("car_pay"));
+			   e.setExp(rset.getInt("exp"));
+			   e.setRest_pay(rset.getInt("rest_pay"));
+			   list.add(e);
+			   
+		   }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 }
