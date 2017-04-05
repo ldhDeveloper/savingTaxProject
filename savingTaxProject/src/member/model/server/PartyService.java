@@ -54,23 +54,23 @@ public class PartyService {
 
 	public int insertPartyMyinfo3(Party p, int owner) {
 		Connection con = getConnection();
-		int pno=0;
-		int result2=0;
-		int result=0;
-		
-		int result1 = new PartyDao().insertMyinfo3(con, p);
-		System.out.println("result 1: "+result1);
+		int pno = 0;
+		int result2 = 0;
+		int result = 0;
 
-		if(result1>0){
-		   pno= new PartyDao().selectPno(con, p);
-		   System.out.println("result pno: "+pno);
-		   if(pno>0){
-			    result2 = new PartyDao().insertParty_Rel(con, owner, pno);
-			    System.out.println("result2: "+result2);
-		   }
+		int result1 = new PartyDao().insertMyinfo3(con, p);
+		System.out.println("result 1: " + result1);
+
+		if (result1 > 0) {
+			pno = new PartyDao().selectPno(con, p);
+			System.out.println("result pno: " + pno);
+			if (pno > 0) {
+				result2 = new PartyDao().insertParty_Rel(con, owner, pno);
+				System.out.println("result2: " + result2);
+			}
 		}
-		
-		if (result1 > 0 && result2 >0) {
+
+		if (result1 > 0 && result2 > 0) {
 			commit(con);
 			result = 1;
 		} else {
@@ -95,7 +95,6 @@ public class PartyService {
 		close(con);
 		return p;
 	}
-	
 
 	public Party findId(String pname, String email) {
 		Connection con = getConnection();
@@ -122,7 +121,7 @@ public class PartyService {
 
 		return result;
 	}
-	
+
 	public int updatePwd(String userid, String pwd) {
 		Connection con = getConnection();
 		int result = new PartyDao().updatePwd(con, userid, pwd);
@@ -135,7 +134,6 @@ public class PartyService {
 
 		return result;
 	}
-
 
 	// myinfo3 list 불러옴
 	public ArrayList<Party> selectcustomerList(int pno) {
@@ -150,25 +148,24 @@ public class PartyService {
 		int result = 0;
 		int pno = 0;
 		int result2 = 0;
-		
+
 		int result1 = new PartyDao().insertEmp(con, p);
-		
-		if(result1 > 0){
+
+		if (result1 > 0) {
 			pno = new PartyDao().selectPno2(con, p);
-			if(pno != 0){
+			if (pno != 0) {
 				result2 = new PartyDao().insertEmpRel(con, owner, pno);
 			}
 		}
-		
-		if(result1 > 0 && result2 > 0){
+
+		if (result1 > 0 && result2 > 0) {
 			commit(con);
 			result = 1;
-		}
-		else {
+		} else {
 			rollback(con);
 			result = 0;
 		}
-		
+
 		return result;
 	}
 
@@ -181,42 +178,40 @@ public class PartyService {
 	public Party selectEmp(int pno) {
 		Connection con = getConnection();
 		Party p = new PartyDao().selectEmp(con, pno);
-		
+
 		return p;
 	}
 
 	public int updateEmp(Party p, int owner) {
 		Connection con = getConnection();
-		
+
 		int result = new PartyDao().updateEmp(con, p, owner);
-		
-		if(result > 0){
+
+		if (result > 0) {
 			commit(con);
-		}
-		else {
+		} else {
 			rollback(con);
 		}
 		return result;
 	}
 
-
-	//myinfo3에서 정보 가져오기
+	// myinfo3에서 정보 가져오기
 	public Party selectParty(int pno) {
 		Connection con = getConnection();
 		Party p = new PartyDao().selectParty(con, pno);
 		close(con);
 		return p;
-  }
+	}
 
 	// 등급 변경 service
 	public int insertGrade(Grade g) {
 		Connection con = getConnection();
 		int result = new PartyDao().insertGrade(con, g);
-		
-		if(result > 0) {
+
+		if (result > 0) {
 			commit(con);
 		}
-		
+
 		else {
 			rollback(con);
 		}
@@ -229,6 +224,20 @@ public class PartyService {
 		Party p = new PartyDao().selectParty2(con, pno);
 		close(con);
 		return p;
+	}
+
+	//info3 목록 수정
+	public int updatePartyMyinfo3(Party p, int pno) {
+		Connection con = getConnection();
+
+		int result = new PartyDao().updateMyinfo3(con, p, pno);
+
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		return result;
 	}
 
 }

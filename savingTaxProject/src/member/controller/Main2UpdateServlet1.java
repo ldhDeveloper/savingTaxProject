@@ -80,7 +80,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  System.out.println("party1: "+party);
 		  System.out.println("result1: "+result);
 		  
-		Party loginUser=new PartyService().selectParty(userid);
+		  Party loginUser=new PartyService().selectParty(userid);
 		  
 		
 		  

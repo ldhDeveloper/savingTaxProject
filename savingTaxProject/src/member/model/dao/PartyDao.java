@@ -848,4 +848,39 @@ public class PartyDao {
 		return result;
 	}
 
+	//info3 수정
+	public int updateMyinfo3(Connection con, Party p, int pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update party set panem=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where id_no=?";
+		
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, p.getPname());
+			pstmt.setString(2, p.getCname());
+			pstmt.setString(3, p.getPresident());
+			pstmt.setString(4, p.getCno());
+			pstmt.setInt(5, p.getBusi_type());
+			pstmt.setString(6, p.getCstatus());
+			pstmt.setString(7, p.getCtype());
+			pstmt.setString(8, p.getTel());
+			pstmt.setString(9, p.getCaddress());
+			pstmt.setString(10, p.getEmail());
+			pstmt.setString(11, p.getId_no());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 }
