@@ -24,7 +24,7 @@
 				$('#email2').val($(this).text());
 			}
 		})
-	})
+	});
 </script>
 <title>myinfo1</title>
 <style>

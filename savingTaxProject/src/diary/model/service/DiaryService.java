@@ -37,9 +37,9 @@ public class DiaryService {
 	}
 
 
-	public ArrayList<Party> selectDealer() {
+	public ArrayList<Party> selectDealer(int pno) {
 		Connection con = getConnection();
-		ArrayList<Party> list = new DiaryDao().selectDealer(con);
+		ArrayList<Party> list = new DiaryDao().selectDealer(con, pno);
 		close(con);
 		return list;
 	}

@@ -158,7 +158,7 @@ private Properties prop = new Properties();
 	}
 
 
-	public ArrayList<Party> selectDealer(Connection con) {
+	public ArrayList<Party> selectDealer(Connection con, int pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Party> list = null;
@@ -169,7 +169,7 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, 6);
+			pstmt.setInt(1, pno);
 			rset = pstmt.executeQuery();
 			
 			if(rset != null){
@@ -186,6 +186,7 @@ private Properties prop = new Properties();
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPresident(rset.getString("president"));
 				list.add(p);
+				System.out.println("거래처 parse : " + p);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -204,7 +205,7 @@ private Properties prop = new Properties();
 							 "values(seq_dy.nextval, to_date(?,'yyyy-mm-dd') " +
 							 ", ?, ?, ?, ?, ?, " +
 							 "(select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " +
-							 "where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), " +
+							 "where pr.busi_pno = ? and pr.rel_type ='거래처' and p.pname =?), " +
 							 "(select ano from accountlist where anm = ?))";
 
 		try {

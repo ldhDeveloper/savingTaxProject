@@ -36,8 +36,10 @@ public class SelectDealerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Party> list = new DiaryService().selectDealer();
-		
+		int pno = Integer.parseInt(request.getParameter("pno"));
+				
+		ArrayList<Party> list = new DiaryService().selectDealer(pno);
+		System.out.println("select딜러");
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();
 		

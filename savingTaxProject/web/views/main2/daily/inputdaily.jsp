@@ -154,13 +154,13 @@
 						//변환된 제이슨 객체를 제이슨 배열로 변환
 						var jsonArr = JSON.parse(jsonObj);
 					
-						$("#itablebody").html("<tr><th>선택</th><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+						$("#itablebody").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
 								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
 							$("#itablebody").html($("#itablebody").html() +
-									"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
-									"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk'>" +
+									"<tr><td style='display:none'><div class='checkbox' style='margin: 0 auto;'> " + 
+									"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk'></div></td>" +
 									"<td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
 									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
 									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
@@ -176,6 +176,7 @@
 					$.ajax({
 						url: "/jsmi/sdealer",
 						type: "get",
+						data: {pno : pno},
 						dataType: "json",
 						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 						success: function(data){
@@ -232,7 +233,7 @@
 						//변환된 제이슨 객체를 제이슨 배열로 변환
 						var jsonArr = JSON.parse(jsonObj);
 					
-						$("#itablebody").html("<tr><th>선택</th><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+						$("#itablebody").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
 								"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
 						for(var i in jsonArr.list){
 							console.log(jsonArr.list[i].atype);
@@ -315,12 +316,12 @@
 									//변환된 제이슨 객체를 제이슨 배열로 변환
 									var jsonArr = JSON.parse(jsonObj);
 								
-									$("#itablebody").html("<tr><th>선택</th><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+									$("#itablebody").html("<tr><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
 											"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
 									for(var i in jsonArr.list){
 										console.log(jsonArr.list[i].atype);
 										$("#itablebody").html($("#itablebody").html() +
-												"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
+												"<tr><td style='display:none'><div class='checkbox' style='margin: 0 auto;'> " + 
 												"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk'>" +
 												"</div></td><td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
 												"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
@@ -427,6 +428,7 @@
 								
 							</tbody>
 						</table>
+						<!-- 
 						<ul class="pagination" style="float: right; margin-bottom: 30px;">
 							<li><a class="pagi" href="#">1</a></li>
 							<li><a class="pagi" href="#">2</a></li>
@@ -434,6 +436,7 @@
 							<li><a class="pagi" href="#">4</a></li>
 							<li><a class="pagi" href="#">5</a></li>
 						</ul>
+						 -->
 					</div>
 					<!-- 추가 폼 -->
 					<form action="/jsmi/" method="post" id="dinputform">
