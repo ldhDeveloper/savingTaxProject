@@ -173,7 +173,6 @@ th {
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
 		<script type="text/javascript">
-			
 		
 			$(function(){
 				var d = new Date();
@@ -206,8 +205,6 @@ th {
 						dataType: "json",
 						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 						success: function(data){
-							console.log("json 성공");
-							console.log("data : " + data);
 							var jsonObj = JSON.stringify(data);
 							//변환된 제이슨 객체를 제이슨 배열로 변환
 							var jsonArr = JSON.parse(jsonObj);
@@ -215,7 +212,7 @@ th {
 							$("#selemptable").html("<tr style='margin-bottom:10px'><th style='text-align:center'>직원명</th><th style='text-align:center'>주민등록번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>휴대폰</th><th style='text-align:center'>이메일</th><th style='text-align:center'>고용형태</th>");
 							for(var i in jsonArr.list){
 								$("#selemptable").html($("#selemptable").html() +
-										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
+										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
 										"</td><td name='selphone'>" + jsonArr.list[i].phone + "</td><td name='selemail'>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td name='selemp_type'>" + decodeURIComponent(jsonArr.list[i].emp_type) +
 										"</td><td>");
 							}
@@ -236,8 +233,46 @@ th {
 				$('#selpname').val($('#emplist' + data1).children('td[name=selpname]').text());
 				$('#selid_no').val($('#emplist' + data1).children('td[name=selid_no]').text());
 				$('#selposition').val($('#emplist' + data1).children('td[name=selposition]').text());
+				$('#emppno').val(data2);
+				console.log(data2);
 				$('#myEmp').modal('hide');
+
+				
 			}
+			
+			$(function(){
+				$("#insert").click(function(){
+					console.log($("#emppno").val());
+					
+					var pno = $("#emppno").val();
+					var wsdate = $("#wsdate").val();
+					var wedate = $("#wedate").val();
+					var saldate = $("#saldate").val();
+					var initpay = $("#salary1").val();
+					var overpay = $("#salary2").val();
+					var restpay = $("#salary3").val();
+					var bonus = $("#salary4").val();
+					var incentive = $("#salary5").val();
+					var meals = $("#salary6").val();
+					var carpay = $("#salary7").val();
+					var childpay = $("#salary8").val();
+					var exp = $("#salary9").val();
+					
+					$.ajax({
+						url:"/jsmi/insertsal",
+						data:{pno:pno, wsdate:wsdate, wedate:wedate, saldate:saldate, initpay:initpay, overpay:overpay, restpay:restpay, bonus:bonus, incentive:incentive, meals:meals, carpay:carpay, childpay:childpay, exp:exp},
+						type:"post",
+						dataType: "json",
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						success:function(){
+							alert("급여 입력 완료!");
+						}
+					});
+				});
+				
+			});
+			
+			
 		</script>
 		<div class="section">
 			<div class="row">
@@ -468,7 +503,8 @@ th {
 									<td><input type="text" value="직원명"  id="selpname"class="form-control"></td>
 									<td><input type="text" value="주민등록번호" id="selid_no" class="form-control"></td>
 									<td><input type="text" value="부서명" id="" class="form-control"></td>
-									<td><input type="text" value="직급" id="selposition" class="form-control"></td>
+									<td><input type="text" value="직급" id="selposition" class="form-control"><input type="hidden" id="emppno" value=""></td>
+									
 								</tr>
 							</tbody>
 						</table>
@@ -488,9 +524,9 @@ th {
 							<tbody>
 								<tr>
 									<td>근무시작일</td>
-									<td><input type="date" class="form-control" id="startdate"></td>
+									<td><input type="date" class="form-control" id="wsdate"></td>
 									<td>근무종료일</td>
-									<td><input type="date" class="form-control" id="endtate"></td>
+									<td><input type="date" class="form-control" id="wedate"></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>급여지급일</td>
@@ -602,7 +638,7 @@ th {
 						<br>
 						<div class="emp-table btn-group-custom">
 							<input type="reset" class="btn btn-warning" value="작성취소">
-							<input type="button" class="btn btn-success" value="적용하기">
+							<input type="button" class="btn btn-success" value="적용하기" id="insert">
 						</div>
 					</div>
 				</div>
