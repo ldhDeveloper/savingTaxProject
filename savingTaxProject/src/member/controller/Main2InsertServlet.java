@@ -80,7 +80,7 @@ public class Main2InsertServlet extends HttpServlet {
 		System.out.println("result 33 :"+result);
 
 		if (result > 0) {
-			RequestDispatcher view = request.getRequestDispatcher("m3list");
+			RequestDispatcher view = request.getRequestDispatcher("views/main2/myinfo/myinfo3.jsp");
 			request.setAttribute("pno", pno);
 			view.forward(request, response);
 			System.out.println("거래처 등록 성공");
