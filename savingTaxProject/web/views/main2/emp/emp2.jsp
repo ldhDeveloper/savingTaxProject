@@ -257,10 +257,11 @@ th {
 					var carpay = $("#salary7").val();
 					var childpay = $("#salary8").val();
 					var exp = $("#salary9").val();
+					var realsalary = $("#gongtotal").val();
 					
 					$.ajax({
 						url:"/jsmi/insertsal",
-						data:{pno:pno, wsdate:wsdate, wedate:wedate, saldate:saldate, initpay:initpay, overpay:overpay, restpay:restpay, bonus:bonus, incentive:incentive, meals:meals, carpay:carpay, childpay:childpay, exp:exp},
+						data:{pno:pno, wsdate:wsdate, wedate:wedate, saldate:saldate, initpay:initpay, overpay:overpay, restpay:restpay, bonus:bonus, incentive:incentive, meals:meals, carpay:carpay, childpay:childpay, exp:exp, realsalary:realsalary},
 						type:"post",
 						dataType: "json",
 						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
