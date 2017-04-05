@@ -73,14 +73,13 @@
 
 .gitTable {
 	width: 1140px;
-	border
 }
 
 .gitTableth {
 	border-bottom: 3px solid #2a82a3;
 	font-family: ssangmunDong !important;
 	padding-left: 38%;
-	font-size: 20pt;
+	font-size: 27pt;
 }
 
 .imcome {
@@ -240,6 +239,49 @@
 	border-bottom: 1px solid #ddd;
 }
 
+.imcomeConMongo {
+	padding-top : 2%;
+	padding-bottom: 4%;
+	padding-left: 16%;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+.imcomeConMoningo {
+	padding-top : 2%;
+	padding-bottom: 4%;
+	padding-left: 13.5%;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+#checkBtn {
+	border: none;
+	border-radius: 4px;
+	font-family: Binggrae !important;
+	background-color: darkorange;
+	color: white;
+	text-align: center;
+	width: 5%;
+	height : 30px;
+	margin-right: 2%;
+	margin-top: 1.3%;
+	
+}
+
+#calBtn {
+	border: none;
+	border-radius: 4px;
+	font-family: Binggrae !important;
+	background-color: red;
+	color: white;
+	text-align: center;
+	width: 10%;
+	height : 30px;
+	margin-right: 2%;
+	margin-top: 1.7%;
+}
+
 /* .gittd1{
 	border-bottom: 1px solid #ddd;
 	height: 40px;
@@ -295,13 +337,13 @@
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li>
-							<a class="tabmenu lactive" href="#">
+							<a class="tabmenu lactive">
 								총소득세
 							</a>
 						</li>
 						
 						<li>
-							<a class="tabmenu" href="#">
+							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax3.jsp">
 								소득세계산
 							</a>
 						</li>
@@ -335,9 +377,15 @@
 							<td class="imcomeConBank">금융소득금액</td>
 							<td class="imcomeConBank"><input type="text"> 원</td>
 						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
+						</tr>
 					</tbody>				
 				</table>
 			</div>
+			
+			<br><br><br><br>
 			
 			<div>
 				<table class="gitTable">					
@@ -350,6 +398,10 @@
 						<tr>
 							<td class="imcomeConBank2">금융소득금액</td>
 							<td class="imcomeConBank2"><input type="text"> 원</td>
+						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
 						</tr>
 					</tbody>				
 				</table>
@@ -381,6 +433,10 @@
 							<td class="imcomeCon">사업소득금액</td>
 							<td class="imcomeCon"><input type="text"> 원</td>
 						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
+						</tr>
 					</tbody>				
 				</table>
 			</div>
@@ -404,6 +460,10 @@
 						<tr>
 							<td class="imcomeConMon">근로소득금액</td>
 							<td class="imcomeConMonin"><input type="text"> 원</td>
+						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
 						</tr>
 					</tbody>				
 				</table>
@@ -430,6 +490,10 @@
 							<td class="imcomeConMonin"><input type="text"> 원</td>
 							<!-- 1200만원 이상이므로 자동 과세됩니다. 내용뜨게 -->
 						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
+						</tr>
 					</tbody>				
 				</table>
 			</div>
@@ -453,6 +517,10 @@
 						<tr>
 							<td class="imcomeConMon">기타소득금액</td>
 							<td class="imcomeConMonin"><input type="text"> 원</td>
+						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
 						</tr>
 					</tbody>				
 				</table>
@@ -485,6 +553,10 @@
 							<td class="imcomeCon"><input type="text" readonly value="연금소득"></td>
 							<td class="imcomeCon"><input type="text" readonly value="기타소득"></td>
 						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="입력" id="checkBtn"></td>
+						</tr>
 					</tbody>				
 				</table>
 			</div>
@@ -499,11 +571,16 @@
 					
 					<tbody>												
 						<tr>
-							<td class="imcomeConMon">총 소득 금액</td>
-							<td class="imcomeConMonin"><input type="text"> 원</td>
+							<td class="imcomeConMongo">총 소득 금액</td>
+							<td class="imcomeConMoningo"><input type="text"> 원</td>
+						</tr>
+						
+						<tr>
+							<td colspan="8" align="right"><input type="button" value="소득세 계산하기" id="calBtn"></td>
 						</tr>
 					</tbody>				
 				</table>
+				<br><br><br>
 			</div>
 		</div>
 	</div>
