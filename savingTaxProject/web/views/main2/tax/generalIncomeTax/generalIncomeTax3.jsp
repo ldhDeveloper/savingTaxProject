@@ -125,6 +125,77 @@
 	font-size: 13pt;
 }
 
+#calBtn {
+	border: none;
+	border-radius: 5px;
+	border-color: #2a82a3;
+	color: white;
+	width: 80px;
+    height: 40px;
+	font-family: Binggrae !important;
+	background-color : #2a82a3;
+	align: center;
+}
+
+#resetBtn {
+	margin-left: 30%;
+	border: none;
+	border-radius: 5px;
+	border-color: #d58512;
+	color: white;
+	width: 80px;
+    height: 40px;
+	font-family: Binggrae !important;
+	background-color : #ec971f;
+	align: center;	
+}
+
+.Btnclass {
+	padding-left: 45%;
+}
+
+.calTable {
+	width: 1104px;
+}
+
+.calResult {
+	border-bottom: 4px solid #2a82a3;
+	font-family: ssangmunDong !important;
+	padding-left: 38%;
+	font-size: 27pt;
+}
+
+.lineTable {
+	font-family: NotoSansCJKkr-Ligth !important;
+	padding: 1.5%;
+	border-bottom : 1px solid #ddd;
+	font-size: 15pt;
+}
+
+.lineTable1 {
+	font-family: computer !important;
+	padding: 1.5%;
+	border-bottom : 1px solid #ddd;
+	font-size: 15pt;
+	background-color: #dcdcdc;
+}
+
+.sumCalTable {
+	padding: 1.5%;
+	border-right : 1px solid lightgrey;
+	font-size: 15pt;
+}
+
+.sumTable {
+	background-color : #2a82a3;
+	color: #fff;
+}
+
+.sumTable2 {
+	background-color : aliceblue;
+}
+
+
 /* .panel-heading {
 	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 	background: -o-linear-gradient(#ffffff, #b0e0e6);
@@ -400,78 +471,97 @@
 				
 				<br><br>
 				
-				<div>
+				<div class="Btnclass">
 					<table>
 						<tr>
-							<td><input type="button" value="계산하기"></td>
-							<td><input type="button" value="초기화"></td>
+							<td>
+								<input id="calBtn" type="button" value="계산하기">
+							</td>
+							
+							<td>
+								<input id="resetBtn" type="reset" value="초기화">
+							</td>
 						</tr>
 					</table>
 				</div>
 				
+				<br><br><br><br>
+				
 				<div>
-					<table>
+					<table class="calTable">
 						<tr>
-							<td>총소득 합계</td>
-							<td>총비용 합계 (-)</td>
-							<td>종합소득금액</td>
+							<th colspan="4" class="calResult">종합 소득세 결과</th>
 						</tr>
 						
-						<tr>
-							<td>총소득 합계</td>
-							<td>총비용 합계 (-)</td>
-							<td>종합소득금액</td>
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">총소득 합계</td>
+							<td align="right" class="rightTable">총비용 합계 (-)</td>
+							<td align="center"  class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable">종합소득금액</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable">총소득 합계 값</td>
+							<td align="right" class="rightTable">총비용 합계 값</td>
+							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable2">종합소득금액 값</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">종합소득금액</td>
+							<td align="right" class="rightTable">종합소득공액 (-)</td>
+							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable">과세표준</td>
 						</tr>
 						
-						<tr>
-							<td>과제표준</td>
-							<td>세율(6%~38%) (*)</td>
-							<td>누진공제 (-)</td>
-							<td>누진공제(-)</td>
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable">종합소득금액 값</td>
+							<td align="right" class="rightTable">종합소득공액 값</td>
+							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable2">과세표준 값</td>
 						</tr>
 						
-						<tr>
-							<td>과제표준</td>
-							<td>세율(6%~38%) (*)</td>
-							<td>누진공제 (-)</td>
-							<td>누진공제(-)</td>
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">과제표준</td>
+							<td align="center" class="sumCalTable">세율(6%~38%) (*)</td>
+							<td align="center" class="sumCalTable">누진공제 (-)</td>
+							<td align="center" class="sumTable">산출세액</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable">과제표준 값</td>
+							<td align="center" class="sumCalTable">세율 값</td>
+							<td align="center" class="sumCalTable">누진공제  값</td>
+							<td align="center" class="sumTable2">산출세액 값</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">산출세액</td>
+							<td align="right" class="rightTable">세액공제(-)</td>
+							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable">결정세액</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable">산출세액 값</td>
+							<td align="right" class="rightTable">세액공제 값</td>
+							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="sumTable2">결정세액 값</td>
 						</tr>
 						
-						<tr>
-							<td>종합소득금액</td>
-							<td>종합소득공액 (-)</td>
-							<td>과세표준</td>
-						</tr>						
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">결정세액</td>
+							<td align="center" class="sumCalTable">가산세(+)</td>
+							<td align="center" class="sumCalTable">기납부세액(-)</td>
+							<td align="center" class="sumTable">차감납부세액</td>
+						</tr>
+						
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable">결정세액 값</td>
+							<td align="center" class="sumCalTable">가산세 값</td>
+							<td align="center" class="sumCalTable">기납부세액 값</td>
+							<td align="center" class="sumTable2">차감납부세액 값</td>
+						</tr>					 	
 					</table>
 				</div>
 				
