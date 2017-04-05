@@ -46,7 +46,7 @@ public class VatViewServlet extends HttpServlet {
 	List<Diary> vlist = new VatService().selectVlist(write_pno, month, taxType);
 	JSONObject json = new JSONObject();
 	JSONArray jarr = new JSONArray();
-	
+
 	for(Diary tax : vlist){
 		JSONObject jsob = new JSONObject();
 		jsob.put("proof_type", URLEncoder.encode(tax.getProof_type(), "utf-8"));
@@ -55,8 +55,6 @@ public class VatViewServlet extends HttpServlet {
 		jarr.add(jsob);
 	}
 	json.put("tax", jarr);
-	//if(taxType.equals("일반")){}
-			
 	response.setContentType("application/json; charset=utf-8");
 	PrintWriter out = response.getWriter();
 	
