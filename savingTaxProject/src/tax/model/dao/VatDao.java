@@ -13,17 +13,14 @@ public class VatDao {
 
 	public VatDao(){}
 
-	public List<Diary> selectVat(Connection con, int write_pno, int month) {
+	public List<Diary> selectVlist(Connection con, int write_pno, int month, String taxType) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Diary> dlist = null;
 		GregorianCalendar day = new GregorianCalendar();
 		java.util.Date date = day.getTime();
 		int year = date.getYear();
-		String present = year +"-" + month + "-01";
-		
-		 
-		String query = "select ddate, cost, proff_type, ano from diary where write_pno = ?";
+		String query = "select ddate, cost, proff_type, ano, anm from diary where write_pno = ? and ano = 61 or (ano >61 and an0 <69)"; 
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, write_pno);
@@ -36,6 +33,7 @@ public class VatDao {
 				d.setDdate(rset.getDate("ddate"));
 				d.setCost(rset.getInt("cost"));
 				d.setProof_type(rset.getString("proof_type"));
+				d.setAnm(rset.getString("anm"));
 				dlist.add(d);
 				}
 			}
@@ -46,5 +44,5 @@ public class VatDao {
 			close(pstmt);
 		}
 		return dlist;
-	}	
+	}
 }
