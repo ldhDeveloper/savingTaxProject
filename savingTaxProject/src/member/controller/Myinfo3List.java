@@ -37,27 +37,34 @@ public class Myinfo3List extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int pno =Integer.parseInt(request.getParameter("pno")); 
-		System.out.println("list 3 pno: "+pno);
-		/*int owner= Integer.parseInt(request.getParameter("owner"));*/
-		//System.out.println("list 3 owner: "+owner);
-		ArrayList<Party> list = new PartyService().selectcustomerList(pno);
-		System.out.println("list: "+list);
+		request.setCharacterEncoding("utf-8");
+		
+		int owner =Integer.parseInt(request.getParameter("pno")); 
+		System.out.println("mtinfo3list의 pno: "+owner);
+		ArrayList<Party> list = new PartyService().selectcustomerList(owner);
+		System.out.println("myinfo3의 list: "+list);
 		
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();
 		
-		for(Party plist : list){
+		for(Party p : list){
 			JSONObject jsob = new JSONObject();
-			jsob.put("pno", plist.getPno());
-			jsob.put("cname", URLEncoder.encode(plist.getCname(), "utf-8"));
-			jsob.put("president", URLEncoder.encode(plist.getPresident(), "utf-8"));
-			jsob.put("cno", URLEncoder.encode(plist.getCno(), "utf-8"));
-			jsob.put("cstatus", URLEncoder.encode(plist.getCstatus(), "utf-8"));
-			jsob.put("ctype", URLEncoder.encode(plist.getCtype(), "utf-8"));
-			jsob.put("tel", URLEncoder.encode(plist.getTel(), "utf-8"));
-			jsob.put("caddress", URLEncoder.encode(plist.getCaddress(), "utf-8"));
-			jsob.put("email", URLEncoder.encode(plist.getEmail(), "utf-8"));
+			jsob.put("pno", p.getPno());
+			jsob.put("cname",URLEncoder.encode(p.getCname(), "utf-8"));
+			jsob.put("president", URLEncoder.encode(p.getPresident(), "utf-8"));
+			jsob.put("cno", URLEncoder.encode(p.getCno(), "utf-8"));
+			jsob.put("cstatus", URLEncoder.encode(p.getCstatus(), "utf-8"));
+			jsob.put("ctype", URLEncoder.encode(p.getCtype(), "utf-8"));
+			jsob.put("tel", URLEncoder.encode(p.getTel(), "utf-8"));
+			String[] add=p.getCaddress().split("&");
+			String Caddress=add[0]+" "+add[1]+" "+add[2];
+			System.out.println(Caddress);
+			jsob.put("caddress", URLEncoder.encode(Caddress, "utf-8"));
+			String[] email=p.getEmail().split("@");
+			String Email=email[0]+"@"+email[1];
+			jsob.put("email", URLEncoder.encode(Email, "utf-8"));
+			String cstatus=p.getCstatus();
+			System.out.println(cstatus);
 			jarr.add(jsob);
 		}
 		
@@ -65,8 +72,6 @@ public class Myinfo3List extends HttpServlet {
 		System.out.println(json.toJSONString());
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
-		System.out.println("json 파스내용 : " + json.toJSONString());
 		out.print(json.toJSONString());
 		out.flush();
 		out.close();

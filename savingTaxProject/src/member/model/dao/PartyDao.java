@@ -542,7 +542,7 @@ public class PartyDao {
 		return result;
 	}
 
-	/////올라가서 바로 작업
+	
 	public ArrayList<Party> selectcustomerList(Connection con, int pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -553,7 +553,7 @@ public class PartyDao {
 		try {
 		   pstmt = con.prepareStatement(query);
 		   pstmt.setInt(1, pno);
-		   System.out.println("dao pno: "+pno);
+		   System.out.println("select사업자pno: "+pno);
 		   
 		   rset = pstmt.executeQuery();
 		  
@@ -573,7 +573,6 @@ public class PartyDao {
 			   p.setEmail(rset.getString("email"));
 			   list.add(p);
 			   
-			   System.out.println("list: "+list);
 		   }
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -582,6 +581,8 @@ public class PartyDao {
 			close(pstmt);
 		}
 		
+		System.out.println("select사업자리턴하는list: "+list);
+		System.out.println("select사업자리턴하는list갯수: "+list.size());
 		return list;
 	}
 
@@ -853,7 +854,7 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update party set panem=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where id_no=?";
+		String query = "update party set pname=?, cname=?, president=?, cno=?, busi_type=?, cstatus=?, ctype=?, tel=?, caddress=?, email=? where id_no=?";
 		
 		
 		try {

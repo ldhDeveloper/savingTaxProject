@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -69,7 +69,6 @@
 	margin-top: -15px;
 	margin-right: 10px;
 }
-.
 </style>
 
 <script type="text/javascript">
@@ -83,7 +82,7 @@
 				$('#email2').val($(this).text());
 			}
 		})
-	})
+	});
 </script>
 </head>
 <body style="padding-top: 0px">
@@ -106,7 +105,7 @@
 							href="/jsmi/views/main2/myinfo/myinfo1.jsp">회원정보</a></li>
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu lactive"
+						<li><a class="tabmenu active"
 							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
@@ -341,8 +340,7 @@
 				</table>
 
 				<div class="btngroup">
-					<button class="btn btn-danger" type="submit" id="update">수정</button>
-					<button class="btn btn-danger" type="reset">취소</button>
+					<button class="btn btn-warning" type="submit" id="update">수정</button>
 				</div>
 			
 
@@ -355,26 +353,27 @@
 	<script>
 		$(function(){
 				var pno = <%= loginUser.getPno()%>
+				<% System.out.println("pno1: "+loginUser.getPno());%>
 				 $.ajax({
-					 url: "/jsmi/m3list" ,
+					 url: "/jsmi/m3list",
 					 data:{pno:pno},
 					 type: "get",
-					 datatype: "json",
-					 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					 dataType: "JSON",
+		       		 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					 success: function(data){
 							console.log("json 성공");
 							console.log("data : " + data);
 							var jsonObj = JSON.stringify(data);
 							var jsonArr = JSON.parse(jsonObj);
-						    var no = 1;
 							
 						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
 							for(var i in jsonArr.list){
-								console.log(jsonArr.list[i].atype);
+								console.log(jsonArr.list[i].pno);
+					
 								$("#detaillist").html( $("#detaillist").html() 
-										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
 										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
 										+ "</td></tr><hr>" );
 							}
 						},
@@ -385,14 +384,63 @@
 			});
 			
 		
-		 function linecheck(index, pno){
+		$('#update').click(function(){
+			var pno=<%=loginUser.getPno()%>;
+			<% System.out.println("pno00000000: "+loginUser.getPno());%>
+			var cname=$('#cname').val();
+			var president=$('#president').val();
+			var cno=$('#cno').val();
+			var cno2=$('#cno2').val();
+			var cno3=$('#cno3').val();
+			var busitype=$("input[name=optradio]").val();
+			var cstatus=$('#cstatus').val();
+			var ctype=$('ctype').val();
+			var tel=$('tel').val();
+			var tel2=$('tel2').val();
+			var tel3=$('tel3').val();
+			var caddress=$('postnum').val();
+			var caddress2=$('address1').val();
+			var caddress3=$('address2').val();
+			var email=$('email').val();
+			var email2=$('email2').val();
+		    $.ajax({
+		    	url:"/jsmi/update.info3",
+				data: {pno:pno, cname:cname, president:president, cno:cno, cno2:cno2, cno3:cno3, busitype:busitype, cstatus:cstatus,
+					ctype:ctype, tel:tel, tel2:tel2, tel3:tel3, caddress:caddress, caddress2:caddress2, caddress3:caddress3, email:email, email2:email2},	
+				type:"post",
+				dataType:"JSON",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success:function(data){
+					console.log("json 성공");
+					var jsonObj = JSON.stringify(data);
+					var jsonArr = JSON.parse(jsonObj);
+					
+					$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
+					for(var i in jsonArr.list){
+						console.log(jsonArr.list[i].atype);
+						$("#detaillist").html( $("#detaillist").html() 
+								+ "<tr style='cursor:pointer' class='line' 'id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+								+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+								+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+								+ "</td></tr><hr>" );
+					}
+				},
+				error: function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			       }
+		    })
+		
+		});
+		
+		
+		 function linecheck(index, listpno){
        	  var lineno="#line"+index;
        	  $.ajax({
        		  url:"/jsmi/selectinfo3",
-       		  data:{pno:pno},
+       		  data:{pno:listpno},
        		  type:"post",
-       		  dataType: "json",
-       		  contentType: "application/x-www-form-urlencode: charset=utf-8",
+       		  dataType: "JSON",
+       		  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
        		  success: function(data){
        			  var jsonObj=JSON.stringify(data);
        			  var jsonArr=JSON.parse(jsonObj);
@@ -413,9 +461,9 @@
        			  $('#tel').val(decodeURIComponent(jsonArr.tel));
        			  $('#tel2').val(decodeURIComponent(jsonArr.tel2));
        			  $('#tel3').val(decodeURIComponent(jsonArr.tel3));
-       			  $('#postnum').val(decodeURIComponent(jsonArr.address));
-       			  $('#address2').val(decodeURIComponent(jsonArr.address2));
-       			  $('#address3').val(decodeURIComponent(jsonArr.address3));
+       			  $('#postnum').val(decodeURIComponent(jsonArr.caddress));
+       			  $('#address1').val(decodeURIComponent(jsonArr.caddress2));
+       			  $('#address2').val(decodeURIComponent(jsonArr.caddress3));
        			  $('#email').val(decodeURIComponent(jsonArr.email));
        			  $('#email2').val(decodeURIComponent(jsonArr.email2));
        		  }
@@ -423,52 +471,7 @@
          }
 		
 		 
-			$('#update').click(function(){
-				var pno=<%=loginUser.getPno()%>;
-				var cname=$('#cname').val();
-				var president=$('#president').val();
-				var cno=$('#cno').val();
-				var cno2=$('#cno2').val();
-				var cno3=$('#cno3').val();
-				var busitype=$("input[name=optradio]").val();
-				var cstatus=$('#cstatus').val();
-				var ctype=$('ctype').val();
-				var tel=$('tel').val();
-				var tel2=$('tel2').val();
-				var tel3=$('tel3').val();
-				var caddress=$('postnum').val();
-				var caddress2=$('address1').val();
-				var caddress3=$('address2').val();
-				var email=$('email').val();
-				var email2=$('email2').val();
-			    $.ajax({
-			    	url:"/jsmi/update.info3",
-					data: {pno:pno, cname:cname, president:president, cno:cno, cno2:cno2, cno3:cno3, busitype:busitype, cstatus:cstatus,
-						ctype:ctype, tel:tel, tel2:tel2, tel3:tel3, caddress:caddress, caddress2:caddress2, caddress3:caddress3, email:email, email2:email2},	
-					type:"post",
-					dataType:"JSON",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					success:function(data){
-						console.log("json 성공");
-						var jsonObj = JSON.stringify(data);
-						var jsonArr = JSON.parse(jsonObj);
-						
-						$("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
-						for(var i in jsonArr.list){
-							console.log(jsonArr.list[i].atype);
-							$("#detaillist").html( $("#detaillist").html() 
-									+ "<tr style='cursor:pointer' id='(\"" + jsonArr.list[i].pno + "\")'><td>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
-									+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-									+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
-									+ "</td></tr><hr>" );
-						}
-					},
-					error: function(request,status,error){
-				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				       }
-			    })
 			
-			});
 			
           
 		

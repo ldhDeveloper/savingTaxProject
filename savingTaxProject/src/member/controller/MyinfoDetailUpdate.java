@@ -66,7 +66,7 @@ public class MyinfoDetailUpdate extends HttpServlet {
 		String cno = request.getParameter("cno");
 		String cno2 = request.getParameter("cno2");
 		String cno3 = request.getParameter("cno3");
-		int busiType = Integer.parseInt(request.getParameter("optradio"));
+		int busiType = Integer.parseInt(request.getParameter("busitype"));
 		String cstatus = request.getParameter("cstatus");
 		String ctype = request.getParameter("ctype");
 		String tel = request.getParameter("tel");
