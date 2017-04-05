@@ -56,7 +56,7 @@ public class Myinfo3List extends HttpServlet {
 			jsob.put("cstatus", URLEncoder.encode(p.getCstatus(), "utf-8"));
 			jsob.put("ctype", URLEncoder.encode(p.getCtype(), "utf-8"));
 			jsob.put("tel", URLEncoder.encode(p.getTel(), "utf-8"));
-			String[] add=p.getCaddress().split("&");
+			String[] add=p.getCaddress().split("/");
 			String Caddress=add[0]+" "+add[1]+" "+add[2];
 			System.out.println(Caddress);
 			jsob.put("caddress", URLEncoder.encode(Caddress, "utf-8"));

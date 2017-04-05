@@ -199,7 +199,6 @@ public class PartyService {
 	public Party selectParty(int pno) {
 		Connection con = getConnection();
 		Party p = new PartyDao().selectParty(con, pno);
-		close(con);
 		return p;
 	}
 
@@ -227,10 +226,10 @@ public class PartyService {
 	}
 
 	//info3 목록 수정
-	public int updatePartyMyinfo3(Party p, int pno) {
+	public int updatePartyMyinfo3(Party p, int owner) {
 		Connection con = getConnection();
 
-		int result = new PartyDao().updateMyinfo3(con, p, pno);
+		int result = new PartyDao().updateMyinfo3(con, p, owner);
 
 		if (result > 0) {
 			commit(con);
@@ -239,5 +238,6 @@ public class PartyService {
 		}
 		return result;
 	}
+	
 
 }

@@ -62,6 +62,7 @@ public class EmployeeSelectListServlet extends HttpServlet {
 			jarr.add(job);
 		}
 		json.put("emplist", jarr);
+		System.out.println(json.toJSONString());
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
