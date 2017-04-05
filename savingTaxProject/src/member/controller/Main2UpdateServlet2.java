@@ -39,7 +39,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("test/html; charset=utf-8");
 
-		int pno =Integer.parseInt(request.getParameter("pno")); 
+		int pno =Integer.parseInt(request.getParameter("pno"));
 		String userid = request.getParameter("userid");
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
@@ -60,6 +60,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
         //관할세무서 뺌
 		int taxtype=Integer.parseInt(request.getParameter("optradio2"));//과세유형
 		int notax_yn=Integer.parseInt(request.getParameter("optradio3"));//면세여부
+		
                
 		String Cno=cno+"-"+cno2+"-"+cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;

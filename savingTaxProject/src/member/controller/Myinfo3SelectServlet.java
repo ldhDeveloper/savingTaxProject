@@ -34,7 +34,8 @@ public class Myinfo3SelectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  int pno = Integer.parseInt(request.getParameter("pno"));
+		request.setCharacterEncoding("utf-8"); 
+		 int pno = Integer.parseInt(request.getParameter("pno"));
 		  
 		  Party p = new PartyService().selectParty(pno);
 		  JSONObject job = new JSONObject();
@@ -52,12 +53,12 @@ public class Myinfo3SelectServlet extends HttpServlet {
 		  job.put("tel2", telArr[1]);
 		  job.put("tel3", telArr[2]);
 		  String caddressArr[] =p.getCaddress().split("&");
-		  job.put("caddress", caddressArr[0]);
-		  job.put("caddress1", caddressArr[1]);
-		  job.put("caddress2", caddressArr[2]);
+		  job.put("caddress", URLEncoder.encode(caddressArr[0],"utf-8"));
+		  job.put("caddress2",  URLEncoder.encode(caddressArr[1],"utf-8"));
+		  job.put("caddress3",  URLEncoder.encode(caddressArr[2],"utf-8"));
 		  String emailArr[]=p.getEmail().split("@");
 		  job.put("email", emailArr[0]);
-		  job.put("email1", emailArr[1]);
+		  job.put("email2", emailArr[1]);
 		  
 		  
 		  response.setContentType("application/json: charset=utf-8");

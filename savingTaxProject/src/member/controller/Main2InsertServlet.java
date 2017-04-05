@@ -37,7 +37,7 @@ public class Main2InsertServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		System.out.println("pno.sevlet:"+pno);
+		System.out.println("myinfo3의 insert pno:"+pno);
 		String pname = request.getParameter("cname");
 		String cname = request.getParameter("cname");
 		String president = request.getParameter("president");
@@ -78,7 +78,7 @@ public class Main2InsertServlet extends HttpServlet {
 		System.out.println("P: "+p);
 		System.out.println("Pno info3: "+pno);
 		System.out.println("result 33 :"+result);
-
+		
 		if (result > 0) {
 			RequestDispatcher view = request.getRequestDispatcher("views/main2/myinfo/myinfo3.jsp");
 			request.setAttribute("pno", pno);

@@ -346,7 +346,7 @@
 	
 	<script>
 				 $(function(){
-					var pno = <%= loginUser.getPno() %>;
+					var pno=<%= loginUser.getPno() %>;
 					$.ajax({
 						url:"/jsmi/emplist",
 						data: {pno: pno},
@@ -371,7 +371,7 @@
 				}); 
 				
 				$("#insert").click(function(){
-					var pno = <%= loginUser.getPno() %>;
+					var pno=<%= loginUser.getPno() %>;
 					var empname = $("input[name=empname]").val();
 					var optradio = $("input[name=optradio]:checked").val();
 					var empno1 = $("input[name=empno1]").val();
