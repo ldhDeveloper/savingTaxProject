@@ -19,8 +19,9 @@ public class VatDao {
 		List<Diary> dlist = null;
 		GregorianCalendar day = new GregorianCalendar();
 		java.util.Date date = day.getTime();
-		int year = date.getYear();
-		String query = "select ddate, cost, proff_type, ano, anm from diary where write_pno = ? and ano = 61 or (ano >61 and an0 <69)"; 
+		String query = "select ddate, cost, proof_type, d.ano, anm " +
+				"from diary d  join accountlist a on (d.ano = a.ano) " + 
+				" where  write_pno = ? and d.ano = 51 or d.ano between 61 and 69 ";
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, write_pno);
@@ -29,7 +30,6 @@ public class VatDao {
 				dlist = new ArrayList<Diary>();
 				while(rset.next()){
 				Diary d = new Diary();
-				d.setBilling(rset.getString("billing"));
 				d.setDdate(rset.getDate("ddate"));
 				d.setCost(rset.getInt("cost"));
 				d.setProof_type(rset.getString("proof_type"));
