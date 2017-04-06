@@ -225,7 +225,7 @@ th {
 								+ "<th  style='text-align:center'>급여지급일</th><th style='text-align:center'>총급여금액</th><th  style='text-align:center'>차인지급액</th></tr>");
 						for(var i in jsonArr.list){
 							taxsal = Number(jsonArr.list[i].init_pay) + Number(jsonArr.list[i].bonus) + Number(jsonArr.list[i].incentive) + Number(jsonArr.list[i].over_pay) + Number(jsonArr.list[i].rest_pay);
-							totalsal =  taxsal + Number(jsonArr.list[i].car_pay) + Number(jsonArr.list[i].meals) + Number(jsonArr.list[i].child_pay) + Number(jsonArr.list[i].rest_pay); 
+							totalsal =  taxsal + Number(jsonArr.list[i].car_pay) + Number(jsonArr.list[i].meals) + Number(jsonArr.list[i].child_pay) + Number(jsonArr.list[i].exp); 
 							v1 = Math.floor((taxsal * 0.045) / 10) * 10;
 							v2 = Math.floor((taxsal * 0.0306) / 10) * 10;
 							v3 = Math.floor((v2 * 0.0655 / 2) /10) * 10;
@@ -348,8 +348,8 @@ th {
 							<ul class="nav navbar-nav">
 								<li><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp">직원정보수정</a></li>
-								<li class="active"><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여입력</a></li>
-								<li class=""><a href="/jsmi/views/main2/emp/emp2modify.jsp">직원급여수정</a></li>
+								<li class=""><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여입력</a></li>
+								<li class="active"><a href="/jsmi/views/main2/emp/emp2modify.jsp">직원급여수정</a></li>
 							</ul>
 						</div>
 					</div>

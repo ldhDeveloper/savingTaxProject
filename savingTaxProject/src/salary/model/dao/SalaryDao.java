@@ -246,6 +246,8 @@ public class SalaryDao {
 			pstmt.setInt(2, realSalary);
 			pstmt.setInt(3, s.getSno());
 			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -78,7 +78,7 @@ public class SalaryUpdateServlet extends HttpServlet {
 		s.setChildPay(childPay);
 		s.setExp(exp);
 		s.setSno(sno);
-		
+		System.out.println(s);
 		int result = new SalaryService().updateSalary(pno, s, realSalary);
 		
 		if(result > 0){
