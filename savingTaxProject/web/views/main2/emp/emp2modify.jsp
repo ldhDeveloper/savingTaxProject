@@ -544,27 +544,23 @@ th {
 				</div>
 			</div>
 
-			<h3 align="center" style="margin-top: 30px;">급여 입력</h3>
+			<h3 align="center" style="margin-top: 30px;">직원정보</h3>
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
 							<tbody>
 								<tr>
-									<td rowspan="2"><input type="button" value="직원선택" id="selectemp"
-										class="emp-choice"></td>
 									<td>직원명</td>
 									<td>주민등록번호</td>
-									<td>부서명</td>
 									<td>직급</td>
-
+									<td>부서명</td>
 								</tr>
 								<tr>
-									<td><input type="text" value="직원명"  id="selpname"class="form-control"></td>
-									<td><input type="text" value="주민등록번호" id="selid_no" class="form-control"></td>
-									<td><input type="text" value="부서명" id="" class="form-control"></td>
-									<td><input type="text" value="직급" id="selposition" class="form-control"><input type="hidden" id="emppno" value=""></td>
-									
+									<td><input type="text" placeholder="직원명"  id="selpname"class="form-control" readonly></td>
+									<td><input type="text" placeholder="주민등록번호" id="selid_no" class="form-control" readonly></td>
+									<td><input type="text" placeholder="직급" id="selposition" class="form-control" readonly><input type="hidden" id="emppno" value=""></td>
+									<td><input type="text" placeholder="연락처" id="" class="form-control" readonly></td>
 								</tr>
 							</tbody>
 						</table>
