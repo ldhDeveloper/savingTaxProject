@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
+		
+	
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,6 +214,16 @@
 a:hover { 
 	text-decoration:none;
 }
+
+#yearlabel img {
+	display: inline-block;
+	height: 26px;
+	cursor: pointer;
+}
+
+#yearlabel h3 {
+	display: inline-block;
+}
 </style>
 <script>
 	$(function(){
@@ -243,16 +256,6 @@ a:hover {
 				$('#collapse4').addClass("in");
 			}
 		});
-		
-    $("#resetBtn").click(function(){
-			var bincome = $("#income1").val();
-			var eincome = $("#income2").val();
-			var iincome = $("#income3").val();
-			var dincome = $("#income4").val();
-			var aincome = $("#income5").val();
-			var rincome = $("#")
-		});
-		
 	}); 
 </script>
 </head>
@@ -267,6 +270,39 @@ a:hover {
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
+		
+		<script type="text/javascript">
+			pno = <%= loginUser.getPno() %>
+			dyear = d.getFullYear();
+			
+			$(function(){
+				$('#selyear').text(dyear + "년");
+				
+				$('#beforeyear').click(function(){
+					dyear = dyear - 1;
+					$('#selyear').text(dyear + "년");
+				});
+				
+				$('#nextyear').click(function(){
+					dyear = dyear + 1;
+					$('#selyear').text(dyear + "년");
+				});							
+			});
+			
+			$("#selectBtn").click(function(){
+				var selyear = dyear;
+				
+				$.ajax({
+					url: "/jsmi/gitlist",
+					data: {pno : pno, selyear : selyear},
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success: function(data) {
+						
+					}
+				});
+			});
+		</script>
 
 		<div class="section">
 
@@ -310,6 +346,19 @@ a:hover {
 
 			<br>
 			<br>
+			
+			<div id="yearlabel" align="center">
+				<img id="beforeyear" src="/jsmi/images/main2/arrow2.png">&nbsp;&nbsp;&nbsp;&nbsp;
+					<h3 align="center" id="selyear"></h3>&nbsp;&nbsp;&nbsp;&nbsp;
+				<img id="nextyear" src="/jsmi/images/main2/arrow.png">
+			</div>
+			
+			<div>
+				<button align="center" id="selectBtn">조회</button>
+			</div>
+			
+			<br>
+			<br>
 
 			<form>
 			<div class="panel-group">
@@ -336,7 +385,7 @@ a:hover {
 									</tr>
 
 									<tr>
-										<td class="taxtd1">경비</td>
+										<td class="taxtd1">사업소득필요경비(-)</td>
 										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1"> 원</td>
 									</tr>
 
@@ -366,7 +415,7 @@ a:hover {
 									</tr>
 
 									<tr>
-										<td class="taxtd1">경비</td>
+										<td class="taxtd1">임대소득필요경비(-)</td>
 										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2"> 원</td>
 									</tr>
 
@@ -376,7 +425,7 @@ a:hover {
 									</tr>
 
 									<tr>
-										<td class="taxtd1">경비</td>
+										<td class="taxtd1">기타소득필요경비(-)</td>
 										<td class="taxtd2"><input type="text" placeholder="기타소득필요경비" id="cost3"> 원</td>
 									</tr>
 								</tbody>
