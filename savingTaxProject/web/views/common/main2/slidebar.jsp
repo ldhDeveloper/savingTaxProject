@@ -29,9 +29,13 @@ a {
 	padding-top:15px;;
 	color:white;
 }
-a:hover {
+.side a:hover {
 	background:#1080ff;
 	color:white;
+	
+}
+
+a:hover {
 	text-decoration:none;
 }
 
