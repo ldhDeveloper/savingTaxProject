@@ -1,6 +1,7 @@
 package GeneralIncomeTax.model.service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 import GeneralIncomeTax.model.dao.GeneralIncomeTaxDao;
@@ -10,11 +11,10 @@ import diary.model.vo.Diary;
 
 public class GeneralIncomeTaxService {
 
-	public List<Diary> selectDlist(int wpno, String year) {
+	public int[] getTotalIncome(int wpno, int gyear) {
 		Connection con = getConnection();
-		List<Diary> dlist = new GeneralIncomeTaxDao().selectDlist(con, wpno, year);
+		int[] income = new GeneralIncomeTaxDao().getTotalIncome(con, wpno, gyear);
 		close(con);
-		return dlist;
+		return income;
 	}
-
 }

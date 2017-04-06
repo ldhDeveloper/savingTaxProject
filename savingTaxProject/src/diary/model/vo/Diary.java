@@ -9,6 +9,7 @@ private String atype;
 private Date ddate;
 private String pname;
 private String anm;
+private int writerPno;
 private String product;
 private int cost;
 private String billing;
@@ -71,15 +72,23 @@ public void setProof_type(String proof_type) {
 	this.proof_type = proof_type;
 }
 
+public int getWriterPno() {
+	return writerPno;
+}
+public void setWriterPno(int writerPno) {
+	this.writerPno = writerPno;
+}
+
 public Diary(){}
-public Diary(int dno, String atype, Date ddate, String pname, String anm, String product, int cost, String billing,
-		String proof_type) {
+public Diary(int dno, String atype, Date ddate, String pname, String anm, int writerPno, String product, int cost,
+		String billing, String proof_type) {
 	super();
 	this.dno = dno;
 	this.atype = atype;
 	this.ddate = ddate;
 	this.pname = pname;
 	this.anm = anm;
+	this.writerPno = writerPno;
 	this.product = product;
 	this.cost = cost;
 	this.billing = billing;
@@ -88,8 +97,10 @@ public Diary(int dno, String atype, Date ddate, String pname, String anm, String
 @Override
 public String toString() {
 	return "Diary [dno=" + dno + ", atype=" + atype + ", ddate=" + ddate + ", pname=" + pname + ", anm=" + anm
-			+ ", product=" + product + ", cost=" + cost + ", billing=" + billing + ", proof_type=" + proof_type + "]";
+			+ ", writerPno=" + writerPno + ", product=" + product + ", cost=" + cost + ", billing=" + billing
+			+ ", proof_type=" + proof_type + "]";
 }
+
 
 
 
