@@ -13,9 +13,9 @@ import diary.model.vo.Diary;
 public class VatService {
 
 	
-	public List<Diary> selectVlist(int write_pno, int month, String taxType) {
+	public List<Diary> selectVlist(int write_pno, int year, int quarter) {
 		Connection con = getConnection();
-		List<Diary> vlist = new VatDao().selectVlist(con, write_pno, month, taxType);
+		List<Diary> vlist = new VatDao().selectVlist(con,write_pno, year, quarter);
 		return vlist;
 	}
 
