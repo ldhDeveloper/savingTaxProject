@@ -41,17 +41,12 @@ public class SalarySearchServlet extends HttpServlet {
 		String startmonth = request.getParameter("selyear") + "-0" + request.getParameter("min") + "-01";
 		String endmonth = request.getParameter("selyear") + "-0" + request.getParameter("max");
 		
-		System.out.println("pno : " + pno);
-		System.out.println("startmonth : " + startmonth);
-		System.out.println("endmonth : " + endmonth);
 		
 		ArrayList<Emp> list = new PartyService().empSearch(pno, startmonth, endmonth);
-		System.out.println("list :" + list);
 		JSONObject json = new JSONObject();
 		JSONArray jarr = new JSONArray();
 		
 		for(Emp elist : list){
-			System.out.println("elist : " + elist);
 			JSONObject jsob = new JSONObject();
 			jsob.put("pno", Integer.toString(elist.getPno()));
 			jsob.put("pname", elist.getPname());
@@ -74,11 +69,9 @@ public class SalarySearchServlet extends HttpServlet {
 		}
 		
 		json.put("list", jarr);
-		System.out.println(json);
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		System.out.println("json 파스내용 : " + json.toJSONString());
 		out.print(json.toJSONString());
 		out.flush();
 		out.close();
