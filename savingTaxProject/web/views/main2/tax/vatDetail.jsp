@@ -308,27 +308,26 @@ font-size : 4em;
 			<table class = "table table-condensed">
 			<tr>
 					<td colspan="2">납부할 총 부가가치세액</td>
-					<td><input name="total" type="number" readonly> 원</td>
+					<td>&nbsp;</td>
 					<td>세액 :<input name="totalvat" type="number" readonly>
 						원
 					</td>
 				</tr>
 			</table>
-			
 			<%} %>
 			</fieldset>
-			
 			<script type="text/javascript">
 			var quarter = 0;
 		function vatLoad(){
+			//매출
 			var receiptOut = 0; //세금계산서분
 			var cardOut = 0;	//신용카드분
 			var otherOut = 0;	// 기타 분
-			var totalOut = 0;
+			var totalOut = 0;	//총 매출가액
 			//매입
 			var receiptIn = 0; //세금계산서분
-			//매입총함
-			var totalIn = 0; 
+			var totalIn = 0; //매입총함
+			//총 부가가치세
 			var totalvat = 0;
 			quarter = <%=quarter%>;
 			var pno = <%=loginUser.getPno()%>;
@@ -342,32 +341,33 @@ font-size : 4em;
 			success: function(data){ 
 						var jsonObj = JSON.stringify(data);
 						var jsonArr = JSON.parse(jsonObj);
+						
+						
 			//매출
-			if(<%=loginUser.getTaxType().equals("일반과세자")%>){
+			if(<%=loginUser.getTaxType().equals("일반과세자")%>){ //일반과세자 처리용 
 			for(var i in jsonArr.tax){
 				switch(decodeURIComponent(jsonArr.tax[i].anm)){
-				case "매출" : 
+					case "매출" : 
 							switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-								case "세금계산서" : receiptOut +=  parseInt(jsonArr.tax[i].cost);   break;	
+								case "세금계산서" : receiptOut +=  parseInt(jsonArr.tax[i].cost); break;	
 								case "신용카드매출전표" : 
 								case "현금영수증" : 	
 												cardOut += parseInt(jsonArr.tax[i].cost); break;
 								default : otherOut += parseInt(jsonArr.tax[i].cost); break;
 								}  break;
-				case "매출원가" :
-				case "급여" :
-				case "퇴직급여" :
-				case "복리후생비" :
-				case "임차료" :
-				case "여비교통비" :
-				case "차량유지비" :
-				case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
+					case "매출원가" :
+					case "급여" :
+					case "퇴직급여" :
+					case "복리후생비" :
+					case "임차료" :
+					case "여비교통비" :
+					case "차량유지비" :
+					case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
 									case "세금계산서" :
 									case "신용카드매출전표" : 
 									case "현금영수증" : 	
 										 receiptIn +=  parseInt(jsonArr.tax[i].cost); break;	
 										}  break;	
-				case "접대비"	 :  break;
 				}
 			}
 			totalOut = receiptOut + cardOut + otherOut;
@@ -387,7 +387,9 @@ font-size : 4em;
 			$("input[name=totalin]").val(totalIn);
 			$("input[name=totalinvat]").val(totalIn/10); 
 			$("input[name=out2other]").val(cardOut * 0.013);
+			//신용카드 매입세액공제
 			out2other = $("input[name=out2other]").val();
+			//총 부가가치세
 			totalvat = total/10 -out2other;
 			$("input[name=total]").val(total);
 			$("input[name=totalvat]").val(totalvat);
@@ -401,51 +403,69 @@ font-size : 4em;
 			 totalIn = 0; 
 			 totalvat = 0;
 			
-			}else{
-				var simpleout = 0;
-				var simplein = 0;
-				var deemout = 0;
-				var x = 0;
-				
+			}else{ //간이과세자 처리용 함수
+				var out = 0;
+				var outvat = 0;
+				var in1 = 0;
+				var in2 = 0;
+				var in3 = 0;
+				var invat1 = 0;
+				var invat2 = 0;
+				var invat3 = 0;
+				var x = 0;//업종별 부가가치율 곱셈용이라  x로 표기
+				var tnum = ""; //tag넘버 구분용
+				var totalinvat = 0;
+				var totalvat =0;
+				 
 				for(var i in jsonArr.tax){
 					switch(decodeURIComponent(jsonArr.tax[i].anm)){
-					case "매출" : if(decodeURIComponent(jsonArr.tax[i].proof_type.equals("현금영수증") || decodeURIComponent(jsonArr.tax[i].proof_type.equals("신용카드매출전표")){
-								 					} 
-								 
-					simpleout += parseInt(jsonArr.tax[i].cost); break;
-					case "매출원가" : deemout += parseInt(jsonArr.tax[i].cost); break;
-					default : simplein += parseInt(jsonArr.tax[i].cost); break;
+					case "매출" :
+						if(decodeURIComponent(jsonArr.tax[i].proof_type) =="현금영수증"
+							|| decodeURIComponent(jsonArr.tax[i].proof_type)=="신용카드매출전표"){
+							 in3 += parseInt(jsonArr.tax[i].cost);
+							}  
+							out += parseInt(jsonArr.tax[i].cost); break;
+					case "매출원가" : console.log(i++);
+							in2 += parseInt(jsonArr.tax[i].cost);
+							break; //의제매입세액
+					default : 
+							in1 += parseInt(jsonArr.tax[i].cost); break;//의제매입세액을 뺀 매입세액
 					}
 				}
-				
-				simplein += deemout;
 				switch ("<%=loginUser.getCtype()%>"){
-				case "1": $("input[name=out1]").val(simpleout);
-							x = 0.005;
-						   $("input[name=outvat1]").val(simpleout * x);
-						   $("input[name=in1]").val(simplein);
-						   $("input[name=invat1]").val(simplein * x);
-						   break;
-				case "2": $("input[name=out2]").val(simpleout);
-							x = 0.01;
-				  			 $("input[name=outvat2]").val(simpleout * x);
-				  			 $("input[name=in2]").val(deemout);
-				  			$("input[name=invat2]").val(deemout * 8/108 );
+				case "1": x = 0.005; tnum = "1";
 						break;
-				case "3": $("input[name=out3]").val(deemout);
-							x= 0.02;
-				  		  $("input[name=outvat4]").val(simpleout * x);
-				  		$("input[name=in2]").val(deemout);
-				  		$("input[name=invat2]").val(deemout * 4/104);
+				case "2": x= 0.01; tnum = "2";
 						break;
-				case "4": $("input[name=out4]").val(simpleout);
-							x= 0.03;
-				 		  $("input[name=outvat4]").val(simpleout * x);
+				case "3": x= 0.02; tnum = "3";
+						break;
+				case "4": x= 0.03; tnum = "4";
 						break;
 				}
-				$("input[name=totalout]").val(simpleout);
-				$("input[name=totaloutvat]").val(simpleout * x);
-			}
+				outvat = in1 * x;
+				in1 += in2; //매입세액총합
+				invat1 = in1 * x;
+				invat2 = in2 * x;
+				invat3 = in3 * 0.013;
+				totalinvat = invat1 + invat2+ invat3;
+				totalvat = outvat - totalinvat;
+				//매출세액 계산
+				$("input[name= out"+tnum+"]").val(out);
+				$("input[name= outvat"+tnum+"]").val(outvat);
+				$("input[name=totalout]").val(out);
+				$("input[name=totaloutvat]").val(outvat);
+				//공제세액 계산
+				$("input[name=in1]").val(in1);
+				$("input[name=invat1]").val(invat1);
+				if(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>){
+				$("input[name=in2]").val(in2); 
+				$("input[name=invat2]").val(invat2);
+				}
+				$("input[name=in3]").val(in3);
+				$("input[name=invat3]").val(invat3);
+				$("input[name=totalinvat]").val(totalinvat);
+				$("input[name=totalvat]").val(totalvat);
+			} // 간이과세자 처리 메소드 끝
 			},
 			error: function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

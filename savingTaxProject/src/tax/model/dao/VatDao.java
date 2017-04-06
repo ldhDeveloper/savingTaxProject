@@ -23,7 +23,7 @@ public class VatDao {
 		String endPeriod = "";
 		String query = "select ddate, cost, proof_type, d.ano, anm " +
 				"from diary d  join accountlist a on (d.ano = a.ano) " + 
-				" where  write_pno = ? and d.ano = 51 or d.ano between 61 and 69 and"
+				" where  write_pno = ? and (d.ano = 51 or d.ano between 61 and 69) and"
 				+ " ddate between to_date(?, 'yyyymm') and last_day(to_date(?, 'yyyymm' )) ";
 			if(quarter ==2){
 				startPeriod = year  + "07" ;

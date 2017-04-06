@@ -48,7 +48,7 @@ public class VatViewServlet extends HttpServlet {
 	List<Diary> vlist = new VatService().selectVlist(write_pno, year, quarter);
 	JSONObject json = new JSONObject();
 	JSONArray jarr = new JSONArray();
-
+	
 	for(Diary tax : vlist){
 		JSONObject jsob = new JSONObject();
 		jsob.put("proof_type", URLEncoder.encode(tax.getProof_type(), "utf-8"));
