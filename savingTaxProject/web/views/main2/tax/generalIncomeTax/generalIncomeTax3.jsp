@@ -195,7 +195,6 @@
 	background-color : aliceblue;
 }
 
-
 /* .panel-heading {
 	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 	background: -o-linear-gradient(#ffffff, #b0e0e6);
@@ -208,8 +207,46 @@
 	font-size: 12pt;
 	box-shadow: 3px 3px 5px silver;
 } */
-</style>
 
+a:hover { 
+	text-decoration:none;
+}
+</style>
+<script>
+	$(function(){
+		$('#colbtn1').click(function(){
+			if($('#collapse1').hasClass("in")){
+				$('#collapse1').removeClass("in");
+			} else {
+				$('#collapse1').addClass("in");
+			}
+		});
+		
+		$('#colbtn2').click(function(){
+			if($('#collapse2').hasClass("in")){
+				$('#collapse2').removeClass("in");
+			} else {
+				$('#collapse2').addClass("in");
+			}
+		});
+		$('#colbtn3').click(function(){
+			if($('#collapse3').hasClass("in")){
+				$('#collapse3').removeClass("in");
+			} else {
+				$('#collapse3').addClass("in");
+			}
+		});
+		$('#colbtn4').click(function(){
+			if($('#collapse4').hasClass("in")){
+				$('#collapse4').removeClass("in");
+			} else {
+				$('#collapse4').addClass("in");
+			}
+		});
+		
+		
+	});
+</script>
 </head>
 
 <body style="padding-top: 0px">
@@ -266,15 +303,14 @@
 			<br>
 			<br>
 
-			<div class="panel-group" id="accordion">
+			<div class="panel-group">
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" id="colbtn1" style="cursor:pointer">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse1"> 1. 종합 소득 금액</a>
+							<a> 1. 종합 소득 금액</a>
 						</h4>
 					</div>
-					<div id="collapse1" class="panel-collapse collapse in">
+					<div id="collapse1" class="panel-collapse collapse">
 						<div class="panel-body">
 							<table class="taxtable">
 								<thead>
@@ -340,10 +376,9 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" id="colbtn2" style="cursor:pointer">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse2"> 2. 종합 소득 공제</a>
+							<a id="col2"> 2. 종합 소득 공제</a>
 						</h4>
 					</div>
 					<div id="collapse2" class="panel-collapse collapse">
@@ -395,10 +430,9 @@
 				</div>
 				
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" id="colbtn3" style="cursor:pointer">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse3"> 3. 세액 공제 항목</a>
+							<a id="col3"> 3. 세액 공제 항목</a>
 						</h4>
 					</div>
 					<div id="collapse3" class="panel-collapse collapse">
@@ -435,14 +469,13 @@
 				
 				
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" id="colbtn4" style="cursor:pointer">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse4"> 4. 기타항목</a>
+							<a id="col4"> 4. 기타항목</a>
 						</h4>
 					</div>
 					
-					<div id="collapse3" class="panel-collapse collapse">
+					<div id="collapse4" class="panel-collapse collapse">
 						<div class="panel-body">
 							<table class="taxtable">
 								<thead>
