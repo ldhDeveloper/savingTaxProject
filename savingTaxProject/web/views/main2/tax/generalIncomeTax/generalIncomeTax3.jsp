@@ -244,8 +244,16 @@ a:hover {
 			}
 		});
 		
+    $("#resetBtn").click(function(){
+			var bincome = $("#income1").val();
+			var eincome = $("#income2").val();
+			var iincome = $("#income3").val();
+			var dincome = $("#income4").val();
+			var aincome = $("#income5").val();
+			var rincome = $("#")
+		});
 		
-	});
+	}); 
 </script>
 </head>
 
@@ -303,6 +311,7 @@ a:hover {
 			<br>
 			<br>
 
+			<form>
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn1" style="cursor:pointer">
@@ -323,58 +332,59 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">사업소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">경비</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">근로소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">이자소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">배당소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">연금소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="연금소득" id="income5"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">부동산임대소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">경비</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타소득</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="기타소득" id="income7"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">경비</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="기타소득필요경비" id="cost3"> 원</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
+				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn2" style="cursor:pointer">
 						<h4 class="panel-title">
@@ -501,6 +511,7 @@ a:hover {
 						</div>
 					</div>
 				</div>
+			</div>
 				
 				<br><br>
 				
@@ -517,7 +528,7 @@ a:hover {
 						</tr>
 					</table>
 				</div>
-				
+				</form>
 				<br><br><br><br>
 				
 				<div>
@@ -596,12 +607,12 @@ a:hover {
 							<td align="center" class="sumTable2">차감납부세액 값</td>
 						</tr>					 	
 					</table>
-				</div>
-				
+				</div>				
 				<br><br><br><br>
+				
 			</div>
 		</div>
-	</div>
+
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
