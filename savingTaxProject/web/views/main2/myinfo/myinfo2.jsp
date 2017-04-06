@@ -101,7 +101,7 @@
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/update.info2" method="post">
+			<form action="/jsmi/update.info2" method="post" onsubmit="">
 				<input type="hidden" name="userid" value="<%=loginUser.getId()%>">
 				<input type="hidden" name="pno" value="<%=loginUser.getPno()%>">
 				  <% System.out.println("userid,userpno myinfo2: "+loginUser.getId()+loginUser.getPno()); %>

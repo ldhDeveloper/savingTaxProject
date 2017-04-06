@@ -139,8 +139,45 @@ body {
 			return true;
 		}
 	}
-	
-	
+		function send(){
+			var re=/^[가-힣]+$/;
+			var re2 = /^[a-zA-Z0-9]{4,8}$/ 
+			var re3=/^[a-zA-Z0-9]{8,10}$/;
+			 
+			var name =$('input[name=username]');
+			var id=$('input[name=userid]');
+			var pwd=$('input[name=userpwd]');
+			var pwd2=$('input[name=userpwd2]');
+			
+			if (!re.test(name.val())) {
+			      alert("잘못된 이름입니다.한글을 입력해주세요.");
+			      name.value="";
+			      $('#username').focus();
+			      return false;
+			}
+			
+			if (!re2.test(id.val()) ) {
+			      alert("잘못된 아이디입니다.숫자 영문자조합의 4~8자리를 입력해주세요.");
+			      id.value="";
+			      $('#userid').focus();
+			      return false;
+			}
+			
+			if(!re3.test(pwd.val())){
+				alert('비밀번호는 숫자와 영문자 조합으로 8~10자리를 사용해야 합니다.');
+				pwd.value=" ";
+				$('#pwd1').focus();
+				return false;
+				}
+			
+			if(!re3.test(pwd2.val())){
+				alert('비밀번호는 숫자와 영문자 조합으로 8~10자리를 사용해야 합니다.');
+				pwd2.value="";
+				$('#pwd2').focus();
+				return false;
+				}
+		    alert("회원가입 성공");
+		}
 </script>
   </head>
 
@@ -148,25 +185,25 @@ body {
   <body>
 
     <div class="container">
-      <form action="/jsmi/signup" class="form-signin">
+      <form action="/jsmi/signup" class="form-signin" onsubmit="return send();">
 
       	<input type="button" class="btn close" value="x 닫기" onclick="location.href='/jsmi/main.jsp'"><br>
 
         <h2 class="form-signin-heading" align="center">회원가입</h2><br>
         <table style="cellspacing:5px">
-			<tr><td width="5%"></td><td width="30%">이름</td><td width="60%"><input type="text" id="" class="form-control" name="username" placeholder="이름을 입력하세요." required autofocus></td><td width="5%"></td><td></td><td></td><td width="5%"></td></tr>
-			<tr><td></td><td >아이디</td><td><input type="text" id="userid" class="form-control" name="userid" placeholder="아이디를 입력하세요." required ></td><td></td><td></td><td><a class="btn btn-warning" id="idchk" style="display:none">중복확인</a></td><td></td></tr>   
+			<tr><td width="5%"></td><td width="30%">이름</td><td width="60%"><input type="text" id="username" class="form-control" name="username" placeholder="이름을 입력하세요." required autofocus></td><td width="5%"></td><td></td><td></td><td width="5%"></td></tr>
+			<tr><td></td><td >아이디</td><td><input type="text" id="userid" class="form-control" name="userid" placeholder="아이디를 입력하세요." required >숫자 영문자조합의 4~8자리</td><td></td><td></td><td><a class="btn btn-warning" id="idchk" style="display:none">중복확인</a></td><td></td></tr>   
 			<tr id="conid" style="display:none"><td></td><td ></td><td><span class="label label-success">아이디가 사용가능합니다</span></td><td></td><td></td><td></td><td></td></tr>
 			<tr id="noid" style="display:none"><td></td><td ></td><td><span class="label label-danger">이미 존재하는 아이디입니다</span></td><td></td><td></td><td></td><td></td></tr>   
-			<tr><td></td><td >비밀번호</td><td><input type="password" id="pwd1" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required></td><td></td><td></td><td></td><td></td></tr>   
-			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="pwd2" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호</td><td><input type="password" id="pwd1" class="form-control" name="userpwd" placeholder="비밀번호를 입력하세요." required>숫자 영문자조합의 8~10자리</td><td></td><td></td><td></td><td></td></tr>   
+			<tr><td></td><td >비밀번호확인</td><td><input type="password" id="pwd2" class="form-control" name="userpwd2" placeholder="비밀번호를 다시 입력하세요." required >숫자 영문자조합의 8~10자리</td><td></td><td></td><td></td><td></td></tr>   
 			<tr id="conpwd" style="display:none"><td></td><td ></td><td><span class="label label-success">비밀번호가 일치합니다</span></td><td></td><td></td><td></td><td></td></tr>
 			<tr id="nopwd" style="display:none"><td></td><td ></td><td><span class="label label-danger">비밀번호가 일치하지않습니다</span></td><td></td><td></td><td></td><td></td></tr>   
-			<tr><td></td><td >이메일주소</td><td><input type="text" id="" class="form-control" name="email" placeholder="이메일주소를 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>           
+			<tr><td></td><td >이메일주소</td><td><input type="email" id="" class="form-control" name="email" placeholder="이메일주소를 입력하세요." required ></td><td></td><td></td><td></td><td></td></tr>           
         </table>
         
 		<br>
-        <input class="btn btn-lg btn-info btn-block" type="submit" value="가입 완료" onclick="return formchk()">
+        <input class="btn btn-lg btn-info btn-block" type="submit" value="가입 완료">
         <input class="btn btn-lg btn-default btn-block" type="reset" value="작성 취소" onclick="location.href='/jsmi/main.jsp'">
 
       </form>
