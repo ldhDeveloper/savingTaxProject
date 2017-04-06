@@ -57,6 +57,7 @@ public class SalarySearchServlet extends HttpServlet {
 			jsob.put("pname", elist.getPname());
 			jsob.put("id_no", elist.getId_no());
 			jsob.put("position", elist.getPosition());
+			jsob.put("sno", elist.getSno());
 			jsob.put("wsdate", elist.getWsdate().toString());
 			jsob.put("wedate", elist.getWedate().toString());
 			jsob.put("saldate", elist.getSaldate().toString());

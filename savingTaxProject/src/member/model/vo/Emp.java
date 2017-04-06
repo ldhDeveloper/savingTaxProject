@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Emp implements java.io.Serializable{
 		private int pno;
+		private int sno;
 		private String pname;
 		private String id_no;
 		private String position;
@@ -22,6 +23,13 @@ public class Emp implements java.io.Serializable{
 		
 		
 		
+		
+		public int getSno() {
+			return sno;
+		}
+		public void setSno(int sno) {
+			this.sno = sno;
+		}
 		public int getRest_pay() {
 			return rest_pay;
 		}
@@ -120,11 +128,12 @@ public class Emp implements java.io.Serializable{
 		}
 		
 		public Emp(){}
-		public Emp(int pno, String pname, String id_no, String position, Date wsdate, Date wedate, Date saldate,
-				int init_pay, int bonus, int incentive, int over_pay, int meals, int child_pay, int car_pay, int exp,
-				int rest_pay) {
+		public Emp(int pno, int sno, String pname, String id_no, String position, Date wsdate, Date wedate,
+				Date saldate, int init_pay, int bonus, int incentive, int over_pay, int meals, int child_pay,
+				int car_pay, int exp, int rest_pay) {
 			super();
 			this.pno = pno;
+			this.sno = sno;
 			this.pname = pname;
 			this.id_no = id_no;
 			this.position = position;
@@ -143,11 +152,11 @@ public class Emp implements java.io.Serializable{
 		}
 		@Override
 		public String toString() {
-			return "Emp [pno=" + pno + ", pname=" + pname + ", id_no=" + id_no + ", position=" + position + ", wsdate="
-					+ wsdate + ", wedate=" + wedate + ", saldate=" + saldate + ", init_pay=" + init_pay + ", bonus="
-					+ bonus + ", incentive=" + incentive + ", over_pay=" + over_pay + ", meals=" + meals
-					+ ", child_pay=" + child_pay + ", car_pay=" + car_pay + ", exp=" + exp + ", rest_pay=" + rest_pay
-					+ "]";
+			return "Emp [pno=" + pno + ", sno=" + sno + ", pname=" + pname + ", id_no=" + id_no + ", position="
+					+ position + ", wsdate=" + wsdate + ", wedate=" + wedate + ", saldate=" + saldate + ", init_pay="
+					+ init_pay + ", bonus=" + bonus + ", incentive=" + incentive + ", over_pay=" + over_pay + ", meals="
+					+ meals + ", child_pay=" + child_pay + ", car_pay=" + car_pay + ", exp=" + exp + ", rest_pay="
+					+ rest_pay + "]";
 		}
 		
 		

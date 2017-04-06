@@ -899,7 +899,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		ArrayList<Emp> list=null; 
 		
-		String query = "select p.pno, p.pname, p.id_no, p.position, s.wsdate, s.wedate, s.saldate, " + 
+		String query = "select p.pno, p.pname, p.id_no, p.position, s.sno, s.wsdate, s.wedate, s.saldate, " + 
 							   "s.init_pay, s.bonus, s.incentive, s.over_pay, s.meals, s.child_pay, s.car_pay, s.exp, s.rest_pay " +
 							   "from party_rel pr left join party p on (pr.rel_pno = p.pno) " +
 							   							"left join salary s on (p.pno = s.pno) " +
@@ -922,6 +922,7 @@ public class PartyDao {
 			   e.setPname(rset.getString("pname"));
 			   e.setId_no(rset.getString("id_no"));
 			   e.setPosition(rset.getString("position"));
+			   e.setSno(rset.getInt("sno"));
 			   e.setWsdate(rset.getDate("wsdate"));
 			   e.setWedate(rset.getDate("wedate"));
 			   e.setSaldate(rset.getDate("saldate"));
