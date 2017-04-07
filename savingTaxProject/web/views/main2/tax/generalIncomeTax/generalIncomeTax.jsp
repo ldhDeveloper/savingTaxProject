@@ -321,7 +321,89 @@ a:hover {
 				});
 			});	
 		});
-		
+		</script>
+		<script>
+			function calculator(){
+					var line1_1 = 0;
+					var line1_2 = 0;
+					var line1_3 = 0;
+					var line2_2 = 0;
+					var taxRate = 0;
+					var taxgong = 0;
+					var line4_2 = 0;
+					var gita1 = Number($("#gita1").val());
+					var gita2 = Number($("#gita2").val());
+					
+					for(var i = 1; i <= 7; i++){
+						var indexid = "#income" + i
+						line1_1 += Number($(indexid).val());
+					}
+					for(var i = 1; i <= 3; i++){
+						var indexid = "#cost" + i
+						line1_2 += Number($(indexid).val());
+					}
+					
+					$("#line1-1").html(line1_1);
+					$("#line1-2").html(line1_2);
+					$("#line1-3").html(line1_1 - line1_2);
+					
+					
+					$("#line2-1").html(line1_1 - line1_2);
+					
+					for(var i = 1; i <= 6; i++){
+						var indexid = "#gong" + i
+						line2_2 += Number($(indexid).val());
+					}
+					$("#line2-2").html(line2_2);
+					$("#line2-3").html(Number($("#line2-1").text())-line2_2)
+				
+					
+					$("#line3-1").html($("#line2-3").text());
+					
+					if($("#line3-1").text() <= 12000000){
+						taxRate = 0.06;
+						taxgong = 0;
+					}else if($("#line3-1").text() <= 46000000){
+						taxRate = 0.15;
+						taxgong = 1080000;
+					}else if($("#line3-1").text() <= 88000000){
+						taxRate = 0.24;
+						taxgong = 5220000;
+					}else if($("#line3-1").text() <= 150000000){
+						taxRate = 0.35;
+						taxgong = 14900000;
+					}else{
+						taxRate = 0.38;
+						taxgong = 19400000;
+					}
+					
+					$("#line3-2").html(taxRate*100 + ' %');
+					$("#line3-3").html(taxgong + " 원");
+					$("#line3-4").html($("#line3-1").text() * taxRate - taxgong);
+					
+					
+					$("#line4-1").html($("#line3-4").text());
+					
+					for(var i = 1; i <= 3; i++){
+						var indexid = "#segong" + i
+						line4_2 += Number($(indexid).val());
+						console.log(Number($(indexid).val()));
+					}
+					
+					$("#line4-2").html(line4_2);
+					$("#line4-3").html($("#line4-1").text() - line4_2);
+					
+					$("#line5-1").html($("#line4-3").text());
+					$("#line5-2").html(gita1);
+
+					$("#line5-3").html(gita2);
+					
+					$("#line5-4").html(Number($("#line5-1").text()) + gita1 - gita2);
+					
+					
+					
+			}
+
 		</script>
 
 		<div class="section">
@@ -401,52 +483,52 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">사업소득</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">사업소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">근로소득</td>
-										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">이자소득</td>
-										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">배당소득</td>
-										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">연금소득</td>
-										<td class="taxtd2"><input type="text" placeholder="연금소득" id="income5"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="연금소득" id="income5" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">부동산임대소득</td>
-										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">임대소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2" value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타소득</td>
-										<td class="taxtd2"><input type="text" placeholder="기타소득" id="income7"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="기타소득" id="income7"  value="0"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="기타소득필요경비" id="cost3"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="기타소득필요경비" id="cost3"  value="0"> 원</td>
 									</tr>
 								</tbody>
 							</table>
@@ -473,34 +555,34 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">기본공제(본인)</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="1500000" readonly id="gong1"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">추가공제 경로우대(인당 100만원), 장애인(인당 200만원),
 											부녀자(50만원), 한부모(100만원)</td>
 
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gong2"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">국민연금보험공제액</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gong3"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타 보험료 공제액</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gong4"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">소기업 상공인 공제부금 공제액</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gong5"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타 공제액</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gong6"> 원</td>
 									</tr>
 								</tbody>
 							</table>
@@ -527,18 +609,18 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">표준 세액 공제</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="70000" readonly id="segong1"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">자녀세액공제 1~2명 (1명당 15만원) / 2명 초과 (30만원 +
 											2명 초과 1명당 20만원)</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" value="0" id="segong2"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기타세액공제액</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text" value="0" id="segong3"> 원</td>
 									</tr>
 								</tbody>
 							</table>
@@ -568,12 +650,12 @@ a:hover {
 									<tr>
 										<td class="taxtd1">가산세 무(과소)신고가산세, 납부(환급)불성실가산세,
 											보고불성실가산세, 증빙불비가산세, 무기장가산세 등</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gita1"> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">기납부세액 (중간예납세액, 수시부과세액, 원천징수세액 등)</td>
-										<td class="taxtd2"><input type="text"> 원</td>
+										<td class="taxtd2"><input type="text"  value="0" id="gita2"> 원</td>
 									</tr>
 								</tbody>
 							</table>
@@ -588,7 +670,7 @@ a:hover {
 					<table>
 						<tr>
 							<td>
-								<input id="calBtn" type="button" value="계산하기">
+								<input id="calBtn" type="button" value="계산하기" onclick="calculator();">
 							</td>
 							
 							<td>
@@ -601,65 +683,59 @@ a:hover {
 				<br><br><br><br>
 				
 				<div>
-					<table class="calTable">
+					<table class="calTable" style="width:1100px">
 						<tr>
 							<th colspan="4" class="calResult">종합 소득세 결과</th>
 						</tr>
 						
 						<tr class="lineTable1">
-							<td align="center" class="sumCalTable">총소득 합계</td>
-							<td align="right" class="rightTable">총비용 합계 (-)</td>
-							<td align="center"  class="sumCalTable"><input type="hidden"></td>
-							<td align="center" class="sumTable">종합소득금액</td>
+							<td align="center" class="sumCalTable" style="width:282px">총소득 합계</td>
+							<td align="center" class="rightTable" colspan="2">총비용 합계 (-)</td>							
+							<td align="center" class="sumTable" style="width:233">종합소득금액</td>
 						</tr>
 						
 						<tr class="lineTable">
-							<td align="center" class="sumCalTable"><input type="text" id="totalIncome"></td>
-							<td align="right" class="rightTable"><input type="text" id="totalCost"></td>
-							<td align="center" class="sumCalTable"><input type="hidden"></td>
-							<td align="center" class="sumTable2"><input type="text" id="sumIncome"></td>
+							<td align="center" class="sumCalTable"><p id="line1-1"></p></td>
+							<td align="center" class="rightTable" colspan="2"><p id="line1-2"></p></td>
+							<td align="center" class="sumTable2"><p id="line1-3"></p></td>
 						</tr>
 						
 						<tr class="lineTable1">
 							<td align="center" class="sumCalTable">종합소득금액</td>
-							<td align="right" class="rightTable">종합소득공액 (-)</td>
-							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="rightTable" colspan="2">종합소득공액 (-)</td>
 							<td align="center" class="sumTable">과세표준</td>
 						</tr>
 						
 						<tr class="lineTable">
-							<td align="center" class="sumCalTable">종합소득금액 값</td>
-							<td align="right" class="rightTable">종합소득공액 값</td>
-							<td align="center" class="sumCalTable"><input type="hidden"></td>
-							<td align="center" class="sumTable2">과세표준 값</td>
+							<td align="center" class="sumCalTable"><p id="line2-1"></p></td>
+							<td align="center" class="rightTable" colspan="2"><p id="line2-2"></p></td>
+							<td align="center" class="sumTable2"><p id="line2-3"></p></td>
 						</tr>
 						
 						<tr class="lineTable1">
-							<td align="center" class="sumCalTable">과제표준</td>
+							<td align="center" class="sumCalTable">과세표준</td>
 							<td align="center" class="sumCalTable">세율(6%~38%) (*)</td>
 							<td align="center" class="sumCalTable">누진공제 (-)</td>
 							<td align="center" class="sumTable">산출세액</td>
 						</tr>
 						
 						<tr class="lineTable">
-							<td align="center" class="sumCalTable">과제표준 값</td>
-							<td align="center" class="sumCalTable">세율 값</td>
-							<td align="center" class="sumCalTable">누진공제  값</td>
-							<td align="center" class="sumTable2">산출세액 값</td>
+							<td align="center" class="sumCalTable" ><p id="line3-1"></p></td>
+							<td align="center" class="sumCalTable" ><p id="line3-2"></p></td>
+							<td align="center" class="sumCalTable" ><p id="line3-3"></p></td>
+							<td align="center" class="sumTable2"><p id="line3-4"></p></td>
 						</tr>
 						
 						<tr class="lineTable1">
 							<td align="center" class="sumCalTable">산출세액</td>
-							<td align="right" class="rightTable">세액공제(-)</td>
-							<td align="center" class="sumCalTable"><input type="hidden"></td>
+							<td align="center" class="rightTable" colspan="2">세액공제(-)</td>
 							<td align="center" class="sumTable">결정세액</td>
 						</tr>
 						
 						<tr class="lineTable">
-							<td align="center" class="sumCalTable">산출세액 값</td>
-							<td align="right" class="rightTable">세액공제 값</td>
-							<td align="center" class="sumCalTable"><input type="hidden"></td>
-							<td align="center" class="sumTable2">결정세액 값</td>
+							<td align="center" class="sumCalTable"><p id="line4-1"></p></td>
+							<td align="center" class="rightTable" colspan="2"><p id="line4-2"></p></td>
+							<td align="center" class="sumTable2"><p id="line4-3"></p></td>
 						</tr>
 						
 						<tr class="lineTable1">
@@ -670,10 +746,10 @@ a:hover {
 						</tr>
 						
 						<tr class="lineTable">
-							<td align="center" class="sumCalTable">결정세액 값</td>
-							<td align="center" class="sumCalTable">가산세 값</td>
-							<td align="center" class="sumCalTable">기납부세액 값</td>
-							<td align="center" class="sumTable2">차감납부세액 값</td>
+							<td align="center" class="sumCalTable"><p id="line5-1"></p></td>
+							<td align="center" class="sumCalTable"><p id="line5-2"></p></td>
+							<td align="center" class="sumCalTable"><p id="line5-3"></p></td>
+							<td align="center" class="sumTable2"><p id="line5-4"></p></td>
 						</tr>					 	
 					</table>
 				</div>				
