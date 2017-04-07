@@ -85,67 +85,75 @@
 		})
 	})
 
-	function validate() {
 
-		var re = /^[0-9]{6}+$/;
-		var re1 = /^[0-9]{7}+$/;
-		var re2 = /^[0-9]+$/;
-		var re3 = /^01([0|1|6|7|8|9]?)$/;
-		var re4 = /^?([0-9]{3,4})+$/;
-		var re5 = /^?([0-9]{4})$/;
-
-		var idno = $('input[name=idno]'), 
-		      idno2 = $('input[name=idno2]'), 
-		      address = $('input[name=address]'), 
-		      address2 = $('input[name=address2]'),
-		      address3 = $('input[name=address3]'), 
-		      phone = $('input[name=phone]'), 
-		      phone2 = $('input[name=phone2]'), 
-		      phone3 = $('input[name=phone3]');
-
-		if (!re.test(idno.val())) {
-			alert("주민등록번호 앞자리는 숫자 6자리를 입력해주세요.");
-			idno.value = "";
-			$('#idno').focus();
-			return false;
-		} else if (!re1.test(idno2.val())) {
-			alert("주민등록번호 뒷자리는 숫자 7자리를 입력해주세요.");
-			idno2.value = "";
-			$('#idno2').focus();
-			return false;
-		} else if (!re2.test(address.val())) {
-			alert("우편번호에는 숫자만 입력해주세요.");
-			address.value = "";
-			$('#postnum').focus();
-			return false;
-		}
-
-		if (!re3.test(phone.val())) {
-			alert("숫자 3개만 입력해주세요.");
-			phone.value = "";
-			$('#phone').focus();
-			return false;
-		} else {
-			$('#phone2').focus();
-		}
-
-		if (!re4.test(phone2.val())) {
-			alert("숫자 3개 또는 4개만 입력해주세요.");
-			phone2.value = "";
-			$('#phone2').focus();
-			return false;
-		} else {
-			$('#phone3').focus();
-		}
-
-		if (!re5.test(phone3.val())) {
-			alert("숫자 4개만 입력해주세요.");
-			phone3.value = "";
-			$('#phone3').focus();
-			return false;
-		}
-		alert("성공");
+	function checkph() {
+		var str = $('input[name=phone]').val().length;
+		var str2 =$('input[name=phone2]').val().length;
+		console.log(str);
+		if (str == 3) 
+			$('input[name=phone2]').focus();
+		
+		if(str2==4)
+			$('input[name=phone3]').focus();
 	}
+	
+	function checkidno() {
+		var str = $('input[name=idno]').val().length;
+		
+		console.log(str);
+		if (str == 6) 
+			$('input[name=idno2]').focus();
+	}
+	
+	function chk() {
+		var re_idno = /^\d{6}$/;
+		var re_idno2 = /^\d{7}$/;
+		var address = /^[0-9]*$/;
+		var tel = /^[0-9]{2,3}$/;
+		var tel2 = /^[0-9]{3,4}$/;
+		var tel3 = /^[0-9]{4}$/;
+		
+
+		var idno = $('input[name=idno]'), idno2 = $('input[name=idno2]'), address = $('input[name=address]'), 
+		     phone = $('input[name=phone]'), phone2 = $('input[name=phone2]'), phone3 = $('input[name=phone3]');
+		
+
+		if (re_idno.test(idno.val()) != true) {
+			alert("[주민등록번호 입력 오류] 숫자를 6자리 입력해주세요.");
+			idno = "";
+			idno.focus();
+			return false;
+		} 
+		else if (re_idno2.test(idno2.val()) != true) {
+			alert('[주민등록번호 입력 오류] 숫자를 7자리 입력해주세요.');
+			idno2 = "";
+			idno2.focus();
+			return false;
+		} else if (address.test(address.val()) != true) {
+			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
+			address="";
+			address.focus();
+			return false;
+		} else if (tel.test(phone.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone="";
+			phone.focus();
+			return false;
+		} else if (tel2.test(phone2.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone2="";
+			phone2.focus();
+			return false;
+		} else if (tel3.test(phone3.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone3="";
+			phone3.focus();
+			return false;
+		} 
+
+		alert('입력성공!');
+	}
+	
 </script>
 </head>
 
@@ -175,7 +183,7 @@
 			</div>
 
 			<form action="/jsmi/update.info1" method="post"
-				onsubmit="return validate();">
+				onsubmit="return validate();" name="form">
 				<input type="hidden" value="<%=loginUser.getPno()%>" name="pno">
 				<%
 					System.out.println("pno: " + loginUser.getPno());
@@ -209,15 +217,15 @@
 								name="username" value="<%=loginUser.getPname()%>" readonly></td>
 							<td class="col-md-2"><h5>주민등록번호</h5></td>
 							<td class="col-md-4"><div class="col-md-5">
-									<input type="text" class="form-control" name="idno"
-										value="<%=idNo[0]%>">
+									<input type="text" maxlength="6" class="form-control"
+										OnKeyUp="checkidno();" name="idno" value="<%=idNo[0]%>">
 								</div>
 								<div class="col-md-1">
 									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
-									<input type="password" class="form-control" name="idno2"
-										value="<%=idNo[1]%>">
+									<input type="password" maxlength="7" class="form-control"
+										OnKeyUp="checkidno();" name="idno2" value="<%=idNo[1]%>">
 								</div></td>
 						</tr>
 						<tr>
@@ -245,8 +253,8 @@
 							<td class="col-md-2"><h5>사업주 주소</h5></td>
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="address"
-										value="<%=paddress[0]%>">
+									<input type="text" class="form-control" maxlength="5"
+										name="address" value="<%=paddress[0]%>">
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -265,20 +273,20 @@
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone"
-										value="<%=phone[0]%>">
+									<input type="text" class="form-control phone" maxlength="3"
+										OnKeyUp="checkph();" name="phone" value="<%=phone[0]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone2"
-										value="<%=phone[1]%>">
+									<input type="text" class="form-control phone" maxlength="4"
+										OnKeyUp="checkph();" name="phone2" value="<%=phone[1]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone3"
-										value="<%=phone[2]%>">
+									<input type="text" class="form-control phone" maxlength="4"
+										name="phone3" value="<%=phone[2]%>">
 								</div>
 								<div class="col-md-1"></div>
 							</td>
@@ -327,7 +335,7 @@
 					</tbody>
 				</table>
 				<div class="btngroup">
-					<input type="submit" class="btn btn-warning" value="수정완료">
+					<input type="submit" class="btn btn-warning" value="수정완료" onclick="return chk()">
 					<input type="button" class="btn btn-primary" value="다음"
 						onclick="location.href='/jsmi/views/main2/myinfo/myinfo2.jsp'"
 						onclick="validate();">
@@ -347,15 +355,15 @@
 								name="username" value="<%=loginUser.getPname()%>" readonly></td>
 							<td class="col-md-2"><h5>주민등록번호</h5></td>
 							<td class="col-md-4"><div class="col-md-5">
-									<input type="text" class="form-control" name="idno" id="idno"
-										required>
+									<input type="text" maxlength="6" class="form-control" OnKeyUp="checkidno();"
+										name="idno" id="idno" required>
 								</div>
 								<div class="col-md-1">
 									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
-									<input type="password" class="form-control" name="idno2"
-										id="idno2" required>
+									<input type="password" maxlength="7" class="form-control"
+										name="idno2" id="idno2" required>
 								</div></td>
 						</tr>
 						<tr>
@@ -384,7 +392,7 @@
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="address" required>
+										name="address" maxlength="5" required>
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -403,20 +411,20 @@
 							<td class="col-md-6" colspan="2">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone" id="phone"
-										required>
+									<input type="text" maxlength="3" class="form-control phone"
+										OnKeyUp="checkph();" name="phone" id="phone" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone2"
-										id="phone2" required>
+									<input type="text" maxlength="4" class="form-control phone"
+										OnKeyUp="checkph();" name="phone2" id="phone2" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone3"
-										id="phone3" required>
+									<input type="text" maxlength="4" class="form-control phone"
+										name="phone3" id="phone3" required>
 								</div>
 								<div class="col-md-1"></div>
 							</td>
@@ -465,7 +473,7 @@
 					</tbody>
 				</table>
 				<div class="btngroup">
-					<input type="submit" class="btn btn-primary" value="다음">
+					<input type="submit" class="btn btn-primary" value="다음" onclick="return chk()">
 					<button class="btn btn-danger" type="reset">취소</button>
 
 				</div>

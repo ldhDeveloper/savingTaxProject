@@ -74,6 +74,7 @@ public class Main2InsertServlet extends HttpServlet {
 		p.setCaddress(Caddress);
 		p.setEmail(Email);
 
+		System.out.println("P: "+p);
 		int result = new PartyService().insertPartyMyinfo3(p, pno);
 		
 		if (result > 0) {
