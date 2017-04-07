@@ -124,27 +124,31 @@
 			idno.focus();
 			return false;
 		} 
-		else if (re_idno2.test(idno2.val()) != true) {
+		 if (re_idno2.test(idno2.val()) != true) {
 			alert('[주민등록번호 입력 오류] 숫자를 7자리 입력해주세요.');
 			idno2 = "";
 			idno2.focus();
 			return false;
-		} else if (address.test(address.val()) != true) {
+		} 
+		 if (address.test(address.val()) != true) {
 			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
 			address="";
 			address.focus();
 			return false;
-		} else if (tel.test(phone.val()) != true) {
+		}
+		 if (tel.test(phone.val()) != true) {
 			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
 			phone="";
 			phone.focus();
 			return false;
-		} else if (tel2.test(phone2.val()) != true) {
+		}
+		 if (tel2.test(phone2.val()) != true) {
 			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
 			phone2="";
 			phone2.focus();
 			return false;
-		} else if (tel3.test(phone3.val()) != true) {
+		} 
+		 if (tel3.test(phone3.val()) != true) {
 			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
 			phone3="";
 			phone3.focus();
@@ -338,7 +342,7 @@
 					<input type="submit" class="btn btn-warning" value="수정완료" onclick="return chk()">
 					<input type="button" class="btn btn-primary" value="다음"
 						onclick="location.href='/jsmi/views/main2/myinfo/myinfo2.jsp'"
-						onclick="validate();">
+						onclick="return chk()">
 				</div>
 				<%
 					} else {
@@ -473,7 +477,7 @@
 					</tbody>
 				</table>
 				<div class="btngroup">
-					<input type="submit" class="btn btn-primary" value="다음" onclick="return chk()">
+					<input type="submit" class="btn btn-primary" value="입력" onclick="return chk()">
 					<button class="btn btn-danger" type="reset">취소</button>
 
 				</div>

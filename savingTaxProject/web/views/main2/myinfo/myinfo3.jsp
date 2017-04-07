@@ -120,7 +120,17 @@
 		var tel3 = /^[0-9]{4}$/;
 		var address = /^[0-9]*$/;
 
-		var cname = $('input[name=cname]'), president = $('input[name=president]'), cno = $('input[name=cno]'), cno2 = $('input[name=cno2]'), cno3 = $('input[name=cno3]'), cstatus = $('input[name=cstatus]'), ctype = $('input[name=ctype]'), tel = $('input[name=tel]'), tel2 = $('input[name=tel2]'), tel3 = $('input[name=tel3]'), address = $('input[name=postnum]');
+		var cname = $('input[name=cname]'), 
+		     president = $('input[name=president]'), 
+		     cno = $('input[name=cno]'), 
+		     cno2 = $('input[name=cno2]'), 
+		     cno3 = $('input[name=cno3]'), 
+		     cstatus = $('input[name=cstatus]'),
+		     ctype = $('input[name=ctype]'), 
+		     tel = $('input[name=tel]'), 
+		     tel2 = $('input[name=tel2]'), 
+		     tel3 = $('input[name=tel3]'), 
+		     address = $('input[name=postnum]');
 
 		if (re.test(cname.val()) != true) {
 			alert("[상호 입력 오류] 한글만 입력해주세요.");
