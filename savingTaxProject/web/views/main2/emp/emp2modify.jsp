@@ -160,6 +160,15 @@ th {
 .slider-track { 
 	width: 980px;
 }
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size:30pt;
+}
+
+.tabletd {
+	border-top : 3px solid #2a82a3;  
+}
 </style>
 
 </head>
@@ -466,13 +475,13 @@ th {
 			</center>
 			<br>
 			<br>
-			<h3 align="center">급여 현황</h3>
+			<h3 align="center" class="h3class">급여 현황</h3>
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
 							<tbody id="searchtable">
-								<tr>
+								<tr class="tabletd">
 									<th>직원명</th>
 									<th>주민번호</th>
 									<th>부서명</th>
@@ -557,13 +566,13 @@ th {
 				</div>
 			</div>
 
-			<h3 align="center" style="margin-top: 30px;">직원정보</h3>
+			<h3 align="center" style="margin-top: 30px;" class="h3class">직원정보</h3>
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td>직원명</td>
 									<td>주민등록번호</td>
 									<td>직급</td>
@@ -585,14 +594,14 @@ th {
 
 			<br>
 			<br>
-			<h3 align="center">급여 상세</h3>
+			<h3 align="center" class="h3class">급여 상세</h3>
 			<form action="/jsmi/updatesal" method="post">
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td>근무시작일</td>
 									<td><input type="date" class="form-control" id="wsdate" name="wsdate"></td>
 									<td>근무종료일</td>
@@ -610,12 +619,12 @@ th {
 						<br>
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td colspan="5">과세 급여</td>
 									<td colspan="4">비과세 급여</td>
 									<td>총 급여</td>
 								</tr>
-								<tr>
+								<tr class="tabletd">
 									<td>기본급</td>
 									<td>시간 외 근무 수당</td>
 									<td>휴일 근무 수당</td>
@@ -648,11 +657,11 @@ th {
 						<br>
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td colspan="5">공제 항목</td>
 									<td>차인지급액</td>
 								</tr>
-								<tr>
+								<tr class="tabletd">
 									<td>국민연금보험료</td>
 									<td>건강보험료</td>
 									<td>장기요양보험료</td>
@@ -671,17 +680,17 @@ th {
 							</tbody>
 						</table>
 						<br><br>
-						<h3 align="center" style="margin-top: 30px;">사업자 부담 보험금 계산</h3>
+						<h3 align="center" style="margin-top: 30px;" class="h3class">사업자 부담 보험금 계산</h3>
 						<div class="emp-table">
 							<div class="row">
 								<div class="col-md-12">
 									<table class="table table-condensed">
 										<tbody>
-											<tr>
+											<tr class="tabletd">
 												<td colspan="5">보험료 세부항목</td>
 												<td>납부 총액</td>
 											</tr>
-											<tr>
+											<tr class="tabletd">
 												<td>국민연금보험료</td>
 												<td>건강보험료</td>
 												<td>장기요양보험료</td>

@@ -90,7 +90,41 @@
 	margin-top: -15px;
 	left: -30px;
 }
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size:30pt;
+}
+
+.tabletd {
+	border-top : 3px solid #2a82a3;  
+}
+
 </style>
+
+<script type="text/javascript">
+	function validate(){
+		var re = [0-9];
+		
+		var tel1 = $("input[name=tel1]").val();
+		var tel2 = $("input[name=tel2]").val();
+		var tel3 = $("input[name=tel3]").val();
+		
+		if(!re.test(name.tel1())){
+			alert="숫자를 입력하세요"
+		}
+		
+		if(!re.test(name.tel2())){
+			alert="숫자를 입력하세요"
+		}
+		
+		if(!re.test(name.tel3())){
+			alert="숫자를 입력하세요"
+		}
+		
+		
+	}
+</script>
 
 </head>
 <body style="padding-top: 0px">
@@ -103,8 +137,9 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
+		
 		<div class="section">
-
+			<form action="" onsubmit="return validate();">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="navbar navbar-default">
@@ -123,12 +158,12 @@
 			
 
 
-			<h3 align="center">직원 목록 조회</h3>
+			<h3 align="center" class="h3class">직원 목록 조회</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
 						<tbody id="emptable">
-							<tr>
+							<tr class="tabletd">
 								<th>직원명</th>
 								<th>직원구분</th>
 								<th>직급</th>
@@ -200,14 +235,14 @@
 					</ul>
 				</div>
 			</div>
-			<h3 align="center">직원 정보 입력/수정</h3>
+			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
 
 				
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td class="col-md-2"><h5>직원명</h5></td>
 									<td class="col-md-4"><input type="text"
 										class="form-control" name="empname"></td>
@@ -237,12 +272,12 @@
 									<td class="col-md-4">
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="empno1">
+											<input type="text" class="form-control" name="empno1" maxlength="6">
 										</div>
 										<div class="col-md-2" style="text-align: center">-</div>
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="password" class="form-control" name="empno2">
+											<input type="password" class="form-control" name="empno2" maxlength="6">
 										</div>
 									</td>
 									<td class="col-md-2"><h5>직급</h5></td>
@@ -257,17 +292,17 @@
 									<td class="col-md-4">
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone1">
+											<input type="text" class="form-control" name="phone1" maxlength="3">
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone2">
+											<input type="text" class="form-control" name="phone2" maxlength="4">
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone3">
+											<input type="text" class="form-control" name="phone3" maxlength="4">
 										</div>
 									</td>
 
@@ -338,8 +373,9 @@
 				</div>
 
 
-
+			</form>
 		</div>
+
 
 	</div>
 	<br>
@@ -404,15 +440,13 @@
 								
 								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
 							}
-						},
+						}/* ,
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					       }
+					       } */
 						
 					});
-				});
-				
-				
+				});				
 			</script>
 </body>
 </html>
