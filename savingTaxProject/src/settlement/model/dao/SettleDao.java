@@ -500,4 +500,222 @@ public class SettleDao {
 			
 			return list;
 		}
+
+		public ArrayList<AssetCircle> costDonut(Connection con, int pno, String dyear, String cselect) {
+			String sdate = null;
+			String edate = null;
+			switch(cselect){
+			case "0" : 
+				sdate = dyear + "-01";
+				edate = dyear + "-12";
+				break;
+			case "1" : 
+				sdate = dyear + "-01";
+				edate = dyear + "-01";
+				break;
+			case "2" : 
+				sdate = dyear + "-02";
+				edate = dyear + "-02";
+				break;
+			case "3" : 
+				sdate = dyear + "-03";
+				edate = dyear + "-03";
+				break;
+			case "4" : 
+				sdate = dyear + "-04";
+				edate = dyear + "-04";
+				break;
+			case "5" : 
+				sdate = dyear + "-05";
+				edate = dyear + "-05";
+				break;
+			case "6" : 
+				sdate = dyear + "-06";
+				edate = dyear + "-06";
+				break;
+			case "7" : 
+				sdate = dyear + "-07";
+				edate = dyear + "-07";
+				break;
+			case "8" : 
+				sdate = dyear + "-08";
+				edate = dyear + "-08";
+				break;
+			case "9" : 
+				sdate = dyear + "-09";
+				edate = dyear + "-09";
+				break;
+			case "10" : 
+				sdate = dyear + "-10";
+				edate = dyear + "-10";
+				break;
+			case "11" : 
+				sdate = dyear + "-11";
+				edate = dyear + "-11";
+				break;
+			case "12" : 
+				sdate = dyear + "-12";
+				edate = dyear + "-12";
+				break;	
+			}
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<AssetCircle> list = null;
+			
+			String query ="select anm, nvl(sumcost, 0) as sumcost " +
+								"from (select Rownum as rnum, anm, sumcost " +
+										"from (select a.anm as anm, sum(d.cost) as sumcost " +
+												"from diary d join accountlist a on(d.ano = a.ano) " +
+												"where d.write_pno = ? and a.atype='비용' and d.ddate between to_date(?, 'yyyy-mm') and last_day(to_date(?, 'yyyy-mm')) " +
+												"group by a.anm "+ 
+												"order by sumcost desc)) " +
+								"where rnum <= 4 " +
+								"union " +
+								"select '기타',nvl((select sum(sumcost) " +
+								"from (select Rownum as rnum, anm, sumcost " +
+								      	"from (select a.anm as anm, sum(d.cost) as sumcost "+
+								                   "from diary d join accountlist a on(d.ano = a.ano) " +
+								                   "where d.write_pno = ? and a.atype='비용' and d.ddate between to_date(?, 'yyyy-mm') and last_day(to_date(?, 'yyyy-mm')) " +
+								                   "group by a.anm " +
+								                   "order by sumcost desc)) " +
+								"where rnum >= 5), 0) "+
+								"from dual " +
+								"order by sumcost desc";
+			
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, pno);
+				pstmt.setString(2, sdate);
+				pstmt.setString(3, edate);
+				pstmt.setInt(4, pno);
+				pstmt.setString(5, sdate);
+				pstmt.setString(6, edate);
+				rset = pstmt.executeQuery();
+				
+				if(rset != null){
+					list = new ArrayList<AssetCircle>();
+				}
+			
+				while(rset.next()){
+					AssetCircle a = new AssetCircle();
+					a.setAnm(rset.getString("anm"));
+					a.setsumcost(rset.getLong("sumcost"));
+					list.add(a);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
+
+		public ArrayList<AssetCircle> salesDonut(Connection con, int pno, String dyear, String cselect) {
+			String sdate = null;
+			String edate = null;
+			switch(cselect){
+			case "0" : 
+				sdate = dyear + "-01";
+				edate = dyear + "-12";
+				break;
+			case "1" : 
+				sdate = dyear + "-01";
+				edate = dyear + "-01";
+				break;
+			case "2" : 
+				sdate = dyear + "-02";
+				edate = dyear + "-02";
+				break;
+			case "3" : 
+				sdate = dyear + "-03";
+				edate = dyear + "-03";
+				break;
+			case "4" : 
+				sdate = dyear + "-04";
+				edate = dyear + "-04";
+				break;
+			case "5" : 
+				sdate = dyear + "-05";
+				edate = dyear + "-05";
+				break;
+			case "6" : 
+				sdate = dyear + "-06";
+				edate = dyear + "-06";
+				break;
+			case "7" : 
+				sdate = dyear + "-07";
+				edate = dyear + "-07";
+				break;
+			case "8" : 
+				sdate = dyear + "-08";
+				edate = dyear + "-08";
+				break;
+			case "9" : 
+				sdate = dyear + "-09";
+				edate = dyear + "-09";
+				break;
+			case "10" : 
+				sdate = dyear + "-10";
+				edate = dyear + "-10";
+				break;
+			case "11" : 
+				sdate = dyear + "-11";
+				edate = dyear + "-11";
+				break;
+			case "12" : 
+				sdate = dyear + "-12";
+				edate = dyear + "-12";
+				break;	
+			}
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<AssetCircle> list = null;
+			
+			String query ="select anm, nvl(sumcost, 0) as sumcost " +
+								"from (select Rownum as rnum, anm, sumcost " +
+										"from (select a.anm as anm, sum(d.cost) as sumcost " +
+												"from diary d join accountlist a on(d.ano = a.ano) " +
+												"where d.write_pno = ? and a.atype='수익' and d.ddate between to_date(?, 'yyyy-mm') and last_day(to_date(?, 'yyyy-mm')) " +
+												"group by a.anm "+ 
+												"order by sumcost desc)) " +
+								"where rnum <= 4 " +
+								"union " +
+								"select '기타',nvl((select sum(sumcost) " +
+								"from (select Rownum as rnum, anm, sumcost " +
+								      	"from (select a.anm as anm, sum(d.cost) as sumcost "+
+								                   "from diary d join accountlist a on(d.ano = a.ano) " +
+								                   "where d.write_pno = ? and a.atype='수익' and d.ddate between to_date(?, 'yyyy-mm') and last_day(to_date(?, 'yyyy-mm')) " +
+								                   "group by a.anm " +
+								                   "order by sumcost desc)) " +
+								"where rnum >= 5), 0) "+
+								"from dual " +
+								"order by sumcost desc";
+			
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, pno);
+				pstmt.setString(2, sdate);
+				pstmt.setString(3, edate);
+				pstmt.setInt(4, pno);
+				pstmt.setString(5, sdate);
+				pstmt.setString(6, edate);
+				rset = pstmt.executeQuery();
+				
+				if(rset != null){
+					list = new ArrayList<AssetCircle>();
+				}
+			
+				while(rset.next()){
+					AssetCircle a = new AssetCircle();
+					a.setAnm(rset.getString("anm"));
+					a.setsumcost(rset.getLong("sumcost"));
+					list.add(a);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
 }

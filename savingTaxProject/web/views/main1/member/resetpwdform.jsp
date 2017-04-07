@@ -119,7 +119,8 @@ td {
 
         <h2 class="form-signin-heading" align="center">비밀번호변경</h2><br>
         <table width="100%">
-        	<tr><td>변경할 비밀번호</td><td> <input type="password" id="pwd1" class="form-control" name="pwd1" placeholder="변경할 비밀번호를 입력하세요." required autofocus></td></tr>	
+        	<tr><td>임시 비밀번호</td><td> <input type="password" id="temppwd" class="form-control" name="temppwd" placeholder="임시 비밀번호를 입력하세요." required autofocus></td></tr>	
+        	<tr><td>변경할 비밀번호</td><td> <input type="password" id="pwd1" class="form-control" name="pwd1" placeholder="변경할 비밀번호를 입력하세요." required ></td></tr>	
         	<tr><td>변경할 비밀번호 확인</td><td><input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="한번더 변경할 비밀번호를 입력하세요." required></td></tr>
         	<tr id="conpwd" style="display:none"><td><span class="label label-success">비밀번호가 일치합니다</span></td></tr>
 			<tr id="nopwd" style="display:none"><td><span class="label label-danger">비밀번호가 일치하지않습니다</span></td></tr>

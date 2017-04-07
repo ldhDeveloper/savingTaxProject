@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+	<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
 
     <title>Signin Template for Bootstrap</title>
 
@@ -84,6 +84,9 @@ td {
 	margin-right:auto;
 }
 </style>
+<script>
+	
+</script>
   </head>
 
 
@@ -91,7 +94,7 @@ td {
 		<div class="container">
    	 
     
-      <form action="/jsmi/resetpwdck" method="get" class="form-signin">
+      <form action="/jsmi/sendpwd" method="post" class="form-signin">
       	
 
       	<input type="button" class="btn close"  value="X닫기" onclick="location.href='/jsmi/main.jsp'"><br>
@@ -99,11 +102,10 @@ td {
         <h2 class="form-signin-heading" align="center">비밀번호 변경</h2><br>
         <table width="530">
         	<tr><td>아이디</td><td> <input type="text" id="inputid" class="form-control" name="userid" placeholder="가입하신 아이디를 입력하세요." required autofocus></td><td></td></tr>
-        	<tr><td>이메일</td><td><input type="text" id="inputemail" name="email" class="form-control" placeholder="가입하신 이메일주소를 입력하세요." required></td><td><button class="btn btn-success sendemail">인증메일발송</button></td></tr>
+        	<tr><td>이메일</td><td><input type="text" id="inputemail" name="email" class="form-control" placeholder="가입하신 이메일주소를 입력하세요." required></td><td><button class="btn btn-success sendemail" type="submit">인증메일발송</button></td></tr>
         </table>
         
 		<br>
-        <input class="btn btn-lg btn-info btn-block" type="submit" value="입력완료">
 		<input class="btn btn-lg btn-success btn-block" type="button" value="로그인 화면으로" onclick="location.href='/jsmi/views/main1/member/loginForm.html'">
       </form>
 
