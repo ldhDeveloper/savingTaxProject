@@ -88,6 +88,9 @@
 	d = new Date();
 	dyear = d.getFullYear();
 	dmonth = d.getMonth() + 1;
+	
+	barChart = null;
+	lineChart = null;
 	$(function(){
 			$('#selyear').text(dyear + "년");
 		
@@ -144,8 +147,12 @@
 				var cost11 = Number(jsonArr.list[0].cost11);
 				var cost12 = Number(jsonArr.list[0].cost12);
 				
-				var ctx = $('#barchart');
-				var barChart = new Chart(ctx, {
+				if(barChart != null){
+					barChart.destroy();
+				}
+				var ctx = document.getElementById('barchart');
+			
+				barChart = new Chart(ctx, {
 					type: 'bar',
 					data : {
 							labels : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -225,9 +232,13 @@
 				        }
 				    }
 				});
-				
-				var ctx2 = $('#linechart');
-				var lineChart = new Chart(ctx2, {
+				var ctx2 = document.getElementById('linechart');
+				if(lineChart != null){
+					lineChart.destroy();
+					console.log("클리어");
+				}
+		
+				lineChart = new Chart(ctx2, {
 					type: 'line',
 					data : {
 							labels : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -296,13 +307,13 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<div class="well" style="margin-bottom:0px;">bar chart</div>
+					<div class="well" style="margin-bottom:0px;">매출/비용</div>
 					<canvas id="barchart" width="520px" height="520px">
 							
 					</canvas>
 				</div>
 				<div class="col-md-6">
-					<div class="well" style="margin-bottom:0px;">line chart</div>
+					<div class="well" style="margin-bottom:0px;">수익</div>
 					<canvas id="linechart" width="520px" height="520px">	
 					</canvas>
 				</div>

@@ -30,6 +30,18 @@ public class SettleService {
 		ArrayList<AssetCircle> list = new SettleDao().assetDonut(con, pno, dyear, cselect);
 		return list;
 	}
+
+	public ArrayList<AssetCircle> costDonut(int pno, String dyear, String cselect) {
+		Connection con = getConnection();
+		ArrayList<AssetCircle> list = new SettleDao().costDonut(con, pno, dyear, cselect);
+		return list;
+	}
+
+	public ArrayList<AssetCircle> salesDonut(int pno, String dyear, String cselect) {
+		Connection con = getConnection();
+		ArrayList<AssetCircle> list = new SettleDao().salesDonut(con, pno, dyear, cselect);
+		return list;
+	}
 	
 	
 }

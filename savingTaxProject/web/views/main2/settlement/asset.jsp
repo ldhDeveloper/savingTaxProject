@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <script type="text/javascript"  src="/jsmi/js/Chart.min.js"></script>
+<script type="text/javascript"  src="/jsmi/js/jquery.svg.js"></script>
 <style>
 .middle {
 	width: 1400px !important;
@@ -89,6 +90,10 @@
 	dyear = d.getFullYear();
 	dmonth = d.getMonth() + 1;
 	cselect = 0;
+	
+	lineChart = null;
+	doughnutChart = null;
+	
 	$(function(){
 			$('#selmonth li a').click(function(){
 				$('#monselect').html($(this).text() + "<span class='caret'>")
@@ -108,6 +113,11 @@
 			selectAsset();
 			circleAsset("0");
 	});
+	
+	function selectCnd(){
+		selectAsset();
+		circleAsset("0");
+	};
 	
 	function selectAsset(){
 		$.ajax({
@@ -137,8 +147,13 @@
 				var asset11 = asset10 + Number(jsonArr.list[0].asset11);
 				var asset12 = asset11 + Number(jsonArr.list[0].asset12);
 				
-				var ctx = $('#assetline');
-				var lineChart = new Chart(ctx, {
+				var ctx = document.getElementById('assetline').getContext("2d");
+				
+				if(lineChart != null){
+					lineChart.destroy();
+				}
+				
+				lineChart = new Chart(ctx, {
 					type: 'line',
 					data : {
 							labels : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -222,9 +237,7 @@
 				var assetname5 = jsonArr.list[4].anm;
 				var assetvalue5 = Number(jsonArr.list[4].sumcost); */
 				
-			
-				var ctx2 = $('#assetcircle');
-				ctx2.beginPath();
+				var ctx2 = document.getElementById('assetcircle').getContext("2d");
 				var data2 = {
 					    labels: [
 					        assetname[0],
@@ -253,8 +266,11 @@
 					        }]
 					};
 				
+				if(doughnutChart != null){
+					doughnutChart.destroy();
+				}
 				
-				var doughnutChart = new Chart(ctx2, {
+				doughnutChart = new Chart(ctx2, {
 					type: 'doughnut',
 					data : data2,
 				    options: {
@@ -268,6 +284,22 @@
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
 		});  
+		
+		/* function clearCanvas()
+		{
+		    // canvas
+		    var cnvs = document.getElementById('assetline');
+		    var cnvs2 = document.getElementById('assetcircle');
+		    // context
+		    var ctx = canvas.getContext('2d');
+
+		    // 픽셀 정리
+		    ctx.clearRect(0, 0, cnvs.width, cnvs.height);
+		    ctx.clearRect(0, 0, cnvs2.width, cnvs2.height);
+		    // 컨텍스트 리셋
+		    ctx.beginPath();
+		} */
+
 	}
 </script>
 		<div class="section">
@@ -291,18 +323,18 @@
 			</div>
 			<br>
 			<center>
-			<input class="btn btn-primary" type="button" value="조회하기" onclick="selectAsset();"> 
+			<input class="btn btn-primary" type="button" value="조회하기" onclick="selectCnd();"> 
 			</center>
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<div class="well" style="margin-bottom:0px;">bar chart</div>
+					<div class="well" style="margin-bottom:0px;">자산 변화</div>
 					<canvas id="assetline" width="520px" height="520px">
 							
 					</canvas>
 				</div>
 				<div class="col-md-6">
-					<div class="well" style="margin-bottom:0px;">circle chart&nbsp;&nbsp;
+					<div class="well" style="margin-bottom:0px;">자산 항목&nbsp;&nbsp;
 					<div style="display: inline-block">
 					<div class="dropdown" id="selcircle">
 											<button class="btn btn-default dropdown-toggle" type="button"
