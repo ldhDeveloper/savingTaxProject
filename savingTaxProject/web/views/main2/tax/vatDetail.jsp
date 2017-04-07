@@ -3,7 +3,8 @@
 	import="java.util.*,diary.model.vo.Diary, java.util.*"%>
 <%
 	Date day = new GregorianCalendar().getTime();
-	String quarter = "";
+	int quarter = 0;
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -16,17 +17,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
-<script>
-function select(){
-	
-	
-	
-	
-	
-	
-	
-}
-</script>
 
 <title>vatDetail</title>
 <style>
@@ -119,126 +109,121 @@ font-size : 4em;
 					</ul>
 				</div>
 			</div>
-
-
-
-
 			<div>
-				<%
-					if (loginUser.getTaxType().equals("일반")) {
-						if (day.getMonth() < 6)
-							quarter = "1분기";
-
-						else
-							quarter = "2분기";
-					} else {
-
-					}
-				%>
+				
 			</div>
 			<table class="table table-condensed">
 				<tr>
 					<td>&nbsp; &nbsp;&nbsp; <span style="color: blue;"><%=loginUser.getPname()%></span>
 						님의 부가가치세 계산 창입니다.
 					</td>
-					<td>구분 : </td>
+					<td>&nbsp;  </td>
 					<td>&nbsp;</td>
 					<td>다른분기 계산하기</td>
 				</tr>
 				<tr style="text-align: center;">
-					<td ><label id="year">
-					</label> <label id=quarter></label><label>분기</label></td>
-					<td colspan="3"><img src="/jsmi//images/main2/arrow2.png"
+					<td > <label id=quarter></label> <label id="year"><%=day.getYear() + 1900%>
+					</label><label>년</label><%
+					if (loginUser.getTaxType().equals("일반과세자")) {
+						if (day.getMonth() < 6)
+							quarter = 1;
+						else
+							quarter = 2;					
+				%>
+					<label id="quarter"><%=quarter%></label><label>반기</label></td>
+					<%} %>
+					
+					<td colspan="3"><img src="/jsmi//images/main2/down.png"
 						onclick="myear();"> <label id="searchY"><%=day.getYear() + 1900%>
-					</label><label>년</label> <img src="/jsmi//images/main2/arrow.png" onclick="pyear();">
-						<label id=searchQ><%=quarter%></label><label>반기</label></td>
+					</label><label>년</label> <img src="/jsmi//images/main2/up.png" onclick="pyear();">
+						<%if(loginUser.getTaxType().equals("일반과세자")){ %>
+						<label id=searchQ>상</label><label>반기</label>
+						 <img src="/jsmi//images/main2/up2.png" onclick="firstHalf();">
+						 <img src="/jsmi//images/main2/down2.png" onclick="secondHalf();">
+						<%} %>
 					</td>
 				</tr>
-
-
 				<tr>
-					<td>입력항목을 제외한 항목은 버튼 클릭시 거래장부에서 자동으로 적용됩니다.</td>
+					<td>조회  버튼 클릭시 장부에 세금거래내역으로 저장됩니다.</td>
 					<td>&nbsp;</td><td>&nbsp;</td><td>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick ="select();">조회</button></td>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick ="vatLoad();">조회</button></td>
 				</tr>
 				</table>
 				<fieldset>
 				<legend>조회되는 항목</legend>
+			<%if(loginUser.getTaxType().equals("일반과세자")){ %>
 			<table class="table table-condensed">
 				<tr>
 					<td colspan="2">매출 세액(+)</td>
 				</tr>
 				<tr>
 					<td colspan="2">세금계산서(+)</td>
-					<td><input name="output1" type="number" readonly> 원</td>
-					<td>세액 : <input name="outputvat1" type="number" readonly>
+					<td><input name="out1" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat1" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">-신용카드 매출전표(+)</td>
-					<td><input name="output2" type="number" readonly> 원</td>
-					<td>세액 : <input name="outputvat2" type="number" readonly>
+					<td><input name="out2" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat2" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">-기타분(+)</td>
-					<td><input name="output3" type="number" readonly> 원</td>
-					<td>세액 : <input name="outputvat3" type="number" readonly>
+					<td><input name="out3" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat3" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">-합계(+)</td>
-					<td><input name="output" type="number" readonly> 원</td>
-					<td>세액 : <input name="outputvat" type="number" readonly>
+					<td><input name="totalout" type="number" readonly> 원</td>
+					<td>세액 : <input name="totaloutvat" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr></tr>
 				<tr>
 					<td colspan="2">매입 세액(-)</td>
-
 				</tr>
 				<tr>
 					<td colspan="2">-세금계산서(-)</td>
-					<td><input name="input1" type="number" readonly> 원</td>
-					<td>세액 : <input name="inputvat1" type="number" readonly>
+					<td><input name="in1" type="number" readonly> 원</td>
+					<td>세액 : <input name="invat1" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
-				
-				<tr>
-					<td colspan="2">-접대비 및 이와 유사한 비용</td>
-					<td><input name="input3" type="number" readonly> 원</td>
-					<td>세액 : <input name="inputvat3" type="number" readonly>
-						원
-					</td>
-				</tr>
 				<tr>
 					<td colspan="2">매입 세액 합계</td>
-					<td><input name="input" type="number" readonly>원</td>
-					<td>세액 :<input name="inputvat" type="number" readonly></td>
+					<td><input name="totalin" type="number" readonly>원</td>
+					<td>세액 :<input name="totalinvat" type="number" readonly> 원</td>
 				</tr>
-
-				
 				<tr>
 					<td colspan="2">-기타 공제 세액(신용카드발행분)(-)</td>
 					<td>&nbsp;</td>
-					<td>세액 :<input name="othervat2" type="number" readonly>
+					<td>세액 :<input name="out2other" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">-세금계산서등 수취세액 공제</td>
-					<td></td>
+						<td>세액 :<input name="simple" placeholder = "간이과세자만 해당합니다."  type="number" >
+						원
+					</td>
 				</tr>
-				<tr>
+				
+			</table>
+			</fieldset>
+			<fieldset>
+			<legend>총 계</legend>
+			<table class = "table table-condensed">
+			<tr>
 					<td colspan="2">납부할 총 부가가치세액</td>
 					<td><input name="total" type="number" readonly> 원</td>
 					<td>세액 :<input name="totalvat" type="number" readonly>
@@ -246,141 +231,282 @@ font-size : 4em;
 					</td>
 				</tr>
 			</table>
-			</fieldset>
-			
-			<fieldset>
-			<legend>추가 입력 받는 항목</legend>
-			<table class = "table table-condensed">
-			<tr>
-					<td colspan="2">-사업과 관련없는 지출</td>
-					<td><input id="in1" name="input2" type="number"
-						placeholder="입력란" step="1000"> 원</td>
-					<td>세액 :<input name="inputvat2" type="number" readonly>
+			<%}else{ %>
+			<table class="table table-condensed">
+				<tr>
+					<td colspan="2">매출 세액(+)</td>
+				</tr>
+				<tr>
+					<td colspan="2">전기 가스 중기 및 수도사업</td>
+					<td><input name="out1" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat1" type="number" readonly>
 						원
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">-기타 공제 세액(-)</td>
-					<td><input id="in3" name="other1" type="number"
-						placeholder="입력란"> 원</td>
-					<td>세액 :<input name="othervat1" type="number" readonly>
+					<td colspan="2">소매, 재생용자료 수집판매, 음식점업</td>
+					<td><input name="out2" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat2" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">제조, 농, 임, 어업, 숙박, 운수 및 통신업</td>
+					<td><input name="out3" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat3" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">건설, 부동산, 그 밖의 서비스업</td>
+					<td><input name="out4" type="number" readonly> 원</td>
+					<td>세액 : <input name="outvat4" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">-계(+)</td>
+					<td><input name="totalout" type="number" readonly> 원</td>
+					<td>세액 : <input name="totaloutvat" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td colspan="2">공제 세액(-)</td>
+				</tr>
+				<tr>
+					<td colspan="2">매입세금계산서 등 수취세액공제(-)</td>
+					<td><input name="in1" type="number" readonly> 원</td>
+					<td>세액 : <input name="invat1" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"> 의제매입 세액공제(-)</td>
+					<td><input name="in2" type="number" readonly> 원</td>
+					<td>세액 : <input name="invat2" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"> 신용카드 매출전표 등 발행 세액공제(-)</td>
+					<td><input name="in3" type="number" readonly> 원</td>
+					<td>세액 : <input name="invat3" type="number" readonly>
+						원
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">매입 세액 합계</td>
+					<td><input name="totalin" type="number" readonly>원</td>
+					<td>세액 :<input name="totalinvat" type="number" readonly> 원</td>
+				</tr>
+			</table>
+			</fieldset>
+			<fieldset>
+			<legend>총 계</legend>
+			<table class = "table table-condensed">
+			<tr>
+					<td colspan="2">납부할 총 부가가치세액</td>
+					<td>&nbsp;</td>
+					<td>세액 :<input name="totalvat" type="number" readonly>
 						원
 					</td>
 				</tr>
 			</table>
-			<button id = "cal" style="float: right;" onclick='vatCal();'>부가가치세 계산</button>
+			<%} %>
 			</fieldset>
 			<script type="text/javascript">
-		//매출
-		var receiptOut = 0; //세금계산서분
-		var cardOut = 0;	//신용카드분
-		var otherOut = 0;	// 기타 분
-		var totalOut = 0;
-		//매입
-		var receiptIn = 0; //세금계산서분
-		//접대비
-		var amuse = 0;
-		//비사업성지출세액
-		var noBusi = 0;
-		// 면세사업매입세액
-		var nontax = 0;
-		
-		//매입총함
-		var totalIn = 0; 
-		
-		var totalvat = 0;
-		function vatCal(){
-			var pno = <%=loginUser.getPno()%>
-			var taxType = <%=loginUser.getTaxType()%>
-			var month = new Date().getMonth()+1;
-			console.log(pno);
-		$.ajax({
+			var quarter = 0;
+		function vatLoad(){
+			//매출
+			var receiptOut = 0; //세금계산서분
+			var cardOut = 0;	//신용카드분
+			var otherOut = 0;	// 기타 분
+			var totalOut = 0;	//총 매출가액
+			//매입
+			var receiptIn = 0; //세금계산서분
+			var totalIn = 0; //매입총함
+			//총 부가가치세
+			var totalvat = 0;
+			quarter = <%=quarter%>;
+			var pno = <%=loginUser.getPno()%>;
+			
+			var year = Number($("#searchY").text());
+			$.ajax({
 			url : "/jsmi/vview",
 			type : "post",
-			data :  {pno:pno, month:month, taxType:taxType},
+			data :  {pno:pno, year:year, quarter:quarter},
 			dataType : "json",
-			success:  function(data){ 
-			var jsonObj = JSON.stringify(data);
-			var jsonArr = JSON.parse(jsonObj);
+			success: function(data){ 
+						var jsonObj = JSON.stringify(data);
+						var jsonArr = JSON.parse(jsonObj);
+						
+						
+			//매출
+			if(<%=loginUser.getTaxType().equals("일반과세자")%>){ //일반과세자 처리용 
 			for(var i in jsonArr.tax){
 				switch(decodeURIComponent(jsonArr.tax[i].anm)){
-				case "매출" : console.log(decodeURIComponent(jsonArr.tax[i].anm));
+					case "매출" : 
 							switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-								case "세금계산서" : receiptOut +=  parseInt(jsonArr.tax[i].cost);   break;	
+								case "세금계산서" : receiptOut +=  parseInt(jsonArr.tax[i].cost); break;	
 								case "신용카드매출전표" : 
 								case "현금영수증" : 	
 												cardOut += parseInt(jsonArr.tax[i].cost); break;
 								default : otherOut += parseInt(jsonArr.tax[i].cost); break;
 								}  break;
-				case "매출원가" :
-				case "급여" :
-				case "퇴직급여" :
-				case "복리후생비" :
-				case "임차료" :
-				case "여비교통비" :
-				case "차량유지비" :
-				case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
+					case "매출원가" :
+					case "급여" :
+					case "퇴직급여" :
+					case "복리후생비" :
+					case "임차료" :
+					case "여비교통비" :
+					case "차량유지비" :
+					case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
 									case "세금계산서" :
 									case "신용카드매출전표" : 
 									case "현금영수증" : 	
 										 receiptIn +=  parseInt(jsonArr.tax[i].cost); break;	
-									default : otherOut  += parseInt(jsonArr.tax[i].cost); break;
 										}  break;	
-				
-				case "접대비"	 : amuse +=  parseInt(jsonArr.tax[i].cost); break;
 				}
 			}
-			noBusi = $("input[name=input2]").val();
-			
-			other1 = $("input[name=other1]").val();
-			othervat2 = $("input[name=othervat2]").val();
 			totalOut = receiptOut + cardOut + otherOut;
-			totalIn = receiptIn - amuse - noBusi;
-			total = totalOut - totalIn - other1;
-			totalvat = total/10 - othervat2
-			
-			
-			$("input[name=output1]").val(receiptOut);
-			$("input[name=outputvat1]").val(receiptOut/10);
-			$("input[name=output2]").val(cardOut);
-			$("input[name=outputvat2]").val(cardOut/10);
-			$("input[name=output3]").val(otherOut);
-			$("input[name=outputvat3]").val(otherOut/10);
-			$("input[name=output]").val(totalOut);
-			$("input[name=outputvat]").val(totalOut/10);
-			$("input[name=input1]").val(receiptIn);
-			$("input[name=inputvat1]").val(receiptIn/10);
-			$("input[name=inputvat2]").val(noBusi/10); 
-			 $("input[name=input3]").val(amuse);
-			$("input[name=inputvat3]").val(amuse/10);
-			$("input[name=input]").val(totalIn);
-			$("input[name=inputvat]").val(totalIn/10); 
-			$("input[name=othervat1]").val(other1/10);
-			$("input[name=othervat2]").val(cardOut * 0.013);
+			totalIn = receiptIn;
+			total = totalOut - totalIn;
+		
+			$("input[name=out1]").val(receiptOut);
+			$("input[name=outvat1]").val(receiptOut/10);
+			$("input[name=out2]").val(cardOut);
+			$("input[name=outvat2]").val(cardOut/10);
+			$("input[name=out3]").val(otherOut);
+			$("input[name=outvat3]").val(otherOut/10);
+			$("input[name=totalout]").val(totalOut);
+			$("input[name=totaloutvat]").val(totalOut/10);
+			$("input[name=in1]").val(receiptIn);
+			$("input[name=invat1]").val(receiptIn/10);
+			$("input[name=totalin]").val(totalIn);
+			$("input[name=totalinvat]").val(totalIn/10); 
+			$("input[name=out2other]").val(cardOut * 0.013);
+			//신용카드 매입세액공제
+			out2other = $("input[name=out2other]").val();
+			//총 부가가치세
+			totalvat = total/10 -out2other;
 			$("input[name=total]").val(total);
 			$("input[name=totalvat]").val(totalvat);
-			$("#cal").attr("disabled", true);
+			 receiptOut = 0; //세금계산서분
+			 cardOut = 0;	//신용카드분
+			 otherOut = 0;	// 기타 분
+			 totalOut = 0;
+			//매입
+			 receiptIn = 0; //세금계산서분
+			//매입총함
+			 totalIn = 0; 
+			 totalvat = 0;
 			
+			}else{ //간이과세자 처리용 함수
+				var out = 0;
+				var outvat = 0;
+				var in1 = 0;
+				var in2 = 0;
+				var in3 = 0;
+				var invat1 = 0;
+				var invat2 = 0;
+				var invat3 = 0;
+				var x = 0;//업종별 부가가치율 곱셈용이라  x로 표기
+				var tnum = ""; //tag넘버 구분용
+				var totalinvat = 0;
+				var totalvat =0;
+				 
+				for(var i in jsonArr.tax){
+					switch(decodeURIComponent(jsonArr.tax[i].anm)){
+					case "매출" :
+						if(decodeURIComponent(jsonArr.tax[i].proof_type) =="현금영수증"
+							|| decodeURIComponent(jsonArr.tax[i].proof_type)=="신용카드매출전표"){
+							 in3 += parseInt(jsonArr.tax[i].cost);
+							}  
+							out += parseInt(jsonArr.tax[i].cost); break;
+					case "매출원가" : console.log(i++);
+							in2 += parseInt(jsonArr.tax[i].cost);
+							break; //의제매입세액
+					default : 
+							in1 += parseInt(jsonArr.tax[i].cost); break;//의제매입세액을 뺀 매입세액
+					}
+				}
+				switch ("<%=loginUser.getCtype()%>"){
+				case "1": x = 0.005; tnum = "1";
+						break;
+				case "2": x= 0.01; tnum = "2";
+						break;
+				case "3": x= 0.02; tnum = "3";
+						break;
+				case "4": x= 0.03; tnum = "4";
+						break;
+				}
+				outvat = in1 * x;
+				in1 += in2; //매입세액총합
+				invat1 = in1 * x;
+				invat2 = in2 * x;
+				invat3 = in3 * 0.013;
+				totalinvat = invat1 + invat2+ invat3;
+				totalvat = outvat - totalinvat;
+				//매출세액 계산
+				$("input[name= out"+tnum+"]").val(out);
+				$("input[name= outvat"+tnum+"]").val(outvat);
+				$("input[name=totalout]").val(out);
+				$("input[name=totaloutvat]").val(outvat);
+				//공제세액 계산
+				$("input[name=in1]").val(in1);
+				$("input[name=invat1]").val(invat1);
+				if(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>){
+				$("input[name=in2]").val(in2); 
+				$("input[name=invat2]").val(invat2);
+				}
+				$("input[name=in3]").val(in3);
+				$("input[name=invat3]").val(invat3);
+				$("input[name=totalinvat]").val(totalinvat);
+				$("input[name=totalvat]").val(totalvat);
+			} // 간이과세자 처리 메소드 끝
 			},
 			error: function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		    }
 		});
 		}
-
+		
 		function pyear(){
-		var year = parseInt($("#searchY").text());	
+	
+		var year = parseInt($("#searchY").text());
+		if (year < <%=day.getYear()+1900%>){
 		$("#searchY").text((year+1 ));	
 		}
+		}
+		
 		function myear(){
 			var year = parseInt($("#searchY").text());	
 			$("#searchY").text((year-1 ));	
 		}
+		function firstHalf(){
 		
-		
+		$('#searchQ').html('상');
+		quarter= 1;
+		}
+		function secondHalf(){
+			$('#searchQ').html('하');
+			quarter = 2;
+		}
+		$(function(){
+			if(<%=loginUser.getTaxType().equals("일반과세자")%>){
+			if(<%=day.getMonth()%> < 6){
+			quarter=1;	
+			}else{
+			quarter=2;	
+			}
+			}else{
+			quarter=0;
+			} 	
+			vatLoad(); 
+		});
 		</script>
-		</div>
-
 	</div>
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>

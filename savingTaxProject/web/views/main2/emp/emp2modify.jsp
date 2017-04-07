@@ -194,38 +194,7 @@ th {
 				$('.slider-horizontal').css("width", "980px");
 				$('.tooltip-inner').hide();
 				$('.tooltip-arrow').hide();
-				$('.tooltip').hide();
-				//$('.tooltip tooltip-main top in').hide();
-				
-				$('#selectemp').click(function(){
-					
-					$.ajax({
-						url: "/jsmi/semp",
-						type: "get",
-						data: {pno : pno},
-						dataType: "json",
-						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-						success: function(data){
-							var jsonObj = JSON.stringify(data);
-							//변환된 제이슨 객체를 제이슨 배열로 변환
-							var jsonArr = JSON.parse(jsonObj);
-					
-							$("#selemptable").html("<tr style='margin-bottom:10px'><th style='text-align:center'>직원명</th><th style='text-align:center'>주민등록번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>휴대폰</th><th style='text-align:center'>이메일</th><th style='text-align:center'>고용형태</th>");
-							for(var i in jsonArr.list){
-								$("#selemptable").html($("#selemptable").html() +
-										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
-										"</td><td name='selphone'>" + jsonArr.list[i].phone + "</td><td name='selemail'>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td name='selemp_type'>" + decodeURIComponent(jsonArr.list[i].emp_type) +
-										"</td><td>");
-							}
-							jQuery.noConflict(); 
-							$('#myEmp').modal('show');
-						},
-						error: function(request,status,error){
-					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					    }
-				});
-	
-			});
+				$('.tooltip').hide();				
 				
 			$('#salarysearch').click(function(){
 				console.log($('.min-slider-handle').attr('aria-valuenow'));
@@ -256,7 +225,7 @@ th {
 								+ "<th  style='text-align:center'>급여지급일</th><th style='text-align:center'>총급여금액</th><th  style='text-align:center'>차인지급액</th></tr>");
 						for(var i in jsonArr.list){
 							taxsal = Number(jsonArr.list[i].init_pay) + Number(jsonArr.list[i].bonus) + Number(jsonArr.list[i].incentive) + Number(jsonArr.list[i].over_pay) + Number(jsonArr.list[i].rest_pay);
-							totalsal =  taxsal + Number(jsonArr.list[i].car_pay) + Number(jsonArr.list[i].meals) + Number(jsonArr.list[i].child_pay) + Number(jsonArr.list[i].rest_pay); 
+							totalsal =  taxsal + Number(jsonArr.list[i].car_pay) + Number(jsonArr.list[i].meals) + Number(jsonArr.list[i].child_pay) + Number(jsonArr.list[i].exp); 
 							v1 = Math.floor((taxsal * 0.045) / 10) * 10;
 							v2 = Math.floor((taxsal * 0.0306) / 10) * 10;
 							v3 = Math.floor((v2 * 0.0655 / 2) /10) * 10;
@@ -267,7 +236,7 @@ th {
 							
 							
 							$("#searchtable").html($("#searchtable").html() +
-									"<tr id='salarylist" + i +"' style='cursor:pointer' onclick='salclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td>" + 
+									"<tr id='salarylist" + i +"' style='cursor:pointer' onclick='salclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\"" +  ", "  +  "\"" + jsonArr.list[i].sno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td>" + 
 									"<td name='seldepart'></td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + "</td><td name='selwsdate'>" + jsonArr.list[i].wsdate +
 									"</td><td name='selwedate'>" + jsonArr.list[i].wedate + "</td><td name='selsaldate'>" + jsonArr.list[i].saldate + "</td><td name='selsumsal'>" + totalsal + "</td><td name='selresultsal'>" + resultsal + "</td>");
 						}
@@ -280,50 +249,94 @@ th {
 		});
 			
 			
-			function empclick(data1, data2){
+			function salclick(data1, data2, data3){
 				
-				$('#selpname').val($('#emplist' + data1).children('td[name=selpname]').text());
-				$('#selid_no').val($('#emplist' + data1).children('td[name=selid_no]').text());
-				$('#selposition').val($('#emplist' + data1).children('td[name=selposition]').text());
 				$('#emppno').val(data2);
-				console.log(data2);
-				$('#myEmp').modal('hide');
+				$('sno').val(data3);
 
+
+				$.ajax({
+					url:"/jsmi/findsno",
+					data:{pno:data2, sno:data3},
+					type:"post",
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success:function(data){
+						console.log("오니?")
+						var jsonObj = JSON.stringify(data);
+						var jsonArr = JSON.parse(jsonObj);
+						console.log(jsonArr.phone);
+						$("#selpname").val(decodeURIComponent(jsonArr.pname));
+						$("#selid_no").val(jsonArr.idno);
+						$("#selposition").val(decodeURIComponent(jsonArr.position));
+						$("#selphone").val(jsonArr.phone);
+						$("#salno").val(jsonArr.sno);
+						$("#emppno2").val(jsonArr.pno);
+						
+						$("#wsdate").val(jsonArr.wsdate);
+						$("#wedate").val(jsonArr.wsdate);
+						$("#saldate").val(jsonArr.wsdate);
+						
+						
+						$("#salary1").val(jsonArr.initpay);
+						$("#salary2").val(jsonArr.overpay);
+						$("#salary3").val(jsonArr.restpay);
+						$("#salary4").val(jsonArr.bonus);
+						$("#salary5").val(jsonArr.incentive);
+						$("#salary6").val(jsonArr.meals);
+						$("#salary7").val(jsonArr.carpay);
+						$("#salary8").val(jsonArr.childpay);
+						$("#salary9").val(jsonArr.exp);
+						
+						var total = Number(0);
+						var temptotal = Number(0);
+						
+						for(var i = 1; i <= 9; i++){
+							var idindex = "#salary" + i;
+							var temp = $(idindex).val();
+							total += Number(temp);
+						}
+						$("#totalsalary").val(total);
+						
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#salary" + i;
+							var temp = $(idindex).val();
+							temptotal += Number(temp);
+						}
+						$("#gong1").val(Math.floor((temptotal * 0.045) / 10) * 10); //국민연금
+						$("#gong2").val(Math.floor((temptotal * 0.0306) / 10) * 10); //건강보험
+						$("#gong3").val(Math.floor(($("#gong2").val() * 0.0655 / 2) /10) * 10); //장기요양보험
+						$("#gong4").val(Math.floor((temptotal * 0.0065) / 10) * 10); //고용보험
+						$("#gong5").val(Math.floor((temptotal * 0.033) / 10) * 10); //원천징수행
+						
+						var gongtotal = Number(0);
+						
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#gong" + i;
+							var temp = $(idindex).val();
+							gongtotal += Number(temp);
+						}
+						
+						$("#gongtotal").val(total - gongtotal);
+						
+						$("#insu1").val(Math.floor((temptotal * 0.045) / 10) * 10);
+						$("#insu2").val(Math.floor((temptotal * 0.0306) / 10) * 10);
+						$("#insu3").val(Math.floor(($("#insu2").val() * 0.0655 / 2) /10) * 10);
+						$("#insu4").val(Math.floor((temptotal * 0.009) / 10) * 10);
+						$("#insu5").val(Math.floor(0));
+						
+						var insutotal = Number(0);
+						for(var i = 1; i <= 5; i++){
+							var idindex = "#insu" + i;
+							var temp = $(idindex).val();
+							insutotal += Number(temp);
+						}
+						$("#insutotal").val(insutotal);
+					}
+				});
 				
 			}
 			
-			$(function(){
-				$("#insert").click(function(){
-					console.log($("#emppno").val());
-					
-					var pno = $("#emppno").val();
-					var wsdate = $("#wsdate").val();
-					var wedate = $("#wedate").val();
-					var saldate = $("#saldate").val();
-					var initpay = $("#salary1").val();
-					var overpay = $("#salary2").val();
-					var restpay = $("#salary3").val();
-					var bonus = $("#salary4").val();
-					var incentive = $("#salary5").val();
-					var meals = $("#salary6").val();
-					var carpay = $("#salary7").val();
-					var childpay = $("#salary8").val();
-					var exp = $("#salary9").val();
-					var realsalary = $("#gongtotal").val();
-					
-					$.ajax({
-						url:"/jsmi/insertsal",
-						data:{pno:pno, wsdate:wsdate, wedate:wedate, saldate:saldate, initpay:initpay, overpay:overpay, restpay:restpay, bonus:bonus, incentive:incentive, meals:meals, carpay:carpay, childpay:childpay, exp:exp, realsalary:realsalary},
-						type:"post",
-						dataType: "json",
-						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-						success:function(){
-							alert("급여 입력 완료!");
-						}
-					});
-				});
-				
-			});
 			
 			
 		</script>
@@ -335,8 +348,8 @@ th {
 							<ul class="nav navbar-nav">
 								<li><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp">직원정보수정</a></li>
-								<li class="active"><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여입력</a></li>
-								<li class=""><a href="/jsmi/views/main2/emp/emp2modify.jsp">직원급여수정</a></li>
+								<li class=""><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여입력</a></li>
+								<li class="active"><a href="/jsmi/views/main2/emp/emp2modify.jsp">직원급여수정</a></li>
 							</ul>
 						</div>
 					</div>
@@ -554,13 +567,14 @@ th {
 									<td>직원명</td>
 									<td>주민등록번호</td>
 									<td>직급</td>
-									<td>부서명</td>
+									<td>연락처</td>
 								</tr>
 								<tr>
-									<td><input type="text" placeholder="직원명"  id="selpname"class="form-control" readonly></td>
-									<td><input type="text" placeholder="주민등록번호" id="selid_no" class="form-control" readonly></td>
-									<td><input type="text" placeholder="직급" id="selposition" class="form-control" readonly><input type="hidden" id="emppno" value=""></td>
-									<td><input type="text" placeholder="연락처" id="" class="form-control" readonly></td>
+									<td><input type="text" placeholder="직원명"  id="selpname"class="form-control" ></td>
+									<td><input type="text" placeholder="주민등록번호" id="selid_no" class="form-control" ></td>
+									<td><input type="text" placeholder="직급" id="selposition" class="form-control" >
+									<input type="hidden" id="emppno" value=""><input type="hidden" id="sno" value=""></td>
+									<td><input type="text" placeholder="연락처" id="selphone" class="form-control"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -572,7 +586,7 @@ th {
 			<br>
 			<br>
 			<h3 align="center">급여 상세</h3>
-			<form>
+			<form action="/jsmi/updatesal" method="post">
 			<div class="emp-table">
 				<div class="row">
 					<div class="col-md-12">
@@ -580,13 +594,13 @@ th {
 							<tbody>
 								<tr>
 									<td>근무시작일</td>
-									<td><input type="date" class="form-control" id="wsdate"></td>
+									<td><input type="date" class="form-control" id="wsdate" name="wsdate"></td>
 									<td>근무종료일</td>
-									<td><input type="date" class="form-control" id="wedate"></td>
+									<td><input type="date" class="form-control" id="wedate" name="wedate"></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>급여지급일</td>
-									<td><input type="date" class="form-control" id="saldate"></td>
+									<td><input type="date" class="form-control" id="saldate" name="saldate"></td>
 								</tr>
 							</tbody>
 
@@ -614,16 +628,17 @@ th {
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><input type="text" placeholder="기본급" class="form-control" id="salary1"></td>
-									<td><input type="text" placeholder="시간외수당" class="form-control" id="salary2"></td>
-									<td><input type="text" placeholder="휴일근무수당" class="form-control" id="salary3"></td>
-									<td><input type="text" placeholder="상여금" class="form-control" id="salary4"></td>
-									<td><input type="text" placeholder="성과금" class="form-control" id="salary5"></td>
-									<td><input type="text" placeholder="식대" class="form-control" id="salary6"></td>
-									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7"></td>
-									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8"></td>
-									<td><input type="text" placeholder="지급경비" class="form-control" id="salary9"></td>
-									<td><input type="text" placeholder="총급여" class="form-control" id="totalsalary"></td>
+									<td><input type="text" placeholder="기본급" class="form-control" id="salary1" name="initpay"></td>
+									<td><input type="text" placeholder="시간외수당" class="form-control" id="salary2" name="overpay"></td>
+									<td><input type="text" placeholder="휴일근무수당" class="form-control" id="salary3" name="restpay"></td>
+									<td><input type="text" placeholder="상여금" class="form-control" id="salary4" name="bonus"></td>
+									<td><input type="text" placeholder="성과금" class="form-control" id="salary5" name="incentive"></td>
+									<td><input type="text" placeholder="식대" class="form-control" id="salary6" name="meals"></td>
+									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7" name="carpay"></td>
+									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8" name="childpay"></td>
+									<td><input type="text" placeholder="지급경비" class="form-control" id="salary9" name="exp"></td>
+									<td><input type="text" placeholder="총급여" class="form-control" id="totalsalary">
+									<input type="hidden" id="salno" name="sno"><input type="hidden" id="emppno2" name="pno"></td>
 
 								</tr>
 							</tbody>
@@ -651,7 +666,7 @@ th {
 									<td><input type="text" placeholder="장기요양보험" class="form-control" id="gong3"></td>
 									<td><input type="text" placeholder="고용보험" class="form-control" id="gong4"></td>
 									<td><input type="text" placeholder="원천징수" class="form-control" id="gong5"></td>
-									<td><input type="text" placeholder="차인지급액" class="form-control" id="gongtotal"></td>
+									<td><input type="text" placeholder="차인지급액" class="form-control" id="gongtotal" name="realsalary"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -694,30 +709,13 @@ th {
 						<br>
 						<div class="emp-table btn-group-custom">
 							<input type="reset" class="btn btn-warning" value="작성취소">
-							<input type="button" class="btn btn-success" value="적용하기" id="insert">
+							<input type="submit" class="btn btn-success" value="수정하기" id="update">
 						</div>
 					</div>
 				</div>
 			</div>
 			</form>
-			<div class="modal fade" id="myEmp" role="dialog">
-						    <div class="modal-dialog modal-lg">
-						      <div class="modal-content">
-						        <div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">직원선택</h4>
-						        </div>
-						        <div class="modal-body">
-						      		<table class="table table-striped" id="selemptable">
-									    
-									  </table>
-						        </div>
-						        <div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
+			
 
 
 

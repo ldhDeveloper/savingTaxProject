@@ -42,12 +42,13 @@ public class VatViewServlet extends HttpServlet {
 	
 		response.setContentType("text/html; charset = utf-8");
 		int write_pno =Integer.parseInt(request.getParameter("pno"));
-		int month = Integer.parseInt(request.getParameter("month"));
-		String taxType = request.getParameter("taxType");	 
-	List<Diary> vlist = new VatService().selectVlist(write_pno, month, taxType);
+		int quarter = Integer.parseInt(request.getParameter("quarter"));
+		String syear = request.getParameter("year");
+		int year = Integer.parseInt(syear);
+	List<Diary> vlist = new VatService().selectVlist(write_pno, year, quarter);
 	JSONObject json = new JSONObject();
 	JSONArray jarr = new JSONArray();
-
+	
 	for(Diary tax : vlist){
 		JSONObject jsob = new JSONObject();
 		jsob.put("proof_type", URLEncoder.encode(tax.getProof_type(), "utf-8"));
