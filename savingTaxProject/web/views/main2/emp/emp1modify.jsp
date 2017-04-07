@@ -90,6 +90,15 @@
 	margin-top: -15px;
 	left: -30px;
 }
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size:30pt;
+}
+
+.tabletd {
+	border-top : 3px solid #2a82a3;  
+}
 </style>
 
 </head>
@@ -123,12 +132,12 @@
 			
 
 
-			<h3 align="center">직원 목록 조회</h3>
+			<h3 align="center" class="h3class">직원 목록 조회</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
 						<tbody id="emptable">
-							<tr>
+							<tr class="tabletd">
 								<th>직원명</th>
 								<th>직원구분</th>
 								<th>직급</th>
@@ -200,14 +209,14 @@
 					</ul>
 				</div>
 			</div>
-			<h3 align="center">직원 정보 입력/수정</h3>
+			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
 
 				
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<table class="table table-condensed">
 							<tbody>
-								<tr>
+								<tr class="tabletd">
 									<td class="col-md-2"><h5>직원명</h5></td>
 									<td class="col-md-4"><input type="text"
 										class="form-control" name="empname"></td>
