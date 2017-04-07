@@ -1,6 +1,6 @@
 package settlement.model.vo;
 
-public class Settlement {
+public class Settlement implements java.io.Serializable {
 	private int sales1;
 	private int sales2;
 	private int sales3;
