@@ -191,7 +191,7 @@
 						
 						<tr class="tabletr">
 							<td class="tabletd1">회원 등급</td>
-							<td class="tabletd2">V.I.P</td>
+							<td class="tabletd2"><img src="/jsmi/images/main1/crown.png">V.I.P</td>
 						</tr>
 					</tbody>
 				</table>

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"  import = "board.model.vo.Post, java.util.*"%>
 	
-	<% List<Post> plist = (List<Post>)request.getAttribute("plist"); 
+	<% 
+	List<Post> plist = (List<Post>)request.getAttribute("plist"); 
 	 int listCount = ((Integer)request.getAttribute("listCount")).intValue();
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
@@ -64,8 +65,8 @@ a.thumbnail {
 	<div class="middle hidden-xs">
 		<%if(plist != null){ for(Post p : plist){ %>
 		<div class="thumbnail" style="display: inline-block">
-			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getRefName()%>"><img
-				src="/jsmi/images/main1/<%=p.getfName()%>">
+			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getRefName()%>">
+			<img src="/jsmi/images/main1/<%=p.getfName()%>">
 				<div class="caption">
 					<p>이벤트기간 : <%=p.getPostContents() %></p>
 				</div> </a>
@@ -73,7 +74,6 @@ a.thumbnail {
 		<% }} %>
 		
 		</div>
-	</div>
 	<br>
 	<br>
 	<br>

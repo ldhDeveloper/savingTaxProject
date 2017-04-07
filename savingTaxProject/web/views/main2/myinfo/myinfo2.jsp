@@ -99,9 +99,10 @@
 		if (str2 == 4)
 			$('input[name=tel3]').focus();
 	}
-
+	
+	
 	function chk() {
-		var re = /^[가-힣]*$/;
+		var re = /^[가-힣a-zA-Z]+$/;
 		var re_pre = /^[가-힣a-zA-Z]+$/;
 		var re_c = /^[0-9]{3}$/;
 		var re_c2 = /^[0-9]{2}$/;
@@ -116,82 +117,101 @@
 		var cname = $('input[name=cname]'), president = $('input[name=president]'), cno = $('input[name=cno]'), cno2 = $('input[name=cno2]'), cno3 = $('input[name=cno3]'), cstatus = $('input[name=cstatus]'), ctype = $('input[name=ctype]'), tel = $('input[name=tel]'), tel2 = $('input[name=tel2]'), tel3 = $('input[name=tel3]'), address = $('input[name=postnum]');
 
 		if (re.test(cname.val()) != true) {
-			alert("[상호 입력 오류] 한글만 입력해주세요.");
+			alert("[상호 입력 오류] 한글/영문을 입력해주세요.");
 			cname = "";
 			cname.focus();
 			return false;
 		}
 		if (re_pre.test(president.val()) != true) {
-			alert('[대표자명 입력 오류] 한글/영문을 입력해 주세요.');
+			alert('[대표자명 입력 오류] 한글/영문을 입력해주세요.');
 			president = "";
 			president.focus();
 			return false;
 		}
 		if (re_c.test(cno.val()) != true) {
-			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해주세요.');
 			cno = "";
 			cno.focus();
 			return false;
 		}
 		if (re_c2.test(cno2.val()) != true) {
-			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해주세요.');
 			cno2 = "";
 			cno2.focus();
 			return false;
 		}
 		if (re_c3.test(cno3.val()) != true) {
-			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해주세요.');
 			cno3 = "";
 			cno3.focus();
 			return false;
 		}
 		if (re_cst.test(cstatus.val()) != true) {
-			alert('[업태 입력 오류] 유효한 업태를 입력해 주세요.');
+			alert('[업태 입력 오류] 유효한 업태를 입력해주세요.');
 			cstatus = "";
 			cstatus.focus();
 			return false;
 		}
 		if (re_cty.test(ctype.val()) != true) {
-			alert('[종목 입력 오류] 유효한 종목을 입력해 주세요.');
+			alert('[종목 입력 오류] 유효한 종목을 입력해주세요.');
 			ctype = "";
 			ctype.focus();
 			return false;
 		}
 		if (tel.test(tel.val()) != true) {
-			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해주세요.');
 			tel = "";
 			tel.focus();
 			return false;
 		}
 		if (tel2.test(tel2.val()) != true) {
-			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해주세요.');
 			tel2 = "";
 			tel2.focus();
 			return false;
 		}
 		if (tel2.test(tel3.val()) != true) {
-			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해주세요.');
 			tel3 = "";
 			tel3.focus();
 			return false;
 		}
 		if (address.test(address.val()) != true) {
-			alert('[주소 입력 오류] 유효한 주소를 입력해 주세요.');
+			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
 			address = "";
 			address.focus();
 			return false;
 		}
-		if (!$(':input:radio[name=optradio2]:checked').val()) {
+		
+		/* if (!$('input:radio[name=optradio2]').is(':checked')) {
 			alert("과세유형을 선택해주세요.");
 			return false;
-		}
-		if (!$(':input:radio[name=optradio3]:checked').val()) {
+		} 
+		else if (!$('input:radio[name=optradio2]').is(':checked')) {
 			alert("면세여부를 선택해주세요.");
 			return false;
+		} */
+		
+	}
+	function radio(){
+		var chk = $('input[name=optradio2]').is(":checked");
+		var chk2=$('input[name=optradio3]').is(":checked");
+		
+		if(chk1 == false){
+			  alert("과세유형을 선택해주세요.");
+			    return false;
+		}else if(chk2 == false){
+			 alert("면세여부를 선택해주세요.");
+			    return false;
 		}
-
-		alert("입력 성공!");
-		location.href = 'jsmi/views/main2/myinfo/myinfo3.jsp';
+		/* if(!$(':input:radio[name=optradio2]:checked').val()) {
+		    alert("과세유형을 선택해주세요.");
+		    return false;
+		}
+		if(!$(':input:radio[name=optradio3]:checked').val()) {
+		    alert("면세여부를 선택해주세요.");
+		    return false;
+		} */
 	}
 </script>
 
@@ -214,13 +234,13 @@
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/myinfo/myinfo1.jsp">회원정보</a></li>
 						<li><a class="tabmenu lactive"
-							href="/jsmi/views/myinfo/main2/myinfo2.jsp">사업장 정보</a></li>
+							href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/update.info2" method="post">
+			<form action="/jsmi/update.info2" method="post" onsubmit="return radio()">
 				<input type="hidden" name="userid" value="<%=loginUser.getId()%>">
 				<input type="hidden" name="pno" value="<%=loginUser.getPno()%>">
 				<%
@@ -322,7 +342,7 @@
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel3"
-										maxlength="4" required value="<%=tel[2]%>">
+										maxlength="4" value="<%=tel[2]%>" required>
 								</div>
 							</td>
 							<td class="col-md-2"><h5>개업일</h5></td>
@@ -353,7 +373,7 @@
 						<tr>
 							<td class="col-md-2"><h5>업종코드</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="wno" value="<%=loginUser.getWno()%>"></td>
+								name="wno" value="<%=loginUser.getWno()%>" required></td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 

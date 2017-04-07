@@ -36,30 +36,36 @@ public class PostListViewServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
+
 		int currentPage = 1;
+
+		int limit=0;
+		if (request.getParameter("limit") == null) 
+			 limit = 10;
+		  else 
+		     limit=Integer.parseInt(request.getParameter("limit"));
 		
-		int limit = 10;
-		
+		System.out.println("limit:"+limit);		
+
 		if (request.getParameter("page") != null) {
 			currentPage = Integer.parseInt(request.getParameter("page"));
 			// System.out.println("postList : " + currentPage);
 		}
-		
+
 		int startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		PostService pService = new PostService();
-		
+
 		int listCount = pService.getListCount(boardNo);
-		
+
 		int maxPage = (int) ((double) listCount / limit + 0.9);
-		
+
 		int endPage = startPage + limit - 1;
-		
+
 		if (maxPage < endPage)
 			endPage = maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
-		
+
 		RequestDispatcher view = null;
 
 		if (plist != null) {
@@ -82,7 +88,7 @@ public class PostListViewServlet extends HttpServlet {
 			case 6:
 				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");
 				break;
-			} 
+			}
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
