@@ -100,7 +100,10 @@
 				dyear = dyear + 1;
 				$('#selyear').text(dyear + "년");
 			});
-		
+			selectSettle();
+	});
+	
+	function selectSettle(){
 		$.ajax({
 			url: "/jsmi/scbar",
 			type: "get",
@@ -118,8 +121,6 @@
 				
 				var sales2 = Number(jsonArr.list[0].sales2);
 				var sales3 = Number(jsonArr.list[0].sales3);
-				console.log("sales1 : " + sales1);
-				console.log("sales3 : " + sales3);
 				var sales4 = Number(jsonArr.list[0].sales4);
 				var sales5 = Number(jsonArr.list[0].sales5);
 				var sales6 = Number(jsonArr.list[0].sales6);
@@ -224,13 +225,50 @@
 				        }
 				    }
 				});
+				
+				var ctx2 = $('#linechart');
+				var lineChart = new Chart(ctx2, {
+					type: 'line',
+					data : {
+							labels : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+							datasets : [{
+									label : "수익",
+									data : [sales1-cost1, sales2-cost2, sales3-cost3, sales4-cost4, sales5-cost5, sales6-cost6, sales7-cost7, sales8-cost8, sales9-cost9, sales10-cost10, sales11-cost11, sales12-cost12],
+										backgroundColor: [
+											'rgba(255, 206, 86, 0.2)'
+							            ],
+							            borderColor: [
+							                'rgba(255, 206, 86, 1)'
+							            ],
+							            borderWidth: 1,
+							            pointBorderColor: "rgba(255, 206, 86, 1)",
+							            pointBackgroundColor: "#fff",
+							            pointBorderWidth: 1,
+							            pointHoverRadius: 5,
+							            pointHoverBackgroundColor: "rgba(255, 206, 86, 0.2)",
+							            pointHoverBorderColor: "rgba(255, 206, 86, 1)",
+							            pointHoverBorderWidth: 2,
+							            pointRadius: 1,
+							            pointHitRadius: 10,
+							},]
+					},
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
 	
 			},
 			error: function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
 		}); 
-	});
+	};
 </script>
 		<div class="section">
 			<br>
@@ -240,7 +278,7 @@
 						<li><a class="tabmenu lactive"
 							href="/jsmi/views/main2/settlement/salesncost.jsp">매출/비용 분석</a></li>
 						<li><a class="tabmenu"
-							href="/jsmi/views/main2/settlement/assets.jsp">자산 분석</a></li>
+							href="/jsmi/views/main2/settlement/asset.jsp">자산 분석</a></li>
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/settlement/yield.jsp">수익률 분석</a></li>
 					</ul>
@@ -251,6 +289,11 @@
 			<h3 align="center" id="selyear"></h3>&nbsp;&nbsp;&nbsp;&nbsp;
 			<img id="nextyear" src="/jsmi/images/main2/arrow.png">
 			</div>
+			<br>
+			<center>
+			<input class="btn btn-primary" type="button" value="조회하기" onclick="selectSettle();"> 
+			</center>
+			<br>
 			<div class="col-md-12">
 				<div class="col-md-6">
 					<div class="well" style="margin-bottom:0px;">bar chart</div>
@@ -259,8 +302,9 @@
 					</canvas>
 				</div>
 				<div class="col-md-6">
-					<div class="well" style="margin-bottom:0px;">circle chart</div>
-					<div id="circlechart" class="form-control">			
+					<div class="well" style="margin-bottom:0px;">line chart</div>
+					<canvas id="linechart" width="520px" height="520px">	
+					</canvas>
 				</div>
 				</div>
 			</div>
