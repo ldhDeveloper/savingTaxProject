@@ -9,6 +9,9 @@ import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
+
+import member.model.server.PartyService;
  
 public class SendMailTest {
  
@@ -52,6 +55,21 @@ public class SendMailTest {
             // 이메일 헤더
             msg.setHeader("content-Type", "text/html");
              
+            
+            int result = new PartyService().updatePwd(userid, pwd);
+    		
+    		RequestDispatcher view = null;
+    		if(result > 0){
+    			view = request.getRequestDispatcher("views/main1/member/successResetPwd.jsp");
+    			request.setAttribute("message", "비밀번호 변경에 성공하였습니다.");
+    			view.forward(request, response);
+    		}else{
+    			view = request.getRequestDispatcher("views/main1/member/memberError.jsp");
+    			request.setAttribute("message", "비밀번호 변경에 실패하였습니다.");
+    			view.forward(request, response);
+    		}
+            
+            
             //메일보내기
             javax.mail.Transport.send(msg);
              
