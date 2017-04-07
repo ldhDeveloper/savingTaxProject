@@ -62,10 +62,12 @@ public class SalaryService {
 		int result = 0;
 		
 		int result1 = new SalaryDao().updateSalary(con, s);
+		System.out.println("result1:" + result1);
 		int result2 = 0;
 		
 		if(result1 > 0){
 			result2 = new SalaryDao().updateDiarySalary(con, s, realSalary);
+			System.out.println("result2:" + result2);
 			if(result2 > 0){
 				commit(con);
 				result = 1;
