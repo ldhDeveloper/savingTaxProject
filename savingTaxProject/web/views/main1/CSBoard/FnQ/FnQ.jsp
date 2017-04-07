@@ -28,7 +28,7 @@
 	font-family: google !important;
 }
 
-img {
+#img {
 	padding: 3px;
 	margin-top: 10px;
 }
@@ -81,7 +81,7 @@ img {
 	<!-- 컴퓨터용 -->
 	<div class="middle hidden-xs">
 		<div class="middle fontfamily" align="center">
-			<img src="/jsmi/images/main1/FnQ.png">
+			<img id="img" src="/jsmi/images/main1/FnQ.png">
 			<h3>절세미인을 처음 이용하시나요?</h3>
 			<h4 style="color: #a9a9a9">처음 오신 분들이 궁금해 하는 점을 모아놨습니다.</h4>
 		</div>
