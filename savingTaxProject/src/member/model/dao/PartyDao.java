@@ -543,7 +543,7 @@ public class PartyDao {
 		return result;
 	}
 
-	
+	//myinfo3 거래처정보 가져오기
 	public ArrayList<Party> selectcustomerList(Connection con, int pno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

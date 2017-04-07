@@ -78,63 +78,121 @@
 </style>
 
 <script>
+	function checkcno() {
+		var str = $('input[name=cno]').val().length;
+		var str2 = $('input[name=cno2]').val().length;
+		console.log(str);
+		if (str == 3)
+			$('input[name=cno2]').focus();
 
-$(function(){
-	var re=/^[가-힣]+$/;
-    var re_pre=/^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-    var re_c=/^[0-9]{3}$/;
-    var re_c2=/^[0-9]{2}$/;
-    var re_c3=/^[0-9]{5}$/;
-    var re_cst=/^[가-힣]+$/;
-    var tel=/^[0-9]{3}$/;
-    var tel2=/^[0-9]{3,4}$/;
-    var tel3=/^[0-9]{4}$/;
-	
-	var cname=$('#cname'), 
-	      president=$('#president'), 
-	      cno=$('#cno'), 
-	      cno2=$('#cno2'), 
-	      cno3=$('#cno3'),
-	      cstatus=$('#cstatus'),
-	      ctype=$('#ctype'),
-	      tel=$('#tel'),
-	      tel2=$('#tel2'),
-	      tel3=$('#tel3'),
-	      oday=$('#oday'),
-	      address=$('#postnum'),
-	      address2=$('#address1'),
-	      address3=$('#address2'),
-	      wno=$('#wno'),
-	      irate=$('#irate');
-	      
-	form.submit(function(){
+		if (str2 == 2)
+			$('input[name=cno3]').focus();
+	}
+
+	function checkph() {
+		var str = $('input[name=tel]').val().length;
+		var str2 = $('input[name=tel2]').val().length;
+		console.log(str);
+		if (str == 3)
+			$('input[name=tel2]').focus();
+
+		if (str2 == 4)
+			$('input[name=tel3]').focus();
+	}
+
+	function chk() {
+		var re = /^[가-힣]*$/;
+		var re_pre = /^[가-힣a-zA-Z]+$/;
+		var re_c = /^[0-9]{3}$/;
+		var re_c2 = /^[0-9]{2}$/;
+		var re_c3 = /^[0-9]{5}$/;
+		var re_cst = /^[가-힣]+$/;
+		var re_cty = /^[가-힣]+$/;
+		var tel = /^[0-9]{2,3}$/;
+		var tel2 = /^[0-9]{3,4}$/;
+		var tel3 = /^[0-9]{4}$/;
+		var address = /^[0-9]*$/;
+
+		var cname = $('input[name=cname]'), president = $('input[name=president]'), cno = $('input[name=cno]'), cno2 = $('input[name=cno2]'), cno3 = $('input[name=cno3]'), cstatus = $('input[name=cstatus]'), ctype = $('input[name=ctype]'), tel = $('input[name=tel]'), tel2 = $('input[name=tel2]'), tel3 = $('input[name=tel3]'), address = $('input[name=postnum]');
+
 		if (re.test(cname.val()) != true) {
-			alert("한글만 입력해주세요.");
-			cname="";
+			alert("[상호 입력 오류] 한글만 입력해주세요.");
+			cname = "";
 			cname.focus();
 			return false;
-		} else if(re_pw.test(upw.val()) != true) { // 비밀번호 검사
-			alert('[PW 입력 오류] 유효한 PW를 입력해 주세요.');
-			upw.focus();
+		}
+		if (re_pre.test(president.val()) != true) {
+			alert('[대표자명 입력 오류] 한글/영문을 입력해 주세요.');
+			president = "";
+			president.focus();
 			return false;
-		} else if(re_mail.test(mail.val()) != true) { // 이메일 검사
-			alert('[Email 입력 오류] 유효한 이메일 주소를 입력해 주세요.');
-			mail.focus();
+		}
+		if (re_c.test(cno.val()) != true) {
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			cno = "";
+			cno.focus();
 			return false;
-		} else if(re_url.test(url.val()) != true) { // URL 검사
-			alert('[Web 입력 오류] 유효한 웹 사이트 주소를 입력해 주세요.');
-			url.focus();
+		}
+		if (re_c2.test(cno2.val()) != true) {
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			cno2 = "";
+			cno2.focus();
 			return false;
-		} else if(re_tel.test(tel.val()) != true) { // 전화번호 검사
-			alert('[Tel 입력 오류] 유효한 전화번호를 입력해 주세요.');
+		}
+		if (re_c3.test(cno3.val()) != true) {
+			alert('[사업자등록번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			cno3 = "";
+			cno3.focus();
+			return false;
+		}
+		if (re_cst.test(cstatus.val()) != true) {
+			alert('[업태 입력 오류] 유효한 업태를 입력해 주세요.');
+			cstatus = "";
+			cstatus.focus();
+			return false;
+		}
+		if (re_cty.test(ctype.val()) != true) {
+			alert('[종목 입력 오류] 유효한 종목을 입력해 주세요.');
+			ctype = "";
+			ctype.focus();
+			return false;
+		}
+		if (tel.test(tel.val()) != true) {
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			tel = "";
 			tel.focus();
 			return false;
 		}
-	});
-	      
-});
-function send(){
-}
+		if (tel2.test(tel2.val()) != true) {
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			tel2 = "";
+			tel2.focus();
+			return false;
+		}
+		if (tel2.test(tel3.val()) != true) {
+			alert('[전화번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			tel3 = "";
+			tel3.focus();
+			return false;
+		}
+		if (address.test(address.val()) != true) {
+			alert('[주소 입력 오류] 유효한 주소를 입력해 주세요.');
+			address = "";
+			address.focus();
+			return false;
+		}
+		if (!$(':input:radio[name=optradio2]:checked').val()) {
+			alert("과세유형을 선택해주세요.");
+			return false;
+		}
+		if (!$(':input:radio[name=optradio3]:checked').val()) {
+			alert("면세여부를 선택해주세요.");
+			return false;
+		}
+
+		alert("입력 성공!");
+		location.href = 'jsmi/views/main2/myinfo/myinfo3.jsp';
+	}
 </script>
 
 </head>
@@ -162,7 +220,7 @@ function send(){
 					</ul>
 				</div>
 			</div>
-			<form action="/jsmi/update.info2" method="post" onsubmit="return send();">
+			<form action="/jsmi/update.info2" method="post">
 				<input type="hidden" name="userid" value="<%=loginUser.getId()%>">
 				<input type="hidden" name="pno" value="<%=loginUser.getPno()%>">
 				<%
@@ -211,19 +269,21 @@ function send(){
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="cno"
+										maxlength="3" required OnKeyUp="checkcno();"
 										value="<%=cno[0]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="cno2"
+										maxlength="2" required OnKeyUp="checkcno();"
 										value="<%=cno[1]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="cno3"
-										value="<%=cno[2]%>">
+										maxlength="5" required value="<%=cno[2]%>">
 								</div>
 							</td>
 							<td class="col-md-2"></td>
@@ -236,10 +296,10 @@ function send(){
 						<tr>
 							<td class="col-md-2"><h5>업태</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="cstatus" value="<%=loginUser.getCstatus()%>"></td>
+								name="cstatus" value="<%=loginUser.getCstatus()%>" required></td>
 							<td class="col-md-2"><h5>종목</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								name="ctype" value="<%=loginUser.getCtype()%>"></td>
+								name="ctype" value="<%=loginUser.getCtype()%>" required></td>
 
 						</tr>
 						<tr>
@@ -248,31 +308,34 @@ function send(){
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel"
+										OnKeyUp="checkph();" maxlength="3" required
 										value="<%=tel[0]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel2"
+										OnKeyUp="checkph();" maxlength="4" required
 										value="<%=tel[1]%>">
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel3"
-										value="<%=tel[2]%>">
+										maxlength="4" required value="<%=tel[2]%>">
 								</div>
 							</td>
 							<td class="col-md-2"><h5>개업일</h5></td>
 							<td class="col-md-4"><input type="date" class="form-control"
-								name="oday" value="<%=loginUser.getOday()%>"></td>
+								name="oday" value="<%=loginUser.getOday()%>" required></td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>사업장 주소</h5></td>
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="caddress" value="<%=caddress[0]%>">
+										name="caddress" value="<%=caddress[0]%>" maxlength="5"
+										required>
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -284,7 +347,7 @@ function send(){
 								id="address1" name="caddress2" value="<%=caddress[1]%>"></td>
 							<td class="col-md-6" colspan="2"><input type="text"
 								class="form-control" id="address2" name="caddress3"
-								value="<%=caddress[2]%>"></td>
+								value="<%=caddress[2]%>" required></td>
 
 						</tr>
 						<tr>
@@ -373,15 +436,16 @@ function send(){
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>산재보험요율</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="irate" value="<%=loginUser.getIrate()%>"></td>
+							<td class="col-md-4"><input type="number"
+								class="form-control" name="irate"
+								value="<%=loginUser.getIrate()%>" required></td>
 							<td class="col-md-2"></td>
 							<td class="col-md-4"></td>
 						</tr>
 				</table>
 				<div class="btngroup">
 					<input type="submit" class="btn btn-warning" value="수정완료"
-						onclick="location.href='/jsmi/views/main2/menu/main2.html'">
+						onclick="return chk()">
 				</div>
 				<%
 					} else {
@@ -403,17 +467,20 @@ function send(){
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno" id="cno" required>
+									<input type="text" class="form-control" name="cno" id="cno"
+										maxlength="3" OnKeyUp="checkcno();" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno2" id="cno2" required>
+									<input type="text" class="form-control" name="cno2" id="cno2"
+										maxlength="2" OnKeyUp="checkcno();" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="cno3" id="cno3" required>
+									<input type="text" class="form-control" name="cno3" id="cno3"
+										maxlength="5" required>
 								</div>
 							</td>
 							<td class="col-md-2"></td>
@@ -437,17 +504,20 @@ function send(){
 							<td class="col-md-4">
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel" id="tel" required>
+									<input type="text" class="form-control" name="tel" id="tel"
+										OnKeyUp="checkph();" maxlength="3" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel2" id="tel2" required>
+									<input type="text" class="form-control" name="tel2" id="tel2"
+										OnKeyUp="checkph();" maxlength="4" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="tel3" id="tel3" required>
+									<input type="text" class="form-control" name="tel3" id="tel3"
+										maxlength="4" required>
 								</div>
 							</td>
 							<td class="col-md-2"><h5>개업일</h5></td>
@@ -459,7 +529,7 @@ function send(){
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="caddress" required>
+										name="caddress" maxlength="5" required>
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -475,8 +545,8 @@ function send(){
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>업종코드</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="wno" id="wno" required></td>
+							<td class="col-md-4"><input type="number"
+								class="form-control" name="wno" id="wno" required></td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 
@@ -519,8 +589,8 @@ function send(){
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>산재보험요율</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="irate" id="irate" required></td>
+							<td class="col-md-4"><input type="number" value="0.5"
+								max="1" class="form-control" name="irate" id="irate" required></td>
 							<td class="col-md-2"></td>
 							<td class="col-md-4"></td>
 						</tr>
@@ -528,7 +598,7 @@ function send(){
 				</table>
 				<div class="btngroup">
 					<input type="submit" class="btn btn-primary" value="입력완료"
-						onclick="location.href='/jsmi/views/main2/menu/main2.html'">
+						onclick="return chk()">
 					<button class="btn btn-danger" type="reset">취소</button>
 				</div>
 				<%
