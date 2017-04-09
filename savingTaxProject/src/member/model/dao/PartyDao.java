@@ -761,7 +761,6 @@ public class PartyDao {
 			rset=pstmt.executeQuery();
 			if(rset.next()){
 				p = new Party();
-				System.out.println("pno222"+pno);
 				p.setPno(pno);
 				p.setCname(rset.getString("cname"));
 				p.setPresident(rset.getString("president"));

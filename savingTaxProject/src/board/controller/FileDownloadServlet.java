@@ -35,6 +35,8 @@ public class FileDownloadServlet extends HttpServlet {
 		String fName = request.getParameter("fName");
 		BufferedInputStream buf = null;
 		ServletOutputStream downOut = null;
+		System.out.println(fName);
+		System.out.println(fName.getBytes()); 
 		try {
 			downOut = response.getOutputStream();
 			File downFile = new File(filePath + refName);

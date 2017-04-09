@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,31 +34,41 @@ public class VatFormDownServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int [] taxArr = null;
+		String [] taxArr = null;
+		
 		int pno= Integer.parseInt(request.getParameter("pno"));
-		int year= Integer.parseInt(request.getParameter("year"));
-		int quarter= Integer.parseInt(request.getParameter("quarter"));
-		if(quarter != 0){
-		int gout1= Integer.parseInt(request.getParameter("gout1"));
-		int gout2= Integer.parseInt(request.getParameter("gout2"));
-		int gout3= Integer.parseInt(request.getParameter("gout3"));
-		int gin1= Integer.parseInt(request.getParameter("gin1"));
-		int gin2= Integer.parseInt(request.getParameter("gin2"));
-		int gin3= Integer.parseInt(request.getParameter("gin3"));
-		int gout1vat= Integer.parseInt(request.getParameter("gout1vat"));
-		int gout2vat= Integer.parseInt(request.getParameter("gout2vat"));
-		int gout3vat= Integer.parseInt(request.getParameter("gout3vat"));
-		int totalout= Integer.parseInt(request.getParameter("totalout"));
-		int totaloutvat= Integer.parseInt(request.getParameter("totaloutvat"));
-		int totalin= Integer.parseInt(request.getParameter("totalin"));
-		int totalinvat= Integer.parseInt(request.getParameter("totalinvat"));
-		int totalvat= Integer.parseInt(request.getParameter("totalvat"));
-		taxArr = new int[15];
+		String year= request.getParameter("year");
+		String quarter= request.getParameter("quarter");
+		if(!quarter.equals("0")){
+		   taxArr = new String [19];
+		   taxArr[0] = year;
+		   taxArr[1] = quarter;
+		String gout1= request.getParameter("gout1"); taxArr[2] = gout1;
+		String gout2= request.getParameter("gout2"); taxArr[3] = gout2;
+		String gout3= request.getParameter("gout3"); taxArr[4] = gout3;
+		String gout1vat= request.getParameter("gout1vat"); taxArr[5] = gout1vat;
+		String gout2vat= request.getParameter("gout2vat"); taxArr[6] = gout2vat;
+		String gout3vat= request.getParameter("gout3vat"); taxArr[7] = gout3vat;
+		String totalout= request.getParameter("totalout"); taxArr[8] = totalout;
+		String totaloutvat= request.getParameter("totaloutvat"); taxArr[9] = totaloutvat;
+		String gin1= request.getParameter("gin1"); taxArr[10] = gin1;
+		String gin2= request.getParameter("gin2"); taxArr[11] = gin2;
+		String gin3= request.getParameter("gin3"); taxArr[12] = gin3;
+		String gin1vat= request.getParameter("gin1vat"); taxArr[13] = gin1vat;
+		String gin2vat= request.getParameter("gin2vat"); taxArr[14] = gin2vat;
+		String gin3vat= request.getParameter("gin3vat"); taxArr[15] = gin3vat;
+		String totalin= request.getParameter("totalin"); taxArr[16] = totalin;
+		String totalinvat= request.getParameter("totalinvat"); taxArr[17] = totalinvat;
+		String totalvat=request.getParameter("totalvat"); taxArr[18] = totalvat;
+		
 		}else{}
 		Party p = new PartyService().selectParty(pno);
 		File taxForm = new VatService().printForm(taxArr, p);
 		
 		
+		if(taxForm != null){
+		response.sendRedirect("filedown?refName=ff.xlsx&fName=taxForm.xslx");
+		}
 		
 	}
 
