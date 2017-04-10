@@ -329,7 +329,7 @@ a:hover {
 		
 		<script type="text/javascript">
 		$(function(){
-			$("#selectBtn").click(function(){
+			$("#selectBtn2").click(function(){
 				var selyear = $("#selyear").text();
 				console.log(selyear);
 				var pno = <%= loginUser.getPno() %>
@@ -479,7 +479,7 @@ a:hover {
 			<br>
 			
 			<div class="selectBtn1">
-				<button class="selectBtn2">조회</button>
+				<button class="selectBtn2" id="selectBtn2">조회</button>
 			</div>
 			
 			<br>
@@ -531,7 +531,7 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">연금소득</td>
-										<td class="taxtd2"><input type="text" placeholder="연금소득" id="income5" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="연금소득" id="income5" value="0" onkeydown="income5down();"> 원</td>
 									</tr>
 
 									<tr>
@@ -795,5 +795,34 @@ a:hover {
 
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
+
+	<script type="text/javascript">
+		function income5down() {
+			var number = $("#income5").val();
+			console.log(number);
+			Comma(number);
+			
+			function Comma(number) {
+				number = replaceChar(number, ',', '');
+				number = '' + number;
+
+				if (number.length > 3) {
+					var mod = number.length % 3;
+					var output = (mod > 0 ? (number.substring(0, mod)) : '');
+					for (i = 0; i < Math.floor(number.length / 3); i++) {
+						if ((mod == 0) && (i == 0))
+							output += number.substring(mod + 3 * i, mod + 3 * i + 3);
+						else
+							output += ','+ number.substring(mod + 3 * i, mod + 3 * i + 3);
+					}
+					return (output);
+				} else
+					return number;
+			}
+		}
+		
+		
+	</script>
+
 </body>
 </html>
