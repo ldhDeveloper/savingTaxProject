@@ -38,7 +38,9 @@
 }
 
 .slide-background {
-	background: #223344;
+
+	background: #234;
+
 	height: 550px;
 	padding-top: 70px;
 }
@@ -374,7 +376,7 @@
 	</div>
 	<hr class="hidden-sm hidden-md hidden-lg">
 	<div class="container-fluid hidden-sm hidden-md hidden-lg slide-box"
-		style="background:#2a82a3;padding-top:50px;padding-bottom:50px;">
+		style="background:#234;padding-top:50px;padding-bottom:50px;">
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-8" id="slidesize">

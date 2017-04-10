@@ -15,6 +15,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -263,8 +264,13 @@ background
 				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">비용안내</a>
 				<ul class="sub-menu">
 						<li><a href='/jsmi/views/main1/costGuide/costGuide.jsp'>비용안내</a></li>
-						<li><a href='/jsmi/views/main1/costGuide/payView.jsp'>결제하기</a></li>
-					</ul></li>
+
+						<li><a
+							href='/jsmi/views/main1/costGuide/payView.jsp'>결제하기</a></li>
+					</ul>
+				</li>
+				
+
 				<li><a href="/jsmi/listview?page=1&boardNo=1">고객센터</a>
 					<ul class="sub-menu">
 						<li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
@@ -295,8 +301,7 @@ background
 
 						<button type="button" class="navbar-toggle" data-toggle="collapse"
 							data-target="#myNavbar">
-							<span class="icon-bar"></span><span class="icon-bar"></span> <span>
-								<class="icon-bar">
+							<span class="icon-bar"></span><span class="icon-bar"></span> <span class="icon-bar">
 							</span>
 						</button>
 
