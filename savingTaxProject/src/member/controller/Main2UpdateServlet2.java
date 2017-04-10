@@ -57,6 +57,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
         String caddress2=request.getParameter("caddress2");
         String caddress3=request.getParameter("caddress3");
         String wname=request.getParameter("wname");
+        System.out.println("업종 구분 : " + wname);
         //관할세무서 뺌
 		String taxtype=request.getParameter("optradio");//과세유형
 		String notax_yn=request.getParameter("optradio2");//면세여부

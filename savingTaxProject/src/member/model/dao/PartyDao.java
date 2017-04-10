@@ -205,7 +205,7 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, taxtype=?, notax_yn=?, president=?, irate=? where pno=?";
+		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, taxtype=?, notax_yn=?, president=?, irate=?, wname=? where pno=?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -220,7 +220,8 @@ public class PartyDao {
 			pstmt.setString(9, p.getNotax_yn());
 			pstmt.setString(10, p.getPresident());
 			pstmt.setDouble(11, p.getIrate());
-			pstmt.setInt(12, p.getPno());
+			pstmt.setString(12, p.getWname());
+			pstmt.setInt(13, p.getPno());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
