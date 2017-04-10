@@ -69,7 +69,6 @@
 
 .side {
 	width: 200px;
-	position:
 }
 
 .tabmenu {
@@ -93,7 +92,7 @@
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size:30pt;
+	font-size:25pt;
 }
 
 .tabletd {
@@ -136,8 +135,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
-						<tbody id="emptable">
-							<tr class="tabletd">
+						<tbody class="tabletd" id="emptable">
+							<tr>
 								<th>직원명</th>
 								<th>직원구분</th>
 								<th>직급</th>
@@ -198,9 +197,12 @@
 
 							</tr>
 
-						</tbody>
+						</tbody>					
 					</table>
-					<ul class="pagination" style="float: right; margin-bottom: 30px;">
+					
+						<br>
+						
+					<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
 						<li><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
