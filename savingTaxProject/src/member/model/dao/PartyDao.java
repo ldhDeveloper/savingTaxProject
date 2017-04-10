@@ -41,7 +41,7 @@ public class PartyDao {
 
 		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate, wname "
 								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =?";
 
 		try {
@@ -72,7 +72,6 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
@@ -87,6 +86,7 @@ public class PartyDao {
 				p.setGtype(rset.getString("gtype"));
 				p.setIrate(rset.getDouble("irate"));
 				p.setRdate(rset.getDate("rdate"));
+				p.setWname(rset.getString("wname"));
 				
 			}
 
@@ -204,7 +204,7 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, wno=?, taxtype=?, notax_yn=?, president=?, irate=? where pno=?";
+		String query = "update party set tel=?, cname=?,  cno=?, caddress=?,  cstatus=?, ctype=?,  oday=?, taxtype=?, notax_yn=?, president=?, irate=? where pno=?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -215,12 +215,11 @@ public class PartyDao {
 			pstmt.setString(5, p.getCstatus());
 			pstmt.setString(6, p.getCtype());
 			pstmt.setDate(7, p.getOday());
-			pstmt.setInt(8, p.getWno());
-			pstmt.setString(9, p.getTaxType());
-			pstmt.setString(10, p.getNotax_yn());
-			pstmt.setString(11, p.getPresident());
-			pstmt.setDouble(12, p.getIrate());
-			pstmt.setInt(13, p.getPno());
+			pstmt.setString(8, p.getTaxType());
+			pstmt.setString(9, p.getNotax_yn());
+			pstmt.setString(10, p.getPresident());
+			pstmt.setDouble(11, p.getIrate());
+			pstmt.setInt(12, p.getPno());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -354,7 +353,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate, wname "
 				+"from party p left join grade g on (p.pno = g.pno) where id = ?";
 				
 		try {
@@ -380,7 +379,6 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
@@ -395,6 +393,7 @@ public class PartyDao {
 				p.setGtype(rset.getString("gtype"));
 				p.setIrate(rset.getDouble("irate"));
 				p.setRdate(rset.getDate("rdate"));
+				p.setWname(rset.getString("wname"));
 			}
 
 		} catch (Exception e) {
@@ -411,7 +410,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNAME, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate, wname "
 				+"from party p left join grade g on (p.pno = g.pno) where p.pno = ?";
 				
 		try {
@@ -437,7 +436,7 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
+				p.setWname(rset.getString("wnanme"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
@@ -452,6 +451,7 @@ public class PartyDao {
 				p.setGtype(rset.getString("gtype"));
 				p.setIrate(rset.getDouble("irate"));
 				p.setRdate(rset.getDate("rdate"));
+				p.setWname(rset.getString("wname"));
 			}
 
 		} catch (Exception e) {
@@ -468,7 +468,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query = "select * from Party where pname=? and email=?";
+		String query = "select id from Party where pname=? and email=?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -497,7 +497,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query = "select * from party where id=? and email=?";
+		String query = "select id from party where id=? and email=?";
 
 		try {
 			pstmt = con.prepareStatement(query);

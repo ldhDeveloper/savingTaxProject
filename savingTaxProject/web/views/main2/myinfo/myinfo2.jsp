@@ -254,7 +254,7 @@
 							+ loginUser.getNotax_yn());
 					if (loginUser.getCname() != null && loginUser.getPresident() != null && loginUser.getCno() != null
 							&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
-							&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxType() != null
+							&& loginUser.getOday() != null && loginUser.getCaddress() != null 
 							&& loginUser.getNotax_yn() != null) {
 						System.out.println("실행됨");
 				%>
@@ -371,9 +371,22 @@
 
 						</tr>
 						<tr>
-							<td class="col-md-2"><h5>업종코드</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="wno" value="<%=loginUser.getWno()%>" required></td>
+							<td class="col-md-2"><h5>업종구분</h5></td>
+							<td class="col-md-4">
+							<%-- <input type="text" class="form-control"
+								name="wname" value="<%=loginUser.getWname()%>" required> --%>
+								<div class="dropdown">
+    							<button class="btn btn-default dropdown-toggle" name="wname" type="button" data-toggle="dropdown">업종선택
+    							<span class="caret"></span></button>
+    							<ul class="dropdown-menu">
+      								<li><a href="#">HTML</a></li>
+      								<li><a href="#">CSS</a></li>
+      								<li><a href="#">JavaScript</a></li>
+      								<li><a href="#">CSS</a></li>
+      								<li><a href="#">JavaScript</a></li>
+							    </ul>
+							  </div>
+							  </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 
@@ -566,7 +579,7 @@
 						<tr>
 							<td class="col-md-2"><h5>업종코드</h5></td>
 							<td class="col-md-4"><input type="number"
-								class="form-control" name="wno" id="wno" required></td>
+								class="form-control" name="wname" id="wname" required></td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 
