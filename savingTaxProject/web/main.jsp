@@ -38,7 +38,7 @@
 }
 
 .slide-background {
-	background: #2a82a3;
+	background: #223344;
 	height: 550px;
 	padding-top: 70px;
 }
@@ -284,11 +284,11 @@
 					</div>
 
 					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" role="button"
+					<a class="left carousel-control" href="#myCarousel-xs" role="button"
 						data-slide="prev"> <span
 						class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 						<span class="sr-only">Previous</span>
-					</a> <a class="right carousel-control" href="#myCarousel" role="button"
+					</a> <a class="right carousel-control" href="#myCarousel-xs" role="button"
 						data-slide="next"> <span
 						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>
@@ -324,7 +324,7 @@
 
 		<% if(loginUser != null) { %>
 		<div class="menu-btn" style="background: #10aaff;" id="border6"
-			onclick="location.href='/jsmi/views/main1/costGuide/payView.jsp'">
+			onclick="location.href='/jsmi/views/main1/costGuide/costGuide.jsp'">
 			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
 		<% } else { %>
