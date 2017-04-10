@@ -79,8 +79,9 @@ public class DiaryService {
 	}
 
 
-	public int deleteDiary(String[] dnos) {
+	public ArrayList<Diary> deleteDiary(String[] dnos, String indate, String pno) {
 		Connection con = getConnection(); 
+		ArrayList<Diary> list = null;
 		int result = 0;
 		
 		for(String dno : dnos){
@@ -91,11 +92,13 @@ public class DiaryService {
 		if(result > 0){
 			commit(con);
 			System.out.println("delete 성공");
+			System.out.println(result + "개의 컬럼 삭제");
+			list = new DiaryDao().DailySearch(con, indate, pno);
 		} else {
 			rollback(con);
 		}
 		close(con);
-		return result;
+		return list;
 	}
 	
 	

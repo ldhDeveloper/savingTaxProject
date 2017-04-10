@@ -244,6 +244,7 @@
 									"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
 									"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 						}
+						alert("선택한 장부가 수정되었습니다.");
 					},
 					error: function(request,status,error){
 				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -311,11 +312,12 @@
 						<script src="/jsmi/js/main2/jquery.js"></script>
 						<script src="/jsmi/js/main2/jquery-ui.js"></script>
 						<script>
-							$("#datepicker").datepicker({
+						jQuery.noConflict(); 
+						jQuery("#datepicker").datepicker({
 								inline : true,
 								onSelect: function(dateText, inst) {
 									var date = new Date($(this).val());
-									var ndate = $.datepicker.formatDate('yy-mm-dd', date);
+									var ndate = jQuery.datepicker.formatDate('yy-mm-dd', date);
 									dailySearch(ndate);
 								}
 							});
@@ -347,6 +349,7 @@
 												"</td><td name='selanm'>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td name='selproduct'>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td name ='selcost'>" + jsonArr.list[i].cost +
 												"</td><td name='selbilling'>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td name='selproof_type'>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 									}
+								
 								},
 								error: function(request,status,error){
 							        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -395,28 +398,10 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -435,8 +420,32 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>

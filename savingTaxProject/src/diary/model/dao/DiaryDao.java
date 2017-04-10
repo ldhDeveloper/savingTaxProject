@@ -202,7 +202,7 @@ private Properties prop = new Properties();
 		int result = 0;
 		
 		String query = "insert into diary(dno, ddate, product, cost, billing, proof_type, write_pno, acc_pno, ano) " +
-							 "values(seq_dy.nextval, to_date(?,'yyyy-mm-dd') " +
+							 "values(seq_diary.nextval, to_date(?,'yyyy-mm-dd') " +
 							 ", ?, ?, ?, ?, ?, " +
 							 "(select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " +
 							 "where pr.busi_pno = ? and pr.rel_type ='거래처' and p.pname =?), " +
@@ -237,7 +237,7 @@ private Properties prop = new Properties();
 		
 		String query = "update diary set ddate =to_date(?, 'yyyy-mm-dd'), product = ?, cost = ?, billing =?, proof_type =?, " +  
 							   "acc_pno = (select pr.rel_pno from party_rel pr join party p on(pr.rel_pno = p.pno) " +
-							   						"where pr.busi_pno = ? and pr.rel_type =1 and p.pname =?), " +
+							   						"where pr.busi_pno = ? and pr.rel_type ='거래처' and p.pname =?), " +
 							   	"ano = (select ano from accountlist where anm = ?) " +  
 							   	"where dno = ?";
 				
@@ -245,14 +245,23 @@ private Properties prop = new Properties();
 			int no = Integer.parseInt(pno);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, indate);
+			System.out.println("indate : " + indate);
 			pstmt.setString(2, diary.getProduct());
+			System.out.println("product : " + diary.getProduct());
 			pstmt.setInt(3, diary.getCost());
+			System.out.println("cost : " + diary.getCost());
 			pstmt.setString(4, diary.getBilling());
+			System.out.println("billing : " + diary.getBilling());
 			pstmt.setString(5, diary.getProof_type());
+			System.out.println("proof_type : " + diary.getProof_type());
 			pstmt.setInt(6, no);
+			System.out.println("no : " + no);
 			pstmt.setString(7, diary.getPname());
+			System.out.println("pname : " + diary.getPname());
 			pstmt.setString(8, diary.getAtype());
+			System.out.println("atype : " + diary.getAtype());
 			pstmt.setInt(9, diary.getDno());
+			System.out.println("dno : " + diary.getDno());
 			
 			result = pstmt.executeUpdate();
 			

@@ -212,6 +212,45 @@
 					$(location).attr("href", "/jsmi/views/main2/daily/deletedaily.jsp");
 				}
 			});
+			
+			$('#deldiary').click(function(){
+				var delselect = new Array();
+				$('input[name=delselect]:checked').each(function(index){
+					console.log("index : " + index);
+					delselect.push($(this).val());
+				})
+				console.log(delselect);
+				$.ajax({
+					url: "/jsmi/ddelete",
+					data: {delselect : delselect, ddate : deldate, pno : pno}, 
+					type: "post",
+					dataType: "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success: function(data){
+						console.log("json 성공");
+						console.log("data : " + data);
+						var jsonObj = JSON.stringify(data);
+						//변환된 제이슨 객체를 제이슨 배열로 변환
+						var jsonArr = JSON.parse(jsonObj);
+					
+						$("#itablebody").html("<tr><th>선택</th><th>거래구분</th><th>날짜</th><th>거래처</th><th>계정항목</th><th>품목</th>" +
+						"<th>금액</th><th>결재방법</th><th>증빙자료</th></tr>");
+						for(var i in jsonArr.list){
+							console.log(jsonArr.list[i].atype);
+							$("#itablebody").html($("#itablebody").html() +
+									"<tr><td><div class='checkbox' style='margin: 0 auto;'> " + 
+									"<input type='checkbox' style='margin: 3px  0 0 7px;' value='"+ jsonArr.list[i].dno + "' class='inputchk' name='delselect'>" +
+									"<td>" + jsonArr.list[i].atype + "</td><td>" + jsonArr.list[i].ddate + "</td><td>" + decodeURIComponent(jsonArr.list[i].pname) + 
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
+									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
+						}
+						alert("선택한 장부가 삭제되었습니다.");
+					},
+					error: function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+				}); 
+			});
 				
 		});
 			function itemclick(data){
@@ -227,24 +266,8 @@
 			}
 			
 
-			function radioclick(data1, data2){
-					console.log("라디오 클릭");
-					var listname = "#listdiary" + data1;
-					$('input[name=seldno]').val(data2);
-					$('button[name=bill_type]').html($(listname).children('td[name=selatype]').text() + "<span class='caret'></span>");
-					$('input[name=indate]').val($(listname).children('td[name=selddate]').text());
-					$('input[name=seldealer]').val($(listname).children('td[name=selpname]').text());
-					$('input[name=actype]').val($(listname).children('td[name=selanm]').text());
-					$('input[name=product]').val($(listname).children('td[name=selproduct]').text());
-					$('input[name=cost]').val($(listname).children('td[name=selcost]').text());
-					$('button[name=bill_how]').html($(listname).children('td[name=selbilling]').text());
-					$('button[name=proof]').html($(listname).children('td[name=selproof_type]').text() + "<span class='caret'></span>");
-					
-			}
-			
 			
 		</script>
-		<form action="/jsmi/ddelete" method="post" id="ddeleteform">
 		<div class="section">
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
@@ -263,11 +286,14 @@
 						<script src="/jsmi/js/main2/jquery.js"></script>
 						<script src="/jsmi/js/main2/jquery-ui.js"></script>
 						<script>
-							$("#datepicker").datepicker({
+						deldate = null;
+						jQuery.noConflict(); 
+						jQuery("#datepicker").datepicker({
 								inline : true,
 								onSelect: function(dateText, inst) {
 									var date = new Date($(this).val());
-									var ndate = $.datepicker.formatDate('yy-mm-dd', date);
+									var ndate = jQuery.datepicker.formatDate('yy-mm-dd', date);
+									deldate = ndate;
 									dailySearch(ndate);
 								}
 							});
@@ -338,7 +364,8 @@
 									<th>결재방법</th>
 									<th>증빙자료</th>
 								</tr>
-								<tr name='selrow'>
+								<tr>
+									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -357,15 +384,6 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
@@ -377,6 +395,18 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -387,8 +417,10 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
+									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -413,21 +445,20 @@
 					</div>
 					
 
-						<div class="row">
+						
+				</div>
+				</div>
+				<div class="row">
 							<div class="col-md-5"></div>
 							<div class="col-md-3">
-								<input type="submit" id="deldiary" class="btn btn-warning" value="삭제">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="button" id="deldiary" class="btn btn-warning" value="삭제">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="button" id="cancel" class="btn btn-danger" value="취소">
 							</div>
 							<div class="col-md-4"></div>
 						</div>
-
-					</form>
+						
 				</div>
-
 			</div>
-		</div>
-		</div>
 		<br>
 		<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
