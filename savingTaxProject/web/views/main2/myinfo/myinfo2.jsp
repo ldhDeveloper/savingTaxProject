@@ -194,16 +194,32 @@
 		
 	}
 	function radio(){
-		var chk = $('input[name=optradio2]').is(":checked");
+		var chk1 = $('input[name=optradio2]').is(":checked");
 		var chk2=$('input[name=optradio3]').is(":checked");
+		console.log("chk1의 상태 : " + chk1);
+		console.log("chk2의 상태 : " + chk2);
 		
 		if(chk1 == false){
 			  alert("과세유형을 선택해주세요.");
-			    return false;
-		}else if(chk2 == false){
+			  chk1 = false;
+		} else if(chk1 == true){
+			chk1 = true;
+		}  
+			
+		if(chk2 == false){
 			 alert("면세여부를 선택해주세요.");
-			    return false;
+			 chk2 = false;
+		} else if(chk2 == true){
+			chk2 = true;
 		}
+		
+		if(chk1 == true && chk2 == true){
+			return true;
+		} else {
+			return false;
+		}
+		
+		
 		/* if(!$(':input:radio[name=optradio2]:checked').val()) {
 		    alert("과세유형을 선택해주세요.");
 		    return false;
@@ -273,6 +289,7 @@
 							&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
 							&& loginUser.getOday() != null && loginUser.getCaddress() != null 
 							&& loginUser.getNotax_yn() != null) {
+						
 						System.out.println("실행됨");
 				%>
 				<table class="table table-condensed">
@@ -297,6 +314,8 @@
 										System.out.println("tel : " + t);
 									}
 									String[] caddress = loginUser.getCaddress().split("/");
+									String[] csp = caddress[1].split(" ");
+									String tof = csp[1].substring(0, csp[1].length() -1) + "세무서";
 									for (String t : caddress) {
 										System.out.println("caddress : " + t);
 									}
@@ -394,7 +413,7 @@
 								name="wname" value="<%=loginUser.getWname()%>" required>			
 							  </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"></td>
+							<td class="col-md-4"><input type="text" class="form-control" value="<%= tof %>"></td>
 
 						</tr>
 						<tr>
@@ -404,6 +423,7 @@
 									<div class="col-md-12">
 										<%
 											if (loginUser.getTaxType() == "일반과세자") {
+											System.out.println("과세유형 : " + loginUser.getTaxType());
 										%>
 										<div class="radio col-md-6">
 											<label><input type="radio" name="optradio2" checked>일반과세자</label>
@@ -611,11 +631,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio"
+											<label><input type="radio" name="optradio2"
 												value="일반과세자" id="nomal">일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio"
+											<label><input type="radio" name="optradio2"
 												value="간이과세자" id="ease">간이과세자</label>
 										</div>
 									</div>
@@ -626,15 +646,15 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio2" id="tax"
+											<label><input type="radio" name="optradio3" id="tax"
 												value="과세">과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" id="df"
+											<label><input type="radio" name="optradio3" id="df"
 												value="면세">면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" id="tdf"
+											<label><input type="radio" name="optradio3" id="tdf"
 												value="과면세">과세+면세</label>
 										</div>
 									</div>
