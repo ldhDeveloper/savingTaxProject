@@ -38,7 +38,9 @@
 }
 
 .slide-background {
+
 	background: #234;
+
 	height: 550px;
 	padding-top: 70px;
 }
@@ -324,7 +326,7 @@
 
 		<% if(loginUser != null) { %>
 		<div class="menu-btn" style="background: #10aaff;" id="border6"
-			onclick="location.href='/jsmi/views/main1/costGuide/payView.jsp'">
+			onclick="location.href='/jsmi/views/main1/costGuide/costGuide.jsp'">
 			<img src="/jsmi/images/cost.png" class="menu-img">
 		</div>
 		<% } else { %>

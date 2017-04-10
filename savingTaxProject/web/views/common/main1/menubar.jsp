@@ -3,7 +3,9 @@
 
 <%@ page import="member.model.vo.Party"%>
 
-<% Party loginUser = (Party) session.getAttribute("loginUser"); %>
+<%
+	Party loginUser = (Party) session.getAttribute("loginUser");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -21,30 +23,30 @@
 <title>Perfect Partners for Your Saving-Tax</title>
 <style type="text/css">
 #xs-logout {
-	position: fixed;
-	left: 85%;
-	margin-top: 80px;
-	z-index: 1;
+   position: fixed;
+   left: 85%;
+   margin-top: 80px;
+   z-index: 1;
 }
 
 .xstd {
-	text-align: center;
-	background: #3f3f3f;
-	border: 3px solid #222;
-	border-radius: 1em;
-	width: 50%
+   text-align: center;
+   background: #3f3f3f;
+   border: 3px solid #222;
+   border-radius: 1em;
+   width: 50%
 }
 
 .xstd>a {
-	text-decoration: none;
-	color: white;
-	padding: 1.2em;
-	display: block;
-	height: 4em;
+   text-decoration: none;
+   color: white;
+   padding: 1.2em;
+   display: block;
+   height: 4em;
 }
 
 element.style {
-	
+   
 }
 
 color
@@ -63,23 +65,23 @@ none
 
 }
 .mobile {
-	background: #8f8f8f;
-	margin-top: 0px;
+   background: #8f8f8f;
+   margin-top: 0px;
 }
 
 .xstd:hover {
-	background: orange;
+   background: orange;
 }
 
 .middle {
-	background: white;
-	width: 970px;
-	margin-left: auto;
-	margin-right: auto;
+   background: white;
+   width: 970px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .middle table {
-	
+   
 }
 
 background
@@ -89,86 +91,84 @@ background
 
 }
 .middle table td {
-	padding-top: 0px;
-	padding-bottom: 0px;
+   padding-top: 0px;
+   padding-bottom: 0px;
 }
 
 .full-bar {
-	width: 100%;
-	height: 40px;
-	background: #2a82a3;
+   width: 100%;
+   height: 40px;
+   background: #2a82a3;
 }
 
 .menu ul {
-	list-style-type: none;
+   list-style-type: none;
 }
 
 .menu ul li {
-	width: 155px;
-	height: 40px;
-	float: left;
-	position: relative;
-	padding: auto;
-	margin: 0px;
-	font-family: Binggrae;
+   width: 155px;
+   height: 40px;
+   float: left;
+   position: relative;
+   padding: auto;
+   margin: 0px;
+   font-family: Binggrae;
 }
 
 .menu ul li a {
-	display: block;
-	position: relative;
-	z-index: 1000;
-	text-decoration: none;
-	text-align: center;
-	color: white;
-	height: 40px;
-	line-height: 40px;
+   display: block;
+   position: relative;
+   z-index: 1000;
+   text-decoration: none;
+   text-align: center;
+   color: white;
+   height: 40px;
+   line-height: 40px;
 }
 
 .menu ul li a:hover {
-	background: orange;
+   background: orange;
 }
 
 .menu ul li ul {
-	display: none;
-	position: relative;
-	left: -40px;
+   display: none;
+   position: relative;
+   left: -40px;
 }
 
 .menu ul li ul a {
-	background: #2a82a3;
-	position: relative;
+   background: #2a82a3;
+   position: relative;
 }
 
 .welcome {
-	width:800px;
-	margin-left:auto;
-	margin-right:auto;
-	position: relative;
-	top:-35px;
-	text-align:right;
-	margin-bottom:-35px;
+   width:800px;
+   margin-left:auto;
+   margin-right:auto;
+   position: relative;
+   top:-35px;
+   text-align:right;
+   margin-bottom:-35px;
 }
 .gradephoto{
-	position:relative;
-	top:-3px;
-	left:-5px;
+   position:relative;
+   top:-3px;
+   left:-5px;
 }
 /*  .menu ul li:hover ul a{
    opacity:3;
 }  */
 </style>
 <script type="text/javascript">
-$(function(){
-		$('.menuList > li > a').mouseover(function(){
+	$(function() {
+		$('.menuList > li > a').mouseover(function() {
 			$(this).siblings('.sub-menu').css("display", "block");
 		})
-		$('.menuList li').mouseleave(function(){
+		$('.menuList li').mouseleave(function() {
 			$(this).children('.sub-menu').css("display", "none");
 		})
-	
-	})
-	
 
+	})
 </script>
 </head>
 
@@ -178,7 +178,9 @@ $(function(){
 
 	<!--  로고 + 로그인버튼 -->
 
-	<% if(loginUser.getGtype() == null) { %>
+	<%
+		if (loginUser.getGtype() == null) {
+	%>
 	<div class="middle hidden-xs toptop">
 		<table style="width: 970px; height: 50px;">
 			<tr>
@@ -194,11 +196,13 @@ $(function(){
 	</div>
 	<div class="welcome">
 		<img src="/jsmi/images/main1/generalmember.png" width="20px;"
-			class="gradephoto"><%= loginUser.getPname() %>
+			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.
 	</div>
 
-	<% } else { %>
+	<%
+		} else {
+	%>
 	<div class="middle hidden-xs toptop">
 		<table style="width: 970px; height: 50px;">
 			<tr>
@@ -214,10 +218,12 @@ $(function(){
 	</div>
 	<div class="welcome">
 		<img src="/jsmi/images/main1/vipmember.png" width="20px;"
-			class="gradephoto"><%= loginUser.getPname() %>
+			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.
 	</div>
-	<% } %>
+	<%
+		}
+	%>
 	</tr>
 
 	<%-- <tr><td><img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="90%" height="90%"><td>
@@ -258,11 +264,13 @@ $(function(){
 				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">비용안내</a>
 				<ul class="sub-menu">
 						<li><a href='/jsmi/views/main1/costGuide/costGuide.jsp'>비용안내</a></li>
+
 						<li><a
 							href='/jsmi/views/main1/costGuide/payView.jsp'>결제하기</a></li>
 					</ul>
 				</li>
 				
+
 				<li><a href="/jsmi/listview?page=1&boardNo=1">고객센터</a>
 					<ul class="sub-menu">
 						<li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
@@ -298,9 +306,7 @@ $(function(){
 						</button>
 
 
-						<br>
-						<br>
-						<br>
+						<br> <br> <br>
 						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 							<ul class="nav navbar-nav navbar-static-top">
 

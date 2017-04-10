@@ -254,7 +254,7 @@
 							+ loginUser.getNotax_yn());
 					if (loginUser.getCname() != null && loginUser.getPresident() != null && loginUser.getCno() != null
 							&& loginUser.getCstatus() != null && loginUser.getCtype() != null && loginUser.getTel() != null
-							&& loginUser.getOday() != null && loginUser.getCaddress() != null && loginUser.getTaxType() != null
+							&& loginUser.getOday() != null && loginUser.getCaddress() != null 
 							&& loginUser.getNotax_yn() != null) {
 						System.out.println("실행됨");
 				%>
@@ -371,9 +371,12 @@
 
 						</tr>
 						<tr>
-							<td class="col-md-2"><h5>업종코드</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"
-								name="wno" value="<%=loginUser.getWno()%>" required></td>
+							<td class="col-md-2"><h5>업종구분</h5></td>
+							<td class="col-md-4">
+							<%-- <input type="text" class="form-control"
+								name="wname" value="<%=loginUser.getWname()%>" required> --%>
+								
+							  </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 
@@ -565,8 +568,22 @@
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>업종코드</h5></td>
-							<td class="col-md-4"><input type="number"
-								class="form-control" name="wno" id="wno" required></td>
+							<td class="col-md-4">
+							<!-- <input type="number"
+								class="form-control" name="wname" id="wname" required>
+							 -->
+							 <div class="dropdown" id=wnselect>
+    							<button class="btn btn-default dropdown-toggle" name="wname" type="button" value="" data-toggle="dropdown">업종선택
+    							<span class="caret"></span></button>
+    							<ul class="dropdown-menu">
+      								<li><a href="#">전기</a></li>
+      								<li><a href="#">음식점</a></li>
+      								<li><a href="#">제조업</a></li>
+      								<li><a href="#">건설업</a></li>
+      								<li><a href="#">기타</a></li>
+							    </ul>
+							  </div>
+							 </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
 

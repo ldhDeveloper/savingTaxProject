@@ -85,6 +85,10 @@
 	color: purple;
 }
 
+/* .panel-title {
+	font-family: NanumGothicExtraBold !important;
+} */
+
 .taxtable {
 	width: 1104px;
 }
@@ -137,7 +141,6 @@
     height: 40px;
 	font-family: Binggrae !important;
 	background-color : #2a82a3;
-	align: center;
 }
 
 #resetBtn {
@@ -150,11 +153,25 @@
     height: 40px;
 	font-family: Binggrae !important;
 	background-color : #ec971f;
-	align: center;	
 }
 
 .Btnclass {
-	padding-left: 45%;
+	padding-left: 42%;
+}
+
+.selectBtn1 {
+	padding-left: 47%;
+}
+
+.selectBtn2 {
+	border: none;
+	border-radius: 5px;
+	border-color: #d58512;
+	color: white;
+	width: 60px;
+    height: 30px;
+	font-family: Binggrae !important;
+	background-color : #ec971f;
 }
 
 .calTable {
@@ -198,19 +215,6 @@
 	background-color : aliceblue;
 }
 
-/* .panel-heading {
-	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
-	background: -o-linear-gradient(#ffffff, #b0e0e6);
-	background: -moz-linear-gradient(#ffffff, #b0e0e6);
-	background: linear-gradient(#ffffff, #b0e0e6);
-	border: solid 1px #2a82a3;
-	height: 40px;
-	border-radius: 4px;
-	padding-top: 0.8%;
-	font-size: 12pt;
-	box-shadow: 3px 3px 5px silver;
-} */
-
 a:hover { 
 	text-decoration:none;
 }
@@ -223,6 +227,38 @@ a:hover {
 
 #yearlabel h3 {
 	display: inline-block;
+}
+
+.sumTotalTable {
+	background-color : red;
+	color : white;
+}
+
+#selyear {
+	font-family: ssangmunDong !important;
+	color : #2a82a3;
+	font-size: 24pt;
+	
+}
+
+#colbtn1, #colbtn2, #colbtn3, #colbtn4 {
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius-top: 5px;
+	border-radius-left: 5px;
+	border-radius-right: 5px;
+	text-align: center;
+	color: #2a82a3;
+	font-family: ssangmunDong !important;
+	height: 60px;
+	padding-top: 1.7%;
+}
+
+#col1, #col2, #col3, #col4 {
+	font-size: 18pt;
 }
 </style>
 <script>
@@ -288,9 +324,7 @@ a:hover {
 					dyear = dyear + 1;
 					$('#selyear').text(dyear + "년");
 				});							
-			});
-			
-			
+			});			
 		</script>
 		
 		<script type="text/javascript">
@@ -333,6 +367,7 @@ a:hover {
 					var line4_2 = 0;
 					var gita1 = Number($("#gita1").val());
 					var gita2 = Number($("#gita2").val());
+					var localtax = 0.1;
 					
 					for(var i = 1; i <= 7; i++){
 						var indexid = "#income" + i
@@ -385,7 +420,7 @@ a:hover {
 					$("#line4-1").html($("#line3-4").text());
 					
 					for(var i = 1; i <= 3; i++){
-						var indexid = "#segong" + i
+						var indexid = "#segong" + i;
 						line4_2 += Number($(indexid).val());
 						console.log(Number($(indexid).val()));
 					}
@@ -400,8 +435,11 @@ a:hover {
 					
 					$("#line5-4").html(Number($("#line5-1").text()) + gita1 - gita2);
 					
+					$("#line6-1").html(Number($("#line5-1").text()) + gita1 - gita2);
 					
+					$("#line6-2").html(localtax * 100 + ' %');
 					
+					$("#line6-3").html(Number($("#line6-1").text()) - Number($("#line6-1").text()) * localtax);					
 			}
 
 		</script>
@@ -427,24 +465,6 @@ a:hover {
 					</ul>
 				</div>
 			</div>
-			
-			<div class="navbar navbar-default">
-				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li>
-							<a class="tabmenu lactive">
-								총소득세
-							</a>
-						</li>
-						
-						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax3.jsp">
-								소득세계산
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
 
 			<br>
 			<br>
@@ -455,8 +475,11 @@ a:hover {
 				<img id="nextyear" src="/jsmi/images/main2/arrow.png">
 			</div>
 			
-			<div>
-				<button align="center" id="selectBtn">조회</button>
+			<br>
+			<br>
+			
+			<div class="selectBtn1">
+				<button class="selectBtn2">조회</button>
 			</div>
 			
 			<br>
@@ -466,8 +489,8 @@ a:hover {
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn1" style="cursor:pointer">
-						<h4 class="panel-title">
-							<a> 1. 종합 소득 금액</a>
+						<h4 class="panel-title" style="font-size: 17pt;">
+							종합 소득 금액
 						</h4>
 					</div>
 					<div id="collapse1" class="panel-collapse collapse">
@@ -538,8 +561,8 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn2" style="cursor:pointer">
-						<h4 class="panel-title">
-							<a id="col2"> 2. 종합 소득 공제</a>
+						<h4 class="panel-title" style="font-size: 17pt">
+							종합 소득 공제
 						</h4>
 					</div>
 					<div id="collapse2" class="panel-collapse collapse">
@@ -592,8 +615,8 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn3" style="cursor:pointer">
-						<h4 class="panel-title">
-							<a id="col3"> 3. 세액 공제 항목</a>
+						<h4 class="panel-title" style="font-size: 17pt">
+							세액 공제 항목
 						</h4>
 					</div>
 					<div id="collapse3" class="panel-collapse collapse">
@@ -631,8 +654,8 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn4" style="cursor:pointer">
-						<h4 class="panel-title">
-							<a id="col4"> 4. 기타항목</a>
+						<h4 class="panel-title" style="font-size: 17pt">
+							기타항목
 						</h4>
 					</div>
 					
@@ -750,6 +773,18 @@ a:hover {
 							<td align="center" class="sumCalTable"><p id="line5-2"></p></td>
 							<td align="center" class="sumCalTable"><p id="line5-3"></p></td>
 							<td align="center" class="sumTable2"><p id="line5-4"></p></td>
+						</tr>
+						
+						<tr class="lineTable1">
+							<td align="center" class="sumCalTable">차감납부세액</td>
+							<td align="center" class="sumCalTable" colspan="2">지방세</td>
+							<td align="center" class="sumTotalTable">최종납부세액</td>
+						</tr>
+						
+						<tr class="lineTable">
+							<td align="center" class="sumCalTable"><p id="line6-1"></p></td>
+							<td align="center" class="sumCalTable" colspan="2" id="line6-2"></td>
+							<td align="center" class="sumTable2"><p id="line6-3"></p></td>
 						</tr>					 	
 					</table>
 				</div>				

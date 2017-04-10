@@ -23,7 +23,6 @@ public class Party implements java.io.Serializable{
 	private String cstatus;
 	private String position;
 	private Date oday;
-	private int wno;
 	private String taxType;
 	private String notax_yn;
 	private String president;
@@ -35,14 +34,26 @@ public class Party implements java.io.Serializable{
 	private Date rdate;
 	private double irate;
 	private String gtype;
+	private String wname;
 	
 	
 	//private String industrycode;
 	
 	
 	
+	
 	public int getPno() {
 		return pno;
+	}
+
+
+	public String getWname() {
+		return wname;
+	}
+
+
+	public void setWname(String wname) {
+		this.wname = wname;
 	}
 
 
@@ -231,16 +242,6 @@ public class Party implements java.io.Serializable{
 	}
 
 
-	public int getWno() {
-		return wno;
-	}
-
-
-	public void setWno(int wno) {
-		this.wno = wno;
-	}
-
-
 	public String getTaxType() {
 		return taxType;
 	}
@@ -353,13 +354,54 @@ public class Party implements java.io.Serializable{
 
 	public Party(){}
 
+	
+
+	public Party(int pno, String pname, int category, String id, String pwd, String tel, String phone, String email,
+			String birth, String gender, String id_no, String cname, String cno, String paddress, String caddress,
+			String ctype, String cstatus, String position, Date oday, String taxType, String notax_yn, String president,
+			String foreginer_yn, String emp_type, Date join_date, String busi_type, int to_no, Date rdate, double irate,
+			String gtype, String wname) {
+		super();
+		this.pno = pno;
+		this.pname = pname;
+		this.category = category;
+		this.id = id;
+		this.pwd = pwd;
+		this.tel = tel;
+		this.phone = phone;
+		this.email = email;
+		this.birth = birth;
+		this.gender = gender;
+		this.id_no = id_no;
+		this.cname = cname;
+		this.cno = cno;
+		this.paddress = paddress;
+		this.caddress = caddress;
+		this.ctype = ctype;
+		this.cstatus = cstatus;
+		this.position = position;
+		this.oday = oday;
+		this.taxType = taxType;
+		this.notax_yn = notax_yn;
+		this.president = president;
+		this.foreginer_yn = foreginer_yn;
+		this.emp_type = emp_type;
+		this.join_date = join_date;
+		this.busi_type = busi_type;
+		this.to_no = to_no;
+		this.rdate = rdate;
+		this.irate = irate;
+		this.gtype = gtype;
+		this.wname = wname;
+	}
+
 
 	@Override
 	public String toString() {
 		return pno + ", " + pname + ", " + category + ", " + id + ", " + pwd + ", " + tel + ", " + phone + ", " + email
 				+ ", " + birth + ", " + gender + ", " + id_no + ", " + cname + ", " + cno + ", " + paddress + ", "
-				+ caddress + ", " + ctype + ", " + cstatus + ", " + position + ", " + oday + ", " + wno + ", " + taxType
-				+ ", " + notax_yn + ", " + president + ", " + foreginer_yn + ", " + emp_type + ", " + join_date + ", "
+				+ caddress + ", " + ctype + ", " + cstatus + ", " + position + ", " + oday + ", " +  taxType
+				+ ", " + notax_yn + ", " + president + ", " + foreginer_yn + ", " + emp_type + ", " + wname + ", " + join_date + ", "
 				+ busi_type + ", " + to_no + ", " + rdate + ", " + irate + ", " + gtype;
 	}
 	

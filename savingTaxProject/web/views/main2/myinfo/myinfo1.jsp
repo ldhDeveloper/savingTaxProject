@@ -12,7 +12,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
-
 <title>myinfo1</title>
 <style>
 .middle {
@@ -71,94 +70,7 @@
 	margin-right: 10px;
 }
 </style>
-<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#edrop > li > a').click(function() {
-			console.log("Addfda");
-			$('#menu1').html($(this).text() + "<span class='caret'></span>");
-			if ($(this).text() == "직접입력") {
-				$('#email2').val('');
-			} else {
-				$('#email2').val($(this).text());
-			}
-		})
-	})
 
-
-	function checkph() {
-		var str = $('input[name=phone]').val().length;
-		var str2 =$('input[name=phone2]').val().length;
-		console.log(str);
-		if (str == 3) 
-			$('input[name=phone2]').focus();
-		
-		if(str2==4)
-			$('input[name=phone3]').focus();
-	}
-	
-	function checkidno() {
-		var str = $('input[name=idno]').val().length;
-		
-		console.log(str);
-		if (str == 6) 
-			$('input[name=idno2]').focus();
-	}
-	
-	function chk() {
-		var re_idno = /^\d{6}$/;
-		var re_idno2 = /^\d{7}$/;
-		var address = /^[0-9]*$/;
-		var tel = /^[0-9]{2,3}$/;
-		var tel2 = /^[0-9]{3,4}$/;
-		var tel3 = /^[0-9]{4}$/;
-		
-
-		var idno = $('input[name=idno]'), idno2 = $('input[name=idno2]'), address = $('input[name=address]'), 
-		     phone = $('input[name=phone]'), phone2 = $('input[name=phone2]'), phone3 = $('input[name=phone3]');
-		
-
-		if (re_idno.test(idno.val()) != true) {
-			alert("[주민등록번호 입력 오류] 숫자를 6자리 입력해주세요.");
-			idno = "";
-			idno.focus();
-			return false;
-		} 
-		 if (re_idno2.test(idno2.val()) != true) {
-			alert('[주민등록번호 입력 오류] 숫자를 7자리 입력해주세요.');
-			idno2 = "";
-			idno2.focus();
-			return false;
-		} 
-		 if (address.test(address.val()) != true) {
-			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
-			address="";
-			address.focus();
-			return false;
-		}
-		 if (tel.test(phone.val()) != true) {
-			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
-			phone="";
-			phone.focus();
-			return false;
-		}
-		 if (tel2.test(phone2.val()) != true) {
-			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
-			phone2="";
-			phone2.focus();
-			return false;
-		} 
-		 if (tel3.test(phone3.val()) != true) {
-			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
-			phone3="";
-			phone3.focus();
-			return false;
-		} 
-
-		alert('입력성공!');
-	}
-	
-</script>
 </head>
 
 <body style="padding-top: 0px">
@@ -490,6 +402,92 @@
 	<br>
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 
+	<script type="text/javascript">
+	$(function() {
+		$('#edrop > li > a').click(function() {
+			console.log("Addfda");
+			$('#menu1').html($(this).text() + "<span class='caret'></span>");
+			if ($(this).text() == "직접입력") {
+				$('#email2').val('');
+			} else {
+				$('#email2').val($(this).text());
+			}
+		})
+	})
 
+
+	function checkph() {
+		var str = $('input[name=phone]').val().length;
+		var str2 =$('input[name=phone2]').val().length;
+		console.log(str);
+		if (str == 3) 
+			$('input[name=phone2]').focus();
+		
+		if(str2==4)
+			$('input[name=phone3]').focus();
+	}
+	
+	function checkidno() {
+		var str = $('input[name=idno]').val().length;
+		
+		console.log(str);
+		if (str == 6) 
+			$('input[name=idno2]').focus();
+	}
+	
+	function chk() {
+		var re_idno = /^\d{6}$/;
+		var re_idno2 = /^\d{7}$/;
+		var address = /^[0-9]*$/;
+		var tel = /^[0-9]{2,3}$/;
+		var tel2 = /^[0-9]{3,4}$/;
+		var tel3 = /^[0-9]{4}$/;
+		
+
+		var idno = $('input[name=idno]'), idno2 = $('input[name=idno2]'), address = $('input[name=address]'), 
+		     phone = $('input[name=phone]'), phone2 = $('input[name=phone2]'), phone3 = $('input[name=phone3]');
+		
+
+		if (re_idno.test(idno.val()) != true) {
+			alert("[주민등록번호 입력 오류] 숫자를 6자리 입력해주세요.");
+			idno = "";
+			idno.focus();
+			return false;
+		} 
+		 if (re_idno2.test(idno2.val()) != true) {
+			alert('[주민등록번호 입력 오류] 숫자를 7자리 입력해주세요.');
+			idno2 = "";
+			idno2.focus();
+			return false;
+		} 
+		 if (address.test(address.val()) != true) {
+			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
+			address="";
+			address.focus();
+			return false;
+		}
+		 if (tel.test(phone.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone="";
+			phone.focus();
+			return false;
+		}
+		 if (tel2.test(phone2.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone2="";
+			phone2.focus();
+			return false;
+		} 
+		 if (tel3.test(phone3.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone3="";
+			phone3.focus();
+			return false;
+		} 
+
+		alert('입력성공!');
+	}
+	
+</script>		
 </body>
 </html>
