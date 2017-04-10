@@ -258,6 +258,17 @@ label {
 						
 					</tr>
 					<% } %>
+					<tr>
+					<td colspan = "3" align="center">
+					<%if(currentPage <=1){ %>
+					[이전]
+					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+					 <%} for(int p = startPage; p <= endPage; p++){%>
+					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+					 <%} %>
+					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
