@@ -7,9 +7,8 @@
 <title>F&Q page</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -217,7 +216,7 @@
         <div class="fontfamily" align="center">
 			<img src="/jsmi/images/main1/FnQ.png">
 			<h3>절세미인을 처음 이용하시나요?</h3>
-			<h4 style="color: #a9a9a9">처음 오신 분들이 궁금해 하는 점을 모아놨습니다.</h4>
+			<h4 style="color: #a9a9a9 ">처음 오신 분들이 궁금해 하는 점을 모아놨습니다.</h4>
 		</div>
 		<br> <br>
 		

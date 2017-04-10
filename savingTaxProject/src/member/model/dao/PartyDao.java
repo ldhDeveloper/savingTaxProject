@@ -41,7 +41,7 @@ public class PartyDao {
 
 		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
 
-		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
 								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =?";
 
 		try {
@@ -72,7 +72,6 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
@@ -354,7 +353,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
 				+"from party p left join grade g on (p.pno = g.pno) where id = ?";
 				
 		try {
@@ -380,7 +379,6 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
@@ -411,7 +409,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 
-		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, WNO, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
+		String query =  "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate "
 				+"from party p left join grade g on (p.pno = g.pno) where p.pno = ?";
 				
 		try {
@@ -437,7 +435,6 @@ public class PartyDao {
 				p.setCstatus(rset.getString("cstatus"));
 				p.setPosition(rset.getString("position"));
 				p.setOday(rset.getDate("oday"));
-				p.setWno(rset.getInt("wno"));
 				p.setTaxType(rset.getString("taxtype"));
 				p.setNotax_yn(rset.getString("notax_yn"));
 				p.setPresident(rset.getString("president"));
