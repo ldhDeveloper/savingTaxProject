@@ -395,19 +395,19 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
-								<img src="/jsmi/images/slide1.jpg">
+								<img src="/jsmi/images/main1/eventmn6.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/slide4.png">
+								<img src="/jsmi/images/main1/eventmn1.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/slide2.png">
+								<img src="/jsmi/images/main1/eventmn4.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/slide3.png">
+								<img src="/jsmi/images/main1/eventmn2.png">
 							</div>
 						</div>
 

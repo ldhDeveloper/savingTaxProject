@@ -65,7 +65,7 @@ a.thumbnail {
 	<div class="middle hidden-xs">
 		<%if(plist != null){ for(Post p : plist){ %>
 		<div class="thumbnail" style="display: inline-block">
-			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getRefName()%>">
+			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getfName()%>">
 			<img src="/jsmi/images/main1/<%=p.getfName()%>">
 				<div class="caption">
 					<p>이벤트기간 : <%=p.getPostContents() %></p>
@@ -138,7 +138,7 @@ a.thumbnail {
 
 		<div class="row">
 			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn1.png"
+					<a href="#" class="thumbnail caption"> <img src="/jsmi/images/main1/eventmn1.png"
 						class="img-responsive imgsize">
 						<div class="caption">
 							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
