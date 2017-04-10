@@ -60,4 +60,118 @@ public class VatDao {
 		}
 		return dlist;
 	}
+
+	public List<Diary> selectCreditRecord(Connection con, int pno,String year, String quarter) {
+		PreparedStatement pstmt = null;
+		String query = "select * from diary where pno = ? and "
+				+ "ddate between to_date(?, 'yyyymm') and last_day(to_date(?, 'yyyymm' )) and proof_type in ('신용카드', '현금영수증')";
+		ResultSet rset = null;
+		List<Diary> creditRecord = null;
+		String startDate = "";
+		String endDate = "";
+		if(quarter.equals("1")){
+			startDate = year + "01";
+			endDate = year+ "06";
+		}else if(quarter.equals("2")){
+			startDate = year + "07";
+			endDate = year+ "12";
+		}else{
+			startDate = year + "01";
+			endDate = year+ "12";
+		}
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			pstmt.setString(2, startDate);
+			pstmt.setString(3, endDate);
+			rset = pstmt.executeQuery();
+			if(rset !=null){
+				creditRecord = new ArrayList<Diary>();
+				while(rset.next()){
+					Diary d = new Diary();
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	public List<Diary> getCreditRecordCount(Connection con, int pno,String year, String quarter) {
+		PreparedStatement pstmt = null;
+		String query = "select count(*) from diary where pno = ? and "
+				+ "ddate between to_date(?, 'yyyymm') and last_day(to_date(?, 'yyyymm' )) and proof_type in ('신용카드', '현금영수증')";
+		ResultSet rset = null;
+		List<Diary> creditRecord = null;
+		String startDate = "";
+		String endDate = "";
+		if(quarter.equals("1")){
+			startDate = year + "01";
+			endDate = year+ "06";
+		}else if(quarter.equals("2")){
+			startDate = year + "07";
+			endDate = year+ "12";
+		}else{
+			startDate = year + "01";
+			endDate = year+ "12";
+		}
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			pstmt.setString(2, startDate);
+			pstmt.setString(3, endDate);
+			rset = pstmt.executeQuery();
+			if(rset !=null){
+				creditRecord = new ArrayList<Diary>();
+				while(rset.next()){
+					Diary d = new Diary();
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	public List<Diary> getcustomerCount(Connection con, int pno,String year, String quarter) {
+		PreparedStatement pstmt = null;
+		String query = "select count(*) from diary where pno = ? and "
+		+ "ddate between to_date(?, 'yyyymm') and last_day(to_date(?, 'yyyymm' )) and proof_type in ('신용카드', '현금영수증')";
+		ResultSet rset = null;
+		List<Diary> creditRecord = null;
+		String startDate = "";
+		String endDate = "";
+		if(quarter.equals("1")){
+			startDate = year + "01";
+			endDate = year+ "06";
+		}else if(quarter.equals("2")){
+			startDate = year + "07";
+			endDate = year+ "12";
+		}else{
+			startDate = year + "01";
+			endDate = year+ "12";
+		}
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pno);
+			pstmt.setString(2, startDate);
+			pstmt.setString(3, endDate);
+			rset = pstmt.executeQuery();
+			if(rset !=null){
+				creditRecord = new ArrayList<Diary>();
+				while(rset.next()){
+					Diary d = new Diary();
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
 }

@@ -61,13 +61,15 @@ public class VatFormDownServlet extends HttpServlet {
 		String totalinvat= request.getParameter("totalinvat"); taxArr[17] = totalinvat;
 		String totalvat=request.getParameter("totalvat"); taxArr[18] = totalvat;
 		
+		
 		}else{}
 		Party p = new PartyService().selectParty(pno);
-		File taxForm = new VatService().printForm(taxArr, p);
-		
+		String taxForm = new VatService().printForm(taxArr, p);
+		System.out.println(taxForm);
+		System.out.println("시도");
 		
 		if(taxForm != null){
-		response.sendRedirect("filedown?refName=ff.xlsx&fName=taxForm.xslx");
+		response.sendRedirect("filedown?refName="+taxForm+"&fName=taxForm.xslx");
 		}
 		
 	}

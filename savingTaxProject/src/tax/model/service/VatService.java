@@ -32,31 +32,41 @@ public class VatService {
 	
 	
 	
-	public File printForm(String[] taxArr, Party p) {
+	public String printForm(String[] taxArr, Party p) {
 		File form = null;
 		File f = null;
 		try{
 		String path = VatService.class.getResource(".").getPath();
-		
 		form = new File(path + "vat.xlsx");  
 		InputStream inp =  new FileInputStream(form);
 		XSSFWorkbook wb = new XSSFWorkbook(inp);
 		String y = taxArr[0] +"년";
-		insertContent(wb, 0, 7, 3, y);
-		insertContent(wb, 0, 7, 3, taxArr[2]);
+		String term = "";
+		insertContent(wb, 0, 7, 2, y);
+		insertContent(wb, 0, 7, 3, "ss");
 		insertContent(wb, 0, 8, 2, p.getCname());
-		insertContent(wb, 0, 8, 11, p.getPname());
-		insertContent(wb, 0, 8, 15, p.getId_no());
+		insertContent(wb, 0, 8, 11, p.getPname());/*
+		insertContent(wb, 0, 8, 15, p.getId_no().substring(0));
+		insertContent(wb, 0, 8, 16, p.getId_no().substring(1));
+		insertContent(wb, 0, 8, 17, p.getId_no().substring(2));
+		insertContent(wb, 0, 8, 18, p.getId_no().substring(3));
+		insertContent(wb, 0, 8, 19, p.getId_no().substring(4));
+		insertContent(wb, 0, 8, 20, p.getId_no().substring(5));
+		insertContent(wb, 0, 8, 21, p.getId_no().substring(6));
+		insertContent(wb, 0, 8, 22, p.getId_no().substring(7));
+		insertContent(wb, 0, 8, 23, p.getId_no().substring(8));
+		insertContent(wb, 0, 8, 24, p.getId_no().substring(9));
+		insertContent(wb, 0, 8, 25, p.getId_no().substring(10));
+		insertContent(wb, 0, 8, 26, p.getId_no().substring(11));*/
 		insertContent(wb, 0, 9, 2, p.getBirth());
-		insertContent(wb, 0, 10, 11, p.getTel());
-		insertContent(wb, 0, 10, 14, p.getCname());
-		insertContent(wb, 0, 10, 15, p.getPaddress());
+		insertContent(wb, 0, 10, 15, p.getTel());
+		insertContent(wb, 0, 10, 16, p.getPhone());
 		insertContent(wb, 0, 10, 20, p.getPhone());
 		insertContent(wb, 0, 11, 3, p.getCaddress());
 		insertContent(wb, 0, 15, 12, taxArr[2]);
 		insertContent(wb, 0, 15, 18, taxArr[5]);
 		insertContent(wb, 0, 17, 12, taxArr[3]);
-		insertContent(wb, 0, 17, 8, taxArr[6]);
+		insertContent(wb, 0, 17, 18, taxArr[6]);
 		insertContent(wb, 0, 18, 12, taxArr[4]);
 		insertContent(wb, 0, 18, 18, taxArr[6]);
 		insertContent(wb, 0, 23, 12, taxArr[8]);
@@ -70,11 +80,17 @@ public class VatService {
 		insertContent(wb, 0, 35, 12, taxArr[12]);
 		insertContent(wb, 0, 35, 18, taxArr[15]);
 		insertContent(wb, 0, 42, 18, taxArr[18]);
+		insertContent(wb, 0 ,51, 0, p.getCstatus());
+		insertContent(wb, 0, 51, 1, p.getCtype());
+		
+		
 		insertContent(wb, 1, 3, 2, p.getCno());
 		insertContent(wb, 1, 16, 8, taxArr[12]);
 		insertContent(wb, 1, 16, 11, taxArr[15]);
 		insertContent(wb, 1, 18, 8, taxArr[2]);
 		insertContent(wb, 1, 18, 11, taxArr[2]);
+		
+		
 		f = new File("C:\\Users\\mogong\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\ff.xlsx");
 		FileOutputStream fileOut = new FileOutputStream( f);
 		wb.write(fileOut);
@@ -84,7 +100,7 @@ public class VatService {
 		}catch(Exception e){
 			e.printStackTrace();
 			}		
-		return f;
+		return "ff.xlsx";
 	}
 	public void insertContent(XSSFWorkbook wb, int s, int r, int c, String content){
 		XSSFSheet sheet = wb.getSheetAt(s);
@@ -92,7 +108,11 @@ public class VatService {
 		XSSFCell cell = row.getCell(c);
 		cell.setCellValue(content);
 	}
-	
+	public List<Diary> selectCreditRecord(int pno, String year, String quarter){
+		Connection con = getConnection();
+		List<Diary> creditRecord = new VatDao().selectCreditRecord(con, pno, year, quarter);
+		return null;
+	}
 
 
 
