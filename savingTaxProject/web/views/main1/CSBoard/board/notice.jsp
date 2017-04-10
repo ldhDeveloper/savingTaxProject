@@ -22,9 +22,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -211,7 +211,7 @@ label {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -324,13 +324,7 @@ label {
 			</div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
@@ -343,14 +337,12 @@ label {
 			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
 		
 
-		<br> <br> <br>
+		<br>
 
 		<div id="searchdiv" align="center">
 			<form action="/jsmi/psearch">
-				<label id="searchLable">SEARCH</label>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<label id="searchLable">SEARCH&nbsp;&nbsp;</label>
+			
 				<input type="text" id="searchTitle" placeholder="검색할 제목을 입력하세요." name="searchTitle"> &nbsp;&nbsp;
 				<input value="<%= currentPage %>" name="page" type="hidden">
 				<input value="<%= boardNo%>" name="boardNo" type="hidden">
@@ -374,13 +366,13 @@ label {
 		<br>
 
 		<div class="tableStart">
-			<table class="tablemd">
+			<table class="tablemd" style="font-size: 1.3em;">
 			
 				
 				
 				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
-					<tr style>
+					<tr >
 						<td class="ttitle tdmd">
 							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
 								<%= p.getPostName() %>
@@ -406,7 +398,7 @@ label {
 			</table>
 		</div>
 		</div>
-		<br> <br> <br> <br> <br> <br> <br>
+		 <br> <br> <br>
 	</div>
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>

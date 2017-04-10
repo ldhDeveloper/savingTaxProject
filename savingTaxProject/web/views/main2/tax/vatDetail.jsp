@@ -445,7 +445,7 @@ font-size : 4em;
 			 gin1vat = gin1/10;
 			 gin2vat = parseInt(gin2 * deem); 
 			 gin3 = gout2;
-			 gin3vat = gout2vat * 0.13;
+			 gin3vat = parseInt(gout2vat * 0.13);
 			 totalin = gin1 + gin2;
 			 totalinvat = gin1vat+gin2vat;
 			 totalvat = totaloutvat - totalinvat - gin3vat;
@@ -488,7 +488,7 @@ font-size : 4em;
 							 in3 += parseInt(jsonArr.tax[i].cost);
 							}  
 							out += parseInt(jsonArr.tax[i].cost); break;
-					case "매출원가" : console.log(i++);
+					case "매출원가" : 
 							in2 += parseInt(jsonArr.tax[i].cost);
 							break; //의제매입세액
 					default : 
@@ -511,13 +511,13 @@ font-size : 4em;
 				
 				outvat = in1 * x;
 				invat1 = in1 * x;
-				invat2 = in2 * deem;
+				invat2 = parseInt(in2 * deem);
 				invat3 = in3 * 0.013;
 				totalinvat = invat1 + invat2+ invat3;
 				totalvat = outvat - totalinvat;
 				//매출세액 계산
 				$("input[name= out"+tnum+"]").val(out);
-				$("input[name= outvat"+tnum+"]").val(outvat);
+				$("input[name= out"+tnum+"vat]").val(outvat);
 				$("input[name=totalout]").val(out);
 				$("input[name=totaloutvat]").val(outvat);
 				//공제세액 계산
@@ -538,7 +538,6 @@ font-size : 4em;
 		    }
 		});
 		}
-		
 		function pyear(){
 		var year = parseInt($("#searchY").text());
 		if (year < <%=day.getYear()+1900%>){
@@ -606,7 +605,12 @@ font-size : 4em;
 				<%}else{%>
 				 {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
 						invat3:invat3, totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
-				<%}%>
+				<%}%>,
+				success : function(data){
+					location.href = "/jsmi/filedown?fName=taxForm&refName="+data;
+					
+				}
+				
 			});	
 		}
 		$(function(){

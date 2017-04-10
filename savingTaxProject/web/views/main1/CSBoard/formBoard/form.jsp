@@ -272,14 +272,7 @@ label {
 
 		<div class="tableStart">
 			<table class="tablemd">
-				<!-- <thead class="theadmd font-family-md-2">
-					<tr>
-						<th class="tno thmd thmdl">번호</th>
-						<th class="ttitle thmd thmdm">제목</th>
-						<th class="tdate thmd thmdr">작성일</th>
-					</tr>
-				</thead> -->
-				
+			
 				
 				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
@@ -315,47 +308,6 @@ label {
 					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
 						</td>
 					</tr>
-				
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! -->
-					<!-- <tr>
-						<td class="tno tdmd">4</td>
-						<td class="ttitle tdmd">질문이 있어요~</td>
-						<td class="twriter tdmd">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							김진항</td>
-						<td class="tdate tdmd">2017-03-25</td>
-					</tr>
-
-					<tr>
-						<td class="tno tdmd">3</td>
-						<td class="ttitle tdmd">질문이 있어요~</td>
-						<td class="twriter tdmd">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;김홍주</td>
-						<td class="tdate tdmd">2017-03-25</td>
-					</tr>
-
-					<tr>
-						<td class="tno tdmd">2</td>
-						<td class="ttitle tdmd">질문이 있어요~</td>
-						<td class="twriter tdmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;이동훈</td>
-						<td class="tdate tdmd">2017-03-25</td>
-					</tr>
-
-					<tr>
-						<td class="tno tdmd">1</td>
-						<td class="ttitle tdmd">질문이 있어요~</td>
-						<td class="twriter tdmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;임성혁</td>
-						<td class="tdate tdmd">2017-03-25</td>
-					</tr> -->
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 				</tbody>
 			</table>
 		</div>
@@ -371,66 +323,82 @@ label {
 
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
+
+
+	
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">세무 Tips</h2>
+		
+			<h3 >
+				<img src="/jsmi/images/rlibrary.png"><br>
+				<br> 세무서식을 위한 <label>양식</label>을 받는 곳입니다.
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">정확한 자료를 제공합니다.</h4>
+		
+
+		<br> 
+
+		<div id="searchdiv" align="center">
+			<form action="/jsmi/psearch">
+				<label id="searchLable">SEARCH&nbsp;&nbsp;</label>
+			
+				<input type="text" id="searchTitle" placeholder="검색할 제목을 입력하세요." name="searchTitle"> &nbsp;&nbsp;
+				<input value="<%= currentPage %>" name="page" type="hidden">
+				<input value="<%= boardNo%>" name="boardNo" type="hidden">
+				<input type="submit" id="submitBtn" value="검색">
+			</form>
 		</div>
 
+		<br> 
+
+		<div id="tlist" style = "width : 100%; ">				
+			<label style ="width: 40%; text-align:center;" >
+			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목
+			</label>
+			
+			<label style = "width: 50%; text-align:right;">
+			작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+			</label>
+		</div>
+		
 		<br>
 
-		<form action=""></form>
-
-		<div class="row">
-			<div class="col-xs-2"></div>
-
-			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
-					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
-				<button class="btn btn-primary btn-xs">검색</button>
-			</div>
-
-			<div class="col-xs-2"></div>
+		<div class="tableStart">
+			<table class="tablemd"  style="font-size: 1.3em;">
+			
+				
+				
+				<tbody class="tbodymd font-family-md-3">
+				<% if(plist != null) for(Post p : plist) { %>
+					<tr >
+						<td class="ttitle tdmd">
+							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
+								<%= p.getPostName() %>
+							</a>
+						</td>
+						<td class="twriter tdmd">
+							<%= p.getpId() %>
+						</td>	
+					</tr>
+						<% } %>
+					<tr>
+					<td colspan = "3" align="center">
+					<%if(currentPage <=1){ %>
+					[이전]
+					 <% } else{%> <a href ="/jsmi/listview?page=<%=currentPage-1%>&boardNo=<%=boardNo%>">[이전]</a>
+					 <%} for(int p = startPage; p <= endPage; p++){%>
+					 <a href="/jsmi/listview?page=<%=p%>&boardNo=<%=boardNo%>"><%=p%>&nbsp;</a>
+					 <%} %>
+					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
-		<br> <br>
-
-
-		<div class="container">
-			<div class="row">
-				<!-- <div class="col-xs-0"></div> -->
-
-				<div class="col-xs-12">
-					<div class="table-responsive">
-						<table class="table table-bordered" id="xstable">
-							<tr class="info font-family-xs-2">
-								<th id="th">번 호</th>
-								<th id="th">제 목</th>
-								<th id="th">작 성 일</th>
-							</tr>
-
-							<tr class="active font-family-xs-3">
-								<td>여기에 값 입력</td>
-								<td>여기에 값 입력</td>
-								<td>여기에 값 입력</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<!-- <div class="col-xs-0"></div> -->
-			</div>
 		</div>
-
-		<br> <br> <br> <br> <br> <br> <br>
+		 <br> <br> <br>
 	</div>
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
