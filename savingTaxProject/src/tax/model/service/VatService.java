@@ -42,8 +42,19 @@ public class VatService {
 		XSSFWorkbook wb = new XSSFWorkbook(inp);
 		String y = taxArr[0] +"년";
 		String term = "";
-		insertContent(wb, 0, 7, 2, y);
-		insertContent(wb, 0, 7, 3, "ss");
+		String date = "";
+		if(taxArr[2].equals("1")){
+			term = "제 1 분기";
+			date =  "1 월 01 일 ~ 6 월 30 일";
+			
+		}else{
+			term = "제 2 분기";
+			date =  "7 월 01 일 ~ 12 월 31 일";
+			
+		}
+		insertContent(wb, 0, 7, 1, y);
+		insertContent(wb, 0, 7, 3, term);
+		insertContent(wb, 0, 7, 7, date);
 		insertContent(wb, 0, 8, 2, p.getCname());
 		insertContent(wb, 0, 8, 11, p.getPname());/*
 		insertContent(wb, 0, 8, 15, p.getId_no().substring(0));

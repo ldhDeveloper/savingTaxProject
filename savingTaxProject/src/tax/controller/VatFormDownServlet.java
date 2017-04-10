@@ -1,10 +1,8 @@
 package tax.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,11 +63,10 @@ public class VatFormDownServlet extends HttpServlet {
 		}else{}
 		Party p = new PartyService().selectParty(pno);
 		String taxForm = new VatService().printForm(taxArr, p);
-		System.out.println(taxForm);
-		System.out.println("시도");
+		response.getWriter().append(taxForm);
 		
-		if(taxForm != null){
-		response.sendRedirect("filedown?refName="+taxForm+"&fName=taxForm.xslx");
+		if(taxForm == null){
+		System.out.println("error occur...");
 		}
 		
 	}
