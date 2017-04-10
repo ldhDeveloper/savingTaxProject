@@ -218,8 +218,8 @@
 							<tbody>
 								<tr class="tabletd">
 									<td class="col-md-2"><h5>직원명</h5></td>
-									<td class="col-md-4"><input type="text"
-										class="form-control" name="empname" id="empname"></td>
+									<td class="col-md-4"><input type="text" class="form-control" name="empname" id="empname"></td>
+										
 									<td class="col-md-2"><h5>직원구분</h5></td>
 									<td class="col-md-4">
 										<div class="row">
@@ -340,7 +340,7 @@
 							</tbody>
 						</table>
 						<div class="row btngr">
-							<button class="btn btn-success" type="submit" id="insert">등록</button>
+							<button class="btn btn-success" type="submit" id="insert" onclick="validate();">등록</button>
 							<button class="btn btn-danger" type="reset">취소</button>
 						</div>
 					</div>
@@ -370,10 +370,10 @@
 								
 								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
 							}
-						},
+						}/* ,
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					       }
+					       } */
 					});
 				}); 
 				
@@ -410,13 +410,26 @@
 								
 								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
 							}
-						},
+						}/* ,
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					       }
+					       } */
 						
 					});
-				});				
+				});
+				
+				function validate() {
+					var wname = $("#empname");
+					var han = /^[가-힣]+$/;
+
+					if (!han.test(wname.value)) {
+						console.log("여기요 : " + wname);
+						alert("문자만 입력하셔야 합니다.");
+						wname.value = "";
+						wname.focus();
+						return;
+					}
+				}
 			</script>
 </body>
 </html>

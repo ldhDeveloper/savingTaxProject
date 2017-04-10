@@ -111,7 +111,7 @@ public class PartyDao {
 		int result = 0;
 		System.out.println(p);
 
-		String query = "insert into party(pno, category, pname, id, pwd, email) values (pno_seq.nextval, 5, ?, ?, ?, ?)";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (seq_pno.nextval, 5, ?, ?, ?, ?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -234,7 +234,7 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "insert into party (pno, pname, category, tel, email, cname,  cno, caddress,  cstatus, ctype, president, busi_type) values (pno_seq.nextval, ?, 4, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into party (pno, pname, category, tel, email, cname,  cno, caddress,  cstatus, ctype, president, busi_type) values (seq_pno.nextval, ?, 4, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -593,7 +593,7 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String query = "insert into party(pno, category, pname, emp_type, id_no, position, join_date, phone, paddress, email) values (pno_seq.nextval, 2, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		String query = "insert into party(pno, category, pname, emp_type, id_no, position, join_date, phone, paddress, email) values (seq_pno.nextval, 2, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		try {
 			pstmt = con.prepareStatement(query);
