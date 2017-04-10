@@ -32,7 +32,7 @@ public class VatService {
 	
 	
 	
-	public String printForm(String[] taxArr, Party p) {
+	public String printGeneralForm(String[] taxArr, Party p) {
 		File form = null;
 		File f = null;
 		try{
@@ -55,25 +55,25 @@ public class VatService {
 		insertContent(wb, 0, 7, 1, y);
 		insertContent(wb, 0, 7, 3, term);
 		insertContent(wb, 0, 7, 7, date);
-		insertContent(wb, 0, 8, 2, p.getCname());
-		insertContent(wb, 0, 8, 11, p.getPname());/*
-		insertContent(wb, 0, 8, 15, p.getId_no().substring(0));
-		insertContent(wb, 0, 8, 16, p.getId_no().substring(1));
-		insertContent(wb, 0, 8, 17, p.getId_no().substring(2));
-		insertContent(wb, 0, 8, 18, p.getId_no().substring(3));
-		insertContent(wb, 0, 8, 19, p.getId_no().substring(4));
-		insertContent(wb, 0, 8, 20, p.getId_no().substring(5));
-		insertContent(wb, 0, 8, 21, p.getId_no().substring(6));
-		insertContent(wb, 0, 8, 22, p.getId_no().substring(7));
-		insertContent(wb, 0, 8, 23, p.getId_no().substring(8));
-		insertContent(wb, 0, 8, 24, p.getId_no().substring(9));
-		insertContent(wb, 0, 8, 25, p.getId_no().substring(10));
-		insertContent(wb, 0, 8, 26, p.getId_no().substring(11));*/
+		insertContent(wb, 0, 8, 3, p.getCname());
+		insertContent(wb, 0, 8, 12, p.getPname()); 
+		insertContent(wb, 0, 8, 15, String.valueOf(p.getCno().charAt(0)));
+		insertContent(wb, 0, 8, 16, String.valueOf(p.getCno().charAt(1)));
+		insertContent(wb, 0, 8, 17, String.valueOf(p.getCno().charAt(2)));
+		insertContent(wb, 0, 8, 18, String.valueOf(p.getCno().charAt(3)));
+		insertContent(wb, 0, 8, 19, String.valueOf(p.getCno().charAt(4)));
+		insertContent(wb, 0, 8, 20, String.valueOf(p.getCno().charAt(5)));
+		insertContent(wb, 0, 8, 21, String.valueOf(p.getCno().charAt(6)));
+		insertContent(wb, 0, 8, 22, String.valueOf(p.getCno().charAt(7)));
+		insertContent(wb, 0, 8, 23, String.valueOf(p.getCno().charAt(8)));
+		insertContent(wb, 0, 8, 24, String.valueOf(p.getCno().charAt(9)));
+		insertContent(wb, 0, 8, 25, String.valueOf(p.getCno().charAt(10)));
+		insertContent(wb, 0, 8, 26, String.valueOf(p.getCno().charAt(11)));
 		insertContent(wb, 0, 9, 2, p.getBirth());
 		insertContent(wb, 0, 10, 15, p.getTel());
-		insertContent(wb, 0, 10, 16, p.getPhone());
 		insertContent(wb, 0, 10, 20, p.getPhone());
 		insertContent(wb, 0, 11, 3, p.getCaddress());
+		insertContent(wb, 0, 11, 17, p.getEmail());
 		insertContent(wb, 0, 15, 12, taxArr[2]);
 		insertContent(wb, 0, 15, 18, taxArr[5]);
 		insertContent(wb, 0, 17, 12, taxArr[3]);
@@ -107,7 +107,6 @@ public class VatService {
 		wb.write(fileOut);
 		fileOut.flush();
 		fileOut.close();
-	System.out.println(f.getName());
 		}catch(Exception e){
 			e.printStackTrace();
 			}		
@@ -131,6 +130,27 @@ public class VatService {
 		Connection con = getConnection();
 		List<Diary> Vlist = new VatDao().selectVlist(con, write_pno, year, quarter);
 		return Vlist;
+	}
+	public String printSimpleForm(String[] taxArr, Party p) {
+		File form = null;
+		File f = null;
+		try{
+		String path = VatService.class.getResource(".").getPath();
+		form = new File(path + "simpleVat.xlsx");  
+		InputStream inp =  new FileInputStream(form);
+		XSSFWorkbook wb = new XSSFWorkbook(inp);
+		String y = taxArr[0] +"년";
+		String date = "1 월 01 일 ~ 12 월 31 일";
+		insertContent(wb, 1, 18, 11, taxArr[2]);
+		f = new File("C:\\Users\\mogong\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\ff.xlsx");
+		FileOutputStream fileOut = new FileOutputStream(f);
+		wb.write(fileOut);
+		fileOut.flush();
+		fileOut.close();
+		}catch(Exception e){
+			e.printStackTrace();
+			}		
+		return "ff.xlsx";
 	}
 	
 	

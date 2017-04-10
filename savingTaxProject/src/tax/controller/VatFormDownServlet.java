@@ -33,10 +33,11 @@ public class VatFormDownServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String [] taxArr = null;
-		
+		String form = "";
 		int pno= Integer.parseInt(request.getParameter("pno"));
 		String year= request.getParameter("year");
 		String quarter= request.getParameter("quarter");
+		Party p = new PartyService().selectParty2(pno);
 		if(!quarter.equals("0")){
 		   taxArr = new String [19];
 		   taxArr[0] = year;
@@ -58,14 +59,30 @@ public class VatFormDownServlet extends HttpServlet {
 		String totalin= request.getParameter("totalin"); taxArr[16] = totalin;
 		String totalinvat= request.getParameter("totalinvat"); taxArr[17] = totalinvat;
 		String totalvat=request.getParameter("totalvat"); taxArr[18] = totalvat;
+		form = new VatService().printGeneralForm(taxArr, p);
 		
+		}else{
+			taxArr = new String[13];
+		String out = request.getParameter("out"); taxArr[0] = out;
+		String outvat = request.getParameter("outvat"); taxArr[1] = outvat;
+		String in1 = request.getParameter("in1"); taxArr[2] = in1;
+		String in2 = request.getParameter("in2"); taxArr[3] = in2;
+		String in3 = request.getParameter("in3"); taxArr[4] = in3;
+		String invat1 = request.getParameter("invat1"); taxArr[5] = invat1;
+		String invat2 = request.getParameter("invat2");  taxArr[6] = invat2;
+		String invat3 = request.getParameter("invat3"); taxArr[7] = invat3;
+		String totalout = request.getParameter("totalout"); taxArr[8] = totalout;
+		String totaloutvat = request.getParameter("totaloutvat"); taxArr[9] = totaloutvat;
+		String totalin = request.getParameter("totalin"); taxArr[10] = totalin;
+		String totalinvat = request.getParameter("totalinvat"); taxArr[1] = totalinvat;
+		String totalvat = request.getParameter("totalvat"); taxArr[12] = totalvat;
+		form = new VatService().printSimpleForm(taxArr, p);
+		}
+		 
 		
-		}else{}
-		Party p = new PartyService().selectParty(pno);
-		String taxForm = new VatService().printForm(taxArr, p);
-		response.getWriter().append(taxForm);
+		response.getWriter().append(form);
 		
-		if(taxForm == null){
+		if(form == null){
 		System.out.println("error occur...");
 		}
 		
