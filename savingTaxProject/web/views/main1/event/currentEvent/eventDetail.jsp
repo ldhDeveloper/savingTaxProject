@@ -11,7 +11,7 @@
 <%@ include file="/views/common/main1/menubar.jsp"%>
 	<!-- PC -->
 	<div class="middle hidden-xs">
-		<img src="/jsmi/images/main1/<%=src%>.png">
+		<img src="/jsmi/images/main1/<%=src%>">
 		
 		
 	</div>
@@ -22,7 +22,7 @@
 	<br>
 	     <div class="row">
 	        <div class="col-xs-12">
-	           <img src="/jsmi/images/main1/<%=src%>xs.png">
+	           <img src="/jsmi/images/main1/<%=src%>">
 	           <hr>
 	        </div>
 	     </div>

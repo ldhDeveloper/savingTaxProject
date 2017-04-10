@@ -39,10 +39,8 @@ public class PostListViewServlet extends HttpServlet {
 
 		int currentPage = 1;
 
-		int limit=0;
-		if (request.getParameter("limit") == null) 
-			 limit = 10;
-		  else 
+		int limit=10;
+		if (request.getParameter("limit") != null) 
 		     limit=Integer.parseInt(request.getParameter("limit"));
 		
 		System.out.println("limit:"+limit);		
@@ -60,7 +58,8 @@ public class PostListViewServlet extends HttpServlet {
 
 		int maxPage = (int) ((double) listCount / limit + 0.9);
 
-		int endPage = startPage + limit - 1;
+		int endPage = startPage + limit - 1; 
+		
 
 		if (maxPage < endPage)
 			endPage = maxPage;

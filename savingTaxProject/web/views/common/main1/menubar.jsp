@@ -254,9 +254,9 @@ background
 						<li><a href="/jsmi/views/main1/function/function2.jsp">절세미인의
 								장점</a></li>
 					</ul></li>
-				<li><a href='/jsmi/listview?boardNo=6&page=1'>이벤트</a>
+				<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>이벤트</a>
 					<ul class="sub-menu">
-						<li><a href='/jsmi/listview?boardNo=6&page=1'>진행중인 이벤트</a></li>
+						<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인 이벤트</a></li>
 						<li><a
 							href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난
 								이벤트</a></li>
@@ -363,10 +363,10 @@ background
 											<table width="100%">
 												<tr>
 													<td class="xstd"><a
-														href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'>진행중인
+														href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인
 															이벤트</a></td>
 													<td class="xstd"><a
-														href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난
+														href='/jsmi/views/main1/event/postEvent/postEventView.jsp''>지난
 															이벤트</a></td>
 												</tr>
 											</table>
@@ -388,12 +388,12 @@ background
 													<td class="xstd"><a
 														href="/jsmi/listview?page=1&boardNo=1">공지사항</a></td>
 													<td class="xstd"><a
-														href="/jsmi/views/main1/CSBoard/taxNews/taxNews.jsp">세금소식</a>
+														href="/jsmi/listview?page=1&boardNo=2">세금소식</a>
 													</td>
 												</tr>
 												<tr>
 													<td class="xstd"><a
-														href="/jsmi/views/main1/CSBoard/taxTip/taxTip.jsp">세무팁</a>
+														href="jsmi/listview?page=1&boardNo=3">세무팁</a>
 													</td>
 													<td class="xstd"><a
 														href="/jsmi/views/main1/CSBoard/FnQ/FnQ.jsp">자주 묻는 질문</a>
@@ -401,9 +401,9 @@ background
 												</tr>
 												<tr>
 													<td class="xstd"><a
-														href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp">궁금한 것이
+														href="/jsmi/listview?page=1&boardNo=4">궁금한 것이
 															있어요</a></td>
-													<td class="xstd"><a href="">서식 자료실</a></td>
+													<td class="xstd"><a href="/jsmi/listview?page=1&boardNo=5">서식 자료실</a></td>
 												</tr>
 											</table>
 										</li>
