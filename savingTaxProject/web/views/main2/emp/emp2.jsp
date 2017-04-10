@@ -163,7 +163,7 @@ th {
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size:30pt;
+	font-size: 25pt;
 }
 
 .tabletd {
@@ -467,8 +467,8 @@ th {
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table table-condensed">
-							<tbody id="searchtable">
-								<tr class="tabletd">
+							<tbody class="tabletd" id="searchtable">
+								<tr>
 									<th>직원명</th>
 									<th>주민번호</th>
 									<th>부서명</th>
@@ -539,10 +539,11 @@ th {
 									<td>&nbsp;</td>
 
 								</tr>
-
 							</tbody>
 						</table>
-						<ul class="pagination" style="float: right; margin-bottom: 30px;">
+						
+						<br><br>
+						<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
 							<li><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
@@ -552,6 +553,8 @@ th {
 					</div>
 				</div>
 			</div>
+			
+			<br>
 
 			<h3 align="center" style="margin-top: 30px;" class="h3class">급여 입력</h3>
 			<div class="emp-table">
@@ -566,6 +569,8 @@ th {
 									<td>주민등록번호</td>
 									<td>부서명</td>
 									<td>직급</td>
+									
+									
 
 								</tr>
 								<tr>

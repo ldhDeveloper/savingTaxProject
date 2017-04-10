@@ -69,7 +69,6 @@
 
 .side {
 	width: 200px;
-	position:
 }
 
 .tabmenu {
@@ -93,7 +92,7 @@
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size:30pt;
+	font-size: 25pt;
 }
 
 .tabletd {
@@ -101,30 +100,6 @@
 }
 
 </style>
-
-<script type="text/javascript">
-	function validate(){
-		var re = [0-9];
-		
-		var tel1 = $("input[name=tel1]").val();
-		var tel2 = $("input[name=tel2]").val();
-		var tel3 = $("input[name=tel3]").val();
-		
-		if(!re.test(name.tel1())){
-			alert="숫자를 입력하세요"
-		}
-		
-		if(!re.test(name.tel2())){
-			alert="숫자를 입력하세요"
-		}
-		
-		if(!re.test(name.tel3())){
-			alert="숫자를 입력하세요"
-		}
-		
-		
-	}
-</script>
 
 </head>
 <body style="padding-top: 0px">
@@ -139,7 +114,6 @@
 		</div>
 		
 		<div class="section">
-			<form action="" onsubmit="return validate();">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="navbar navbar-default">
@@ -162,8 +136,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
-						<tbody id="emptable">
-							<tr class="tabletd">
+						<tbody class="tabletd" id="emptable">
+							<tr>
 								<th>직원명</th>
 								<th>직원구분</th>
 								<th>직급</th>
@@ -226,7 +200,7 @@
 
 						</tbody>
 					</table>
-					<ul class="pagination" style="float: right; margin-bottom: 30px;">
+					<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
 						<li><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
@@ -245,7 +219,7 @@
 								<tr class="tabletd">
 									<td class="col-md-2"><h5>직원명</h5></td>
 									<td class="col-md-4"><input type="text"
-										class="form-control" name="empname"></td>
+										class="form-control" name="empname" id="empname"></td>
 									<td class="col-md-2"><h5>직원구분</h5></td>
 									<td class="col-md-4">
 										<div class="row">
@@ -371,11 +345,7 @@
 						</div>
 					</div>
 				</div>
-
-
-			</form>
 		</div>
-
 
 	</div>
 	<br>
@@ -440,10 +410,10 @@
 								
 								$("#emptable").html($("#emptable").html() + "<tr><td>" + decodeURIComponent(jsonArr.emplist[i].empname) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].emptype) + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].position) + "</td><td>" + jsonArr.emplist[i].hiredate + "</td><td>" + jsonArr.emplist[i].phone + "</td><td>" + decodeURIComponent(jsonArr.emplist[i].empadd).split("+").join(" ") + "</td><td>" + jsonArr.emplist[i].email + "</td><td><input type='hidden' value='" + jsonArr.emplist[i].emppno +"'></td></tr>");
 							}
-						}/* ,
+						},
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					       } */
+					       }
 						
 					});
 				});				
