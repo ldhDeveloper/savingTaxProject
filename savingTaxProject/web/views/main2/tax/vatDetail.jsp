@@ -228,10 +228,10 @@ font-size : 4em;
 			<table class = "table table-condensed">
 			<tr>
 					<td colspan="2">납부할 총 부가가치세액</td>
-					<td> &nbsp;</td>
+					<td> &nbsp;</td><td> &nbsp;</td>
 					<td>세액 :<input name="totalvat" type="number" readonly>
 						원
-					</td>
+					</td><td><button onclick="print();">문서로 받기</button> </td>
 				</tr>
 			</table>
 			<%}else{ //간이과세자 처리용 테이블%>
@@ -311,14 +311,16 @@ font-size : 4em;
 			<table class = "table table-condensed">
 			<tr>
 					<td colspan="2">납부할 총 부가가치세액</td>
-					<td>&nbsp;</td>
+					
 					<td>세액 :<input name="totalvat" type="number" readonly>
 						원
 					</td>
+					<td><button onclick="print();">문서로 받기</button> </td>
 				</tr>
 			</table>
 			<%} %>
 			</fieldset>
+			</div>
 			<script type="text/javascript">
 			//서식 출력시 들어가야되는 변수들
 			
@@ -416,7 +418,8 @@ font-size : 4em;
 								case "신용카드매출전표" : 
 								case "현금영수증" : 	
 												gout2 += parseInt(jsonArr.tax[i].cost); break;
-								default : gout3 += parseInt(jsonArr.tax[i].cost); break;
+								default : 
+									gout3 += parseInt(jsonArr.tax[i].cost); break;
 								}  break;
 					case "매출원가" : if("<%=loginUser.getCtype()%>")
 									gin2 +=  parseInt(jsonArr.tax[i].cost); break;	
@@ -438,13 +441,13 @@ font-size : 4em;
 			 gout2vat = gout2/10;
 			 gout3vat =gout3/10;
 			 totalout = gout1 +gout2 +gout3;	
-			 totaloutvat = gtotalout/10;
-			 gin1vat = gin/10;
-			 gin2vat = gin2 * deem; 
+			 totaloutvat = totalout/10;
+			 gin1vat = gin1/10;
+			 gin2vat = parseInt(gin2 * deem); 
 			 gin3 = gout2;
 			 gin3vat = gout2vat * 0.13;
 			 totalin = gin1 + gin2;
-			 totalinvat = totalin/10;
+			 totalinvat = gin1vat+gin2vat;
 			 totalvat = totaloutvat - totalinvat - gin3vat;
 			
 			$("input[name=out1]").val(gout1);
@@ -457,6 +460,8 @@ font-size : 4em;
 			$("input[name=totaloutvat]").val(totalout/10);
 			$("input[name=in1]").val(gin1);
 			$("input[name=invat1]").val(gin1vat);
+			$("input[name=in2]").val(gin2);
+			$("input[name=invat2]").val(gin2vat);
 			$("input[name=totalin]").val(totalin);
 			$("input[name=totalinvat]").val(totalinvat); 
 			$("input[name=in3]").val(gin3);
@@ -555,7 +560,6 @@ font-size : 4em;
 			quarter = 2;
 		}
 		function print(){
-			
 			 /*
 			 일반과세자
 			 gout1   //세금계산서분
@@ -564,7 +568,6 @@ font-size : 4em;
 			 gout2vat  
 			 gout3  	// 기타 분
 			 gout3vat 
-		
 			//매입
 			 gin1 //세금계산서분
 			 gin1vat
@@ -590,21 +593,19 @@ font-size : 4em;
 			 totalin  //매입총함
 			 totalinvat 
 			 totalvat */
-		
-		
-			
-		
+
 			$.ajax({
-				url  = "/jsmi/downform",
-				type = "post",
+				url  : "/jsmi/downform",
+				type : "post",
+				data : 	
 				<%if (loginUser.getTaxType().equals("일반과세자")) {%>
-				data = 		{pno:pno, year:year, quarter:quarter, gout1:gout1, gout1vat:gout1vat, gout2:gout2,
-						gout2vat:goutvat2, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, 
+					{pno:pno, year:year, quarter:quarter, gout1:gout1, gout1vat:gout1vat, gout2:gout2,
+						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, 
 						gin2:gin2, gin2vat:gin2vat, gin3:gin3, gin3vat:gin3vat,
 						totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}else{%>
-				data = {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
-						invat3:invat3, totalout:totalout, totaloutvat:totaloutva, totalin:totalin: totalinvat:totalinvat, totalvat:totalvat}
+				 {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
+						invat3:invat3, totalout:totalout, totaloutvat:totaloutva, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}%>
 			});	
 		
