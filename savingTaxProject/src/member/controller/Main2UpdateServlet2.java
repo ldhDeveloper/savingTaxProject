@@ -56,7 +56,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		String caddress = request.getParameter("caddress");
         String caddress2=request.getParameter("caddress2");
         String caddress3=request.getParameter("caddress3");
-        int wno=Integer.parseInt(request.getParameter("wno"));
+        String wname=request.getParameter("wname");
         //관할세무서 뺌
 		String taxtype=request.getParameter("optradio");//과세유형
 		String notax_yn=request.getParameter("optradio2");//면세여부
@@ -78,7 +78,7 @@ public class Main2UpdateServlet2 extends HttpServlet {
 		 party.setTel(Tel);
 		 party.setOday(Oday);
 		 party.setCaddress(Caddress);
-		 party.setWno(wno);
+		 party.setWname(wname);
 		 party.setTaxType(taxtype);
 		 party.setNotax_yn(notax_yn);
 		 party.setIrate(irate);
