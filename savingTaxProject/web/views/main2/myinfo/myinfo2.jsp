@@ -213,6 +213,23 @@
 		    return false;
 		} */
 	}
+	
+	$(function(){
+		$('#wnselect ul li a').click(function(){
+  			$('button[name=wselect]').html($(this).text() + "<span class='caret'></span>");
+  			$('button[name=wselect]').val($(this).text());
+  			$('#wname').val($(this).text());
+  		});
+		
+		$('#address2').focusout(function(){
+			console.log("아웃됨");
+			var add = $('#address1').val();
+			var splitadd = add.split(' ');
+			var city = splitadd[1].substring(0, splitadd[1].length -1) + "세무서";
+			$('#taxoffice').val(city);
+		});
+	})
+
 </script>
 
 </head>
@@ -373,9 +390,8 @@
 						<tr>
 							<td class="col-md-2"><h5>업종구분</h5></td>
 							<td class="col-md-4">
-							<%-- <input type="text" class="form-control"
-								name="wname" value="<%=loginUser.getWname()%>" required> --%>
-								
+							 <input type="text" class="form-control"
+								name="wname" value="<%=loginUser.getWname()%>" required>			
 							  </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"></td>
@@ -552,7 +568,7 @@
 							<td class="col-md-2"><div
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" id="postnum"
-										name="caddress" maxlength="5" required>
+										name="caddress" maxlength="5" readonly required>
 								</div></td>
 							<td class="col-md-8" colspan="2"><input type=button
 								class="btn btn-primary" value="우편번호검색"
@@ -561,7 +577,7 @@
 						<tr>
 							<td class="col-md-2">&nbsp;</td>
 							<td class="col-md-4"><input type="text" class="form-control"
-								id="address1" name="caddress2" required></td>
+								id="address1" name="caddress2" readonly required></td>
 							<td class="col-md-6" colspan="2"><input type="text"
 								class="form-control" id="address2" name="caddress3" required></td>
 
@@ -569,11 +585,12 @@
 						<tr>
 							<td class="col-md-2"><h5>업종코드</h5></td>
 							<td class="col-md-4">
-							<!-- <input type="number"
-								class="form-control" name="wname" id="wname" required>
-							 -->
-							 <div class="dropdown" id=wnselect>
-    							<button class="btn btn-default dropdown-toggle" name="wname" type="button" value="" data-toggle="dropdown">업종선택
+							<div class="col-md-6" id="wnameform">
+							<input type="text"
+								class="form-control" name="wname" id="wname" readonly required >
+							 </div>
+							 <div class="dropdown" id=wnselect class="col-md-6">
+    							<button class="btn btn-default dropdown-toggle" name="wselect" type="button" value="" data-toggle="dropdown">업종선택
     							<span class="caret"></span></button>
     							<ul class="dropdown-menu">
       								<li><a href="#">전기</a></li>
@@ -585,7 +602,7 @@
 							  </div>
 							 </td>
 							<td class="col-md-2"><h5>관할세무서</h5></td>
-							<td class="col-md-4"><input type="text" class="form-control"></td>
+							<td class="col-md-4"><input type="text" class="form-control" id="taxoffice" readonly></td>
 
 						</tr>
 						<tr>
