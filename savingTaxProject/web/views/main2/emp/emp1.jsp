@@ -218,7 +218,7 @@
 							<tbody>
 								<tr class="tabletd">
 									<td class="col-md-2"><h5>직원명</h5></td>
-									<td class="col-md-4"><input type="text" class="form-control" name="empname" id="empname"></td>
+									<td class="col-md-4"><input type="text" class="form-control" name="empname" id="empname" maxlength="10"></td>
 										
 									<td class="col-md-2"><h5>직원구분</h5></td>
 									<td class="col-md-4">
@@ -419,17 +419,12 @@
 				});
 				
 				function validate() {
-					var wname = $("#empname");
-					var han = /^[가-힣]+$/;
+					var wname = $("#empname").val();
 
-					if (!han.test(wname.value)) {
-						console.log("여기요 : " + wname);
-						alert("문자만 입력하셔야 합니다.");
-						wname.value = "";
-						wname.focus();
-						return;
-					}
+					if(!/^[가-힝]{1,}$/, wname, "한글로 2글자 이상을 넣으세요~")
+			               return false;
 				}
 			</script>
 </body>
 </html>
+
