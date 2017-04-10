@@ -315,7 +315,7 @@ font-size : 4em;
 					<td>세액 :<input name="totalvat" type="number" readonly>
 						원
 					</td>
-					<td><button onclick="print();">문서로 받기</button> </td>
+					<td><button onclick="print();">과세 관련 신고 서류 다운로드</button> </td>
 				</tr>
 			</table>
 			<%} %>
@@ -593,7 +593,7 @@ font-size : 4em;
 			 totalin  //매입총함
 			 totalinvat 
 			 totalvat */
-
+		
 			$.ajax({
 				url  : "/jsmi/downform",
 				type : "post",
@@ -605,10 +605,9 @@ font-size : 4em;
 						totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}else{%>
 				 {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
-						invat3:invat3, totalout:totalout, totaloutvat:totaloutva, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
+						invat3:invat3, totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}%>
 			});	
-		
 		}
 		$(function(){
 			if(<%=loginUser.getTaxType().equals("일반과세자")%>){
