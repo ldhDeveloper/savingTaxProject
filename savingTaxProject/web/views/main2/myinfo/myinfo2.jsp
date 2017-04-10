@@ -319,6 +319,8 @@
 									for (String t : caddress) {
 										System.out.println("caddress : " + t);
 									}
+									System.out.println("taxtype : " + loginUser.getTaxType());
+									System.out.println("notax_yn : " + loginUser.getNotax_yn());
 							%>
 							<td class="col-md-2"><h5>사업자 등록번호</h5></td>
 							<td class="col-md-4">
@@ -422,7 +424,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<%
-											if (loginUser.getTaxType() == "일반과세자") {
+											if (loginUser.getTaxType().equals("일반과세자")) {
 											System.out.println("과세유형 : " + loginUser.getTaxType());
 										%>
 										<div class="radio col-md-6">
@@ -451,7 +453,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<%
-											if (loginUser.getNotax_yn() == "과세") {
+											if (loginUser.getNotax_yn().equals("과세")) {
 										%>
 										<div class="radio col-md-4">
 											<label><input type="radio" name="optradio3" checked>과세</label>
@@ -463,7 +465,7 @@
 											<label><input type="radio" name="optradio3">과세+면세</label>
 										</div>
 										<%
-											} else if (loginUser.getNotax_yn() == "면세") {
+											} else if (loginUser.getNotax_yn().equals("면세")) {
 										%>
 										<div class="radio col-md-4">
 											<label><input type="radio" name="optradio3">과세</label>

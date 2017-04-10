@@ -8,9 +8,8 @@
 <link href="/jsmi/css/main2/bootstrap.min.css" rel="stylesheet">
 <link href="/jsmi/css/main2/styles.css" rel="stylesheet">
 <link href="/jsmi/css/main2/jquery-ui.css" rel="stylesheet">
-<script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
-<script src="/jsmi/js/main2/lumino.glyphs.js"></script>
-<script src="/jsmi/js/main2/bootstrap.min.js"></script>
+<!-- <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script> -->
+
 <title>장부작성</title>
 <style>
 .middle {
@@ -86,6 +85,8 @@
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
 		</div>
+		<script src="/jsmi/js/main2/lumino.glyphs.js"></script>
+		<script src="/jsmi/js/main2/bootstrap.min.js"></script>
 		<script type="text/javascript">
 		<%if(loginUser != null) {%>
 		var pno = <%= loginUser.getPno() %>;
@@ -242,7 +243,8 @@
 									"</td><td>" + decodeURIComponent(jsonArr.list[i].anm) + "</td><td>" + decodeURIComponent(jsonArr.list[i].product) + "</td><td>" + jsonArr.list[i].cost +
 									"</td><td>" + decodeURIComponent(jsonArr.list[i].billing) + "</td><td>" + decodeURIComponent(jsonArr.list[i].proof_type) + "</td></tr>");
 						}
-						location.href="/jsmi/views/main2/daily/inputdaily.jsp";
+						//location.href="/jsmi/views/main2/daily/inputdaily.jsp";
+						alert("장부 입력에 성공하였습니다.");
 					},
 					error: function(request,status,error){
 				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -292,11 +294,12 @@
 						<script src="/jsmi/js/main2/jquery.js"></script>
 						<script src="/jsmi/js/main2/jquery-ui.js"></script>
 						<script>
-							$("#datepicker").datepicker({
+						jQuery.noConflict(); 
+							jQuery("#datepicker").datepicker({
 								inline : true,
 								onSelect: function(dateText, inst) {
 									var date = new Date($(this).val());
-									var ndate = $.datepicker.formatDate('yy-mm-dd', date);
+									var ndate = jQuery.datepicker.formatDate('yy-mm-dd', date);
 									dailySearch(ndate);
 								}
 							});

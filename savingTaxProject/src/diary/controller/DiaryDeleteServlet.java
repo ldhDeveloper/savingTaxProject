@@ -1,13 +1,20 @@
 package diary.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import diary.model.service.DiaryService;
+import diary.model.vo.Diary;
 
 /**
  * Servlet implementation class DiaryDeleteServlet
@@ -29,20 +36,47 @@ public class DiaryDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
-		String[] dnos = request.getParameterValues("delselect");
-		int result = 0;
+		String[] dnos = request.getParameterValues("delselect[]");
+		System.out.println("dnos : " + dnos);
+		String indate = request.getParameter("ddate");
+		System.out.println("ddate : " + indate);
+		String pno = request.getParameter("pno");
+		System.out.println("pno : " + pno);
+		
 		
 		for(int i=0; i<dnos.length; i++){
 			System.out.println("dnos[" + i + "] : " + dnos[i]);
 			
 		}
 		
-		result = new DiaryService().deleteDiary(dnos);
-		System.out.println(result + "개의 컬럼 삭제");
+		ArrayList<Diary> list = new DiaryService().deleteDiary(dnos, indate, pno);
+		System.out.println("list :" + list);
+		JSONObject json = new JSONObject();
+		JSONArray jarr = new JSONArray();
 		
+		for(Diary dlist : list){
+			System.out.println("dlist : " + dlist);
+			JSONObject jsob = new JSONObject();
+			jsob.put("atype", dlist.getAtype());
+			jsob.put("ddate", dlist.getDdate().toString());
+			jsob.put("pname", dlist.getPname());
+			jsob.put("anm", dlist.getAnm());
+			jsob.put("product", dlist.getProduct());
+			jsob.put("cost", Integer.toString(dlist.getCost()));
+			jsob.put("billing", dlist.getBilling());
+			jsob.put("proof_type", dlist.getProof_type());
+			jarr.add(jsob);
+		}
 		
+		json.put("list", jarr);
+		System.out.println(json);
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-		response.sendRedirect("/jsmi/views/main2/daily/deletedaily.jsp");
+		System.out.println("json 파스내용 : " + json.toJSONString());
+		out.print(json.toJSONString());
+		out.flush();
+		out.close();
 	}
 
 	/**
