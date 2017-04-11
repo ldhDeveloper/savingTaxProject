@@ -63,7 +63,9 @@ public class VatDao {
 
 	public List<Diary> selectCreditRecord(Connection con, int pno,String year, String quarter) {
 		PreparedStatement pstmt = null;
-		String query = "select * from diary where pno = ? and "
+		String query = "select ddate, cname, product, cost, p.pname from"
+				+ " diary d, party p where d.acc_pno = p.pno and pno = ?"
+				+ " and ano= 51 and "
 				+ "ddate between to_date(?, 'yyyymm') and last_day(to_date(?, 'yyyymm' )) and proof_type in ('신용카드', '현금영수증')";
 		ResultSet rset = null;
 		List<Diary> creditRecord = null;

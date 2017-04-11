@@ -41,6 +41,8 @@ public class VatService {
 		File form = null;
 		File f = null;
 		String fileName= "generalVatForm.xlsx";
+		int pno = p.getPno();
+		List<Diary> dlist = selectCreditRecord(pno, taxArr[0], taxArr[1]);
 		try{
 		String path = VatService.class.getResource(".").getPath();
 		form = new File(path + "vat.xlsx");  
@@ -126,7 +128,8 @@ public class VatService {
 	public List<Diary> selectCreditRecord(int pno, String year, String quarter){
 		Connection con = getConnection();
 		List<Diary> creditRecord = new VatDao().selectCreditRecord(con, pno, year, quarter);
-		return null;
+		close(con);
+		return creditRecord;
 	}
 
 
