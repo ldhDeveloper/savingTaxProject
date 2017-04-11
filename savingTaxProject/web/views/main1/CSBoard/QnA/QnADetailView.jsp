@@ -14,9 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -323,7 +323,6 @@ table {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -375,21 +374,31 @@ table {
 				</thead>
 
 				<tbody class="tablemd tbodymd font-family-md-3">
-					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
+							<textarea class="textAreaCon"  name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
-					
+					<tr height = "20px"></tr>
 					
 				</tbody>
 			</table>
 		</div>
-		
+		<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
+					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<script type="text/javascript">
+						function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+					</script>
+					<% }} %>
+					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
+					 class="lastBtns">&nbsp;&nbsp;이  전&nbsp;&nbsp;</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;	
+		</div>
 		<div>
 			<form action = "/jsmi/insertcomment" method = "post">
 			<table class="replyTable">				
@@ -399,7 +408,7 @@ table {
 							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
 						</td>
 						
-						<td class="OreplyBtn">
+						<td class="OreplyBtn" >
 							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
@@ -407,11 +416,13 @@ table {
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록">
+							<input type="submit" class="submitBtns" value="등록"> 
+							<p></p>
+							<input type="reset" class="cancleBtns" value="취소">
 						</td>
 						
-						<td class="OreplyBtn">															
-							<input type="submit" class="cancleBtns" value="취소">
+						<td class="OreplyBtn" style ="width:40%;">															
+							
 						</td>
 					</tr>
 			</table>
@@ -458,54 +469,7 @@ table {
 			</table>
 		</div>
 		
-		<br>
-		
-		<div>
-			<table>
-				<tr>
-				<td align="right">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
-		
-					<button class="updateBtn" onclick="redact();">수정하기</button>
-				
-					<script type="text/javascript">
-						function redact(){
-						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-					}
-					</script>
-			
-					<% }} %>
-				</td>
-
-				<td align="right" >
-					<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="lastBtns">이전</a>	
-				</td>
-				</tr>
-			</table>					
-		</div>
-		
-		<br><br>
-		
-		<div class="tableStart2">
-			<table class="tablemini">
-				<tr>
-					<td class="tdmini1">
-						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
-					<td>
-				</tr>
-				
-				<tr>
-					<td class="tdmini2">
-						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
-					<td>
-				</tr>
-			</table>
-		</div>
-		
-		<br><br>		
-
+		<br><br><br><br>
 	</div>
 
 	<!-- 모바일용 -->

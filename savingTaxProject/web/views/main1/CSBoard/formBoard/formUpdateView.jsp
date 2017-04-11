@@ -13,9 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+.css">
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -291,7 +291,6 @@ border : none;
 							<h3></h3>
 						</td>
 					</tr>
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
 					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
@@ -305,6 +304,7 @@ border : none;
 			</table>
 		</div>
 		</form>
+		</div>
 	<!-- 모바일용 -->
 	<br>
 	<br>

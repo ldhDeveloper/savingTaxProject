@@ -51,7 +51,7 @@ public class PostUpdateViewServlet extends HttpServlet {
 				view = request.getRequestDispatcher("views/main1/CSBoard/QnA/QnAUpdateView.jsp");
 				break;
 		    case 5:
-				view = request.getRequestDispatcher("views/main1/board/boardListView.jsp");
+				view = request.getRequestDispatcher("views/main1/CSBoard/formBoard/formUpdateView.jsp");
 				break;
 			case 6:
 				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");

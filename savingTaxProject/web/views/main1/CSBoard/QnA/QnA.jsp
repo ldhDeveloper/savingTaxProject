@@ -22,9 +22,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -271,7 +271,7 @@ label {
 		<br>
 
 		<div class="tableStart">
-			<table class="tablemd">				
+			<table class="tablemd" style="font-size: 1.3em;" >				
 				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
 					<tr>
@@ -294,6 +294,7 @@ label {
 						
 					</tr>
 						<% } %>
+						<tr height = "20px"></tr>
 					<tr>
 					
 					<td colspan = "3" align="center">
@@ -320,7 +321,13 @@ label {
 				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<!-- 모바일용 -->
 

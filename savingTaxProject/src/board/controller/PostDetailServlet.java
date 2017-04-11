@@ -43,8 +43,10 @@ public class PostDetailServlet extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		int currentPage = Integer.parseInt(request.getParameter("page"));
+		new PostService().addListCount(postNo);
 		Post post =  new PostService().selectPostNo(postNo);
 		List<Post> commentList = new PostService().selectCommentList(postNo);
+		
 		RequestDispatcher view = null;
 		if(post !=null){
 			switch (boardNo) {

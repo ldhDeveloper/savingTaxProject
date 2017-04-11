@@ -14,9 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -351,42 +351,55 @@ table {
 				</thead>
 
 				<tbody class="tablemd tbodymd font-family-md-3">
-					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
+							<textarea class="textAreaCon"  name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
-					
+					<tr height = "20px"></tr>
 					
 				</tbody>
 			</table>
 		</div>
-		
+		<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
+					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<script type="text/javascript">
+						function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+					</script>
+					<% }} %>
+					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
+					 class="lastBtns">&nbsp;&nbsp;이  전&nbsp;&nbsp;</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;	
+		</div>
 		<div>
 			<form action = "/jsmi/insertcomment" method = "post">
 			<table class="replyTable">				
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" value="" name="contents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
 						</td>
 						
-						<td class="OreplyBtn">
-							<input type="submit" class="submitBtns" value="등록">
+						<td class="OreplyBtn" >
+							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-						</td>
-						
-						<td class="OreplyBtn">							
 							<%if(loginUser != null) {%>
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
-							<input type = "hidden" name = "page" value="<%=currentPage%>">	
-							<input type="submit" class="cancleBtns" value="취소">
+							<input type = "hidden" name = "page" value="<%=currentPage%>">
+							<input type="submit" class="submitBtns" value="등록"> 
+							<p></p>
+							<input type="reset" class="cancleBtns" value="취소">
+						</td>
+						
+						<td class="OreplyBtn" style ="width:40%;">															
+							
 						</td>
 					</tr>
 			</table>
@@ -396,58 +409,44 @@ table {
 		<div>					
 			<table class="replyTable">				
 					<tr>
-						<td class="Qreply">
+						<td colspan="4" class="QreplyContent">
 							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<h1></h1>
 						</td>
-						
+					</tr>
+					
+					<tr>						
 						<% if(commentList != null) { for(Post c : commentList) { %>
-						<td class="">
-							<label>작성자</label><%=c.getpId() %>						
+						<td class="Qreplying">
+							작성자						
 						</td>
 						
-						<td class="">
-							<label>작성내용</label><%=c.getPostContents() %>
-							
+						<td class="Qreplying2">
+							<%=c.getpId() %>
 						</td>
 						
-						<td class="">
-							<label>작성일</label><%=c.getPostDate() %>							
+						<td class="Qreplying">
+							작성일							
+						</td>
+						
+						<td class="Qreplying2">
+							<%=c.getPostDate() %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" class="Qreplying">
+							작성내용						
+						</td>
+						
+						<td colspan="2" class="Qreplying2">
+							<%=c.getPostContents() %>
 						</td>
 						<% }} %>
 					</tr>
 			</table>
 		</div>
 		
-		<br>
-		
-		<div>
-			<table>
-				<tr>
-				<td align="right">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
-		
-					<button class="updateBtn" onclick="redact();">수정하기</button>
-				
-					<script type="text/javascript">
-						function redact(){
-						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-					}
-					</script>
-			
-					<% }} %>
-				</td>
-
-				<td align="right" >
-					<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="lastBtns">이전</a>	
-				</td>
-				</tr>
-			</table>
-			
-					
-		</div>
-		
-		<br><br><br>
+		<br><br><br><br>
 		
 		<div class="tableStart2">
 			<table class="tablemini">

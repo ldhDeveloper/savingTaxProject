@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -270,16 +270,6 @@
 
 		<br> <br> <br>
 
-		<!-- <div id="clist">
-			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				제목
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-			</label> 
-			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
-		
 		<h3></h3>
 		
 		<form action="/jsmi/pinsert" method="post" enctype="multipart/form-data">
@@ -336,7 +326,13 @@
 
 		</script>
 	</div>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
 	<!-- 모바일용 -->

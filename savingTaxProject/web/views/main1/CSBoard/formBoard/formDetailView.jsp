@@ -14,9 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -367,7 +367,8 @@ table {
 						<th id="thc"><%=p.getpId() %></th>
 						<th id="thth">조회수</th>
 						<th id="thcS"><%=p.getReadCount()%></th>
-						<th id = "thcS">
+						<th id = "thcS">첨부파일</th>
+						<th style = "width :12%;text-align:center;">
 						<%if(p.getfName() !=null){ %><a href = "/jsmi/filedown?refName=<%=p.getRefName()%>&fName=<%=p.getfName()%>
 						&pno=<%=loginUser.getPno()%>"><%=p.getfName() %></a> </th>
 						
@@ -379,7 +380,7 @@ table {
 				<tbody class="tablemd tbodymd font-family-md-3">
 				
 					<tr>
-						<td colspan="6" class="tdmd" id="ccontents">
+						<td colspan="8" class="tdmd" id="ccontents">
 							<h3></h3>
 							<textarea class="textAreaCon"  name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
@@ -388,9 +389,22 @@ table {
 					
 					
 				</tbody>
+				<tr height = "20px"></tr>
 			</table>
 		</div>
-		
+			<div  style = "text-align:right;">
+					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<script type="text/javascript">
+						function redact(){
+						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
+					}
+					</script>
+					<% }} %>
+					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
+					 class="lastBtns">&nbsp;&nbsp;이  전&nbsp;&nbsp;</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;	
+		</div>
 		<div>
 			<form action = "/jsmi/insertcomment" method = "post">
 			<table class="replyTable">				
@@ -418,7 +432,6 @@ table {
 			</table>
 			</form>
 		</div>
-		
 		<div>					
 			<table class="replyTable">				
 					<tr>
@@ -458,55 +471,8 @@ table {
 					</tr>
 			</table>
 		</div>
-		
 		<br>
-		
-		<div>
-			<table>
-				<tr>
-				<td align="right">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
-		
-					<button class="updateBtn" onclick="redact();">수정하기</button>
-				
-					<script type="text/javascript">
-						function redact(){
-						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
-					}
-					</script>
-			
-					<% }} %>
-				</td>
-
-				<td align="right" >
-					<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" class="lastBtns">이전</a>	
-				</td>
-				</tr>
-			</table>
-			
-					
-		</div>
-		
 		<br><br><br>
-		
-		<div class="tableStart2">
-			<table class="tablemini">
-				<tr>
-					<td class="tdmini1">
-						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw">이전글 제목을 입력하는 공간입니다.</label>
-					<td>
-				</tr>
-				
-				<tr>
-					<td class="tdmini2">
-						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw">다음글 제목을 입력하는 공간입니다.</label> 
-					<td>
-				</tr>
-			</table>
-		</div>
-		
 		<br><br>	
 
 	</div>
