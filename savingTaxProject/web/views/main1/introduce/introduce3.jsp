@@ -27,6 +27,7 @@
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<!-- PC  -->
 	<div class="middle hidden-xs">
+	<img src="/jsmi/images/main1/intro3-1.png">
 	<br><br><br>
 		<div id="map" style="width:500px;height:400px;margin-left:auto;margin-right:auto;"></div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9935be2b8876eed1b9c40f64bc3e06e5"></script>
@@ -76,7 +77,8 @@
 
        
 	</script>
-		<img src="/jsmi/images/main1/intro3.png">
+	<br><br><br>
+		<img src="/jsmi/images/main1/intro3-2.png">
 	</div>
 	<hr>
 	
@@ -86,8 +88,58 @@
 	<div class="col-xs-12">
 	  <br><br>
 	  
+	  <img src="/jsmi/images/main1/introxs3-3.png" class="hidden-sm hidden-md hidden-lg" style="margin: 20px;">
+	  <div id="map2" style="width:350px;height:350px;margin-left:auto;margin-right:auto;"></div>
+		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9935be2b8876eed1b9c40f64bc3e06e5"></script>
 
-		<img src="/jsmi/images/main1/introxs3.png" class="hidden-sm hidden-md hidden-lg" style="margin: 20px;">
+<script>
+		var container = document.getElementById('map2');
+		var options = {
+			center: new daum.maps.LatLng(37.49900997016431, 127.03285210080828),
+			level: 2
+		};
+
+		var map = new daum.maps.Map(container, options);
+		
+		// 지도에 마커를 표시합니다 
+		var marker = new daum.maps.Marker({
+		    map: map, 
+		    position: new daum.maps.LatLng(37.49900997016431, 127.03285210080828)
+		});
+		
+		var content = '<div class="wrap">' + 
+        '    <div class="info">' + 
+        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+        '        <div class="body">' + 
+        '            <div class="img">' +
+        '                <img src="/jsmi/images/logo4.png" width="143" height="50">' +
+        '           </div>' + 
+        '            <div class="desc">' + 
+        '            </div>' + 
+        '        </div>' + 
+        '    </div>' +    
+        '</div>';
+		
+        var overlay = new daum.maps.CustomOverlay({
+            content: content,
+            map: map,
+            position: marker.getPosition()       
+        });
+
+     // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+        var mapTypeControl = new daum.maps.MapTypeControl();
+
+        // 지도 타입 컨트롤을 지도에 표시합니다
+        map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+
+     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new daum.maps.ZoomControl();
+        map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+       
+	</script>
+	<img src="/jsmi/images/main1/introxs3-4.png" class="hidden-sm hidden-md hidden-lg" style="margin: 20px;">
+		<img src="/jsmi/images/main1/introxs3-5.png" class="hidden-sm hidden-md hidden-lg" style="margin: 20px;">
 		<hr>
 	</div>
 	</div>
