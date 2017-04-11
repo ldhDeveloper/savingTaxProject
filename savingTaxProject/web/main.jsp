@@ -369,7 +369,7 @@
 			<% if(loginUser == null) { %>
 			<div class="col-xs-6">
 				<button class="btn btn-warning btn-xs"
-					onclick="location.href='/jsmi/views/main1/member/loginForm.html    '">로그인</button>
+					onclick="location.href='/jsmi/views/main1/member/loginForm.html'">로그인</button>
 				<button class="btn btn-primary btn-xs"
 					onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
 			</div>
