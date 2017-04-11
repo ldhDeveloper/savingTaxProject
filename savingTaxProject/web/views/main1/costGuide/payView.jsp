@@ -144,7 +144,7 @@
 	text-align: left;
 	color: dimgrey;
 	padding-top: 1.5%;
-	padding-left: 43%;
+	padding-left: 41%;
 	padding-bottom: 1.5%;
 }
 
@@ -253,9 +253,66 @@ $(function() {
 </script>
 
 <script type="text/javascript">
-	$(function() {
+$(function() {
+    var x = 0; // 개월
+    var y = <%= Integer.parseInt(request.getParameter("c")) %>;  // 단가
+    
+    $("td[id^=pdateid]").click(function() {
+       var temp = Number($(this).text().substring(0, 1));
+       console.log(temp);
+       x = temp;
+       
+       var result = x * y;
+       
+       var buga = result * 0.1;
+       
+       var total = result + buga;
+
+       $("#x").html(x + "개월");   
+       
+       $('#result').html(MoneySwap1(result));
+       $('#buga').html(MoneySwap1(buga));
+       $('#total').html(MoneySwap1(total));
+       
+       // 원금
+       function MoneySwap1(result){
+          var temp_str = String(result);
+          for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+             retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;            
+          }
+         return $("#result").html(retValue + "원");
+       }
+                      
+    });   
+    
+    $("#calculate").click(function(){
+       var total = $("#total").html();
+       if(total != 0) {
+          $(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total +"&month=" + x);   
+       }
+       
+       else {
+          alert("기간을 선택해 주세요!");
+       }
+    });
+ });
+	<%-- $(function() {
 		var x = 0; // 개월
-		var y = 10000;  // 단가
+		var y = <%= Integer.parseInt(request.getParameter("c")) %>;  // 단가
+		
+		$('#cost1').html(MoneySwap(y));
+		$('#cost2').html(MoneySwap(y));
+		$('#cost3').html(MoneySwap(y));
+		
+		
+		function MoneySwap(result){
+			var temp_str = String(result);
+			for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+				retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+			}
+		  return retValue + "원";
+		}
+		
 		
 		$("#pdateid1").click(function() {
 			x = 1;
@@ -271,6 +328,7 @@ $(function() {
 			MoneySwap1(result);
 			MoneySwap2(buga);
 			MoneySwap3(total);
+			
 			
 			// 원금
 			function MoneySwap1(result){
@@ -783,7 +841,7 @@ $(function() {
 				alert("기간을 선택해 주세요!");
 			}
 		});
-	});
+	}); --%>
 </script>
 
 </head>
@@ -807,22 +865,12 @@ $(function() {
 
 		<br> <br> <br>
 
-		<!-- <div id="clist">
-			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				제목
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-			</label> 
-			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
-
 		<h3></h3>
 			<div class="tableStart">
-				<!-- <table class="tablemd">
+				<table class="tablemd">
 					<thead class="postthead">
 						<tr>
-							<th colspan="5" class="postth">신청내역</th>
+							<th colspan="3" class="postth">신청내역</th>
 						</tr>
 					</thead>
 
@@ -832,34 +880,25 @@ $(function() {
 
 							<td class="plist">단가</td>
 
-							<td class="plist">기간</td>
-
 							<td class="plist">금액</td>
 						</tr>
 
 						<tr>
-							<td class="pcontent pshow">내역이 들어가는 곳내역이 들어가야할 항목</td>
+							<td class="pcontent pshow"><%= request.getParameter("data") %></td>
 
-							<td class="pcontent">돈 들어가는 곳20,000원</td>
+							<td class="pcontent" id="cost1"><%= Integer.parseInt(request.getParameter("c")) %></td>
 
-							<td class="pcontent">개월이 들어가는 곳3개월</td>
-
-							<td class="pcontent">돈 들어가는 곳20,000원</td>
-						</tr>
-
-						<tr>
-							<td colspan="2" class="presult">합계</td>
-							<td colspan="2" class="presult2">200,000,000원</td>
+							<td class="pcontent" id="cost2"><%= request.getParameter("c") %></td>
 						</tr>
 					</tbody>
-				</table> -->
+				</table>
 				
 				<br><br><br>
 
 				<table class="tablemd">
 					<thead class="postthead">
 						<tr>
-							<th colspan="5" class="postth">데이터 등록 기간</th>
+							<th colspan="5" class="postth"><%= request.getParameter("data") %> 등록 기간</th>
 						</tr>
 					</thead>
 				</table>
@@ -926,7 +965,7 @@ $(function() {
 						<tr>
 							<td class="pcontent pshow">내역이 들어가야할 항목</td>
 
-							<td class="pcontent"><p>100원</p></td>
+							<td class="pcontent" id="cost3"><%= Integer.parseInt(request.getParameter("c")) %></td>
 
 							<td class="pcontent"><span id="x"></span></td>
 
@@ -957,73 +996,143 @@ $(function() {
 
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
-		<div class="small">
-			<h2 align="center" class="font-family-xs-1">세무 Tips</h2>
+		
+
+		<div class="middle font-family-md-1">
+			<h3 align="center" class="postTitle">결제하기</h3>
 		</div>
 
-		<br>
+		<br> <br> <br>
 
-		<form action=""></form>
+		<h3></h3>
+			<div class="tableStart">
+				<table class="tablemd">
+					<thead class="postthead">
+						<tr>
+							<th colspan="3" class="postth">신청내역</th>
+						</tr>
+					</thead>
 
-		<div class="row">
-			<div class="col-xs-2"></div>
+					<tbody class="tbodymd font-family-md-3">
+						<tr>
+							<td class="plist pshow">내역</td>
 
-			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
-					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
-				<button class="btn btn-primary btn-xs">검색</button>
+							<td class="plist">단가</td>
+
+							<td class="plist">금액</td>
+						</tr>
+
+						<tr>
+							<td class="pcontent pshow"><%= request.getParameter("data") %></td>
+
+							<td class="pcontent" id="cost1"><%= Integer.parseInt(request.getParameter("c")) %></td>
+
+							<td class="pcontent" id="cost2"><%= request.getParameter("c") %></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<br><br><br>
+
+				<table class="tablemd">
+					<thead class="postthead">
+						<tr>
+							<th colspan="5" class="postth"><%= request.getParameter("data") %> 등록 기간</th>
+						</tr>
+					</thead>
+				</table>
+				
+				<table class="tablemd">
+					<thead class="postthead1">
+						<tr>
+							<th colspan="5" class="postth1">등록기간을 선택하세요.</th>
+						</tr>
+					</thead>
+				</table>
+					
+					<br>
+				<table class="tablemd">
+					<tbody class="tbodymd font-family-md-3">
+						<tr>
+							<td class="pdate" id="pdateid1" value="1">1개월</td>
+
+							<td class="pdate" id="pdateid2" value="2">2개월</td>
+
+							<td class="pdate" id="pdateid3" value="3">3개월</td>
+
+							<td class="pdate" id="pdateid4" value="4">4개월</td>
+
+							<td class="pdate" id="pdateid5" value="5">5개월</td>
+							
+							<td class="pdate" id="pdateid6" value="6">6개월</td>
+							
+							<td class="pdate" id="pdateid7" value="7">7개월</td>
+							
+							<td class="pdate" id="pdateid8" value="8">8개월</td>
+							
+							<td class="pdate" id="pdateid9" value="9">9개월</td>
+							
+							<td class="pdate" id="pdateid10" value="10">10개월</td>
+							
+							<td class="pdate" id="pdateid11" value="11">11개월</td>
+							
+							<td class="pdate" id="pdateid12" value="12">12개월</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<br><br><br>
+				
+				<table class="tablemd">
+					<thead class="postthead">
+						<tr>
+							<th colspan="5" class="postth">신청내역</th>
+						</tr>
+					</thead>
+
+					<tbody class="tbodymd font-family-md-3">
+						<tr>
+							<td class="plist pshow">내역</td>
+
+							<td class="plist">단가</td>
+
+							<td class="plist">기간</td>
+
+							<td class="plist">금액</td>
+						</tr>
+
+						<tr>
+							<td class="pcontent pshow">내역이 들어가야할 항목</td>
+
+							<td class="pcontent" id="cost3"><%= Integer.parseInt(request.getParameter("c")) %></td>
+
+							<td class="pcontent"><span id="x"></span></td>
+
+							<td class="pcontent"><span id="result"></span></td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" class="presult" id="additional">부가세</td>
+							<td colspan="2" class="presult2"><span id="buga"></span></td>
+						</tr>
+
+						<tr>
+							<td colspan="2" class="presult">합계</td>
+							<td colspan="2" class="presult2"><span id="total" name="hap"></span></td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 
-			<div class="col-xs-2"></div>
-		</div>
+			<br><br>
 
-		<br> <br>
-
-
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-0 col-md-2"></div>
-
-				<div class="col-xs-12 col-md-8">
-					<div class="table-responsive">
-						<table class="table table-bordered">
-
-							<tbody>
-								<tr class="success">
-									<td>제 목</td>
-									<td></td>
-								</tr>
-
-								<tr class="danger">
-									<td>작 성 자</td>
-									<td></td>
-								</tr>
-
-								<tr class="info">
-									<td colspan="2"><textarea class="form-control" rows="10"
-											id="comment"></textarea></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="col-xs-0 col-md-2"></div>
+			<div align="center">
+				<h5 id="agree">※위와 같은 정보로 결제를 신청하시겠습니까?</h5>
+				<input type="submit" class="payBtn" value="결제하기" id="calculate">
 			</div>
-		</div>
-
-		<br> <br> <br> <br> <br> <br> <br>
+			
+			<br><br><br>
 	</div>
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>

@@ -372,7 +372,7 @@ background
 											</table>
 										</li>
 									</ul></li>
-								<li><a href="#"> <img
+								<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp"> <img
 										src="/jsmi/images/menubar/mb4.png" class="img-responsive"
 										style="width: 30%; height: 30%;">
 								</a></li>
@@ -423,46 +423,54 @@ background
 				<img src="/jsmi/images/logo4.png"
 					class="img-responsive navbar-fixed-top" id="logo" width="50%">
 
-			</div>
 			<div class="col-xs-2"></div>
-			
-			<% if (loginUser.getGtype() == null) { %>
-			<div class="col-xs-1">
-				<label>
-					<img src="/jsmi/images/main1/generalmember.png" width="20px;" class="gradephoto">
-						<%=loginUser.getPname()%>님 환영합니다.
-				</label>
-				
-				<button class="btn btn-warning btn-xs navbar-fixed-top"
-					id="xs-logout" onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
 			</div>
 			
-			<% } else { %>
+			<br><br><br><br>
 			
 			<div>
-				<table>
-					<tr class="col-xs-3">
-						<td></td>
-					</tr>
-					
-					<tr class="col-xs-5">
-						<td>
-							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">
+			<% if (loginUser.getGtype() == null) { %>
+				<table>					
+					<tr>
+						<td class="col-xs-5">
+
+						</td>
+						<td class="col-xs-5">
+							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">							
 							<%=loginUser.getPname()%>님 환영합니다.
 						</td>
-					</tr>
-					
-					<tr class="col-xs-4">
-						<td>
+						
+						<td class="col-xs-2">
 							<button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
 								로그아웃
 							</button>
 						</td>
 					</tr>
-				</table>				
+				</table>
+			</div>
+			
+			<% } else { %>
+			
+			<div>
+				<table>					
+					<tr>
+						<td class="col-xs-5">
+
+						</td>
+						<td class="col-xs-5">
+							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">							
+							<%=loginUser.getPname()%>님 환영합니다.
+						</td>
+						
+						<td class="col-xs-2">
+							<button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
+								로그아웃
+							</button>
+						</td>
+					</tr>
+				</table>								
 			</div>
 			<% } %>
-			<div class="col-xs-1"></div>
 		</div>
 	</div>
 </body>
