@@ -11,21 +11,21 @@
 	<!-- PC -->
 	<div class="middle hidden-xs">
 
-		<br> <img src="/jsmi/images/main1/cost.png" usemap="#Map">
+		<br> <img src="/jsmi/images/main1/costlg.png" usemap="#Map">
 
 		<map name="Map">
 			<area shape="rect" coords="616,360,863,406"
 				href="/jsmi/views/main1/costGuide/payView.jsp">
 		</map>
 
-		<br> <br> <img src="/jsmi/images/main1/cost2.png"
+		<br> <br> <img src="/jsmi/images/main1/costlg2.png"
 			usemap="#Map">
 		<map name="Map">
 			<area shape="rect" coords="616,360,863,406"
 				href="/jsmi/views/main1/costGuide/payView.jsp">
 		</map>
 
-		<br> <br> <img src="/jsmi/images/main1/cost3.png"
+		<br> <br> <img src="/jsmi/images/main1/costlg3.png"
 			usemap="#Map">
 		<map name="Map">
 			<area shape="rect" coords="616,360,863,406"
