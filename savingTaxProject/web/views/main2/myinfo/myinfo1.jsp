@@ -131,17 +131,11 @@
 							<td class="col-md-2"><h5>이름</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
 								name="username" value="<%=loginUser.getPname()%>" readonly></td>
-							<td class="col-md-2"><h5>주민등록번호</h5></td>
-							<td class="col-md-4"><div class="col-md-5">
-									<input type="text" maxlength="6" class="form-control"
-										OnKeyUp="checkidno();" name="idno" value="<%=idNo[0]%>">
-								</div>
+							<td class="col-md-2"></td>
+							<td class="col-md-4"><
 								<div class="col-md-1">
-									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
-									<input type="password" maxlength="7" class="form-control"
-										OnKeyUp="checkidno();" name="idno2" value="<%=idNo[1]%>">
 								</div></td>
 						</tr>
 						<tr>
