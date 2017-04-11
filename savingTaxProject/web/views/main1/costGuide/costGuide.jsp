@@ -108,6 +108,7 @@
 
 
 
+
 				<br> <br>
 				<div style="position: relative">
 					<img src="/jsmi/images/main1/costxs1.png"
@@ -115,6 +116,7 @@
 					<a id="pay4"
 						style="position: absolute; z-index: 10; top: 537px; left: 100px; width: 174px; height: 33px; background: rgba(0, 0, 0, 0); cursor: pointer;"></a>
 				</div>
+
 			</div>
 		</div>
 
@@ -140,7 +142,6 @@
 						style="position: absolute; z-index: 10; top: 537px; left: 100px; width: 174px; height: 33px; background: rgba(0, 0, 0, 0); cursor: pointer;"></a>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<hr>

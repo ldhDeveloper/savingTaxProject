@@ -5,6 +5,8 @@ import tax.model.dao.VatDao;
 import static common.JDBCTemplate.*;
 import java.io.*;
 import java.sql.Connection;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
@@ -33,8 +35,12 @@ public class VatService {
 	
 	
 	public String printGeneralForm(String[] taxArr, Party p) {
+		Date day = new GregorianCalendar().getTime();
+		
+		String today = taxArr[0]+" 년 " + (day.getMonth()+1) + " 월 " + day.getDate() + " 일 ";
 		File form = null;
 		File f = null;
+		String fileName= "generalVatForm.xlsx";
 		try{
 		String path = VatService.class.getResource(".").getPath();
 		form = new File(path + "vat.xlsx");  
@@ -46,11 +52,9 @@ public class VatService {
 		if(taxArr[2].equals("1")){
 			term = "제 1 분기";
 			date =  "1 월 01 일 ~ 6 월 30 일";
-			
 		}else{
 			term = "제 2 분기";
 			date =  "7 월 01 일 ~ 12 월 31 일";
-			
 		}
 		insertContent(wb, 0, 7, 1, y);
 		insertContent(wb, 0, 7, 3, term);
@@ -93,8 +97,8 @@ public class VatService {
 		insertContent(wb, 0, 42, 18, taxArr[18]);
 		insertContent(wb, 0 ,51, 0, p.getCstatus());
 		insertContent(wb, 0, 51, 1, p.getCtype());
-		
-		
+		insertContent(wb, 0, 51, 11, today);
+		insertContent(wb, 0, 51, 15, p.getPname());
 		insertContent(wb, 1, 3, 2, p.getCno());
 		insertContent(wb, 1, 16, 8, taxArr[12]);
 		insertContent(wb, 1, 16, 11, taxArr[15]);
@@ -102,15 +106,16 @@ public class VatService {
 		insertContent(wb, 1, 18, 11, taxArr[2]);
 		
 		
-		f = new File("C:\\Users\\mogong\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\ff.xlsx");
-		FileOutputStream fileOut = new FileOutputStream( f);
+		f = new File("C:\\Users\\user1\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\" + fileName);
+		f.createNewFile();
+		FileOutputStream fileOut = new FileOutputStream(f);
 		wb.write(fileOut);
 		fileOut.flush();
 		fileOut.close();
 		}catch(Exception e){
 			e.printStackTrace();
 			}		
-		return "ff.xlsx";
+		return fileName;
 	}
 	public void insertContent(XSSFWorkbook wb, int s, int r, int c, String content){
 		XSSFSheet sheet = wb.getSheetAt(s);
@@ -142,7 +147,7 @@ public class VatService {
 		String y = taxArr[0] +"년";
 		String date = "1 월 01 일 ~ 12 월 31 일";
 		insertContent(wb, 1, 18, 11, taxArr[2]);
-		f = new File("C:\\Users\\mogong\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\ff.xlsx");
+		f = new File("C:\\Users\\user1\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\ff.xlsx");
 		FileOutputStream fileOut = new FileOutputStream(f);
 		wb.write(fileOut);
 		fileOut.flush();

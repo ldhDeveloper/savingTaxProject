@@ -452,37 +452,11 @@ table {
 	</div>
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">세무 Tips</h2>
+		
+			<h2 align="center" class="font-family-xs-1">taxTip</h2>
 		</div>
-
-		<br>
-
-		<form action=""></form>
-
-		<div class="row">
-			<div class="col-xs-2"></div>
-
-			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
-					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
-				<button class="btn btn-primary btn-xs">검색</button>
-			</div>
-
-			<div class="col-xs-2"></div>
-		</div>
-
 		<br> <br>
 
 
@@ -497,27 +471,85 @@ table {
 						<tbody>
 							<tr class="success">
 								<td>제      목</td>
-								<td></td>
+								<td><%=p.getPostName() %></td>
 							</tr>
 							
 							<tr class="danger">
-								<td>작 성 자</td>
-								<td></td>
+								<td>작 성 일</td>
+								<td><%=p.getPostDate() %></td>
 							</tr>
 							
 							<tr class="info">
+								<td>작 성 자</td>
+								<td><%=p.getpId() %></td>
+							</tr>
+							
+							<tr class="warning">
+								<td>조 회 수</td>
+								<td><%=p.getReadCount() %></td>
+							</tr>
+							
+							<tr class="success">
 								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment"></textarea>
+									<textarea class="form-control" rows="10" id="comment">
+										<%=p.getPostContents() %>
+									</textarea>
 								</td>
-							</tr>														
-						</tbody>
+							</tr>
+							</tbody>
+							</table>
+					<form action = "/jsmi/insertcomment" method = "post">
+							<table>
+							<tr class="danger">
+								<td style = "width : 80%">
+									<textarea name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
+								</td>
+								<td>		<%if(loginUser != null) {%>
+							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+							
+							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+							
+							<input type = "hidden" name = "page" value="<%=currentPage%>">
+							<input type="submit" class="submitBtns" value="등록"> 
+							
+							<input type="reset" class="cancleBtns" value="취소">
+							<% } %></td>
+							</tr>									
 					</table>
+					</form>
+					<div>
+					<table class="replyTable">				
+					<tr>
+						<td colspan="2" class="QreplyContent">
+							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+										
+						<% if(commentList != null) { for(Post c : commentList) { %>		
+						<tr style = "background:#aaaaaa;" >				
+						<td style="width:30%; font-size:12px;" class="Qreplying2">
+							<B><%=c.getpId() %></B>
+							<p></p> 
+							<%=c.getPostDate() %>
+						</td>
+				<td  style = "width :70%; border-left:1px black;">				
+							<%=c.getPostContents() %>
+						</td>
+					</tr>
+						
+						<% }} %>
+				
+			</table>
+					</div>
+					
 				</div>
 			</div>
 
 			<div class="col-xs-0 col-md-2"></div>
 		</div>
 	</div>
+	
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>

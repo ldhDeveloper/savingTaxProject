@@ -43,11 +43,11 @@ public class PostListViewServlet extends HttpServlet {
 		if (request.getParameter("limit") != null) 
 		     limit=Integer.parseInt(request.getParameter("limit"));
 		
-		System.out.println("limit:"+limit);		
+
 
 		if (request.getParameter("page") != null) {
 			currentPage = Integer.parseInt(request.getParameter("page"));
-			// System.out.println("postList : " + currentPage);
+			
 		}
 
 		int startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;

@@ -332,13 +332,7 @@ label {
 				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<!-- 모바일용 -->
 
@@ -346,15 +340,10 @@ label {
 	
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-		
-		
 			<h3>
-				<img src="/jsmi/images/QnA.png"><br>
-				<br> 절세미인 회원님들이 <label>질문을 하는 곳입니다.</label>
+				<img src="/jsmi/images/QnA.png">
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">빠르고 정확하게 알려드릴게요.</h4>
-		
-
 		<br>
 
 		<div id="searchdiv" align="center">

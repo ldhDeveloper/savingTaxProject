@@ -235,14 +235,22 @@ resize : none;
 width : 970px;
 border : none;
 }
+.inputmd {
+background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border :none;
+	border-radius: 1px;
+	
+	
+	}
 
 </style>
 
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
-
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
@@ -253,7 +261,7 @@ border : none;
 	<div class="middle hidden-xs">
 		<div class="middle font-family-md-1">
 				<h3 align="center">
-				<img src="/jsmi/images/notice.png"><br>
+				<img src="/jsmi/images/main1/notice.png"><br>
 				<br> 절세미인의 <label>공지사항</label>입니다.
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
@@ -262,24 +270,27 @@ border : none;
 		<br> <br> <br>
 		
 		<form action="/jsmi/pupdate" method = "post">
-			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
-		<br><br>
+			
+		
 
 		<div class="tableStart">
 			<table>
+		
 				<thead>
+					<tr class = "thmd"><td id = "thth" style="width:30%;text-align:center;"> 제 목 </td><td colspan ="6"><input id ="thth" class="redact inputmd" value="<%=p.getPostName()%>" name="postName"></td></tr>
+					<tr height = "5px;"></tr>
 					<tr class="thmd">
 						<th id="thth">작성일</th>
 						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>"  readonly>
+							<input class = "inputmd" name="date" value ="<%=p.getPostDate()%>"  readonly>
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thc">
-							<input name="writer" value = "<%=p.getpId() %>" readonly>
+							<input class = "inputmd" name="writer" value = "<%=p.getpId() %>" readonly>
 						</th>
 						<th id="thth">조회수</th>
 						<th id="thcS">
-							<input name="readCount" value = <%=p.getReadCount()%> readonly>
+							<input class = "inputmd" name="readCount" value = <%=p.getReadCount()%> readonly>
 						</th>
 					</tr>
 				</thead>
@@ -298,7 +309,7 @@ border : none;
 					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
 					<input type = "hidden" value = "<%=currentPage%>" name = "page">
 					  <input class="btn btn-warning" type = "submit" value = "수정">
-					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning" style="display:box;line-height:36px;">이전</a>
 					</td>
 					</tr>
 				</tbody>

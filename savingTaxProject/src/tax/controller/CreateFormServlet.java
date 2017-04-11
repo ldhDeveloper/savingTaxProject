@@ -16,14 +16,14 @@ import tax.model.service.VatService;
 /**
  * Servlet implementation class TaxFormDownServlet
  */
-@WebServlet("/downform")
-public class VatFormDownServlet extends HttpServlet {
+@WebServlet("/createform")
+public class CreateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VatFormDownServlet() {
+    public CreateFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -78,8 +78,6 @@ public class VatFormDownServlet extends HttpServlet {
 		String totalvat = request.getParameter("totalvat"); taxArr[12] = totalvat;
 		form = new VatService().printSimpleForm(taxArr, p);
 		}
-		 
-		
 		response.getWriter().append(form);
 		
 		if(form == null){

@@ -335,13 +335,7 @@ label {
 				 ="location.href='/jsmi/views/main1/CSBoard/board/noticeInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<!-- mobile page view -->
 
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
@@ -349,8 +343,7 @@ label {
 		
 		
 			<h3 >
-				<img src="/jsmi/images/main1/notice.png"><br>
-				<br> 절세미인의 <label>공지사항</label>입니다.
+				<img src="/jsmi/images/main1/notice.png">
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
 		
