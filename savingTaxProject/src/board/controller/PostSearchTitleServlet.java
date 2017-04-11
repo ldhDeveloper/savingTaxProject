@@ -31,7 +31,7 @@ public class PostSearchTitleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("세금소식 오니?");
+
 		
 		request.setCharacterEncoding("utf-8");
 		

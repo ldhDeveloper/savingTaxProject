@@ -594,7 +594,7 @@ font-size : 4em;
 			 totalvat */
 		
 			$.ajax({
-				url  : "/jsmi/downform",
+				url  : "/jsmi/createform",
 				type : "post",
 				data : 	
 				<%if (loginUser.getTaxType().equals("일반과세자")) {%>
@@ -607,7 +607,7 @@ font-size : 4em;
 						invat3:invat3, totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}%>,
 				success : function(data){
-					location.href = "/jsmi/filedown?fName=taxForm&refName="+data;
+					location.href = "/jsmi/formdown?fName="+data;
 					
 				}
 				

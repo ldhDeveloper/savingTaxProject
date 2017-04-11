@@ -279,14 +279,7 @@ label {
 			</table>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<!-- 모바일용 -->
 	
@@ -294,9 +287,7 @@ label {
 		<div class="small">
 		
 		
-		<h3>
-				<img src="/jsmi/images/tip.png"><br><br>
-				세무와 관련된 <label>유용한 정보를 알려드립니다.</label>
+		<h3><img src="/jsmi/images/tip.png">
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
 		
