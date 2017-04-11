@@ -194,7 +194,7 @@ background
 			</tr>
 		</table>
 	</div>
-	<div class="welcome">
+	<div class="welcome hidden-xs">
 		<img src="/jsmi/images/main1/generalmember.png" width="20px;"
 			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.
@@ -216,7 +216,7 @@ background
 			</tr>
 		</table>
 	</div>
-	<div class="welcome">
+	<div class="welcome hidden-xs">
 		<img src="/jsmi/images/main1/vipmember.png" width="20px;"
 			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.

@@ -453,7 +453,7 @@
 				<img src="/jsmi/images/function.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #10aaff;" id="border4-xs"
-				onclick="location.href='/jsmi/views/main1/event/currentEvent/currentEventView.jsp'">
+				onclick="location.href='/jsmi/listview?page=1&boardNo=6'">
 				<img src="/jsmi/images/event.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>
@@ -464,7 +464,7 @@
 			<div class="col-xs-4" style="background: #105080;" id="border5-xs">
 				<img src="/jsmi/images/1.png" class="img-responsive">
 			</div>
-			<div class="col-xs-4" style="background: #10aaff;" id="border6-xs">
+			<div class="col-xs-4" style="background: #10aaff;" id="border6-xs" onclick="location.href='/jsmi/views/main1/costGuide/costGuide.jsp'">
 				<img src="/jsmi/images/cost.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>
@@ -473,7 +473,7 @@
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-4" style="background: #10aaff;" id="border7-xs"
-				onclick="location.href='/jsmi/views/main1/CSBoard/board/boardListView.jsp'">
+				onclick="location.href='/jsmi/listview?page=1&boardNo=1'">
 				<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #105080;" id="border8-xs">
