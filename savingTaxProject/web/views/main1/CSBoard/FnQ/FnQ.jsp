@@ -27,6 +27,10 @@
 	font-family: google !important;
 }
 
+.fontfamily3 {
+	font-family: mobius !important;
+}
+
 #img {
 	padding: 3px;
 	margin-top: 10px;
@@ -42,7 +46,7 @@
 	background: -moz-linear-gradient(#ffffff, #b0e0e6);
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
-	height: 40px;
+	height: 52px;
 	border-radius: 4px;
 	padding-top: 0.8%;
 	font-size: 12pt;
@@ -238,7 +242,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse9" class="fontfamily1">처음 방문하였습니다. 어떻게 이용할 수
+								href="#collapse9" class="fontfamily3">처음 방문하였습니다. 어떻게 이용할 수
 								있을까요?</a>
 						</h4>
 					</div>
@@ -252,7 +256,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse10" class="fontfamily1">세무/회계 지식이 거의 없는데 혼자
+								href="#collapse10" class="fontfamily3">세무/회계 지식이 거의 없는데 혼자
 								사용할수 있나요?</a>
 						</h4>
 					</div>
@@ -268,7 +272,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse11" class="fontfamily1">사업으로 인해 시간이 부족한데 작성할
+								href="#collapse11" class="fontfamily3">사업으로 인해 시간이 부족한데 작성할
 								시간이 부족하지 않을까요?</a>
 						</h4>
 					</div>
@@ -283,7 +287,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse12" class="fontfamily1">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
+								href="#collapse12" class="fontfamily3">자동으로 장부쓰기 기능은 어떤 것 인가요?</a>
 						</h4>
 					</div>
 					<div id="collapse12" class="panel-collapse collapse">
@@ -298,7 +302,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse13" class="fontfamily1">세무신고 하는게 어려울 것 같은데 하는
+								href="#collapse13" class="fontfamily3">세무신고 하는게 어려울 것 같은데 하는
 								방법 좀 설명해 주세요.</a>
 						</h4>
 					</div>
@@ -313,7 +317,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse14" class="fontfamily1">장부 작성 시 사용한 증빙들을 세무신고 시
+								href="#collapse14" class="fontfamily3">장부 작성 시 사용한 증빙들을 세무신고 시
 								세무서에 제출해야 하나요?</a>
 						</h4>
 					</div>
@@ -327,7 +331,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse15" class="fontfamily1">이용요금은 어떻게 되나요?</a>
+								href="#collapse15" class="fontfamily3">이용요금은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse15" class="panel-collapse collapse">
@@ -341,7 +345,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion2"
-								href="#collapse16" class="fontfamily1">결제 방법은 어떻게 되나요?</a>
+								href="#collapse16" class="fontfamily3">결제 방법은 어떻게 되나요?</a>
 						</h4>
 					</div>
 					<div id="collapse16" class="panel-collapse collapse">
