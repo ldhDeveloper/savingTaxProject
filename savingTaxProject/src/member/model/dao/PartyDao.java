@@ -38,12 +38,14 @@ public class PartyDao {
 		 * + "emp_type, join_date, busi_type, tel, birth, gender " +
 		 * "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 		 */
+		
+		//String tsql= "select category from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
-		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
 
 		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate, wname "
-								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =?";
+								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =ENCRYPTION_AES.ENC_AES(?)";
 
 		try {
 			pstmt = con.prepareStatement(query2);
@@ -112,7 +114,7 @@ public class PartyDao {
 		int result = 0;
 		System.out.println(p);
 
-		String query = "insert into party(pno, category, pname, id, pwd, email) values (seq_pno.nextval, 5, ?, ?, ?, ?)";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (seq_pno.nextval, 5, ?, ?, ENCRYPTION_AES.ENC_AES(?), ?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -134,7 +136,7 @@ public class PartyDao {
 		return result;
 	}
 
-	public Member selectMember(Connection con, String uid) {
+	/*public Member selectMember(Connection con, String uid) {
 		Member m = null;
 
 		PreparedStatement pstmt = null;
@@ -168,13 +170,13 @@ public class PartyDao {
 		System.out.println("dao m: " + m + "dao userid" + uid);
 
 		return m;
-	}
+	}*/
 
 	public int updatePartyMyinfo1(Connection con, Party p) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=?";
+		String query = "update party set pno =? ,pname=?, id=?, pwd=ENCRYPTION_AES.ENC_AES(?),  email=?, id_no =ENCRYPTION_AES.ENC_AES(?), paddress=?, phone=?, birth=? ,gender=? where pno=?";
 
 		try {
 			System.out.println("p: " + p);
