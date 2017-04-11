@@ -50,12 +50,18 @@
 	position:
 }
 
+.navbar {
+	margin-top: 2.5%;
+}
+
 .tabmenu {
+	background: #101020;
+	color: white;
 	text-align: center;
 	font-weight: bold;
 }
 
-.active {
+.lactive {
 	background: white;
 	color: black;
 }
@@ -355,10 +361,10 @@ th {
 					<div class="navbar navbar-default">
 						<div class="container-fluid">
 							<ul class="nav navbar-nav">
-								<li><a href="/jsmi/views/main2/emp/emp1.jsp">직원정보입력</a></li>
-								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp">직원정보수정</a></li>
-								<li class=""><a href="/jsmi/views/main2/emp/emp2.jsp">직원급여입력</a></li>
-								<li class="active"><a href="/jsmi/views/main2/emp/emp2modify.jsp">직원급여수정</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1.jsp" class="tabmenu lactive">직원정보입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp" class="tabmenu">직원정보수정</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp2.jsp" class="tabmenu">직원급여입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp2modify.jsp" class="tabmenu">직원급여수정</a></li>
 							</ul>
 						</div>
 					</div>

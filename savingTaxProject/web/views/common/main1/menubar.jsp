@@ -194,7 +194,7 @@ background
 			</tr>
 		</table>
 	</div>
-	<div class="welcome">
+	<div class="welcome hidden-xs">
 		<img src="/jsmi/images/main1/generalmember.png" width="20px;"
 			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.
@@ -216,7 +216,7 @@ background
 			</tr>
 		</table>
 	</div>
-	<div class="welcome">
+	<div class="welcome hidden-xs">
 		<img src="/jsmi/images/main1/vipmember.png" width="20px;"
 			class="gradephoto"><%=loginUser.getPname()%>
 		님 환영합니다.
@@ -425,10 +425,43 @@ background
 
 			</div>
 			<div class="col-xs-2"></div>
+			
+			<% if (loginUser.getGtype() == null) { %>
 			<div class="col-xs-1">
+				<label>
+					<img src="/jsmi/images/main1/generalmember.png" width="20px;" class="gradephoto">
+						<%=loginUser.getPname()%>님 환영합니다.
+				</label>
+				
 				<button class="btn btn-warning btn-xs navbar-fixed-top"
 					id="xs-logout" onclick="location.href='/jsmi/main.jsp'">로그아웃</button>
 			</div>
+			
+			<% } else { %>
+			
+			<div>
+				<table>
+					<tr class="col-xs-3">
+						<td></td>
+					</tr>
+					
+					<tr class="col-xs-5">
+						<td>
+							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">
+							<%=loginUser.getPname()%>님 환영합니다.
+						</td>
+					</tr>
+					
+					<tr class="col-xs-4">
+						<td>
+							<button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
+								로그아웃
+							</button>
+						</td>
+					</tr>
+				</table>				
+			</div>
+			<% } %>
 			<div class="col-xs-1"></div>
 		</div>
 	</div>

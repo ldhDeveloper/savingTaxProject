@@ -357,26 +357,45 @@
 
 
 	<!--  모바일 화면 -->
+	
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<!-- //1-xs -->
 		<div class="row">
 			<div class="col-xs-0"></div>
 			<div class="col-xs-6" style="background: white;">
 				<img src="/jsmi/images/main1/logoxs.png" width="250">
-			</div>
-
+			</div>			
+			
+			<% if(loginUser == null) { %>
 			<div class="col-xs-6">
 				<button class="btn btn-warning btn-xs"
-					onclick="location.href='/jsmi/views/main1/member/loginForm.jsp'">로그인</button>
+					onclick="location.href='/jsmi/views/main1/member/loginForm.html    '">로그인</button>
 				<button class="btn btn-primary btn-xs"
 					onclick="location.href='/jsmi/views/main1/member/agreeForm.html'">회원가입</button>
 			</div>
+			<% } else { %>
+			<% if(loginUser.getGtype() == null) { %>
+			<div class="col-xs-6">
+				<button class="btn btn-primary btn-xs"
+						onclick='location.href="/jsmi/logout"'>로그아웃</button>
+			</div>
+			
+			<% } else { %>
+			
+			<div class="col-xs-6">
+				<button class="btn btn-primary btn-xs"
+						onclick='location.href="/jsmi/logout"'>로그아웃</button>
+			</div>
+			<% }} %>
 			<div class="col-xs-0"></div>
 		</div>
 	</div>
+	
+	
+	
 	<hr class="hidden-sm hidden-md hidden-lg">
 	<div class="container-fluid hidden-sm hidden-md hidden-lg slide-box"
-		style="background:#234;padding-top:50px;padding-bottom:50px;">
+		style="background: #234; padding-top: 50px; padding-bottom: 50px;">
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-8" id="slidesize">
@@ -386,10 +405,14 @@
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active" style="position:relative;top:47px;"></li>
-							<li data-target="#myCarousel" data-slide-to="1"style="position:relative;top:47px;"></li>
-							<li data-target="#myCarousel" data-slide-to="2"style="position:relative;top:47px;"></li>
-							<li data-target="#myCarousel" data-slide-to="3"style="position:relative;top:47px;"></li>
+							<li data-target="#myCarousel" data-slide-to="0" class="active"
+								style="position: relative; top: 47px;"></li>
+							<li data-target="#myCarousel" data-slide-to="1"
+								style="position: relative; top: 47px;"></li>
+							<li data-target="#myCarousel" data-slide-to="2"
+								style="position: relative; top: 47px;"></li>
+							<li data-target="#myCarousel" data-slide-to="3"
+								style="position: relative; top: 47px;"></li>
 						</ol>
 
 						<!-- Wrapper for slides -->
@@ -483,13 +506,17 @@
 		</div>
 	</div>
 	<br class="hidden-sm hidden-md hidden-lg">
-	<% if(loginUser != null){ %>
+	<%
+		if (loginUser != null) {
+	%>
 	<!-- 뷰온버튼 -->
 	<div id="viewOn" class="hidden-xs gotoM1"
 		onclick="location.href='/jsmi/views/main2/menu/main2.html'">
 		<img src="/jsmi/images/main1/gotomain2.png">
 	</div>
-	<% } %>
+	<%
+		}
+	%>
 	<br>
 	<br>
 	<br>
