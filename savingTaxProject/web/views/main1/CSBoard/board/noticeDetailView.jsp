@@ -524,20 +524,6 @@ table {
 
 		<form action=""></form>
 
-		<div class="row">
-			<div class="col-xs-2"></div>
-
-			<div class="col-xs-8">
-				<input type="text" id="stext" name="search"
-					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
-				<button class="btn btn-primary btn-xs">검색</button>
-			</div>
-
-			<div class="col-xs-2"></div>
-		</div>
-
 		<br> <br>
 
 
@@ -552,27 +538,83 @@ table {
 						<tbody>
 							<tr class="success">
 								<td>제      목</td>
-								<td></td>
+								<td><!-- 제목들어갈 곳 --></td>
 							</tr>
 							
 							<tr class="danger">
-								<td>작 성 자</td>
-								<td></td>
+								<td>작 성 일</td>
+								<td><!-- 작성일 들어갈 곳 --></td>
 							</tr>
 							
 							<tr class="info">
+								<td>작 성 자</td>
+								<td><!-- 작성자 들어갈 곳 --></td>
+							</tr>
+							
+							<tr class="warning">
+								<td>조 회 수</td>
+								<td><!-- 조회수 들어갈 곳 --></td>
+							</tr>
+							
+							<tr class="success">
 								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment"></textarea>
+									<textarea class="form-control" rows="10" id="comment">
+										<!-- 내용이 들어갈 곳  -->
+									</textarea>
+								</td>
+							</tr>
+							
+							<tr class="danger">
+								<td colspan="2">
+									<textarea class="form-control" rows="10" id="comment" placeholder="댓글을 작성하세요."></textarea>
+								</td>
+							</tr>
+							
+							<tr class="info">
+								<td>
+									<input type="submit" class="submitBtns" value="등록">
+								</td>
+						
+								<td class="OreplyBtn">															
+									<input type="submit" class="cancleBtns" value="취소">
+								</td>
+							</tr>
+							
+							<tr class="warning">
+								<td colspan="2">
+									<textarea class="form-control" rows="10" id="comment">
+										<!-- 댓글 내용이 들어갈 곳  -->
+									</textarea>
 								</td>
 							</tr>														
 						</tbody>
 					</table>
+					
+					
 				</div>
 			</div>
 
 			<div class="col-xs-0 col-md-2"></div>
 		</div>
 	</div>
+	
+	<div class="tableStart2">
+			<table class="tablemini">
+				<tr>
+					<td class="tdmini1">
+						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
+					<td>
+				</tr>
+				
+				<tr>
+					<td class="tdmini2">
+						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
+						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
+					<td>
+				</tr>
+			</table>
+		</div>
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>
