@@ -33,10 +33,14 @@ public class PostDao {
 		int endRow = startRow + limit - 1;
 		
 		String query = "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname, id from " +
-				"(select  rownum rnum, p.post_no post_no, post_name, " +
+				"(select rownum rnum, post_no, post_name, " +
+						 "post_date, post_contents, board_no, pno, " +
+						 "post_ref_no, read_count, fname, refname, id from"
+				+ " (select  p.post_no post_no, post_name, " +
 				 "post_date, post_contents, board_no, p.pno pno, " +
 				 "post_ref_no, read_count, fname, refname, id from post p, attachment a, party m "+
-				 "where p.post_no = a.post_no(+) and p.pno = m.pno(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc ) where rnum >= ? and rnum <= ?";
+				 "where p.post_no = a.post_no(+) and p.pno = m.pno(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc)) where rnum >= ? and rnum <= ?"
+				 ;
 		try {
 		pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, boardNo);
@@ -104,6 +108,9 @@ public class PostDao {
 		PreparedStatement pstmt = null;
 		String query = "insert into post values(seq_post.nextval, ?, sysdate, ?, ?, ?, 0, 0)";
 		String uploadQuery = "insert into attachment values(seq_attachment.nextval, ?, ?, ?)";
+		String query2 = "select post_no from post where post_name = ?";
+		int postNo = 0;
+		ResultSet rset = null;
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, p.getPostName());
@@ -112,10 +119,17 @@ public class PostDao {
 			pstmt.setInt(4, p.getpNo());
 			result = pstmt.executeUpdate();	
 			if(p.getfName() != null){
+			pstmt = null;
+			pstmt = con.prepareStatement(query2);
+			pstmt.setString(1, p.getPostName());
+			rset = pstmt.executeQuery();
+			if(rset.next())
+			postNo = rset.getInt(1);
+			pstmt = null;
 			pstmt = con.prepareStatement(uploadQuery);
 			pstmt.setString(1, p.getfName());
 			pstmt.setString(2, p.getRefName());
-			pstmt.setInt(3, p.getPostNo());
+			pstmt.setInt(3, postNo);
 			result = pstmt.executeUpdate();
 			}
 		} catch (Exception e) {

@@ -85,6 +85,7 @@ public class PostInsertServlet extends HttpServlet {
 		}
 		}
 		int page = Integer.parseInt(mrequest.getParameter("page"));
+	
 		String postName = mrequest.getParameter("postname");
 		int pNo = Integer.parseInt(mrequest.getParameter("pno"));
 		String postContents = mrequest.getParameter("contents");
@@ -98,12 +99,10 @@ public class PostInsertServlet extends HttpServlet {
 		p.setfName(fname);
 		p.setRefName(renameFileName);
 		}
-		System.out.println(p);
 		int result = new PostService().insertPost(p);
 		if(result > 0){
 			response.sendRedirect(("/jsmi/listview?page="+page+"&boardNo="+p.getBoardNo()));
 		}
-		
 		else {
 			RequestDispatcher view = request.getRequestDispatcher("views/main1/CSBoard/board/boardError.jsp");
 			request.setAttribute("message", "게시판 오류");

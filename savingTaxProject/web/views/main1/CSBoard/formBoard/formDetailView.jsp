@@ -323,7 +323,7 @@ table {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -367,16 +367,21 @@ table {
 						<th id="thc"><%=p.getpId() %></th>
 						<th id="thth">조회수</th>
 						<th id="thcS"><%=p.getReadCount()%></th>
+						<th id = "thcS">
+						<%if(p.getfName() !=null){ %><a href = "/jsmi/filedown?refName=<%=p.getRefName()%>&fName=<%=p.getfName()%>
+						&pno=<%=loginUser.getPno()%>"><%=p.getfName() %></a> </th>
+						
+					<%} %>
+					
 					</tr>
 				</thead>
 
 				<tbody class="tablemd tbodymd font-family-md-3">
-					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
+				
 					<tr>
 						<td colspan="6" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea class="textAreaCon" value="" name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
+							<textarea class="textAreaCon"  name="contents" readonly><%=p.getPostContents() %></textarea><br> <br>
 							<h3></h3>
 						</td>
 					</tr>
@@ -489,14 +494,14 @@ table {
 				<tr>
 					<td class="tdmini1">
 						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
+						<label id="tw">이전글 제목을 입력하는 공간입니다.</label>
 					<td>
 				</tr>
 				
 				<tr>
 					<td class="tdmini2">
 						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
+						<label id="tw">다음글 제목을 입력하는 공간입니다.</label> 
 					<td>
 				</tr>
 			</table>
@@ -530,8 +535,7 @@ table {
 			<div class="col-xs-8">
 				<input type="text" id="stext" name="search"
 					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
+
 				<button class="btn btn-primary btn-xs">검색</button>
 			</div>
 
