@@ -13,9 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/common.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
-<link rel="stylesheet" href="/css/common/grid.css" type="text/css">
+<link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -271,7 +271,7 @@ border : none;
 					<tr class="thmd">
 						<th id="thth">작성일</th>
 						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>";  readonly>
+							<input name="date" value ="<%=p.getPostDate()%>"  readonly>
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thc">
@@ -305,7 +305,7 @@ border : none;
 			</table>
 		</div>
 		</form>
-			
+	</div>
 
 
 

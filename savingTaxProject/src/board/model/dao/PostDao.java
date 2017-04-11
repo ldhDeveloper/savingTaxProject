@@ -135,6 +135,7 @@ public class PostDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
+			close(rset);
 			close(pstmt);
 		}
 		return result; 
@@ -290,6 +291,28 @@ public class PostDao {
 			close(pstmt);
 		}
 		return commentList;
+	}
+
+
+	public int addReadCount(Connection con, int postNo) {
+	PreparedStatement pstmt = null;
+	String query = "update post set read_count = read_count +1 where post_no = ?";
+	int result = 0;
+	try {
+		pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, postNo);
+		result = pstmt.executeUpdate();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally{
+		close(pstmt);
+	}
+	
+	return result;
+		
+	
+		
 	}
 
 }

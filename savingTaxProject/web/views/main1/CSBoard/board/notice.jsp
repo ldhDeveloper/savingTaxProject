@@ -272,7 +272,7 @@ label {
 		<br>
 
 		<div class="tableStart">
-			<table class="tablemd">
+			<table class="tablemd" style="font-size: 1.3em;">
 			
 				
 				
@@ -297,6 +297,7 @@ label {
 						
 					</tr>
 						<% } %>
+						<tr height = "20px"></tr>
 					<tr>
 
 					<td colspan = "3" align="center">
@@ -323,7 +324,13 @@ label {
 				 ="location.href='/jsmi/views/main1/CSBoard/board/noticeInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">

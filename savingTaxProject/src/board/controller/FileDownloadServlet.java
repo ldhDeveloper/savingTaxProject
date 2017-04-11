@@ -40,6 +40,7 @@ public class FileDownloadServlet extends HttpServlet {
 		try {
 			downOut = response.getOutputStream();
 			File downFile = new File(filePath + refName);
+			
 			response.setContentType("text/plain; charset=utf-8"); 
 			response.addHeader("Content-Disposition", "attachment; filename= \""
 					+ new String(fName.getBytes("utf-8"), "ISO-8859-1") + "\"");

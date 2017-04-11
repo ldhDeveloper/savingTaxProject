@@ -102,5 +102,15 @@ public class PostService {
 		return commentList;
 	}
 
+	public void addListCount(int postNo) {
+		Connection con = getConnection();
+		int result = new PostDao().addReadCount(con, postNo);
+		
+		if(result >0)
+			commit(con);
+		else
+		rollback(con);
+	}
+
 
 }
