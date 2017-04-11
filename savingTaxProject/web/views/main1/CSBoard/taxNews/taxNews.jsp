@@ -288,23 +288,13 @@ label {
 	</div>
 	
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<!-- 모바일용 -->
 	
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-		
-		
 				<h3 >
-				<img src="/jsmi/images/news.png"><br><br>
-				절세미인과 관련된 <label>빠르고 정확한 소식을 전해드립니다.</label>
+				<img src="/jsmi/images/news.png">
 				</h3>
 				<h4 style="color: #a9a9a9" align="center">
 					새로운 소식을 보다 빠르고 정확하게 확인하실 수 있습니다.

@@ -336,13 +336,7 @@
 
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">

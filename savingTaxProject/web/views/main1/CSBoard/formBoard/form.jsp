@@ -292,7 +292,7 @@ label {
 							<%= p.getPostNo() %>
 						</td>
 						<td class="ttitle tdmd">
-							<%-- <a href="/jsmi/views/main1/CSBoard/QnA/QnADetailView.jsp"><%= p.getPostName() %></a> --%>
+							
 							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
 								<%= p.getPostName() %>
 							</a>
@@ -332,13 +332,7 @@ label {
 				 ="location.href='/jsmi/views/main1/CSBoard/formBoard/formInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 
 	<!-- 모바일용 -->
 
@@ -349,8 +343,8 @@ label {
 		<div class="small">
 		
 			<h3 >
-				<img src="/jsmi/images/rlibrary.png"><br>
-				<br> 세무서식을 위한 <label>양식</label>을 받는 곳입니다.
+				<img src="/jsmi/images/rlibrary.png">
+
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">정확한 자료를 제공합니다.</h4>
 		

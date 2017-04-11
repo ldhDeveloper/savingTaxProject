@@ -316,6 +316,16 @@ table {
 	font-size: 12pt;
 	color: #2a82a3;
 }
+.inputmd {
+background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border :none;
+	border-radius: 1px;
+	
+	
+	}
 
 
 </style>
@@ -408,16 +418,17 @@ table {
 						</td>
 						
 						<td class="OreplyBtn" >
-							
+							<%if(loginUser != null) {%>
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-							<%if(loginUser != null) {%>
+							
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
-							<% } %>
+							
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
 							<input type="submit" class="submitBtns" value="등록"> 
 							<p></p>
 							<input type="reset" class="cancleBtns" value="취소">
+							<% } %>
 						</td>
 						
 						<td class="OreplyBtn" style ="width:40%;">															
@@ -472,45 +483,20 @@ table {
 		
 		<!-- mobile size view -->
 		
-		<div class="tableStart2">
-			<table class="tablemini">
-				<tr>
-					<td class="tdmini1">
-						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
-					<td>
-				</tr>
-				
-				<tr>
-					<td class="tdmini2">
-						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
-					<td>
-				</tr>
-			</table>
-		</div>
-		
 		<br><br>	<br><br><br><br><br><br><br><br><br><br><br><br>
 
 	</div>
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+	
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">세무 Tips</h2>
+			<h2 align="center" class="font-family-xs-1">Notice</h2>
 		</div>
 
-		<br>
 
-		<form action=""></form>
 
 		<br> <br>
 
@@ -526,58 +512,81 @@ table {
 						<tbody>
 							<tr class="success">
 								<td>제      목</td>
-								<td><!-- 제목들어갈 곳 --></td>
+								<td><%=p.getPostName() %></td>
 							</tr>
 							
 							<tr class="danger">
 								<td>작 성 일</td>
-								<td><!-- 작성일 들어갈 곳 --></td>
+								<td><%=p.getPostDate() %></td>
 							</tr>
 							
 							<tr class="info">
 								<td>작 성 자</td>
-								<td><!-- 작성자 들어갈 곳 --></td>
+								<td><%=p.getpId() %></td>
 							</tr>
 							
 							<tr class="warning">
 								<td>조 회 수</td>
-								<td><!-- 조회수 들어갈 곳 --></td>
+								<td><%=p.getReadCount() %></td>
 							</tr>
 							
 							<tr class="success">
 								<td colspan="2">
 									<textarea class="form-control" rows="10" id="comment">
-										<!-- 내용이 들어갈 곳  -->
+										<%=p.getPostContents() %>
 									</textarea>
 								</td>
 							</tr>
-							
+							</tbody>
+							</table>
+							<form action = "/jsmi/insertcomment" method = "post">
+							<table>
 							<tr class="danger">
-								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment" placeholder="댓글을 작성하세요."></textarea>
+								<td style = "width : 80%">
+									<textarea name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
 								</td>
+								<td>		<%if(loginUser != null) {%>
+							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
+							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
+							
+							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
+							
+							<input type = "hidden" name = "page" value="<%=currentPage%>">
+							<input type="submit" class="submitBtns" value="등록"> 
+							
+							<input type="reset" class="cancleBtns" value="취소">
+							<% } %></td>
 							</tr>
 							
-							<tr class="info">
-								<td>
-									<input type="submit" class="submitBtns" value="등록">
-								</td>
 						
-								<td class="OreplyBtn">															
-									<input type="submit" class="cancleBtns" value="취소">
-								</td>
-							</tr>
-							
-							<tr class="warning">
-								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment">
-										<!-- 댓글 내용이 들어갈 곳  -->
-									</textarea>
-								</td>
-							</tr>														
-						</tbody>
+						
+																	
 					</table>
-					
+					</form>
+					<div>
+					<table class="replyTable">				
+					<tr>
+						<td colspan="2" class="QreplyContent">
+							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+										
+						<% if(commentList != null) { for(Post c : commentList) { %>		
+						<tr style = "background:#aaaaaa;" >				
+						<td style="width:30%; font-size:12px;" class="Qreplying2">
+							<B><%=c.getpId() %></B>
+							<p></p> 
+							<%=c.getPostDate() %>
+						</td>
+				<td  style = "width :70%; border-left:1px black;">				
+							<%=c.getPostContents() %>
+						</td>
+					</tr>
+						
+						<% }} %>
+				
+			</table>
+					</div>
 					
 				</div>
 			</div>
@@ -586,23 +595,6 @@ table {
 		</div>
 	</div>
 	
-	<div class="tableStart2">
-			<table class="tablemini">
-				<tr>
-					<td class="tdmini1">
-						<label id="wwrite">이전글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 이전글 제목을 입력하는 공간입니다. -->이전글 제목을 입력하는 공간입니다.</label>
-					<td>
-				</tr>
-				
-				<tr>
-					<td class="tdmini2">
-						<label id="wwrite">다음글 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</label>
-						<label id="tw"><!-- 다음글 제목을 입력하는 공간입니다. -->다음글 제목을 입력하는 공간입니다.</label> 
-					<td>
-				</tr>
-			</table>
-		</div>
 
 		<br> <br> <br> <br> <br> <br> <br>
 	</div>

@@ -1,4 +1,4 @@
-package board.controller;
+package tax.controller;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FileDownloadServlet
+ * Servlet implementation class DownloadTaxFormServlet
  */
-@WebServlet("/filedown")
-public class FileDownloadServlet extends HttpServlet {
+@WebServlet("/formdown")
+public class DownloadTaxFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FileDownloadServlet() {
+    public DownloadTaxFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +31,19 @@ public class FileDownloadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filePath = request.getSession().getServletContext().getRealPath("/board_uploadFiles/");
-		String refName = request.getParameter("refName");
+		
 		String fName = request.getParameter("fName");
 		BufferedInputStream buf = null;
 		ServletOutputStream downOut = null;
-	
+		
 		try {
 			downOut = response.getOutputStream();
-			File downFile = new File(filePath + refName);
+			File downFile = new File(filePath + fName);
 			
-			response.setContentType("text/plain; charset=utf-8"); 
+			response.setContentType("application/vnd.ms-excel"); 
 			response.addHeader("Content-Disposition", "attachment; filename= \""
 					+ new String(fName.getBytes("utf-8"), "ISO-8859-1") + "\"");
+		
 			response.setContentLength((int)downFile.length());
 			FileInputStream fin = new FileInputStream(downFile);
 					buf = new BufferedInputStream(fin);
@@ -52,12 +53,13 @@ public class FileDownloadServlet extends HttpServlet {
 			}
 			downOut.close();
 			buf.close();
+			System.out.println(downFile.delete());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-	
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

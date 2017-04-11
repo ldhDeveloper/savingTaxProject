@@ -84,7 +84,7 @@ public class PostService {
 		Connection con = getConnection();
 		List<Post> plist = new PostDao().selectTitle(con, boardNo, ptitle);
 		close(con);
-		System.out.println("세금소식 service : " + boardNo + ", " + plist);
+	
 		return plist;
 	}
 

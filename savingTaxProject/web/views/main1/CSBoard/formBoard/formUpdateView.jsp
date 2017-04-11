@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-.css">
+
 <link rel="stylesheet" href="/jsmi/css/common/font.css" type="text/css">
 <link rel="stylesheet" href="/jsmi/css/common/grid.css" type="text/css">
 <script
@@ -235,13 +235,23 @@ resize : none;
 width : 970px;
 border : none;
 }
+.inputmd {
+background: -webkit-linear-gradient(#ffffff, #b0e0e6);
+	background: -o-linear-gradient(#ffffff, #b0e0e6);
+	background: -moz-linear-gradient(#ffffff, #b0e0e6);
+	background: linear-gradient(#ffffff, #b0e0e6);
+	border :none;
+	border-radius: 1px;
+	
+	
+	}
 
 </style>
 
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -262,24 +272,27 @@ border : none;
 		<br> <br> <br>
 		
 		<form action="/jsmi/pupdate" method = "post">
-			<input id ="thth" class="redact" value="<%=p.getPostName()%>" name="postName">
-		<br><br>
+			
+		
 
 		<div class="tableStart">
 			<table>
+		
 				<thead>
+					<tr class = "thmd"><td id = "thth" style="width:30%;text-align:center;"> 제 목 </td><td colspan ="6"><input id ="thth" class="redact inputmd" value="<%=p.getPostName()%>" name="postName"></td></tr>
+					<tr height = "5px;"></tr>
 					<tr class="thmd">
 						<th id="thth">작성일</th>
 						<th id="thc">
-							<input name="date" value ="<%=p.getPostDate()%>";  readonly>
+							<input class = "inputmd" name="date" value ="<%=p.getPostDate()%>"  readonly>
 						</th>
 						<th id="thth">작성자</th>
 						<th id="thc">
-							<input name="writer" value = "<%=p.getpId() %>" readonly>
+							<input class = "inputmd" name="writer" value = "<%=p.getpId() %>" readonly>
 						</th>
 						<th id="thth">조회수</th>
 						<th id="thcS">
-							<input name="readCount" value = <%=p.getReadCount()%> readonly>
+							<input class = "inputmd" name="readCount" value = <%=p.getReadCount()%> readonly>
 						</th>
 					</tr>
 				</thead>
@@ -291,13 +304,14 @@ border : none;
 							<h3></h3>
 						</td>
 					</tr>
+					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
 					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >
 					<input type = "hidden" value = "<%=boardNo %>" name= "boardNo">
 					<input type = "hidden" value = "<%=currentPage%>" name = "page">
 					  <input class="btn btn-warning" type = "submit" value = "수정">
-					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning">이전</a>
+					     	<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getPostNo()%>" class="btn btn-warning" style="display:box;line-height:36px;">이전</a>
 					</td>
 					</tr>
 				</tbody>

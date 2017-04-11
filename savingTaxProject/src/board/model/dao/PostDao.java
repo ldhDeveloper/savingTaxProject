@@ -44,11 +44,8 @@ public class PostDao {
 		try {
 		pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, boardNo);
-		System.out.println("b"+boardNo);
 		pstmt.setInt(2, startRow);
-		System.out.println("s"+startRow);
 		pstmt.setInt(3, endRow);
-		System.out.println("e"+endRow);
 		rset = pstmt.executeQuery();
 		if(rset != null){
 			plist = new ArrayList<Post>();
@@ -191,8 +188,7 @@ public class PostDao {
 
 			rset = pstmt.executeQuery();
 
-			System.out.println("세금소식 dao : " + rset);
-
+	
 			if (rset != null) {
 				plist = new ArrayList<Post>();
 			}
