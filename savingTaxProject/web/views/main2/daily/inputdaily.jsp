@@ -50,11 +50,25 @@
 }
 
 .tabmenu {
+	/* text-align: center;
+	font-weight: bold; */
+	
+}
+
+.navbar {
+	margin-top: 2%;
+}
+
+.active {
+	/* background: white;
+	color: black; */
+	background: #101020;
+	color: white;
 	text-align: center;
 	font-weight: bold;
 }
 
-.active {
+.lactive {
 	background: white;
 	color: black;
 }
@@ -88,6 +102,7 @@
 		<script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 		<script src="/jsmi/js/main2/bootstrap.min.js"></script>
 		<script type="text/javascript">
+		
 		<%if(loginUser != null) {%>
 		var pno = <%= loginUser.getPno() %>;
 		console.log("pno : " + pno);
@@ -276,13 +291,14 @@
 				$('#myModal2').modal("hide");
 			}
 		</script>
+		
 		<div class="section">
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
 			    <ul class="nav navbar-nav" id="dselector">
-			      <li class="active" id="dinput"><a href="#">장부입력</a></li>
-			      <li id="dmodify"><a href="#">장부수정</a></li>
-			      <li id="ddelete"><a href="#">장부삭제</a></li>
+			      <li id="dinput"><a href="#" class="active lactive">장부입력</a></li>
+			      <li id="dmodify"><a href="#" class="active">장부수정</a></li>
+			      <li id="ddelete"><a href="#" class="active">장부삭제</a></li>
 			    </ul>
 			  </div>
 			</nav>

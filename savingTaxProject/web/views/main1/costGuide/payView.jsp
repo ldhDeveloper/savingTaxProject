@@ -81,9 +81,23 @@
 }
 
 .postth {
-	font-size: 20px;
+	font-size: 28pt;
 	text-align: center;
 	font-family: ssangmunDong !important;
+}
+
+.postthead1 {
+	border-bottom: 1px solid #2a82a3;
+	width: 100%;
+}
+
+.postth1 {
+	padding-top: 1.3%;
+	padding-bottom: 1.3%;
+	font-size: 15pt;
+	text-align: center;
+	font-family: computer !important;
+	color : red;
 }
 
 .plist {
@@ -130,7 +144,7 @@
 	text-align: left;
 	color: dimgrey;
 	padding-top: 1.5%;
-	padding-left: 34%;
+	padding-left: 43%;
 	padding-bottom: 1.5%;
 }
 
@@ -240,13 +254,8 @@ $(function() {
 
 <script type="text/javascript">
 	$(function() {
-		var x = 0;
-		var y = 100;
-		
-		$("#calculate").click(function(){
-			var total = $("#total").html();
-			$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total +"&month=" + x);
-		});
+		var x = 0; // 개월
+		var y = 10000;  // 단가
 		
 		$("#pdateid1").click(function() {
 			x = 1;
@@ -762,8 +771,18 @@ $(function() {
 				}
 			  return $("#total").html(retValue + "원");
 			}		
-		});		
-		/* $(location).attr("href", "/jsmi/views/main1/costGuide/payResultView.jsp?month=" + x + "&total=" + total); */
+		});
+		
+		$("#calculate").click(function(){
+			var total = $("#total").html();
+			if(total != 0) {
+				$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total +"&month=" + x);	
+			}
+			
+			else {
+				alert("기간을 선택해 주세요!");
+			}
+		});
 	});
 </script>
 
@@ -800,7 +819,7 @@ $(function() {
 
 		<h3></h3>
 			<div class="tableStart">
-				<table class="tablemd">
+				<!-- <table class="tablemd">
 					<thead class="postthead">
 						<tr>
 							<th colspan="5" class="postth">신청내역</th>
@@ -819,13 +838,13 @@ $(function() {
 						</tr>
 
 						<tr>
-							<td class="pcontent pshow"><!-- 내역이 들어가는 곳 -->내역이 들어가야할 항목</td>
+							<td class="pcontent pshow">내역이 들어가는 곳내역이 들어가야할 항목</td>
 
-							<td class="pcontent"><!-- 돈 들어가는 곳 -->20,000원</td>
+							<td class="pcontent">돈 들어가는 곳20,000원</td>
 
-							<td class="pcontent"><!-- 개월이 들어가는 곳 -->3개월</td>
+							<td class="pcontent">개월이 들어가는 곳3개월</td>
 
-							<td class="pcontent"><!-- 돈 들어가는 곳 -->20,000원</td>
+							<td class="pcontent">돈 들어가는 곳20,000원</td>
 						</tr>
 
 						<tr>
@@ -833,7 +852,7 @@ $(function() {
 							<td colspan="2" class="presult2">200,000,000원</td>
 						</tr>
 					</tbody>
-				</table>
+				</table> -->
 				
 				<br><br><br>
 
@@ -841,6 +860,14 @@ $(function() {
 					<thead class="postthead">
 						<tr>
 							<th colspan="5" class="postth">데이터 등록 기간</th>
+						</tr>
+					</thead>
+				</table>
+				
+				<table class="tablemd">
+					<thead class="postthead1">
+						<tr>
+							<th colspan="5" class="postth1">등록기간을 선택하세요.</th>
 						</tr>
 					</thead>
 				</table>

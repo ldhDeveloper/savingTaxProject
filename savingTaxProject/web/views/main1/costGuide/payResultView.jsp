@@ -190,7 +190,7 @@
 						
 						<tr class="tabletr">
 							<td class="tabletd1">회원 등급</td>
-							<td class="tabletd2"><img src="/jsmi/images/main1/crown.png">V.I.P</td>
+							<td class="tabletd2"><img src="/jsmi/images/main1/crown.png">&nbsp;V.I.P</td>
 						</tr>
 					</tbody>
 				</table>
@@ -204,6 +204,11 @@
 			</div>
 	</div>
 
+	<script type="text/javascript">
+		$("#check").click(function(){
+			$(location).attr("href", "/jsmi/views/main1/introduce/introduce.jsp");
+		});
+	</script>
 
 
 	<!-- 모바일용 -->
