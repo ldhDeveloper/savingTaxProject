@@ -15,10 +15,7 @@
 					function() {
 						var c = 10000;
 						var data = "데이터 등록권";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay1");
 					});
 
@@ -26,10 +23,7 @@
 					function() {
 						var c = 80000;
 						var data = "인터넷 기장";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay2");
 					});
 
@@ -37,10 +31,7 @@
 					function() {
 						var c = 200000;
 						var data = "종합소득세 신고대행";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay3");
 					});
 			
@@ -48,10 +39,7 @@
 					function() {
 						var c = 10000;
 						var data = "데이터 등록권";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay1");
 			});
 			
@@ -59,10 +47,7 @@
 					function() {
 						var c = 80000;
 						var data = "인터넷 기장";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay2");
 					});
 			
@@ -70,10 +55,7 @@
 					function() {
 						var c = 200000;
 						var data = "종합소득세 신고대행";
-						$(location).attr(
-								"href",
-								"/jsmi/views/main1/costGuide/payView.jsp?c="
-										+ c + "&data=" + data);
+						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay3");
 					});
 		});
