@@ -321,7 +321,7 @@
 			<img src="/jsmi/images/function.png" class="menu-img">
 		</div>
 		<div class="menu-btn" style="background: #10aaff;" id="border4"
-			onclick="location.href='/jsmi/listview?page=1&boardNo=6'">
+			onclick="location.href='/jsmi/listview?page=1&boardNo=6&limit=6'">
 			<img src="/jsmi/images/event.png" class="menu-img">
 		</div>
 	</div>
@@ -482,7 +482,7 @@
 				<img src="/jsmi/images/function.png" class="img-responsive">
 			</div>
 			<div class="col-xs-4" style="background: #10aaff;" id="border4-xs"
-				onclick="location.href='/jsmi/listview?page=1&boardNo=6'">
+				onclick="location.href='/jsmi/listview?page=1&boardNo=6&limit=6'">
 				<img src="/jsmi/images/event.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>

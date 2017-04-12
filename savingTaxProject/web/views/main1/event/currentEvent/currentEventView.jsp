@@ -95,67 +95,20 @@ a.thumbnail {
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
 			<div class="middle col-xs-12">
-				<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp"
-					class="thumbnail"> <img src="/jsmi/images/main1/eventmn2.png"
-					class="img-responsive imgsize">
-					<div class="caption">
-						<p style="font-size: 12px; text-align: center;">이벤트기간 :
-							2017.03.01 ~ 2017~03.31</p>
-					</div></a>
+				<%if(plist != null){ for(Post p : plist){ %>
+				<center>
+		<div class="thumbnail" style="display: inline-block">
+			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getfName()%>">
+			<img src="/jsmi/images/main1/<%=p.getfName()%>">
+				<div class="caption">
+					<p>이벤트기간 : <%=p.getPostContents() %></p>
+				</div> </a>
+		</div>
+		</center>
+		<hr>
+		<% }} %>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn6.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn3.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn4.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn5.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail caption"> <img src="/jsmi/images/main1/eventmn1.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
 		</div>
 
 	</div>

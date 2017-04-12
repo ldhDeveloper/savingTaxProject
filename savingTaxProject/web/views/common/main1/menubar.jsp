@@ -23,137 +23,148 @@
 <title>Perfect Partners for Your Saving-Tax</title>
 <style type="text/css">
 #xs-logout {
-   position: fixed;
-   left: 85%;
-   margin-top: 80px;
-   z-index: 1;
+	position: fixed;
+	left: 85%;
+	margin-top: 80px;
+	z-index: 1;
 }
 
 .xstd {
-   text-align: center;
-   background: #3f3f3f;
-   border: 3px solid #222;
-   border-radius: 1em;
-   width: 50%
+	text-align: center;
+	background: #3f3f3f;
+	border: 3px solid #222;
+	border-radius: 1em;
+	width: 50%
 }
 
 .xstd>a {
-   text-decoration: none;
-   color: white;
-   padding: 1.2em;
-   display: block;
-   height: 4em;
+	text-decoration: none;
+	color: white;
+	padding: 1.2em;
+	display: block;
+	height: 4em;
 }
 
 element.style {
-   
+	
 }
 
 color
+
+
 :
+
  
+
 #ffffff
-;
 
-    
+
+;
 text-decoration
+
+
 :
+
  
+
 none
+
+
 ;
-
-
 }
 .mobile {
-   background: #8f8f8f;
-   margin-top: 0px;
+	background: #8f8f8f;
+	margin-top: 0px;
 }
 
 .xstd:hover {
-   background: orange;
+	background: orange;
 }
 
 .middle {
-   background: white;
-   width: 970px;
-   margin-left: auto;
-   margin-right: auto;
+	background: white;
+	width: 970px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .middle table {
-   
+	
 }
 
 background
+
+
 :white
+
+
 ;
-
-
 }
 .middle table td {
-   padding-top: 0px;
-   padding-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 .full-bar {
-   width: 100%;
-   height: 40px;
-   background: #2a82a3;
+	width: 100%;
+	height: 40px;
+	background: #2a82a3;
 }
 
 .menu ul {
-   list-style-type: none;
+	list-style-type: none;
 }
 
 .menu ul li {
-   width: 155px;
-   height: 40px;
-   float: left;
-   position: relative;
-   padding: auto;
-   margin: 0px;
-   font-family: Binggrae;
+	width: 155px;
+	height: 40px;
+	float: left;
+	position: relative;
+	padding: auto;
+	margin: 0px;
+	font-family: Binggrae;
 }
 
 .menu ul li a {
-   display: block;
-   position: relative;
-   z-index: 1000;
-   text-decoration: none;
-   text-align: center;
-   color: white;
-   height: 40px;
-   line-height: 40px;
+	display: block;
+	position: relative;
+	z-index: 1000;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	height: 40px;
+	line-height: 40px;
 }
 
 .menu ul li a:hover {
-   background: orange;
+	background: orange;
 }
 
 .menu ul li ul {
-   display: none;
-   position: relative;
-   left: -40px;
+	display: none;
+	position: relative;
+	left: -40px;
 }
 
 .menu ul li ul a {
-   background: #2a82a3;
-   position: relative;
+	background: #2a82a3;
+	position: relative;
 }
 
 .welcome {
-   width:800px;
-   margin-left:auto;
-   margin-right:auto;
-   position: relative;
-   top:-35px;
-   text-align:right;
-   margin-bottom:-35px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: -35px;
+	text-align: right;
+	margin-bottom: -35px;
 }
-.gradephoto{
-   position:relative;
-   top:-3px;
-   left:-5px;
+
+.gradephoto {
+	position: relative;
+	top: -3px;
+	left: -5px;
 }
 /*  .menu ul li:hover ul a{
    opacity:3;
@@ -184,8 +195,8 @@ background
 	<div class="middle hidden-xs toptop">
 		<table style="width: 970px; height: 50px;">
 			<tr>
-				<td><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
-					width="830"></td>
+				<td><a href="/jsmi/main.jsp"><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
+					width="830"></a></td>
 				<td width="70"></td>
 				<td width="70">
 					<button class="btn btn-warning btn-sm"
@@ -206,8 +217,8 @@ background
 	<div class="middle hidden-xs toptop">
 		<table style="width: 970px; height: 50px;">
 			<tr>
-				<td><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
-					width="830"></td>
+				<td><a href="/jsmi/main.jsp"><img src="/jsmi/images/menubar/logo.png" class="" id="logo"
+					width="830"></a></td>
 				<td width="70"></td>
 				<td width="70">
 					<button class="btn btn-warning btn-sm"
@@ -256,20 +267,19 @@ background
 					</ul></li>
 				<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>이벤트</a>
 					<ul class="sub-menu">
-						<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인 이벤트</a></li>
+						<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인
+								이벤트</a></li>
 						<li><a
 							href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난
 								이벤트</a></li>
 					</ul></li>
 				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">비용안내</a>
-				<ul class="sub-menu">
+					<ul class="sub-menu">
 						<li><a href='/jsmi/views/main1/costGuide/costGuide.jsp'>비용안내</a></li>
 
-						<li><a
-							href='/jsmi/views/main1/costGuide/payView.jsp'>결제하기</a></li>
-					</ul>
-				</li>
-				
+						<li><a href="/jsmi/views/main1/costGuide/payView.jsp">결제하기</a></li>
+					</ul></li>
+
 
 				<li><a href="/jsmi/listview?page=1&boardNo=1">고객센터</a>
 					<ul class="sub-menu">
@@ -301,8 +311,8 @@ background
 
 						<button type="button" class="navbar-toggle" data-toggle="collapse"
 							data-target="#myNavbar">
-							<span class="icon-bar"></span><span class="icon-bar"></span> <span class="icon-bar">
-							</span>
+							<span class="icon-bar"></span><span class="icon-bar"></span> <span
+								class="icon-bar"> </span>
 						</button>
 
 
@@ -372,10 +382,23 @@ background
 											</table>
 										</li>
 									</ul></li>
-								<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp"> <img
+								<li class="dropdown"><a
+									href="/jsmi/views/main1/costGuide/costGuide.jsp"
+									class="dropdown-toggle" data-toggle="dropdown"> <img
 										src="/jsmi/images/menubar/mb4.png" class="img-responsive"
 										style="width: 30%; height: 30%;">
-								</a></li>
+								</a>
+								<ul class="mobile dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr>
+													<td class="xstd"><a href='/jsmi/views/main1/costGuide/costGuide.jsp'>비용안내</a></td>
+													<td class="xstd"><a href='/jsmi/views/main1/costGuide/payView.jsp'>결제하기</a></td>
+												</tr>
+											</table>
+										</li>
+									</ul>
+								
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown"> <img
 										src="/jsmi/images/menubar/mb5.png" class="img-responsive"
@@ -403,7 +426,8 @@ background
 													<td class="xstd"><a
 														href="/jsmi/listview?page=1&boardNo=4">궁금한 것이
 															있어요</a></td>
-													<td class="xstd"><a href="/jsmi/listview?page=1&boardNo=5">서식 자료실</a></td>
+													<td class="xstd"><a
+														href="/jsmi/listview?page=1&boardNo=5">서식 자료실</a></td>
 												</tr>
 											</table>
 										</li>
@@ -454,19 +478,23 @@ background
 			<br><br><br><br>
 			
 			<div>
-			<% if (loginUser.getGtype() == null) { %>
+			<%
+				if (loginUser.getGtype() == null) {
+			%>
 				<table>					
 					<tr>
 						<td class="col-xs-5">
 
 						</td>
 						<td class="col-xs-5">
-							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">							
+							<img src="/jsmi/images/main1/generalmember.png" width="10px;"
+							class="gradephoto">							
 							<%=loginUser.getPname()%>님 환영합니다.
 						</td>
 						
 						<td class="col-xs-2">
-							<button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
+							<button class="btn btn-warning btn-xs navbar-fixed-top"
+								id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
 								로그아웃
 							</button>
 						</td>
@@ -474,7 +502,9 @@ background
 				</table>
 			</div>
 			
-			<% } else { %>
+			<%
+							} else {
+						%>
 			
 			<div>
 				<table>					
@@ -483,19 +513,23 @@ background
 
 						</td>
 						<td class="col-xs-5">
-							<img src="/jsmi/images/main1/generalmember.png" width="10px;" class="gradephoto">							
+							<img src="/jsmi/images/main1/generalmember.png" width="10px;"
+							class="gradephoto">							
 							<%=loginUser.getPname()%>님 환영합니다.
 						</td>
 						
 						<td class="col-xs-2">
-							<button class="btn btn-warning btn-xs navbar-fixed-top" id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
+							<button class="btn btn-warning btn-xs navbar-fixed-top"
+								id="xs-logout" onclick="location.href='/jsmi/main.jsp'">
 								로그아웃
 							</button>
 						</td>
 					</tr>
 				</table>								
 			</div>
-			<% } %>
+			<%
+				}
+			%>
 		</div>
 	</div>
 </body>
