@@ -11,7 +11,7 @@
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 <script src="/jsmi/js/main2/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>직원급여입력</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -228,7 +228,7 @@ th {
 							$("#selemptable").html("<tr style='margin-bottom:10px'><th style='text-align:center'>직원명</th><th style='text-align:center'>주민등록번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>휴대폰</th><th style='text-align:center'>이메일</th><th style='text-align:center'>고용형태</th>");
 							for(var i in jsonArr.list){
 								$("#selemptable").html($("#selemptable").html() +
-										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
+										"<tr id='emplist" + i +"' style='cursor:pointer' onclick='empclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no).substring(0, 7) + "＊＊＊＊＊＊＊</td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + 
 										"</td><td name='selphone'>" + jsonArr.list[i].phone + "</td><td name='selemail'>" + decodeURIComponent(jsonArr.list[i].email) + "</td><td name='selemp_type'>" + decodeURIComponent(jsonArr.list[i].emp_type) +
 										"</td><td>");
 							}
@@ -267,7 +267,7 @@ th {
 						var v4 =0;
 						var v5 =0;
 						var resultsal = 0;
-						$("#searchtable").html("<tr><th style='text-align:center'>직원명</th><th style='text-align:center'>주민번호</th><th style='text-align:center'>부서명</th><th style='text-align:center'>직급</th><th style='text-align:center'>근무시작일</th><th style='text-align:center'>근무종료일</th>"
+						$("#searchtable").html("<tr><th style='text-align:center'>직원명</th><th style='text-align:center'>주민번호</th><th style='text-align:center'>직급</th><th style='text-align:center'>근무시작일</th><th style='text-align:center'>근무종료일</th>"
 								+ "<th  style='text-align:center'>급여지급일</th><th style='text-align:center'>총급여금액</th><th  style='text-align:center'>차인지급액</th></tr>");
 						for(var i in jsonArr.list){
 							taxsal = Number(jsonArr.list[i].init_pay) + Number(jsonArr.list[i].bonus) + Number(jsonArr.list[i].incentive) + Number(jsonArr.list[i].over_pay) + Number(jsonArr.list[i].rest_pay);
@@ -283,7 +283,7 @@ th {
 							
 							$("#searchtable").html($("#searchtable").html() +
 									"<tr id='salarylist" + i +"' style='cursor:pointer' onclick='salclick(" + i + ", " + "\"" + jsonArr.list[i].pno + "\");'><td style='display:none'><input='hidden' name='pno' value='"+ jsonArr.list[i].pno +"'></td><td name='selpname'>" + decodeURIComponent(jsonArr.list[i].pname) + "</td><td name='selid_no'>" + decodeURIComponent(jsonArr.list[i].id_no) + "</td>" + 
-									"<td name='seldepart'></td><td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + "</td><td name='selwsdate'>" + jsonArr.list[i].wsdate +
+									"<td name='selposition'>" + decodeURIComponent(jsonArr.list[i].position) + "</td><td name='selwsdate'>" + jsonArr.list[i].wsdate +
 									"</td><td name='selwedate'>" + jsonArr.list[i].wedate + "</td><td name='selsaldate'>" + jsonArr.list[i].saldate + "</td><td name='selsumsal'>" + totalsal + "</td><td name='selresultsal'>" + resultsal + "</td>");
 						}
 					},
@@ -427,7 +427,7 @@ th {
 						$("#insu2").val(Math.floor((temptotal * 0.0306) / 10) * 10);
 						$("#insu3").val(Math.floor(($("#insu2").val() * 0.0655 / 2) /10) * 10);
 						$("#insu4").val(Math.floor((temptotal * 0.009) / 10) * 10);
-						$("#insu5").val(Math.floor(0));
+						$("#insu5").val(Math.floor((temptotal * <%=loginUser.getIrate()%>/100 ) / 10) * 10);
 						
 						var insutotal = Number(0);
 						for(var i = 1; i <= 5; i++){
@@ -475,18 +475,16 @@ th {
 						<table class="table table-condensed">
 							<tbody class="tabletd" id="searchtable">
 								<tr>
-									<th>직원명</th>
-									<th>주민번호</th>
-									<th>부서명</th>
-									<th>직급</th>
-									<th>근무시작일</th>
-									<th>근무종료일</th>
-									<th>급여지급일</th>
-									<th>총급여금액</th>
-									<th>차인지급액</th>
+									<th style='text-align:center'>직원명</th>
+									<th style='text-align:center'>주민번호</th>
+									<th style='text-align:center'>직급</th>
+									<th style='text-align:center'>근무시작일</th>
+									<th style='text-align:center'>근무종료일</th>
+									<th style='text-align:center'>급여지급일</th>
+									<th style='text-align:center'>총급여금액</th>
+									<th style='text-align:center'>차인지급액</th>
 								</tr>
 								<tr>
-									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -506,6 +504,16 @@ th {
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
+
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 
 								</tr>
@@ -518,23 +526,9 @@ th {
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td>&nbsp;</td>
 
 								</tr>
 								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
@@ -549,13 +543,6 @@ th {
 						</table>
 						
 						<br><br>
-						<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-						</ul>
 					</div>
 				</div>
 			</div>
@@ -573,7 +560,6 @@ th {
 										class="emp-choice"></td>
 									<td>직원명</td>
 									<td>주민등록번호</td>
-									<td>부서명</td>
 									<td>직급</td>
 									
 									
@@ -582,7 +568,6 @@ th {
 								<tr>
 									<td><input type="text" value="직원명"  id="selpname"class="form-control"></td>
 									<td><input type="text" value="주민등록번호" id="selid_no" class="form-control"></td>
-									<td><input type="text" value="부서명" id="" class="form-control"></td>
 									<td><input type="text" value="직급" id="selposition" class="form-control"><input type="hidden" id="emppno" value=""></td>
 									
 								</tr>

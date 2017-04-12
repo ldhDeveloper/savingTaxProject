@@ -182,6 +182,12 @@
 		}).mouseout(function() {
 			$(this).css("background", "#10aaff");
 		});
+		
+		$('#border8-xs').mouseover(function() {
+			$(this).css("background", "orange").css("cursor", "pointer");
+		}).mouseout(function() {
+			$(this).css("background", "#10aaff");
+		});
 	});
 
 	$(function() {
@@ -499,8 +505,9 @@
 				onclick="location.href='/jsmi/listview?page=1&boardNo=1'">
 				<img src="/jsmi/images/helpdesk1.png" class="img-responsive">
 			</div>
-			<div class="col-xs-4" style="background: #105080;" id="border8-xs">
-				<img src="/jsmi/images/1.png" class="img-responsive">
+			<div class="col-xs-4" style="background: #10aaff;" id="border8-xs"
+				onclick="location.href='/jsmi/views/main1/mobgraph/salesncostm.jsp'">
+				<img src="/jsmi/images/account.png" class="img-responsive">
 			</div>
 			<div class="col-xs-2"></div>
 		</div>

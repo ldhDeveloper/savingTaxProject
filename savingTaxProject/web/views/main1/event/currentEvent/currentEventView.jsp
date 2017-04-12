@@ -94,7 +94,7 @@ a.thumbnail {
 	<!-- Moblie  -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="middle col-xs-12">
 				<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp"
 					class="thumbnail"> <img src="/jsmi/images/main1/eventmn2.png"
 					class="img-responsive imgsize">

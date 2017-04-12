@@ -408,6 +408,31 @@ background
 											</table>
 										</li>
 									</ul></li>
+									<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown"> <img
+										src="/jsmi/images/menubar/mb6.png" class="img-responsive"
+										style="width: 30%; height: 30%;">
+								</a>
+									<ul class="mobile dropdown-menu">
+										<li>
+											<table width="100%">
+												<tr>
+													<td class="xstd"><a
+														href="/jsmi/views/main1/mobgraph/salesncostm.jsp">매출/비용 분석</a></td>
+													<td class="xstd"><a
+														href="/jsmi/views/main1/mobgraph/assetm.jsp">자산 분석</a>
+													</td>
+												</tr>
+												<tr>
+													<td class="xstd"><a
+														href="/jsmi/views/main1/mobgraph/yieldm.jsp">수익률 분석</a>
+													</td>
+													<td class="xstd">
+													</td>
+												</tr>
+											</table>
+										</li>
+									</ul></li>
 							</ul>
 						</div>
 					</div>

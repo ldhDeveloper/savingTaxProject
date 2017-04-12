@@ -32,6 +32,7 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("empinput doGet");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -58,6 +59,7 @@ public class EmployeeInformationInsertServlet extends HttpServlet {
 		p.setCategory(category);
 		
 		int result = new PartyService().insertEmp(p, owner);
+		System.out.println("insert result : " + result);
 		
 		if(result > 0){
 			RequestDispatcher view = request.getRequestDispatcher("emplist");
