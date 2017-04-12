@@ -255,11 +255,22 @@ $(function() {
 <script type="text/javascript">
 $(function() {
     var x = 0; // 개월
-    var y = <%= Integer.parseInt(request.getParameter("c")) %>;  // 단가
+    var y = <%=Integer.parseInt(request.getParameter("c"))%>;  // 단가
+    
+    $('#cost1').html(MoneySwap(y));
+    $('#cost2').html(MoneySwap(y));
+    $('#cost3').html(MoneySwap(y));
+		
+	function MoneySwap(result){
+		var temp_str = String(result);
+		for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+			retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+		}
+		return retValue + "원";
+	}
     
     $("td[id^=pdateid]").click(function() {
-       var temp = Number($(this).text().substring(0, 1));
-       console.log(temp);
+       var temp = Number($(this).text().substring(0, $(this).text().length - 2));
        x = temp;
        
        var result = x * y;
@@ -268,22 +279,41 @@ $(function() {
        
        var total = result + buga;
 
-       $("#x").html(x + "개월");   
+       $("#x").html(x + "개월");
        
        $('#result').html(MoneySwap1(result));
-       $('#buga').html(MoneySwap1(buga));
-       $('#total').html(MoneySwap1(total));
+       $('#buga').html(MoneySwap2(buga));
+       $('#total').html(MoneySwap3(total));
        
-       // 원금
-       function MoneySwap1(result){
-          var temp_str = String(result);
-          for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-             retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;            
-          }
-         return $("#result").html(retValue + "원");
-       }
-                      
-    });   
+       /* $('#result').html(MoneySwap1(result));
+       $('#buga').html(MoneySwap2(buga));
+       $('#total').html(MoneySwap3(total)); */
+       
+		// 원금
+       	function MoneySwap1(result){
+          	var temp_str = String(result);
+          	for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+             	retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;            
+          	}
+         	$("#result").html(retValue + "원");
+       	}
+       
+       	function MoneySwap2(result){
+          	var temp_str = String(result);
+          	for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+             	retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;            
+          	}
+         	$("#buga").html(retValue + "원");
+       	}
+       	
+       	function MoneySwap3(result){
+          	var temp_str = String(result);
+          	for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+             	retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;            
+          	}
+         	$("#total").html(retValue + "원");
+       	}
+	});   
     
     $("#calculate").click(function(){
        var total = $("#total").html();
@@ -296,552 +326,6 @@ $(function() {
        }
     });
  });
-	<%-- $(function() {
-		var x = 0; // 개월
-		var y = <%= Integer.parseInt(request.getParameter("c")) %>;  // 단가
-		
-		$('#cost1').html(MoneySwap(y));
-		$('#cost2').html(MoneySwap(y));
-		$('#cost3').html(MoneySwap(y));
-		
-		
-		function MoneySwap(result){
-			var temp_str = String(result);
-			for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-				retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-			}
-		  return retValue + "원";
-		}
-		
-		
-		$("#pdateid1").click(function() {
-			x = 1;
-			
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");	
-			
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}						
-		});
-
-		$("#pdateid2").click(function() {
-			x = 2;
-			
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid3").click(function() {
-			x = 3;
-			
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid4").click(function() {
-			x = 4;
-			
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid5").click(function() {
-			x = 5;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid6").click(function() {
-			x = 6;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid7").click(function() {
-			x = 7;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid8").click(function() {
-			x = 8;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid9").click(function() {
-			x = 9;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid10").click(function() {
-			x = 10;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid11").click(function() {
-			x = 11;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}
-		});
-
-		$("#pdateid12").click(function() {
-			x = 12;
-
-			var result = x * y;
-			
-			var buga = result * 0.1;
-			
-			var total = result + buga;
-
-			$("#x").html(x + "개월");
-			
-			MoneySwap1(result);
-			MoneySwap2(buga);
-			MoneySwap3(total);
-			
-			// 원금
-			function MoneySwap1(result){
-				var temp_str = String(result);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#result").html(retValue + "원");
-			}
-				
-			// 부가세
-			function MoneySwap2(buga){
-				var temp_str = String(buga);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#buga").html(retValue + "원");
-			}
-									
-			// 합계
-			function MoneySwap3(total){
-				var temp_str = String(total);
-				for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
-					retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
-				}
-			  return $("#total").html(retValue + "원");
-			}		
-		});
-		
-		$("#calculate").click(function(){
-			var total = $("#total").html();
-			if(total != 0) {
-				$(location).attr("href", "/jsmi/views/main1/costGuide/payInfoView.jsp?hap=" + total +"&month=" + x);	
-			}
-			
-			else {
-				alert("기간을 선택해 주세요!");
-			}
-		});
-	}); --%>
 </script>
 
 </head>
@@ -991,9 +475,10 @@ $(function() {
 				<h5 id="agree">※위와 같은 정보로 결제를 신청하시겠습니까?</h5>
 				<input type="submit" class="payBtn" value="결제하기" id="calculate">
 			</div>
+			<br><br><br>
 	</div>
 
-
+	
 
 	<!-- 모바일용 -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
