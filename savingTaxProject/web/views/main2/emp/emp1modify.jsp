@@ -33,7 +33,7 @@
 		})
 	})
 </script>
-<title>Insert title here</title>
+<title>직원정보수정</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -204,14 +204,6 @@
 					</table>
 					
 						<br>
-						
-					<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-					</ul>
 				</div>
 			</div>
 			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>

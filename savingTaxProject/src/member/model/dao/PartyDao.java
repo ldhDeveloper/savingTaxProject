@@ -38,12 +38,14 @@ public class PartyDao {
 		 * + "emp_type, join_date, busi_type, tel, birth, gender " +
 		 * "from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 		 */
+		
+		//String tsql= "select category from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
-		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ?";
+		//String query = "select pno, pname, category, id, pwd, email from party where id = ? and pwd = ENCRYPTION_AES.ENC_AES(?)";
 
 
 		String query2 = "select p.PNO, PNAME, CATEGORY, ID, PWD, TEL, EMAIL, ID_NO, CNAME, CNO, PADDRESS, CADDRESS, CTYPE, CSTATUS, POSITION, ODAY, TAXTYPE, NOTAX_YN, PRESIDENT, FOREGINER_YN, EMP_TYPE, JOIN_DATE, BUSI_TYPE, PHONE, BIRTH, GENDER, TO_NO, gtype, irate, rdate, wname "
-								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =?";
+								+"from party p left join grade g on (p.pno = g.pno) where id = ? and pwd =ENCRYPTION_AES.ENC_AES(?)";
 
 		try {
 			pstmt = con.prepareStatement(query2);
@@ -112,7 +114,7 @@ public class PartyDao {
 		int result = 0;
 		System.out.println(p);
 
-		String query = "insert into party(pno, category, pname, id, pwd, email) values (seq_pno.nextval, 5, ?, ?, ?, ?)";
+		String query = "insert into party(pno, category, pname, id, pwd, email) values (seq_pno.nextval, 5, ?, ?, ENCRYPTION_AES.ENC_AES(?), ?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -134,7 +136,7 @@ public class PartyDao {
 		return result;
 	}
 
-	public Member selectMember(Connection con, String uid) {
+	/*public Member selectMember(Connection con, String uid) {
 		Member m = null;
 
 		PreparedStatement pstmt = null;
@@ -168,13 +170,13 @@ public class PartyDao {
 		System.out.println("dao m: " + m + "dao userid" + uid);
 
 		return m;
-	}
+	}*/
 
 	public int updatePartyMyinfo1(Connection con, Party p) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =?, paddress=?, phone=?, birth=? ,gender=? where pno=?";
+		String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =ENCRYPTION_AES.ENC_AES(?), paddress=?, phone=?, birth=? ,gender=? where pno=?";
 
 		try {
 			System.out.println("p: " + p);
@@ -528,7 +530,7 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
-		String query = "update party set pwd=? where id=?";
+		String query = "update party set pwd=ENCRYPTION_AES.ENC_AES(?) where id=?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -596,7 +598,7 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String query = "insert into party(pno, category, pname, emp_type, id_no, position, join_date, phone, paddress, email) values (seq_pno.nextval, 2, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		String query = "insert into party(pno, category, pname, emp_type, id_no, position, join_date, phone, paddress, email) values (seq_pno.nextval, 2, ?, ?, ENCRYPTION_AES.ENC_AES(?), ?, ?, ?, ?, ?) ";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -626,7 +628,7 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "select pno from party where id_no=?";
+		String query = "select pno from party where id_no=ENCRYPTION_AES.ENC_AES(?)";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -681,7 +683,7 @@ public class PartyDao {
 		ArrayList<Party> emplist = null;
 		
 
-		String query = "select pno, pname, id_no, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
+		String query = "select pno, pname, ENCRYPTION_AES.DEC_AES(id_no) as id_no, emp_type, position, join_date, phone, paddress, email from party where pno in (select rel_pno from party_rel where busi_pno = ? and rel_type='직원')";
 
 		
 		try {
@@ -789,7 +791,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		Party p = null;
 		
-		String query = "select pname, emp_type, id_no, position, join_date, phone, paddress, email from party where pno=?";
+		String query = "select pname, emp_type, ENCRYPTION_AES.DEC_AES(id_no) as id_no, position, join_date, phone, paddress, email from party where pno=?";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -827,7 +829,7 @@ public class PartyDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update party set pname=?, emp_type=?, position=?, join_date=?, phone=?, paddress=?, email=? where id_no=?";
+		String query = "update party set pname=?, emp_type=?, position=?, join_date=?, phone=?, paddress=?, email=? where id_no=ENCRYPTION_AES.ENC_AES(?)";
 		
 		
 		try {
@@ -901,7 +903,7 @@ public class PartyDao {
 		ResultSet rset = null;
 		ArrayList<Emp> list=null; 
 		
-		String query = "select p.pno, p.pname, p.id_no, p.position, s.sno, s.wsdate, s.wedate, s.saldate, " + 
+		String query = "select p.pno, p.pname, ENCRYPTION_AES.DEC_AES(p.id_no) as id_no, p.position, s.sno, s.wsdate, s.wedate, s.saldate, " + 
 							   "s.init_pay, s.bonus, s.incentive, s.over_pay, s.meals, s.child_pay, s.car_pay, s.exp, s.rest_pay " +
 							   "from party_rel pr left join party p on (pr.rel_pno = p.pno) " +
 							   							"left join salary s on (p.pno = s.pno) " +

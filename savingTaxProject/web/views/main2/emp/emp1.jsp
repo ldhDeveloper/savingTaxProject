@@ -33,7 +33,7 @@
 		})
 	})
 </script>
-<title>Insert title here</title>
+<title>직원정보입력</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -204,13 +204,6 @@
 
 						</tbody>
 					</table>
-					<ul class="pagination" style="margin-left: 42%; margin-bottom: 30px;">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-					</ul>
 				</div>
 			</div>
 			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
@@ -255,7 +248,7 @@
 										<div class="col-md-2" style="text-align: center">-</div>
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="password" class="form-control" name="empno2" maxlength="6">
+											<input type="password" class="form-control" name="empno2" maxlength="7">
 										</div>
 									</td>
 									<td class="col-md-2"><h5>직급</h5></td>

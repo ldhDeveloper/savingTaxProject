@@ -75,7 +75,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#edrop > li > a').click(function() {
-			console.log("Addfda");
+
 			$('#menu1').html($(this).text() + "<span class='caret'></span>");
 			if ($(this).text() == "직접입력") {
 				$('#email2').val('');
@@ -227,8 +227,10 @@
 							href="/jsmi/views/main2/myinfo/myinfo1.jsp">회원정보</a></li>
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
+						<li><a class="tabmenu"
+							href="/jsmi/views/main2/myinfo/myinfo3Update.jsp">거래처 정보</a></li>
 						<li><a class="tabmenu lactive"
-							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
+							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 입력</a></li>
 					</ul>
 				</div>
 			</div>
@@ -312,6 +314,26 @@
 										maxlength="4" required>
 								</div>
 							</td>
+							<td class="col-md-2"><h5>거래처 휴대폰번호</h5></td>
+							<td class="col-md-4">
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="phone" id="phone"
+										OnKeyUp="checkph();" maxlength="3" required>
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="phone2" id="phone2"
+										OnKeyUp="checkph();" maxlength="4" required>
+								</div>
+								<div class="col-md-1" style="text-align: center">-</div>
+								<div class="col-md-3"
+									style="padding-left: 0px; padding-right: 0px;">
+									<input type="text" class="form-control" name="phone3" id="phone3"
+										maxlength="4" required>
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>거래처 주소</h5></td>
@@ -378,8 +400,8 @@
 					<input type="submit" class="btn btn-primary" value="입력"
 						onclick="return chk()">
 					<button class="btn btn-danger" type="reset">취소</button>
-					<input type="button" class="btn btn-warning" value="목록보기 및 수정"
-						onclick="location.href='/jsmi/views/main2/myinfo/myinfo3Update.jsp'">
+					<!-- <input type="button" class="btn btn-warning" value="목록보기 및 수정"
+						onclick="location.href='/jsmi/views/main2/myinfo/myinfo3Update.jsp'"> -->
 				</div>
 			</form>
 

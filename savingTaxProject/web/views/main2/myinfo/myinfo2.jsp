@@ -269,7 +269,9 @@
 						<li><a class="tabmenu lactive"
 							href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
 						<li><a class="tabmenu"
-							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
+							href="/jsmi/views/main2/myinfo/myinfo3Update.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu"
+							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 입력</a></li>
 					</ul>
 				</div>
 			</div>

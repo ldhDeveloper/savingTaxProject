@@ -61,7 +61,6 @@ public class MyinfoDetailUpdate extends HttpServlet {
 		
 		String Cno = cno + "-" + cno2 + "-" + cno3;
 		String Tel = tel + "-" + tel2 + "-" + tel3;
-		System.out.println("teltel"+Tel);
 		String Caddress = caddress + "/" + caddress2 + "/" + caddress3;
 		String Email = email + "@" + email2;
 

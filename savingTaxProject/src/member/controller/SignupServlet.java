@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.vo.Member;
 import member.model.vo.Party;
-import member.model.server.MemberService;
 import member.model.server.PartyService;
 
 

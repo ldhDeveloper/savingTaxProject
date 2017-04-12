@@ -118,7 +118,7 @@ public class SalaryDao {
 		ResultSet rset = null;
 		Party p = null;
 		
-		String query = "select pname, email, id_no, position, emp_type, phone from party where pno = ?";
+		String query = "select pname, email, ENCRYPTION_AES.DEC_AES(id_no) as id_no, position, emp_type, phone from party where pno = ?";
 		
 		try {
 			pstmt = con.prepareStatement(query);

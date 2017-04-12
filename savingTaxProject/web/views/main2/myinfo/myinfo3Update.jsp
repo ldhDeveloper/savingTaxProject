@@ -105,8 +105,10 @@
 							href="/jsmi/views/main2/myinfo/myinfo1.jsp">회원정보</a></li>
 						<li><a class="tabmenu"
 							href="/jsmi/views/main2/myinfo/myinfo2.jsp">사업장 정보</a></li>
-						<li><a class="tabmenu active"
-							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu lactive"
+							href="/jsmi/views/main2/myinfo/myinfo3Update.jsp">거래처 정보</a></li>
+						<li><a class="tabmenu"
+							href="/jsmi/views/main2/myinfo/myinfo3.jsp">거래처 입력</a></li>
 					</ul>
 				</div>
 			</div>
@@ -196,13 +198,6 @@
 
 						</tbody>
 					</table>
-					<ul class="pagination" style="float: right; margin-bottom: 30px;">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-					</ul>
 				</div>
 			</div>
 			<h3 align="center">거래처 정보 수정</h3>
@@ -421,7 +416,7 @@
 						$("#detaillist").html( $("#detaillist").html() 
 								+ "<tr style='cursor:pointer' class='line' 'id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
 								+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-								+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('&').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+								+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" +decodeURIComponent(jsonArr.list[i].caddress).split('+').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
 								+ "</td></tr><hr>" );
 					}
 				},
@@ -462,8 +457,8 @@
        			  $('#tel2').val(decodeURIComponent(jsonArr.tel2));
        			  $('#tel3').val(decodeURIComponent(jsonArr.tel3));
        			  $('#postnum').val(decodeURIComponent(jsonArr.caddress));
-       			  $('#address1').val(decodeURIComponent(jsonArr.caddress2));
-       			  $('#address2').val(decodeURIComponent(jsonArr.caddress3));
+       			  $('#address1').val(decodeURIComponent(jsonArr.caddress2).split('+').join(" "));
+       			  $('#address2').val(decodeURIComponent(jsonArr.caddress3).split('+').join(" "));
        			  $('#email').val(decodeURIComponent(jsonArr.email));
        			  $('#email2').val(decodeURIComponent(jsonArr.email2));
        		  }

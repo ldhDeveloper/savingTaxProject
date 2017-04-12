@@ -11,7 +11,7 @@
 <script src="/jsmi/js/main2/jquery-1.11.1.min.js"></script>
 <script src="/jsmi/js/main2/lumino.glyphs.js"></script>
 <script src="/jsmi/js/main2/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>직원급여수정</title>
 <style>
 .middle {
 	width: 1400px !important;
@@ -561,13 +561,6 @@ th {
 
 							</tbody>
 						</table>
-						<ul class="pagination" style="float: right; margin-bottom: 30px;">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-						</ul>
 					</div>
 				</div>
 			</div>

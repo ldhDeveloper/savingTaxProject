@@ -60,14 +60,11 @@ public class PartyService {
 		int result = 0;
 
 		int result1 = new PartyDao().insertMyinfo3(con, p);
-		System.out.println("result 1: " + result1);
-
+	
 		if (result1 > 0) {
 			pno = new PartyDao().selectPno(con, p);
-			System.out.println("result pno: " + pno);
 			if (pno > 0) {
 				result2 = new PartyDao().insertParty_Rel(con, owner, pno);
-				System.out.println("result2: " + result2);
 			}
 		}
 
@@ -151,20 +148,25 @@ public class PartyService {
 		int result2 = 0;
 
 		int result1 = new PartyDao().insertEmp(con, p);
-
+		System.out.println("직원 추가 결과 : " + result1);
+		
 		if (result1 > 0) {
 			pno = new PartyDao().selectPno2(con, p);
+			System.out.println("호출 직원 pno : " + pno);
 			if (pno != 0) {
 				result2 = new PartyDao().insertEmpRel(con, owner, pno);
+				System.out.println("직원 관계 생성 관료");
 			}
 		}
 
 		if (result1 > 0 && result2 > 0) {
 			commit(con);
 			result = 1;
+			System.out.println("실행성공");
 		} else {
 			rollback(con);
 			result = 0;
+			System.out.println("실행실패");
 		}
 
 		return result;
