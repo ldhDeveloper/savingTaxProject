@@ -243,12 +243,12 @@
 									<td class="col-md-4">
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="empno1" maxlength="6">
+											<input type="text" class="form-control" name="empno1" id="empno1" OnKeyUp="checkidno();" required>
 										</div>
 										<div class="col-md-2" style="text-align: center">-</div>
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="password" class="form-control" name="empno2" maxlength="7">
+											<input type="password" class="form-control" name="empno2" id="empno2" OnKeyUp="checkidno();" required>
 										</div>
 									</td>
 									<td class="col-md-2"><h5>직급</h5></td>
@@ -263,17 +263,17 @@
 									<td class="col-md-4">
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone1" maxlength="3">
+											<input type="text" class="form-control" id="phone1" name="phone1" maxlength="3" OnKeyUp="checkph();" required>
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone2" maxlength="4">
+											<input type="text" class="form-control" maxlength="4" OnKeyUp="checkph();" name="phone2" id="phone2" required>
 										</div>
 										<div class="col-md-1" style="text-align: center">-</div>
 										<div class="col-md-3"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="phone3" maxlength="4">
+											<input type="text" class="form-control" name="phone3" id="phone3" required maxlength="4">
 										</div>
 									</td>
 
@@ -415,11 +415,23 @@
 					});
 				});
 				
-				function validate() {
-					var wname = $("#empname").val();
-
-					if(!/^[가-힝]{1,}$/, wname, "한글로 2글자 이상을 넣으세요~")
-			               return false;
+				function checkph() {
+					var str = $('input[name=phone1]').val().length;
+					var str2 =$('input[name=phone2]').val().length;
+					console.log(str);
+					if (str == 3) 
+						$('input[name=phone2]').focus();
+					
+					if(str2==4)
+						$('input[name=phone3]').focus();
+				}
+				
+				function checkidno() {
+					var str = $('input[name=empno1]').val().length;
+					
+					console.log(str);
+					if (str == 6) 
+						$('input[name=empno2]').focus();
 				}
 			</script>
 </body>

@@ -273,14 +273,11 @@ background
 							href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난
 								이벤트</a></li>
 					</ul></li>
-				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">비용안내</a>
-					<ul class="sub-menu">
+				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">결제하기</a>
+				<ul class="sub-menu">
 						<li><a href='/jsmi/views/main1/costGuide/costGuide.jsp'>비용안내</a></li>
-
-						<li><a href="/jsmi/views/main1/costGuide/payView.jsp">결제하기</a></li>
-					</ul></li>
-
-
+					</ul>
+        </li>
 				<li><a href="/jsmi/listview?page=1&boardNo=1">고객센터</a>
 					<ul class="sub-menu">
 						<li><a href="/jsmi/listview?page=1&boardNo=1">공지사항</a></li>
