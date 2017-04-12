@@ -245,7 +245,6 @@
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -296,7 +295,7 @@
 						</td> 
 					</tr>
 					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
+				
 					<tr>
 						<td colspan="2" class="tdmd" id="ccontents">
 							<h3></h3>
@@ -314,17 +313,12 @@
 		<br>
 		
 			<div align="right">
-				<input type="submit" class="btn btn-primary" value="등록">
+				
+				<input type="submit" class="btn btn-primary" value="등록" >
 				<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=boardNo%>" class="btn btn-warning">이전</a>				
 			</div>		
 		</form>
-			
 
-		
-		
-		<script type="text/javascript">
-
-		</script>
 	</div>
 	<br>
 	<br>
@@ -353,8 +347,7 @@
 			<div class="col-xs-8">
 				<input type="text" id="stext" name="search"
 					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
+				
 				<button class="btn btn-primary btn-xs">검색</button>
 			</div>
 

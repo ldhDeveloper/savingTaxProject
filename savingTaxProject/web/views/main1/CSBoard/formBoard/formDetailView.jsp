@@ -393,12 +393,16 @@ table {
 			</table>
 		</div>
 			<div  style = "text-align:right;">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+				<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<button class="lastBtns" onclick="deletePost();">삭제하기</button>
 					<script type="text/javascript">
 						function redact(){
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
+						function deletePost(){
+							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>";
+							}
 					</script>
 					<% }} %>
 					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
@@ -439,9 +443,9 @@ table {
 							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
 						</td>
 					</tr>
-					
+					<% if(commentList != null) { for(Post c : commentList) { %>
 					<tr>						
-						<% if(commentList != null) { for(Post c : commentList) { %>
+						
 						<td class="Qreplying">
 							작성자						
 						</td>
@@ -467,8 +471,8 @@ table {
 						<td colspan="2" class="Qreplying2">
 							<%=c.getPostContents() %>
 						</td>
-						<% }} %>
-					</tr>
+						
+					</tr><% }} %>
 			</table>
 		</div>
 		<br>
@@ -480,7 +484,7 @@ table {
 	<!-- 모바일용 -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">Notice</h2>
+			<h2 align="center" class="font-family-xs-1">Form</h2>
 		</div>
 
 
@@ -501,22 +505,28 @@ table {
 								<td>제      목</td>
 								<td><%=p.getPostName() %></td>
 							</tr>
-							
 							<tr class="danger">
 								<td>작 성 일</td>
 								<td><%=p.getPostDate() %></td>
 							</tr>
-							
 							<tr class="info">
 								<td>작 성 자</td>
 								<td><%=p.getpId() %></td>
 							</tr>
-							
 							<tr class="warning">
 								<td>조 회 수</td>
 								<td><%=p.getReadCount() %></td>
 							</tr>
+							<%if(p.getfName() !=null){ %>
+							<tr class="success">
+								<td>첨부 파일</td>
+								<td><a href = "/jsmi/filedown?refName=<%=p.getRefName()%>&fName=<%=p.getfName()%>
+						&pno=<%=loginUser.getPno()%>"><%=p.getfName() %></a></td>
+							</tr>
+							<%} %>
 							
+							<tr class="info">
+							</tr>
 							<tr class="success">
 								<td colspan="2">
 									<textarea class="form-control" rows="10" id="comment">

@@ -187,6 +187,16 @@ label {
 	width: 43%;
 }
 
+#submitBtn2 {
+	border: none;
+	border-radius: 3px;
+	border-color: #d58512;
+	color: white;
+	width: 8%;
+    height: 25px;
+	font-family: Binggrae !important;
+	background-color : #ec971f;
+}
 </style>
 
 </head>
@@ -284,8 +294,16 @@ label {
 				</tbody>
 			</table>
 		</div>
-
+	<% if(loginUser.getPno()<7){ %>
+			<div align="right">
+				<button id="submitBtn2"
+				 onclick 
+				 ="location.href='/jsmi/views/main1/CSBoard/taxNews/taxNewsInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+			</div>
+			<%} %>
+			<br><br><br><br><br><br>
 	</div>
+	
 	
 
 	<!-- 모바일용 -->

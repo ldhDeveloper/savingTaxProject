@@ -87,6 +87,9 @@ public class PostListViewServlet extends HttpServlet {
 			case 6:
 				view = request.getRequestDispatcher("views/main1/event/currentEvent/currentEventView.jsp");
 				break;
+			case 7:
+				view = request.getRequestDispatcher("views/main1/event/postEvent/postEventView.jsp");
+				break;
 			}
 			request.setAttribute("plist", plist);
 			request.setAttribute("currentPage", currentPage);
