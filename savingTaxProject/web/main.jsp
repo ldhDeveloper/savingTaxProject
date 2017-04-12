@@ -269,19 +269,19 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="/jsmi/images/main1/slide1.png" style="width:970px;">
-						</div>
-
-						<div class="item">
-							<img src="/jsmi/images/main1/slide2.png"  style="width:970px;">
-						</div>
-
-						<div class="item">
-							<img src="/jsmi/images/main1/slide3.png"  style="width:970px;">
+							<img src="/jsmi/images/main1/slide5.png" style="width:970px;">
 						</div>
 
 						<div class="item">
 							<img src="/jsmi/images/main1/slide4.png"  style="width:970px;">
+						</div>
+
+						<div class="item">
+							<img src="/jsmi/images/main1/slide1.png"  style="width:970px;">
+						</div>
+
+						<div class="item">
+							<img src="/jsmi/images/main1/slide3.png"  style="width:970px;">
 						</div>
 					</div>
 
@@ -418,19 +418,19 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
-								<img src="/jsmi/images/main1/eventmn6.png">
+								<img src="/jsmi/images/main1/slide5.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/main1/eventmn1.png">
+								<img src="/jsmi/images/main1/slide4.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/main1/eventmn4.png">
+								<img src="/jsmi/images/main1/slide3.png">
 							</div>
 
 							<div class="item">
-								<img src="/jsmi/images/main1/eventmn2.png">
+								<img src="/jsmi/images/main1/slide1.png">
 							</div>
 						</div>
 
