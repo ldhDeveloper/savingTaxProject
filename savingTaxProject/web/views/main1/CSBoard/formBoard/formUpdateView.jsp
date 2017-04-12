@@ -304,7 +304,6 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<h3></h3>
 						</td>
 					</tr>
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
 					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >

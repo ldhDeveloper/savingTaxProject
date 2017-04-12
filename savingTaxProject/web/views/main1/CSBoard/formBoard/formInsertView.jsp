@@ -226,7 +226,7 @@
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -242,26 +242,16 @@
 
 
 		<div class="middle font-family-md-1">
-			<h3 align="center">
-				<img src="/jsmi/images/QnA.png"><br><br>
-				절세미인에게 세무와 관련된 <label id="h3title"> 무엇이든 질문하십시오.</label>
+		<h3 align="center">
+				<img src="/jsmi/images/rlibrary.png"><br>
+				<br> 세무서식을 위한 <label>양식</label>을 받는 곳입니다.
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">성실하고 정확하게
-				답변해드릴게요.
-			</h4>
+			<h4 style="color: #a9a9a9" align="center">정확한 자료를 제공합니다.</h4>
 		</div>
 
 		<br> <br> <br>
 
-		<!-- <div id="clist">
-			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				제목
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-			</label> 
-			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
+
 		
 		<h3></h3>
 		

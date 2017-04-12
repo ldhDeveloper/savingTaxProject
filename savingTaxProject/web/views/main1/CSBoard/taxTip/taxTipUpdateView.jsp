@@ -83,7 +83,6 @@
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border: solid 1px #2a82a3;
 	height: 40px;
-	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
 	box-shadow: 2px 2px 6px #2a82a3;
@@ -97,7 +96,6 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* color : #2a82a3; */
 	color : #696969;
 	font-size: 13px;
 }
@@ -251,7 +249,6 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -304,7 +301,6 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<h3></h3>
 						</td>
 					</tr>
-					<!-- DB연동시 삭제 할 부분 보여주려고 여기에 씀 -->
 					<tr>
 					<td colspan = "10" style= "text-align:right">
 					<input type = "hidden" value = "<%=p.getPostNo() %>" name = "postNo" >

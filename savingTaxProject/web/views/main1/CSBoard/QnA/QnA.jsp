@@ -318,8 +318,6 @@ label {
 					 <a href="/jsmi/listview?page=<%=endPage%>&boardNo=<%=boardNo%>">[마지막]</a>
 						</td>
 					</tr>
-				
-				
 				</tbody>
 			</table>
 		</div>
@@ -331,6 +329,7 @@ label {
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/QnA/QnAInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
+			<br><br><br><br><br><br>
 	</div>
 
 

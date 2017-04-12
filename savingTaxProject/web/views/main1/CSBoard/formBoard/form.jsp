@@ -210,7 +210,7 @@ label {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<script>
@@ -325,12 +325,15 @@ label {
 		</div>
 		
 		<br>
-		
+		<% if(loginUser.getPno()<6){ %>
 			<div align="right">
+				
 				<button id="submitBtn2"
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/formBoard/formInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
+			<%} %>
+			<br><br><br><br><br><br>
 	</div>
 	
 
