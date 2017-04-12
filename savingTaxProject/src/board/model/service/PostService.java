@@ -20,23 +20,6 @@ public class PostService {
 		return plist;
 	}
 
-	public int deletePost(int Post_no, int post_no) {
-		Connection con = getConnection();
-		int result = new PostDao().deletePost(con, Post_no, post_no);
-		if(result > 0)
-			commit(con);
-		else
-			rollback(con);
-		close(con);
-		return result;
-	}
-
-	public List<Post> selectPost(int Post_no, int post_no) {
-		Connection con = getConnection();
-		List<Post> pList = new PostDao().selectPost(con, Post_no, post_no);
-		close(con);
-		return pList;
-	}
 
 	public int updatePost(Post p) {
 		Connection con = getConnection();
@@ -110,6 +93,17 @@ public class PostService {
 			commit(con);
 		else
 		rollback(con);
+	}
+
+	public int deletePost(int postNo) {
+		Connection con = getConnection();
+		int result = new PostDao().deletePost(con, postNo);
+		
+		if(result >0)
+			commit(con);
+		else
+			rollback(con);
+		return result;
 	}
 
 

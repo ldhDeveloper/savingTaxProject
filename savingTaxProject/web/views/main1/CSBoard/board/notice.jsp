@@ -328,13 +328,16 @@ label {
 		</div>
 		
 		<br>
-		
+		<%if (loginUser.getPno() <7){ %>
 			<div align="right">
 				<button id="submitBtn2"
 				 onclick 
 				 ="location.href='/jsmi/views/main1/CSBoard/board/noticeInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
 			</div>
+			<%} %>
+			<br><br><br><br><br><br>
 	</div>
+	
 	<!-- mobile page view -->
 
 

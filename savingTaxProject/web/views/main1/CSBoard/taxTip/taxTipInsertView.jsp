@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>	
-<% int currentPage = Integer.parseInt(request.getParameter("page"));
-	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-%>
-
+	pageEncoding="UTF-8" import  = "board.model.vo.Post"%>
+ <%int currentPage = Integer.parseInt(request.getParameter("page"));
+  int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+%> 	
 
 <!DOCTYPE html>
 <html>
@@ -129,24 +128,28 @@
 	border-top : 1px solid #ddd;
 	border-bottom : 1px solid #ddd;
 	padding-top : 2.5%;
-	padding-left : 2.5%;
+	padding-left : 5.2%;
 	padding-bottom : 2%;
 	font-size: 12pt;
 	color: #2a82a3;
 }
 
-.Qlist {			
+.Qwriter {
+	font-family: computer !important;
+	border-top : 1px solid #ddd;
 	border-bottom : 1px solid #ddd;
-	padding : 1.5%;	
-	text-align: center;
-} 
+	padding-top : 2.5%;
+	padding-left : 4%;
+	padding-bottom : 2%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
 
-.Qright {
-	border-right: 1px solid #ddd;
+.Qwriter2 {
 	font-family: NotoSansCJKkr-Ligth !important;
-	text-align: center;
 	font-size: 10pt;
 }
+
 
 .Qlistt {
 	border-right: 1px solid #ddd;
@@ -201,7 +204,7 @@
 
 #ptitletext {
 	border: none;
-	width: 830px;
+	width: 780px;
 }
 
 #textArea {
@@ -213,7 +216,6 @@
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -229,7 +231,8 @@
 
 
 		<div class="middle font-family-md-1">
-					<h3 align="center">
+		
+			<h3 align="center">
 				<img src="/jsmi/images/tip.png"><br><br>
 				세무와 관련된 <label>유용한 정보를 알려드립니다.</label>
 			</h3>
@@ -238,16 +241,6 @@
 
 		<br> <br> <br>
 
-		<!-- <div id="clist">
-			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				제목
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-			</label> 
-			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
-		
 		<h3></h3>
 		
 		<form action="/jsmi/pinsert" method="post" enctype="multipart/form-data">
@@ -255,56 +248,33 @@
 			<table class="tablemd">
 				<tbody class="tbodymd font-family-md-3">
 					<tr>
-						<td colspan="8" class="Qtitle">
+						<td colspan="2" class="Qtitle">
 							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
 							<label class="QreplyC">
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="ptitle" id="ptitletext" autofocus>
+								<input type="text" name="postname" id="ptitletext" autofocus>
 							</label>
 						</td> 
 					</tr>
-				
+					
 					<tr>
-						<td class="Qlist Qright Qlistt">
-							번호
-						</td>
-						
-						<td class="Qright">
-							여기에 번호 값 넣기
-						</td>
-						
-						<td class="Qlistt Qright">
-							작성일자
-						</td>
-						
-						<td class="Qright">
-							여기에 작성일자 값 넣기
-						</td>
-						
-						<td class="Qlistt Qright">
-							작성자
-						</td>
-						
-						<td class="Qright">
-							<input value="<%= loginUser.getPname()%>" name = "pid" readonly>
-							
-							<input value="<%= loginUser.getPno() %>" name="pno" type="hidden">							
-						</td>
-						
-						<td class="Qlistt Qright">
-							조회수
-						</td>
-						
-						<td class="Qcount">
-							여기에 조회수 값 넣기
+						<td colspan="2" class="Qwriter">
+							작성자 &nbsp;&nbsp;&nbsp;&nbsp;|
+							<label class="QreplyC">
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<%= loginUser.getId() %>
+							</label>
 						</td> 
 					</tr>
 					
-					<!-- DB연동시 삭제 할 부분! 보여주려고 여기에 해 놓은 것임! 오해금지! 내용이 들어갈 곳 -->
+				
 					<tr>
-						<td colspan="8" class="tdmd" id="ccontents">
+						<td colspan="2" class="tdmd" id="ccontents">
 							<h3></h3>
-							<textarea style="width:100%;height:200px;" id="textArea"></textarea>
+							<textarea style="width:100%;height:200px;" id="textArea" name="contents"></textarea>
+							<input type = "hidden" name = "pno" value ="<%=loginUser.getPno()%>">
+							<input type = "hidden" name = "page" value ="<%=currentPage %>">
+							<input type = "hidden" name = "boardNo" value ="<%=boardNo%>">
 							<h3></h3>
 						</td>
 					</tr>
@@ -316,28 +286,26 @@
 		
 			<div align="right">
 				<input type="submit" class="btn btn-primary" value="등록">
-				<a href="/jsmi/views/main1/CSBoard/QnA/QnA.jsp" class="btn btn-warning">이전</a>				
+				<a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=boardNo%>" class="btn btn-warning">이전</a>				
 			</div>		
 		</form>
-			
 
-		
 		
 		<script type="text/javascript">
 
 		</script>
 	</div>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
 	<!-- 모바일용 -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">

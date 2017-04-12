@@ -85,7 +85,6 @@
 	border: solid 1px #2a82a3;
 	height: 40px;
 	width: 1007px;
-	/* border-radius: 4px; */
 	padding-top : 0.5%;
 	font-size: 14pt;
 	box-shadow: 2px 2px 6px #2a82a3;
@@ -99,7 +98,6 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* color : #2a82a3; */
 	color : #696969;
 	font-size: 13px;
 }
@@ -248,7 +246,6 @@ table {
 
 .textAreareply{
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* border : none; */
 	max-width: 850px;
 	min-width: 850px;
 	max-height: 100px;
@@ -301,7 +298,7 @@ table {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -313,13 +310,11 @@ table {
 	<div class="middle hidden-xs">
 
 	<div class="middle font-family-md-1">
-			<h3 align="center">
+				<h3 align="center">
 				<img src="/jsmi/images/tip.png"><br><br>
-				절세미인과 관련된 <label id="h3title">빠르고 정확한 소식을 전해드립니다.</label>
+				세무와 관련된 <label>유용한 정보를 알려드립니다.</label>
 			</h3>
-			<h4 style="color: #a9a9a9" align="center">새로운 소식을 보다 빠르고 정확하게
-				확인하실 수 있습니다.
-			</h4>
+			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
 		</div>
 
 		<br> <br> <br>
@@ -365,12 +360,16 @@ table {
 			</table>
 		</div>
 		<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+						<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<button class="lastBtns" onclick="deletePost();">삭제하기</button>
 					<script type="text/javascript">
 						function redact(){
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
+						function deletePost(){
+							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>";
+							}
 					</script>
 					<% }} %>
 					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
@@ -378,15 +377,17 @@ table {
 					&nbsp;&nbsp;&nbsp;&nbsp;	
 		</div>
 		<div>
-			<form action = "/jsmi/insertcomment" method = "post">
+		<form action = "/jsmi/insertcomment" method = "post">
 			<table class="replyTable">				
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea>
+							</label>
 						</td>
 						
-						<td class="OreplyBtn" >
+						<td class="OreplyBtn">
 							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
@@ -394,13 +395,11 @@ table {
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록"> 
-							<p></p>
-							<input type="reset" class="cancleBtns" value="취소">
+							<input type="submit" class="submitBtns" value="등록">
 						</td>
 						
-						<td class="OreplyBtn" style ="width:40%;">															
-							
+						<td class="OreplyBtn">															
+							<input type="submit" class="cancleBtns" value="취소">
 						</td>
 					</tr>
 			</table>
@@ -414,9 +413,9 @@ table {
 							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
 						</td>
 					</tr>
-					
-					<tr>						
 						<% if(commentList != null) { for(Post c : commentList) { %>
+					<tr>						
+					
 						<td class="Qreplying">
 							작성자						
 						</td>
@@ -442,8 +441,8 @@ table {
 						<td colspan="2" class="Qreplying2">
 							<%=c.getPostContents() %>
 						</td>
-						<% }} %>
-					</tr>
+					
+					</tr>	<% }} %>
 			</table>
 		</div>
 		

@@ -73,15 +73,6 @@ public class PostDao {
 		return plist;
 	}
 
-	public int deletePost(Connection con, int post_no, int post_no2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public List<Post> selectPost(Connection con, int post_no, int post_no2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public int updatePost(Connection con, Post p) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -309,6 +300,24 @@ public class PostDao {
 		
 	
 		
+	}
+
+
+	public int deletePost(Connection con, int postNo) {
+		PreparedStatement pstmt =null;
+		String query = "update post set board_no = 100 where post_no = ?";
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

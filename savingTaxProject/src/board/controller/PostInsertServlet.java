@@ -101,6 +101,8 @@ public class PostInsertServlet extends HttpServlet {
 		}
 		int result = new PostService().insertPost(p);
 		if(result > 0){
+			PrintWriter out = response.getWriter();
+			out.println("새글을 작성하셧어요");
 			response.sendRedirect(("/jsmi/listview?page="+page+"&boardNo="+p.getBoardNo()));
 		}
 		else {

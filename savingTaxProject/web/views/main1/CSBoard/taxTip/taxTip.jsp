@@ -3,7 +3,7 @@
 	
 <%@ page import = "java.util.*, board.model.vo.Post" %>
 
-<%
+<%	
 	List<Post> plist = (List<Post>)request.getAttribute("plist");
 	
 	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
@@ -46,7 +46,7 @@
 	font-family: mobius !important;
 }
 
-.font-family-md-2 {
+.font-family-md-2{
 	font-family: Binggrae !important;
 }
 
@@ -54,11 +54,11 @@
 	font-family: tenbyten !important;
 }
 
-.searchLable {
+.searchLable{
 	font-family: redmailbox !important;
 }
 
-#tlist {
+#tlist{
 	font-family: noscocks !important;
 }
 
@@ -90,6 +90,7 @@
 }
 
 .theadmd {
+
 	border: solid 1px #2a82a3;
 	border-radius: 3px;
 }
@@ -129,11 +130,12 @@
 	border: solid 1px #dcdcdc;
 	height: 40px;
 	border-radius: 4px;
-	padding-top: 0.4%;
-	box-shadow: 3px 3px 5px silver;
+	padding-top : 0.4%;
+	box-shadow : 3px 3px 5px silver;	
 }
 
 #searchmd {
+	
 	border: 2px solid gray;
 }
 
@@ -143,7 +145,7 @@
 	font-align: center;
 }
 
-#searchTitle {
+#searchTi {
 	width: 50%;
 	height: 23px;
 }
@@ -154,6 +156,7 @@
 	background-color: #2a82a3;
 	color: white;
 	font-family: Binggrae !important;
+	
 }
 
 label {
@@ -164,7 +167,7 @@ label {
 	border-top-left-radius: 5px;
 }
 
-#tlist {
+#tlist{
 	background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 	background: -o-linear-gradient(#ffffff, #b0e0e6);
 	background: -moz-linear-gradient(#ffffff, #b0e0e6);
@@ -172,24 +175,34 @@ label {
 	border: solid 1px #2a82a3;
 	height: 40px;
 	border-radius: 4px;
-	padding-top: 0.8%;
+	padding-top : 0.8%;
 	font-size: 12pt;
-	box-shadow: 3px 3px 5px silver;
+	box-shadow : 3px 3px 5px silver;
 }
 
-#tno {
+#tno{
 	width: 42%;
 }
-
 #ttitle {
 	width: 43%;
+}
+
+#submitBtn2 {
+	border: none;
+	border-radius: 3px;
+	border-color: #d58512;
+	color: white;
+	width: 8%;
+    height: 25px;
+	font-family: Binggrae !important;
+	background-color : #ec971f;
 }
 </style>
 
 </head>
 
 <body>
-
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<script>
@@ -209,62 +222,63 @@ label {
 	<br>
 
 	<!-- 컴퓨터용 -->
+	
 	<div class="middle hidden-xs">
-
-
 		<div class="middle font-family-md-1">
-			<h3 align="center">
+				<h3 align="center">
 				<img src="/jsmi/images/tip.png"><br><br>
 				세무와 관련된 <label>유용한 정보를 알려드립니다.</label>
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
 		</div>
-
 		<br> <br> <br>
-
-
-		<div id="searchdiv" align="center">
-			<form action="/jsmi/psearch">
+		
+			<div id="searchdiv" align="center">
+			<form action="/jsmi/psearch" method="post">
 				<label id="searchLable">SEARCH</label>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				<input type="text" id="searchTitle" name="searchTitle" placeholder="검색할 제목을 입력하세요."> &nbsp;&nbsp;
+				<input type="text" id="searchTi" name="searchTitle" placeholder="검색할 제목을 입력하세요.">
+				&nbsp;&nbsp; 
 				<input value="<%= boardNo %>" name="boardNo" type="hidden">
-				<input value="<%= currentPage %>" name="page" type="hidden">	
+				<input value="<%= currentPage %>" name="page" type="hidden">  
 				<input type="submit" id="submitBtn" value="검색">
-			</form>
-		</div>
-
+				</form>				
+			</div>
+		
 		<br> <br> <br> <br>
-
-		<div id="tlist">
+		
+		<div id="tlist" >
 			<label id="tno">&nbsp;&nbsp;&nbsp;번호&nbsp;&nbsp;&nbsp;&nbsp;|</label>
-			<label id="ttitle">&nbsp;&nbsp;&nbsp;제목&nbsp;&nbsp;&nbsp;</label> <label
-				id="tdate">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일&nbsp;&nbsp;</label>
+			<label id="ttitle">&nbsp;&nbsp;&nbsp;제목&nbsp;&nbsp;&nbsp;</label>
+			<label id="tdate">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일&nbsp;&nbsp;</label>  
 		</div>
 		
 		<br>
 
 		<div class="tableStart">
-			<table class="tablemd" style="font-size: 1.3em;">
+			<table class="tablemd"  style="font-size: 1.3em;">				
 				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
 					<tr>
-						<td class="tno tdmd"><%= p.getPostNo() %></td>
+					
+						<td class="tno tdmd">
+							<%= p.getPostNo() %>
+						</td>
 						<td class="ttitle tdmd">
-							<%-- <a href="/jsmi/views/main1/CSBoard/taxTip/taxTipDetailView.jsp"><%= p.getPostName() %></a> --%>						
+						
 							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
 								<%= p.getPostName() %>
 							</a>
 						</td>
-						<td class="tdate tdmd">
-							<%= p.getPostDate() %>
-						</td>
+						<td class="tdate tdmd"><%= p.getPostDate() %></td>
+						
 					</tr>
 					<% } %>
 					<tr height = "20px"></tr>
 						<tr>
+
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]
@@ -278,22 +292,28 @@ label {
 				</tbody>
 			</table>
 		</div>
+	<% if(loginUser.getPno()<7){ %>
+			<div align="right">
+				<button id="submitBtn2"
+				 onclick 
+				 ="location.href='/jsmi/views/main1/CSBoard/taxTip/taxTipInsertView.jsp?page=<%=currentPage%>&boardNo=<%=boardNo%>'" >글쓰기</button>
+			</div>
+			<%} %>
+			<br><br><br><br><br><br>
 	</div>
-
+		
+	
 
 	<!-- 모바일용 -->
 	
+
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-		
-		
-		<h3><img src="/jsmi/images/tip.png">
+				<h3 align="center">
+				<img src="/jsmi/images/tip.png">
+				
 			</h3>
 			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
-		
-
-		 <br>
-
 		<div id="searchdiv" align="center">
 			<form action="/jsmi/psearch">
 				<label id="searchLable">SEARCH&nbsp;&nbsp;</label>
@@ -321,13 +341,13 @@ label {
 		<br>
 
 		<div class="tableStart">
-			<table class="tablemd"  style="font-size: 1.3em;">
+			<table class="tablemd">
 			
 				
 				
 				<tbody class="tbodymd font-family-md-3">
 				<% if(plist != null) for(Post p : plist) { %>
-					<tr>
+					<tr >
 						<td class="ttitle tdmd">
 							<a href="/jsmi/postdetail?postNo=<%=p.getPostNo() %>&boardNo=<%= p.getBoardNo()%>&page=<%=currentPage%>">
 								<%= p.getPostName() %>
@@ -353,9 +373,8 @@ label {
 			</table>
 		</div>
 		</div>
-		 <br> <br> <br>
+		<br> <br> <br>
 	</div>
-	
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

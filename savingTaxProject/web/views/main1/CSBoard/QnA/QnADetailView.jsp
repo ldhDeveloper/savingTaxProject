@@ -85,7 +85,7 @@
 	border: solid 1px #2a82a3;
 	height: 40px;
 	width: 1007px;
-	/* border-radius: 4px; */
+	
 	padding-top : 0.5%;
 	font-size: 14pt;
 	box-shadow: 2px 2px 6px #2a82a3;
@@ -99,7 +99,7 @@
 
 #ctitlec {
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* color : #2a82a3; */
+	
 	color : #696969;
 	font-size: 13px;
 }
@@ -248,7 +248,7 @@ table {
 
 .textAreareply{
 	font-family: NotoSansCJKkr-Ligth !important;
-	/* border : none; */
+	
 	max-width: 850px;
 	min-width: 850px;
 	max-height: 100px;
@@ -389,10 +389,14 @@ table {
 		<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
 					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<button class="lastBtns" onclick="deletePost();">삭제하기</button>
 					<script type="text/javascript">
 						function redact(){
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
+						function deletePost(){
+							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>";
+							}
 					</script>
 					<% }} %>
 					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
@@ -405,10 +409,12 @@ table {
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea>
+							</label>
 						</td>
 						
-						<td class="OreplyBtn" >
+						<td class="OreplyBtn">
 							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
@@ -416,13 +422,11 @@ table {
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록"> 
-							<p></p>
-							<input type="reset" class="cancleBtns" value="취소">
+							<input type="submit" class="submitBtns" value="등록">
 						</td>
 						
-						<td class="OreplyBtn" style ="width:40%;">															
-							
+						<td class="OreplyBtn">															
+							<input type="submit" class="cancleBtns" value="취소">
 						</td>
 					</tr>
 			</table>
@@ -436,9 +440,9 @@ table {
 							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
 						</td>
 					</tr>
-					
+					<% if(commentList != null) { for(Post c : commentList) { %>
 					<tr>						
-						<% if(commentList != null) { for(Post c : commentList) { %>
+						
 						<td class="Qreplying">
 							작성자						
 						</td>
@@ -464,8 +468,8 @@ table {
 						<td colspan="2" class="Qreplying2">
 							<%=c.getPostContents() %>
 						</td>
-						<% }} %>
-					</tr>
+					
+					</tr>	<% }} %>
 			</table>
 		</div>
 		

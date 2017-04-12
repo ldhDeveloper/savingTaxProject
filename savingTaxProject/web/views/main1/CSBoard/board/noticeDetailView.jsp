@@ -309,6 +309,13 @@ table {
 	padding : 2.5%;
 	font-size: 12pt;
 }
+.replyContent{
+	border-bottom : 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	padding : 2.5%;
+	font-size: 7pt;
+	white-space:normal;
+}
 
 .QreplyContent {
 	font-family: computer !important;
@@ -333,7 +340,7 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -396,12 +403,16 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 			</table>
 		</div>
 		<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
-					<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
+				<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 					<button  class ="lastBtns" onclick="redact();">수정하기</button>
+					<button class="lastBtns" onclick="deletePost();">삭제하기</button>
 					<script type="text/javascript">
 						function redact(){
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
+						function deletePost(){
+							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>&boardNo=<%=p.getBoardNo()%>";
+							}
 					</script>
 					<% }} %>
 					 <a href="/jsmi/listview?page=<%=currentPage%>&boardNo=<%=p.getBoardNo() %>" 
@@ -414,7 +425,8 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea></label>
 						</td>
 						
 						<td class="OreplyBtn" >
@@ -425,20 +437,17 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록"> 
+							<input type = "submit" class="submitBtns" value="등록"> 
 							<p></p>
 							<input type="reset" class="cancleBtns" value="취소">
 							<% } %>
 						</td>
-						
 						<td class="OreplyBtn" style ="width:40%;">															
-							
 						</td>
 					</tr>
 			</table>
 			</form>
 		</div>
-		
 		<div>					
 			<table class="replyTable">				
 					<tr>
@@ -446,26 +455,21 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							댓글내용 &nbsp;&nbsp;&nbsp;&nbsp;|
 						</td>
 					</tr>
-					
+					<% if(commentList != null) { for(Post c : commentList) { %>
 					<tr>						
-						<% if(commentList != null) { for(Post c : commentList) { %>
 						<td class="Qreplying">
 							작성자						
 						</td>
-						
 						<td class="Qreplying2">
 							<%=c.getpId() %>
 						</td>
-						
 						<td class="Qreplying">
 							작성일							
 						</td>
-						
 						<td class="Qreplying2">
 							<%=c.getPostDate() %>
 						</td>
 					</tr>
-					
 					<tr>
 						<td colspan="2" class="Qreplying">
 							작성내용						
@@ -474,8 +478,8 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 						<td colspan="2" class="Qreplying2">
 							<%=c.getPostContents() %>
 						</td>
-						<% }} %>
 					</tr>
+						<% }} %>
 			</table>
 		</div>
 		
@@ -543,24 +547,19 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<table>
 							<tr class="danger">
 								<td style = "width : 80%">
-									<textarea name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
+									<textarea
+									maxlength=40  
+									 name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
 								</td>
 								<td>		<%if(loginUser != null) {%>
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
-							
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
-							
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
 							<input type="submit" class="submitBtns" value="등록"> 
-							
 							<input type="reset" class="cancleBtns" value="취소">
 							<% } %></td>
-							</tr>
-							
-						
-						
-																	
+							</tr>										
 					</table>
 					</form>
 					<div>
@@ -578,11 +577,11 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<p></p> 
 							<%=c.getPostDate() %>
 						</td>
-				<td  style = "width :70%; border-left:1px black;">				
-							<%=c.getPostContents() %>
-						</td>
-					</tr>
-						
+				<td  style = "width :70%;"class ="replyContent"
+				>
+				<p style="white-space:normal;line-break:pre;">				
+				<%=c.getPostContents()%>
+					</p></tr>
 						<% }} %>
 				
 			</table>
