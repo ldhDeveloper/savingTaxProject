@@ -104,10 +104,7 @@ public class VatService {
 		insertContent(wb, 1, 16, 11, taxArr[15]);
 		insertContent(wb, 1, 18, 8, taxArr[2]);
 		insertContent(wb, 1, 18, 11, taxArr[2]);
-		
-		
 		f = new File("C:\\Users\\user1\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\" + fileName);
-		f.createNewFile();
 		FileOutputStream fileOut = new FileOutputStream(f);
 		wb.write(fileOut);
 		fileOut.flush();

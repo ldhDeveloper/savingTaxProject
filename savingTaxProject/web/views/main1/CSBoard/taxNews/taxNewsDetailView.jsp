@@ -382,12 +382,14 @@ table {
 			<form action = "/jsmi/insertcomment" method = "post">
 			<table class="replyTable">				
 					<tr>
-						<td class="Qreply">S
+						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea>
+							</label>
 						</td>
 						
-						<td class="OreplyBtn" >
+						<td class="OreplyBtn">
 							
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
 							<input type = "hidden" name = "boardNo" value = "<%=p.getBoardNo()%>">
@@ -395,13 +397,11 @@ table {
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							<% } %>
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록"> 
-							<p></p>
-							<input type="reset" class="cancleBtns" value="취소">
+							<input type="submit" class="submitBtns" value="등록">
 						</td>
 						
-						<td class="OreplyBtn" style ="width:40%;">															
-							
+						<td class="OreplyBtn">															
+							<input type="submit" class="cancleBtns" value="취소">
 						</td>
 					</tr>
 			</table>
