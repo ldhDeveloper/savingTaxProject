@@ -340,7 +340,7 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/CSBoard/taxNews/taxNews.jsp -->
+	
 
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
@@ -425,7 +425,8 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea></label>
 						</td>
 						
 						<td class="OreplyBtn" >
@@ -436,7 +437,7 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<input type = "hidden" name = "pNo" value = "<%=loginUser.getPno()%>">
 							
 							<input type = "hidden" name = "page" value="<%=currentPage%>">
-							<input type="submit" class="submitBtns" value="등록"> 
+							<input type = "submit" class="submitBtns" value="등록"> 
 							<p></p>
 							<input type="reset" class="cancleBtns" value="취소">
 							<% } %>
@@ -447,7 +448,6 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 			</table>
 			</form>
 		</div>
-		
 		<div>					
 			<table class="replyTable">				
 					<tr>
@@ -466,7 +466,6 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 						<td class="Qreplying">
 							작성일							
 						</td>
-						
 						<td class="Qreplying2">
 							<%=c.getPostDate() %>
 						</td>
@@ -548,7 +547,9 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 							<table>
 							<tr class="danger">
 								<td style = "width : 80%">
-									<textarea name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
+									<textarea
+									maxlength=40  
+									 name = "postContents" class="form-control" rows="3" id="comment" placeholder="댓글을 작성하세요."></textarea>
 								</td>
 								<td>		<%if(loginUser != null) {%>
 							<input type = "hidden" name = "postRefNo" value = "<%=p.getPostNo()%>">
@@ -578,7 +579,7 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 						</td>
 				<td  style = "width :70%;"class ="replyContent"
 				>
-				<p>				
+				<p style="white-space:normal;line-break:pre;">				
 				<%=c.getPostContents()%>
 					</p></tr>
 						<% }} %>

@@ -415,7 +415,9 @@ table {
 					<tr>
 						<td class="Qreply">
 							댓글작성 &nbsp;&nbsp;&nbsp;&nbsp;|
-							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; <textarea class="textAreareply" name="postContents"></textarea></label>
+							<label class="QreplyC">&nbsp;&nbsp;&nbsp;&nbsp; 
+							<textarea maxlength="100" required class="textAreareply" name="postContents"></textarea>
+							</label>
 						</td>
 						
 						<td class="OreplyBtn">
