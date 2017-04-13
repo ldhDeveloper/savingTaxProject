@@ -69,9 +69,11 @@ public class PostSearchTitleServlet extends HttpServlet {
 		
 		if(plist != null){
 			switch(boardNo){
+			case 1: view = request.getRequestDispatcher("views/main1/CSBoard/board/notice.jsp"); break;
 			case 2: view = request.getRequestDispatcher("views/main1/CSBoard/taxNews/taxNews.jsp"); break;
 			case 3:	view = request.getRequestDispatcher("views/main1/CSBoard/taxTip/taxTip.jsp"); break;
 			case 4: view = request.getRequestDispatcher("views/main1/CSBoard/QnA/QnA.jsp"); break;
+			case 5: view = request.getRequestDispatcher("views/main1/CSBoard/formBoard/form.jsp"); break;
 			}
 			
 			request.setAttribute("boardNo", boardNo);
