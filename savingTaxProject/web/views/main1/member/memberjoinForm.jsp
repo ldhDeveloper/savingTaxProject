@@ -150,7 +150,6 @@ body {
 		var re = /^[가-힣]+$/;
 		var re2 = /^[a-zA-Z0-9]{4,8}$/;
 		var re3 = /^[a-zA-Z0-9]{8,10}$/;
-
 		var name = $('input[name=username]');
 		var id = $('input[name=userid]');
 		var pwd = $('input[name=userpwd]');
@@ -172,7 +171,6 @@ body {
 			$('#pwd1').focus();
 			return false;
 		}
-
 		if (!re3.test(pwd2.val())) {
 			alert('비밀번호는 숫자와 영문자 조합으로 8~10자리를 사용해야 합니다.');
 			pwd2.value = "";
