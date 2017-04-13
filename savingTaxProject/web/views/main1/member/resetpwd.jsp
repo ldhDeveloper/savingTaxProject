@@ -10,7 +10,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<script type="text/javascript" src="/jsmi/js/jquery-3.1.1.min.js"></script>
 
-    <title>Signin Template for Bootstrap</title>
+    <title>비밀번호 찾기</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/jsmi/css/bootstrap.min.css" rel="stylesheet">
@@ -99,7 +99,7 @@ td {
 
       	<input type="button" class="btn close"  value="X닫기" onclick="location.href='/jsmi/main.jsp'"><br>
 
-        <h2 class="form-signin-heading" align="center">비밀번호 변경</h2><br>
+        <h2 class="form-signin-heading" align="center">비밀번호 찾기</h2><br>
         <table width="530">
         	<tr><td>아이디</td><td> <input type="text" id="inputid" class="form-control" name="userid" placeholder="가입하신 아이디를 입력하세요." required autofocus></td><td></td></tr>
         	<tr><td>이메일</td><td><input type="text" id="inputemail" name="email" class="form-control" placeholder="가입하신 이메일주소를 입력하세요." required></td><td><button class="btn btn-success sendemail" type="submit">인증메일발송</button></td></tr>

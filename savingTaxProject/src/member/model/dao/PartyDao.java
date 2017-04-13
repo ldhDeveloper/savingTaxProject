@@ -176,30 +176,58 @@ public class PartyDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
-		String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =ENCRYPTION_AES.ENC_AES(?), paddress=?, phone=?, birth=? ,gender=? where pno=?";
+		if(p.getId_no() != null){
+			String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, id_no =ENCRYPTION_AES.ENC_AES(?), paddress=?, phone=?, birth=? ,gender=? where pno=?";
 
-		try {
-			System.out.println("p: " + p);
-			pstmt = con.prepareStatement(query);
+			try {
+				System.out.println("p: " + p);
+				System.out.println("파티 입력 : " + p.getId_no());
+				pstmt = con.prepareStatement(query);
 
-			pstmt.setInt(1, p.getPno());
-			pstmt.setString(2, p.getPname());
-			pstmt.setString(3, p.getId());
-			pstmt.setString(4, p.getPwd());
-			pstmt.setString(5, p.getEmail());
-			pstmt.setString(6, p.getId_no());
-			pstmt.setString(7, p.getPaddress());
-			pstmt.setString(8, p.getPhone());
-			pstmt.setString(9, p.getBirth());
-			pstmt.setString(10, p.getGender());
-			pstmt.setInt(11, p.getPno());
+				pstmt.setInt(1, p.getPno());
+				pstmt.setString(2, p.getPname());
+				pstmt.setString(3, p.getId());
+				pstmt.setString(4, p.getPwd());
+				pstmt.setString(5, p.getEmail());
+				pstmt.setString(6, p.getId_no());
+				pstmt.setString(7, p.getPaddress());
+				pstmt.setString(8, p.getPhone());
+				pstmt.setString(9, p.getBirth());
+				pstmt.setString(10, p.getGender());
+				pstmt.setInt(11, p.getPno());
 
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+
+		} else {
+			String query = "update party set pno =? ,pname=?, id=?, pwd=?,  email=?, paddress=?, phone=? where pno=?";
+
+			try {
+				System.out.println("p: " + p);
+				System.out.println("파티 수정 : " + p.getId_no());
+				pstmt = con.prepareStatement(query);
+
+				pstmt.setInt(1, p.getPno());
+				pstmt.setString(2, p.getPname());
+				pstmt.setString(3, p.getId());
+				pstmt.setString(4, p.getPwd());
+				pstmt.setString(5, p.getEmail());
+				pstmt.setString(6, p.getPaddress());
+				pstmt.setString(7, p.getPhone());
+				pstmt.setInt(8, p.getPno());
+
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
 		}
+		
 		return result;
 	}
 
