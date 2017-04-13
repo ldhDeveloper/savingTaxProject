@@ -374,19 +374,28 @@ a:hover {
 						var jsonObj = JSON.stringify(data);
 						//변환된 제이슨 객체를 제이슨 배열로 변환
 						var jsonArr = JSON.parse(jsonObj);
-						console.log(jsonArr.totalIncome);
-						console.log(jsonArr.totalCost);
-						$("#income1").val(jsonArr.income1);
-						$("#cost1").val(jsonArr.cost1);
-						$("#income2").val(jsonArr.income2);
-						$("#income3").val(jsonArr.income3);
-						$("#income4").val(jsonArr.income4);
-						$("#cost2").val(jsonArr.cost2);						
+						
+						MoneySwap("#income1", jsonArr.income1);
+						MoneySwap("#cost1", jsonArr.cost1);
+						MoneySwap("#income3", jsonArr.income3);
+						MoneySwap("#income4", jsonArr.income4);
+						MoneySwap("#income6", jsonArr.income6);
+						MoneySwap("#cost2", jsonArr.cost2);
+						
+						function MoneySwap(loc, result){
+							var temp_str = String(result);
+							
+							for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+								retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+							}					
+							$(loc).val(retValue);
+						}
 					}
-				});
+				});	
 			});	
 		});
 		</script>
+		
 		<script>
 			function calculator(){
 					var line1_1 = 0;
@@ -472,7 +481,6 @@ a:hover {
 					
 					$("#line6-3").html(Number($("#line6-1").text()) - Number($("#line6-1").text()) * localtax);					
 			}
-
 		</script>
 
 		<div class="section">
@@ -547,7 +555,7 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">근로소득</td>
-										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2" readonly> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2" value="0"> 원</td>
 									</tr>
 
 									<tr>
@@ -567,7 +575,7 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">부동산임대소득</td>
-										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6" readonly> 원</td>
 									</tr>
 
 									<tr>
