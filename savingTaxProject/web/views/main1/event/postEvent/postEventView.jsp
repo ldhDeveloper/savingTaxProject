@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="board.model.vo.Post, java.util.*"%>
+<%
+	List<Post> plist = (List<Post>) request.getAttribute("plist");
+	int listCount = ((Integer) request.getAttribute("listCount")).intValue();
+	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	int maxPage = ((Integer) request.getAttribute("maxPage")).intValue();
+	int startPage = ((Integer) request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+	int boardNo = ((Integer) request.getAttribute("boardNo")).intValue();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,81 +37,58 @@ h3 {
 	font-family: ssangmundong !important;
 }
 
-p {
-	margin: 0px !important;
-}
-
 a.thumbnail {
 	width: 280px;
 	height: 180px;
 }
 
-.imgsize{
-    width: 250px;
-    height: 120px;
+.imgsize {
+	width: 250px;
+	height: 120px;
 }
 </style>
 </head>
 <body>
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 	<script>
-	$(function(){
-		$('.dropdown').click(function(){
-			if($(this).hasClass('open')){
-				$(this).removeClass('open');
-			} else {
-				$(this).addClass('open');
-			}
-		})
-	});
-		
+		$(function() {
+			$('.dropdown').click(function() {
+				if ($(this).hasClass('open')) {
+					$(this).removeClass('open');
+				} else {
+					$(this).addClass('open');
+				}
+			})
+		});
 	</script>
 	<br>
 	<br>
 	<div class="middle hidden-xs">
 		<h3 align="center">종료된 이벤트</h3>
-		<br>
-		<br>
+		<br> <br>
 	</div>
 	<div class="middle hidden-xs">
+		<%
+			if (plist != null) {
+				for (Post p : plist) {
+		%>
 		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn7.png">
-				<div class="caption">	
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn8.png">
+			<a
+				href="/jsmi/views/main1/event/postEvent/eventDetail2.jsp?src=<%=p.getfName()%>">
+				<img src="/jsmi/images/main1/<%=p.getfName()%>">
 				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
+					<p>
+						이벤트기간 :
+						<%=p.getPostContents()%></p>
+				</div>
+			</a>
 		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn9.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn10.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn11.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-		<div class="thumbnail" style="display: inline-block">
-			<a href="#"><img src="/jsmi/images/main1/eventmn12.png">
-				<div class="caption">
-					<p>이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-				</div> </a>
-		</div>
-	</div>
+		<%
+			}
+			}
+		%>
 
+	</div>
 	<br>
 	<br>
 	<br>
@@ -110,72 +96,35 @@ a.thumbnail {
 	<!-- Moblie  -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
-			<div class="col-xs-4">
-				<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp"
-					class="thumbnail"> <img src="/jsmi/images/main1/eventmn7.png"
-					class="img-responsive imgsize">
-					<div class="caption">
-						<p style="font-size: 12px; text-align: center;">이벤트기간 :
-							2017.03.01 ~ 2017~03.31</p>
-					</div></a>
+			<div class="col-xs-12">
+				<%
+					if (plist != null) {
+						for (Post p : plist) {
+				%>
+				<center>	
+					<div class="thumbnail" style="display: inline-block">
+						<a
+							href="/jsmi/views/main1/event/postEvent/eventDetail2.jsp?src=<%=p.getfName()%>">
+							<img src="/jsmi/images/main1/<%=p.getfName()%>">
+							<div class="caption">
+								<p>
+									이벤트기간 :
+									<%=p.getPostContents()%></p>
+							</div>
+						</a>
+					</div>
+				</center>	
+				<hr>
+				<%
+					}
+					}
+				%>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn8.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn9.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn10.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 :
-								2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn11.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-4">
-					<a href="#" class="thumbnail"> <img src="/jsmi/images/main1/eventmn12.png"
-						class="img-responsive imgsize">
-						<div class="caption">
-							<p style="font-size: 12px; text-align: center;">이벤트기간 : 2017.03.01 ~ 2017~03.31</p>
-						</div></a>
-				</div>
 		</div>
 	</div>
-	
-	
+
+
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

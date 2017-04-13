@@ -39,7 +39,7 @@ public class CreateFormServlet extends HttpServlet {
 		String quarter= request.getParameter("quarter");
 		Party p = new PartyService().selectParty2(pno);
 		if(!quarter.equals("0")){
-		   taxArr = new String [19];
+		   taxArr = new String [21];
 		   taxArr[0] = year;
 		   taxArr[1] = quarter;
 		String gout1= request.getParameter("gout1"); taxArr[2] = gout1;
@@ -59,6 +59,9 @@ public class CreateFormServlet extends HttpServlet {
 		String totalin= request.getParameter("totalin"); taxArr[16] = totalin;
 		String totalinvat= request.getParameter("totalinvat"); taxArr[17] = totalinvat;
 		String totalvat=request.getParameter("totalvat"); taxArr[18] = totalvat;
+		String gin4= request.getParameter("gin4"); taxArr[19] = gin4;
+		String gin4vat= request.getParameter("gin4vat"); taxArr[20] = gin4vat;
+		
 		form = new VatService().printGeneralForm(taxArr, p);
 		
 		}else{

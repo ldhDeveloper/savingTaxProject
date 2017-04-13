@@ -499,9 +499,9 @@
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>산재보험요율</h5></td>
-							<td class="col-md-4"><input type="number"
-								class="form-control" name="irate"
-								value="<%=loginUser.getIrate()%>" required></td>
+							<td class="col-md-4">
+								<input type="number" value="1.70" min="0.7" class="form-control" name="irate" value="<%=loginUser.getIrate()%>" required>
+							</td>
 							<td class="col-md-2"></td>
 							<td class="col-md-4"></td>
 						</tr>
@@ -667,8 +667,9 @@
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>산재보험요율</h5></td>
-							<td class="col-md-4"><input type="number" value="0.5"
-								max="1" class="form-control" name="irate" id="irate" required></td>
+							<td class="col-md-4">
+								<input type="number" value="1.70" min="0.7" class="form-control" name="irate" id="irate" required>
+							</td>
 							<td class="col-md-2"></td>
 							<td class="col-md-4"></td>
 						</tr>

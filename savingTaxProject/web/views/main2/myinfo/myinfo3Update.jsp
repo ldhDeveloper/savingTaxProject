@@ -69,6 +69,16 @@
 	margin-top: -15px;
 	margin-right: 10px;
 }
+
+.tabletd {
+	border-top : 3px solid #2a82a3;  
+}
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size: 20pt;
+
+}
 </style>
 
 <script type="text/javascript">
@@ -113,11 +123,11 @@
 				</div>
 			</div>
 			
-			<h3 align="center">거래처 목록 조회</h3>
+			<h3 align="center" class="h3class">거래처 목록 조회</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
-						<tbody id="detaillist">
+						<tbody id="detaillist" class="tabletd">
 							<tr>
 								<th>상호</th>
 								<th>대표자명</th>
@@ -200,11 +210,13 @@
 					</table>
 				</div>
 			</div>
-			<h3 align="center">거래처 정보 수정</h3>
+
+
+			<h3 align="center" class="h3class">거래처 정보 수정</h3>
 			
 		
 			<table class="table table-condensed">
-					<tbody>
+					<tbody class="tabletd">
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"

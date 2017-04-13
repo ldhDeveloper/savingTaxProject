@@ -260,6 +260,36 @@ a:hover {
 #col1, #col2, #col3, #col4 {
 	font-size: 18pt;
 }
+
+#income1, #income2, #income3, #income4, #income5, #income6, #income7, #cost1, #cost2, #cost3 {
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+
+#gong1, #gong2, #gong3, #gong4, #gong5, #gong6{
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+#segong1, #segong2, #segong3, #gita1, #gita2{
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+
 </style>
 <script>
 	$(function(){
@@ -452,13 +482,13 @@ a:hover {
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li>
-							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/vatDetail.jsp">
+							<a class="tabmenu" href="/jsmi/views/main2/tax/vatDetail.jsp">
 								부가가치세
 							</a>
 						</li>
 						
 						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
 								종합소득세
 							</a>
 						</li>
@@ -506,27 +536,27 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">사업소득</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">사업소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">근로소득</td>
-										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="근로소득" id="income2" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">이자소득</td>
-										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">배당소득</td>
-										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4" readonly> 원</td>
 									</tr>
 
 									<tr>
@@ -541,7 +571,7 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">임대소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2" readonly> 원</td>
 									</tr>
 
 									<tr>
