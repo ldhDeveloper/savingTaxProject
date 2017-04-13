@@ -497,7 +497,10 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">Notice</h2>
+				<h3 align="center">
+				<img src="/jsmi/images/main1/notice.png"><br>
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
 		</div>
 
 

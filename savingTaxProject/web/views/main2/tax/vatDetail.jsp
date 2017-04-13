@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
 
-<title>generalIncomeTax</title>
+<title> 절세미인 - 부가가치세 정산내역</title>
 
 <style>
 .middle {
@@ -374,7 +374,6 @@
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
-
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
@@ -399,14 +398,15 @@
 				</div>
 			</div>			
 			<br><br>
-		
+			
 			<div id="yearlabel" align="center">
 				<table>
 					<tr style="text-align: center; font-size:42pt;">
 					<td colspan ="2"><label id="year"><%=day.getYear() + 1900%>
-					</label><label>년</label><%
-					String squarter = "";
-					if (loginUser.getTaxType().equals("일반과세자")) {
+					</label>
+					<label>년</label><%
+						String squarter = "";
+					if(loginUser.getTaxType() != null) if(loginUser.getTaxType().equals("일반과세자")) {
 						
 						if (day.getMonth() < 6){
 							quarter = 1;
@@ -425,7 +425,7 @@
 					</label><label>년</label> 
 					  <img src="/jsmi//images/main2/up.png" onclick="pyear();"><img src="/jsmi//images/main2/down.png"
 						onclick="myear();">
-						<%if(loginUser.getTaxType().equals("일반과세자")){ %>
+						<%if(loginUser.getTaxType() !=null)if(loginUser.getTaxType().equals("일반과세자")){ %>
 						<label id=searchQ>상</label><label>반기</label>
 						 <img src="/jsmi//images/main2/up2.png" onclick="firstHalf();">
 						 <img src="/jsmi//images/main2/down2.png" onclick="secondHalf();">
@@ -435,7 +435,7 @@
 				</table>
 				
 			</div>
-			
+		
 			<br>
 			<br>
 			
@@ -449,12 +449,14 @@
 			<div>
 				<table class="gitTable">
 					<thead class="gitTablethead">
-						<tr class="gitTablethtr">
+						<tr class="gitTablethtr" >
 							<th colspan="2" class="gitTableth">조회되는 항목</th>
 						</tr>
+					
 					</thead>
 							 
-					<tbody>						
+					<tbody>
+										
 						<tr>
 							<td class="imcome">매출세액</td>
 							<td class="imcomeModify">매출세액 = 세금계산서 + 신용카드 매출전표 + 기타분</td>
@@ -607,7 +609,7 @@
 			</div>
 			
 			<br><br>
-			<% } else { //간이과세자 처리용 테이블%>
+			<% }else if(loginUser.getTaxType().equals("간이과세자")) { //간이과세자 처리용 테이블%>
 			<!-- -------------------------------------------------------------- -->
 			
 			<div>
@@ -735,9 +737,7 @@
 					</tbody>				
 				</table>
 			</div>
-			
 			<br><br><br><br>
-			
 			<div>
 				<table class="gitTable">
 					<thead class="gitTablethead">
@@ -760,17 +760,20 @@
 			<div class="selectBtn6">
 				<button class="selectBtn4" onclick="print();">과세 관련 신고 서류 다운로드</button>
 			</div>
-			<% } %>
+			
+			
 			<br><br><br><br>
+			<% } %>	
+		</div>
+		
+		
 		</div>
 		
 		<script type="text/javascript">
 			//서식 출력시 들어가야되는 변수들
 			
 			//일반 과세자용 변수 
-			var pno =0;
-			var year = 0;
-			var quarter = 0;
+			
 			var gout1 = 0; //세금계산서분
 			var gout1vat = 0;
 			var gout2 = 0;	//신용카드분
@@ -785,7 +788,8 @@
 			var gin3vat = 0;
 			var gin3 = 0;
 			var gin3vat = 0;	
-			
+			var gin4 = 0;
+			var gin4vat = 0;
 			//간이 과세자용 변수
 				var out = 0;
 				var outvat = 0;
@@ -798,22 +802,18 @@
 				var x = 0;  //업종별 부가가치율 곱셈용이라  x로 표기
 				var tnum = ""; //tag넘버 구분용
 			//공통 변수
+			var pno =0;
+			var year = 0;
+			var quarter = <%=quarter%>;
 			var totalout = 0;	
 			var totaloutvat = 0;
 			var totalin = 0; //매입총함
 			var totalinvat = 0;
 			var totalvat = 0;
 			var deem = 0; //의제매입세액공제율
-			switch("<%= loginUser.getWname()%>"){
-			case "2" : deem = 8/108;  break;
-			case "3" : deem = 8/108; break;
-			}
-			
-				 
-			
-			
+				
 		function vatLoad(){
-			 
+
 			 gout1 = 0; //세금계산서분
 			 gout1vat = 0;
 			 gout2 = 0;	//신용카드분
@@ -829,15 +829,16 @@
 			 gin3vat = 0;
 			 gin3 = 0;
 			 gin3vat = 0;
+			 
 			 totalin = 0; //매입총함
 			 totalinvat = 0;
 			//총 부가가치세
 			 totalvat = 0;
-			if("<%=loginUser.getWname()%>" =="음식점")
-				deem = 8/108;
-				
+			 switch("<%= loginUser.getWname()%>"){
+				case "음식점" : deem = 8/108;  break;
+				case "제조업" : deem = 4/104; break;
+				}
 			
-			quarter = <%=quarter%>;
 			 pno = <%=loginUser.getPno()%>;
 			
 			 year = Number($("#searchY").text());
@@ -854,13 +855,14 @@
 			
 			if(<%=loginUser.getTaxType().equals("일반과세자")%>){ //일반과세자 처리용 
 	
-			
 			for(var i in jsonArr.tax){
 				switch(decodeURIComponent(jsonArr.tax[i].anm)){
 					case "매출" : 
 							switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-								case "세금계산서" : gout1 +=  parseInt(jsonArr.tax[i].cost); break;	
-								case "신용카드매출전표" : 
+								case "세금계산서(수기)" :
+								case "세금계산서(전자)" 
+													: gout1 +=  parseInt(jsonArr.tax[i].cost); break;	
+								case "카드매출전표" : 
 								case "현금영수증" : 	
 												gout2 += parseInt(jsonArr.tax[i].cost); break;
 								default : 
@@ -875,10 +877,11 @@
 					case "여비교통비" :
 					case "차량유지비" :
 					case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-									case "세금계산서" :
-									case "신용카드매출전표" : 
-									case "현금영수증" : 	
-										 gin1 +=  parseInt(jsonArr.tax[i].cost); break;	
+										case "현금영수증" :					
+										case "신용카드매출전표" :
+											gin4 += parseInt(jsonArr.tax[i].cost);				
+										case "세금계산서" :
+														 gin1 +=  parseInt(jsonArr.tax[i].cost); break;	
 										}  break;	
 				}
 			}
@@ -891,6 +894,7 @@
 			 gin2vat = parseInt(gin2 * deem); 
 			 gin3 = gout2;
 			 gin3vat = parseInt(gout2vat * 0.13);
+			 gin4vat = gin4 * 0.01; 
 			 totalin = gin1 + gin2;
 			 totalinvat = gin1vat+gin2vat;
 			 totalvat = totaloutvat - totalinvat - gin3vat;
@@ -1000,10 +1004,12 @@
 		
 		$('#searchQ').html('상');
 		quarter= 1;
+		
 		}
 		function secondHalf(){
 			$('#searchQ').html('하');
 			quarter = 2;
+			
 		}
 		function print(){
 			 /*
@@ -1046,7 +1052,7 @@
 				data : 	
 				<%if (loginUser.getTaxType().equals("일반과세자")) {%>
 					{pno:pno, year:year, quarter:quarter, gout1:gout1, gout1vat:gout1vat, gout2:gout2,
-						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, 
+						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, gin4:gin4, gin4vat:gin4vat, 
 						gin2:gin2, gin2vat:gin2vat, gin3:gin3, gin3vat:gin3vat,
 						totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}else{%>
@@ -1061,19 +1067,14 @@
 			});	
 		}
 		$(function(){
-			if(<%=loginUser.getTaxType().equals("일반과세자")%>){
-			if(<%=day.getMonth()%> < 6){
-			quarter=1;	
-			}else{
-			quarter=2;	
-			}
-			}else{
-			quarter=0;
-			} 	
+			
+
+		
 			vatLoad(); 
+			
 		});		
 		</script>
-	</div>
+
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
 </html>
