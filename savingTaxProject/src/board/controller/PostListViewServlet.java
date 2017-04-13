@@ -64,6 +64,8 @@ public class PostListViewServlet extends HttpServlet {
 		if (maxPage < endPage)
 			endPage = maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
+		System.out.println("c:"+currentPage+", "+limit+", "+boardNo);
+		System.out.println("plist: "+plist);
 
 		RequestDispatcher view = null;
 
