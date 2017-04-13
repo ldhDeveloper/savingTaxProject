@@ -7,7 +7,12 @@
 <html>
 <head>
 <meta charset=UTF-8">
-<title>PostEventDetail</title>
+<title>지난이벤트 상세페이지</title>
+<style>
+.tfont {
+	font-family: mobius !important;
+}
+</style>
 </head>
 <body>
 <%@ include file="/views/common/main1/menubar.jsp"%>
@@ -17,33 +22,23 @@
 		<center>
 			<img src="/jsmi/images/main1/<%=src%>"> <br>
 			<br>
-			<table>
-				<tr>
-					<th>종료된 이벤트입니다.</th>
-				</tr>
-				<tr></tr>
-			</table>
+			<h4 class="tfont">종료된 이벤트입니다.</h4>
 		</center>
 
 	</div>
 	<hr>
 
 	<!-- Moblie -->
-	<div class="container-fluid hidden-sm hidden-md hidden-lg">
+	<div class="hidden-sm hidden-md hidden-lg">
 		<br><br>
 		<div class="row">
 			<div class="col-xs-12">
 			<center>
 					<img src="/jsmi/images/main1/<%=src%>" style="width:280px; height:180px;"> <br>
 					<br>
-					<table>
-						<tr>
-							<th>종료된 이벤트입니다.</th>
-						</tr>
-						<tr></tr>
-					</table>
+					<h4 class="tfont">종료된 이벤트입니다.</h4>
 					</center>
-				<br>
+				<br><br><br>
 				<hr>
 			</div>
 		</div>

@@ -70,13 +70,14 @@
 	margin-right: 10px;
 }
 
-.h3class {
-	font-family: ssangmunDong !important;
-	font-size: 25pt;
-}
-
 .tabletd {
 	border-top : 3px solid #2a82a3;  
+}
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size: 20pt;
+
 }
 </style>
 
@@ -126,7 +127,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
-						<tbody class="tabletd" id="detaillist">
+						<tbody id="detaillist" class="tabletd">
 							<tr>
 								<th>상호</th>
 								<th>대표자명</th>
@@ -208,8 +209,8 @@
 					</table>
 				</div>
 			</div>
-			
-			<br><br><br>
+
+
 			<h3 align="center" class="h3class">거래처 정보 수정</h3>
 			
 		

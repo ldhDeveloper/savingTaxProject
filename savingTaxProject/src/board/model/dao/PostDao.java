@@ -29,7 +29,10 @@ public class PostDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Post> plist = null;
+		
+		//조회할 시작 게시글번호
 		int startRow = (currentPage - 1) * limit + 1;
+		//조회할 종료 게시글번호
 		int endRow = startRow + limit - 1;
 		String query = "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname, id from " +
 				"(select rownum rnum, post_no, post_name, " +
@@ -42,8 +45,11 @@ public class PostDao {
 				 + " and post_ref_no = 0 order by p.post_no desc)) where rnum >= ? and rnum <= ?" ;
 		try {
 		pstmt = con.prepareStatement(query);
+		//게시판번호
 		pstmt.setInt(1, boardNo);
+		//조회할 시작 게시글번호
 		pstmt.setInt(2, startRow);
+		//조회할 종료 게시글번호
 		pstmt.setInt(3, endRow);
 		rset = pstmt.executeQuery();
 		if(rset != null){

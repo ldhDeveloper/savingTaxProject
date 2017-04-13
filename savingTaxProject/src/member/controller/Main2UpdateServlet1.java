@@ -47,7 +47,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  String id_no2= null;
 		  if(request.getParameter("idno2") != null){
 			  id_no2 = request.getParameter("idno2");
-			  if(id_no2.substring(1).equals("1")){
+			  if(id_no2.substring(0,1).equals("1")){
 				  gender="M";
 			  }else{
 				  gender="F";
