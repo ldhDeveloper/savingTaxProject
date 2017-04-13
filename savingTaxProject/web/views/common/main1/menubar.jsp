@@ -258,7 +258,7 @@ background
 					<ul class="sub-menu">
 						<li><a href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인 이벤트</a></li>
 						<li><a
-							href='/jsmi/views/main1/event/postEvent/postEventView.jsp'>지난
+							href='/jsmi/listview?boardNo=7&page=1&limit=6''>지난
 								이벤트</a></li>
 					</ul></li>
 				<li><a href="/jsmi/views/main1/costGuide/costGuide.jsp">비용안내</a>
@@ -366,7 +366,7 @@ background
 														href='/jsmi/listview?boardNo=6&page=1&limit=6'>진행중인
 															이벤트</a></td>
 													<td class="xstd"><a
-														href='/jsmi/views/main1/event/postEvent/postEventView.jsp''>지난
+														href='/jsmi/listview?boardNo=7&page=1&limit=6'>지난
 															이벤트</a></td>
 												</tr>
 											</table>

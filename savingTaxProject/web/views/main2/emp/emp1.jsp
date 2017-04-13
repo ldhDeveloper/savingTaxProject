@@ -96,7 +96,7 @@
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size: 25pt;
+	font-size: 20pt;
 }
 
 .tabletd {
@@ -111,7 +111,7 @@
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
-
+	
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
@@ -206,7 +206,7 @@
 					</table>
 				</div>
 			</div>
-			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
+			<h3 align="center" class="h3class">직원 정보 입력</h3>
 
 				
 				<div class="row">
@@ -243,12 +243,12 @@
 									<td class="col-md-4">
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="text" class="form-control" name="empno1" id="empno1" OnKeyUp="checkidno();" required>
+											<input type="text" class="form-control" name="empno1" id="empno1" OnKeyUp="checkidno();" maxlength="6" required>
 										</div>
 										<div class="col-md-2" style="text-align: center">-</div>
 										<div class="col-md-5"
 											style="padding-left: 0px; padding-right: 0px;">
-											<input type="password" class="form-control" name="empno2" id="empno2" OnKeyUp="checkidno();" required>
+											<input type="password" class="form-control" name="empno2" id="empno2" OnKeyUp="checkidno();" maxlength="7" required>
 										</div>
 									</td>
 									<td class="col-md-2"><h5>직급</h5></td>
@@ -337,7 +337,8 @@
 							</tbody>
 						</table>
 						<div class="row btngr">
-							<button class="btn btn-success" type="submit" id="insert" onclick="validate();">등록</button>
+							<!-- <input class="btn btn-success" type="submit" id="insert" class="btn btn-primary" value="입력" onclick="return validate()"> -->
+							<button class="btn btn-success" type="submit" id="insert" onclick="return validate()">등록</button>
 							<button class="btn btn-danger" type="reset">취소</button>
 						</div>
 					</div>
@@ -414,25 +415,6 @@
 						
 					});
 				});
-				
-				function checkph() {
-					var str = $('input[name=phone1]').val().length;
-					var str2 =$('input[name=phone2]').val().length;
-					console.log(str);
-					if (str == 3) 
-						$('input[name=phone2]').focus();
-					
-					if(str2==4)
-						$('input[name=phone3]').focus();
-				}
-				
-				function checkidno() {
-					var str = $('input[name=empno1]').val().length;
-					
-					console.log(str);
-					if (str == 6) 
-						$('input[name=empno2]').focus();
-				}
 			</script>
 </body>
 </html>

@@ -69,7 +69,11 @@
 	margin-top: -15px;
 	margin-right: 10px;
 }
-.
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size: 25pt;
+}
 </style>
 
 <script type="text/javascript">
@@ -96,7 +100,7 @@
 			$('input[name=cno3]').focus();
 	}
 
-	function checkph() {
+	function checktel() {
 		var str = $('input[name=tel]').val().length;
 		var str2 = $('input[name=tel2]').val().length;
 		console.log(str);
@@ -105,6 +109,17 @@
 
 		if (str2 == 4)
 			$('input[name=tel3]').focus();
+	}
+	
+	function checkph() {
+		var str = $('input[name=phone]').val().length;
+		var str2 = $('input[name=phone2]').val().length;
+		console.log(str);
+		if (str == 3)
+			$('input[name=phone2]').focus();
+
+		if (str2 == 4)
+			$('input[name=phone3]').focus();
 	}
 
 	function chk() {
@@ -299,38 +314,18 @@
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel" id="tel"
-										OnKeyUp="checkph();" maxlength="3" required>
+										OnKeyUp="checktel();" maxlength="3" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel2" id="tel2"
-										OnKeyUp="checkph();" maxlength="4" required>
+										OnKeyUp="checktel();" maxlength="4" required>
 								</div>
 								<div class="col-md-1" style="text-align: center">-</div>
 								<div class="col-md-3"
 									style="padding-left: 0px; padding-right: 0px;">
 									<input type="text" class="form-control" name="tel3" id="tel3"
-										maxlength="4" required>
-								</div>
-							</td>
-							<td class="col-md-2"><h5>거래처 휴대폰번호</h5></td>
-							<td class="col-md-4">
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone" id="phone"
-										OnKeyUp="checkph();" maxlength="3" required>
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone2" id="phone2"
-										OnKeyUp="checkph();" maxlength="4" required>
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone3" id="phone3"
 										maxlength="4" required>
 								</div>
 							</td>

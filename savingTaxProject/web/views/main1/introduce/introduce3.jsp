@@ -93,6 +93,7 @@
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9935be2b8876eed1b9c40f64bc3e06e5"></script>
 
 <script>
+		//다음 지도 api
 		var container = document.getElementById('map2');
 		var options = {
 			center: new daum.maps.LatLng(37.49900997016431, 127.03285210080828),

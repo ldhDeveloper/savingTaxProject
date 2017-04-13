@@ -169,7 +169,7 @@ th {
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size: 25pt;
+	font-size: 20pt;
 }
 
 .tabletd {
@@ -348,9 +348,9 @@ th {
 					<div class="navbar navbar-default">
 						<div class="container-fluid">
 							<ul class="nav navbar-nav">
-								<li><a href="/jsmi/views/main2/emp/emp1.jsp" class="tabmenu lactive">직원정보입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1.jsp" class="tabmenu">직원정보입력</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp" class="tabmenu">직원정보수정</a></li>
-								<li><a href="/jsmi/views/main2/emp/emp2.jsp" class="tabmenu">직원급여입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp2.jsp" class="tabmenu lactive">직원급여입력</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp2modify.jsp" class="tabmenu">직원급여수정</a></li>
 							</ul>
 						</div>
@@ -606,20 +606,20 @@ th {
 						<table class="table table-condensed">
 							<tbody>
 								<tr class="tabletd">
-									<td colspan="5">과세 급여</td>
-									<td colspan="4">비과세 급여</td>
-									<td>총 급여</td>
+									<td colspan="5" style="border-right: 1px solid #dddddd;" >과세 급여</td>
+									<td colspan="4" style="border-right: 1px solid #dddddd;">비과세 급여</td>
+									<td style="border-right: 1px solid #dddddd;">총 급여</td>
 								</tr>
 								<tr class="tabletd">
 									<td>기본급</td>
 									<td>시간 외 근무 수당</td>
 									<td>휴일 근무 수당</td>
 									<td>상여금</td>
-									<td>성과금</td>
+									<td style="border-right: 1px solid #dddddd">성과금</td>
 									<td>식대</td>
 									<td>자차 운전 보조금</td>
 									<td>육아 수당</td>
-									<td>지급 경비</td>
+									<td style="border-right: 1px solid #dddddd;">지급 경비</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
@@ -627,11 +627,11 @@ th {
 									<td><input type="text" placeholder="시간외수당" class="form-control" id="salary2"></td>
 									<td><input type="text" placeholder="휴일근무수당" class="form-control" id="salary3"></td>
 									<td><input type="text" placeholder="상여금" class="form-control" id="salary4"></td>
-									<td><input type="text" placeholder="성과금" class="form-control" id="salary5"></td>
+									<td style="border-right: 1px solid #dddddd"><input type="text" placeholder="성과금" class="form-control" id="salary5"></td>
 									<td><input type="text" placeholder="식대" class="form-control" id="salary6"></td>
 									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7"></td>
 									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8"></td>
-									<td><input type="text" placeholder="지급경비" class="form-control" id="salary9"></td>
+									<td style="border-right: 1px solid #dddddd;"><input type="text" placeholder="지급경비" class="form-control" id="salary9"></td>
 									<td><input type="text" placeholder="총급여" class="form-control" id="totalsalary"></td>
 
 								</tr>
@@ -643,7 +643,7 @@ th {
 						<table class="table table-condensed">
 							<tbody>
 								<tr class="tabletd">
-									<td colspan="5">공제 항목</td>
+									<td colspan="5"  style="border-right: 1px solid #dddddd;">공제 항목</td>
 									<td>차인지급액</td>
 								</tr>
 								<tr class="tabletd">
@@ -651,7 +651,7 @@ th {
 									<td>건강보험료</td>
 									<td>장기요양보험료</td>
 									<td>고용보험료</td>
-									<td>근로자 원천징수</td>
+									<td style="border-right: 1px solid #dddddd;">근로자 원천징수</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
@@ -672,7 +672,7 @@ th {
 									<table class="table table-condensed">
 										<tbody>
 											<tr class="tabletd">
-												<td colspan="5">보험료 세부항목</td>
+												<td colspan="5" style="border-right: 1px solid #dddddd;">보험료 세부항목</td>
 												<td>납부 총액</td>
 											</tr>
 											<tr class="tabletd">
@@ -680,7 +680,7 @@ th {
 												<td>건강보험료</td>
 												<td>장기요양보험료</td>
 												<td>고용보험료</td>
-												<td>산재보험료</td>
+												<td style="border-right: 1px solid #dddddd;">산재보험료</td>
 												<td>&nbsp;</td>
 											</tr>
 											<tr>

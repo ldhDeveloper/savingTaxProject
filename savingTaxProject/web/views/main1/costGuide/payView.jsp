@@ -81,7 +81,7 @@
 }
 
 .postth {
-	font-size: 28pt;
+	font-size: 20pt;
 	text-align: center;
 	font-family: ssangmunDong !important;
 }
@@ -170,7 +170,7 @@
 }
 
 #agree{
-	font-size: 10pt;
+	font-size: 12pt;
 	font-family: computer !important;
 	color: #2a82a3;
 }
@@ -285,11 +285,6 @@ $(function() {
        $('#buga').html(MoneySwap2(buga));
        $('#total').html(MoneySwap3(total));
        
-       /* $('#result').html(MoneySwap1(result));
-       $('#buga').html(MoneySwap2(buga));
-       $('#total').html(MoneySwap3(total)); */
-       
-		// 원금
        	function MoneySwap1(result){
           	var temp_str = String(result);
           	for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
@@ -331,8 +326,6 @@ $(function() {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/costGuide/payView.jsp -->
-
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>

@@ -95,6 +95,7 @@ body {
 	var idcheck = false;
 	var pwdcheck = false;
 
+	//패스워드 체크 jQuery
 	$(function() {
 		$('#pwd2').focusout(function() {
 			if ($('#pwd1').val() == $('#pwd2').val()) {
@@ -109,6 +110,8 @@ body {
 		})
 
 		//$('#idchk').click(function(){
+			
+		//아이디 체크 ajax	
 		$('#userid').focusout(function() {
 			var chkId = "id=" + $('#userid').val();
 			console.log(chkId);
@@ -147,7 +150,6 @@ body {
 		var re = /^[가-힣]+$/;
 		var re2 = /^[a-zA-Z0-9]{4,8}$/;
 		var re3 = /^[a-zA-Z0-9]{8,10}$/;
-
 		var name = $('input[name=username]');
 		var id = $('input[name=userid]');
 		var pwd = $('input[name=userpwd]');
@@ -169,7 +171,6 @@ body {
 			$('#pwd1').focus();
 			return false;
 		}
-
 		if (!re3.test(pwd2.val())) {
 			alert('비밀번호는 숫자와 영문자 조합으로 8~10자리를 사용해야 합니다.');
 			pwd2.value = "";

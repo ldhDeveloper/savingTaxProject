@@ -37,15 +37,23 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  
 		  String userName = request.getParameter("username");
 		  int pno=Integer.parseInt(request.getParameter("pno"));
-		  String id_no= request.getParameter("idno");
-		  String id_no2=request.getParameter("idno2");
-		  String birth= request.getParameter("idno");
-		  String gender="";
-		  if(id_no2.substring(1).equals("1")){
-			  gender="M";
-		  }else{
-			  gender="F";
+		  String id_no = null;
+		  String birth = null;
+		  String gender=null;
+		  if(request.getParameter("idno") != null){
+			  id_no = request.getParameter("idno");
+			  birth = request.getParameter("idno");
 		  }
+		  String id_no2= null;
+		  if(request.getParameter("idno2") != null){
+			  id_no2 = request.getParameter("idno2");
+			  if(id_no2.substring(0,1).equals("1")){
+				  gender="M";
+			  }else{
+				  gender="F";
+			  }
+		  }
+		  
 		  String userid = request.getParameter("userid");
 		  String userpwd = request.getParameter("userpwd");
 		  String paddress = request.getParameter("address");
@@ -59,7 +67,10 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  // 암호, 핸드폰번호, 이메일,주민번호 암호화
 		  System.out.println("userid: "+userid);
 		  
-		  String IdNo= id_no+"-"+id_no2;
+		  String IdNo= null;
+		  if(id_no != null && id_no2 != null){
+			  IdNo = id_no+"-"+id_no2;
+		  }  
 		  String Address = paddress+"/"+paddress2+"/"+paddress3;
 		  String Phone =phone+"-"+phone2+"-"+phone3;
 		  String Email= email+"@"+email2;
@@ -67,7 +78,7 @@ public class Main2UpdateServlet1 extends HttpServlet {
 		  Party party = new Party();
 		  party.setPno(pno);
 		  party.setPname(userName);
-		  party.setId_no(IdNo);
+		  party.setId_no(IdNo);  
 		  party.setBirth(birth);
 		  party.setGender(gender);
 		  party.setId(userid);

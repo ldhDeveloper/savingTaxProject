@@ -24,22 +24,18 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>현재 진행중인 이벤트</title>
 <style type="text/css">
-.middle {
+ .middle {
 	align: center;
-}
+} 
 
 .thumbnail {
 	width: 300px;
-	margin-left: 15px;;
+	margin-left: 15px;
 	display: inline-block;
 }
 
 h3 {
 	font-family: ssangmundong !important;
-}
-
-p {
-	margin: 0px !important;
 }
 
 a.thumbnail {
@@ -94,9 +90,9 @@ a.thumbnail {
 	<!-- Moblie  -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
-			<div class="middle col-xs-12">
+			<div class="col-xs-12">
 				<%if(plist != null){ for(Post p : plist){ %>
-				<center>
+		<center>		
 		<div class="thumbnail" style="display: inline-block">
 			<a href="/jsmi/views/main1/event/currentEvent/eventDetail.jsp?src=<%=p.getfName()%>">
 			<img src="/jsmi/images/main1/<%=p.getfName()%>">

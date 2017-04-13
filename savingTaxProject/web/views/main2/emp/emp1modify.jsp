@@ -96,7 +96,7 @@
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size:25pt;
+	font-size:20pt;
 }
 
 .tabletd {
@@ -121,8 +121,8 @@
 					<div class="navbar navbar-default">
 						<div class="container-fluid">
 							<ul class="nav navbar-nav">
-								<li><a href="/jsmi/views/main2/emp/emp1.jsp" class="tabmenu lactive">직원정보입력</a></li>
-								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp" class="tabmenu">직원정보수정</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1.jsp" class="tabmenu">직원정보입력</a></li>
+								<li><a href="/jsmi/views/main2/emp/emp1modify.jsp" class="tabmenu lactive">직원정보수정</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp2.jsp" class="tabmenu">직원급여입력</a></li>
 								<li><a href="/jsmi/views/main2/emp/emp2modify.jsp" class="tabmenu">직원급여수정</a></li>
 							</ul>
@@ -206,7 +206,7 @@
 						<br>
 				</div>
 			</div>
-			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
+			<h3 align="center" class="h3class">직원 정보 수정</h3>
 
 				
 				<div class="row">

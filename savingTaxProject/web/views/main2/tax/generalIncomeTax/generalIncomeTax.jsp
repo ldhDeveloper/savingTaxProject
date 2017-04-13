@@ -85,17 +85,13 @@
 	color: purple;
 }
 
-/* .panel-title {
-	font-family: NanumGothicExtraBold !important;
-} */
-
 .taxtable {
 	width: 1104px;
 }
 
 .taxthead {
-	border-top: 3px solid #2a82a3;
-	border-bottom: 3px solid #2a82a3;
+	border-top: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
 	padding-top: 2%;
 	font-family: computer !important;
 	font-size: 15pt;
@@ -182,7 +178,7 @@
 	border-bottom: 4px solid #2a82a3;
 	font-family: ssangmunDong !important;
 	padding-left: 38%;
-	font-size: 27pt;
+	font-size: 20pt;
 }
 
 .lineTable {
@@ -203,16 +199,21 @@
 .sumCalTable {
 	padding: 1.5%;
 	border-right : 1px solid lightgrey;
-	font-size: 15pt;
+	font-size: 13pt;
 }
 
 .sumTable {
 	background-color : #2a82a3;
 	color: #fff;
+	font-size: 13pt;
+}
+.rightTable{
+     font-size: 13pt;
 }
 
 .sumTable2 {
 	background-color : aliceblue;
+	font-size: 13pt;
 }
 
 a:hover { 
@@ -237,7 +238,7 @@ a:hover {
 #selyear {
 	font-family: ssangmunDong !important;
 	color : #2a82a3;
-	font-size: 24pt;
+	font-size: 40pt;
 	
 }
 
@@ -260,6 +261,36 @@ a:hover {
 #col1, #col2, #col3, #col4 {
 	font-size: 18pt;
 }
+
+#income1, #income2, #income3, #income4, #income5, #income6, #income7, #cost1, #cost2, #cost3 {
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+
+#gong1, #gong2, #gong3, #gong4, #gong5, #gong6{
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+#segong1, #segong2, #segong3, #gita1, #gita2{
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+
 </style>
 <script>
 	$(function(){
@@ -343,19 +374,28 @@ a:hover {
 						var jsonObj = JSON.stringify(data);
 						//변환된 제이슨 객체를 제이슨 배열로 변환
 						var jsonArr = JSON.parse(jsonObj);
-						console.log(jsonArr.totalIncome);
-						console.log(jsonArr.totalCost);
-						$("#income1").val(jsonArr.income1);
-						$("#cost1").val(jsonArr.cost1);
-						$("#income2").val(jsonArr.income2);
-						$("#income3").val(jsonArr.income3);
-						$("#income4").val(jsonArr.income4);
-						$("#cost2").val(jsonArr.cost2);						
+						
+						MoneySwap("#income1", jsonArr.income1);
+						MoneySwap("#cost1", jsonArr.cost1);
+						MoneySwap("#income3", jsonArr.income3);
+						MoneySwap("#income4", jsonArr.income4);
+						MoneySwap("#income6", jsonArr.income6);
+						MoneySwap("#cost2", jsonArr.cost2);
+						
+						function MoneySwap(loc, result){
+							var temp_str = String(result);
+							
+							for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
+								retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;				
+							}					
+							$(loc).val(retValue);
+						}
 					}
-				});
+				});	
 			});	
 		});
 		</script>
+		
 		<script>
 			function calculator(){
 					var line1_1 = 0;
@@ -441,7 +481,6 @@ a:hover {
 					
 					$("#line6-3").html(Number($("#line6-1").text()) - Number($("#line6-1").text()) * localtax);					
 			}
-
 		</script>
 
 		<div class="section">
@@ -452,13 +491,13 @@ a:hover {
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li>
-							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/vatDetail.jsp">
+							<a class="tabmenu" href="/jsmi/views/main2/tax/vatDetail.jsp">
 								부가가치세
 							</a>
 						</li>
 						
 						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
 								종합소득세
 							</a>
 						</li>
@@ -489,7 +528,7 @@ a:hover {
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn1" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt;">
+						<h4 class="panel-title" style="font-size: 16pt;">
 							종합 소득 금액
 						</h4>
 					</div>
@@ -506,12 +545,12 @@ a:hover {
 								<tbody class="taxbody">
 									<tr>
 										<td class="taxtd1">사업소득</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득" id="income1" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">사업소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="사업소득필요경비" id="cost1" readonly> 원</td>
 									</tr>
 
 									<tr>
@@ -521,12 +560,12 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">이자소득</td>
-										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="이자소득" id="income3" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">배당소득</td>
-										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="배당소득" id="income4" readonly> 원</td>
 									</tr>
 
 									<tr>
@@ -536,12 +575,12 @@ a:hover {
 
 									<tr>
 										<td class="taxtd1">부동산임대소득</td>
-										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="부동산임대소득" id="income6" readonly> 원</td>
 									</tr>
 
 									<tr>
 										<td class="taxtd1">임대소득필요경비(-)</td>
-										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2" value="0"> 원</td>
+										<td class="taxtd2"><input type="text" placeholder="임대소득필요경비" id="cost2" readonly> 원</td>
 									</tr>
 
 									<tr>
@@ -561,7 +600,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn2" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							종합 소득 공제
 						</h4>
 					</div>
@@ -615,7 +654,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn3" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							세액 공제 항목
 						</h4>
 					</div>
@@ -654,7 +693,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn4" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							기타항목
 						</h4>
 					</div>

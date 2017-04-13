@@ -177,8 +177,6 @@
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/costGuide/payView.jsp -->
-
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 	
 	<script type="text/javascript">

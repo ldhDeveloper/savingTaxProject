@@ -330,9 +330,14 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 	background: linear-gradient(#ffffff, #b0e0e6);
 	border :none;
 	border-radius: 1px;
-	
-	
 	}
+.mtr{
+	background: ivory;
+	height: 7pt;
+	font-size :7px;
+	text-weight : bold;
+	font-family:computer !important; 
+}
 
 
 </style>
@@ -497,7 +502,10 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">Notice</h2>
+				<h3 align="center">
+				<img src="/jsmi/images/main1/notice.png"><br>
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">항상 고객의 편의를 위해 존재합니다.</h4>
 		</div>
 
 
@@ -511,32 +519,29 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 
 			<div class="col-xs-12 col-md-8">
 				<div class="table-responsive">
-					<table class="table table-bordered">
-					
+					<table class="table table-bordered">				
 						<tbody>
-							<tr class="success">
+							<tr class="mtr">
 								<td>제      목</td>
 								<td><%=p.getPostName() %></td>
 							</tr>
-							
-							<tr class="danger">
+							<tr class="mtr">
 								<td>작 성 일</td>
 								<td><%=p.getPostDate() %></td>
 							</tr>
-							
-							<tr class="info">
+							<tr class="mtr">
 								<td>작 성 자</td>
 								<td><%=p.getpId() %></td>
 							</tr>
 							
-							<tr class="warning">
+							<tr class="mtr">
 								<td>조 회 수</td>
 								<td><%=p.getReadCount() %></td>
 							</tr>
 							
 							<tr class="success">
 								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment">
+									<textarea class="form-control" rows="10" id="comment" readonly>
 										<%=p.getPostContents() %>
 									</textarea>
 								</td>

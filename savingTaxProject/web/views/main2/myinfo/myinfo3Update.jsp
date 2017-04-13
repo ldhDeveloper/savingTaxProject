@@ -69,6 +69,16 @@
 	margin-top: -15px;
 	margin-right: 10px;
 }
+
+.tabletd {
+	border-top : 3px solid #2a82a3;  
+}
+
+.h3class {
+	font-family: ssangmunDong !important;
+	font-size: 20pt;
+
+}
 </style>
 
 <script type="text/javascript">
@@ -113,15 +123,14 @@
 				</div>
 			</div>
 			
-			<h3 align="center">거래처 목록 조회</h3>
+			<h3 align="center" class="h3class">거래처 목록 조회</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-condensed">
-						<tbody id="detaillist">
+						<tbody id="detaillist" class="tabletd">
 							<tr>
 								<th>상호</th>
 								<th>대표자명</th>
-								<th>사업자 등록번호</th>
 								<th>업태</th>
 								<th>종목</th>
 								<th>거래처 전화번호</th>
@@ -200,11 +209,13 @@
 					</table>
 				</div>
 			</div>
-			<h3 align="center">거래처 정보 수정</h3>
+
+
+			<h3 align="center" class="h3class">거래처 정보 수정</h3>
 			
 		
 			<table class="table table-condensed">
-					<tbody>
+					<tbody class="tabletd">
 						<tr>
 							<td class="col-md-2"><h5>상호</h5></td>
 							<td class="col-md-4"><input type="text" class="form-control"
@@ -347,8 +358,7 @@
 	
 	<script>
 		$(function(){
-				var pno = <%= loginUser.getPno()%>
-				<% System.out.println("pno1: "+loginUser.getPno());%>
+			var pno = <%=loginUser.getPno()%>;
 				 $.ajax({
 					 url: "/jsmi/m3list",
 					 data:{pno:pno},
@@ -356,21 +366,18 @@
 					 dataType: "JSON",
 		       		 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					 success: function(data){
-							console.log("json 성공");
-							console.log("data : " + data);
 							var jsonObj = JSON.stringify(data);
 							var jsonArr = JSON.parse(jsonObj);
-							
-						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
+						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
 							for(var i in jsonArr.list){
-								console.log(jsonArr.list[i].pno);
-					
 								$("#detaillist").html( $("#detaillist").html() 
-										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
-										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
-										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('+').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
+										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('+').join(" ") 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
 										+ "</td></tr><hr>" );
-							}
+								}
 						},
 						error: function(request,status,error){
 					        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -439,7 +446,6 @@
        		  success: function(data){
        			  var jsonObj=JSON.stringify(data);
        			  var jsonArr=JSON.parse(jsonObj);
-       			  
        			  $("input[name=optradio]").val();
        			  if(jsonArr.busiType == "개인"){
        				  $('#individual').attr("checked","checked");

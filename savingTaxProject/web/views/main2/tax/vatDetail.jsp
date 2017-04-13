@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.*,diary.model.vo.Diary, java.util.*"%>
+
 <%
 	Date day = new GregorianCalendar().getTime();
 	int quarter = 0;
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,9 @@
 <script type="text/javascript " src="/jsmi/js/main2/bootstrap.min.js"></script>
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
-<title>vatDetail</title>
+
+<title>절세미인 - 부가가치세 정산내역</title>
+
 <style>
 .middle {
 	width: 1400px !important;
@@ -69,29 +71,318 @@
 	color: black;
 }
 
-.btngroup {
-	float: right;
-	position: relative;
-	margin-top: -15px;
-	margin-right: 10px;
-}
-
-input {
-	border: none;
-	background: cyan;
+.container-fluid {
+	background: aliceblue;
 	border-radius: 4px;
 }
-label {
-font-size : 4em;
+
+#yearlabel img {
+	display: inline-block;
+	height: 26px;
+	cursor: pointer;
+}
+
+#yearlabel h3 {
+	display: inline-block;
+}
+
+.gitTable {
+	width: 1140px;
+	border
+}
+
+.gitTableth1 {
+	border-bottom: 3px solid red;
+	font-family: ssangmunDong !important;
+	padding-left: 35%;
+	font-size: 20pt;
+}
+
+.gitTableth {
+	border-bottom: 3px solid #2a82a3;
+	font-family: ssangmunDong !important;
+	padding-left: 40%;
+	font-size: 20pt;
+}
+
+.im {
+	padding-top: 2%;
+	padding-left: 24.5%;
+	padding-right: 7%;
+	border-right: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	/* text-align: center; */
+}
+
+.imModify {
+	padding-top: 2%;
+	border-bottom: 2px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	text-align: center;
+}
+
+.imcome {
+	padding-top: 2%;
+	padding-left: 24%;
+	padding-right: 7%;
+	border-right: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	/* text-align: center; */
+}
+
+.imcomeModify {
+	padding-top: 2%;
+	border-bottom: 2px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 13pt;
+	text-align: center;
+}
+
+.gitarCon1 {
+	padding-top: 2%;
+	padding-left: 8%;
+	padding-right: 8%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	text-align: center;
+}
+
+.gitarCon2 {
+	padding-top: 2%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	text-align: center;
+}
+
+.imcome1 {
+	padding-top: 2%;
+	border-bottom: 1px dashed red;
+	font-family: computer !important;
+	font-size: 15pt;
+	text-align: center;
+}
+
+.imcomeCon {
+	padding-top: 3%;
+	padding-bottom: 3%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+	text-align: center;
+}
+
+.imcomeCon4 {
+	padding-top: 3%;
+	padding-bottom: 3%;
+	padding-left: 5%;
+	border-bottom: 1px solid #ddd;
+	font-family: computer !important;
+	font-size: 15pt;
+	text-align: right;
+}
+
+#val {
+	background: -webkit-linear-gradient(aliceblue, white);
+	background: -o-linear-gradient(aliceblue, white);
+	background: -moz-linear-gradient(aliceblue, white);
+	background: linear-gradient(aliceblue, white);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 6px;
+}
+
+.imcomeCon1 {
+	padding-top: 3%;
+	padding-bottom: 2%;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 11pt;
+	text-align: center;
+}
+
+.imcomeCon2 {
+	padding-bottom: 3%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 12pt;
+	text-align: center;
+}
+
+.imcomeCon3 {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	border-bottom: 3px solid red;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 12pt;
+	text-align: center;
+}
+
+.imcomeWork {
+	padding-top: 2%;
+	padding-left: 15%;
+	padding-right: 9%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifyWork {
+	padding-left: 15%;
+	padding-top: 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeConMon {
+	padding-top: 2%;
+	padding-bottom: 4%;
+	padding-left: 13.5%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+.imcomeConMonin {
+	padding-top: 2%;
+	padding-bottom: 4%;
+	padding-left: 16%;
+	border-bottom: 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	font-size: 13pt;
+}
+
+.imcomepen {
+	padding-top: 2%;
+	padding-left: 15%;
+	padding-right: 22%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifypen {
+	padding-left: 15%;
+	padding-top: 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeatc {
+	padding-top: 2%;
+	padding-left: 15%;
+	padding-right: 15%;
+	border-right: 1px solid #2a82a3;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 15pt;
+	/* text-align: center; */
+}
+
+.imcomeModifyatc {
+	padding-left: 15%;
+	padding-top: 2%;
+	padding-right: 5%;
+	border-bottom: 1px solid #2a82a3;
+	font-family: computer !important;
+	font-size: 14pt;
+	/* text-align: center; */
+}
+
+.imcomeRe {
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	font-family: computer !important;
+	font-size: 15pt;
+	text-align: center;
+}
+
+#selyear {
+	font-family: ssangmunDong !important;
+	color: #2a82a3;
+	font-size: 24pt;
+}
+
+.selectBtn1 {
+	padding-left: 47%;
+}
+
+.selectBtn6 {
+	padding-left: 42%;
+}
+
+.selectBtn2 {
+	border: none;
+	border-radius: 5px;
+	border-color: #d58512;
+	color: white;
+	width: 60px;
+	height: 30px;
+	font-family: Binggrae !important;
+	background-color: #ec971f;
+}
+
+.selectBtn3 {
+	border: none;
+	border-radius: 3px;
+	border-color: #2a82a3;
+	color: white;
+	width: 100px;
+	height: 30px;
+	font-family: Binggrae !important;
+	background-color: #2a82a3;
+	box-shadow: 3px 3px 5px silver;
+}
+
+.selectBtn4 {
+	border: none;
+	border-radius: 3px;
+	border-color: #2a82a3;
+	color: white;
+	width: 150px;
+	height: 50px;
+	font-family: Binggrae !important;
+	background-color: #2a82a3;
+	box-shadow: 3px 3px 5px silver;
+}
+
+.font {
+	font-family: ssangmunDong !important;
+}
+
+#yearlabel {
+	font-family: ssangmunDong !important;
+}
+
+#year{
+   color:#2a82a3; 
 }
 </style>
+
 </head>
+
 <body style="padding-top: 0px">
 	<%@ include file="/views/common/main2/main2back.jsp"%>
 	<div class="middle top" style="margin-top: 50px">
 		<%@ include file="/views/common/main2/fullbar.jsp"%>
 	</div>
-
 	<div class="middle frame">
 		<div class="side">
 			<%@ include file="/views/common/main2/slidebar.jsp"%>
@@ -101,233 +392,437 @@ font-size : 4em;
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a class="tabmenu"
-							href="/jsmi/views/main2/tax/vatDetail.jsp">부가가치세</a></li>
 						<li><a class="tabmenu lactive"
-							href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">종합소득세
-						</a></li>
+							href="/jsmi/views/main2/tax/vatDetail.jsp"> 부가가치세 </a></li>
+
+						<li><a class="tabmenu"
+							href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+								종합소득세 </a></li>
 					</ul>
 				</div>
 			</div>
-			<div>
-				
-			</div>
-			<table class="table table-condensed">
-				<tr>
-					<td>&nbsp; &nbsp;&nbsp; <span style="color: blue;"><%=loginUser.getPname()%></span>
-						님의 부가가치세 계산 창입니다.
-					</td>
-					<td>&nbsp;  </td>
-					<td>&nbsp;</td>
-					<td>다른분기 계산하기</td>
-				</tr>
-				<tr style="text-align: center;">
-					<td > <label id=quarter></label> <label id="year"><%=day.getYear() + 1900%>
-					</label><label>년</label><%
-					if (loginUser.getTaxType().equals("일반과세자")) {
-						if (day.getMonth() < 6)
-							quarter = 1;
-						else
-							quarter = 2;					
-				%>
-					<label id="quarter"><%=quarter%></label><label>반기</label></td>
-					<%} %>
-					
-					<td colspan="3"><img src="/jsmi//images/main2/down.png"
-						onclick="myear();"> <label id="searchY"><%=day.getYear() + 1900%>
-					</label><label>년</label> <img src="/jsmi//images/main2/up.png" onclick="pyear();">
+			<br>
+
+			<div id="yearlabel" align="center">
+				<table>
+					<tr style="text-align: center; font-size: 42pt;">
+						<td colspan="2"><label id="year"><%=day.getYear() + 1900%>
+						</label> <label style="font-size: 17pt; color:#2a82a3">년</label>
+							<%
+								String squarter = "";
+								if (loginUser.getTaxType() != null)
+									if (loginUser.getTaxType().equals("일반과세자")) {
+
+										if (day.getMonth() < 6) {
+											quarter = 1;
+											squarter = "상";
+										} else {
+											quarter = 2;
+											squarter = "하";
+										}
+							%> <label id="quarter"><%=squarter%></label><label>반기</label></td>
+						<%
+							}
+						%>
+					</tr>
+					<tr style = "font-size:16pt;">
+					<td>	다른 분기 조회 &nbsp; </td>
+					<td colspan="2">
+						<img src="/jsmi/images/main2/arrow2.png" onclick="myear();">
+						<label id="searchY"><%=day.getYear() + 1900%>
+						</label><label>년</label>
+						<img src="/jsmi/images/main2/arrow.png" onclick="pyear();"> 
+					  
 						<%if(loginUser.getTaxType().equals("일반과세자")){ %>
-						<label id=searchQ>상</label><label>반기</label>
-						 <img src="/jsmi//images/main2/up2.png" onclick="firstHalf();">
-						 <img src="/jsmi//images/main2/down2.png" onclick="secondHalf();">
+						<img src="/jsmi/images/main2/arrow2.png" onclick="firstHalf();"><label id=searchQ>상</label><label>반기</label><img src="/jsmi/images/main2/arrow.png" onclick="secondHalf();">						 
 						<%} %>
 					</td>
 				</tr>
-				<tr>
-					<td> 분기별 조회가 가능합니다.</td>
-					<td>&nbsp;</td><td>&nbsp;</td><td>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick ="vatLoad();">조회</button></td>
-				</tr>
 				</table>
-				<fieldset>
-				<legend>조회되는 항목</legend>
-			<%if(loginUser.getTaxType().equals("일반과세자")){//일반과세자처리용 테이블 %> 
-			<table class="table table-condensed">
-				<tr>
-					<td colspan="2">매출 세액(+)</td>
-				</tr>
-				<tr>
-					<td colspan="2">세금계산서(+)</td>
-					<td><input name="out1" type="number" readonly> 원</td>
-					<td>세액 : <input name="out1vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">-신용카드 매출전표(+)</td>
-					<td><input name="out2" type="number" readonly> 원</td>
-					<td>세액 : <input name="out2vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">-기타분(+)</td>
-					<td><input name="out3" type="number" readonly> 원</td>
-					<td>세액 : <input name="out3vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">-합계(+)</td>
-					<td><input name="totalout" type="number" readonly> 원</td>
-					<td>세액 : <input name="totaloutvat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr></tr>
-				<tr>
-					<td colspan="2">매입 세액(-)</td>
-				</tr>
-				<tr>
-					<td colspan="2">-세금계산서(-)</td>
-					<td><input name="in1" type="number" readonly> 원</td>
-					<td>세액 : <input name="invat1" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">-의제매입세액공제(-)</td>
-					<td><input name="in2" type="number" readonly> 원</td>
-					<td>세액 : <input name="invat2" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-				
-				<tr>
-					<td colspan="2">매입 세액 합계</td>
-					<td><input name="totalin" type="number" readonly>원</td>
-					<td>세액 :<input name="totalinvat" type="number" readonly> 원</td>
-				</tr>
-				<tr>
-					<td colspan="2">-기타 공제 세액(신용카드발행분)(-)</td>
-					<td>세액 <input name="in3" type="number" readonly>원</td>
-					<td>세액 :<input name="in3vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-			
-				
-			</table>
-			</fieldset>
-			<fieldset>
-			<legend>총 계</legend>
-			<table class = "table table-condensed">
-			<tr>
-					<td colspan="2">납부할 총 부가가치세액</td>
-					<td> &nbsp;</td><td> &nbsp;</td>
-					<td>세액 :<input name="totalvat" type="number" readonly>
-						원
-					</td><td><button onclick="print();">문서로 받기</button> </td>
-				</tr>
-			</table>
-			<%}else{ //간이과세자 처리용 테이블%>
-			<table class="table table-condensed">
-				<tr>
-					<td colspan="2">매출 세액(+)</td>
-				</tr>
-				<tr>
-					<td colspan="2">전기 가스 중기 및 수도사업</td>
-					<td><input name="out1" type="number" readonly> 원</td>
-					<td>세액 : <input name="out1vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">소매, 재생용자료 수집판매, 음식점업</td>
-					<td><input name="out2" type="number" readonly> 원</td>
-					<td>세액 : <input name="out2vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">제조, 농, 임, 어업, 숙박, 운수 및 통신업</td>
-					<td><input name="out3" type="number" readonly> 원</td>
-					<td>세액 : <input name="out3vat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">건설, 부동산, 그 밖의 서비스업</td>
-					<td><input name="out4" type="number" readonly> 원</td>
-					<td>세액 : <input name="outvat4" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">-계(+)</td>
-					<td><input name="totalout" type="number" readonly> 원</td>
-					<td>세액 : <input name="totaloutvat" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr></tr>
-				<tr>
-					<td colspan="2">공제 세액(-)</td>
-				</tr>
-				<tr>
-					<td colspan="2">매입세금계산서 등 수취세액공제(-)</td>
-					<td><input name="in1" type="number" readonly> 원</td>
-					<td>세액 : <input name="invat1" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"> 의제매입 세액공제(-)</td>
-					<td><input name="in2" type="number" readonly> 원</td>
-					<td>세액 : <input name="invat2" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"> 신용카드 매출전표 등 발행 세액공제(-)</td>
-					<td><input name="in3" type="number" readonly> 원</td>
-					<td>세액 : <input name="invat3" type="number" readonly>
-						원
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">매입 세액 합계</td>
-					<td><input name="totalin" type="number" readonly>원</td>
-					<td>세액 :<input name="totalinvat" type="number" readonly> 원</td>
-				</tr>
-			</table>
-			</fieldset>
-			<fieldset>
-			<legend>총 계</legend>
-			<table class = "table table-condensed">
-			<tr>
-					<td colspan="2">납부할 총 부가가치세액</td>
-					
-					<td>세액 :<input name="totalvat" type="number" readonly>
-						원
-					</td>
-					<td><button onclick="print();">과세 관련 신고 서류 다운로드</button> </td>
-				</tr>
-			</table>
-			<%} %>
-			</fieldset>
+
 			</div>
-			<script type="text/javascript">
+
+			<br> 
+
+			<div class="selectBtn1">
+				<button class="selectBtn2" id="selectBtn2" onclick="vatLoad();">조회</button>
+			</div>
+
+			<br>
+			<br>
+			<br>
+
+			<%
+				if (loginUser.getTaxType().equals("일반과세자")) { //일반과세자처리용 테이블
+			%>
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth" align="center" >조회되는 항목</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						<tr>
+							<td class="imcome">매출세액</td>
+							<td class="imcomeModify">매출세액 = 세금계산서 + 신용카드 매출전표 + 기타분</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon1">세금계산서</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon2"><input name="out1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon1">신용카드 매출전표</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon2"><input name="out2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon1">기타분</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon2"><input name="out3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon">매출 세액 합계<td class="imcomeCon"><input name="totalout" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">세액
+							</td>
+							<td class="imcomeCon"><input name="totaloutvat"
+								type="number" id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="im">매입세액</td>
+							<td class="imModify">매입세액 = 세금계산서 + 의제 매입 세액 공제 </td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">세금계산서</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat1" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">의제매입세액공제</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat2" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">매입 세액 합계</td>
+							<td class="imcomeCon"><input name="totalin" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">세액</td>
+							<td class="imcomeCon"><input name="totalinvat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="gitarCon1">기타세액</td>
+							<td class="gitarCon2">기타 공제 세액(신용카드 발행분)</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">기타공제세액</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in3vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth1">납부 할 총 부가가치 세액</th>
+						</tr>
+					</thead>
+					
+					<tbody>												
+						<tr>
+							<td class="imcomeCon4">총계 세액</td>
+							<td class="imcomeCon"><input name="totalvat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br>
+			
+			<div class="selectBtn6">
+				<button class="selectBtn3" onclick="print();">문서로 받기</button>
+			</div>
+			
+			<br><br>
+			<%
+				} else if (loginUser.getTaxType().equals("간이과세자")) { //간이과세자 처리용 테이블
+			%>
+			<!-- -------------------------------------------------------------- -->
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth">조회되는 항목</th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="imcome">매출세액</td>
+							<td class="imcomeModify">매출세액 = 세금계산서 + 신용카드 매출전표 + 기타분</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">전기 가스 중기 및 수도사업</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="out1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">소매, 재생용자료 수집판매, 음식점업</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="out2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">제조, 농, 임, 어업, 숙박, 운수 및 통신업</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="out3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">건설, 부동산, 그 밖의 서비스업</td>
+							<td class="imcomeCon1">세액</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="out4" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out4vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">매출 세액 합계</td>
+							<td class="imcomeCon"><input name="totalout" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">세액</td>
+							<td class="imcomeCon"><input name="totaloutvat"
+								type="number" id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br><br><br>
+			
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth"></th>
+						</tr>
+					</thead>
+					
+					<tbody>						
+						<tr>
+							<td class="im">공제세액</td>
+							<td class="imModify">매입세액 = 세금계산서 + 의제 매입 세액 공제 </td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">매입세금계산서 등 수취세액공제</td>
+							<td class="imcomeCon1">세율</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat1" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">의제매입세액공제</td>
+							<td class="imcomeCon1">세율</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat2" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon1">신용카드 매출전표 등 발행 세액공제</td>
+							<td class="imcomeCon1">세율</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon2"><input name="in3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat3" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">매입 세액 합계</td>
+							<td class="imcomeCon"><input name="totalin" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+						
+						<tr>
+							<td class="imcomeCon">세액</td>
+							<td class="imcomeCon"><input name="totalinvat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			<br><br><br><br>
+			<div>
+				<table class="gitTable">
+					<thead class="gitTablethead">
+						<tr class="gitTablethtr">
+							<th colspan="3" class="gitTableth1">납부 할 총 부가가치 세액</th>
+						</tr>
+					</thead>
+					
+					<tbody>																
+						<tr>
+							<td colspan="2" class="imcomeCon4">총 계</td>
+							<td class="imcomeCon"><input name="totalvat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+					</tbody>				
+				</table>
+			</div>
+			
+			<br><br>
+			
+			<div class="selectBtn6">
+				<button class="selectBtn4" onclick="print();">과세 관련 신고 서류 다운로드</button>
+			</div>
+			
+			
+			<br><br><br><br>
+			<%
+				}
+			%>	
+		</div>
+		
+		
+		</div>
+		
+		<script type="text/javascript">
 			//서식 출력시 들어가야되는 변수들
 			
 			//일반 과세자용 변수 
-			var pno =0;
-			var year = 0;
-			var quarter = 0;
+			
 			var gout1 = 0; //세금계산서분
 			var gout1vat = 0;
 			var gout2 = 0;	//신용카드분
@@ -342,7 +837,8 @@ font-size : 4em;
 			var gin3vat = 0;
 			var gin3 = 0;
 			var gin3vat = 0;	
-			
+			var gin4 = 0;
+			var gin4vat = 0;
 			//간이 과세자용 변수
 				var out = 0;
 				var outvat = 0;
@@ -355,22 +851,18 @@ font-size : 4em;
 				var x = 0;  //업종별 부가가치율 곱셈용이라  x로 표기
 				var tnum = ""; //tag넘버 구분용
 			//공통 변수
+			var pno =0;
+			var year = 0;
+			var quarter = <%=quarter%>;
 			var totalout = 0;	
 			var totaloutvat = 0;
 			var totalin = 0; //매입총함
 			var totalinvat = 0;
 			var totalvat = 0;
 			var deem = 0; //의제매입세액공제율
-			switch(<%= loginUser.getCtype()%>){
-			case "2" : deem = 8/108;  break;
-			case "3" : deem = 8/108; break;
-			}
-			
-				 
-			
-			
+				
 		function vatLoad(){
-			 
+
 			 gout1 = 0; //세금계산서분
 			 gout1vat = 0;
 			 gout2 = 0;	//신용카드분
@@ -386,15 +878,16 @@ font-size : 4em;
 			 gin3vat = 0;
 			 gin3 = 0;
 			 gin3vat = 0;
+			 
 			 totalin = 0; //매입총함
 			 totalinvat = 0;
 			//총 부가가치세
 			 totalvat = 0;
-			if(<%=loginUser.getCtype() %> ==2)
-				deem = 8/108;
-				
+			 switch("<%=loginUser.getWname()%>"){
+				case "음식점" : deem = 8/108;  break;
+				case "제조업" : deem = 4/104; break;
+				}
 			
-			quarter = <%=quarter%>;
 			 pno = <%=loginUser.getPno()%>;
 			
 			 year = Number($("#searchY").text());
@@ -407,15 +900,18 @@ font-size : 4em;
 						var jsonObj = JSON.stringify(data);
 						var jsonArr = JSON.parse(jsonObj);			
 			//매출
+			$("#year").text($("#searchY").text());
+			
 			if(<%=loginUser.getTaxType().equals("일반과세자")%>){ //일반과세자 처리용 
 	
-			
 			for(var i in jsonArr.tax){
 				switch(decodeURIComponent(jsonArr.tax[i].anm)){
 					case "매출" : 
 							switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-								case "세금계산서" : gout1 +=  parseInt(jsonArr.tax[i].cost); break;	
-								case "신용카드매출전표" : 
+								case "세금계산서(수기)" :
+								case "세금계산서(전자)" 
+													: gout1 +=  parseInt(jsonArr.tax[i].cost); break;	
+								case "카드매출전표" : 
 								case "현금영수증" : 	
 												gout2 += parseInt(jsonArr.tax[i].cost); break;
 								default : 
@@ -430,10 +926,11 @@ font-size : 4em;
 					case "여비교통비" :
 					case "차량유지비" :
 					case "사무용품비" : switch(decodeURIComponent(jsonArr.tax[i].proof_type)){
-									case "세금계산서" :
-									case "신용카드매출전표" : 
-									case "현금영수증" : 	
-										 gin1 +=  parseInt(jsonArr.tax[i].cost); break;	
+										case "현금영수증" :					
+										case "신용카드매출전표" :
+											gin4 += parseInt(jsonArr.tax[i].cost);				
+										case "세금계산서" :
+														 gin1 +=  parseInt(jsonArr.tax[i].cost); break;	
 										}  break;	
 				}
 			}
@@ -446,6 +943,7 @@ font-size : 4em;
 			 gin2vat = parseInt(gin2 * deem); 
 			 gin3 = gout2;
 			 gin3vat = parseInt(gout2vat * 0.13);
+			 gin4vat = gin4 * 0.01; 
 			 totalin = gin1 + gin2;
 			 totalinvat = gin1vat+gin2vat;
 			 totalvat = totaloutvat - totalinvat - gin3vat;
@@ -467,7 +965,7 @@ font-size : 4em;
 			$("input[name=in3]").val(gin3);
 			$("input[name=in3vat]").val(gin3vat);
 			$("input[name=totalvat]").val(totalvat);
-	
+			$("#quarter").text($("#searchQ").text());
 			}else{ //간이과세자 처리용 함수
 				 out = 0;
 				 outvat = 0;
@@ -495,17 +993,17 @@ font-size : 4em;
 							in1 += parseInt(jsonArr.tax[i].cost); break;//의제매입세액을 뺀 매입세액
 					}
 				}
-				switch ("<%=loginUser.getCtype()%>"){
-				case "1": x = 0.005; tnum = "1";
+				switch ("<%=loginUser.getWname()%>"){
+				case "전기": x = 0.005; tnum = "1";
 						break;
-				case "2": x= 0.01; tnum = "2";
+				case "음식점": x= 0.01; tnum = "2";
 						break;
-				case "3": x= 0.02; tnum = "3";
+				case "제조업": x= 0.02; tnum = "3";
 						break;
-				case "4": x= 0.03; tnum = "4";
+				case "기타": x= 0.03; tnum = "4";
 						break;
 				}
-				if(!(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>)){
+				if(!(<%=loginUser.getCtype().equals("2")%> || <%=loginUser.getCtype().equals("3")%>)){
 					in1 += in2;
 				}
 				
@@ -523,7 +1021,7 @@ font-size : 4em;
 				//공제세액 계산
 				$("input[name=in1]").val(in1);
 				$("input[name=invat1]").val(invat1);
-				if(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>){
+				if(<%=loginUser.getCtype().equals("2")%> || <%=loginUser.getCtype().equals("3")%>){
 				$("input[name=in2]").val(in2); 
 				$("input[name=invat2]").val(invat2);
 				}
@@ -532,6 +1030,8 @@ font-size : 4em;
 				$("input[name=totalinvat]").val(totalinvat);
 				$("input[name=totalvat]").val(totalvat);
 			} // 간이과세자 처리 메소드 끝
+			//날짜 재정리
+			
 			},
 			error: function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -540,7 +1040,7 @@ font-size : 4em;
 		}
 		function pyear(){
 		var year = parseInt($("#searchY").text());
-		if (year < <%=day.getYear()+1900%>){
+		if (year < <%=day.getYear() + 1900%>){
 		$("#searchY").text((year+1 ));	
 		}
 		}
@@ -553,10 +1053,12 @@ font-size : 4em;
 		
 		$('#searchQ').html('상');
 		quarter= 1;
+		
 		}
 		function secondHalf(){
 			$('#searchQ').html('하');
 			quarter = 2;
+			
 		}
 		function print(){
 			 /*
@@ -599,10 +1101,10 @@ font-size : 4em;
 				data : 	
 				<%if (loginUser.getTaxType().equals("일반과세자")) {%>
 					{pno:pno, year:year, quarter:quarter, gout1:gout1, gout1vat:gout1vat, gout2:gout2,
-						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, 
+						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, gin4:gin4, gin4vat:gin4vat, 
 						gin2:gin2, gin2vat:gin2vat, gin3:gin3, gin3vat:gin3vat,
 						totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
-				<%}else{%>
+				<%} else {%>
 				 {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
 						invat3:invat3, totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}%>,
@@ -614,25 +1116,14 @@ font-size : 4em;
 			});	
 		}
 		$(function(){
-			if(<%=loginUser.getTaxType().equals("일반과세자")%>){
-			if(<%=day.getMonth()%> < 6){
-			quarter=1;	
-			}else{
-			quarter=2;	
-			}
-			}else{
-			quarter=0;
-			} 	
+			
+
+		
 			vatLoad(); 
-		});
-		
-		
-		
-		
+			
+		});		
 		</script>
-	</div>
-	
+
 	<%@ include file="/views/common/main2/main2footer.jsp"%>
 </body>
-
 </html>

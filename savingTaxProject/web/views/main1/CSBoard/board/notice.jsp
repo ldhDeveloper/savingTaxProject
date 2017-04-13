@@ -5,7 +5,7 @@
 
 <%
 	List<Post> plist = (List<Post>)request.getAttribute("plist");
-	
+	//게시판 페이징 처리용 변수
 	int boardNo = ((Integer)request.getAttribute("boardNo")).intValue();
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue();
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
@@ -310,7 +310,7 @@ label {
 						<% } %>
 						<tr height = "20px"></tr>
 					<tr>
-
+					<!-- pageing  -->
 					<td colspan = "3" align="center">
 					<%if(currentPage <=1){ %>
 					[이전]

@@ -291,6 +291,33 @@ table {
 	color: white;
 	font-family: Binggrae !important;
 }
+.Qreplying {
+	border-bottom : 1px solid #ddd;
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}
+
+.Qreplying2 {
+	border-bottom : 1px solid #ddd;
+	font-family: NotoSansCJKkr-Ligth !important;
+	padding : 2.5%;
+	font-size: 12pt;
+}
+
+.QreplyContent {
+	font-family: computer !important;
+	padding : 2.5%;
+	font-size: 12pt;
+	color: #2a82a3;
+}.mtr{
+	background: ivory;
+	height: 7pt;
+	font-size :7px;
+	text-weight : bold;
+	font-family:computer !important; 
+}
 
 
 </style>
@@ -454,7 +481,10 @@ table {
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
 		
-			<h2 align="center" class="font-family-xs-1">taxTip</h2>
+			<h3 align="center">
+				<img src="/jsmi/images/tip.png"><br>
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
 		</div>
 		<br> <br>
 
@@ -468,29 +498,29 @@ table {
 					<table class="table table-bordered">
 					
 						<tbody>
-							<tr class="success">
+							<tr class="mtr">
 								<td>제      목</td>
 								<td><%=p.getPostName() %></td>
 							</tr>
 							
-							<tr class="danger">
+							<tr class="mtr">
 								<td>작 성 일</td>
 								<td><%=p.getPostDate() %></td>
 							</tr>
 							
-							<tr class="info">
+							<tr class="mtr">
 								<td>작 성 자</td>
 								<td><%=p.getpId() %></td>
 							</tr>
 							
-							<tr class="warning">
+							<tr class="mtr">
 								<td>조 회 수</td>
 								<td><%=p.getReadCount() %></td>
 							</tr>
 							
 							<tr class="success">
 								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment">
+									<textarea class="form-control" rows="10" id="comment" readonly>
 										<%=p.getPostContents() %>
 									</textarea>
 								</td>

@@ -136,14 +136,14 @@
 							<td class="col-md-2"><h5>주민등록번호</h5></td>
 							<td class="col-md-4"><div class="col-md-5">
 									<input type="text" maxlength="6" class="form-control"
-										OnKeyUp="checkidno();" name="idno" value="<%=loginUser.getBirth()%>">
+										OnKeyUp="checkidno();" value="<%=loginUser.getBirth()%>" readonly>
 								</div>
 								<div class="col-md-1">
 									<h5>-</h5>
 								</div>
 								<div class="col-md-5">
 									<input type="password" maxlength="7" class="form-control"
-										OnKeyUp="checkidno();" name="idno2" value="*******">
+										OnKeyUp="checkidno();" value="*******"  readonly>
 								</div></td>
 						</tr>
 						<tr>
@@ -253,10 +253,10 @@
 					</tbody>
 				</table>
 				<div class="btngroup">
-					<input type="submit" class="btn btn-warning" value="수정완료" onclick="return chk()">
+					<input type="submit" class="btn btn-warning" value="수정완료" onclick="return chk2()">
 					<input type="button" class="btn btn-primary" value="다음"
 						onclick="location.href='/jsmi/views/main2/myinfo/myinfo2.jsp'"
-						onclick="return chk()">
+						onclick="return chk2()">
 				</div>
 				<%
 					} else {
@@ -488,6 +488,46 @@
 		} 
 
 		alert('입력성공!');
+	}
+	
+	function chk2() {
+		var re_idno = /^\d{6}$/;
+		var re_idno2 = /^\d{7}$/;
+		var address = /^[0-9]*$/;
+		var tel = /^[0-9]{2,3}$/;
+		var tel2 = /^[0-9]{3,4}$/;
+		var tel3 = /^[0-9]{4}$/;
+		
+
+		var idno = $('input[name=idno]'), idno2 = $('input[name=idno2]'), address = $('input[name=address]'), 
+		     phone = $('input[name=phone]'), phone2 = $('input[name=phone2]'), phone3 = $('input[name=phone3]');
+		
+		 if (address.test(address.val()) != true) {
+			alert('[주소 입력 오류] 유효한 주소를 입력해주세요.');
+			address="";
+			address.focus();
+			return false;
+		}
+		 if (tel.test(phone.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone="";
+			phone.focus();
+			return false;
+		}
+		 if (tel2.test(phone2.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone2="";
+			phone2.focus();
+			return false;
+		} 
+		 if (tel3.test(phone3.val()) != true) {
+			alert('[휴대폰번호 입력 오류] 유효한 번호를 입력해 주세요.');
+			phone3="";
+			phone3.focus();
+			return false;
+		} 
+
+		alert('수정성공!');
 	}
 	
 </script>		

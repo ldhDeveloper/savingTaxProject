@@ -36,31 +36,20 @@ public class PostListViewServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-
+		//페이징 처리용 변수
 		int currentPage = 1;
-
 		int limit=10;
 		if (request.getParameter("limit") != null) 
 		     limit=Integer.parseInt(request.getParameter("limit"));
-		
-
-
 		if (request.getParameter("page") != null) {
 			currentPage = Integer.parseInt(request.getParameter("page"));
-			
 		}
-
 		int startPage = ((int) ((double) currentPage / limit + 0.9) - 1) * limit + 1;
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		PostService pService = new PostService();
-
 		int listCount = pService.getListCount(boardNo);
-
 		int maxPage = (int) ((double) listCount / limit + 0.9);
-
 		int endPage = startPage + limit - 1; 
-		
-
 		if (maxPage < endPage)
 			endPage = maxPage;
 		List<Post> plist = pService.selectList(currentPage, limit, boardNo);
