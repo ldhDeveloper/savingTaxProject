@@ -131,7 +131,6 @@
 							<tr>
 								<th>상호</th>
 								<th>대표자명</th>
-								<th>사업자 등록번호</th>
 								<th>업태</th>
 								<th>종목</th>
 								<th>거래처 전화번호</th>
@@ -360,7 +359,6 @@
 	<script>
 		$(function(){
 				var pno = <%= loginUser.getPno()%>
-				<% System.out.println("pno1: "+loginUser.getPno());%>
 				 $.ajax({
 					 url: "/jsmi/m3list",
 					 data:{pno:pno},

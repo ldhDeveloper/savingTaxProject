@@ -34,7 +34,6 @@ public class PostDao {
 		int startRow = (currentPage - 1) * limit + 1;
 		//조회할 종료 게시글번호
 		int endRow = startRow + limit - 1;
-		
 		String query = "select rnum, post_no, post_name, post_date, post_contents, board_no, pno, read_count, fname, refname, id from " +
 				"(select rownum rnum, post_no, post_name, " +
 						 "post_date, post_contents, board_no, pno, " +
@@ -42,8 +41,8 @@ public class PostDao {
 				+ " (select  p.post_no post_no, post_name, " +
 				 "post_date, post_contents, board_no, p.pno pno, " +
 				 "post_ref_no, read_count, fname, refname, id from post p, attachment a, party m "+
-				 "where p.post_no = a.post_no(+) and p.pno = m.pno(+) and  board_no = ? and post_ref_no = 0 order by p.post_no desc)) where rnum >= ? and rnum <= ?"
-				 ;
+				 "where p.post_no = a.post_no(+) and p.pno = m.pno(+) and board_no = ?"
+				 + " and post_ref_no = 0 order by p.post_no desc)) where rnum >= ? and rnum <= ?" ;
 		try {
 		pstmt = con.prepareStatement(query);
 		//게시판번호
