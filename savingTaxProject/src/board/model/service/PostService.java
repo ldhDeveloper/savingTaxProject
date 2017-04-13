@@ -16,7 +16,6 @@ public class PostService {
 	public List<Post> selectList(int currentPage, int limit, int boardNo) {
 		Connection con = getConnection();
 		List<Post> plist = new PostDao().selectList(con, limit, boardNo, currentPage);
-		System.out.println("service:"+limit+","+boardNo+","+currentPage);
 		close(con);
 		return plist;
 	}

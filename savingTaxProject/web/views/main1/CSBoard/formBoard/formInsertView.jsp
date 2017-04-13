@@ -264,7 +264,7 @@
 							제목 &nbsp;&nbsp;&nbsp;&nbsp;|
 							<label class="QreplyC">
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="postname" id="ptitletext" autofocus>
+								<input maxlength="50" type="text" name="postname" id="ptitletext" autofocus>
 							</label>
 						</td> 
 					</tr>

@@ -422,10 +422,10 @@
 					<tr style = "font-size:16pt;">
 					<td>	다른 분기 조회 &nbsp; </td>
 					<td colspan="2">
-						<img src="/jsmi/images/main2/arrow2.png" onclick="pyear();">
+						<img src="/jsmi/images/main2/arrow2.png" onclick="myear();">
 						<label id="searchY"><%=day.getYear() + 1900%>
 						</label><label>년</label>
-						<img src="/jsmi/images/main2/arrow.png" onclick="myear();"> 
+						<img src="/jsmi/images/main2/arrow.png" onclick="pyear();"> 
 					  
 						<%if(loginUser.getTaxType().equals("일반과세자")){ %>
 						<img src="/jsmi/images/main2/arrow2.png" onclick="firstHalf();"><label id=searchQ>상</label><label>반기</label><img src="/jsmi/images/main2/arrow.png" onclick="secondHalf();">						 

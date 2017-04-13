@@ -315,6 +315,12 @@ table {
 	padding : 2.5%;
 	font-size: 12pt;
 	color: #2a82a3;
+}.mtr{
+	background: ivory;
+	height: 7pt;
+	font-size :7px;
+	text-weight : bold;
+	font-family:computer !important; 
 }
 
 
@@ -392,7 +398,7 @@ table {
 				<tr height = "20px"></tr>
 			</table>
 		</div>
-			<div  style = "text-align:right;">
+			<div  style = "text-align:right;margin-right:-50px;padding-right:0; ">
 				<% if(loginUser != null) { if(loginUser.getPno() == p.getpNo()) { %>
 					<button  class ="lastBtns" onclick="redact();">수정하기</button>
 					<button class="lastBtns" onclick="deletePost();">삭제하기</button>
@@ -401,7 +407,7 @@ table {
 						location.href= "/jsmi/postupdateview?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>"
 					}
 						function deletePost(){
-							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>";
+							location.href = "/jsmi/postdelete?postNo=<%=p.getPostNo()%>&page=<%=currentPage%>&boardNo=<%=p.getBoardNo()%>";
 							}
 					</script>
 					<% }} %>
@@ -506,24 +512,24 @@ table {
 					<table class="table table-bordered">
 					
 						<tbody>
-							<tr class="success">
+							<tr class="mtr">
 								<td>제      목</td>
 								<td><%=p.getPostName() %></td>
 							</tr>
-							<tr class="danger">
+							<tr class="mtr">
 								<td>작 성 일</td>
 								<td><%=p.getPostDate() %></td>
 							</tr>
-							<tr class="info">
+							<tr class="mtr">
 								<td>작 성 자</td>
 								<td><%=p.getpId() %></td>
 							</tr>
-							<tr class="warning">
+							<tr class="mtr">
 								<td>조 회 수</td>
 								<td><%=p.getReadCount() %></td>
 							</tr>
 							<%if(p.getfName() !=null){ %>
-							<tr class="success">
+							<tr class="mtr">
 								<td>첨부 파일</td>
 								<td><a href = "/jsmi/filedown?refName=<%=p.getRefName()%>&fName=<%=p.getfName()%>
 						&pno=<%=loginUser.getPno()%>"><%=p.getfName() %></a></td>
@@ -534,7 +540,7 @@ table {
 							</tr>
 							<tr class="success">
 								<td colspan="2">
-									<textarea class="form-control" rows="10" id="comment">
+									<textarea class="form-control" rows="10" id="comment" readonly>
 										<%=p.getPostContents() %>
 									</textarea>
 								</td>

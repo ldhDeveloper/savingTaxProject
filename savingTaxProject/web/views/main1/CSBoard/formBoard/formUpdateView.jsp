@@ -279,7 +279,10 @@ background: -webkit-linear-gradient(#ffffff, #b0e0e6);
 			<table>
 		
 				<thead>
-					<tr class = "thmd"><td id = "thth" style="width:30%;text-align:center;"> 제 목 </td><td colspan ="6"><input id ="thth" class="redact inputmd" value="<%=p.getPostName()%>" name="postName"></td></tr>
+					<tr class = "thmd">
+					<td id = "thth" style="width:30%;text-align:center;"> 제 목 </td><td colspan ="6">
+					<input maxlength="50" id ="thth" style = "text-align:left;width:900px;" class="inputmd" value="<%=p.getPostName()%>" name="postName" autofocus></td></tr>
+					
 					<tr height = "5px;"></tr>
 					<tr class="thmd">
 						<th id="thth">작성일</th>

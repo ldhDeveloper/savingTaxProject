@@ -130,7 +130,6 @@
 							<tr>
 								<th>상호</th>
 								<th>대표자명</th>
-								<th>사업자 등록번호</th>
 								<th>업태</th>
 								<th>종목</th>
 								<th>거래처 전화번호</th>
@@ -359,7 +358,6 @@
 	<script>
 		$(function(){
 				var pno = <%= loginUser.getPno()%>
-				<% System.out.println("pno1: "+loginUser.getPno());%>
 				 $.ajax({
 					 url: "/jsmi/m3list",
 					 data:{pno:pno},
@@ -372,13 +370,13 @@
 							var jsonObj = JSON.stringify(data);
 							var jsonArr = JSON.parse(jsonObj);
 							
-						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>사업자 등록번호</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
+						    $("#detaillist").html("<tr><th>번호</th><th>상호</th><th>대표자명</th><th>업태</th><th>종목</th><th>거래처전화번호</th><th>거래처주소</th><th>이메일</th></tr>");
 							for(var i in jsonArr.list){
 								console.log(jsonArr.list[i].pno);
 					
 								$("#detaillist").html( $("#detaillist").html() 
 										+ "<tr style='cursor:pointer' id='line" +  i + "' onclick='linecheck(" + i + ', ' + jsonArr.list[i].pno + ")'><td id='listpno'>"+ jsonArr.list[i].pno + "</td><td>" + decodeURIComponent(jsonArr.list[i].cname) + "</td><td>" + decodeURIComponent(jsonArr.list[i].president) 
-										+ "</td><td>"+ decodeURIComponent(jsonArr.list[i].cno) + "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
+										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].cstatus) + "</td><td>" + decodeURIComponent(jsonArr.list[i].ctype) 
 										+ "</td><td>" + decodeURIComponent(jsonArr.list[i].tel) + "</td><td>" + decodeURIComponent(jsonArr.list[i].caddress).split('+').join(" ") + "</td><td>" + decodeURIComponent(jsonArr.list[i].email) 
 										+ "</td></tr><hr>" );
 							}
