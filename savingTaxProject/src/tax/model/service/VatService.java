@@ -100,8 +100,8 @@ public class VatService {
 		insertContent(wb, 0, 51, 11, today);
 		insertContent(wb, 0, 51, 15, p.getPname());
 		insertContent(wb, 1, 3, 2, p.getCno());
-		insertContent(wb, 1, 16, 8, taxArr[12]);
-		insertContent(wb, 1, 16, 11, taxArr[15]);
+		insertContent(wb, 1, 16, 8, taxArr[19]);
+		insertContent(wb, 1, 16, 11, taxArr[20]);
 		insertContent(wb, 1, 18, 8, taxArr[2]);
 		insertContent(wb, 1, 18, 11, taxArr[2]);
 		f = new File("C:\\Users\\user1\\git\\savingTaxProject\\savingTaxProject\\web\\board_uploadFiles\\" + fileName);
