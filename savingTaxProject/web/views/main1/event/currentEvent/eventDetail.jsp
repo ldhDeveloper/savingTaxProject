@@ -16,15 +16,6 @@
 .mfont {
 	font-family: mordengodic !important;
 }
-
-.size {
-	width: 280px;
-	height: 180px;
-}
-
-.border {
-	border: 1px solid;
-}
 </style>
 </head>
 <body>
@@ -38,15 +29,16 @@
 			<table>
 				<tr style="height: 5px;"></tr>
 				<tr>
-					<th class="mfont">이벤트 대상: 신규가입자(기존 회원들은 대상에서 제외)</th>
+					<th>이벤트 대상: 신규가입자(기존 회원들은 대상에서 제외)</th>
 				</tr>
 				<tr>
-					<th class="mfont">이벤트 기간: 2017년 3월 27일부터 4월 16일까지</th>
+					<th>이벤트 기간: 2017년 3월 27일부터 4월 16일까지</th>
 				</tr>
 				<tr style="height: 10px;"></tr>
 
 				<tr>
-					<td class="mfont">이벤트 기간 동안 신규 가입회원들을 대상으로 회원정보입력과 사업장정보를 입력시 회원님께 딱 맞는 전문 세무사를 찾아 무료로 연결해드립니다!</td>
+					<td>이벤트 기간 동안 신규 가입회원들을 대상으로 회원정보입력과 사업장정보를 입력시 회원님께 딱 맞는 전문
+						세무사를 찾아 무료로 연결해드립니다!</td>
 				</tr>
 				<tr style="height: 10px;"></tr>
 			</table>
@@ -67,19 +59,18 @@
 					<table>
 						<tr style="height: 5px;"></tr>
 						<tr>
-							<th class="mfont">이벤트 대상: 신규가입자(기존 회원들은 대상에서 제외)</th>
+							<th>이벤트 대상: 신규가입자(기존 회원들은 대상에서 제외)</th>
 						</tr>
 						<tr>
-							<th class="mfont">이벤트 기간: 2017년 3월 27일부터 4월 16일까지</th>
+							<th>이벤트 기간: 2017년 3월 27일부터 4월 16일까지</th>
 						</tr>
 						<tr style="height: 10px;"></tr>
 
 						<tr>
-							<td class="mfont">이벤트 기간 동안 신규 가입회원들을 대상으로 회원정보입력과 사업장정보를
-								입력시</td>
+							<td>이벤트 기간 동안 신규 가입회원들을 대상으로 회원정보입력과 사업장정보를 입력시</td>
 						</tr>
 						<tr>
-							<td class="mfont">회원님께 딱 맞는 전문 세무사를 찾아 무료로 연결해드립니다!</td>
+							<td>회원님께 딱 맞는 전문 세무사를 찾아 무료로 연결해드립니다!</td>
 						</tr>
 						<tr style="height: 10px;"></tr>
 					</table>

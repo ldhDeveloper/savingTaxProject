@@ -482,13 +482,13 @@ a:hover {
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li>
-							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/vatDetail.jsp">
+							<a class="tabmenu" href="/jsmi/views/main2/tax/vatDetail.jsp">
 								부가가치세
 							</a>
 						</li>
 						
 						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
 								종합소득세
 							</a>
 						</li>

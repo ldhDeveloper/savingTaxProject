@@ -169,7 +169,7 @@ th {
 
 .h3class {
 	font-family: ssangmunDong !important;
-	font-size: 25pt;
+	font-size: 20pt;
 }
 
 .tabletd {

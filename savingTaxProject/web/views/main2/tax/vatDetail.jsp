@@ -96,14 +96,14 @@
 	border-bottom: 3px solid red;
 	font-family: ssangmunDong !important;
 	padding-left: 35%;
-	font-size: 25pt;
+	font-size: 20pt;
 }
 
 .gitTableth {
 	border-bottom: 3px solid #2a82a3;
 	font-family: ssangmunDong !important;
 	padding-left: 40%;
-	font-size: 25pt;
+	font-size: 20pt;
 }
 
 .im {
@@ -187,7 +187,7 @@
 	padding-left: 5%;
 	border-bottom: 1px solid #ddd;
 	font-family: computer !important;
-	font-size: 20pt;
+	font-size: 15pt;
 	text-align: right;
 }
 
@@ -384,13 +384,13 @@
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/vatDetail.jsp">
+							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/vatDetail.jsp">
 								부가가치세
 							</a>
 						</li>
 						
 						<li>
-							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
 								종합소득세
 							</a>
 						</li>
