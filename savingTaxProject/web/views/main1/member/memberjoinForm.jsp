@@ -95,6 +95,7 @@ body {
 	var idcheck = false;
 	var pwdcheck = false;
 
+	//패스워드 체크 jQuery
 	$(function() {
 		$('#pwd2').focusout(function() {
 			if ($('#pwd1').val() == $('#pwd2').val()) {
@@ -109,6 +110,8 @@ body {
 		})
 
 		//$('#idchk').click(function(){
+			
+		//아이디 체크 ajax	
 		$('#userid').focusout(function() {
 			var chkId = "id=" + $('#userid').val();
 			console.log(chkId);

@@ -329,26 +329,6 @@
 										maxlength="4" required>
 								</div>
 							</td>
-							<td class="col-md-2"><h5>거래처 휴대폰번호</h5></td>
-							<td class="col-md-4">
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone" id="phone"
-										OnKeyUp="checkph();" maxlength="3" required>
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone2" id="phone2"
-										OnKeyUp="checkph();" maxlength="4" required>
-								</div>
-								<div class="col-md-1" style="text-align: center">-</div>
-								<div class="col-md-3"
-									style="padding-left: 0px; padding-right: 0px;">
-									<input type="text" class="form-control" name="phone3" id="phone3"
-										maxlength="4" required>
-								</div>
-							</td>
 						</tr>
 						<tr>
 							<td class="col-md-2"><h5>거래처 주소</h5></td>
