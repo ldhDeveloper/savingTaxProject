@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,diary.model.vo.Diary, java.util.*" %>
-	
+	pageEncoding="UTF-8"
+	import="java.util.*,diary.model.vo.Diary, java.util.*"%>
+
 <%
 	Date day = new GregorianCalendar().getTime();
 	int quarter = 0;
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/jsmi/js/main2/zipcode.js"></script>
 
 
-<title> 절세미인 - 부가가치세 정산내역</title>
+<title>절세미인 - 부가가치세 정산내역</title>
 
 <style>
 .middle {
@@ -74,7 +74,6 @@
 .container-fluid {
 	background: aliceblue;
 	border-radius: 4px;
-	
 }
 
 #yearlabel img {
@@ -107,46 +106,46 @@
 }
 
 .im {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 24.5%;
 	padding-right: 7%;
-	border-right: 1px solid #2a82a3;
-	border-bottom: 1px solid #2a82a3;
+	border-right: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
 	font-family: computer !important;
-	font-size: 15pt;
+	font-size: 13pt;
 	/* text-align: center; */
 }
 
 .imModify {
-	padding-top : 2%;
-	border-bottom: 1px solid #2a82a3;
+	padding-top: 2%;
+	border-bottom: 2px solid #2a82a3;
 	font-family: computer !important;
-	font-size: 14pt;
+	font-size: 13pt;
 	text-align: center;
 }
 
 .imcome {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 24%;
 	padding-right: 7%;
-	border-right: 1px solid #2a82a3;
-	border-bottom: 1px solid #2a82a3;
+	border-right: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
 	font-family: computer !important;
-	font-size: 15pt;
+	font-size: 13pt;
 	/* text-align: center; */
 }
 
 .imcomeModify {
-	padding-top : 2%;
-	border-bottom: 1px solid #2a82a3;
+	padding-top: 2%;
+	border-bottom: 2px solid #2a82a3;
 	font-family: computer !important;
-	font-size: 14pt;
+	font-size: 13pt;
 	text-align: center;
 }
 
 .gitarCon1 {
-	padding-top : 2%;
-	padding-left : 8%;
+	padding-top: 2%;
+	padding-left: 8%;
 	padding-right: 8%;
 	border-right: 1px solid #2a82a3;
 	border-bottom: 1px solid #2a82a3;
@@ -156,7 +155,7 @@
 }
 
 .gitarCon2 {
-	padding-top : 2%;
+	padding-top: 2%;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
 	font-size: 14pt;
@@ -164,7 +163,7 @@
 }
 
 .imcome1 {
-	padding-top : 2%;
+	padding-top: 2%;
 	border-bottom: 1px dashed red;
 	font-family: computer !important;
 	font-size: 15pt;
@@ -172,17 +171,16 @@
 }
 
 .imcomeCon {
-	padding-top : 3%;
+	padding-top: 3%;
 	padding-bottom: 3%;
 	border-bottom: 1px solid #ddd;
 	font-family: NotoSansCJKkr-Ligth !important;
 	font-size: 13pt;
 	text-align: center;
-	
 }
 
 .imcomeCon4 {
-	padding-top : 3%;
+	padding-top: 3%;
 	padding-bottom: 3%;
 	padding-left: 5%;
 	border-bottom: 1px solid #ddd;
@@ -202,19 +200,19 @@
 }
 
 .imcomeCon1 {
-	padding-top : 3%;
+	padding-top: 3%;
 	padding-bottom: 2%;
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size: 13pt;
-	text-align: center;	
+	font-size: 11pt;
+	text-align: center;
 }
 
 .imcomeCon2 {
 	padding-bottom: 3%;
 	border-bottom: 1px solid #ddd;
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size: 13pt;
-	text-align: center;	
+	font-size: 12pt;
+	text-align: center;
 }
 
 .imcomeCon3 {
@@ -222,14 +220,14 @@
 	padding-bottom: 2%;
 	border-bottom: 3px solid red;
 	font-family: NotoSansCJKkr-Ligth !important;
-	font-size: 13pt;
+	font-size: 12pt;
 	text-align: center;
 }
 
 .imcomeWork {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 15%;
-    padding-right: 9%;
+	padding-right: 9%;
 	border-right: 1px solid #2a82a3;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -239,7 +237,7 @@
 
 .imcomeModifyWork {
 	padding-left: 15%;
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-right: 5%;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -248,7 +246,7 @@
 }
 
 .imcomeConMon {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-bottom: 4%;
 	padding-left: 13.5%;
 	border-bottom: 1px solid #ddd;
@@ -257,7 +255,7 @@
 }
 
 .imcomeConMonin {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-bottom: 4%;
 	padding-left: 16%;
 	border-bottom: 1px solid #ddd;
@@ -266,9 +264,9 @@
 }
 
 .imcomepen {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 15%;
-    padding-right: 22%;
+	padding-right: 22%;
 	border-right: 1px solid #2a82a3;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -278,7 +276,7 @@
 
 .imcomeModifypen {
 	padding-left: 15%;
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-right: 5%;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -287,9 +285,9 @@
 }
 
 .imcomeatc {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 15%;
-    padding-right: 15%;
+	padding-right: 15%;
 	border-right: 1px solid #2a82a3;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -299,7 +297,7 @@
 
 .imcomeModifyatc {
 	padding-left: 15%;
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-right: 5%;
 	border-bottom: 1px solid #2a82a3;
 	font-family: computer !important;
@@ -308,7 +306,7 @@
 }
 
 .imcomeRe {
-	padding-top : 2%;
+	padding-top: 2%;
 	padding-left: 2%;
 	padding-right: 2%;
 	font-family: computer !important;
@@ -318,9 +316,8 @@
 
 #selyear {
 	font-family: ssangmunDong !important;
-	color : #2a82a3;
+	color: #2a82a3;
 	font-size: 24pt;
-	
 }
 
 .selectBtn1 {
@@ -337,9 +334,9 @@
 	border-color: #d58512;
 	color: white;
 	width: 60px;
-    height: 30px;
+	height: 30px;
 	font-family: Binggrae !important;
-	background-color : #ec971f;
+	background-color: #ec971f;
 }
 
 .selectBtn3 {
@@ -348,10 +345,10 @@
 	border-color: #2a82a3;
 	color: white;
 	width: 100px;
-    height: 30px;
+	height: 30px;
 	font-family: Binggrae !important;
-	background-color : #2a82a3;
-	box-shadow : 3px 3px 5px silver;
+	background-color: #2a82a3;
+	box-shadow: 3px 3px 5px silver;
 }
 
 .selectBtn4 {
@@ -360,10 +357,22 @@
 	border-color: #2a82a3;
 	color: white;
 	width: 150px;
-    height: 50px;
+	height: 50px;
 	font-family: Binggrae !important;
-	background-color : #2a82a3;
-	box-shadow : 3px 3px 5px silver;
+	background-color: #2a82a3;
+	box-shadow: 3px 3px 5px silver;
+}
+
+.font {
+	font-family: ssangmunDong !important;
+}
+
+#yearlabel {
+	font-family: ssangmunDong !important;
+}
+
+#year{
+   color:#2a82a3; 
 }
 </style>
 
@@ -383,123 +392,133 @@
 			<div class="navbar navbar-default">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li>
-							<a class="tabmenu lactive" href="/jsmi/views/main2/tax/vatDetail.jsp">
-								부가가치세
-							</a>
-						</li>
-						
-						<li>
-							<a class="tabmenu" href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
-								종합소득세
-							</a>
-						</li>
+						<li><a class="tabmenu lactive"
+							href="/jsmi/views/main2/tax/vatDetail.jsp"> 부가가치세 </a></li>
+
+						<li><a class="tabmenu"
+							href="/jsmi/views/main2/tax/generalIncomeTax/generalIncomeTax.jsp">
+								종합소득세 </a></li>
 					</ul>
 				</div>
-			</div>			
-			<br><br>
-			
+			</div>
+			<br>
+
 			<div id="yearlabel" align="center">
 				<table>
-					<tr style="text-align: center; font-size:42pt;">
-					<td colspan ="2"><label id="year"><%=day.getYear() + 1900%>
-					</label>
-					<label>년</label><%
-						String squarter = "";
-					if(loginUser.getTaxType() != null) if(loginUser.getTaxType().equals("일반과세자")) {
-						
-						if (day.getMonth() < 6){
-							quarter = 1;
-						squarter = "상";
-						}else{
-							quarter = 2;
-							squarter = "하";
-						}
-				%>
-					<label id="quarter"><%=squarter%></label><label>반기</label></td>
-					<%} %>
+					<tr style="text-align: center; font-size: 42pt;">
+						<td colspan="2"><label id="year"><%=day.getYear() + 1900%>
+						</label> <label style="font-size: 17pt; color:#2a82a3">년</label>
+							<%
+								String squarter = "";
+								if (loginUser.getTaxType() != null)
+									if (loginUser.getTaxType().equals("일반과세자")) {
+
+										if (day.getMonth() < 6) {
+											quarter = 1;
+											squarter = "상";
+										} else {
+											quarter = 2;
+											squarter = "하";
+										}
+							%> <label id="quarter"><%=squarter%></label><label>반기</label></td>
+						<%
+							}
+						%>
 					</tr>
-					<tr style = "font-size:16pt;">
-					<td>	다른 분기 조회 &nbsp; </td>
-					<td colspan="2">
-						<img src="/jsmi/images/main2/arrow2.png" onclick="pyear();">
-						<label id="searchY"><%=day.getYear() + 1900%>
-						</label><label>년</label>
-						<img src="/jsmi/images/main2/arrow.png" onclick="myear();"> 
-					  
-						<%if(loginUser.getTaxType().equals("일반과세자")){ %>
-						<img src="/jsmi/images/main2/arrow2.png" onclick="firstHalf();"><label id=searchQ>상</label><label>반기</label><img src="/jsmi/images/main2/arrow.png" onclick="secondHalf();">						 
-						<%} %>
-					</td>
-				</tr>
+					<tr style="font-size: 14pt;">
+						<td class="font">다른 분기 조회 &nbsp;</td>
+						<td colspan="2"><img src="/jsmi/images/main2/arrow2.png"
+							onclick="pyear();"> <label id="searchY"><%=day.getYear() + 1900%>
+						</label><label>년</label> <img src="/jsmi/images/main2/arrow.png"
+							onclick="myear();"> <%
+ 	if (loginUser.getTaxType().equals("일반과세자")) {
+ %>
+							<img src="/jsmi/images/main2/arrow2.png" onclick="firstHalf();"><label
+							id=searchQ>상</label><label>반기</label><img
+							src="/jsmi/images/main2/arrow.png" onclick="secondHalf();">
+							<%
+								}
+							%></td>
+					</tr>
 				</table>
-				
+
 			</div>
-		
-			<br>
-			<br>
-			
+
+			<br> 
+
 			<div class="selectBtn1">
-				<button class="selectBtn2" id="selectBtn2" onclick ="vatLoad();">조회</button>
+				<button class="selectBtn2" id="selectBtn2" onclick="vatLoad();">조회</button>
 			</div>
-			
-			<br><br><br><br>
-			
-			<% if(loginUser.getTaxType().equals("일반과세자")) { //일반과세자처리용 테이블 %>
+
+			<br>
+			<br>
+			<br>
+
+			<%
+				if (loginUser.getTaxType().equals("일반과세자")) { //일반과세자처리용 테이블
+			%>
 			<div>
 				<table class="gitTable">
 					<thead class="gitTablethead">
-						<tr class="gitTablethtr" >
-							<th colspan="2" class="gitTableth">조회되는 항목</th>
+						<tr class="gitTablethtr">
+							<th colspan="2" class="gitTableth" align="center" >조회되는 항목</th>
 						</tr>
-					
+
 					</thead>
-							 
+
 					<tbody>
-										
+
 						<tr>
 							<td class="imcome">매출세액</td>
 							<td class="imcomeModify">매출세액 = 세금계산서 + 신용카드 매출전표 + 기타분</td>
 						</tr>
-						
+
 						<tr>
 							<td class="imcomeCon1">세금계산서</td>
 							<td class="imcomeCon1">세액</td>
 						</tr>
-						
+
 						<tr>
-							<td class="imcomeCon2"><input name="out1" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out1vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
-						
+
 						<tr>
 							<td class="imcomeCon1">신용카드 매출전표</td>
 							<td class="imcomeCon1">세액</td>
 						</tr>
-						
+
 						<tr>
-							<td class="imcomeCon2"><input name="out2" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out2vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
-						
+
 						<tr>
 							<td class="imcomeCon1">기타분</td>
 							<td class="imcomeCon1">세액</td>
 						</tr>
-						
+
 						<tr>
-							<td class="imcomeCon2"><input name="out3" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out3vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3vat" type="number"
+								id="val" readonly> 원</td>
+						</tr>
+
+						<tr>
+							<td class="imcomeCon">매출 세액 합계<td c lass="imcomeCon"><input name="totalout" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon">매출 세액 합계</td>
-							<td class="imcomeCon"><input name="totalout" type="number" id="val" readonly> 원</td>
-						</tr>
-						
-						<tr>
-							<td class="imcomeCon">세액</td>
-							<td class="imcomeCon"><input name="totaloutvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon">세액
+							</td>
+							<td class="imcomeCon"><input name="totaloutvat"
+								type="number" id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -527,8 +546,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in1" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="invat1" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat1" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -537,18 +558,22 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in2" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="invat2" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat2" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">매입 세액 합계</td>
-							<td class="imcomeCon"><input name="totalin" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalin" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">세액</td>
-							<td class="imcomeCon"><input name="totalinvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalinvat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -576,8 +601,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in3" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="in3vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in3vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -596,7 +623,8 @@
 					<tbody>												
 						<tr>
 							<td class="imcomeCon4">총계 세액</td>
-							<td class="imcomeCon"><input name="totalvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalvat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -609,7 +637,9 @@
 			</div>
 			
 			<br><br>
-			<% }else if(loginUser.getTaxType().equals("간이과세자")) { //간이과세자 처리용 테이블%>
+			<%
+				} else if (loginUser.getTaxType().equals("간이과세자")) { //간이과세자 처리용 테이블
+			%>
 			<!-- -------------------------------------------------------------- -->
 			
 			<div>
@@ -632,8 +662,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="out1" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out1vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out1vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -642,8 +674,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="out2" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out2vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out2vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -652,8 +686,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="out3" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out3vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out3vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -662,18 +698,22 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="out4" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="out4vat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out4" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="out4vat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">매출 세액 합계</td>
-							<td class="imcomeCon"><input name="totalout" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalout" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">세액</td>
-							<td class="imcomeCon"><input name="totaloutvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totaloutvat"
+								type="number" id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -701,8 +741,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in1" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="invat1" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in1" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat1" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -711,8 +753,10 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in2" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="invat2" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in2" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat2" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
@@ -721,18 +765,22 @@
 						</tr>
 						
 						<tr>
-							<td class="imcomeCon2"><input name="in3" type="number" id="val" readonly> 원</td>
-							<td class="imcomeCon2"><input name="invat3" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="in3" type="number"
+								id="val" readonly> 원</td>
+							<td class="imcomeCon2"><input name="invat3" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">매입 세액 합계</td>
-							<td class="imcomeCon"><input name="totalin" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalin" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 						
 						<tr>
 							<td class="imcomeCon">세액</td>
-							<td class="imcomeCon"><input name="totalinvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalinvat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -749,7 +797,8 @@
 					<tbody>																
 						<tr>
 							<td colspan="2" class="imcomeCon4">총 계</td>
-							<td class="imcomeCon"><input name="totalvat" type="number" id="val" readonly> 원</td>
+							<td class="imcomeCon"><input name="totalvat" type="number"
+								id="val" readonly> 원</td>
 						</tr>
 					</tbody>				
 				</table>
@@ -763,7 +812,9 @@
 			
 			
 			<br><br><br><br>
-			<% } %>	
+			<%
+				}
+			%>	
 		</div>
 		
 		
@@ -834,7 +885,7 @@
 			 totalinvat = 0;
 			//총 부가가치세
 			 totalvat = 0;
-			 switch("<%= loginUser.getWname()%>"){
+			 switch("<%=loginUser.getWname()%>"){
 				case "음식점" : deem = 8/108;  break;
 				case "제조업" : deem = 4/104; break;
 				}
@@ -954,7 +1005,7 @@
 				case "기타": x= 0.03; tnum = "4";
 						break;
 				}
-				if(!(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>)){
+				if(!(<%=loginUser.getCtype().equals("2")%> || <%=loginUser.getCtype().equals("3")%>)){
 					in1 += in2;
 				}
 				
@@ -972,7 +1023,7 @@
 				//공제세액 계산
 				$("input[name=in1]").val(in1);
 				$("input[name=invat1]").val(invat1);
-				if(<%= loginUser.getCtype().equals("2")%> || <%= loginUser.getCtype().equals("3")%>){
+				if(<%=loginUser.getCtype().equals("2")%> || <%=loginUser.getCtype().equals("3")%>){
 				$("input[name=in2]").val(in2); 
 				$("input[name=invat2]").val(invat2);
 				}
@@ -991,7 +1042,7 @@
 		}
 		function pyear(){
 		var year = parseInt($("#searchY").text());
-		if (year < <%=day.getYear()+1900%>){
+		if (year < <%=day.getYear() + 1900%>){
 		$("#searchY").text((year+1 ));	
 		}
 		}
@@ -1055,7 +1106,7 @@
 						gout2vat:gout2vat, gout3:gout3, gout3vat:gout3vat, gin1:gin1, gin1vat:gin1vat, gin4:gin4, gin4vat:gin4vat, 
 						gin2:gin2, gin2vat:gin2vat, gin3:gin3, gin3vat:gin3vat,
 						totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
-				<%}else{%>
+				<%} else {%>
 				 {pno:pno, year:year, quarter:quarter, out:out, outvat:outvat, in1:in1, in2:in2, in3:in3, invat1:invat2, invat2:invat2, 
 						invat3:invat3, totalout:totalout, totaloutvat:totaloutvat, totalin:totalin, totalinvat:totalinvat, totalvat:totalvat}
 				<%}%>,

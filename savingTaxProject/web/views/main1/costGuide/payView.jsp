@@ -81,7 +81,7 @@
 }
 
 .postth {
-	font-size: 28pt;
+	font-size: 20pt;
 	text-align: center;
 	font-family: ssangmunDong !important;
 }
@@ -170,7 +170,7 @@
 }
 
 #agree{
-	font-size: 10pt;
+	font-size: 12pt;
 	font-family: computer !important;
 	color: #2a82a3;
 }

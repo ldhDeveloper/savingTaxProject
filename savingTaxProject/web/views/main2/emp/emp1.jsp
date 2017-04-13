@@ -206,7 +206,7 @@
 					</table>
 				</div>
 			</div>
-			<h3 align="center" class="h3class">직원 정보 입력/수정</h3>
+			<h3 align="center" class="h3class">직원 정보 입력</h3>
 
 				
 				<div class="row">

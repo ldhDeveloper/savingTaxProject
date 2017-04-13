@@ -85,17 +85,13 @@
 	color: purple;
 }
 
-/* .panel-title {
-	font-family: NanumGothicExtraBold !important;
-} */
-
 .taxtable {
 	width: 1104px;
 }
 
 .taxthead {
-	border-top: 3px solid #2a82a3;
-	border-bottom: 3px solid #2a82a3;
+	border-top: 2px solid #2a82a3;
+	border-bottom: 2px solid #2a82a3;
 	padding-top: 2%;
 	font-family: computer !important;
 	font-size: 15pt;
@@ -182,7 +178,7 @@
 	border-bottom: 4px solid #2a82a3;
 	font-family: ssangmunDong !important;
 	padding-left: 38%;
-	font-size: 27pt;
+	font-size: 20pt;
 }
 
 .lineTable {
@@ -203,16 +199,21 @@
 .sumCalTable {
 	padding: 1.5%;
 	border-right : 1px solid lightgrey;
-	font-size: 15pt;
+	font-size: 13pt;
 }
 
 .sumTable {
 	background-color : #2a82a3;
 	color: #fff;
+	font-size: 13pt;
+}
+.rightTable{
+     font-size: 13pt;
 }
 
 .sumTable2 {
 	background-color : aliceblue;
+	font-size: 13pt;
 }
 
 a:hover { 
@@ -237,7 +238,7 @@ a:hover {
 #selyear {
 	font-family: ssangmunDong !important;
 	color : #2a82a3;
-	font-size: 24pt;
+	font-size: 40pt;
 	
 }
 
@@ -519,7 +520,7 @@ a:hover {
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn1" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt;">
+						<h4 class="panel-title" style="font-size: 16pt;">
 							종합 소득 금액
 						</h4>
 					</div>
@@ -591,7 +592,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn2" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							종합 소득 공제
 						</h4>
 					</div>
@@ -645,7 +646,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn3" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							세액 공제 항목
 						</h4>
 					</div>
@@ -684,7 +685,7 @@ a:hover {
 				
 				<div class="panel panel-default">
 					<div class="panel-heading" id="colbtn4" style="cursor:pointer">
-						<h4 class="panel-title" style="font-size: 17pt">
+						<h4 class="panel-title" style="font-size: 16pt">
 							기타항목
 						</h4>
 					</div>
