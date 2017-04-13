@@ -481,7 +481,7 @@ $(function() {
 	
 
 	<!-- 모바일용 -->
-	<div class="container-fluid hidden-sm hidden-md hidden-lg">
+	<%-- <div class="container-fluid hidden-sm hidden-md hidden-lg">
 		
 
 		<div class="middle font-family-md-1">
@@ -618,7 +618,7 @@ $(function() {
 			</div>
 			
 			<br><br><br>
-	</div>
+	</div> --%>
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>

@@ -45,32 +45,7 @@
 	height: 4em;
 }
 
-element.style {
-	
-}
 
-color
-
-
-:
-
- 
-
-#ffffff
-
-
-;
-text-decoration
-
-
-:
-
- 
-
-none
-
-
-;
 }
 .mobile {
 	background: #8f8f8f;
@@ -88,18 +63,6 @@ none
 	margin-right: auto;
 }
 
-.middle table {
-	
-}
-
-background
-
-
-:white
-
-
-;
-}
 .middle table td {
 	padding-top: 0px;
 	padding-bottom: 0px;

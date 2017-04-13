@@ -13,7 +13,7 @@
 		$(function() {
 			$("#pay1").click(
 					function() {
-						var c = 10000;
+						var c = 100;
 						var data = "데이터 등록권";
 						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay1");
@@ -35,7 +35,7 @@
 						console.log("pay3");
 					});
 			
-			$("#pay4").click(
+			/* $("#pay4").click(
 					function() {
 						var c = 10000;
 						var data = "데이터 등록권";
@@ -57,7 +57,7 @@
 						var data = "종합소득세 신고대행";
 						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay3");
-					});
+					}); */
 		});
 	</script>
 
@@ -84,7 +84,7 @@
 	</div>
 
 	<!-- Moblie -->
-	<div class="container-fluid hidden-sm hidden-md hidden-lg">
+	<!-- <div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="row">
 			<div class="col-xs-12">
 
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 	</div>
-	<hr>
+	<hr> -->
 
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>

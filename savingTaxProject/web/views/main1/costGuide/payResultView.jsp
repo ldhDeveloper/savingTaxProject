@@ -235,8 +235,8 @@
 			<div class="col-xs-8">
 				<input type="text" id="stext" name="search"
 					placeholder="검색할 제목을 입력하세요.">
-				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
-				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
+				<input type="submit" class="btn btn-primary" id="searchBt" value="검색">
+				<input class="btn btn-primary input-xs" value="검색">
 				<button class="btn btn-primary btn-xs">검색</button>
 			</div>
 
