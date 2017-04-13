@@ -37,7 +37,7 @@
 }
 .xxx {
 	position:relative;
-	left:1000px;
+	left: 850px;
 	top:10px;
 	border:2px solid #101020;
 	border-radius:5px;
@@ -61,13 +61,37 @@
 .logout:hover {
 	background:none;
 }
+
+.n {
+	position:relative;
+	left: 770px;
+	top:10px;
+	color: white;
+}
+
+.gradephoto {
+	position:relative;
+	left: 765px;
+	top:10px;
+	color: white;
+	font-size : 8pt;
+}
 </style>
 </head>
 
 <body>
 	<div class="fullbar">
 		<img src="/jsmi/images/menubar/logo.png" height="35" class="logo">
+		
+		<% if(loginUser.getGtype() != null) { %>
+		<img src="/jsmi/images/main1/vipmember.png" width="20px;" class="gradephoto">		
+		<label class="n"><%= loginUser.getPname() %>님 환영합니다.</label>
 		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/logout" class="logout">Log-out</a>
+		<% } else { %>
+		<img src="/jsmi/images/main1/generalmember.png" width="20px;"class="gradephoto">
+		<label class="n"><%= loginUser.getPname() %>님 환영합니다.</label>
+		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/logout" class="logout">Log-out</a>
+		<% } %>
 	</div>
 
 </body>

@@ -266,6 +266,16 @@
 
 		<br> <br> <br>
 
+		<!-- <div id="clist">
+			<label id="ctitle">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				제목
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+			</label> 
+			<label id=ctitlec>&nbsp;&nbsp;
+				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
+		</div> -->
+
 		<h3></h3>
 
 			<div class="tableStart">
@@ -313,7 +323,7 @@
 
 
 	<!-- 모바일용 -->
-<!-- 	<br>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -336,8 +346,8 @@
 			<div class="col-xs-8">
 				<input type="text" id="stext" name="search"
 					placeholder="검색할 제목을 입력하세요.">
-				<input type="submit" class="btn btn-primary" id="searchBt" value="검색">
-				<input class="btn btn-primary input-xs" value="검색">
+				<!-- <input type="submit" class="btn btn-primary" id="searchBt" value="검색"> -->
+				<!-- <input class="btn btn-primary input-xs" value="검색"> -->
 				<button class="btn btn-primary btn-xs">검색</button>
 			</div>
 
@@ -380,7 +390,7 @@
 		</div>
 
 		<br> <br> <br> <br> <br> <br> <br>
-	</div> -->
+	</div>
 	<%@ include file="/views/common/main1/footer.jsp"%>
 </body>
 </html>
