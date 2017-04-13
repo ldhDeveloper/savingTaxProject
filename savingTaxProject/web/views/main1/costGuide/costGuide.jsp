@@ -13,7 +13,7 @@
 		$(function() {
 			$("#pay1").click(
 					function() {
-						var c = 10000;
+						var c = 100;
 						var data = "데이터 등록권";
 						$(location).attr("href", "/jsmi/views/main1/costGuide/payView.jsp?c=" + c + "&data=" + data);
 						console.log("pay1");
