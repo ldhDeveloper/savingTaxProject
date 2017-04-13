@@ -430,19 +430,19 @@
 											System.out.println("과세유형 : " + loginUser.getTaxType());
 										%>
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio2" checked>일반과세자</label>
+											<label><input type="radio" value="일반과세자" name="optradio2" checked>일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2">간이과세자</label>
+											<label><input type="radio" value="간이과세자" name="optradio2">간이과세자</label>
 										</div>
 										<%
 											} else {
 										%>
 										<div class="radio col-md-6">
-											<label><input type="radio" name="optradio2">일반과세자</label>
+											<label><input type="radio" value="일반과세자" name="optradio2">일반과세자</label>
 										</div>
 										<div class="radio col-md-6" style="margin-top: 10px">
-											<label><input type="radio" name="optradio2" checked>간이과세자</label>
+											<label><input type="radio" value="간이과세자" name="optradio2" checked>간이과세자</label>
 										</div>
 										<%
 											}
@@ -458,37 +458,37 @@
 											if (loginUser.getNotax_yn().equals("과세")) {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3" checked>과세</label>
+											<label><input type="radio" value="과세" name="optradio3" checked>과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3">면세</label>
+											<label><input type="radio" value="면세" name="optradio3">면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3">과세+면세</label>
+											<label><input type="radio" value="과세+면세" name="optradio3">과세+면세</label>
 										</div>
 										<%
 											} else if (loginUser.getNotax_yn().equals("면세")) {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3">과세</label>
+											<label><input type="radio" value="과세" name="optradio3">과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" checked>면세</label>
+											<label><input type="radio" value="면세" name="optradio3" checked>면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3">과세+면세</label>
+											<label><input type="radio" value="과세+면세" name="optradio3">과세+면세</label>
 										</div>
 										<%
 											} else {
 										%>
 										<div class="radio col-md-4">
-											<label><input type="radio" name="optradio3">과세</label>
+											<label><input type="radio" value="과세" name="optradio3">과세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3">면세</label>
+											<label><input type="radio" value="면세" name="optradio3">면세</label>
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
-											<label><input type="radio" name="optradio3" checked>과세+면세</label>
+											<label><input type="radio" value="과세+면세" name="optradio3" checked>과세+면세</label>
 										</div>
 										<%
 											}
@@ -659,7 +659,7 @@
 										</div>
 										<div class="radio col-md-4" style="margin-top: 10px">
 											<label><input type="radio" name="optradio3" id="tdf"
-												value="과면세">과세+면세</label>
+												value="과세+면세">과세+면세</label>
 										</div>
 									</div>
 								</div>
