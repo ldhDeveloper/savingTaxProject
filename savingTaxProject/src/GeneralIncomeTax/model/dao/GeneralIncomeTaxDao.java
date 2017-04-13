@@ -16,6 +16,7 @@ public class GeneralIncomeTaxDao {
 
 	public int[] getTotalIncome(Connection con, int wpno, int gyear) {
 		int[] income = {0, 0, 0, 0, 0};
+		
 		PreparedStatement pstmt1 = null;
 		ResultSet rset1 = null;
 		
@@ -33,7 +34,8 @@ public class GeneralIncomeTaxDao {
 		
 		String query1 = "select write_pno, sum(cost) from diary where ano = 51 and extract(year from ddate) = ? and write_pno = ? group by write_pno";
 		
-		String query2 = "select write_pno, sum(cost) from diary where ano in (61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 81, 82, 83) and extract(year from ddate) = ? and write_pno = ? group by write_pno";
+		String query2 = "select write_pno, sum(cost) from diary where ano in (61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 81, 82, 83)"
+				         + " and extract(year from ddate) = ? and write_pno = ? group by write_pno";
 		
 		String query3 = "select write_pno, sum(cost) from diary where ano = 52 and extract(year from ddate) = ? and write_pno = ? group by write_pno";
 		
@@ -41,7 +43,8 @@ public class GeneralIncomeTaxDao {
 		
 		String query5 = "select write_pno, sum(cost) from diary where ano = 54 and extract(year from ddate) = ? and write_pno = ? group by write_pno";
 		
-		try {
+		try {			
+			// 사업소득
 			pstmt1 = con.prepareStatement(query1);
 			
 			pstmt1.setInt(1, gyear);
@@ -54,7 +57,7 @@ public class GeneralIncomeTaxDao {
 				income[0] = rset1.getInt("sum(cost)");
 			}
 			
-			
+			// 사업 필요 경비
 			pstmt2 = con.prepareStatement(query2);
 			
 			pstmt2.setInt(1, gyear);
@@ -67,7 +70,8 @@ public class GeneralIncomeTaxDao {
 			}
 			
 			
-			pstmt3 = con.prepareStatement(query1);
+			// 이자소득
+			pstmt3 = con.prepareStatement(query3);
 			
 			pstmt3.setInt(1, gyear);
 			pstmt3.setInt(2, wpno);
@@ -80,7 +84,8 @@ public class GeneralIncomeTaxDao {
 			}
 			
 			
-			pstmt4 = con.prepareStatement(query2);
+			// 배당 소득
+			pstmt4 = con.prepareStatement(query4);
 			
 			pstmt4.setInt(1, gyear);
 			pstmt4.setInt(2, wpno);
@@ -91,7 +96,9 @@ public class GeneralIncomeTaxDao {
 				income[3] = rset4.getInt("sum(cost)");
 			}
 			
-			pstmt5 = con.prepareStatement(query1);
+			
+			// 임대 소득
+			pstmt5 = con.prepareStatement(query5);
 			
 			pstmt5.setInt(1, gyear);
 			pstmt5.setInt(2, wpno);

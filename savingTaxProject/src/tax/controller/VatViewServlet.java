@@ -18,7 +18,6 @@ import org.json.simple.JSONObject;
 
 import diary.model.vo.Diary;
 import tax.model.service.VatService;
-import tax.model.vo.Vat;
 
 /**
  * Servlet implementation class VatViewServlet

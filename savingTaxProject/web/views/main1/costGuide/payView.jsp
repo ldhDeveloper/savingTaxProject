@@ -285,11 +285,6 @@ $(function() {
        $('#buga').html(MoneySwap2(buga));
        $('#total').html(MoneySwap3(total));
        
-       /* $('#result').html(MoneySwap1(result));
-       $('#buga').html(MoneySwap2(buga));
-       $('#total').html(MoneySwap3(total)); */
-       
-		// 원금
        	function MoneySwap1(result){
           	var temp_str = String(result);
           	for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++){
@@ -331,8 +326,6 @@ $(function() {
 </head>
 
 <body>
-	<!-- /jsmi/views/main1/costGuide/payView.jsp -->
-
 	<%@ include file="/views/common/main1/menubar.jsp"%>
 
 	<br>
