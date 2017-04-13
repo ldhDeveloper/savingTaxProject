@@ -53,7 +53,7 @@ public class DownloadTaxFormServlet extends HttpServlet {
 			}
 			downOut.close();
 			buf.close();
-			System.out.println(downFile.delete());
+			//System.out.println(downFile.delete());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
