@@ -454,7 +454,10 @@ table {
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
 		
-			<h2 align="center" class="font-family-xs-1">taxTip</h2>
+			<h3 align="center">
+				<img src="/jsmi/images/tip.png"><br>
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">쉽고 자세하게 설명 드릴게요.</h4>
 		</div>
 		<br> <br>
 

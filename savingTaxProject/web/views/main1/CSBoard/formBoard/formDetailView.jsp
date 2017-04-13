@@ -486,7 +486,10 @@ table {
 	<!-- 모바일용 -->
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		<div class="small">
-			<h2 align="center" class="font-family-xs-1">Form</h2>
+			<h3 align="center">
+				<img src="/jsmi/images/rlibrary.png"><br>
+			</h3>
+			<h4 style="color: #a9a9a9" align="center">정확한 자료를 제공합니다.</h4>
 		</div>
 
 

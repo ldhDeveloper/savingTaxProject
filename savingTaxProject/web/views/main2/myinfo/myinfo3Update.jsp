@@ -69,6 +69,7 @@
 	margin-top: -15px;
 	margin-right: 10px;
 }
+
 .tabletd {
 	border-top : 3px solid #2a82a3;  
 }
@@ -76,6 +77,7 @@
 .h3class {
 	font-family: ssangmunDong !important;
 	font-size: 20pt;
+
 }
 </style>
 
@@ -208,6 +210,8 @@
 					</table>
 				</div>
 			</div>
+
+
 			<h3 align="center" class="h3class">거래처 정보 수정</h3>
 			
 		

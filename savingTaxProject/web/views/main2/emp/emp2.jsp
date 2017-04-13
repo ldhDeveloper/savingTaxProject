@@ -628,9 +628,9 @@ th {
 									<td><input type="text" placeholder="휴일근무수당" class="form-control" id="salary3"></td>
 									<td><input type="text" placeholder="상여금" class="form-control" id="salary4"></td>
 									<td><input type="text" placeholder="성과금" class="form-control" id="salary5"></td>
-									<td><input type="text" placeholder="식대" class="form-control" id="salary6"></td>
-									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7"></td>
-									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8"></td>
+									<td><input type="text" placeholder="식대" class="form-control" id="salary6"></td> <!-- 한도 10만원 -->
+									<td><input type="text" placeholder="자차운전보조" class="form-control" id="salary7"></td> <!-- 한도 20만원 -->
+									<td><input type="text" placeholder="육아수당" class="form-control" id="salary8"></td> <!-- 한도 20만원 -->
 									<td><input type="text" placeholder="지급경비" class="form-control" id="salary9"></td>
 									<td><input type="text" placeholder="총급여" class="form-control" id="totalsalary"></td>
 
