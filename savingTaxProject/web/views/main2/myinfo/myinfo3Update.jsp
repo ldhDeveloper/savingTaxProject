@@ -358,6 +358,7 @@
 	
 	<script>
 		$(function(){
+			var pno = <%=loginUser.getPno()%>;
 				 $.ajax({
 					 url: "/jsmi/m3list",
 					 data:{pno:pno},
