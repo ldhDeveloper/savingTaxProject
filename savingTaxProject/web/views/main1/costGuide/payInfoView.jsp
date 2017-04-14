@@ -264,16 +264,6 @@
 
 		<br> <br> <br>
 
-		<!-- <div id="clist">
-			<label id="ctitle">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				제목
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-			</label> 
-			<label id=ctitlec>&nbsp;&nbsp;
-				[절세미인] 여기엔 제목값이 입력되는 곳 입니다.</label>
-		</div> -->
-
 		<h3></h3>
 
 			<div class="tableStart">

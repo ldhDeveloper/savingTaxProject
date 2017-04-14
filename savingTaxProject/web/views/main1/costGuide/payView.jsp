@@ -327,7 +327,18 @@ $(function() {
 
 <body>
 	<%@ include file="/views/common/main1/menubar.jsp"%>
-
+<script>
+	$(function(){
+		$('.dropdown').click(function(){
+			if($(this).hasClass('open')){
+				$(this).removeClass('open');
+			} else {
+				$(this).addClass('open');
+			}
+		})
+	});
+		
+	</script>
 	<br>
 	<br>
 	<br>
@@ -477,7 +488,7 @@ $(function() {
 	<div class="container-fluid hidden-sm hidden-md hidden-lg">
 		
 
-		<div class="middle font-family-md-1">
+		<div class="font-family-md-1">
 			<h3 align="center" class="postTitle">결제하기</h3>
 		</div>
 

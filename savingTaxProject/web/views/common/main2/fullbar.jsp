@@ -37,8 +37,8 @@
 }
 .xxx {
 	position:relative;
-	left: 850px;
-	top:10px;
+    left: 830px;
+	top: 9px;
 	border:2px solid #101020;
 	border-radius:5px;
 	color:white;
@@ -52,7 +52,7 @@
 	color:white;
 	position:relative;
 	left:1260px;
-	top:-35px;
+	top: -37px;
 	width:130px;
 	height:40px;
 	background:none;
@@ -62,34 +62,42 @@
 	background:none;
 }
 
-.n {
+.welcome {
+	color: snow;
 	position:relative;
-	left: 770px;
-	top:10px;
-	color: white;
+	left: 760px;
+    top: 11px;
+	background:none;
+	font-family: NotoSansCJKkr-Ligth !important;
 }
 
 .gradephoto {
 	position:relative;
-	left: 765px;
-	top:10px;
-	color: white;
-	font-size : 8pt;
+	left: 755px;
+    top: 11px;
+}
+
+#logo {
+	position:relative;
+	left: 755px;
+    top: 11px;
 }
 </style>
 </head>
 
 <body>
 	<div class="fullbar">
-		<img src="/jsmi/images/menubar/logo.png" height="35" class="logo">
 		
-		<% if(loginUser.getGtype() != null) { %>
-		<img src="/jsmi/images/main1/vipmember.png" width="20px;" class="gradephoto">		
-		<label class="n"><%= loginUser.getPname() %>님 환영합니다.</label>
+		<% if (loginUser.getGtype() == null) { %>
+		<img src="/jsmi/images/menubar/logo.png" height="35" class="logo">
+		<img src="/jsmi/images/main1/generalmember.png" width="20px;" class="gradephoto">
+		<span class="welcome"><%= loginUser.getPname() %>님 환영합니다.</span>
 		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/logout" class="logout">Log-out</a>
 		<% } else { %>
-		<img src="/jsmi/images/main1/generalmember.png" width="20px;"class="gradephoto">
-		<label class="n"><%= loginUser.getPname() %>님 환영합니다.</label>
+		
+		<img src="/jsmi/images/menubar/logo.png" height="35" class="logo">
+		<img src="/jsmi/images/menubar/logo.png" class="" id="logo" width="830">
+		<span class="welcome"><%= loginUser.getPname() %>님 환영합니다.</span>
 		<img src="/jsmi/images/main2/main2icons/logout2.png" height="30" width="30" class="xxx"><a href="/jsmi/logout" class="logout">Log-out</a>
 		<% } %>
 	</div>
